@@ -810,6 +810,25 @@ export const CustomerProfile = z.object({
      "Customer" | "Patient" | "Member" | "Client" | "Guest". */
   customerNoun: z.string(),
 
+  /* WHAT THIS DEMO WAS GENERATED WITH — the Advanced Settings the SE chose, so a
+     demo that reads oddly can be traced to the prompt that steered it instead of
+     being blamed on the engine. APP-WRITTEN, never generated.
+     ⚠️ SAFE AS `.optional()` ONLY BECAUSE `CustomerProfile` IS NEVER A GENERATION
+     SCHEMA. `toSchema()`'s `sanitize()` marks every property required, so an
+     optional field inside a type handed to the model is FORCED onto it — the trap
+     that made the engine invent `InteractionRow.cells` and fabricate a routing
+     `outcome`. The profile is assembled in code and only `.parse()`d, so nothing
+     asks the model for this. If a future phase ever generates a whole profile,
+     this field has to be omitted from that schema.
+     ⚠️ LABELS ONLY, NEVER THE DOCUMENT TEXT: a demo record is readable by the
+     whole team, and a strategy doc pasted into one would travel with it. */
+  generation: z.object({
+    at: z.string(),
+    scope: z.string(),                        // "full" | "agent"
+    steer: z.string().optional(),             // the SE's own instruction
+    sources: z.array(z.string()).optional(),  // e.g. ["Q4 strategy.docx", "Gong — account brief"]
+  }).optional(),
+
   // Each screen is a view of the profile. Add new screens here as we build them.
   reports: z.object({
     digitalInsights: DigitalInsightsReport,

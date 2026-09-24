@@ -250,7 +250,7 @@ export async function runCanary(apiKey: string): Promise<CanaryRun> {
   try {
     const profile = await generateProfile(target.name, target.url, {
       apiKey,
-      onProgress: (e: { phase: string; status: "start" | "done" }) => {
+      onProgress: (e: { phase: string; status: "start" | "done" | "skip" }) => {
         if (e.status === "start") open.set(e.phase, Date.now());
         else {
           const s = open.get(e.phase);

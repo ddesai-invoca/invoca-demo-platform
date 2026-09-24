@@ -44,6 +44,10 @@ export interface StatusInput {
   mapboxTokenInServerEnv: boolean;
   authGate: boolean;
   emailConfigured: boolean;
+  /* Advanced-settings context sources — see the integrations block below. */
+  gongConfigured: boolean;
+  slackConfigured: boolean;
+  driveConfigured: boolean;
   /* Is Replicate rendering pages in a real browser, or serving the fast copy? A boolean, so
      it stays safe on this PUBLIC endpoint — it names no token and no URL. */
   renderConfigured: boolean;
@@ -110,7 +114,16 @@ export function deployStatus(input: StatusInput) {
          it actually measures rather than for what you wish it meant. */
       mapboxTokenInServerEnv: input.mapboxTokenInServerEnv,
       livekitConfigured: input.livekitConfigured,
+      /* THE ADVANCED-SETTINGS CONTEXT SOURCES. Booleans, like every other key
+         here — "a credential exists", never the credential. The launch form's
+         Advanced panel reads these to decide whether to offer a provider or show
+         what it still needs, so it can never claim one is available when the
+         server cannot actually call it. All three are false until the
+         credentials land; see docs/INTEGRATIONS.md. */
+      gongConfigured: input.gongConfigured,
       renderConfigured: input.renderConfigured,
+      slackConfigured: input.slackConfigured,
+      driveConfigured: input.driveConfigured,
       authGate: input.authGate,
     },
   };

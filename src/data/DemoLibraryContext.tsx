@@ -51,6 +51,24 @@ export interface LoadedDemo {
   canEdit: boolean;
 }
 
+/** The three statuses an SE can put on a demo they delivered. Mirrors
+ *  `MARK_STATUSES` in engine/demoMarks.ts — the server refuses anything else. */
+export type MarkStatus = "demoed" | "follow-up" | "lead";
+
+/** One person's mark on one demo, joined with that demo's own name by the API
+ *  so a follow-up list reads as prospects rather than as ids. */
+export interface DemoMark {
+  demoId: string;
+  email: string;
+  name: string;
+  status: MarkStatus;
+  note?: string;
+  at: string;
+  prospect?: string;
+  industry?: string;
+  event?: string;
+}
+
 interface Ctx {
   me: DemoCreator | null;
   /** Project admin: may edit and delete every demo, not only their own. */
@@ -73,6 +91,12 @@ interface Ctx {
   duplicateDemo: (id: string) => Promise<DemoSummary | null>;
   deleteDemo: (id: string) => Promise<boolean>;
   saveCustomizations: (id: string, customizations: DemoCustomizations) => Promise<boolean>;
+  /** MY marks, newest first. The server never sends anyone else's here. */
+  marks: DemoMark[];
+  /** This demo's status for me, or null. */
+  markFor: (demoId: string) => DemoMark | null;
+  /** Set or replace my mark. Passing null removes it. */
+  setMark: (demoId: string, status: MarkStatus | null, note?: string) => Promise<boolean>;
 }
 
 const Ctx = createContext<Ctx | null>(null);
@@ -170,6 +194,49 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
 
   const openDemo = useCallback((id: string) => api<LoadedDemo>(`/api/demos/${id}`), []);
 
+  /* ⚠️ LOADED ONCE ALONGSIDE THE LIBRARY, NOT PER ROW. The Launch list renders
+     hundreds of demos and each one needs to know whether I marked it; a request
+     per row would be hundreds of round trips to draw a chip. One list, indexed
+     by demo id below. The server sends only MY marks unless an admin asks for
+     everyone's, so this can never hold a colleague's note. */
+  const [marks, setMarks] = useState<DemoMark[]>([]);
+
+  const refreshMarks = useCallback(async () => {
+    const data = await api<{ marks: DemoMark[] }>("/api/marks");
+    if (data) setMarks(data.marks ?? []);
+  }, []);
+
+  useEffect(() => { void refreshMarks(); }, [refreshMarks]);
+
+  const markFor = useCallback(
+    (demoId: string) => marks.find((m) => m.demoId === demoId) ?? null,
+    [marks],
+  );
+
+  /* ⚠️ OPTIMISTIC, AND DELIBERATELY SO. This is a one-click action taken 25 times
+     in an afternoon at a conference, often on hotel wifi — waiting on a round trip
+     before the chip moves makes it feel broken and invites a second click, which
+     would then be a second write. The local state moves first; a failed request
+     rolls it back and reports false so the caller can say so. */
+  const setMark = useCallback(async (demoId: string, status: MarkStatus | null, note?: string) => {
+    const before = marks;
+    const optimistic: DemoMark[] = status
+      ? [
+          { demoId, email: me?.email ?? "", name: me?.name ?? "", status, ...(note ? { note } : {}), at: new Date().toISOString() },
+          ...marks.filter((m) => m.demoId !== demoId),
+        ]
+      : marks.filter((m) => m.demoId !== demoId);
+    setMarks(optimistic);
+    const r = status
+      ? await api<{ mark: DemoMark }>(`/api/demos/${demoId}/mark`, { method: "POST", body: JSON.stringify({ status, note }) })
+      : await api<{ removed: boolean }>(`/api/demos/${demoId}/mark`, { method: "DELETE" });
+    if (!r) { setMarks(before); return false; }
+    /* Re-read so the row carries the SERVER's timestamp and its joined prospect
+       name, rather than the placeholder the optimistic entry was built with. */
+    void refreshMarks();
+    return true;
+  }, [marks, me, refreshMarks]);
+
   /* ⚠️ CLEARED LOCALLY BEFORE THE REQUEST RESOLVES. The popup's own "Got it" click is
      the one moment nobody wants a network hiccup to leave the modal stuck on screen —
      dismissal is a one-way, idempotent fact from here on regardless of whether the ack
@@ -252,7 +319,7 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   }, [demos, profiles, openDemo, addProfile]);
 
   return (
-    <Ctx.Provider value={{ me, admin, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations }}>
+    <Ctx.Provider value={{ me, admin, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations, marks, markFor, setMark }}>
       {children}
     </Ctx.Provider>
   );

@@ -103,6 +103,7 @@ const CITIES: Record<string, { ll: [number, number]; st: string }> = {
   "austin": { ll: [30.2672, -97.7431], st: "TX" },
   "baltimore": { ll: [39.2904, -76.6122], st: "MD" },
   "boston": { ll: [42.3601, -71.0589], st: "MA" },
+  "bronx": { ll: [40.8448, -73.8648], st: "NY" },        // Dallas roster: Optimum
   "cerritos": { ll: [33.8659, -118.0639], st: "CA" },      // Dallas roster: Kia America
   "charlotte": { ll: [35.2271, -80.8431], st: "NC" },
   "chicago": { ll: [41.8781, -87.6298], st: "IL" },
@@ -129,6 +130,7 @@ const CITIES: Record<string, { ll: [number, number]; st: string }> = {
   "nashville": { ll: [36.1627, -86.7816], st: "TN" },
   "new york": { ll: [40.7128, -74.0060], st: "NY" },
   "orlando": { ll: [28.5383, -81.3792], st: "FL" },
+  "palm beach gardens": { ll: [26.8396, -80.1019], st: "FL" }, // Dallas roster: United Veterinary Care
   "philadelphia": { ll: [39.9526, -75.1652], st: "PA" },
   "phoenix": { ll: [33.4484, -112.0740], st: "AZ" },
   "pittsburgh": { ll: [40.4406, -79.9959], st: "PA" },
@@ -143,6 +145,8 @@ const CITIES: Record<string, { ll: [number, number]; st: string }> = {
   "san jose": { ll: [37.3382, -121.8863], st: "CA" },
   "santa barbara": { ll: [34.4208, -119.6982], st: "CA" },
   "seattle": { ll: [47.6062, -122.3321], st: "WA" },
+  "southlake": { ll: [32.9412, -97.1342], st: "TX" },     // Dallas roster: Claffey Pools
+  "sunnyvale": { ll: [37.3688, -122.0363], st: "CA" },    // Dallas roster: Intermedia Communications
   "tampa": { ll: [27.9506, -82.4572], st: "FL" },
   "thousand oaks": { ll: [34.1706, -118.8376], st: "CA" },
   "tyler": { ll: [32.3513, -95.3011], st: "TX" },         // Dallas roster: CHRISTUS Health

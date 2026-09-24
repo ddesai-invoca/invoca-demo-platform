@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { SupportModal } from "./SupportModal";
 import { unseenRelease } from "../data/releaseNotes";
+import { useDemoLibrary } from "../data/DemoLibraryContext";
 
 /* =============================================================================
    LaunchMenu — one hamburger, top right, replacing the bottom-right stack
@@ -121,6 +122,13 @@ export function LaunchMenu() {
 
   const openCount = sum ? (sum.open?.feedback ?? 0) + (sum.open?.feature ?? 0) : 0;
 
+  /* Marks are already loaded by the library context for the Launch rows, so the
+     badge costs no extra request. "Owing" is Follow-up + Lead — a demo marked
+     Demoed is a record, not something still to do. */
+  const { marks } = useDemoLibrary();
+  const markCount = marks.length;
+  const owing = marks.filter((m) => m.status !== "demoed").length;
+
   const items: MenuItem[] = [
     {
       key: "support",
@@ -128,6 +136,20 @@ export function LaunchMenu() {
       label: "Support",
       hint: "Something broken, or a feature you want",
       onSelect: () => setSupport(true),
+    },
+    {
+      key: "followups",
+      icon: "flag",
+      label: "My follow-ups",
+      hint: owing
+        ? `${owing} still owe a follow-up`
+        : (markCount ? `${markCount} demo${markCount === 1 ? "" : "s"} marked` : "Demos you've delivered"),
+      to: "/follow-ups",
+      /* ⚠️ THE BADGE COUNTS WHAT IS OWED, NOT WHAT IS MARKED. A number that only
+         ever grows is one you stop reading — this one clears as follow-ups are
+         worked through, which is the whole point of the page. Absent at zero,
+         the same rule the Inbox row already follows. */
+      badge: owing || undefined,
     },
     {
       key: "inbox",

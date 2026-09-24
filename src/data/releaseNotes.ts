@@ -66,6 +66,14 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-09-23",
+    title: "Mark a demo as delivered, and a list of who you still owe",
+    changes: [
+      n("A flag on every library row marks a demo Demoed, Follow-up or Lead, with an optional note \u2014 one click from the list, without opening the demo."),
+      n("\u201cMy follow-ups\u201d in the menu: everything you have marked, grouped by event, with what still needs a follow-up first. The menu badge counts what is outstanding."),
+    ],
+  },
+  {
     date: "2026-09-10",
     title: "One menu instead of a corner full of buttons",
     changes: [

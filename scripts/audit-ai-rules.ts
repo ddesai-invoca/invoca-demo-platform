@@ -820,9 +820,20 @@ console.log("\nThe SMS thread header shows a stable toll-free number, not the pr
     : bad(`only found ${ids.length} profiles to sweep — load() may be broken`);
 
   const numbers = ids.map((id) => tollFreeNumber(id));
-  numbers.every((n) => /^\(800\) 555-0\d{3}$/.test(n))
-    ? ok("every number is shaped (800) 555-0XXX, the reserved-for-fiction exchange")
-    : bad(`a number is not in the 555-0XXX shape: ${numbers.find((n) => !/^\(800\) 555-0\d{3}$/.test(n))}`);
+  /* ⚠⚠ RE-AIMED, NOT LOOSENED (9/23/2026). This pinned `(800)` while the library was small;
+     at 99 profiles the distinctness check below went red, because 555-0XXX alone is 1,000
+     values and the birthday bound bites at ~38. The prefix is now hashed across the real
+     toll-free set, so the INVARIANT that survives is "a genuinely toll-free prefix plus the
+     reserved 555-0XXX line", which is what keeps the number from ringing anybody. */
+  const TOLL_FREE = /^\((?:800|833|844|855|866|877|888)\) 555-0\d{3}$/;
+  numbers.every((n) => TOLL_FREE.test(n))
+    ? ok("every number is a real toll-free prefix on the reserved-for-fiction 555-0XXX exchange")
+    : bad(`a number is not toll-free + 555-0XXX: ${numbers.find((n) => !TOLL_FREE.test(n))}`);
+
+  /* The widening is only real if more than one prefix is actually in play across the library. */
+  new Set(numbers.map((n) => n.slice(1, 4))).size > 1
+    ? ok(`${new Set(numbers.map((n) => n.slice(1, 4))).size} different toll-free prefixes are in use — the wider space is live`)
+    : bad("every number still uses one prefix — the prefix hash may have regressed");
 
   new Set(numbers).size === numbers.length
     ? ok(`all ${numbers.length} prospects get a distinct number — zero collisions`)
@@ -835,7 +846,7 @@ console.log("\nThe SMS thread header shows a stable toll-free number, not the pr
   /* ⚠️ THE 555-01XX BLOCK (100 VALUES) WAS TRIED FIRST AND COLLIDED TWICE OVER 17 REAL
      PROFILES — proof the wider 555-0XXX shape (1,000 values) is really in effect is that at
      least one real id lands OUTSIDE the narrower 100-value block. */
-  const outside01xx = numbers.some((n) => !/^\(800\) 555-01\d{2}$/.test(n));
+  const outside01xx = numbers.some((n) => !/555-01\d{2}$/.test(n));
   outside01xx
     ? ok("at least one number falls outside the narrower 555-01XX block, proving the wider range is live")
     : bad("every number still fits the old 100-value 555-01XX block — the widening may have regressed");

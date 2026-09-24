@@ -20,6 +20,7 @@ import crypto from "node:crypto";
 /* One admin list for the whole app: the same people who can triage feedback are the
    ones who may connect the sending account. A second list here would drift. */
 import { isAdmin } from "./engine/demoApi.ts";
+import { saveDriveToken } from "./engine/driveTokens.ts";
 import type { Express, Request, Response, NextFunction } from "express";
 
 const CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "";
@@ -162,6 +163,30 @@ export function installAuth(app: Express) {
     res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
   });
 
+  /* ---- PER-SE GOOGLE DRIVE CONSENT -------------------------------------------
+     docs/INTEGRATIONS.md's Drive model: per-user OAuth on this same client, not
+     one shared credential. So unlike /auth/gmail (admin-only, mints ONE token
+     for the sending account), this is open to ANY signed-in SE, and the token
+     that comes back is stored per-account (engine/driveTokens.ts) rather than
+     displayed for someone to paste into Render. */
+  app.get("/auth/drive", (req: Request, res: Response) => {
+    const state = "drive:" + crypto.randomBytes(16).toString("hex");
+    res.setHeader("Set-Cookie", `oauth_state=${state}; HttpOnly; Path=/; Max-Age=600; SameSite=Lax${secure(req) ? "; Secure" : ""}`);
+    const params = new URLSearchParams({
+      client_id: CLIENT_ID,
+      redirect_uri: `${baseUrl(req)}/auth/callback`,
+      response_type: "code",
+      scope: "openid email profile https://www.googleapis.com/auth/drive.readonly",
+      hd: ALLOWED_DOMAIN,
+      state,
+      // Same reasoning as /auth/gmail: offline + consent is what actually
+      // returns a refresh token, rather than reusing a prior grant silently.
+      access_type: "offline",
+      prompt: "consent",
+    });
+    res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
+  });
+
   app.get("/auth/callback", async (req: Request, res: Response) => {
     try {
       const cookies = parseCookies(req.headers.cookie);
@@ -191,6 +216,23 @@ export function installAuth(app: Express) {
             "remove this app at <b>myaccount.google.com/permissions</b> and run <b>/auth/gmail</b> again."));
         }
         return res.send(gmailTokenPage(acct, tok.refresh_token));
+      }
+
+      /* The Drive consent leg: store the refresh token for THIS account and
+         send them back to the app — no page to read, no value to copy, because
+         nobody has to paste anything into Render for this one. */
+      if (state.startsWith("drive:")) {
+        const claims2: any = JSON.parse(Buffer.from(tok.id_token.split(".")[1], "base64url").toString());
+        const acct = String(claims2.email || "").toLowerCase();
+        res.setHeader("Set-Cookie", `oauth_state=; Path=/; Max-Age=0`);
+        if (!tok.refresh_token) {
+          return res.status(400).send(deniedPage(
+            "Google didn't return a new grant for Drive — that usually means it was already connected. " +
+            "Disconnect it in Advanced settings and try again to get a fresh one, or it may already be working: " +
+            "<a href=\"/\">go back and check</a>."));
+        }
+        saveDriveToken(acct, tok.refresh_token);
+        return res.redirect("/?drive=connected");
       }
 
       // The id_token came straight from Google's TLS token endpoint, so we can

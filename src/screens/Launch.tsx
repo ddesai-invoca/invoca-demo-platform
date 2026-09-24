@@ -6,6 +6,8 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { CustomerProfile } from "../data/schema";
 import { SEED_IDS } from "../data/profiles";
 import { DALLAS_EVENT } from "../data/eventDemos";
+import { AdvancedSettings, EMPTY_ADVANCED, type AdvancedValue } from "../components/AdvancedSettings";
+import DemoMarkButton from "../components/DemoMarkButton";
 
 /* Where a prospect opens (both a fresh generation and revisiting one) — the
    demo starts on the Marketing Performance dashboard. */
@@ -14,7 +16,11 @@ const LANDING = "/dashboards/marketing";
 /* The pieces the engine builds, in display order, with a rough weight for the
    progress bar (research + report are the heavy sequential prefix). The `key`
    matches the phase name the engine streams via SSE (onProgress). */
-type StepStatus = "pending" | "building" | "done";
+/* "skipped" is a phase an Agent-Studio-only generation never runs. Without it a
+   skipped phase would sit at "pending" forever and the weighted bar could never
+   reach 100 — the same invisible-progress trap as a phase missing from
+   BUILD_STEPS below. */
+type StepStatus = "pending" | "building" | "done" | "skipped";
 const BUILD_STEPS: { key: string; label: string; weight: number }[] = [
   { key: "research", label: "Researching the business & website", weight: 10 },
   { key: "terms", label: "Identifying key metrics & terminology", weight: 3 },
@@ -73,7 +79,17 @@ function LibraryPicker({ label, entries, renderRow }: { label: string; entries: 
 
   useEffect(() => {
     function onDown(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      const t = e.target as HTMLElement | null;
+      /* ⚠️⚠️ A PORTALLED POPOVER IS "OUTSIDE" BY DOM AND INSIDE BY INTENT.
+         The mark panel is portalled to <body> to escape this list's own scroll
+         box, so a plain contains() test closes the dropdown on the very
+         MOUSEDOWN that is choosing a status — the row unmounts and the option's
+         own CLICK never fires, which reads as the control doing nothing.
+         Measured: picking a status changed the button and wrote nothing to the
+         server. Same trap the Create Workflow channel popup already records.
+         Anything flagged `data-picker-safe` counts as part of the picker. */
+      if (t?.closest?.("[data-picker-safe]")) return;
+      if (ref.current && !ref.current.contains(t)) setOpen(false);
     }
     document.addEventListener("mousedown", onDown);
     return () => document.removeEventListener("mousedown", onDown);
@@ -154,6 +170,7 @@ export function Launch() {
   const [url, setUrl] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [adv, setAdv] = useState<AdvancedValue>(EMPTY_ADVANCED);
   const [statuses, setStatuses] = useState<Record<string, StepStatus>>({});
   const [, setTick] = useState(0);
   const stepStartRef = useRef<Record<string, number>>({});
@@ -263,6 +280,10 @@ export function Launch() {
         </div>
         <span className="prospect-actions">
           {busyId === e.id && <span className="prospect-spin" aria-label="Opening" />}
+          {/* ⚠️ LIBRARY DEMOS ONLY. A mark is stored server-side against the demo
+              id, so a local unpublished profile has nothing to attach one to —
+              offering the control there would be a button that silently fails. */}
+          {e.inLibrary && <DemoMarkButton demoId={e.id} name={e.name} />}
           {!e.inLibrary && !SEED_IDS.has(e.id) && (
             <button
               className="prospect-dup"
@@ -305,8 +326,13 @@ export function Launch() {
   // "done" event navigates.
   const RAMP_MS: Record<string, number> = { research: 90000, terms: 15000 };
   const now = Date.now();
+  /* A skipped phase is removed from the DENOMINATOR rather than counted as
+     done: leaving it in would strand the bar short of 100, and counting it as
+     complete would claim work that never happened. */
+  const skippedWeight = BUILD_STEPS.reduce((s, st) => s + (statuses[st.key] === "skipped" ? st.weight : 0), 0);
   const doneWeight = BUILD_STEPS.reduce((s, st) => {
     const status = statuses[st.key];
+    if (status === "skipped") return s;
     if (status === "done") return s + st.weight;
     if (status === "building") {
       const elapsed = now - (stepStartRef.current[st.key] ?? now);
@@ -315,7 +341,7 @@ export function Launch() {
     }
     return s;
   }, 0);
-  const pct = Math.min(99, Math.round((doneWeight / TOTAL_WEIGHT) * 100));
+  const pct = Math.min(99, Math.round((doneWeight / Math.max(1, TOTAL_WEIGHT - skippedWeight)) * 100));
 
   async function launch(e: React.FormEvent) {
     e.preventDefault();
@@ -334,7 +360,16 @@ export function Launch() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: trimmedName, url: trimmedUrl }),
+        /* Advanced Settings ride along on the same request. Everything is
+           omitted when untouched, so a default generation sends the exact body
+           it always did. */
+        body: JSON.stringify({
+          name: trimmedName,
+          url: trimmedUrl,
+          ...(adv.steer.trim() ? { steer: adv.steer.trim() } : {}),
+          ...(adv.agentOnly ? { scope: "agent" } : {}),
+          ...(adv.docs.length ? { sources: adv.docs } : {}),
+        }),
       });
       if (!res.body) throw new Error("Generation failed: no response stream.");
 
@@ -360,7 +395,10 @@ export function Launch() {
           try { evt = JSON.parse(dataLine.slice(5).trim()); } catch { continue; }
           if (evt.type === "progress") {
             if (evt.status !== "done" && !stepStartRef.current[evt.phase]) stepStartRef.current[evt.phase] = Date.now();
-            setStatuses((prev) => ({ ...prev, [evt.phase]: evt.status === "done" ? "done" : "building" }));
+            setStatuses((prev) => ({
+              ...prev,
+              [evt.phase]: evt.status === "done" ? "done" : evt.status === "skip" ? "skipped" : "building",
+            }));
           } else if (evt.type === "done") {
             finalProfile = evt.profile;
           } else if (evt.type === "error") {
@@ -415,11 +453,16 @@ export function Launch() {
                         <span className="material-icons">check_circle</span>
                       ) : s === "building" ? (
                         <span className="launch-step-spin" />
+                      ) : s === "skipped" ? (
+                        /* Said outright rather than left looking pending — an
+                           Agent-Studio-only run deliberately does not build these. */
+                        <span className="material-icons">remove_circle_outline</span>
                       ) : (
                         <span className="material-icons">radio_button_unchecked</span>
                       )}
                     </span>
                     <span className="launch-step-label">{st.label}</span>
+                    {s === "skipped" && <span className="launch-step-skip">skipped</span>}
                   </li>
                 );
               })}
@@ -444,6 +487,7 @@ export function Launch() {
                 placeholder="e.g. https://www.shadyblindsnow.com"
               />
             </label>
+            <AdvancedSettings value={adv} onChange={setAdv} disabled={busy} prospectName={name} prospectUrl={url} />
             {error && <div className="launch-error">{error}</div>}
             <button className="launch-btn" type="submit">Launch demo</button>
           </form>

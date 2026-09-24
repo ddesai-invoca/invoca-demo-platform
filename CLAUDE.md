@@ -8450,6 +8450,504 @@ send (local does not send email)"*. `completionEmail` was called with the note; 
 it and a blank note omits the line. ⚠️ The test item was restored to `New` with its note and
 history cleared afterwards.
 
+## Advanced settings on the launch form (9/10/2026)
+
+Asked for as four things: a **custom prompt**, an **Agent-Studio-only** toggle, **document
+attachment** (upload or a Drive link), and **Gong / Slack / Drive** context. A collapsed
+`AdvancedSettings` panel under the two launch fields; `engine/genContext.ts` is the spine.
+
+⚠️⚠️ **FOUR ASKS, ONE CONTEXT PATH — that is the whole design.** A typed prompt, a strategy
+doc's text and whatever an integration returns are the SAME THING to the model: extra context
+that steers vocabulary, emphasis, and which signals / agents / dashboards get built. Three
+plumbing paths would mean three places to thread through 20 phases, three places to get the
+precedence wording wrong, and three to audit. They converge on `ContextSource {label, text}`.
+
+⚠️⚠️ **IT REACHES THE MODEL BY RIDING ON THE RESEARCH BRIEF.** `research()` returns a string
+that **19 phases interpolate as `BRIEF:\n${brief}`** and `generateTerms` takes as its third
+argument — so `const brief = researched + contextBlock(opts.context)` reaches every phase with
+**zero changes to any phase signature**. The two alternatives were both worse: threading a
+parameter through 18 `generate*` functions and their 20 `structured()` calls, or a module-level
+global — which would **leak one SE's custom prompt into a concurrent generation** (two SEs on
+the live server, or the nightly canary overlapping a real run). `brief` is a per-generation
+local, so it cannot. `audit:advanced` asserts there is no module-level steer state.
+
+⚠️⚠️ **APPENDED BEFORE `generateTerms`, NOT JUST BEFORE THE POOL.** That phase picks
+`bookingTerm` and `customerNoun`, which are then threaded into every screen. "Use healthcare
+language" has to land there or the vocabulary is settled as Purchase/Customer before any other
+prompt gets a say. **Proved with a deliberately absurd test: an HVAC website
+(`aireserv.com`) steered to healthcare came back `customerNoun: "Patient"`,
+`bookingTerm: "Appointment"`, and dashboard KPIs reading "New Patient Call (Percent)".** An
+HVAC site would never default to those, so the steer demonstrably reached both terms AND the
+dashboard phases.
+
+⚠️ **THE PRECEDENCE SENTENCE IS LOAD-BEARING.** `reskin()` already tells every phase to keep
+each section's structure identical. A custom prompt asking for "a column for insurance type"
+fights that directly, and this file already records the outcome — *a self-contradicting prompt
+is worse than either rule*. The block therefore states that it steers WORDING and CONTENT, that
+**THE STRUCTURAL RULES WIN**, and that the context is background rather than source data to
+copy. Per-source caps too (8k chars each), or a 40-page doc crowds the brief out of 20 prompts.
+
+### Agent-Studio-only skips 13 phases, and saves cost rather than time
+⚠️⚠️ **MEASURED BEFORE BUILDING, AND SAID ON SCREEN: THIS BARELY SAVES WALL CLOCK.**
+`agentConfig` is itself the slowest single phase (116–135s) and research+terms is a ~67s serial
+prefix, so agent-only lands near **~200s against ~150–210s for the full platform**. What it
+saves is the other 13 Opus phases' TOKENS. Put to the user, who wanted it anyway for a separate
+use case; the panel's own hint says "Saves cost, not much time" so nobody expects a speed-up.
+
+⚠️⚠️ **A SKIPPED PHASE RESOLVES `undefined`; IT IS NOT FILTERED OUT OF THE POOL.** The pool's
+results are destructured **positionally** (18 names off one array), so dropping entries would
+shift every slice one place left — the class of fault that once put Marketing Source under a
+"Location" heading and read as data rather than as a bug. `maybe(label, run)` wraps the 13
+skippable phases; the other 5 stay bare `phase(...)`.
+⚠️ **THE FIVE KEPT PHASES ARE NOT A TASTE**: `agentConfig` is the point, and `digitalInsights`
+plus the dashboard trio are the two slices `CustomerProfile` **REQUIRES** — dropping them fails
+the final Zod parse, and Agent Studio's own voice tree reads `marketingDashboard` through
+`voiceCopy` anyway. Verified live: an agent-only run produced exactly `agentConfig`,
+`digitalInsights`, `marketingDashboard` and `gumloopArtifacts`, and parsed.
+⚠️ **A SKIPPED PHASE STILL EMITS PROGRESS, as `"skip"`.** The launch checklist keys off these
+events, so a phase that reported nothing would spin at "pending" forever and the weighted bar
+could never reach 100 — this file already warns that a phase missing from `BUILD_STEPS` has
+invisible progress, and reporting nothing is the same failure. Skipped weight leaves the bar's
+**denominator** rather than counting as done: leaving it in strands the bar short of 100,
+counting it complete claims work that never happened.
+⚠️ **`audit:phases` BROKE ON THIS AND CAUGHT ITSELF.** Its parser matched only `phase("…")`, so
+the 13 rewrapped phases dropped its count 18 → 5 and its own self-check reported "the parse is
+probably broken". Re-aimed to `(?:phase|maybe)\(` — the invariant is unchanged, so this is
+re-aimed, not loosened.
+
+### Documents: a zero-dependency .docx reader, verified against a real file
+`engine/docText.ts`. A `.docx` is a ZIP holding one XML file, so it reads the ZIP's **central
+directory** — not a scan for local headers, which is the version that breaks, since a streamed
+zip can write `compressedSize: 0` there and defer it to a data descriptor — and inflates the one
+entry. **Verified byte-identical to Python's `zipfile` on this project's own
+Orlando Health .docx** (5,522 chars, 102 lines, paragraph breaks preserved).
+⚠️ `</w:p>` becomes a newline BEFORE tags are stripped, or the document collapses into one
+run-on line and every heading and bullet boundary is lost.
+⚠️ **PDF IS REFUSED BY NAME, deliberately.** PDF text extraction is not a 60-line problem and a
+bad extractor hands the model confident nonsense with nothing on screen to say so. Refusing
+with "paste the text, or attach the .docx" is the honest failure. Add a library if it is ever
+genuinely needed rather than growing that file.
+⚠️ **EXTRACTED ON ATTACH, NOT AT GENERATE TIME, AND THE CHARACTER COUNT IS SHOWN BACK.** An
+upload that silently yielded nothing would otherwise look like it had been read; this way the SE
+finds out while they can still paste the text, rather than after paying for a generation. The
+text is handed BACK to the browser and travels on the generate request, so there is no upload
+id to track and nothing to clean up.
+
+#### A public Google Doc LINK reads with no credential at all (9/10/2026)
+Asked directly, on the Strategy document field: *"also allow them to paste a URL for the
+google drive."* `engine/driveLink.ts` + `POST /api/generate/doc-link` (both twins).
+
+⚠️⚠️ **THIS IS A DIFFERENT MECHANISM FROM THE OAUTH DRIVE INTEGRATION BELOW, AND IT ALREADY
+WORKS.** A Google Doc shared "Anyone with the link can view" serves its plain text at a
+public export URL (`docs.google.com/document/d/<id>/export?format=txt`) with **no API key,
+no OAuth, no `GOOGLE_DRIVE_ENABLED`** — the server just fetches it like any other resource.
+The per-user OAuth path two sections down is still needed for a PRIVATE company Drive doc;
+this covers the far more common case of an SE pasting a shareable strategy-doc link.
+⚠️ **THE ONLY FAILURE SIGNAL IS A REDIRECT, NOT AN HTTP ERROR.** An unshared doc's export
+URL redirects to a Google sign-in page and still returns 200, so the fetch checks the FINAL
+url's host rather than the status code — verified against a doc id nobody has shared.
+`extractDriveFileId` also refuses any non-`google.com` host and a malformed URL outright,
+so it cannot be pointed at an arbitrary origin.
+
+### ⚠️⚠️ The integrations need credentials THIS SERVER does not have
+Asked directly: *"can we do it via their okta or the OAuth, or if you can connect into lets say
+gong then it works for everyone"*. The answer, recorded because it will be asked again:
+
+**An assistant's connectors are not this server's credentials.** A Claude session can hold Gong,
+Slack and Drive connectors authenticated as the person chatting; there is no path from
+`engine/core.ts` on Render to a chat session's tools. The app needs its own credential — and the
+three providers use **three genuinely different auth models**, which is what decides the cost:
+
+| | model | reads as | "connect once, works for everyone"? |
+|---|---|---|---|
+| **Gong** | one SERVICE key (access key + secret, Gong admin) | the app | **yes, immediately** — this is the shape the question was reaching for |
+| **Drive** | PER-USER OAuth on the client that already powers sign-in | the signed-in SE | yes, after each SE consents once (the `/auth/gmail` pattern, already proven here) |
+| **Slack** | a workspace app with `search:read` | a bot | yes once installed — but it is an **approval**, and this project already has a declined request saying exactly that |
+
+⚠️ **OKTA DOES NOT HELP.** Okta is sign-in identity; it does not grant this server permission to
+read Gong calls or Slack messages, which are SaaS APIs with their own auth. Federating login
+still leaves you needing a Gong key and a Slack app.
+⚠️ **DRIVE IS DELIBERATELY PER-USER even though a service account would skip the consent step.**
+Strategy docs live in individual Drives; domain-wide delegation would let the app read every
+document in the company, a far larger blast radius than this feature earns.
+⚠️ **GONG ONLY WORKS FOR A PROSPECT THAT EXISTS IN THE CRM WITH RECORDED CALLS** — a cold
+prospect returns nothing, and the panel must say so rather than implying personalisation that
+did not happen. Most of the Dallas Summit roster is in that category.
+
+**Until a credential lands, the provider row renders NOT CONNECTED and names the missing
+variable** — following the pattern the feedback board already set (*"Email is not configured,
+set SMTP_USER and SMTP_APP_PASSWORD to turn it on"*), rather than a dead control with no
+explanation, which this file forbids. `engine/integrations.ts` is the ONE place that decides
+availability, read by `/api/status` and by both servers, so the panel can never offer a source
+the server cannot fetch. `docs/INTEGRATIONS.md` is the runbook.
+⚠️ **THE CUSTOM PROMPT IS THE INTERIM, AND IT IS THE SAME PATH.** Pasting Gong or Slack notes
+into the custom prompt reaches the generation exactly as an integration's output would — by
+construction, since both become a `ContextSource`.
+
+**`npm run audit:advanced` is 37 checks**: an empty context injects nothing (the default path
+stays untouched), the steer and document text both reach the block, the precedence sentence and
+the no-inventing rule are present, a 50k document clamps, the request parser trims and drops
+empty sources and falls back to a FULL generation on an unknown scope (failing the other way
+silently skips 13 phases), provenance keeps LABELS but never document text, the context is
+appended to the brief AND before `generateTerms`, no module-level steer state, the 5 required
+phases are never skippable, 13 are, skips resolve rather than filter, skips still report, the
+launch screen sends each setting only when set and handles the skip status in both the checklist
+and the bar denominator, each provider reports configured only with its credential present,
+`/api/status` reads no credential VALUES (it is public), and a real Word `.docx` extracts while
+`.pdf` / `.doc` / `.zip` are refused with an explanation.
+
+⚠️ **PROVENANCE IS ON THE PROFILE (`CustomerProfile.generation`)** so a demo that reads oddly can
+be traced to the prompt that steered it. **Safe as `.optional()` ONLY because `CustomerProfile`
+is never a generation schema** — `toSchema()`'s `sanitize()` marks every property required, so an
+optional field in a type handed to the model is FORCED onto it, the trap that made the engine
+invent `InteractionRow.cells` and fabricate a routing `outcome`. Confirmed nothing passes the
+whole profile to `structured()`. **Labels only, never the document text**: a demo record is
+readable by the whole team.
+
+### Google Drive is built: per-user OAuth, not a shared credential (9/10/2026)
+Asked directly after the section above was written: *"what do you [do] for google drive"* —
+then, told most of an SE's real strategy docs are internal, not public-link-shared: build it.
+`googleAuth.ts` (`/auth/drive` + the `drive:` callback branch), `engine/driveTokens.ts`,
+`engine/driveApi.ts`, plus `GET /api/drive-status` / `POST /api/drive/disconnect` and an updated
+`POST /api/generate/doc-link` on both servers.
+
+⚠️⚠️ **THE GMAIL PRECEDENT ALMOST MISLED THIS BUILD, AND THE DIFFERENCE IS THE WHOLE DESIGN.**
+`/auth/gmail` mints ONE credential for ONE sending account, shown once on screen for an admin to
+paste into Render's environment — there is nothing to store, because there is only ever one
+value and a human carries it the rest of the way. Drive is **per-user**: every SE who wants their
+own Drive reachable needs their OWN refresh token, so "show it once and let someone paste it"
+does not scale past the first SE. The token has to be **stored server-side, keyed by account**,
+and read back automatically on that SE's next generation — a genuinely different shape from
+Gmail's, not a copy of it with more steps.
+
+⚠️ **STORED LIKE A CREDENTIAL, BECAUSE IT IS ONE.** `engine/driveTokens.ts` writes one JSON file
+per SE under `DATA_DIR/drive-tokens/` — the same disk the demo library and feedback board already
+use (the Render persistent disk in production, git-ignored `.data/` locally). Never in git, never
+logged. The filename is the email slugified the same way `demoStore.ts`'s `slugify` and
+`feedbackStore.ts`'s `safeName` already do it, with the same resolve()-then-prefix-check guard
+`saveAttachment` uses — so this is the THIRD file in this repo doing "turn an untrusted string
+into a safe filename," reusing the pattern rather than inventing a fourth.
+
+⚠️⚠️ **`/auth/drive` IS OPEN TO ANY SIGNED-IN SE, NOT ADMIN-GATED — the opposite of `/auth/gmail`.**
+Gmail is admin-only because minting that token lets someone send mail as the shared account,
+which is a real capability to guard. Connecting your OWN Drive only ever grants read access to
+things you can already open in Drive; gating it to admins would just mean nobody else's strategy
+docs could ever be read.
+
+⚠️ **A DEAD CONNECTION IS REPORTED, NOT SWALLOWED.** `DriveReconnectError` is a distinct class from
+every other failure `engine/driveApi.ts` can throw (file not found, no access, unsupported type),
+thrown specifically when Google's token endpoint says `invalid_grant` (a revoked or expired
+refresh token) or a live call 401s. `/api/generate/doc-link` checks `instanceof
+DriveReconnectError` and returns that message AS-IS — it does NOT fall back to the public-export
+path for this one case, because a doc that genuinely is shared with that SE would still fail the
+public path too, and "isn't shared with Anyone with the link" is the wrong diagnosis for "your
+connection expired." Every OTHER private-path failure DOES fall through to the public path
+silently, because the doc might still be reachable that way.
+⚠️ **AND THE STORED TOKEN IS CLEARED THE MOMENT IT IS FOUND DEAD**, both at the refresh-exchange
+site and at the live-call 401 site — so the panel's next status check already shows
+"disconnected" rather than a token that looks present and keeps failing the same way forever.
+
+⚠️⚠️ **THE SILENT-FALLBACK BRANCH GOT A LOG LINE FOR A REASON THAT ISN'T OBVIOUS.** Falling
+through to the public path on an ordinary per-doc miss should stay quiet — that's the common
+case and it's not a defect. But the exact same catch block is also where a SERVER-SIDE
+misconfiguration would land (a bad client secret, the Drive API not actually enabled) — and
+without a log line, EVERY SE's private read would fail the same silent way, forever, with nobody
+ever seeing anything but the public-path error. `console.warn("[drive] private read failed,
+falling back to public path: ...")` is the difference between that being invisible and being one
+grep away. Verified live: with no real `GOOGLE_CLIENT_ID` configured locally, the log printed
+Google's own `"Could not determine client ID from request."` on the exact request that fell back
+to the public path.
+
+⚠️ **THE PASTE-A-LINK FIELD TRIES THE PRIVATE PATH FIRST, THEN PUBLIC — NEVER THE REVERSE.** A
+connected SE's own Drive access is the broader capability (reaches anything they can already
+open, public or not), so trying it first can only WIDEN what a pasted link reaches, never narrow
+it. An SE who has never connected Drive at all gets exactly the public-only behavior that shipped
+before this — unchanged, verified by `hasDriveToken(email)` gating the whole private attempt.
+
+⚠️ **THE DRIVE API CALL HANDLES BOTH A NATIVE GOOGLE DOC AND AN UPLOADED FILE.** `files.get` reads
+the mimeType first; a native Doc (`application/vnd.google-apps.document`) exports as plain text
+through the Drive API's own export endpoint, and anything else (a `.docx` an SE dragged into
+Drive, say) downloads as raw bytes and runs through the SAME `engine/docText.ts` reader the
+file-upload path already uses — one document reader, two ways to reach it. The other Google-native
+types (Sheets, Slides, Forms, folders, Drawings) are refused by name, the same "refuse rather than
+extract nonsense" call `docText.ts` already makes for PDF.
+
+⚠️ **VERIFIED WITHOUT A REAL GOOGLE ACCOUNT, BECAUSE ONE ISN'T AVAILABLE TO THIS SESSION.** A
+signed-in Google OAuth round trip can't be completed by an assistant (never sign in on the user's
+behalf), so verification was at the seams instead: `driveTokens.ts`'s save/get/has/remove cycle
+run directly against a real temp `DATA_DIR` (file appears, content matches, disappears on
+disconnect); `driveApi.ts`'s three real branches — a dead refresh token, a live-call 401, and a
+successful native-Doc export — run against a mocked `fetch`, each producing exactly the class and
+message the endpoint branches on; and the full three UI states (not connected / enabled-not-
+connected / connected) driven end to end through the real dev server by temporarily setting the
+three env vars and hand-placing/removing a real token file on disk — including clicking the real
+**Disconnect** button and confirming the file is actually gone afterward, not just the UI state.
+⚠️ **`.env` WAS TEMPORARILY EDITED FOR THIS AND RESTORED FROM A BACKUP COPY BEFORE FINISHING** —
+never left with test OAuth credentials in it.
+
+⚠️ **THE ADVANCED PANEL'S GONG/SLACK TABLE AND THE DRIVE ROW ARE NOW DIFFERENT SHAPES ON
+PURPOSE, not an inconsistency.** Gong and Slack are SERVICE credentials — "is the server
+configured" is the only question, so they stay a disabled checkbox naming what's missing. Drive
+is per-user, so "is the server configured" AND "have I personally connected" are two different
+booleans (`{enabled, connected}` from `/api/drive-status`), and the row is a REAL control —
+Connect / Connected-as / Disconnect — once the server capability is on. Splitting `Integrations`
+(gong/slack) from a standalone `DriveStatus` type in `AdvancedSettings.tsx` is what keeps that
+distinction from blurring back into one generic provider list later.
+⚠️ **REDIRECT BACK OPENS THE PANEL.** `/auth/drive`'s callback lands on `/?drive=connected`, and
+the launch screen's default state is the panel COLLAPSED — so without checking for that query
+param on mount, an SE who just finished connecting would land back on a page that looks like
+nothing happened. Stripped from the URL immediately after, so a refresh doesn't reopen it forever.
+
+**`npm run audit:advanced` gained 19 checks** (a new "Google Drive (per-user OAuth)" section):
+the token store's save/get/has/remove round-trips against a real temp disk; four
+`fetchPrivateGoogleDocText` outcomes against a mocked `fetch` — no stored token, a dead
+refresh token, a live 401, and a genuine "not found" — asserting which ones ARE a
+`DriveReconnectError` and which are not (that distinction is what the doc-link endpoint's
+fallback decision rests on); a real native-Doc export success; both servers carrying the same
+routes and the same reconnect special-case; `/auth/drive` existing and NOT admin-gated (checked
+by scanning its own handler body for `isAdmin(`, not just its existence); the callback storing
+rather than displaying the token; and the panel's Connect/Disconnect links, its separate
+`DriveStatus` type, and the post-redirect auto-open.
+⚠️ Two were broken on purpose and seen to fire: admin-gating `/auth/drive` (the "per-user, not
+admin-only" check reddened) and disabling the `DriveReconnectError` special-case in `server.ts`
+(the "returns a reconnect error as-is" check reddened) — both restored before finishing.
+
+### Then: Drive dropped out of "Pull context from" entirely (9/10/2026)
+Asked directly, after the build above: *"actually lets just remove the google drive as well
+option for Pull context."* Right call — the Connect/Disconnect control the section above
+built was already effectively the SAME control regardless of where it rendered, and having it
+in TWO places (a real control under Strategy document, plus a second inert-looking checkbox
+under "Pull context from" reading `driveStatus`) was the confusing part, not the control
+itself. Drive's row is deleted from `PROVIDERS`' generic rendering entirely; its
+Connect/Connected/Disconnect UI stays exactly where the earlier section put it, next to the
+Strategy document field, because that is the one field it actually affects. `AdvancedSettings`'s
+header comment states this as the standing reason, so the next reader does not wonder why
+Drive is missing from a section literally titled "Pull context from."
+
+### Gong: built for real, against this project's own live workspace (9/10/2026)
+Asked directly, once real `GONG_ACCESS_KEY`/`GONG_SECRET` existed: *"what should I do with
+it... feel free to build it."* `engine/gongApi.ts` + `POST /api/gong-lookup` (both servers) + a
+"Look up Gong" control in `AdvancedSettings.tsx`.
+
+⚠️⚠️ **EVERY DESIGN DECISION HERE CAME FROM PROBING THE REAL GONG API WITH THE REAL
+CREDENTIALS, NOT FROM READING GONG'S DOCS OR GUESSING A SHAPE.** `curl` against
+`api.gong.io` with `Authorization: Basic base64(accessKey:accessSecret)` while writing this —
+the same header shape `docs/INTEGRATIONS.md` already promised — confirmed three things that
+changed the plan:
+1. **There is no "look up this account" endpoint.** `/v2/calls` returns every call in a date
+   window with no company/CRM filter at all — 2,002 calls in 60 days on this one Invoca
+   workspace, 35,746 with no date filter. A design assuming a CRM lookup existed would have had
+   nothing to call.
+2. **Call TITLES name the account.** Real titles pulled live: "Orlando Health Discussion",
+   "SERVPRO+Invoca: Immersion Day Alignment", "Barco Products IFS Demo", "RevLocal / Invoca" —
+   which is the searchable signal this builds on, confirmed rather than assumed from a Gong
+   feature description.
+3. **`/v2/calls/extensive` carries the AI brief, key points and, where Gong's Salesforce
+   integration has linked one, the CRM Account's own `Website` field and the Opportunity's
+   `Next_Steps__c` log** — read directly off a real response, which is what made the domain
+   cross-check (below) possible at all rather than a nice-sounding idea with no data to back it.
+
+⚠️⚠️ **THAT REAL RESPONSE WAS ALSO GENUINELY SENSITIVE INVOCA SALES DATA** — real prospect
+contacts, deal amounts, stage, an AE's own next-steps notes on a live opportunity. It was
+necessary to see it once to design against the real shape; none of it was copied into any file
+this repo tracks, and the ONLY thing that ever reaches a demo record is whatever the model
+CHOOSES to be inspired by while generating — governed by the SAME "do NOT quote it back
+verbatim" precedence rule `genContext.ts` already states for every context source, document or
+Gong alike. Nothing new was needed there.
+
+**No toggle — Gong gets a "Look up Gong" button, because there is nothing to toggle.** Unlike
+the imagined design in the section above ("what do you do for google drive"), Gong has no
+specific item an SE can name; the only inputs are the prospect's own name and URL, already
+sitting on the launch form. So `AdvancedSettings` takes `prospectName`/`prospectUrl` as live
+props from `Launch.tsx` (`name`/`url` state, not a stale copy), and clicking the button calls
+`/api/gong-lookup` and adds whatever it finds as one more `docs` entry — literally the same
+array a file upload or a pasted link append to, distinguished only by a UI-only `origin` tag
+(`"file" | "link" | "gong"`) that decides which field's chip list to render it under. **This
+is the "one context path" design from `genContext.ts` proving itself a second time**: a search
+result needed zero new plumbing to reach the model, because everything downstream of "it's a
+`ContextSource`" was already built.
+
+⚠️⚠️ **PROGRESSIVE, NEWEST-FIRST TIME WINDOWS — not one big date range — and this is a real
+cost decision, not a style choice.** `/v2/calls` returns oldest-first within whatever range you
+give it, so finding a RECENT mention means paging through the ENTIRE range regardless; there is
+no "give me the newest matches" flag. Scanning 120 days in one shot on this workspace would
+mean roughly 40 pages, always, even for a prospect talked to yesterday. Instead: try the last 14
+days first (almost always 1-2 pages), widen to 14-45 only if nothing turned up, then 45-120 —
+each a DISTINCT range, so nothing is re-fetched — capped at 25 pages total across all three.
+Verified live: "Orlando Health" (real recent activity) resolved in under 4 seconds; a
+guaranteed-absent name still terminates, just slower, because it has to exhaust every window
+before giving up.
+
+⚠️ **TITLE MATCHING IS A WHOLE-PHRASE, WORD-BOUNDARY CHECK, NEVER A BARE SUBSTRING** — the exact
+class of bug this file already records for "car" matching inside "care". `titleMentions`
+requires a boundary on both sides, so "Cat" matches "Cat Financial Demo" but not "Catering Co
+Weekly Sync". `coreName` strips the corporate suffixes an SE might type ("Inc.", "LLC",
+"Corporation") but a Gong title essentially never carries, so the FULL cleaned name is what
+gets searched — same treatment the Dallas Summit roster names already got by hand.
+❌ **SUPERSEDED SAME DAY — the exact-phrase regex was too literal; see "the name does not have
+to be spelled Gong's way" below.** `coreName` is gone; the invariant it protected (never a bare
+substring) is now enforced more strongly, by comparing whole TOKENS.
+⚠️ **THIS UNDER-MATCHES BY DESIGN, AND THAT WAS PROVEN LIVE, NOT ASSUMED.** "Goosehead
+Insurance" and even bare "Goosehead" both returned nothing against the real workspace — a
+real, existing Invoca customer with genuinely no titled Gong call in the last four months, not
+a bug in the matcher. Verified the DISTINCTION matters: the same search against "Orlando
+Health" and "AutoNation" found real matches in the same run. A short/common name undermatching
+is the acceptable failure mode; a common word overmatching an unrelated company is not.
+
+⚠️⚠️ **THE DOMAIN CROSS-CHECK IS A REAL FILTER, PROVEN TO ACTUALLY FILTER, NOT JUST PRESENT.**
+Where Gong's Salesforce link supplies the CRM Account's `Website` field, it is compared against
+the prospect's own URL (`domainOf`, stripping protocol/path/`www` from both sides so a bare
+domain and a full URL compare equal); a call whose linked account resolves to a **different**
+company is dropped rather than trusted, even though its TITLE matched. Verified against the
+real API: passing "Orlando Health" (real matches exist) alongside a deliberately unrelated URL
+returned `null` — the cross-check actually fired, not merely existed in the code. A call with
+NO CRM link at all is kept regardless, since the title match was already the full account name,
+not a guess — requiring a CRM link would silently drop genuine matches on any account Gong's
+Salesforce integration hasn't linked.
+
+⚠️ **A COLD OR SILENT PROSPECT IS A 404 WITH A NAMED REASON, NEVER A FABRICATED BRIEF.**
+`gongLookup` returns `null` rather than throwing for "found nothing" specifically so the caller
+(the endpoint) can tell "nothing to say" apart from "Gong is unreachable" — a 404
+`{error: "No Gong calls found for <name>."}` against a 502 for a real failure. The panel
+renders the 404 in the same red `.adv-err` style the doc-link/Gong lookup already use for a
+different-but-related honest-negative case. Verified live in the browser end to end:
+"Orlando Health" produced a real "Gong — account call history · 1,988 chars" chip (removable,
+same as a document); "Goosehead" produced the plain red message with no chip.
+
+⚠️ **THE MOST RECENT `Next_Steps__c` LINE ONLY, NOT THE WHOLE LOG.** That Salesforce field is a
+running history an AE appends to over months, and the rest reads as internal negotiation detail
+a demo's context has no use for — only `.split("\n")[0]` (the newest entry) is pulled in.
+
+⚠️ **A PAGE BUDGET, PROVEN TO ACTUALLY STOP AN ENDLESS WORKSPACE.** `MAX_PAGES = 25` is checked
+by a mocked-fetch test that returns a cursor FOREVER and never a matching title — confirming
+the loop terminates at exactly the budget rather than merely "probably" being bounded by
+`while (budget.pages > 0)` somewhere in the code.
+
+**`npm run audit:advanced` gained 17 checks** (a new "Gong (search-based, no per-item link)"
+section): the real `titleMentions`/`coreName`/`domainOf` functions against real and adversarial
+inputs (including the "Cat" vs "Catering" pair proving word-boundary, not substring, matching);
+`gongLookup` against a MOCKED `fetch` (never the real network) for: no credential → zero calls,
+a clean match with no CRM link kept, a domain-mismatched match dropped, a guaranteed-miss
+widening across all 3 windows before giving up, and an endlessly-paginating mock still capped
+at `MAX_PAGES`; plus wiring — Gong gone from the generic `PROVIDERS` table, the real "Look up
+Gong" button calling the real endpoint, live `prospectName`/`prospectUrl` reaching the panel
+from `Launch.tsx`, and both servers serving `/api/gong-lookup`.
+⚠️ Two were broken on purpose and seen to fire: disabling the domain cross-check (the "dropped,
+not trusted" check reddened) and renaming `server.ts`'s route (the "server.ts serves
+POST /api/gong-lookup" check reddened) — both restored before finishing.
+
+❌ **SUPERSEDED, SAME DAY — placing Gong next to Strategy document was the wrong call, corrected
+on the spot.** The section above put Gong's "Look up Gong" button beside the doc-link field on
+the mechanical argument that neither is a plain toggle, same reasoning that had already moved
+Drive out of "Pull context from." The user's correction: that reasoning missed the actual point
+of the whole panel. Custom prompt, strategy document, Gong and Slack are not four unrelated
+inputs — every one of them exists to push the generation past generic wording, toward deciding
+**which dashboard actually matters to this prospect, whether the story is an SMS or a voice
+agent, which report, and which signals — including Signal AI Gold** — the demo leads with. That
+is what "Pull context from" was always naming, and Gong is exactly that: read a real
+conversation, then let it steer those same structural choices the custom prompt and strategy
+document already steer. Gong's row moved back, as a REAL control this time (a "Look up Gong"
+button + result chip, not the inert checkbox Slack still is) — `.adv-driveconnect` was renamed
+to `.adv-lookup` so the one shared action-row style (icon + hint + button) serves both Drive's
+Connect/Disconnect line and Gong's lookup row without duplicating CSS. **Drive is still the one
+exception left where it is**: it only ever reads ONE doc an SE explicitly points at, which is
+categorically different from "read what was actually discussed" — its control stays next to
+Strategy document, the field it affects, rather than in this section. `npm run audit:advanced`
+needed no changes: its checks assert BEHAVIOR (the button exists, calls the real endpoint,
+domain cross-check fires) rather than DOM position, so the move cost nothing to re-verify.
+Re-verified live end to end after the move: "Orlando Health" still produces the real
+"Gong — account call history · 1,988 chars" chip, now rendered under "Pull context from"
+directly beneath the lookup row, above Slack.
+
+#### ⚠️⚠️ AND THE BUTTON WAS A DEAD END, REPORTED IMMEDIATELY: "not clickable and i cant search
+of the prospect either" (9/10/2026)
+The row shipped with the button gated on the LAUNCH FORM's two fields
+(`!prospectName.trim() || !prospectUrl.trim()`) and nothing to type into. Open the panel before
+filling those in — which is exactly what an SE deciding how to build the demo does — and you get
+a greyed button, a hint pointing at fields off-screen above, and no way to act. The React props
+on the reported element said it outright: `prospectName: ""`, `prospectUrl: ""`.
+
+**Two things were wrong, and the second is the one worth remembering.**
+1. **A disabled control whose enabling condition lives on a different part of the screen is a
+   dead end**, however truthful its hint. This repo's own rule is that a dead control must at
+   least name what is missing; it does not follow that naming it is *enough* when the fix is
+   somewhere the SE cannot see.
+2. ⚠️⚠️ **THE URL WAS NEVER REQUIRED BY THE SEARCH — only by the endpoint's own guard.** Gong is
+   searched BY NAME; the URL feeds only the CRM cross-check, and `gongLookup` already stood down
+   gracefully when there was no domain to compare (`if (!c.accountWebsite || !targetDomain)
+   return true`). So `if (!name || !url)` on both servers was refusing requests the engine
+   underneath would have handled fine. Now `if (!name)`.
+
+**Gong's row got its OWN search box**, which is better than merely ungating the button: Gong's
+account naming does not always match what an SE types, so a search that finds nothing wants a
+second guess ("ORMC", a shorter form) rather than a dead end.
+⚠️ **`gongQuery` IS `string | null`, WHERE null MEANS "FOLLOW THE PROSPECT NAME" — NOT EMPTY.**
+`gongTerm = gongQuery ?? prospectName`, so the box tracks the launch form until the SE edits it
+and is theirs from then on. The obvious alternative — a `useEffect` copying `prospectName` into
+state — clobbers what the SE is typing on every keystroke upstairs, which is the bug this shape
+exists to avoid.
+
+⚠️ **ONE NEW AUDIT CHECK CAUGHT ITSELF BEING TOO BROAD, WHICH IS THE PROBE-NOT-CODE FAULT
+AGAIN — the tenth in this file.** The check asserting "the Gong handler no longer requires a
+URL" scanned the WHOLE of `server.ts` for `if (!name || !url)` and failed on correct code,
+because **`/api/generate` legitimately does require both**. It now slices out the Gong handler's
+own body first (`handlerBody()`, same technique as the `/auth/drive` isAdmin check) — and the
+corrected version was verified to still FIRE by restoring the old guard.
+
+**`npm run audit:advanced` gained 5 more checks** (22 in the Gong section, 80 in total): a
+search with NO url still succeeds against a mocked account on a different domain (the
+cross-check standing down, not silently passing), the row has an editable box seeded from the
+prospect name, the button is gated on the SEARCH TERM rather than the launch form, and each
+server's own handler requires only a name.
+**Verified live in the browser in the exact reported state** — both launch fields EMPTY, typed
+"Orlando Health" straight into the Gong box, clicked, and got the real 1,988-char chip; then on
+a fresh load, typing "Discount Tire" into Prospect name pre-filled the Gong box automatically.
+
+#### The name does not have to be spelled Gong's way (9/10/2026)
+Reported next: *"the actual name on gong is 'AVI & Co.' but it should still find it if i type
+'Avi and Co or Avi & Co'"*. Fair — the exact-phrase regex meant the SE had to guess how somebody
+else punctuated a meeting title months ago, which is not knowable.
+
+**Both sides now collapse to word TOKENS before matching** (`normTokens`): lowercase, `&` → and,
+every other non-alphanumeric run → a space, then **conjunctions and articles dropped from BOTH
+sides** — which is the trick that makes `&`, "and" and nothing-at-all the same thing without the
+search term having to guess which was typed.
+```
+"AVI & Co. / Invoca"                                    → [avi, co, invoca]
+"Avi and Co" · "Avi & Co" · "AVI & Co." · "Avi Co"      → [avi, co]     ← all match
+```
+⚠️⚠️ **IT IS STILL A CONTIGUOUS WHOLE-TOKEN PHRASE, AND THAT IS WHAT KEEPS THE FUZZINESS
+HONEST — it is actually STRICTER than the word-boundary regex it replaced.** Tokens are equal or
+they are not, so "car" can never reach inside "care" and "Avi & Co" does not match "Aviation Co
+Weekly Ops"; contiguity means "Orlando Health" does not match "Orlando Utilities Health Fair"
+either.
+⚠️⚠️ **SUFFIXES ARE ONLY DROPPED WHILE MORE THAN TWO TOKENS REMAIN, and that floor is the whole
+guard against going too far.** Without it "Avi & Co" → [avi, co] → **[avi]**, and a bare
+one-token phrase would claim any unrelated call mentioning that word. The floor keeps every
+GENERATED phrase at ≥2 tokens (a one-word search term is still honoured — that IS the SE's whole
+input, not something inferred). `searchPhrases` returns the typed form first, then the
+suffix-stripped one, so "Avi & Co., Inc." reaches [avi, co] while "Moffitt Cancer Center, Inc."
+reaches [moffitt, cancer, center].
+⚠️ `coreName` is **deleted**, not kept for its old test — the token path subsumes it.
+
+⚠️⚠️ **AND THE FIRST UI TEST OF THIS "FAILED" AGAINST A STALE MODULE — the Node-cache caveat
+this file already carries, hit again.** The panel said "No Gong calls found for Avi and Co."
+while a direct `tsx` call against the same function returned 6,000 chars, because the vite
+plugin **dynamically imports** `engine/gongApi.ts` and Node had the pre-fix copy. Restart the
+dev server after editing anything under `engine/`; a UI that disagrees with a direct call to the
+same function is that, not a bug in the matcher.
+
+**Verified against the REAL workspace, not just unit-style checks**: "Avi and Co", "Avi & Co",
+"AVI & Co." and "Avi Co" each returned the same two real calls — "Avi & Co. <> Invoca" and
+"Invoca/Avi & Co - Demo" (note the second's slash, which the token path also folds away). No
+regression on what already worked: "Orlando Health" still finds its two calls, the same search
+with a deliberately unrelated URL is still dropped by the CRM cross-check, and "Goosehead" and a
+nonsense name still return null. Then confirmed through the actual UI after the restart.
+**`npm run audit:advanced` gained 11 checks here** (33 in the Gong section, 91 total): all six
+typed variants of the reported case, the two adversarial non-matches (substring, scattered
+tokens), the ≥2-token floor, an unrelated "Avi ..." title not being claimed, and `normTokens`'
+own output.
+
 ## One hamburger, top right: the launch menu (9/10/2026)
 
 Asked for directly: *"the buttons on the bottom [are] good, but there are more things that i
@@ -9879,6 +10377,95 @@ online rendered `/replica?url=…` again. Reset then wrote `bookingUrl: ""` thro
 file and the link returned to the tracked `oppref` default. The unit is unchanged at 652x341 with
 5 actions, exactly 1 a link — and Aptive is left **saved**, pointing at its replica.
 
+## "Mark as demoed", and the follow-up list it exists for (9/23/2026)
+
+Asked for by an SE who gave ~25 custom demos in a day at the Summit and afterwards could not
+reconstruct who to follow up with. **The list is the deliverable and the marking is the input** —
+so the first question was where an SE can realistically mark at that pace, not what the data
+model should be.
+
+⚠⚠ **THERE IS ZERO USAGE TELEMETRY IN THIS PLATFORM, AND THAT WAS MEASURED BEFORE ANYTHING WAS
+BUILT.** Grepped for `lastOpened|viewedAt|pageview|analytics|telemetry|trackEvent`: nothing. So
+"who demoed what" is unanswerable from existing data, and the first answer given to the same
+question — counting demos somebody CREATED — was wrong in a way that read as confident: all 76
+roster demos are owned by one account, so a colleague's ~25 Summit demos were invisible and only
+3 showed, because those were the ones he had happened to EDIT. **A creator field is not an
+attendance record.**
+
+⚠⚠ **A MARK BELONGS TO A (DEMO, PERSON) PAIR, NOT TO A DEMO.** The roster is shared and owned by
+one account, so "demoed" stored on the record would mean whoever marked it last. `engine/demoMarks.ts`
+keys `DATA_DIR/demo-marks/<demoId>.json` by demo and holds one entry per email; re-marking
+REPLACES rather than appends, since the question is "where does this stand", not "what happened".
+
+⚠⚠ **AND IT IS ITS OWN STORE RATHER THAN A `DemoRecord` FIELD, for a reason this file already
+records: any server-side write to a demo MUST bump `updatedAt`**, and `DemoLibraryContext`'s
+self-heal refetches the whole library when it moves. Twenty-five marks in an afternoon would be
+twenty-five library refetches in every open tab.
+
+⚠ **THE VISIBILITY BOUNDARY IS SERVER-SIDE, BEFORE SERIALISATION** — `listMarks(email)` filters,
+so another SE's notes never reach a browser that should not have them. Same shape as `feedbackApi`.
+`?all=1` is built and admin-gated for the later everyone's-marks view; nothing in the UI calls it yet.
+⚠ **THE `/mark` ROUTE IS DELIBERATELY NOT GATED ON `canWrite`.** Every roster demo is owned by one
+account, so requiring edit rights would mean no SE could mark the demos they actually delivered.
+Marking is not editing the demo.
+
+### The surface is the library ROW, and that decides the rest
+Twenty-five demos means twenty-five loads of a heavy profile if marking lives inside the demo, so
+it would simply not happen. `DemoMarkButton` is a flag on each Launch row; the Summit roster
+already has its own dropdown, which is exactly the set being worked through.
+
+⚠ **EVERY HANDLER STOPS PROPAGATION**, because the row's own `onClick` OPENS the demo — a stray
+click costs a full profile load and throws the SE onto a dashboard mid-conference. Verified with
+real clicks: the flag, the three status buttons, the note field and Remove mark all leave the page
+on `/launch`, and clicking the row's NAME still opens the demo.
+
+#### Two real bugs the browser pass caught, both invisible to a type check
+⚠⚠ **1. THE PANEL FELL OFF THE BOTTOM OF THE VIEWPORT, AND IT IS `position: fixed`, SO NOTHING
+COULD SCROLL TO IT.** Measured: 34px off screen on a ONE-row list, and the rows most likely to be
+marked are the last ones in a 76-row roster. `place()` now flips the panel ABOVE its trigger when
+there is no room below — with a conservative height estimate on the first pass and an rAF pass that
+re-places it against the real box, since the height is unknown until it has rendered. Verified after:
+panel 674→816 against a trigger at 822, fully inside the viewport.
+
+⚠⚠ **2. PICKING A STATUS CHANGED THE BUTTON AND WROTE NOTHING TO THE SERVER — the silent no-op
+this file keeps recording, through a new door.** The panel is portalled to `<body>` to escape the
+list's scroll box (the documented fix for the Create Workflow popup being clipped), and
+`LibraryPicker` closes on a `document` **mousedown** whose target is not inside its own subtree. So
+the dropdown closed on the very pointerdown that was choosing a status, the row unmounted, and the
+option's own CLICK never fired. **A portalled popover is OUTSIDE by DOM and INSIDE by intent.** The
+picker now ignores a mousedown inside `[data-picker-safe]`, and the panel carries it. Verified by
+reading the server rather than the UI: before the fix the chip changed and `/api/marks` still said
+`follow-up`; after it, `lead`.
+
+⚠ A second click on the flag DISMISSES its own panel (capture-phase pointerdown, the trap the
+Signal flyout and the channel combobox already record), and Escape closes it leaving zero stray
+portal nodes.
+
+### `/follow-ups` — grouped by event, worked through by what is owed
+`ORDER` puts **Lead and Follow-up above Demoed**: "demoed and done" is a record, not a task. Grouped
+by event because a conference is one batch of follow-ups; demos with no event fall under "Other
+demos" rather than being hidden. Each row can be cleared in place — a worklist you cannot tick off
+stops being one. The menu badge counts what is OWED, not what is marked, so it clears as the list is
+worked through instead of only ever growing.
+
+⚠ **THE MARKS LOAD ONCE WITH THE LIBRARY, not per row.** `DemoLibraryContext` fetches `/api/marks`
+alongside the demo list, so the flag on 76 rows costs one request; `setMark` is optimistic with a
+rollback on failure, then refetches for the server's timestamp and joined prospect name.
+⚠ **LIBRARY DEMOS ONLY.** A mark is stored against a demo id, so a local unpublished profile has
+nothing to attach one to — offering the control there would be a button that silently fails.
+
+**Verified end to end against the real server**: a mark made through the UI lands in
+`DATA_DIR/demo-marks/`, survives a full reload (it is read back from the server, not localStorage),
+renders its measured chip colour, groups correctly on `/follow-ups`, and clearing it removes the row,
+the group and the server entry. Enter in the note field commits with the note and defaults to
+Demoed. The API refuses an unknown status and a non-GET on `/api/marks`.
+
+⚠ **THE DEV TWIN'S PREFIX GUARD HAD TO BE WIDENED**, or `/api/marks` 404s in dev while working in
+production — the trap that guard's own comment documents.
+
+**⚠ PHASE 2, DEFERRED AND NOT BUILT:** the admin view over everyone's marks (the server half is
+done), an in-demo top-bar control, and the Salesforce notification from the original request.
+
 ## Read.Me + the in-app docs
 - A **row in the launch menu** (`src/components/LaunchMenu.tsx`), not its own button — see the
   hamburger section below. It was `ReadmeButton.tsx`, a fixed bottom-right pill styled
@@ -10299,6 +10886,25 @@ Verified in the browser on two prospects: Orlando Health's Preview Agent renders
 directly from `hash(profileId) % 1000`, both surviving a `location.reload()`. `audit:voice`
 (107), `audit:place` and `audit:phases` green, typecheck clean, `audit:seeds` unchanged at the
 same pre-existing 14 of 34.
+
+#### ⚠⚠ AND IT COLLIDED AT 99 PROFILES — the prefix is hashed too now (9/23/2026)
+`audit:ai` went red with "two prospects share a number" once the library reached 99. Not a
+regression: **555-0XXX is 1,000 values, and by the birthday bound a 1,000-value space is more
+likely than not to collide at ~38 profiles**, so "zero collisions across 17" was never evidence
+the design scaled — it was evidence the library was small. The note above said so in the wrong
+direction, and is corrected here rather than deleted.
+
+⚠ **THE FIX IS THE PREFIX, NOT A WIDER LINE NUMBER.** 555-0XXX is the reserved-for-fiction block
+and widening past it invents digits that could reach a real line — the one thing this number
+exists to avoid. **800, 833, 844, 855, 866, 877 and 888 are all genuinely toll-free**, real
+businesses use all of them, and this repo already renders `877-555-0961` on the Salesforce
+call-log record. 7,000 values, from two independent slices of the same hash so the pair stays a
+pure function of the id. Verified across all **172** ids on disk (bundled + roster seeds + local
+library): 172 distinct numbers, zero collisions.
+⚠ **TWO CHECKS WERE RE-AIMED RATHER THAN LOOSENED**: the format check pinned `(800)` and now
+pins "a real toll-free prefix + the reserved 555-0XXX", and a new one asserts more than one
+prefix is actually in play, since a prefix hash that silently returned a constant would pass the
+format check alone.
 
 ## No human-agent QA signals on the AI conversation reports (9/3/2026)
 

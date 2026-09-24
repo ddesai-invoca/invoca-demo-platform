@@ -16,6 +16,141 @@ function generateApi(apiKey: string | undefined): Plugin {
       server.watcher.options = { ...server.watcher.options }
       server.watcher.unwatch(OUT_DIR)
 
+      /* POST /api/generate/doc?name=<filename> → { label, chars, text }.
+         Mirrors server.ts: extracts an uploaded document and hands the text back
+         to the browser, which then sends it as one more generation context
+         source. Registered BEFORE /api/generate so the more specific path wins —
+         Vite's middleware matching is by prefix, so the order matters here. */
+      server.middlewares.use('/api/generate/doc', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        const json = (code: number, obj: unknown) => {
+          res.statusCode = code
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(obj))
+        }
+        try {
+          /* Buffers, never strings: concatenating chunks as strings corrupts
+             every byte above 0x7F, which is most of a compressed .docx. */
+          const chunks: Buffer[] = []
+          for await (const chunk of req) chunks.push(chunk as Buffer)
+          const buf = Buffer.concat(chunks)
+          if (!buf.length) return json(400, { error: 'No file received.' })
+          const name = new URL(req.url || '', 'http://x').searchParams.get('name') || 'document'
+          const { extractDocText } = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/docText.ts')).href
+          )
+          const text = extractDocText(buf, name)
+          if (!text.trim()) return json(400, { error: `${name} has no readable text in it.` })
+          json(200, { label: name, chars: text.length, text })
+        } catch (e: any) {
+          json(400, { error: e?.message || 'Could not read that document.' })
+        }
+      })
+
+      /* GET /api/drive-status, POST /api/drive/disconnect — mirror server.ts.
+         Registered before /api/generate for the same prefix-order reason. */
+      server.middlewares.use('/api/drive-status', async (req, res, next) => {
+        if (req.method !== 'GET') return next()
+        const [{ currentUser }, { driveConfigured }, { hasDriveToken }] = await Promise.all([
+          import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
+          import(pathToFileURL(path.resolve(process.cwd(), 'engine/integrations.ts')).href),
+          import(pathToFileURL(path.resolve(process.cwd(), 'engine/driveTokens.ts')).href),
+        ])
+        const email = currentUser(req).email
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ enabled: driveConfigured(), connected: hasDriveToken(email) }))
+      })
+      server.middlewares.use('/api/drive/disconnect', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        const [{ currentUser }, { removeDriveToken }] = await Promise.all([
+          import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
+          import(pathToFileURL(path.resolve(process.cwd(), 'engine/driveTokens.ts')).href),
+        ])
+        removeDriveToken(currentUser(req).email)
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ ok: true }))
+      })
+
+      /* POST /api/generate/doc-link { url } → { label, chars, text }.
+         Mirrors server.ts: tries the signed-in SE's own connected Drive first
+         (engine/driveApi.ts), then falls back to the credential-free public
+         export (engine/driveLink.ts). Registered before /api/generate
+         (prefix order), like the file-upload sibling above. */
+      server.middlewares.use('/api/generate/doc-link', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        const json = (code: number, obj: unknown) => {
+          res.statusCode = code
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(obj))
+        }
+        try {
+          let raw = ''
+          for await (const chunk of req) raw += chunk
+          const body = JSON.parse(raw || '{}')
+          const url = String(body?.url || '').trim()
+          if (!url) return json(400, { error: 'No link provided.' })
+
+          const [{ currentUser }, { hasDriveToken }, { fetchPrivateGoogleDocText, DriveReconnectError }, { fetchPublicGoogleDocText }] = await Promise.all([
+            import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/driveTokens.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/driveApi.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/driveLink.ts')).href),
+          ])
+          const email = currentUser(req).email
+
+          if (hasDriveToken(email)) {
+            try {
+              const { label, text } = await fetchPrivateGoogleDocText(url, email)
+              return json(200, { label, chars: text.length, text })
+            } catch (e: any) {
+              if (e instanceof DriveReconnectError) return json(400, { error: e.message })
+              // fall through to the public path — see server.ts for why this is logged
+              console.warn('[drive] private read failed, falling back to public path:', e?.message || e)
+            }
+          }
+
+          const { label, text } = await fetchPublicGoogleDocText(url)
+          json(200, { label, chars: text.length, text })
+        } catch (e: any) {
+          json(400, { error: e?.message || 'Could not read that link.' })
+        }
+      })
+
+      /* POST /api/gong-lookup { name, url } → { label, chars, text }. Mirrors
+         server.ts: engine/gongApi.ts searches Gong itself, since there is no
+         specific doc for the SE to point at. */
+      server.middlewares.use('/api/gong-lookup', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        const json = (code: number, obj: unknown) => {
+          res.statusCode = code
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(obj))
+        }
+        try {
+          let raw = ''
+          for await (const chunk of req) raw += chunk
+          const body = JSON.parse(raw || '{}')
+          const name = String(body?.name || '').trim()
+          // The URL is OPTIONAL — see server.ts for why (it only feeds the
+          // cross-check, which gongLookup skips when there is no domain).
+          const url = String(body?.url || '').trim()
+          if (!name) return json(400, { error: 'A name is needed to search Gong.' })
+
+          const [{ gongConfigured }, { gongLookup }] = await Promise.all([
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/integrations.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/gongApi.ts')).href),
+          ])
+          if (!gongConfigured()) return json(400, { error: "Gong isn't configured on this server." })
+
+          const result = await gongLookup(name, url)
+          if (!result) return json(404, { error: `No Gong calls found for ${name}.` })
+          json(200, { label: result.label, chars: result.text.length, text: result.text })
+        } catch (e: any) {
+          console.error('[gong] lookup failed:', e)
+          json(502, { error: 'Could not reach Gong right now.' })
+        }
+      })
+
       server.middlewares.use('/api/generate', async (req, res, next) => {
         if (req.method !== 'POST') return next()
         // Stream progress as Server-Sent Events so the Launch screen can show each
@@ -37,9 +172,17 @@ function generateApi(apiKey: string | undefined): Plugin {
           const { generateProfile, slugify } = await import(
             pathToFileURL(path.resolve(process.cwd(), 'engine/core.ts')).href
           )
+          /* Advanced Settings, read by the SAME parser server.ts uses so the twins
+             cannot drift about what they accept — see engine/genContext.ts. */
+          const { parseGenerationRequest } = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/genContext.ts')).href
+          )
+          const { context, scope } = parseGenerationRequest(body)
           const profile = await generateProfile(name, url, {
             apiKey,
-            onProgress: (e: { phase: string; status: 'start' | 'done' }) => sse({ type: 'progress', phase: e.phase, status: e.status }),
+            context,
+            scope,
+            onProgress: (e: { phase: string; status: 'start' | 'done' | 'skip' }) => sse({ type: 'progress', phase: e.phase, status: e.status }),
           })
 
           // Send the finished profile to the client FIRST — a disk-write failure must
@@ -358,6 +501,13 @@ function statusApi(): Plugin {
         if ((req.url || '').split('?')[0] !== '/api/status') return next()
         try {
           const { deployStatus } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/status.ts')).href)
+          /* The SAME helpers server.ts uses, rather than a second set of env
+             checks here — two definitions of "configured" is how the panel ends
+             up offering a provider in dev that production cannot call. Safe
+             because loadEnv's keys are copied into process.env at the top. */
+          const { gongConfigured, slackConfigured, driveConfigured } = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/integrations.ts')).href
+          )
           const { authEnabled } = await import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href)
           const { alertSummary } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/alerts.ts')).href)
           const env = loadEnv('development', process.cwd(), '')
@@ -369,7 +519,10 @@ function statusApi(): Plugin {
             googlePlacesKey: !!env.GOOGLE_PLACES_API_KEY,
             mapboxTokenInServerEnv: !!env.VITE_MAPBOX_TOKEN,
             emailConfigured: !!(env.SMTP_USER && env.SMTP_APP_PASSWORD),
+            gongConfigured: gongConfigured(),
             renderConfigured: Boolean(env.BROWSERLESS_TOKEN || process.env.BROWSERLESS_TOKEN),
+            slackConfigured: slackConfigured(),
+            driveConfigured: driveConfigured(),
             authGate: authEnabled,
             alerts: alertSummary(),
           })))
@@ -437,12 +590,14 @@ function demoLibraryApi(): Plugin {
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || ''
-        /* ⚠️ WIDENED 9/21/2026 to admit /api/admin-notice/ack alongside /api/me
-           and /api/demos — handleDemoApi owns all three, and a narrower prefix
-           here silently 404s a route the production twin already serves (that
-           one forwards every /api/* path and lets handleDemoApi return null). */
+        /* ⚠️ WIDENED 9/21/2026 for /api/admin-notice/ack and 9/23/2026 for
+           /api/marks, alongside /api/me and /api/demos — handleDemoApi owns all
+           four, and a narrower prefix here silently 404s a route the production
+           twin already serves (that one forwards every /api/* path and lets
+           handleDemoApi return null). The symptom is the feature working on the
+           live site and appearing broken on every laptop. */
         if (!url.startsWith('/api/me') && !url.startsWith('/api/demos')
-          && !url.startsWith('/api/admin-notice')) return next()
+          && !url.startsWith('/api/admin-notice') && !url.startsWith('/api/marks')) return next()
         try {
           let raw = ''
           if (req.method !== 'GET' && req.method !== 'DELETE') for await (const chunk of req) raw += chunk

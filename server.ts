@@ -40,7 +40,14 @@ import { mailConfigured } from "./engine/mailer.ts";
 import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
 import { alert, alertSummary, type AlertLevel } from "./engine/alerts.ts";
 import { deployStatus } from "./engine/status.ts";
+import { parseGenerationRequest } from "./engine/genContext.ts";
+import { extractDocText } from "./engine/docText.ts";
+import { fetchPublicGoogleDocText } from "./engine/driveLink.ts";
+import { fetchPrivateGoogleDocText, DriveReconnectError } from "./engine/driveApi.ts";
+import { hasDriveToken, removeDriveToken } from "./engine/driveTokens.ts";
+import { gongConfigured, slackConfigured, driveConfigured } from "./engine/integrations.ts";
 import { renderConfigured } from "./engine/renderService.ts";
+import { gongLookup } from "./engine/gongApi.ts";
 import { runCanary, recordRun, toPublic as canaryPublic, BUDGET_SECONDS } from "./engine/canary.ts";
 import { migrateDemoDashes } from "./engine/dashSweep.ts";
 import { applyDemoPatches } from "./engine/demoPatches.ts";
@@ -88,14 +95,14 @@ function routeFailed(key: string, e: unknown, opts?: {
 
 // TTS provider resolution — mirrors vite.config.ts.
 
-
-// TTS provider resolution — mirrors vite.config.ts.
-
 const app = express();
 /* Attachment uploads are RAW BYTES, so their parser is registered before the JSON
    one: express.json would otherwise reject a PNG as malformed JSON. Scoped to the
    upload path only, and capped, so nothing else changes. */
 app.use("/api/feedback/:id/files", express.raw({ type: "*/*", limit: "12mb" }));
+/* Same reason, same ordering trap: an uploaded .docx is raw bytes and
+   express.json would reject it as malformed JSON. Scoped to this one path. */
+app.use("/api/generate/doc", express.raw({ type: "*/*", limit: "10mb" }));
 app.use(express.json({ limit: "2mb" }));
 
 /* Health check for the host (Render etc.) — exempt from auth.
@@ -118,7 +125,10 @@ app.get("/api/status", (_req, res) => res.json(deployStatus({
   mapboxTokenInServerEnv: !!process.env.VITE_MAPBOX_TOKEN,
   authGate: authEnabled,
   emailConfigured: mailConfigured(),
+  gongConfigured: gongConfigured(),
   renderConfigured: renderConfigured(),
+  slackConfigured: slackConfigured(),
+  driveConfigured: driveConfigured(),
   /* What has been going wrong lately, as counts and signatures. Safe here because
      `alertSummary()` is built for this endpoint and carries no message text — see the
      note on StatusInput.alerts. */
@@ -167,7 +177,6 @@ app.post("/api/client-error", (req, res) => {
   } catch { /* a reporter must never throw — see above */ }
   res.status(204).end();
 });
-
 
 /* PUBLIC NIGHTLY CANARY RESULT — timings + audit for the last generation run.
 
@@ -220,6 +229,110 @@ app.use(async (req, res, next) => {
 
 const isOverloaded = (e: any) => e?.status === 529 || e?.status === 429 || /overload/i.test(String(e?.message || ""));
 
+/* POST /api/generate/doc?name=<filename> → { label, chars, text }.
+   Extracts an uploaded strategy document to text and hands it BACK to the
+   browser rather than storing it: the generate request then carries it as one
+   more context source, so there is no upload id to track, nothing to clean up,
+   and — the real reason — the SE can SEE what was read before spending a
+   generation on it. A silently empty extraction would otherwise look like a
+   working upload that changed nothing. */
+app.post("/api/generate/doc", (req, res) => {
+  try {
+    const name = String(req.query.name || "document");
+    const buf = Buffer.isBuffer(req.body) ? req.body : Buffer.alloc(0);
+    if (!buf.length) return res.status(400).json({ error: "No file received." });
+    const text = extractDocText(buf, name);
+    if (!text.trim()) return res.status(400).json({ error: `${name} has no readable text in it.` });
+    res.json({ label: name, chars: text.length, text });
+  } catch (e: any) {
+    res.status(400).json({ error: e?.message || "Could not read that document." });
+  }
+});
+
+/* GET /api/drive-status → { enabled, connected }.
+   `enabled` is the server capability (the OAuth client + GOOGLE_DRIVE_ENABLED);
+   `connected` is whether THIS signed-in SE has a stored refresh token. Two
+   different booleans on purpose — Drive is per-user, so "the server can do
+   this" and "I have connected mine" are separate questions. */
+app.get("/api/drive-status", (req, res) => {
+  const email = currentUser(req).email;
+  res.json({ enabled: driveConfigured(), connected: hasDriveToken(email) });
+});
+
+/* POST /api/drive/disconnect → removes this SE's stored Drive token. Does not
+   also revoke it with Google — that is a courtesy, not a security boundary
+   (the token still works only for reading this SE's own Drive), so a revoke
+   failure must never block the local disconnect from succeeding. */
+app.post("/api/drive/disconnect", (req, res) => {
+  removeDriveToken(currentUser(req).email);
+  res.json({ ok: true });
+});
+
+/* POST /api/generate/doc-link { url } → { label, chars, text }.
+   The paste-a-link sibling of /api/generate/doc. Tries the signed-in SE's OWN
+   Drive first when they have connected one (engine/driveApi.ts — reaches an
+   internal, not-publicly-shared doc), then falls back to the credential-free
+   public-export path (engine/driveLink.ts) — which also covers an SE who has
+   not connected Drive at all. */
+app.post("/api/generate/doc-link", async (req, res) => {
+  const url = String(req.body?.url || "").trim();
+  if (!url) return res.status(400).json({ error: "No link provided." });
+  const email = currentUser(req).email;
+
+  if (hasDriveToken(email)) {
+    try {
+      const { label, text } = await fetchPrivateGoogleDocText(url, email);
+      return res.json({ label, chars: text.length, text });
+    } catch (e: any) {
+      /* A dead connection is an account-level problem no retry or fallback can
+         fix, so it is reported as-is rather than papered over by a public-path
+         attempt that would fail too (or, worse, silently succeed on a
+         different, merely-public doc and mislead the SE about which one was
+         actually read). */
+      if (e instanceof DriveReconnectError) return res.status(400).json({ error: e.message });
+      /* Anything else (not found, no access, unsupported type) — the doc may
+         still be readable via the public-export path, so fall through to it.
+         Logged, not surfaced: a genuine per-doc miss is normal and silent, but
+         this is also where a SERVER-SIDE Drive misconfiguration (bad client
+         secret, disabled API) would hide — every private read failing the same
+         way, forever, with the SE only ever seeing the public-path error. */
+      console.warn("[drive] private read failed, falling back to public path:", e?.message || e);
+    }
+  }
+
+  try {
+    const { label, text } = await fetchPublicGoogleDocText(url);
+    res.json({ label, chars: text.length, text });
+  } catch (e: any) {
+    res.status(400).json({ error: e?.message || "Could not read that link." });
+  }
+});
+
+/* POST /api/gong-lookup { name, url } → { label, chars, text }, or a 404-shaped
+   "no calls found" — there is no doc for the SE to point at, so this searches
+   Gong itself (engine/gongApi.ts) rather than reading one specific source. */
+app.post("/api/gong-lookup", async (req, res) => {
+  const name = String(req.body?.name || "").trim();
+  /* ⚠️ THE URL IS OPTIONAL, AND THAT IS THE POINT. It is only used to
+     cross-check a title match against the CRM account's own website, which
+     `gongLookup` already skips when there is no domain to compare — so
+     requiring it here only ever turned the panel's button into a dead end
+     before the launch form was filled in. The NAME is what a search needs. */
+  const url = String(req.body?.url || "").trim();
+  if (!name) return res.status(400).json({ error: "A name is needed to search Gong." });
+  if (!gongConfigured()) return res.status(400).json({ error: "Gong isn't configured on this server." });
+  try {
+    const result = await gongLookup(name, url);
+    if (!result) return res.status(404).json({ error: `No Gong calls found for ${name}.` });
+    res.json({ label: result.label, chars: result.text.length, text: result.text });
+  } catch (e: any) {
+    /* Gong being unreachable is Gong's problem far more often than ours, and the
+       panel already tells the SE. Counted, not paged. */
+    routeFailed("gong", e, { title: "Gong lookup failed", level: "record" });
+    res.status(502).json({ error: "Could not reach Gong right now." });
+  }
+});
+
 /* POST /api/generate → SSE stream of progress, then the finished profile. */
 app.post("/api/generate", async (req, res) => {
   res.status(200);
@@ -232,9 +345,14 @@ app.post("/api/generate", async (req, res) => {
     const { name, url } = req.body || {};
     if (!name || !url) { sse({ type: "error", error: "Both a prospect name and a website URL are required." }); return res.end(); }
     if (!apiKey) { sse({ type: "error", error: "ANTHROPIC_API_KEY is not set on the server." }); return res.end(); }
+    /* Advanced Settings. Parsed by the SAME helper the dev twin uses, so the two
+       cannot disagree about what they accept — see engine/genContext.ts. */
+    const { context, scope } = parseGenerationRequest(req.body);
     const profile = await generateProfile(name, url, {
       apiKey,
-      onProgress: (e: { phase: string; status: "start" | "done" }) => sse({ type: "progress", phase: e.phase, status: e.status }),
+      context,
+      scope,
+      onProgress: (e: { phase: string; status: "start" | "done" | "skip" }) => sse({ type: "progress", phase: e.phase, status: e.status }),
     });
     sse({ type: "done", profile });
     res.end();

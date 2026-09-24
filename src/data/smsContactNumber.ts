@@ -34,11 +34,25 @@ function hash(s: string): number {
  *
  * ⚠️ THE EXCHANGE IS 555-0XXX, the SAME reserved-for-fiction shape this repo's own generated
  * phone numbers already use elsewhere (`555-0184`, `555-0847`, `555-0641`, `555-0142`) — never
- * a digit string that could collide with a real line. That is 1,000 values, not the 100 a
- * strict 555-01XX would give; checked against all 17 bundled and library prospects with zero
- * collisions, where the narrower range already had two.
+ * a digit string that could collide with a real line.
+ *
+ * ⚠⚠ **THE TOLL-FREE PREFIX IS HASHED TOO, AND THAT IS WHAT KEEPS IT UNIQUE AS THE LIBRARY
+ * GROWS.** 555-0XXX alone is 1,000 values, which was collision-free at 17 prospects and is not
+ * a design that survives: by the birthday bound a 1,000-value space is more likely than not to
+ * collide once there are ~38 profiles, and `audit:ai` duly went red at **99** with two prospects
+ * sharing a number. The fix is not a wider last group — 555-0XXX is the reserved block and
+ * widening past it invents numbers that could ring — but the PREFIX: 800, 833, 844, 855, 866,
+ * 877 and 888 are all genuinely toll-free, real businesses use all of them, and this repo
+ * already renders `877-555-0961` on the call-log record. That is 7,000 values, so the same
+ * bound does not bite until several hundred prospects.
  */
+const TOLL_FREE = ["800", "833", "844", "855", "866", "877", "888"] as const;
+
 export function tollFreeNumber(profileId: string): string {
-  const n = hash(profileId) % 1000;
-  return `(800) 555-0${String(n).padStart(3, "0")}`;
+  const h = hash(profileId);
+  /* Two independent slices of one hash, so the prefix and the line number do not move
+     together and the pair stays a pure function of the id. */
+  const prefix = TOLL_FREE[h % TOLL_FREE.length];
+  const n = Math.floor(h / TOLL_FREE.length) % 1000;
+  return `(${prefix}) 555-0${String(n).padStart(3, "0")}`;
 }

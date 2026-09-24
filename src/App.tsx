@@ -61,6 +61,7 @@ import { AdminNoticeModal } from "./components/AdminNoticeModal";
 import { LaunchMenu } from "./components/LaunchMenu";
 import { FeedbackBoard } from "./screens/FeedbackBoard";
 import { ReleaseNotes } from "./screens/ReleaseNotes";
+import FollowUps from "./screens/FollowUps";
 import { NAV } from "./components/nav";
 
 /* Some screens are EXACT static copies of real pages (the Invoca Exchange and
@@ -92,7 +93,7 @@ const STANDALONE = new Set(["/invoca-exchange"]);
    belong on top of that. Unchanged when the bottom-right stack of three pills
    became one top-right hamburger (9/10/2026) — if anything the rule matters MORE
    there, since the top right of a replica is where real product chrome sits. */
-const MENU_ON = ["/", "/launch", "/feedback", "/release-notes"];
+const MENU_ON = ["/", "/launch", "/feedback", "/release-notes", "/follow-ups"];
 function LaunchCorner() {
   const { pathname } = useLocation();
   if (!MENU_ON.includes(pathname)) return null;
@@ -147,6 +148,7 @@ export default function App() {
           {/* Release notes. Full-page and outside the shell for the same reason as
               the feedback board — it is about the tool, not a prospect's demo. */}
           <Route path="/release-notes" element={<ReleaseNotes />} />
+          <Route path="/follow-ups" element={<FollowUps />} />
 
           {/* Standalone full-page routes (no sidebar/topbar) — exact static copies */}
           {/* ⚠️ THE OLD EXACT-COPY OF invoca.com/integrations IS NOT DELETED — it still

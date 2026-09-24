@@ -17,6 +17,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, SmsConversation, VoiceConversationIntelligenceView, VoiceConversation, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
+import { contextBlock, contextProvenance, type GenerationContext, type GenerationScope } from "./genContext.ts";
 import { sweepValue } from "./dashSweep.ts";
 
 const QM_SCORE_MEAN = 71;   // true mean of the agent scorecard series
@@ -264,7 +265,10 @@ async function runPool<T extends readonly (() => Promise<unknown>)[] | []>(
   return results as { -readonly [K in keyof T]: Awaited<ReturnType<T[K]>> };
 }
 
-type Progress = (e: { phase: string; status: "start" | "done" }) => void;
+/* "skip" is emitted for a phase an Agent-Studio-only generation does not run, so
+   the launch checklist can grey it out instead of leaving it spinning forever and
+   the weighted progress bar can drop it from the total. */
+type Progress = (e: { phase: string; status: "start" | "done" | "skip" }) => void;
 
 /* ---- The pipeline (parameterized; no module-level globals) ----------------
    Uses STREAMING: with large max_tokens + high effort a phase can exceed the
@@ -1102,11 +1106,20 @@ function generateAgentConfig(client: Anthropic, name: string, _brandDomain: stri
 export async function generateProfile(
   name: string,
   url: string,
-  opts: { apiKey?: string; onProgress?: Progress } = {}
+  opts: {
+    apiKey?: string;
+    onProgress?: Progress;
+    /* Advanced Settings: the SE's own steering, plus documents and integration
+       pulls. See engine/genContext.ts for why all three arrive as one thing. */
+    context?: GenerationContext;
+    /** "agent" builds Agent Studio only. Defaults to the full platform. */
+    scope?: GenerationScope;
+  } = {}
 ): Promise<z.infer<typeof CustomerProfile>> {
   const apiKey = opts.apiKey ?? process.env.ANTHROPIC_API_KEY;
   if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not set.");
   const progress = opts.onProgress ?? (() => {});
+  const scope: GenerationScope = opts.scope === "agent" ? "agent" : "full";
   // maxRetries lets the SDK back off + retry 429/529 ("overloaded") automatically —
   // important now that the post-report phases fire concurrently (see below).
   const client = new Anthropic({ apiKey, maxRetries: 4 });
@@ -1115,8 +1128,20 @@ export async function generateProfile(
   const brandDomain = domainOf(url);
 
   progress({ phase: "research", status: "start" });
-  const brief = await research(client, name, url);
+  const researched = await research(client, name, url);
   progress({ phase: "research", status: "done" });
+
+  /* ⚠️⚠️ THE OPERATOR CONTEXT RIDES ON THE BRIEF, AND THAT IS DELIBERATE — the
+     brief is already interpolated into all 19 phase prompts and handed to
+     `generateTerms`, so this reaches every phase without touching a single phase
+     signature, and it is a per-generation LOCAL so two concurrent generations
+     cannot see each other's. Full reasoning in engine/genContext.ts.
+     ⚠️ APPENDED BEFORE `generateTerms` ON PURPOSE: that phase picks bookingTerm
+     and customerNoun, which are then threaded into every screen. "Use healthcare
+     language" has to land there or the vocabulary is settled as
+     Purchase/Customer before any other prompt gets a say. */
+  const brief = researched + contextBlock(opts.context);
+
   progress({ phase: "terms", status: "start" });
   const terms = await generateTerms(client, name, brief);
   progress({ phase: "terms", status: "done" });
@@ -1152,6 +1177,39 @@ export async function generateProfile(
     return new Promise<void>((res) => setTimeout(res, Math.floor(Math.random() * 350))).then(run).then(done, retry);
   };
 
+  /* ⚠️⚠️ AGENT-STUDIO-ONLY SKIPS A PHASE BY RESOLVING `undefined`, NOT BY BEING
+     FILTERED OUT OF THE ARRAY. The pool's results are destructured POSITIONALLY
+     (18 names off one array below), so dropping entries would silently shift
+     every slice one place left — the class of bug that once put Marketing Source
+     under a "Location" heading and read as data rather than as a fault.
+
+     ⚠️ IT STILL EMITS A PROGRESS EVENT, as "skip". The launch checklist keys off
+     these events, so a phase that simply never reported would sit spinning at
+     "pending" forever and the weighted % bar would never reach 100 — this file
+     already warns that a phase missing from `BUILD_STEPS` has invisible
+     progress; a phase that reports nothing at all is the same failure.
+
+     ⚠️ THE FIVE KEPT PHASES ARE NOT A TASTE. `agentConfig` is the point; the
+     other four are the two slices `CustomerProfile` REQUIRES — digitalInsights,
+     and the dashboard trio that `assembleDashboard` turns into
+     marketingDashboard. Dropping those would fail the final Zod parse, and
+     Agent Studio's own voice tree reads marketingDashboard through voiceCopy,
+     so it needs them anyway.
+     ⚠️ CONSEQUENCE, MEASURED AND STATED: this saves little WALL CLOCK. agentConfig
+     is itself the slowest single phase (116–135s) and research+terms is a ~67s
+     serial prefix, so agent-only lands near ~200s against ~150–210s for the full
+     platform. What it saves is the 13 other Opus phases' TOKENS. */
+  const AGENT_SCOPE_PHASES = new Set([
+    "agentConfig", "digitalInsights", "dashboard", "dashboardChannels", "dashboardSegments",
+  ]);
+  const inScope = (label: string) => scope !== "agent" || AGENT_SCOPE_PHASES.has(label);
+  const maybe = <T,>(label: string, run: () => Promise<T>): (() => Promise<T | undefined>) =>
+    () => {
+      if (inScope(label)) return phase(label, run);
+      progress({ phase: label, status: "skip" });
+      return Promise.resolve(undefined);
+    };
+
   /* Ordered LONGEST-PROCESSING-TIME FIRST, from the timings the CLI logs
      (`[phase] <name>: <s>s`). Re-measure and re-sort if a phase's prompt grows —
      a heavy phase that starts late tails the whole makespan, which is exactly the
@@ -1164,22 +1222,22 @@ export async function generateProfile(
   ] = await runPool([
     () => phase("dashboardChannels", () => generateDashboardChannels(client, name, brief, bookingTerm, conversionTerm, scale)),
     () => phase("dashboardSegments", () => generateDashboardSegments(client, name, brief, bookingTerm, conversionTerm, scale)),
-    () => phase("opsDashboard", () => generateOpsDashboard(client, name, brief, bookingTerm, customerNoun, scale)),
-    () => phase("callReview", () => generateCallReview(client, name, brief, bookingTerm, scale)),
+    maybe("opsDashboard", () => generateOpsDashboard(client, name, brief, bookingTerm, customerNoun, scale)),
+    maybe("callReview", () => generateCallReview(client, name, brief, bookingTerm, scale)),
     () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm)),
-    () => phase("signalManager", () => generateSignalManager(client, name, brief, bookingTerm)),
+    maybe("signalManager", () => generateSignalManager(client, name, brief, bookingTerm)),
     () => phase("dashboard", () => generateDashboardCore(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale)),
     () => phase("digitalInsights", async () => stripAppOwnedFields(await generateDigitalInsights(client, name, brandDomain, brief, bookingTerm, scale))),
-    () => phase("conversationIntelligence", () => generateConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
-    () => phase("callDetail", () => generateCallDetail(client, name, brief, bookingTerm)),
-    () => phase("aiAgentConversion", () => generateAiAgentConversionDashboard(client, name, brief, bookingTerm, customerNoun, qualifiedCallTerm, conversionTerm, scale)),
-    () => phase("voiceConversationIntelligence", () => generateVoiceConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
-    () => phase("smsConversationIntelligence", () => generateSmsConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
-    () => phase("aiMessagingImpact", () => generateAiMessagingImpact(client, name, brief, bookingTerm, customerNoun, scale)),
-    () => phase("voiceRoutingDemo", () => generateVoiceRoutingDemo(client, name, brandDomain, brief, bookingTerm)),
-    () => phase("screenpops", () => generateScreenpops(client, name, brief, bookingTerm, customerNoun)),
-    () => phase("qualityManagement", () => generateQualityManagement(client, name, brief, bookingTerm, scale)),
-    () => phase("qmInstantInsights", () => generateQmInstantInsights(client, name, brief, scale)),
+    maybe("conversationIntelligence", () => generateConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
+    maybe("callDetail", () => generateCallDetail(client, name, brief, bookingTerm)),
+    maybe("aiAgentConversion", () => generateAiAgentConversionDashboard(client, name, brief, bookingTerm, customerNoun, qualifiedCallTerm, conversionTerm, scale)),
+    maybe("voiceConversationIntelligence", () => generateVoiceConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
+    maybe("smsConversationIntelligence", () => generateSmsConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
+    maybe("aiMessagingImpact", () => generateAiMessagingImpact(client, name, brief, bookingTerm, customerNoun, scale)),
+    maybe("voiceRoutingDemo", () => generateVoiceRoutingDemo(client, name, brandDomain, brief, bookingTerm)),
+    maybe("screenpops", () => generateScreenpops(client, name, brief, bookingTerm, customerNoun)),
+    maybe("qualityManagement", () => generateQualityManagement(client, name, brief, bookingTerm, scale)),
+    maybe("qmInstantInsights", () => generateQmInstantInsights(client, name, brief, scale)),
   ], CONCURRENCY);
   const dashboard = assembleDashboard(dashCore, dashChannels, dashSegments);
 
@@ -1204,7 +1262,8 @@ export async function generateProfile(
     industry: terms.industry,
     bookingTerm,
     customerNoun,
-    reports: { digitalInsights, marketingDashboard: dashboard, callReview, callDetail, opsDashboard, aiAgentConversion, aiMessagingImpact, qualityManagement, qmInstantInsights, conversationIntelligence, smsConversationIntelligence, voiceConversationIntelligence, agentConfig, voiceScreenpop: screenpops.voiceScreenpop, smsScreenpop: screenpops.smsScreenpop, voiceRoutingDemo, signalManager, gumloopArtifacts },
+    generation: contextProvenance(opts.context, scope),
+    reports: { digitalInsights, marketingDashboard: dashboard, callReview, callDetail, opsDashboard, aiAgentConversion, aiMessagingImpact, qualityManagement, qmInstantInsights, conversationIntelligence, smsConversationIntelligence, voiceConversationIntelligence, agentConfig, voiceScreenpop: screenpops?.voiceScreenpop, smsScreenpop: screenpops?.smsScreenpop, voiceRoutingDemo, signalManager, gumloopArtifacts },
   };
   /* DASH SWEEP AT THE SOURCE. NO_DASH_RULE tells the model not to join clauses
      with a dash, and it mostly listens, but "mostly" is not a guarantee: the two

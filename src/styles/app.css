@@ -6217,3 +6217,221 @@ body:has(.vp-root) .aiad--left .aiad-panel {
   .rn-change { flex-direction: column; gap: 3px; }
   .rn-kind { width: auto; padding: 2px 9px 3px; align-self: flex-start; }
 }
+
+/* =============================================================================
+   Advanced settings on the launch form — .adv-*
+   -----------------------------------------------------------------------------
+   Borrows the launch form's own language (13px/600 labels, 6px radius, the green
+   focus ring) so an opened panel reads as more of the same form rather than a
+   different screen. Its own prefix, so nothing here can reach another screen.
+   ============================================================================= */
+.adv { display: flex; flex-direction: column; gap: 0; }
+.adv-toggle {
+  appearance: none; cursor: pointer; font: inherit; align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 4px; padding: 4px 2px;
+  background: none; border: 0; color: var(--color-text-muted);
+  font-size: 13px; font-weight: 600;
+}
+.adv-toggle:hover, .adv-toggle-on { color: var(--color-text-title); }
+.adv-caret { font-size: 18px; }
+/* A collapsed panel must not hide that it will change the generation. */
+.adv-on-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--color-green-bar); margin-left: 4px;
+}
+
+.adv-body {
+  display: flex; flex-direction: column; gap: 18px;
+  margin: 8px 0 2px; padding: 16px; border: 1px solid #e3e7ec; border-radius: 8px; background: #fbfcfd;
+}
+.adv-field { display: flex; flex-direction: column; gap: 6px; }
+.adv-label { font-size: 13px; font-weight: 600; color: var(--color-text-title); }
+.adv-hint { font-size: 12px; line-height: 1.45; color: var(--color-text-muted); font-weight: 400; }
+.adv-field textarea {
+  font-family: inherit; font-size: 14px; color: var(--color-text); line-height: 1.45;
+  padding: 10px 12px; border: 1px solid #cfd4da; border-radius: 6px; background: #fff;
+  resize: none; max-height: 180px; overflow-y: auto;
+}
+.adv-field textarea:focus { outline: none; border-color: var(--color-green-bar); box-shadow: 0 0 0 3px rgba(44,191,88,.15); }
+
+.adv-check { display: flex; align-items: flex-start; gap: 9px; cursor: pointer; }
+.adv-check input { margin-top: 2px; flex-shrink: 0; }
+.adv-check > span { display: flex; flex-direction: column; gap: 3px; }
+
+.adv-doclink { display: flex; align-items: center; gap: 8px; }
+.adv-doclink input {
+  flex: 1 1 auto; min-width: 0; padding: 7px 10px; border: 1px solid #cfd4da; border-radius: 6px;
+  font: inherit; font-size: 13px; color: var(--color-text-title);
+}
+.adv-doclink input:focus { outline: none; border-color: var(--color-green-bar); box-shadow: 0 0 0 3px rgba(44,191,88,.15); }
+.adv-doclink .adv-attach { flex-shrink: 0; }
+
+/* A one-line action row: icon + hint + a real button — Drive's Connect/
+   Disconnect (next to Strategy document, the field it affects) and Gong's
+   "Look up Gong" (under "Pull context from", where it conceptually lives)
+   share this exact shape, so one class serves both. */
+.adv-lookup { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.adv-lookup-ic { font-size: 16px; color: #00816a; flex-shrink: 0; }
+.adv-lookup .adv-hint { flex: 1 1 auto; }
+.adv-lookup .adv-prov-btn { flex-shrink: 0; margin-left: auto; }
+/* Gong's own search term. `min-width: 0` or a long placeholder pushes the
+   button out of the panel instead of letting the box shrink. */
+.adv-lookup-input {
+  flex: 1 1 auto; min-width: 0; padding: 6px 10px; border: 1px solid #cfd4da; border-radius: 6px;
+  font: inherit; font-size: 13px; color: var(--color-text-title); background: #fff;
+}
+.adv-lookup-input:focus { outline: none; border-color: var(--color-green-bar); box-shadow: 0 0 0 3px rgba(44,191,88,.15); }
+.adv-lookup-input:disabled { background: #f4f6f8; color: var(--color-text-muted); }
+
+.adv-docs { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.adv-attach {
+  appearance: none; cursor: pointer; font: inherit; display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 12px 7px 9px; border: 1px solid #cfd4da; border-radius: 6px; background: #fff;
+  font-size: 13px; font-weight: 600; color: var(--color-text-title);
+}
+.adv-attach:hover:not(:disabled) { background: #f4f6f8; }
+.adv-attach:disabled { opacity: .55; cursor: default; }
+.adv-attach .material-icons { font-size: 17px; color: var(--color-text-muted); }
+.adv-doc {
+  display: inline-flex; align-items: center; gap: 6px; max-width: 100%;
+  padding: 5px 6px 5px 8px; border: 1px solid #d7e6dc; border-radius: 999px; background: #f2f9f4;
+  font-size: 12px; color: #0a231e;
+}
+.adv-doc-ic { font-size: 15px; color: #00816a; }
+.adv-doc-name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+/* The character count is the proof the file was actually read. */
+.adv-doc-n { color: var(--color-text-muted); font-variant-numeric: tabular-nums; }
+.adv-doc-x {
+  appearance: none; border: 0; background: none; cursor: pointer; padding: 0; display: inline-flex;
+  color: var(--color-text-muted);
+}
+.adv-doc-x .material-icons { font-size: 15px; }
+.adv-doc-x:hover { color: #b4232a; }
+.adv-err { font-size: 12px; line-height: 1.45; color: #b4232a; }
+
+.adv-provs { display: flex; flex-direction: column; gap: 9px; }
+.adv-prov { display: flex; align-items: flex-start; gap: 9px; }
+.adv-prov input { margin-top: 2px; flex-shrink: 0; }
+.adv-prov label { display: flex; flex-direction: column; gap: 2px; }
+.adv-prov-name { font-size: 13px; font-weight: 600; color: var(--color-text-title); }
+/* Not-connected is dimmed but still legible — it has to be readable enough to
+   tell you which credential is missing. */
+.adv-prov--off .adv-prov-name { color: var(--color-text-muted); }
+
+/* Shared with the Drive connect line under Strategy document (`.adv-driveconnect`
+   above), which is the only other place a real action button appears. */
+.adv-prov-btn {
+  appearance: none; cursor: pointer; font: inherit; flex-shrink: 0; align-self: center;
+  padding: 6px 12px; border: 1px solid #cfd4da; border-radius: 6px; background: #fff;
+  font-size: 12.5px; font-weight: 600; color: var(--color-text-title); text-decoration: none;
+}
+.adv-prov-btn:hover:not(:disabled) { background: #f4f6f8; }
+.adv-prov-btn:disabled { opacity: .55; cursor: default; }
+.adv-prov-btn--primary { border-color: transparent; background: var(--color-green-bar); color: #fff; }
+.adv-prov-btn--primary:hover { background: var(--color-green-bar); filter: brightness(0.95); }
+.adv-note {
+  display: flex; gap: 8px; align-items: flex-start; margin-top: 2px;
+  padding: 9px 11px; border: 1px solid #f0e2c2; border-radius: 6px; background: #fdf9ee;
+  font-size: 12px; line-height: 1.5; color: #6b5526;
+}
+.adv-note .material-icons { font-size: 16px; flex-shrink: 0; color: #b98900; }
+.adv-note code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; }
+
+/* A phase an Agent-Studio-only generation never runs. */
+.launch-step-skipped { color: var(--color-text-faint); }
+.launch-step-skipped .launch-step-ic .material-icons { color: #ccd2da; }
+.launch-step-skip {
+  margin-left: auto; font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--color-text-faint);
+}
+
+/* ── Mark a demo as delivered (DemoMarkButton) ───────────────────────────────
+   Its own .dmk- prefix: the Launch row's .prospect-* classes are signed off and
+   a value changed here must not restyle them. Panel is PORTALLED and fixed, so
+   the library's own scroll box cannot clip it. */
+.dmk-btn {
+  display: inline-flex; align-items: center; gap: 4px;
+  border: 1px solid transparent; background: none; cursor: pointer;
+  padding: 2px 6px; border-radius: 100px; color: #9aa1ac; line-height: 1;
+}
+.dmk-btn:hover { color: #2666f9; background: #eef3ff; }
+.dmk-btn .material-icons { font-size: 18px; }
+.dmk-btn-label { font-size: 11px; font-weight: 700; letter-spacing: .01em; }
+/* Marked: the status carries the colour, so the row reads at a glance. */
+.dmk-btn--on.dmk-demoed { color: #0d5400; background: #abe5bc; }
+.dmk-btn--on.dmk-follow-up { color: #b33b00; background: #ffd9cc; }
+.dmk-btn--on.dmk-lead { color: #11228c; background: #b0cdff; }
+.dmk-btn--on:hover { filter: brightness(.96); background-color: inherit; }
+
+.dmk-panel {
+  position: fixed; z-index: 3200; width: 268px;
+  background: #fff; border: 1px solid #e7e9eb; border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(12,0,51,.08), 0 12px 32px rgba(12,0,51,.16);
+  padding: 12px; display: flex; flex-direction: column; gap: 8px;
+}
+.dmk-head {
+  font-size: 12px; font-weight: 700; color: #15243e;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.dmk-opts { display: flex; gap: 6px; }
+.dmk-opt {
+  flex: 1; cursor: pointer; padding: 6px 4px; border-radius: 6px;
+  font-size: 12px; font-weight: 700; border: 1px solid #e7e9eb; background: #fff; color: #5b6577;
+}
+.dmk-opt:hover { border-color: #2666f9; color: #2666f9; }
+.dmk-opt--on.dmk-demoed { background: #abe5bc; border-color: #abe5bc; color: #0d5400; }
+.dmk-opt--on.dmk-follow-up { background: #ffd9cc; border-color: #ffd9cc; color: #b33b00; }
+.dmk-opt--on.dmk-lead { background: #b0cdff; border-color: #b0cdff; color: #11228c; }
+.dmk-note {
+  width: 100%; box-sizing: border-box; font: inherit; font-size: 12px;
+  padding: 6px 8px; border: 1px solid #e7e9eb; border-radius: 4px; color: #15243e;
+}
+.dmk-note:focus { outline: none; border-color: #2666f9; }
+.dmk-clear {
+  align-self: flex-start; background: none; border: none; cursor: pointer;
+  font-size: 12px; color: #5b6577; padding: 0; text-decoration: underline;
+}
+.dmk-clear:hover { color: #e4131b; }
+
+/* ── My follow-ups (FollowUps screen) ────────────────────────────────────────
+   Full-page, outside the app shell like /feedback and /release-notes: it is
+   about OUR tool, not a prospect's demo. Own .fup- prefix. */
+.fup-page { min-height: 100vh; background: #f6f7f9; padding: 32px 16px 64px; }
+.fup-wrap { max-width: 760px; margin: 0 auto; }
+.fup-back { font-size: 13px; color: #2666f9; text-decoration: none; }
+.fup-back:hover { text-decoration: underline; }
+.fup-title { font-size: 28px; font-weight: 400; color: #15243e; margin: 16px 0 4px; }
+.fup-sub { font-size: 14px; color: #5b6577; margin: 0 0 28px; }
+
+.fup-group { margin-bottom: 28px; }
+.fup-group-head {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: #9aa1ac; margin: 0 0 8px;
+}
+.fup-group-n {
+  background: #eef0f3; color: #6b7280; border-radius: 999px;
+  padding: 0 6px; font-size: 10.5px; font-weight: 700; letter-spacing: 0;
+}
+
+.fup-row {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border: 1px solid #e7e9eb; border-radius: 8px;
+  padding: 12px 14px; margin-bottom: 8px;
+}
+.fup-chip {
+  flex: none; min-width: 78px; text-align: center;
+  border-radius: 100px; padding: 3px 10px; font-size: 11px; font-weight: 700;
+}
+.fup-lead { background: #b0cdff; color: #11228c; }
+.fup-follow-up { background: #ffd9cc; color: #b33b00; }
+.fup-demoed { background: #abe5bc; color: #0d5400; }
+.fup-text { flex: 1; min-width: 0; }
+.fup-name { font-size: 15px; color: #15243e; }
+.fup-note { font-size: 12.5px; color: #5b6577; margin-top: 2px; }
+.fup-when { flex: none; font-size: 12px; color: #9aa1ac; }
+.fup-done {
+  flex: none; background: none; border: none; cursor: pointer;
+  color: #9aa1ac; line-height: 1; padding: 2px;
+}
+.fup-done:hover { color: #0d7a3e; }
+.fup-done .material-icons { font-size: 20px; }

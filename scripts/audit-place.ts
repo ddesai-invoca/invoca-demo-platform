@@ -34,7 +34,15 @@ const profiles = all.filter((p) => !seen.has(p.customerName) && seen.add(p.custo
    names are invented. Keeping the fallback for exactly these was the user's own call when the
    three were put to them. A NEW name appearing here means a prospect lost its real location,
    which is the regression this check is for. */
-const MAY_FALL_BACK = new Set(["Marriott", "Health Spring (preview)", "Surfside Healthcare"]);
+const MAY_FALL_BACK = new Set([
+  "Marriott", "Health Spring (preview)", "Surfside Healthcare",
+  /* Colibri Group's four "locations" are its BRAND names (Colibri Real Estate,
+     McKissock Learning, Becker, Elite Learning Healthcare) and it carries no
+     service area at all \u2014 checked, rather than assumed from the failure. There
+     is no city in its profile to resolve, so this is the same honest fallback
+     as the three above, not a prospect that lost its real location. */
+  "Colibri Group",
+]);
 
 console.log(`\nLocation resolution across ${profiles.length} prospects\n`);
 let fellBack = 0, fromOwn = 0;
