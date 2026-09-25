@@ -66,6 +66,13 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-09-25",
+    title: "A simpler launch form",
+    changes: [
+      i("Advanced settings is off the launch screen for now — enter a name and a URL and go. Nothing else about generating a demo changed."),
+    ],
+  },
+  {
     date: "2026-09-24",
     title: "Knowledge Sources open the page they name",
     changes: [

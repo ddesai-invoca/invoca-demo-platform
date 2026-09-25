@@ -8948,6 +8948,39 @@ typed variants of the reported case, the two adversarial non-matches (substring,
 tokens), the ≥2-token floor, an unrelated "Avi ..." title not being claimed, and `normTokens`'
 own output.
 
+## ⚠️ The Advanced settings panel is UNMOUNTED, not deleted (9/25/2026)
+
+Asked for directly: *"remove the advanced settings options for now"*. The `<AdvancedSettings>`
+render, the `adv` state and the three conditional request fields are gone from
+`src/screens/Launch.tsx`, so `/api/generate` receives exactly the body it received before the
+panel existed: `{ name, url }`.
+
+⚠️⚠️ **NOTHING ELSE WAS REMOVED, AND "FOR NOW" IS WHY.** `src/components/AdvancedSettings.tsx`,
+`engine/genContext.ts`, `engine/gongApi.ts`, `engine/driveApi.ts`, `engine/docText.ts`,
+`/api/gong-lookup`, `/api/generate/doc-link`, `/api/drive-status` and the whole per-user Drive
+OAuth flow are all untouched, and `/api/generate` still accepts `steer`, `scope` and `sources`.
+Remounting is re-adding an import, a `useState` and three spreads — not rebuilding a feature.
+Deleting it would also have meant deleting ~90 audit checks and the two integration runbooks,
+which is a one-way change nobody asked for.
+
+⚠️ **THE PANEL'S OWN FILE IS STILL FULLY AUDITED.** `audit:advanced` reads its SOURCE rather
+than requiring it to be mounted, so every measured behaviour — collapsed by default, the in-use
+dot, the Gong lookup row, Drive's Connect/Disconnect, the doc reader — stays checked and cannot
+rot while it is off screen.
+
+⚠️ **TWO CHECKS WERE RE-AIMED, NOT DELETED**, because the invariant inverted at the UI and held
+underneath. They now assert the opposite at the top (the form sends the plain two-field body,
+and `<AdvancedSettings` appears nowhere in `Launch.tsx`) while everything server-side stays
+asserted as before. Verified to fire by remounting the panel and by sending a `steer` again.
+⚠️⚠️ **AND A THIRD CHECK HAD TO MOVE ABOVE THE FIRST `code()` READ OF THE FILE.** Written after
+it, deleting `AdvancedSettings.tsx` made `readFileSync` throw and the audit died with a stack
+trace instead of naming the problem — a much worse thing to hand whoever broke it. The guard
+runs first and exits with the reason.
+
+**Verified in the browser:** the launch form renders two fields and the button, **zero**
+`.adv-*` elements of any kind, and a real submit (intercepted, so no Opus generation was spent)
+sends `{"name":"Test Co","url":"https://example.com"}`.
+
 ## One hamburger, top right: the launch menu (9/10/2026)
 
 Asked for directly: *"the buttons on the bottom [are] good, but there are more things that i

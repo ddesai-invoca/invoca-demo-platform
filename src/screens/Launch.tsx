@@ -6,7 +6,6 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { CustomerProfile } from "../data/schema";
 import { SEED_IDS } from "../data/profiles";
 import { DALLAS_EVENT } from "../data/eventDemos";
-import { AdvancedSettings, EMPTY_ADVANCED, type AdvancedValue } from "../components/AdvancedSettings";
 import DemoMarkButton from "../components/DemoMarkButton";
 
 /* Where a prospect opens (both a fresh generation and revisiting one) — the
@@ -170,7 +169,6 @@ export function Launch() {
   const [url, setUrl] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [adv, setAdv] = useState<AdvancedValue>(EMPTY_ADVANCED);
   const [statuses, setStatuses] = useState<Record<string, StepStatus>>({});
   const [, setTick] = useState(0);
   const stepStartRef = useRef<Record<string, number>>({});
@@ -360,16 +358,16 @@ export function Launch() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        /* Advanced Settings ride along on the same request. Everything is
-           omitted when untouched, so a default generation sends the exact body
-           it always did. */
-        body: JSON.stringify({
-          name: trimmedName,
-          url: trimmedUrl,
-          ...(adv.steer.trim() ? { steer: adv.steer.trim() } : {}),
-          ...(adv.agentOnly ? { scope: "agent" } : {}),
-          ...(adv.docs.length ? { sources: adv.docs } : {}),
-        }),
+        /* ⚠️ THE ADVANCED SETTINGS PANEL IS UNMOUNTED (9/25/2026, asked for:
+           *"remove the advanced settings options for now"*), so this is back to
+           the two fields the form always sent.
+           ⚠️⚠️ **NOTHING SERVER-SIDE WAS REMOVED, AND THAT IS THE POINT OF "FOR
+           NOW".** `/api/generate` still accepts `steer`, `scope` and `sources`,
+           `engine/genContext.ts` still folds them into the brief, and
+           `src/components/AdvancedSettings.tsx` is still here and still audited.
+           Putting the panel back is re-adding the import, the `adv` state and
+           the three spreads below — not rebuilding a feature. */
+        body: JSON.stringify({ name: trimmedName, url: trimmedUrl }),
       });
       if (!res.body) throw new Error("Generation failed: no response stream.");
 
@@ -487,7 +485,6 @@ export function Launch() {
                 placeholder="e.g. https://www.shadyblindsnow.com"
               />
             </label>
-            <AdvancedSettings value={adv} onChange={setAdv} disabled={busy} prospectName={name} prospectUrl={url} />
             {error && <div className="launch-error">{error}</div>}
             <button className="launch-btn" type="submit">Launch demo</button>
           </form>

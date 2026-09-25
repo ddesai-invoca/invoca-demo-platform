@@ -157,14 +157,34 @@ wrapped >= 13
 console.log("\nLaunch screen\n");
 
 const launch = code("src/screens/Launch.tsx");
+/* ⚠️⚠️ **CHECKED BEFORE THE FILE IS READ, AND THE ORDER IS THE WHOLE POINT.**
+   The panel is unmounted (9/25/2026) but deliberately kept, which is what makes
+   "for now" reversible — so its deletion is a real regression. Placed after the
+   first `code()` of it, this reported as a CRASH (readFileSync throwing) rather
+   than a named failure, which is a much worse thing to hand whoever broke it. */
+if (!existsSync("src/components/AdvancedSettings.tsx")) {
+  bad("AdvancedSettings.tsx was deleted — the unmounted panel is meant to stay remountable");
+  console.log("\n1+ check(s) failed\n");
+  process.exit(1);
+}
+ok("the panel's component is kept, so 'for now' stays reversible");
 const adv = code("src/components/AdvancedSettings.tsx");
 
-/* Untouched settings must send the request the form always sent. */
-/\.\.\.\(adv\.steer\.trim\(\) \? \{ steer/.test(launch) &&
-/\.\.\.\(adv\.agentOnly \? \{ scope: "agent" \}/.test(launch) &&
-/\.\.\.\(adv\.docs\.length \? \{ sources/.test(launch)
-  ? ok("all three settings are sent, and omitted when untouched")
-  : bad("a setting is not conditionally added to the request body");
+/* ⚠️⚠️ **RE-AIMED 9/25/2026, NOT DELETED — THE PANEL IS UNMOUNTED.** Asked for
+   directly: *"remove the advanced settings options for now"*. This used to
+   assert that all three settings rode along on the generate request; the
+   invariant now is the opposite at the UI and UNCHANGED underneath — the form
+   sends the two fields it always did, while the server still accepts all three
+   so putting the panel back is a UI change rather than a rebuild. Both halves
+   are checked, because either one alone lets the feature rot: a mounted panel
+   would contradict the request, and a server that stopped accepting the fields
+   would make "for now" false. */
+/body: JSON\.stringify\(\{ name: trimmedName, url: trimmedUrl \}\)/.test(launch)
+  ? ok("the generate request is back to the plain two fields")
+  : bad("the launch form is not sending the default two-field body");
+!/<AdvancedSettings/.test(launch) && !/\badv\.[a-z]/.test(launch)
+  ? ok("the Advanced settings panel is not mounted on the launch form")
+  : bad("AdvancedSettings is still rendered or still feeding the request");
 
 /skipped/.test(launch) && /skippedWeight/.test(launch)
   ? ok("the launch checklist and the weighted bar both handle a skipped phase")
@@ -605,10 +625,10 @@ gongDevHandler && !/if \(!name \|\| !url\)/.test(gongDevHandler) && /if \(!name\
 /prospectName/.test(advTsx) && /prospectUrl/.test(advTsx)
   ? ok("the panel receives the live prospect name/URL rather than a stale copy")
   : bad("AdvancedSettings does not take prospectName/prospectUrl — Look up Gong would have nothing to search");
-const launchTsx = code("src/screens/Launch.tsx");
-/prospectName=\{name\}/.test(launchTsx) && /prospectUrl=\{url\}/.test(launchTsx)
-  ? ok("Launch.tsx passes the live form fields down to the panel")
-  : bad("Launch.tsx does not pass the current name/url into AdvancedSettings");
+/* ⚠️ RE-AIMED with the two checks at the top of this section: the panel is
+   unmounted, so Launch no longer passes it anything. What still has to hold is
+   that the COMPONENT keeps taking those props (asserted directly above) — that
+   is what makes remounting one line rather than a rebuild. */
 /app\.post\("\/api\/gong-lookup"/.test(server)
   ? ok("server.ts serves POST /api/gong-lookup")
   : bad("server.ts is missing /api/gong-lookup");
