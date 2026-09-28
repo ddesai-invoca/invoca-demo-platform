@@ -2062,5 +2062,63 @@ console.log("\nThe built-in SMS workflow template");
   }
 }
 
+/* ── the SMS agent never quotes a price unless asked to (9/28/2026) ──────────
+   Asked for directly: "in the default sms agent, never give any pricing, unless
+   the user uses the ask ai feature to change but dont do it from the beginning".
+   Measured before the change: 110 of 179 profiles on disk said the agent MAY
+   quote, including an eye centre and a hotel chain. */
+{
+  const { withoutDefaultPricing } = await import("../src/data/agentDefaults.ts");
+  const mk = (v: boolean) => ({
+    id: "x", customerName: "X",
+    reports: { agentConfig: { brandConversationRules: [], smsPlaybook: { goal: "g", bookingType: "b", offer: "", providesEstimate: v, qualifyingQuestions: ["q"] } } },
+  }) as any;
+
+  withoutDefaultPricing(mk(true)).reports.agentConfig.smsPlaybook.providesEstimate === false
+    ? ok("a prospect the engine said may quote is clamped to no pricing")
+    : bad("withoutDefaultPricing does not clamp true to false");
+
+  /* ⚠️ IDENTITY WHEN THERE IS NOTHING TO DO — 69 of 179 profiles already say no,
+     and returning a fresh object for them would cost a re-render for nothing. */
+  const already = mk(false);
+  withoutDefaultPricing(already) === already
+    ? ok("a prospect that already said no is returned unchanged, same object")
+    : bad("withoutDefaultPricing rebuilds a profile it does not need to touch");
+
+  /* A profile with no playbook at all must not throw. */
+  (() => { try { withoutDefaultPricing({ id: "y", customerName: "Y", reports: {} } as any); return true; } catch { return false; } })()
+    ? ok("a profile with no SMS playbook survives the clamp")
+    : bad("withoutDefaultPricing throws on a profile with no playbook");
+
+  /* ⚠️⚠️ **BOTH ENTRY POINTS, OR A LIBRARY DEMO BEHAVES DIFFERENTLY FROM A BUNDLED
+     ONE** — the rule `renameMarketingSources` already records, and this shares it. */
+  const ctx = readCode("src/data/ProfileContext.tsx");
+  /* ⚠️ THE TWO CALL SITES ARE NAMED RATHER THAN COUNTED — the first version asked
+     for 3+ matches of `normalize(` and failed on correct code, because the
+     DEFINITION is `normalize =` and only the two call sites use parentheses.
+     Naming them is also stronger: a count passes if somebody normalizes one entry
+     point twice. */
+  const boot = /merged\[p\.id\] = normalize\(p\)/.test(ctx);
+  const added = /const p = normalize\(raw\)/.test(ctx);
+  boot && added && /withoutDefaultPricing\(renameMarketingSources\(p\)\)/.test(ctx)
+    ? ok("both profile entry points run the same normalizer")
+    : bad(`the clamp is missing from an entry point (boot=${boot}, addProfile=${added})`);
+
+  /* ⚠️⚠️ **CLAMPED ON THE BASE, NOT AFTER THE MERGE.** Forcing it false on the
+     EFFECTIVE config would also kill a deliberate Ask AI override, and the drawer
+     would report success while the agent kept refusing. */
+  !/providesEstimate:\s*false/.test(readCode("engine/chat.ts"))
+    ? ok("the prompt builder still keys off the flag rather than hardcoding no")
+    : bad("pricing is hardcoded off in the prompt — an Ask AI override could never win");
+
+  /* ⚠️ AND ASK AI HAS TO KNOW THE FIELD EXISTS, because it is now the ONLY way to
+     turn pricing on. Unnamed, the model declines or writes prose into a brand rule
+     where nothing reads it. */
+  const asst = readCode("engine/assistant.ts");
+  /smsPlaybook\.providesEstimate/.test(asst) && /BOOLEAN/.test(asst)
+    ? ok("the assistant is told the exact path and that it is a boolean")
+    : bad("Ask AI is not told about smsPlaybook.providesEstimate — nothing could enable pricing");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");
 process.exit(fail ? 1 : 0);

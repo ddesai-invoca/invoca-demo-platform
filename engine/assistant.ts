@@ -350,6 +350,18 @@ function buildSystem(input: AssistantInput): string {
       `  When the user changes the USE CASE, rewrite the greeting AND the questions together. The greeting has to carry the use case on its own, because it is often the only message a prospect reads: a re-engagement opener references the earlier conversation and asks if they are still interested, a first-contact opener introduces the business and any current offer. An opener that would fit any situation equally well is a failed answer.`,
       `  Keep it to 1-3 short sentences of plain text, no markdown and no emoji, and end by inviting a reply.`,
       `  ADDRESS THE CUSTOMER BY NAME. The greeting must contain the literal token {name}, which the app replaces with the real customer's first name at send time. Write "Hi {name}," and NEVER a specific name like "Hi Sarah,": a hard-coded name is wrong for every other customer this demo is shown to. Keep the token exactly as {name}, in the first sentence.`,
+      /* ⚠️⚠️ **PRICING IS OFF BY DEFAULT AND ONLY THIS DRAWER CAN TURN IT ON (9/28/2026).**
+         Asked for directly: *"in the default sms agent, never give any pricing, unless the
+         user uses the ask ai feature to change but dont do it from the beginning"*. The base
+         profile is clamped to false (`src/data/agentDefaults.ts`), so the ONLY way the agent
+         ever offers a price is an override written from here — which makes describing the
+         field mandatory rather than nice to have. Unnamed, the model has no way to know a
+         boolean exists and would answer "I can't do that", or worse write the instruction
+         into a brand rule where nothing reads it. */
+      `- WHETHER THE AGENT MAY QUOTE A PRICE lives at "smsPlaybook.providesEstimate", a BOOLEAN, and it is false by default for every prospect.`,
+      `  Asked to let the agent give a price, a rough figure, a ballpark or an estimate over text, return kind:"editData" with ONE edit whose path is exactly "smsPlaybook.providesEstimate" and whose value is true. Asked to stop it doing that, set it to false.`,
+      `  Do NOT write pricing permission into a brand rule, a qualifying question or the greeting instead — that field is the only thing the agent reads, and prose elsewhere changes nothing.`,
+      `  You still never invent an actual figure yourself: the flag only decides whether the agent may offer a RANGE, which it derives from what the customer told it.`,
     ] : []),
     `- Be concise and professional.`,
     ``,

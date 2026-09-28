@@ -8948,6 +8948,61 @@ typed variants of the reported case, the two adversarial non-matches (substring,
 tokens), the ≥2-token floor, an unrelated "Avi ..." title not being claimed, and `normTokens`'
 own output.
 
+## The default SMS agent never quotes a price; Ask AI is the only way to let it (9/28/2026)
+
+Asked for directly: *"in the default sms agent, never give any pricing, unless the user uses
+the ask ai feature to change but dont do it from the beginning"*.
+
+⚠️⚠️ **MEASURED FIRST, AND IT IS WHY THE REQUEST IS WELL FOUNDED: 110 OF 179 PROFILES ON DISK
+SAID THE AGENT MAY QUOTE A PRICE** — including **Key-Whitman Eye Center** and **Marriott**,
+verticals where a price quoted over SMS is questionable on its own terms. `engine/core.ts` asks
+the model to judge this per prospect (`providesEstimate`), and each judgement is reasonable in
+isolation; the product decision is that the default is NO pricing whatever the engine decided.
+
+⚠️⚠️ **CLAMPED ON THE BASE, NOT ON THE EFFECTIVE CONFIG — and that distinction is the whole
+feature.** The Ask AI override layer merges ON TOP of the profile, so forcing the flag false
+after the merge would also kill a deliberate change: the drawer would report success and the
+agent would keep refusing, which is the silent no-op this file records six times.
+`src/data/agentDefaults.ts` clamps the profile as it enters the store, so the base is a plain
+"no" that an override can raise — which is exactly the "unless the user uses the ask ai
+feature" half of the request.
+
+⚠️ **AT READ TIME, NOT AS A MIGRATION**, the same place and reasoning as
+`renameMarketingSources`: 110 profiles are on disk and ~450 more live only in the shared
+library, so editing files would fix neither the team's demos nor anything already open.
+⚠️ **BOTH ENTRY POINTS, VIA ONE `normalize()`** — registry/cache at boot AND `addProfile`.
+Applying it in one is how a library demo behaves differently from a bundled one with nothing on
+screen to say why; `addProfile`'s own note already records that trap for the marketing rename.
+⚠️ **THE ENGINE PROMPT AND THE SCHEMA ARE UNTOUCHED.** `providesEstimate` still means what it
+meant and is still generated, so the field stays available if the policy is relaxed. Changing
+the prompt instead would fix only prospects generated from today and leave 110 as they are.
+⚠️ **IDENTITY WHEN THERE IS NOTHING TO DO** — 69 profiles already said no, and returning a
+fresh object for them would cost a re-render for nothing.
+
+⚠️⚠️ **ASK AI HAD TO BE TOLD THE FIELD EXISTS, because it is now the ONLY way to turn pricing
+on.** `engine/assistant.ts` names the exact path, says it is a BOOLEAN, and says explicitly not
+to write pricing permission into a brand rule or the greeting instead — unnamed, the model
+either declines or puts prose somewhere nothing reads, which this file records for the SMS
+greeting ("**if a value is on screen but not in `dataContext`, the model will write it
+somewhere else**").
+
+**Verified end to end by reading the REQUEST BODY, not the drawer's prose** — the test this file
+insists on, and the fourth time that distinction has mattered:
+- Aptive's file says `providesEstimate: true`. Asked "how much does a quarterly pest plan
+  cost?", the brain posted to `/api/chat` carried **`providesEstimate: false`**.
+- One plain instruction in the real Ask AI drawer — *"let the agent give a rough price range
+  over text"* — and the next message's brain carried **`true`**. The drawer's own reply
+  ("Done — the agent can now share a rough price range") was treated as no evidence.
+
+**`audit:ai` gained 7 checks**: the clamp turns true into false, returns the same object when
+already false, survives a profile with no playbook, is applied at BOTH named entry points, the
+prompt builder still keys off the flag rather than hardcoding a refusal, and the assistant is
+told the path and the type. Three sabotages fire: normalizing only at boot, removing the clamp,
+and renaming the field out of the assistant's instructions.
+⚠️ One probe fault: the entry-point check counted `normalize(` and expected 3+, but the
+DEFINITION is `normalize =` so only the two call sites match. It names both call sites now,
+which is also stronger — a count passes if somebody normalizes one entry point twice.
+
 ## An EXTRA voice workflow is a real agent now, not a shell (9/28/2026)
 
 Asked for: a new Fidelity Life voice agent that *"asks me what I'm looking for and then gives

@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState, type R
 import { CustomerProfile } from "./schema";
 import { PROFILE_LIST, DEFAULT_PROFILE_ID } from "./profiles";
 import { renameMarketingSources } from "./marketingSources";
+import { withoutDefaultPricing } from "./agentDefaults";
 
 interface ProfileCtx {
   profile: CustomerProfile;
@@ -69,6 +70,16 @@ function loadCached(): CustomerProfile[] {
   }
 }
 
+/* ⚠️⚠️ **ONE NORMALIZER, BOTH ENTRY POINTS.** A profile reaches the store either from the
+   registry/cache at boot or through `addProfile` (a fresh generation, or a library demo).
+   Applying a rule in one and not the other is how a library demo would behave differently
+   from a bundled one with nothing on screen to say why — the note on `addProfile` already
+   records that for `renameMarketingSources`, and `withoutDefaultPricing` has exactly the
+   same requirement. Both are idempotent, so the cached copy being written normalized is
+   harmless. */
+const normalize = (p: CustomerProfile): CustomerProfile =>
+  withoutDefaultPricing(renameMarketingSources(p));
+
 export function ProfileProvider({ children }: { children: ReactNode }) {
   const [profiles, setProfiles] = useState<CustomerProfile[]>(() => {
     // Cached generated customers first, then the static registry (seeds + files
@@ -76,7 +87,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
     // profile shows fresh, while cache still supplies anything the glob hasn't
     // re-scanned yet (e.g. generated this session before a restart).
     const merged: Record<string, CustomerProfile> = {};
-    for (const p of [...loadCached(), ...PROFILE_LIST]) merged[p.id] = renameMarketingSources(p);
+    for (const p of [...loadCached(), ...PROFILE_LIST]) merged[p.id] = normalize(p);
     return Object.values(merged);
   });
 
@@ -102,7 +113,7 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
      rendered Google LSA, with nothing on screen to say why. See `renameMarketingSources`; the
      cached copy is written renamed, which is harmless because the function is idempotent. */
   function addProfile(raw: CustomerProfile) {
-    const p = renameMarketingSources(raw);
+    const p = normalize(raw);
     setProfiles((prev) => [...prev.filter((x) => x.id !== p.id), p]);
     persistCached([...loadCached().filter((x) => x.id !== p.id), p], p.id);
   }
