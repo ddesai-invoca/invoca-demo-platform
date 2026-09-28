@@ -66,6 +66,13 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-09-28",
+    title: "Preview Agent opens the prospect you are actually on",
+    changes: [
+      f("Preview Agent could open showing a different prospect's conversation. The browser's storage had filled up, so demos opened recently were never saved for the new tab to read — it now loads the prospect from the server, and the cache keeps itself within budget."),
+    ],
+  },
+  {
     date: "2026-09-25",
     title: "A simpler launch form",
     changes: [

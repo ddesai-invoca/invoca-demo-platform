@@ -8948,6 +8948,69 @@ typed variants of the reported case, the two adversarial non-matches (substring,
 tokens), the ≥2-token floor, an unrelated "Avi ..." title not being claimed, and `normTokens`'
 own output.
 
+## ⚠️⚠️ THE PROFILE CACHE FILLED UP AND BROKE PREVIEW AGENT (9/28/2026)
+
+Reported from production: *"i am currently in the Hiscox prospect but when i click on the
+Preview Agent button it is showing the shady blinds SMS conversation and not hiscox"*.
+
+⚠️⚠️ **MEASURED ON THE REPORTER'S OWN BROWSER BEFORE ANYTHING WAS CHANGED, and the numbers are
+the whole diagnosis** — read from `/api/status` rather than the app, so booting React could not
+rewrite the state being inspected:
+
+| | |
+|---|---|
+| localStorage total | **5,095 KB**, against a ~5 MB origin quota — full |
+| `invoca-demo:profiles` | **4,624 KB** holding **52** cached profiles |
+| `hiscox` in that cache | **no** |
+| `invoca-demo:activeId` | already reset to `shady-blinds` |
+
+**Three defects compounded, and each was individually invisible:**
+1. **`addProfile`'s cache write threw `QuotaExceededError` into a bare `catch {}`.** The cache
+   had no bound, so after ~50 demos every subsequent write failed silently. The profile still
+   existed in memory, so the tab that opened it looked perfectly correct.
+2. **Preview Agent opens a NEW TAB** (`window.open`), which rebuilds `ProfileContext` from that
+   cache — and did not find Hiscox. `profile = byId[profileId] ?? byId[DEFAULT_PROFILE_ID]`
+   then served the seed.
+3. ⚠️⚠️ **AND AN EFFECT CLOBBERED THE ACTIVE ID, WHICH SPREAD THE DAMAGE BETWEEN TABS.** "Keep
+   a valid active id" reset `profileId` to the seed whenever it was not in the store and
+   **wrote that to localStorage** — so opening Preview Agent did not merely render the wrong
+   prospect, it changed what the ORIGINAL tab thought was selected.
+
+**The fixes, in the order they matter:**
+- ⚠️ **THE SERVER IS THE SOURCE OF TRUTH FOR A LIBRARY DEMO; THE CACHE IS A CONVENIENCE.** A
+  missing active profile is now fetched from `/api/demos/:id` and added. This is what makes a
+  fresh tab correct regardless of cache state, and it is why the reporter's browser self-heals
+  on the next demo they open rather than needing anything cleared by hand.
+- **The cache is budgeted in BYTES (2 MB) and evicts oldest-first, never failing.** A count
+  would be wrong: profiles run ~60KB to ~155KB. The budget is deliberately well under the
+  quota because the AI override layer, the SMS/voice capture stores and the `active-profile`
+  mirror share this origin — starving them would just move the bug.
+- **The active id is kept, not reset.** Rendering already degrades safely on its own.
+
+⚠️⚠️ **THE OBVIOUS VERSION OF THE HYDRATION EFFECT DID NOTHING IN DEV, AND IT LOOKED WRITTEN.**
+With a `let alive = true` cancellation flag, StrictMode's double-mount cancels the first run
+while the `tried` guard makes the second return early — so the fetch resolves into a discarded
+result. Measured exactly that: **one request for the id, 200 OK, and an empty cache after**. The
+flag is gone; the work is idempotent (`addProfile` replaces by id, setState after unmount is a
+no-op in React 18) and `tried` still prevents any loop.
+
+**Reproduced and fixed against the real thing, not reasoned about.** Locally: cache cleared,
+`activeId` set to a library demo, `/agent-studio/agent/preview` opened → "Preview Agent — Shady
+Blinds" (the bug). After: "Preview Agent — United Veterinary Care", with the id preserved and
+the profile cached. Eviction proved separately by seeding **26 real profiles (2.29 MB, over
+budget)** and adding one more: **1.85 MB, 21 profiles, 6 evicted, the new one kept**, and the
+tab showing TaskUs. Untouched: a bundled profile still resolves with no fetch, and
+`/dashboards/marketing` still renders Aptive at 17 cards / KPI 64,004.
+
+**`audit:app` gained 8 checks** — the budget exists, the write evicts, nothing writes the cache
+except `persistCached`, the active id is not clobbered, a missing profile is hydrated, hydration
+is attempted once per id, there is **no** cancellation flag, and the render fallback survives.
+⚠️ Four sabotages fire: restoring the clobber, restoring the `alive` flag, going back to a raw
+`setItem`, and dropping the hydration.
+⚠️ **TWO PROBE FAULTS IN WRITING THEM**, both already in this file's catalogue: the block used
+`no()` where `audit-app.ts` reports with `bad()`, and the `alive` test read UNCOMMENTED source
+so it matched its own note explaining why the flag is absent. `code()` strips comments; use it.
+
 ## ⚠️ The Advanced settings panel is UNMOUNTED, not deleted (9/25/2026)
 
 Asked for directly: *"remove the advanced settings options for now"*. The `<AdvancedSettings>`

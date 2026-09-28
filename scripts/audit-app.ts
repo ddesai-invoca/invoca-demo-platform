@@ -348,5 +348,65 @@ console.log("\nThe completion comment reaches the email");
     : bad("some of the composer's copy promises an email regardless of configuration");
 }
 
+/* ── the profile cache, and the Preview Agent tab it broke ──────────────────
+   Reported 9/28/2026: on production, with Hiscox active, Preview Agent opened
+   showing SHADY BLINDS. Measured on the reporter's own browser — localStorage
+   at 5,095KB against a ~5MB quota, `invoca-demo:profiles` alone 4,624KB across
+   52 profiles, and Hiscox absent from it. So `addProfile`'s write had been
+   throwing QuotaExceededError into a `catch {}` for some time, the profile
+   lived only in the tab that opened it, and the NEW tab Preview Agent opens
+   rebuilt the store from a cache that did not contain it. */
+{
+  /* ⚠️ `code()`, NOT `read()` — comments are stripped. The `alive` check below
+     otherwise matches THIS FILE'S OWN note explaining why the flag is gone,
+     and fails on correct code. Same fix audit:place and the vendor scan carry. */
+  const ctx = code("src/data/ProfileContext.tsx");
+
+  /uncaught|MAX_CACHE_BYTES/.test(ctx) && /MAX_CACHE_BYTES/.test(ctx)
+    ? ok("the profile cache has a byte budget")
+    : bad("the profile cache is unbounded again — it will refill and re-break");
+
+  /* ⚠️ THE WRITE MUST EVICT, NOT SWALLOW. A `setItem` in a bare catch is the exact
+     shape that failed silently for weeks. */
+  /function persistCached/.test(ctx) && /out\.splice\(victim, 1\)/.test(ctx)
+    ? ok("the cache write evicts oldest-first instead of failing")
+    : bad("persistCached no longer evicts");
+  !/localStorage\.setItem\(LS_PROFILES/.test(ctx.replace(/function persistCached[\s\S]*?\n}/, ""))
+    ? ok("nothing writes the cache except persistCached")
+    : bad("a raw setItem on the profile cache is back — it can fail silently");
+
+  /* ⚠️ THE ACTIVE ID MUST NOT BE CLOBBERED. Resetting it wrote the seed's id to
+     localStorage, so a Preview Agent tab did not merely render the wrong prospect,
+     it changed what the ORIGINAL tab thought was selected. */
+  !/if \(!byId\[profileId\]\) setProfileId\(DEFAULT_PROFILE_ID\)/.test(ctx)
+    ? ok("an unknown active id is kept, not reset to the seed")
+    : bad("the active id is being clobbered again — this corrupts the other tab too");
+
+  /* ⚠️ AND A MISSING PROFILE IS FETCHED. The cache is a convenience; the server is
+     the source of truth for a library demo. */
+  /fetch\(`\/api\/demos\/\$\{encodeURIComponent\(profileId\)\}`\)/.test(ctx)
+    ? ok("a missing active profile is hydrated from the server")
+    : bad("nothing recovers a library demo the cache does not hold");
+  /tried\.current\.add\(profileId\)/.test(ctx)
+    ? ok("hydration is attempted once per id, so an unknown id cannot loop")
+    : bad("the hydration guard is gone — an unknown id would refetch forever");
+
+  /* ⚠️⚠️ AND IT MUST NOT CARRY A CANCELLATION FLAG. With one, StrictMode's
+     double-mount cancels the first run while the `tried` guard skips the second,
+     so the fetch resolves into a discarded result and the fix does nothing in dev.
+     Measured exactly that: one request, 200 OK, empty cache. */
+  (() => {
+    const i = ctx.indexOf("tried.current.add(profileId)");
+    const body = ctx.slice(i, ctx.indexOf("}, [byId, profileId]);", i));
+    return !/\balive\b/.test(body);
+  })()
+    ? ok("no cancellation flag on the hydrate — StrictMode would make it a no-op")
+    : bad("an `alive` flag is back on the hydration effect; it does nothing in dev");
+
+  /render fallback|byId\[profileId\] \?\? byId\[DEFAULT_PROFILE_ID\]/.test(ctx)
+    ? ok("rendering still degrades safely while the fetch is in flight")
+    : bad("the render fallback is gone — a missing profile would crash");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);
