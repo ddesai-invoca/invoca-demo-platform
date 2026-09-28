@@ -8948,6 +8948,49 @@ typed variants of the reported case, the two adversarial non-matches (substring,
 tokens), the ≥2-token floor, an unrelated "Avi ..." title not being claimed, and `normTokens`'
 own output.
 
+## An EXTRA voice workflow is a real agent now, not a shell (9/28/2026)
+
+Asked for: a new Fidelity Life voice agent that *"asks me what I'm looking for and then gives
+me some options, like a new quote or an existing quote"*, takes *"at least four screening
+questions"*, then *"transfers me to the right department"*.
+
+⚠️⚠️ **THE DATA ALONE WOULD HAVE SHIPPED A CONVINCING SHELL, WHICH IS EXACTLY WHAT THE
+EXTRA-WORKFLOW NOTES ALREADY WARN ABOUT — checked before authoring anything.** Three gaps, all
+in the same place: for a non-booking VOICE extra, `brainOpts` was `undefined`, so `useBrain`
+fell back to `VOICE_WORKFLOW_SCOPE_PATH` — **the BUILT-IN voice workflow**. The new workflow
+would have drawn a correct diagram, listed in Agent Studio, and its Start Call would have run
+the OTHER agent: its use cases, routes and collect lists never read.
+
+**Three changes, each the smallest that closes its gap:**
+- **`brainOpts` passes `scopePath: pathname` for any voice extra.** That is what makes
+  `buildVoiceSystem`'s own rule — *"when the caller came from a page with a diagram, THE
+  DIAGRAM IS THE FLOW"* — apply to the one page that never passed its diagram.
+- **A voice extra registers an `agent` half**, widened from the booking-only branch. Without
+  it the Details tab reported "no agent configured", the opener could not be edited and Ask AI
+  had nowhere to land. A booking workflow gets the identical value, so nothing signed off moves.
+- ⚠️ **`WorkflowBranch.route` EXISTS NOW, AND ONLY FOR VOICE.** The old note said "NO `route`
+  FIELD HERE, DELIBERATELY" because the renderer draws `Route to <route>` INSTEAD OF the
+  action, which would blank an SMS workflow's authored actions. That reasoning is unchanged and
+  still holds — it just never covered a voice extra, where naming the desk aloud on transfer is
+  the whole point and is why `TreePath.route` exists at all. `extraTree` maps it through **only
+  for a Voice channel**, so the SMS rule is structural rather than a matter of care.
+
+### ⚠️⚠️ And a pre-existing bug the build exposed: a single-route path lost its team AND its collect list
+Found by reading the derived prompt, not by any test. Once a route carries `need` (a use-case
+title) the SHARED collect line is deliberately suppressed — sibling routes are alternatives,
+not a union — and the `p.routes.length === 1` branch printed neither the route's own list nor
+its `team`. So **a path with exactly ONE use case told the agent to collect nothing and to
+transfer to "the team that handles Need Support"**, while the multi-route branch beside it had
+always done both. Measured on the real workflow: the support path dropped "Policy Number,
+Consumer Name, Date of Birth" and refused to say "Existing Policy Support" even though the
+diagram named it. The old wording survives as the FALLBACK, which is what keeps every tree
+whose single route is the locked leaf byte-identical (`destination()` returns "" for a group
+label like "All Support Users").
+
+**`audit:voice` gained 6 checks.** Four sabotages fire: letting an SMS extra carry a route,
+carrying none at all, dropping the voice extra's `scopePath`, and reverting the single-route
+prompt fix.
+
 ## ⚠️⚠️ THE PROFILE CACHE FILLED UP AND BROKE PREVIEW AGENT (9/28/2026)
 
 Reported from production: *"i am currently in the Hiscox prospect but when i click on the

@@ -387,8 +387,14 @@ export function AgentWorkflow() {
        prospect's shared agent config, already edited on the Preview Agent page, and giving
        them a second home here is the duplicated-field trap that caused all three of the
        8/27 voice bugs. */
+    /* ⚠️⚠️ **WIDENED 9/25/2026 FROM "a booking workflow" TO "any VOICE extra".** The branch
+       below used to key off `bookingLocations`, so a non-booking voice extra registered NO
+       agent half at all — its Details tab reported "no agent configured", its opener could
+       not be edited, and Ask AI had nowhere to land. Same gap the booking workflow hit, one
+       door along. A booking workflow still gets exactly what it got (it is a voice extra and
+       the value is identical), so nothing signed off changes. */
     ...(baseAgent ? { agent: agentConfigOf(baseAgent) }
-      : extra?.bookingLocations?.length ? { agent: { greeting: extra.openingMessage ?? "" } }
+      : extra && !isSms ? { agent: { greeting: extra.openingMessage ?? "" } }
       : extra && isSms ? { agent: smsWorkflowAgentOf(extra) }
       : {}),
     /* ⚠️⚠️ **THE BUILT-IN SMS WORKFLOW REGISTERS AN `sms` HALF, AND THAT IS WHAT LETS THE
@@ -467,6 +473,14 @@ export function AgentWorkflow() {
   /* ⚠️ THE GREETING COMES FROM THE EFFECTIVE TREE, NOT THE RAW WORKFLOW, so an opener edited
      on the Details tab is the one the call opens with. Reading `extra.openingMessage` here
      instead would be the same landed-and-ignored shape fixed elsewhere today. */
+  /* ⚠️⚠️ **A VOICE EXTRA NOW POINTS THE CALL AT ITS OWN SCOPE, AND WITHOUT THIS IT WAS A
+     CONVINCING SHELL (9/25/2026).** `brainOpts` was `undefined` for a non-booking voice
+     extra, so `useBrain` fell back to `VOICE_WORKFLOW_SCOPE_PATH` — the BUILT-IN voice
+     workflow. The new workflow drew a correct diagram, listed in Agent Studio, and its Start
+     Call ran the OTHER agent: its use cases, its routes and its collect lists were never
+     read. That is precisely the failure `buildVoiceSystem`'s own note warns about ("when the
+     caller came from a page with a diagram, THE DIAGRAM IS THE FLOW") arriving through the
+     one page that never passed its diagram. */
   const brainOpts = created
     ? { scopePath: pathname, minimal: true }
     : extra?.bookingLocations?.length
@@ -478,6 +492,8 @@ export function AgentWorkflow() {
           slots: bookingSlots(profile.id),
         },
       }
+    : extra && !isSms
+    ? { scopePath: pathname }
     : undefined;
 
   /* ⚠️⚠️ **THE ROUTE IS GATED, NOT JUST THE SUB-NAV ROW.** With an `:id` that this prospect

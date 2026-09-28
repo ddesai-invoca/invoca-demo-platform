@@ -741,13 +741,24 @@ export const WorkflowBranch = z.object({
      row below "All Sales Inquiry Users" / "All Support Users", and this says which. Optional,
      defaulting to the sales side, so existing data parses. */
   intent: z.enum(["sales", "support"]).optional(),
-  /* ⚠️ NO `route` FIELD HERE, DELIBERATELY. `TreePath.route` exists because the voice
-     agent NAMES its destination aloud on transfer, and the locked leaf took that away. An
-     SMS agent books or hands off rather than transferring a live call, and the renderer
-     shows `Route to <route>` INSTEAD OF the action when route is set — so adding one here
-     would have made all four authored actions ("Book Appointment", "Warm Hand-off") dead
-     data that is stored and never drawn. Where a use case does hand off to a desk, its
-     ACTION says so. */
+  /* ⚠️⚠️ **`route` IS VOICE-ONLY, AND THE NOTE THIS REPLACES WAS RIGHT ABOUT SMS (9/25/2026).**
+     It read "NO `route` FIELD HERE, DELIBERATELY", because the renderer draws
+     `Route to <route>` INSTEAD OF the action — so on an SMS extra it would have made every
+     authored action ("Book Appointment", "Warm Hand-off") dead data that is stored and never
+     drawn. That reasoning is unchanged and still holds.
+
+     What it did not cover is a VOICE extra, where naming the destination aloud on transfer is
+     the entire point and is exactly why `TreePath.route` exists. Without it a voice extra's
+     use cases fall back to the locked leaf's title ("All Sales Inquiry Users"), which
+     `isGroupLabel()` then refuses to say out loud — so the agent qualifies a caller and
+     transfers them to nowhere it can name.
+
+     ⚠️ **THE SMS RULE IS MADE STRUCTURAL RATHER THAN LEFT TO CARE:** `extraTree` maps this
+     through ONLY for a Voice workflow, so setting it on an SMS one cannot replace its action.
+     Optional, so every workflow already on disk parses unchanged. Safe as `.optional()`
+     because `ExtraWorkflow` is not part of any generation schema — `sanitize()` would
+     otherwise force it onto the model (verified: no engine phase writes `extraWorkflows`). */
+  route: z.string().optional(),          // "New Business Consultation, Term Life"
 });
 export type WorkflowBranch = z.infer<typeof WorkflowBranch>;
 

@@ -18,7 +18,7 @@ import { ParticipantKind } from "../agent/node_modules/@livekit/rtc-node/dist/in
 import { endWhenRoomEmpties, EMPTY_ROOM_GRACE_MS } from "../agent/roomLifecycle.js";
 import { isStructuralChange } from "../src/data/editGuard";
 import { voiceSystemPrompt, smsSystemPromptForAudit } from "../engine/chat";
-import { emptyWorkflowGreeting } from "../src/data/workflowChrome";
+import { emptyWorkflowGreeting, extraTree } from "../src/data/workflowChrome";
 import { treeToVoicePaths } from "../src/data/voicePaths";
 import { voiceSpecFor, deriveVoiceSpec, agentConfigOf, specWithConfig, stepsForZips, toSteps, GREETING_RULE_PREFIX, type VoiceAgentSpec } from "../src/data/voiceAgentSpec";
 import { voiceCopy } from "../src/data/voiceCopy";
@@ -947,6 +947,72 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "the worker sets deleteRoomOnClose so a closed session leaves no room behind");
   check(/endWhenRoomEmpties\(ctx, session\)/.test(worker),
     "and arms the caller-left watchdog");
+}
+
+/* ── an EXTRA voice workflow is a real agent, not a shell (9/28/2026) ────────
+   Before this, a non-booking voice extra registered no agent half and passed no
+   `scopePath`, so `useBrain` fell back to the BUILT-IN voice workflow's scope: the
+   new workflow drew a correct diagram, listed in Agent Studio, and its Start Call
+   ran the other agent entirely. Its use cases, routes and collect lists were never
+   read — the exact "convincing shell" the extra-workflow notes warn about. */
+{
+  const wfVoice = {
+    slug: "v", label: "X - Voice", channel: "Voice", startLabel: "Voice", systemPrompt: "",
+    branches: [
+      { title: "New Quote", intent: "sales", action: "Qualify & Route",
+        route: "New Business Desk", chips: ["Date of Birth", "Coverage Amount"] },
+      { title: "Existing Policy", intent: "support", action: "Route to Service",
+        route: "Policy Support", chips: ["Policy Number"] },
+    ],
+  };
+  const tSpoken = extraTree(wfVoice as any);
+  const paths = treeToVoicePaths(tSpoken as any);
+  const teams = paths.flatMap((p: any) => p.routes.map((r: any) => r.team));
+  check(teams.includes("New Business Desk") && teams.includes("Policy Support"),
+    "a voice extra's use cases carry their own destination into the call flow",
+    teams.join(" | "));
+
+  /* ⚠️ AND AN SMS EXTRA MUST NOT. The renderer draws `Route to <route>` INSTEAD OF
+     the action, which would blank an SMS workflow's authored actions — the reason
+     `WorkflowBranch` had no `route` at all until now. `extraTree` gates it on the
+     channel so the rule is structural rather than a matter of care. */
+  const tTexted = extraTree({ ...wfVoice, channel: "SMS" } as any);
+  const smsRoutes = (tTexted.branches ?? []).flatMap((b: any) =>
+    (b.leaves ?? []).flatMap((l: any) => (l.paths ?? []).map((x: any) => x.route)));
+  check(smsRoutes.every((r: any) => !r),
+    "an SMS extra never carries a route, so its actions cannot be blanked",
+    JSON.stringify(smsRoutes));
+
+  /* ⚠️⚠️ A SINGLE-ROUTE PATH MUST NAME ITS TEAM AND COLLECT ITS FIELDS. This branch
+     predated use-case titles: once a route carries `need` the shared collect line is
+     suppressed, and the single-route branch printed neither the route's own list nor
+     its team — so a path with exactly ONE use case collected nothing and transferred
+     to "the team that handles Need Support". */
+  const prompt = voiceSystemPrompt({
+    customerName: "X", greeting: "Hi?", voicePaths: paths,
+    voiceRouting: { newQueue: "New Business Desk", supportQueue: "Policy Support", bookingTerm: "Quote" },
+  } as any);
+  check(/transfer them to Policy Support/.test(prompt),
+    "a single-route path names its own department rather than the intent");
+  check(/collecting Policy Number/.test(prompt),
+    "a single-route path still states what to collect");
+  /* The fallback must survive for a tree whose single route IS the locked leaf —
+     `destination()` returns "" for a group label, exactly as before. */
+  const groupOnly = voiceSystemPrompt({
+    customerName: "X", greeting: "Hi?",
+    voicePaths: [{ intent: "Need Support", routes: [{ team: "All Support Users", action: "escalate", collect: [] }] }],
+    voiceRouting: { newQueue: "A", supportQueue: "B", bookingTerm: "Quote" },
+  } as any);
+  check(/the team that handles Need Support/.test(groupOnly),
+    "a route that is only a group label keeps the old generic wording");
+}
+
+{
+  const wf = read("src/screens/AgentWorkflow.tsx");
+  check(/: extra && !isSms\s*\?\s*\{ scopePath: pathname \}/.test(wf),
+    "a voice extra points the call at its OWN diagram, not the built-in workflow");
+  check(/extra && !isSms \? \{ agent: \{ greeting: extra\.openingMessage/.test(wf),
+    "a voice extra registers an agent half, so its opener is configurable");
 }
 
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,

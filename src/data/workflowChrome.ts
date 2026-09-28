@@ -175,11 +175,18 @@ export const LEAF_INFORM = "Inform & Route";
 export function extraTree(wf: ExtraWorkflow): WorkflowTreeModel {
   /* A branch with no `intent` is a sales-side use case, which is what every authored one was
      before the field existed. */
+  /* ⚠️ `route` IS CARRIED ONLY ON A VOICE WORKFLOW — see the note on
+     `WorkflowBranch.route`. The renderer draws `Route to <route>` INSTEAD OF the
+     action, which is right for a spoken transfer and would silently blank an SMS
+     workflow's authored actions. Gating it here rather than trusting whoever
+     authors the data makes that rule structural. */
+  const spoken = /voice/i.test(wf.channel ?? "");
   const asPath = (b: (typeof wf.branches)[number]): TreePath => ({
     title: b.title,
     action: b.action,
     tone: b.tone,
     chips: b.chips,
+    ...(spoken && b.route?.trim() ? { route: b.route.trim() } : {}),
   });
   const sales = wf.branches.filter((b) => b.intent !== "support").map(asPath);
   const support = wf.branches.filter((b) => b.intent === "support").map(asPath);

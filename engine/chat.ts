@@ -801,7 +801,21 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
       };
       if (p.routes.length === 1) {
         const r2 = p.routes[0];
-        lines.push(`   - Then ${r2.action.toLowerCase()}, confirm, and transfer them to the team that handles ${p.intent}.`);
+        /* ⚠️⚠️ **A SINGLE-ROUTE PATH LOST BOTH ITS COLLECT LIST AND ITS DESTINATION
+           (found 9/25/2026).** This line predates use-case titles. Once a route carries
+           `need`, the SHARED collect line above is deliberately suppressed (sibling routes
+           are alternatives, not a union) — and this branch never printed the route's own
+           list to replace it, nor its `team`, so a path with exactly ONE use case told the
+           agent to collect NOTHING and to transfer to "the team that handles Need Support".
+           The multi-route branch below has always done both. Measured on a real workflow:
+           the support path dropped "Policy Number, Consumer Name, Date of Birth" and refused
+           to say "Existing Policy Support" even though the diagram named it.
+           ⚠️ The old wording survives as the FALLBACK, which is what keeps every tree whose
+           single route is the locked leaf itself byte-identical: `destination()` returns ""
+           for a group label like "All Support Users", exactly as before. */
+        const own = answered ? dedupeCollect(r2.collect ?? []) : [];
+        const dest = destination(r2.team) || `, then transfer them to the team that handles ${p.intent}`;
+        lines.push(`   - Then ${r2.action.toLowerCase()}${own.length ? `, collecting ${own.join(", ")}` : ""}, confirm${dest}.`);
         lines.push(...nodeLines(r2, "   - "));
       } else {
         lines.push(`   - Then hand off to whichever of these fits what they told you, confirming before you transfer:`);
