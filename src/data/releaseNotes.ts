@@ -66,6 +66,13 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-09-29",
+    title: "The AI Agent Conversion dashboard talks about interactions, not calls",
+    changes: [
+      i("On the AI Agent Conversion dashboard, the breakdown tables now read \"Interaction Outcome Summary\" and their first column is simply \"Count\" — that dashboard covers lead forms and voice together, so calling every row a call undersold it. Every other dashboard keeps the platform's own \"Call Outcome Summary\" and \"Call Count\" wording, and Ask AI can still rename these columns."),
+    ],
+  },
+  {
     date: "2026-09-28",
     title: "The SMS agent holds off on pricing, and Preview Agent opens the right prospect",
     changes: [

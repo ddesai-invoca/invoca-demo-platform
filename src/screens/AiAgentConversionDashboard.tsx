@@ -8,6 +8,9 @@ import { StackedBarChart } from "../components/StackedBarChart";
 import type { KpiGroup, Breakdown, ConversionCard as ConversionCardT } from "../data/schema";
 import { fitCells } from "../components/chartFit";
 import { tileId } from "../data/tileId";
+/* ⚠️ THIS SCREEN'S OWN WORDING, applied to the BASE so an Ask AI rename still wins.
+   See the header of aiAgentLabels.ts for why it is not a data edit. */
+import { interactionLabels } from "../data/aiAgentLabels";
 
 /* AI Agent Conversion Dashboard (3rd dashboard). Reuses the shared dashboard
    template (the dash-card / breakdown / kpi styling + DonutChart + StackedBarChart),
@@ -109,7 +112,7 @@ function DonutBreakdown({ bd, path }: { bd: Breakdown; path?: string }) {
 
 export function AiAgentConversionDashboard() {
   const { profile } = useProfile();
-  const d = useDashboardData(profile.reports.aiAgentConversion);
+  const d = useDashboardData(interactionLabels(profile.reports.aiAgentConversion));
   if (!d) {
     return <div className="dash-page"><div className="placeholder"><h2>No dashboard data</h2><p className="muted">This dashboard isn't set up for {profile.customerName} yet.</p></div></div>;
   }

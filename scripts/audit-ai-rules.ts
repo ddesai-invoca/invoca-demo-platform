@@ -30,6 +30,7 @@ import { smsSystemPromptForAudit, __buildVoiceSystemForTest } from "../engine/ch
 import { CustomerProfile } from "../src/data/schema.ts";
 import { sweepValue } from "../engine/dashSweep.ts";
 import { tollFreeNumber } from "../src/data/smsContactNumber.ts";
+import { interactionLabels } from "../src/data/aiAgentLabels.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -2118,6 +2119,73 @@ console.log("\nThe built-in SMS workflow template");
   /smsPlaybook\.providesEstimate/.test(asst) && /BOOLEAN/.test(asst)
     ? ok("the assistant is told the exact path and that it is a boolean")
     : bad("Ask AI is not told about smsPlaybook.providesEstimate — nothing could enable pricing");
+}
+
+/* ── the AI Agent Conversion dashboard's own wording (9/29/2026) ──────────── */
+console.log("\nAI Agent Conversion: its own wording, on the base\n");
+{
+  /* ⚠️ Calls the REAL function against a real breakdown shape, rather than grepping —
+     a grep passes against `if (false && ...)`. */
+  const bd = (t: string, cols: string[]) =>
+    ({ title: "Calls by Source", tableTitle: t, metricColumns: cols, rows: [], hasDonut: true }) as never;
+  const view = (bds: unknown[]) => ({ breakdowns: bds } as never);
+
+  const renamed = interactionLabels(view([bd("Source: Call Outcome Summary", ["Call Count", "Quote Discussed (Percent)"])])) as
+    { breakdowns: { tableTitle: string; metricColumns: string[] }[] };
+  renamed.breakdowns[0].tableTitle === "Source: Interaction Outcome Summary"
+    ? ok("the table title reads Interaction Outcome Summary")
+    : bad(`the table title was not renamed: ${renamed.breakdowns[0].tableTitle}`);
+  renamed.breakdowns[0].metricColumns[0] === "Count"
+    ? ok("the Call Count column reads Count")
+    : bad(`the metric column was not renamed: ${renamed.breakdowns[0].metricColumns[0]}`);
+
+  /* ⚠️ THE DIMENSION PREFIX AND EVERY OTHER COLUMN SURVIVE. A blanket rewrite of the
+     whole string would lose "Source: " and the neighbouring percent columns. */
+  renamed.breakdowns[0].tableTitle.startsWith("Source: ")
+    ? ok("the breakdown's own dimension prefix survives the rename")
+    : bad("the rename ate the dimension prefix");
+  renamed.breakdowns[0].metricColumns[1] === "Quote Discussed (Percent)"
+    ? ok("the other metric columns are untouched")
+    : bad("a neighbouring metric column was rewritten");
+
+  /* ⚠️ IDENTITY WHEN THERE IS NOTHING TO DO, so an unaffected profile costs no re-render. */
+  const clean = view([bd("Source: Interaction Outcome Summary", ["Count"])]);
+  interactionLabels(clean) === clean
+    ? ok("a view with neither string comes back as the same object")
+    : bad("the rename allocates even when nothing changes");
+
+  /* ⚠️ AND IT MUST SURVIVE A PROFILE THAT CARRIES NO SUCH REPORT AT ALL. */
+  (() => { try { interactionLabels(undefined as never); interactionLabels(view([])); return true; } catch { return false; } })()
+    ? ok("an absent or empty report is handled rather than thrown on")
+    : bad("the rename throws on a profile with no aiAgentConversion");
+
+  /* ⚠️⚠️ **APPLIED TO THE ARGUMENT OF `useDashboardData`, NOT TO ITS RESULT.** After the
+     merge it would clobber a deliberate Ask AI rename of these very columns and the
+     drawer would report success while the label snapped back. */
+  const aac = readCode("src/screens/AiAgentConversionDashboard.tsx");
+  /useDashboardData\(interactionLabels\(profile\.reports\.aiAgentConversion\)\)/.test(aac)
+    ? ok("the rename is the BASE handed to useDashboardData")
+    : bad("the rename is no longer applied to the base — an Ask AI override would be clobbered");
+
+  /* ⚠️⚠️ **AND IT STAYS ON THIS SCREEN.** Both strings are shared platform labels; the
+     Marketing dashboard and the four other screens that draw "Call Count" must not move. */
+  const others = ["MarketingDashboard.tsx", "LocationComparisonDashboard.tsx",
+    "FranchiseAiDashboard.tsx", "InsightsDashboard.tsx"];
+  const leaked = others.filter((f) => /interactionLabels/.test(readCode(`src/screens/${f}`)));
+  leaked.length === 0
+    ? ok("no other dashboard applies this screen's wording")
+    : bad(`the rename leaked onto another screen: ${leaked.join(", ")}`);
+
+  /* ⚠️ AND IT IS NOT A DATA EDIT — the JSON still says Call Outcome Summary, so the
+     Marketing dashboard (which reads the same words from its own slice) is unchanged. */
+  (() => {
+    const dir = "src/data/generated";
+    const f = fs.readdirSync(dir).filter((x) => x.endsWith(".json")).slice(0, 12);
+    const stale = f.filter((x) => !/Call Outcome Summary/.test(fs.readFileSync(path.join(dir, x), "utf8")));
+    return stale.length === 0;
+  })()
+    ? ok("the profiles on disk still carry the platform's own wording")
+    : bad("a profile was rewritten on disk — that renames it on every other dashboard too");
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");
