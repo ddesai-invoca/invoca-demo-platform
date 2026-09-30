@@ -12,7 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { isLockedEdit, isStructuralChange, routeEdits } from "../src/data/editGuard.ts";
-import { voiceSpecFor } from "../src/data/voiceAgentSpec.ts";
+import { voiceSpecFor, specWithConfig, agentConfigOf } from "../src/data/voiceAgentSpec.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { collectNames } from "../src/data/workflowDrawers.ts";
 import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF } from "../src/data/workflowChrome.ts";
@@ -31,6 +31,8 @@ import { CustomerProfile } from "../src/data/schema.ts";
 import { sweepValue } from "../engine/dashSweep.ts";
 import { tollFreeNumber } from "../src/data/smsContactNumber.ts";
 import { interactionLabels } from "../src/data/aiAgentLabels.ts";
+import { withoutReminderPromise, withoutReminderPromises } from "../src/data/agentDefaults.ts";
+import { effectiveSmsConfig } from "../src/data/smsTemplate.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -1530,9 +1532,24 @@ console.log("\nThe built-in SMS workflow template");
       : bad("editGuard blocks the first write to an added segment");
     /* ⚠️ AND THE CONFIG READ TOLERATES AN OVERRIDE SAVED BEFORE A FIELD EXISTED — without the
        base spread, one click on an added segment threw and the boundary tore down the whole
-       diagram, so EVERY node stopped opening. */
-    /\{ \.\.\.smsBase, \.\.\.\(\(tree as \{ sms\?: Partial<typeof smsBase> \}\)\.sms \?\? \{\}\) \}/
-      .test(readAny("src/screens/AgentWorkflow.tsx"))
+       diagram, so EVERY node stopped opening.
+       ⚠️⚠️ **RE-AIMED 9/29/2026, NOT LOOSENED.** The spread used to sit inline in
+       `AgentWorkflow.tsx` and moved into `effectiveSmsConfig` when three call sites were
+       given one definition, so this went red on correct code. The INVARIANT was never
+       "the spread is written in that screen" — it is that the base is spread under the
+       stored override wherever the effective config is built, which is what is asserted
+       now. Tested BEHAVIOURALLY rather than by pattern, which is strictly stronger: a
+       grep passes against a spread inside dead code. */
+    (() => {
+      const f = fs.readdirSync("src/data/generated").filter((x) => x.endsWith(".json"))[0];
+      const prof = JSON.parse(fs.readFileSync(path.join("src/data/generated", f), "utf8")) as CustomerProfile;
+      /* An override from before a field existed: `intents` present, everything else absent. */
+      const old = { intents: { sales: { looksLike: "x", rules: [] }, support: { looksLike: "y", rules: [] } } };
+      const cfg = effectiveSmsConfig(prof, old) as Record<string, unknown>;
+      /* The base's own keys must still be there, or a node click reads undefined and throws. */
+      const baseKeys = Object.keys(smsConfigFor(prof));
+      return baseKeys.every((k) => k in cfg);
+    })()
       ? ok("the base is spread under the stored config, so a missing field cannot throw")
       : bad("a demo whose override predates a field would crash the diagram on a node click");
   }
@@ -2186,6 +2203,333 @@ console.log("\nAI Agent Conversion: its own wording, on the base\n");
   })()
     ? ok("the profiles on disk still carry the platform's own wording")
     : bad("a profile was rewritten on disk — that renames it on every other dashboard too");
+}
+
+/* ── the SMS agent promises no reminder text when it books (9/29/2026) ────── */
+console.log("\nSMS agent: no reminder-text promise on a booking\n");
+{
+  const RE = /\b(?:reminder\s+(?:text|message|sms|call)|text\s+reminder|reminder\s+before)\b/i;
+
+  /* ⚠️ THE CUT IS SURGICAL: the rest of the rule is what tells the agent to confirm the
+     ZIP, share a range and propose a time. Dropping the whole rule takes all of it. */
+  const rule = "Estimate then book: Confirm we cover your ZIP, share a preliminary price range, recommend a consultation for an exact quote, propose a specific day and time, and confirm you'll get a reminder text before your appointment with a number to call.";
+  const cut = withoutReminderPromise(rule);
+  !RE.test(cut)
+    ? ok("the promise is gone from a brand rule")
+    : bad("the reminder promise survived the cut");
+  /Confirm we cover your ZIP/.test(cut) && /propose a specific day and time/.test(cut)
+    ? ok("the rest of the rule survives the cut")
+    : bad(`the cut ate the rule's substance: ${cut}`);
+  /[.!?]$/.test(cut) && !/(,|\band\b|;)\s*[.!?]$/i.test(cut)
+    ? ok("the cut rule ends cleanly, with no dangling connector")
+    : bad(`the cut left dangling punctuation: ${cut}`);
+
+  /* ⚠️⚠️ **IT CUTS TO THE END OF THE SENTENCE, NOT THE END OF THE STRING.** In an approved
+     Q&A answer the promise is mid-paragraph, and cutting to the end would take the agent's
+     own follow-up question with it. */
+  const qa = withoutReminderPromise("I can set up a consultation at a day and time that works for you, and you will get a reminder text with a number to call. When are you free?");
+  !RE.test(qa) && /When are you free\?/.test(qa)
+    ? ok("a mid-paragraph promise is cut without losing the sentence after it")
+    : bad(`the sentence after the promise was lost: ${qa}`);
+
+  /* ⚠️ A string that is ONLY the promise leaves nothing worth keeping. */
+  withoutReminderPromise("You'll get a reminder text shortly before with a number to call.") === ""
+    ? ok("a rule that is only the promise is dropped entirely")
+    : bad("a promise-only rule was left as a stub");
+  /* ⚠️ AND IDENTITY when there is nothing to cut. */
+  (() => { const t = "Always confirm the ZIP code first."; return withoutReminderPromise(t) === t; })()
+    ? ok("a string with no promise comes back untouched")
+    : bad("the cut rewrites strings that never mentioned a reminder");
+
+  /* ⚠️⚠️ **SWEPT OVER EVERY PROFILE ON DISK, THROUGH THE REAL PROMPT BUILDER — because the
+     promise had TWO homes and fixing one was measured to be a no-op.** Every surviving
+     mention must be the prohibition itself. */
+  (() => {
+    const dirs = ["src/data/generated", "engine/event-seeds"];
+    let swept = 0, leaks = 0, hadBefore = 0; const names: string[] = [];
+    for (const d of dirs) {
+      if (!fs.existsSync(d)) continue;
+      for (const f of fs.readdirSync(d).filter((x) => x.endsWith(".json"))) {
+        let raw: { profile?: unknown } & Record<string, unknown>;
+        try { raw = JSON.parse(fs.readFileSync(path.join(d, f), "utf8")); } catch { continue; }
+        const prof = (raw.profile ?? raw) as CustomerProfile;
+        if (!prof?.reports?.agentConfig) continue;
+        swept++;
+        const before = smsSystemPromptForAudit(buildSmsBrain(prof, prof.reports.agentConfig));
+        if (RE.test(before)) hadBefore++;
+        const norm = withoutReminderPromises(prof);
+        const after = smsSystemPromptForAudit(buildSmsBrain(norm, norm.reports.agentConfig));
+        const bad2 = after.split("\n").filter((l) => RE.test(l) && !/Do NOT promise a reminder text/.test(l));
+        if (bad2.length) { leaks++; if (names.length < 3) names.push(`${f}: ${bad2[0].slice(0, 90)}`); }
+      }
+    }
+    /* ⚠️ A SWEEP THAT MATCHES NOTHING REPORTS SUCCESS FOREVER, so assert it had something
+       to fix in the first place. */
+    if (swept < 20) return bad(`only ${swept} profiles swept — the parse is probably broken`);
+    if (!hadBefore) return bad("no profile carried the promise before normalizing — this check proves nothing");
+    return leaks === 0
+      ? ok(`${swept} profiles: the built prompt instructs no reminder promise (${hadBefore} carried one)`)
+      : bad(`${leaks} profile(s) still instruct a reminder promise: ${names.join(" | ")}`);
+  })();
+
+  /* ⚠️⚠️ **THE STORED OVERRIDE IS THE OTHER COPY, AND IT IS WHAT REACHED THE AGENT.**
+     `smsConfigFor` seeds the workflow's intent rules from the profile, and an SE opening
+     that page freezes them into their own override — where no read-time fix on the profile
+     can reach. Verified in the browser before this existed: `brain.rules` was clean while
+     `brain.workflow.intents[0].rules[2]` still promised it. */
+  (() => {
+    const f = fs.readdirSync("src/data/generated").filter((x) => x.endsWith(".json"))[0];
+    const prof = JSON.parse(fs.readFileSync(path.join("src/data/generated", f), "utf8")) as CustomerProfile;
+    const stale = { intents: { sales: { looksLike: "x", rules: ["Estimate then book: confirm the ZIP, and confirm you'll get a reminder text before your appointment with a number to call."] }, support: { looksLike: "y", rules: [] } } };
+    const cfg = effectiveSmsConfig(prof, stale);
+    return !cfg.intents.sales.rules.some((r) => RE.test(r));
+  })()
+    ? ok("a STALE stored override's rules are repaired at read time")
+    : bad("a stored override can still carry the promise into the prompt");
+
+  /* ⚠️ ONE DEFINITION OF THE EFFECTIVE CONFIG — three call sites used to spread it by hand,
+     so a fourth could quietly skip the repair. */
+  (() => {
+    const sites = ["src/screens/PhonePreview.tsx", "src/components/WorkflowChatPreview.tsx", "src/screens/AgentWorkflow.tsx"];
+    const handRolled = sites.filter((f) => /\{\s*\.\.\.smsConfigFor\(profile\)\s*,\s*\.\.\./.test(readCode(f)));
+    return handRolled.length === 0 && sites.every((f) => /effectiveSmsConfig\(/.test(readCode(f)));
+  })()
+    ? ok("all three call sites share one effective-config definition")
+    : bad("a call site still spreads the SMS config by hand — it would skip the repair");
+
+  /* ⚠️ THE FLOW ITSELF NO LONGER PROMISES ONE, and says so explicitly as a backstop. */
+  /* ⚠️⚠️ **RE-AIMED 9/29/2026, NOT LOOSENED — and it fired on its own correct code first,
+     which is the check doing its job.** It used to assert the promise wording was ABSENT
+     from the prompt builder. That was right while the default was a hardcoded prohibition
+     and became wrong the moment the default became a FLAG: the wording now legitimately
+     exists, in the branch an SE turns on. The invariant that survives is the one that
+     always mattered — the phrase may only appear under `promisesReminder`, never
+     unconditionally. */
+  const chat = readCode("engine/chat.ts");
+  (() => {
+    const at = chat.indexOf("tell them they'll get a reminder text");
+    if (at < 0) return bad("the promise wording is gone entirely — the flag's true branch says nothing");
+    /* The nearest `promisesReminder` before it must be its own ternary test. */
+    const before = chat.slice(Math.max(0, at - 300), at);
+    return /promisesReminder\s*$|promisesReminder[\s\S]*\?[\s\S]*$/.test(before)
+      ? ok("the promise wording appears ONLY inside the flag's true branch")
+      : bad("the promise wording is unconditional again — no SE edit could turn it off");
+  })();
+  /Do NOT promise a reminder text/.test(chat)
+    ? ok("and the false branch says so explicitly, so a stale rule cannot reintroduce it")
+    : bad("the false branch no longer forbids it — a stale override could reintroduce the promise");
+
+  /* ⚠️ AND THE GENERATOR STOPS WRITING IT, so a prospect generated tomorrow is born clean. */
+  !/reminder text before the appointment with a number to call/i.test(readCode("engine/core.ts"))
+    ? ok("the generator no longer writes the promise into a brand rule")
+    : bad("engine/core.ts still asks for the reminder promise");
+
+  /* ⚠️ APPLIED AT BOTH PROFILE ENTRY POINTS, like the pricing clamp — one and not the other
+     is how a library demo behaves differently from a bundled one. */
+  const ctx = readCode("src/data/ProfileContext.tsx");
+  /withoutReminderPromises\(/.test(ctx) && /normalize\(p\)/.test(ctx) && /normalize\(raw\)/.test(ctx)
+    ? ok("the strip runs through normalize(), which both entry points call")
+    : bad("the strip is missing from an entry point");
+
+  /* ⚠️ VOICE IS UNTOUCHED BY CONSTRUCTION: brandConversationRules is the SMS playbook and
+     must never reach the voice prompt, which this repo already asserts. */
+  !/brandConversationRules/.test(readCode("engine/chat.ts").split("buildVoiceSystem")[1] ?? "")
+    ? ok("the voice prompt still never reads the SMS brand rules")
+    : bad("the SMS brand rules leaked into the voice prompt");
+}
+
+/* ── STANDING GUARD: a product default is a FLAG, never a hardcoded prohibition ── */
+console.log("\nAgent prompts: no new hardcoded product defaults\n");
+{
+  /* ⚠️⚠️ **WHY THIS TRIPWIRE EXISTS.** The standing rule is that Ask AI can change
+     everything either agent does. An absolute line in the prompt ("Do NOT promise a
+     reminder text") cannot be reached by any edit, so it silently outranks an SE:
+     measured, such a line beat a deliberate edit **3 runs out of 3** while the drawer
+     reported success. The fix each time is to key the behaviour off a config value the
+     assistant is told about — `providesEstimate` and `promisesReminder` are both that
+     shape — so this check makes adding a NEW absolute a deliberate act rather than a
+     quiet one.
+
+     ⚠️ **IT DOES NOT JUDGE WHETHER AN ABSOLUTE IS RIGHT, and it must not pretend to.**
+     Most of the list below are genuine CHANNEL or FLOW invariants, not product opinions:
+     no emojis on a line read aloud by TTS, do not skip a step, do not say a calendar
+     date because the screen owns it, do not read a screen label out loud. Those belong
+     hardcoded. What the check does is force somebody to look and decide, which is all a
+     tripwire can honestly do.
+
+     ⚠️ A REMOVAL FAILS TOO. Silently dropping one loosens the agent with nothing
+     recording that it was meant; the list is only worth having while it stays true. */
+  const KNOWN_ABSOLUTES = new Set([
+    /* ⚠️ The voice pricing line appears TWICE below — once forbidding and once permitting —
+       because it is now a ternary on `agent.quotesPrices`. Both halves keep the absolute
+       "only qualify and route", which is the routing agent's defining job rather than an
+       opinion about the business, so both are listed rather than flagged. */
+    "${}Follow these instructions for this route, in order, and do not skip",
+    "- Do not invent specific prices; pricing/details are handled at the ${",
+    "- FIRST ask for their ZIP code. SERVICE-AREA CHECK: treat \"12345\" as t",
+    "- NEVER ask for anything you already have. If the caller already gave ",
+    "- NEVER quote prices, availability, or promotions. NEVER attempt to re",
+    "- NEVER read out a user-group label such as \"All Sales Inquiry Users\" ",
+    "- NEVER use emojis, markdown, or formatting — your words are read alou",
+    "- NEVER use emojis.",
+    "- You MAY give a rough preliminary price RANGE or general availability",
+    "- the sales team: a new enquiry — buying, booking, pricing, availabili",
+    "2. Qualify — ask these questions ONE AT A TIME, IN THIS EXACT ORDER, w",
+    "3. COLLECT, ONE QUESTION PER MESSAGE, waiting for each answer before a",
+    "4. Schedule: proactively OFFER a specific available day and time yours",
+    "5. Confirm: once they agree, restate the confirmed ${} day and time an",
+    "ASK NOTHING BEYOND THE FLOW ABOVE. The only things you ask are the ope",
+    "ASK NOTHING BEYOND THE FLOW ABOVE. This workflow has no actions config",
+    "Ask these questions ONE AT A TIME, IN THIS EXACT ORDER, waiting for ea",
+    "CALL FLOW — you BOOK the ${} on this call yourself. You never transfer",
+    "CONVERSATION FLOW — follow this path start to finish. Adapt your WORDI",
+    "If it is genuinely unclear, ask ONE short clarifying question, then de",
+    "NEVER quote prices, availability or promotions, and never try to resol",
+    "PLACEHOLDERS: the lines above contain ${}. These are fill-ins, NOT wor",
+    "Then follow that intent's flow, ONE step at a time, and never skip ahe",
+    "\\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ",
+    "\\n2. THEN FOLLOW THESE STEPS EXACTLY, in order, and do not skip one:",
+    "a. Ask for whatever reference they have so the team can find them: the",
+    "c. Do NOT try to solve it. Once you have who they are AND what the iss",
+    "}\" Then follow the caller's answer. Never route or book a caller to a ",
+    "• ASK NOTHING BEYOND THE FLOW ABOVE. Do not add your own qualifying qu",
+    "• NEVER ask for payment details, card numbers, or account numbers.",
+    "• NEVER offer, imply, or agree to a time that is not in the list above",
+    "• NEVER say a calendar date (no \"the 20th\", no \"09/20\"). The weekday a",
+    "• NEVER transfer, route, or promise a callback from a department.",
+    "• the sales team — a new enquiry: buying, booking, pricing, availabili",
+  ]);
+
+  const chat = readCode("engine/chat.ts");
+  const ABS = /\b(NEVER|Never|never|Do NOT|DO NOT|do not|Do not)\b/;
+  const found = new Set(
+    (chat.match(/`[^`]*`/g) ?? [])
+      .filter((l) => ABS.test(l) && l.length < 400)
+      .map((l) => l.replace(/\$\{[^}]*\}/g, "${}").replace(/\s+/g, " ").replace(/^`|`$/g, "").trim().slice(0, 70)),
+  );
+
+  /* ⚠️ A SCAN THAT MATCHES NOTHING REPORTS SUCCESS FOREVER. */
+  if (found.size < 20) {
+    bad(`only ${found.size} prompt rules parsed — the scan is probably broken, not the prompt`);
+  } else {
+    const added = [...found].filter((f) => !KNOWN_ABSOLUTES.has(f));
+    const gone = [...KNOWN_ABSOLUTES].filter((k) => !found.has(k));
+    added.length === 0
+      ? ok(`${found.size} absolute prompt rules, all accounted for`)
+      : bad(
+          `a NEW absolute rule was added to an agent prompt. Either key it off a config value ` +
+          `the assistant is told about (see smsPlaybook.providesEstimate / promisesReminder), or ` +
+          `add it to KNOWN_ABSOLUTES with a note saying why it is a channel invariant rather than ` +
+          `a product opinion: ${added.map((a) => JSON.stringify(a)).join(", ")}`,
+        );
+    gone.length === 0
+      ? ok("no absolute rule was silently dropped")
+      : bad(`an absolute rule disappeared from the prompt — confirm it was meant, then update the list: ${gone.map((g) => JSON.stringify(g)).join(", ")}`);
+  }
+
+  /* ⚠️⚠️ **AND THE FIRST WRITE MUST SURVIVE `editGuard`.** No profile carries this flag
+     until somebody asks for it, so the first "have it mention the reminder text" is an
+     `undefined -> boolean` TYPE FLIP, which the guard refuses by default. Without the
+     allow-list entry the feature is refused on first use and works every time after —
+     the exact trap the greeting, `serviceZips` and the voice picker each hit. Calls the
+     REAL guard rather than grepping the list, because a grep passes against an entry in
+     dead code. */
+  !isStructuralChange(undefined, true, "smsPlaybook.promisesReminder")
+    ? ok("the FIRST flip of the reminder flag is allowed through the guard")
+    : bad("editGuard refuses the first write to smsPlaybook.promisesReminder — Ask AI could never turn it on");
+  /* ⚠️ And a later change is an ordinary boolean edit, which was never at risk but is the
+     half that proves the check above is testing the absent case specifically. */
+  !isStructuralChange(true, false, "smsPlaybook.promisesReminder")
+    ? ok("and turning it back off is an ordinary edit")
+    : bad("editGuard refuses turning the reminder flag off");
+
+  /* ── the VOICE agent obeys the same principle (9/29/2026) ─────────────── */
+
+  /* ⚠️⚠️ **THE ASYMMETRY THIS FIXES: the SMS agent asked a boolean about pricing while the
+     voice prompt carried an absolute no Ask AI edit could reach.** One business, one
+     question, two different answers depending on the channel. Built from the REAL spec and
+     read out of the REAL prompt rather than grepped, because a grep passes against a branch
+     nothing selects. */
+  (() => {
+    const f = fs.readdirSync("src/data/generated").filter((x) => x.endsWith(".json"))[0];
+    const prof = JSON.parse(fs.readFileSync(path.join("src/data/generated", f), "utf8")) as CustomerProfile;
+    const base = voiceSpecFor(prof);
+    if (!base) return bad("no voice spec derived — the pricing-flag check proves nothing");
+    const promptFor = (flag: boolean | undefined) => {
+      const spec = specWithConfig(base, {
+        ...agentConfigOf(base), ...(flag === undefined ? {} : { quotesPrices: flag }),
+      } as never);
+      return __buildVoiceSystemForTest({
+        customerName: prof.customerName, industry: prof.industry,
+        voiceRules: spec.rules, voiceSteps: spec.informSteps,
+        voiceQuotesPrices: spec.quotesPrices ? true : undefined,
+      } as never);
+    };
+    const FORBID = /NEVER quote prices, availability, or promotions/;
+    const ALLOW = /You MAY give a rough preliminary price RANGE/;
+    const ROUTE = /NEVER attempt to resolve a support issue yourself/;
+    const off = promptFor(undefined), on = promptFor(true), back = promptFor(false);
+
+    FORBID.test(off) && !ALLOW.test(off)
+      ? ok("voice: an untouched agent still refuses to quote a price (default unchanged)")
+      : bad("voice: the DEFAULT changed — every signed-off demo would start quoting prices");
+    ALLOW.test(on) && !FORBID.test(on)
+      ? ok("voice: the flag lets an SE turn pricing on")
+      : bad("voice: agent.quotesPrices does not reach the prompt — pricing is un-overridable");
+    FORBID.test(back) && !ALLOW.test(back)
+      ? ok("voice: and turning it back off restores the refusal")
+      : bad("voice: the flag is one-way");
+    /* ⚠️⚠️ **THE ROUTING HALF OF THAT SENTENCE MUST SURVIVE BOTH BRANCHES.** It is what the
+       agent IS, not an opinion about the business; losing it with the pricing half would
+       silently turn a qualify-and-route agent into one that tries to fix problems. */
+    ROUTE.test(off) && ROUTE.test(on) && ROUTE.test(back)
+      ? ok("voice: 'only qualify and route' stays absolute in BOTH branches")
+      : bad("voice: the routing rule was lost with the pricing rule");
+  })();
+
+  /* ⚠️⚠️ **THE SPEC -> BRAIN MAPPING IS CHECKED SEPARATELY, AND IT HAD TO BE: the prompt
+     checks above BUILD the brain themselves, so they cannot see the app getting the default
+     wrong.** Found by sabotage — flipping the default on in `voiceSession.ts` left every
+     check above green while every signed-off demo would have started quoting prices.
+     ⚠️ A SOURCE ASSERTION rather than a call, because the mapping lives inside `useBrain`,
+     a React hook node cannot invoke (the same wall that sent the chrome constants to
+     `workflowChrome.ts`). It pins the exact GATE, not merely the field's presence, so a
+     reversed polarity reddens — which is what the sabotage proved. */
+  (() => {
+    const vs = readCode("src/data/voiceSession.ts");
+    const line = vs.split("\n").find((l) => l.includes("voiceQuotesPrices:"));
+    if (!line) return bad("voiceQuotesPrices never reaches the brain — the voice flag is inert");
+    /* Sent only when the spec actually says true, and never on a minimal or booking flow. */
+    return /minimal \|\| booking \|\| !spec\?\.quotesPrices \? undefined : true/.test(line)
+      ? ok("voice: the brain carries the flag ONLY when set, and never on a minimal or booking flow")
+      : bad(`voice: the spec -> brain gate changed — the default may have flipped: ${line.trim()}`);
+  })();
+
+  /* ⚠️ THE FIRST FLIP IS undefined -> boolean, so the guard has to allow it by name. */
+  !isStructuralChange(undefined, true, "agent.quotesPrices")
+    ? ok("voice: the FIRST flip of the pricing flag is allowed through the guard")
+    : bad("voice: editGuard refuses agent.quotesPrices — Ask AI could never turn it on");
+
+  /* ⚠️⚠️ **AND THE ASSISTANT MUST NOT STILL POINT PRICING AT `agent.rules`.** Its example
+     list used to name `"never quote a price"` as the kind of prohibition that belongs in
+     the free-text rules array. With a flag owning the behaviour that advice produces a
+     self-contradicting prompt — a rule saying one thing and the STYLE line built from the
+     flag saying the other — which this repo records as worse than either alone. */
+  (() => {
+    const a = readCode("engine/assistant.ts");
+    return /agent\.quotesPrices/.test(a) && !/prohibitions \("never quote a price"\)/.test(a);
+  })()
+    ? ok("voice: the assistant names the flag and no longer sends pricing to agent.rules")
+    : bad("voice: pricing is still pointed at agent.rules, or the flag is unnamed");
+
+  /* ⚠️ AND THE PRODUCT DEFAULTS THIS RULE EXISTS FOR ARE ALL REACHABLE. */
+  for (const [field, phrase] of [["providesEstimate", "price"], ["promisesReminder", "reminder text"]] as const) {
+    const named = new RegExp(`smsPlaybook\\.${field}`).test(readCode("engine/assistant.ts"));
+    const branches = new RegExp(`\\b${field}\\b[\\s\\S]{0,400}\\?`).test(chat);
+    named && branches
+      ? ok(`${field} is a flag the prompt branches on AND the assistant is told about`)
+      : bad(`${field} is not reachable by Ask AI (named=${named}, branches=${branches}) — "${phrase}" would be un-overridable`);
+  }
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");

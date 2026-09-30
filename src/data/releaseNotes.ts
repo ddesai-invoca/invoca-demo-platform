@@ -67,8 +67,10 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 export const RELEASES: Release[] = [
   {
     date: "2026-09-29",
-    title: "The AI Agent Conversion dashboard talks about interactions, not calls",
+    title: "A cleaner booking confirmation, and interaction wording on the AI dashboard",
     changes: [
+      i("When the SMS agent confirms an appointment it no longer says \"you'll get a reminder text shortly before with a number to call\" — nothing in the platform sends one, so it was committing the business to a follow-up that never arrives. This applies to every prospect, including demos already saved, and it covers the agent's own flow as well as the wording that was written into each prospect's brand rules and approved Q&A."),
+      i("Anything the platform decides for the SMS and voice agents is now something you can change with Ask AI rather than a rule baked into the agent. Ask the SMS agent to mention a reminder text when it books, or the voice agent to give a rough price range on a call, and it takes effect on the next message \u2014 the voice agent used to refuse outright with no way to change it, which was odd next to the SMS agent, where pricing was already yours to set."),
       i("On the AI Agent Conversion dashboard, the breakdown tables now read \"Interaction Outcome Summary\" and their first column is simply \"Count\" — that dashboard covers lead forms and voice together, so calling every row a call undersold it. Every other dashboard keeps the platform's own \"Call Outcome Summary\" and \"Call Count\" wording, and Ask AI can still rename these columns."),
     ],
   },

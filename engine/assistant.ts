@@ -276,10 +276,17 @@ function buildSystem(input: AssistantInput): string {
       `WHAT "agent" OWNS (how it talks, what it checks, how it sounds):`,
       `   - "agent.greeting" — the exact opening line, spoken word for word. "answer the phone with X" edits this.`,
       `   - "agent.qualifyQuestion" / "agent.qualifyFallback" — the question that sorts callers onto the paths, and the reprompt when the answer is unclear. You MAY rewrite either, including changing what the opening question sorts on, when that is what the user asked for. Keep it SPEAKABLE: a phone question offering six options is unusable, so sort on a small number of things and let the paths do the rest.`,
-      `   - "agent.rules" — an array of plain strings, appended to the prompt verbatim. ⚠️ THIS IS YOUR GENERAL-PURPOSE CHANNEL: any behaviour with no field of its own belongs here. Tone ("be warm with anxious callers"), prohibitions ("never quote a price"), judgement ("if they mention a competitor, acknowledge it and move on"), escalation ("offer a human the moment they sound frustrated"), pacing ("one question at a time"). Add, reword, reorder and remove them freely.`,
+      `   - "agent.rules" — an array of plain strings, appended to the prompt verbatim. ⚠️ THIS IS YOUR GENERAL-PURPOSE CHANNEL: any behaviour with no field of its own belongs here. Tone ("be warm with anxious callers"), prohibitions ("never mention our competitors by name"), judgement ("if they mention a competitor, acknowledge it and move on"), escalation ("offer a human the moment they sound frustrated"), pacing ("one question at a time"). Add, reword, reorder and remove them freely.`,
       `   - "agent.informSteps" — the NUMBERED steps the agent works through, as an array of PLAIN STRINGS ("1. Ask the caller for their zip code."). NOT objects: never emit {step, action, description}. This is the flow itself — reorder it, add a step, drop one, rewrite all of them. Renumber them yourself. You are NOT limited to the service-area check; if the user wants the agent to qualify on budget before booking, or confirm the address back, that is a step.`,
       `   - "agent.serviceZips" — an allow-list of in-area ZIPs; absent means it serves everywhere. "only cover 30097 and 30096" CREATES it. When you create or change it, REWRITE "agent.informSteps" in the same answer so the steps describe the same policy — steps that still say the agent serves everywhere are obeyed INSTEAD of the list.`,
       `   - "agent.outOfAreaScript" — what it says to an out-of-area caller. THE SCRIPT DECIDES WHAT HAPPENS NEXT: it may turn them away, or offer the nearest location and ask if that works. Write a COMPLETE spoken line with NO fill-in placeholders — never "[CLOSEST_LOCATION]", "[NAME]" or any bracketed token, because the agent reads this out loud. If the nearest location varies by caller, say so in the steps and let the agent name it.`,
+      /* ⚠️⚠️ **THE VOICE SIDE OF THE PRICING FLAG, AND NAMING IT IS WHAT MAKES IT REACHABLE.**
+         Unnamed, the model has no way to know a boolean exists: it would either decline or
+         write "you may quote a price" into `agent.rules`, which the STYLE line above it
+         contradicts outright — a self-contradicting prompt, which this repo records as worse
+         than either rule alone. The `agent.rules` example two entries up was deliberately
+         changed away from pricing for the same reason. */
+      `   - "agent.quotesPrices" — a BOOLEAN, false by default, deciding whether the agent may say a rough price or general availability out loud. Asked to let it quote a price, a ballpark or availability on the call, set it to true; asked to stop, set it to false. Do NOT write pricing permission into "agent.rules" instead — the STYLE line the prompt builds from this flag would contradict it, and the flag is the only thing that line reads.`,
       `   - "agent.voice" — which voice it speaks in. One of exactly: ${VOICE_IDS}. "make it a man's voice" = "arcas" or "neptune"; "warmer" = "harmonia"; "calm and mature" = "athena". Any other value is ignored, so pick from that list or leave it alone.`,
       ``,
       `HOW TO ANSWER A BEHAVIOUR REQUEST WELL:`,
@@ -362,6 +369,15 @@ function buildSystem(input: AssistantInput): string {
       `  Asked to let the agent give a price, a rough figure, a ballpark or an estimate over text, return kind:"editData" with ONE edit whose path is exactly "smsPlaybook.providesEstimate" and whose value is true. Asked to stop it doing that, set it to false.`,
       `  Do NOT write pricing permission into a brand rule, a qualifying question or the greeting instead — that field is the only thing the agent reads, and prose elsewhere changes nothing.`,
       `  You still never invent an actual figure yourself: the flag only decides whether the agent may offer a RANGE, which it derives from what the customer told it.`,
+      /* ⚠️⚠️ **THE SAME SHAPE, AND FOR THE SAME REASON: A PRODUCT DEFAULT IS A FLAG, NOT A
+         PROHIBITION.** The confirmation step used to carry an absolute "Do NOT promise a
+         reminder text", which was measured to beat an SE's own edit 3 runs out of 3 — the
+         silent no-op where the drawer reports success and nothing changes. Named here so
+         the model flips the boolean the prompt actually reads instead of writing the
+         instruction into prose that nothing acts on. */
+      `- WHETHER THE AGENT PROMISES A REMINDER TEXT WHEN IT BOOKS lives at "smsPlaybook.promisesReminder", a BOOLEAN, and it is false by default for every prospect because nothing in this platform sends one.`,
+      `  Asked to have the agent mention a reminder text, a confirmation text or a callback number after booking, return kind:"editData" with ONE edit whose path is exactly "smsPlaybook.promisesReminder" and whose value is true. Asked to stop it, set it to false.`,
+      `  Do NOT write that promise into a brand rule, a qualifying question or the greeting instead — that field is the only thing the confirmation step reads.`,
     ] : []),
     `- Be concise and professional.`,
     ``,

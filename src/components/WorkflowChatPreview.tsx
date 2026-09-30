@@ -3,7 +3,7 @@ import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
-import { smsConfigFor, type SmsConfig } from "../data/smsTemplate";
+import { effectiveSmsConfig } from "../data/smsTemplate";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { AgentConfigView } from "../data/schema";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
@@ -133,7 +133,7 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
     : undefined;
   const flow = useMemo(() => {
     if (!wfTree?.branches?.length) return null;
-    const cfg = { ...smsConfigFor(profile), ...((wfTree.sms as object) ?? {}) } as SmsConfig;
+    const cfg = effectiveSmsConfig(profile, wfTree.sms as object | undefined);
     try { return smsWorkflowFlow(profile, wfTree as never, cfg); } catch { return null; }
   }, [profile, wfTree]);
 

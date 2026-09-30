@@ -100,6 +100,25 @@ export interface VoiceAgentSpec {
    * Absent means `DEFAULT_VOICE_ID`, which is the voice every demo already had.
    */
   voice?: string;
+  /**
+   * May the agent quote a price, availability or a promotion on the call?
+   *
+   * ⚠️⚠️ **A PRODUCT DEFAULT EXPRESSED AS A FLAG, NOT A PROHIBITION — the same shape as
+   * `smsPlaybook.providesEstimate`, and it exists because the asymmetry was
+   * indefensible.** The SMS agent has asked a boolean since the pricing clamp shipped,
+   * while the voice prompt carried an absolute `NEVER quote prices` that no Ask AI edit
+   * could reach: one business, one question, two different answers depending on channel.
+   * An absolute was measured to beat a deliberate edit 3 runs out of 3 while the drawer
+   * reported success, which is the silent no-op this repo records repeatedly.
+   *
+   * ⚠️ Absent/false keeps today's behaviour exactly, so every signed-off voice demo is
+   * byte-identical until somebody asks for the change.
+   * ⚠️ It governs PRICING ONLY. "Only qualify and route, never resolve the issue
+   * yourself" stays absolute in the same sentence, because that is the routing agent's
+   * defining job rather than an opinion about this business — a booking agent already
+   * has its own separate flow.
+   */
+  quotesPrices?: boolean;
 }
 
 /**
@@ -289,6 +308,8 @@ export function voiceSpecFor(profile: CustomerProfile): VoiceAgentSpec {
    ============================================================================= */
 export interface VoiceAgentConfig {
   greeting: string;
+  /** May the agent quote a price? A PRODUCT DEFAULT an SE flips — see VoiceAgentSpec. */
+  quotesPrices?: boolean;
   /** A `VOICE_OPTIONS` id. Validated on read, because this object is AI-writable. */
   voice?: string;
   qualifyQuestion: string;
@@ -339,6 +360,10 @@ export function agentConfigOf(spec: VoiceAgentSpec): VoiceAgentConfig {
        undefined value serialises to the model as `null`, which reads as "this prospect has
        no voice" rather than "it has not chosen one". */
     ...(spec.voice ? { voice: spec.voice } : {}),
+    /* ⚠️ Omitted when unset, like `serviceZips` and `voice` above: a key present with an
+       undefined value serialises to the model as `null`, which reads as a decision nobody
+       made. Absent really does mean "nobody has asked for this". */
+    ...(spec.quotesPrices ? { quotesPrices: true } : {}),
   };
 }
 
@@ -443,6 +468,10 @@ export function specWithConfig(spec: VoiceAgentSpec, cfg: VoiceAgentConfig | und
     supportRules: Array.isArray(cfg.supportRules)
       ? cfg.supportRules.filter((r) => typeof r === "string" && r.trim())
       : spec.supportRules,
+    /* ⚠️ A REAL BOOLEAN ONLY. The model can write this field, and a string "true" or a 1
+       would be truthy here while meaning nothing — the same defensive read `voice` gets
+       two lines down, for the same reason: this object is AI-writable. */
+    quotesPrices: typeof cfg.quotesPrices === "boolean" ? cfg.quotesPrices : spec.quotesPrices,
     /* ⚠️ VALIDATED, NOT TRUSTED. This object is the workflow page's Ask AI scope, so the
        model can write `agent.voice` — and an invented id would reach the worker and produce
        a call that connects and never speaks. An unknown value falls back to the spec's own,

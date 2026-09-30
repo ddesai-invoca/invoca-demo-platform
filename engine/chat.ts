@@ -25,6 +25,9 @@ export interface SmsPlaybook {
   offer: string;
   providesEstimate: boolean;
   qualifyingQuestions: string[];
+  /* ⚠️ A PRODUCT DEFAULT AN SE CAN FLIP, not a prohibition baked into the flow.
+     Optional because no profile carries it until somebody asks for it. */
+  promisesReminder?: boolean;
 }
 /* =============================================================================
    VoicePath — one branch of the WORKFLOW DIAGRAM, in the form the prompt needs.
@@ -207,6 +210,8 @@ export interface ChatBrain {
    * on its own workflow.
    */
   voiceRules?: string[];
+  /** May the voice agent quote a price? A product default an SE flips, not a prohibition. */
+  voiceQuotesPrices?: boolean;
   /**
    * ⚠️ **THE CONFIGURED ROUTING STEPS, AND LEAVING THEM OUT WAS A REAL BUG.** The drawer
    * rendered an SE's six numbered steps while the prompt never saw them, so the one that says
@@ -496,6 +501,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
   const goal = p?.goal?.trim() || `answer questions, qualify the customer, and schedule a ${bookingType}`;
   const offer = p?.offer?.trim() || "";
   const providesEstimate = p?.providesEstimate ?? false;
+  const promisesReminder = p?.promisesReminder ?? false;
   const questions = dedupeQuestions(brain, p?.qualifyingQuestions?.length
     ? p.qualifyingQuestions
     : ["what they're looking for and any key details", "their timeline", "their ZIP code, to confirm service availability"]);
@@ -518,7 +524,24 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
       ? `3. Estimate: confirm you can help/serve their area, then give a PRELIMINARY price estimate as a RANGE based on what they shared. Say the exact price is confirmed at the ${bookingType}, and offer to schedule one.`
       : `3. Recap: briefly recap what they're looking for, then recommend scheduling a ${bookingType} to move forward and offer to set it up.`,
     `4. Schedule: proactively OFFER a specific available day and time yourself for the ${bookingType} (e.g. "I have availability this Friday at 12:00 PM") and ask if they'd like you to lock it in. Do NOT ask the customer to pick a time from scratch — suggest one.`,
-    `5. Confirm: once they agree, restate the confirmed ${bookingType} day and time, tell them they'll get a reminder text shortly before with a number to call, and thank them for choosing ${brain.customerName}.`,
+    /* ⚠️ NO REMINDER-TEXT PROMISE (9/29/2026), asked for directly. Nothing in this
+       platform sends one, so the agent was committing the business to a follow-up it
+       does not make. ⚠️ Silencing it HERE is only half the fix — every prospect's own
+       `brandConversationRules` said it too, and those render below under "follow
+       these"; `withoutReminderPromises` strips them, or the two halves of this prompt
+       contradict each other and the rule wins. */
+    /* ⚠️⚠️ **A FLAG, NOT A PROHIBITION — and the difference is the whole point.** The
+       standing rule is that Ask AI can change everything either agent does, so a product
+       default has to be a VALUE an SE can flip rather than a sentence they cannot delete.
+       An unconditional "Do NOT promise a reminder text" was measured to beat an SE's own
+       edit 3 runs out of 3, which is the silent no-op this file records repeatedly: the
+       drawer reports success and the agent keeps refusing. Keyed off `promisesReminder`
+       the SAME way pricing is keyed off `providesEstimate`, so "have it mention the
+       reminder text" works the moment somebody asks for it.
+       ⚠️ Absent/false is the default because nothing in this platform sends one. */
+    promisesReminder
+      ? `5. Confirm: once they agree, restate the confirmed ${bookingType} day and time, tell them they'll get a reminder text shortly before with a number to call, and thank them for choosing ${brain.customerName}.`
+      : `5. Confirm: once they agree, restate the confirmed ${bookingType} day and time and thank them for choosing ${brain.customerName}. Do NOT promise a reminder text, a confirmation text, or a callback number — nothing sends one.`,
     ``,
     `STYLE:`,
     `- NEVER use emojis.`,
@@ -914,7 +937,15 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `STYLE & RULES:`,
     `- This is a SPOKEN call: talk naturally and briefly (1–2 sentences), ask ONE question at a time, then stop and wait.`,
     `- NEVER use emojis, markdown, or formatting — your words are read aloud by a text-to-speech voice.`,
-    `- NEVER quote prices, availability, or promotions. NEVER attempt to resolve a support issue yourself — only qualify and route.`,
+    /* ⚠️⚠️ **THE PRICING HALF IS A FLAG; THE ROUTING HALF IS NOT, and the split is the
+       point.** "Never resolve a support issue yourself — only qualify and route" is what
+       this agent IS (a booking agent has its own separate flow), so it stays absolute.
+       Whether the business will quote a price out loud is an opinion about the business,
+       and the SMS agent has let an SE change it since the pricing clamp shipped — one
+       business answering the same question two ways by channel was indefensible. */
+    brain.voiceQuotesPrices
+      ? `- You MAY give a rough preliminary price RANGE or general availability when asked, but say the exact figure is confirmed by the team. NEVER attempt to resolve a support issue yourself — only qualify and route.`
+      : `- NEVER quote prices, availability, or promotions. NEVER attempt to resolve a support issue yourself — only qualify and route.`,
     `- Only discuss ${brain.customerName}'s products and services; if the caller goes off-topic, gently steer back.`,
     /* ⚠️ THE BACKSTOP FOR EVERYTHING THE STRUCTURAL DEDUPE ABOVE CANNOT SEE — a caller who
        volunteers their name before being asked, or gives their ZIP while answering a

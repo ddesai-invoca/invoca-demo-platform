@@ -16,7 +16,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
-import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, SmsConversation, VoiceConversationIntelligenceView, VoiceConversation, AgentConfigView, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
+import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, SmsConversation, VoiceConversationIntelligenceView, VoiceConversation, AgentConfigView, SmsPlaybook, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
 import { contextBlock, contextProvenance, type GenerationContext, type GenerationScope } from "./genContext.ts";
 import { sweepValue } from "./dashSweep.ts";
 
@@ -756,7 +756,7 @@ function generateSmsConversationIntelligence(client: Anthropic, name: string, br
       `- conversations: exactly 4.\n` +
       `  • conversations[0] is ACTIVE (active:true) — a full realistic AI-SMS conversation for THIS business:\n` +
       `    - id like "C516-117FE212560D" (4 hex chars, dash, 12 hex chars, UPPERCASE). time like "8/16/25 10:55 pm". date "March 10, 2026".\n` +
-      `    - transcript: 12–18 turns, each { speaker: "agent" or "consumer", time (like "6:21 AM", ascending), text }. NO emojis, plain SMS text. The agent runs the qualify→(estimate or recap)→book flow toward a ${bookingTerm}: intro + any offer, ask ONE qualifying question at a time, then propose a specific day/time, and confirm with a reminder + a callback number. Alternate speakers; start and end with the agent.\n` +
+      `    - transcript: 12–18 turns, each { speaker: "agent" or "consumer", time (like "6:21 AM", ascending), text }. NO emojis, plain SMS text. The agent runs the qualify→(estimate or recap)→book flow toward a ${bookingTerm}: intro + any offer, ask ONE qualifying question at a time, then propose a specific day/time, and confirm the day and time. The agent must NOT promise a reminder text, a confirmation text, or a callback number — nothing sends one, and the live SMS agent no longer offers it. Alternate speakers; start and end with the agent.\n` +
       `    - signals: 6–8 { name, badges (subset of ["Keyword Spotting","Rule","Keypress"]), count (0–2) } grounded in the conversation. Include "${bookingTerm}: Scheduled", "Caller Type: New ${customerNoun}", "Qualified Lead", and 3–5 signals for what the AI agent actually established (the qualifying answers it captured, the product or service the customer named, an estimate or offer it gave, a service area it confirmed).\n` +
       /* ⚠️ NO "(QA) …" SIGNALS HERE. This report is an AI-handled conversation: agent-quality scoring
          implies a human took it, and passes on every call by construction. Requested 9/3/2026; the two
@@ -1073,17 +1073,30 @@ function generateVoiceRoutingDemo(client: Anthropic, name: string, brandDomain: 
   );
 }
 
+/**
+ * ⚠️⚠️ **`smsPlaybook.promisesReminder` IS OMITTED, AND THAT IS NOT TIDINESS.**
+ * `toSchema()`'s `sanitize()` marks every property required, so an `.optional()` field
+ * left in a GENERATION type is FORCED onto the model — the trap that made the engine
+ * invent `InteractionRow.cells` and fabricate a routing `outcome`. This flag is a
+ * PRODUCT DEFAULT an SE flips through Ask AI; a generated value would mean the model
+ * deciding, per prospect, whether the agent promises a follow-up nothing sends.
+ * Same shape and reason as `DIGITAL_INSIGHTS_GEN` and `VOICE_CI_GEN`.
+ */
+const AGENT_CONFIG_GEN = AgentConfigView.extend({
+  smsPlaybook: SmsPlaybook.omit({ promisesReminder: true }).optional(),
+});
+
 function generateAgentConfig(client: Anthropic, name: string, _brandDomain: string, brief: string, bookingTerm: string) {
   return structured<z.infer<typeof AgentConfigView>>(
     client,
-    AgentConfigView,
+    AGENT_CONFIG_GEN,
     `Using this business brief, produce the Invoca Agent Studio configuration for ${name}'s AI agent (a scheduling/intake assistant that answers questions and books the business's ${bookingTerm.toLowerCase()}).\n\n` +
       `BRIEF:\n${brief}\n\n` +
       `${reskin(name)}\n\n` +
       `- brandConversationRules: exactly 3 rules, each ONE string of 1–2 sentences, each starting with a short label + colon. They describe how the AI SMS agent runs a qualify-then-book conversation (NO emojis). Make them specific to THIS business:\n` +
       `  1) Intro + offer: introduce yourself as ${name}'s AI agent helping with a personalized quote, mention a plausible current offer/incentive if one fits, and ask if they'd like to get started.\n` +
       `  2) Qualify one question at a time: list the 4–5 key qualifying questions for THIS business (quantity, sizes/measurements, material/type/model, timeline, and ZIP code to confirm service availability).\n` +
-      `  3) Estimate then book: confirm you service their ZIP, give a preliminary price RANGE based on what they shared, recommend a consultation with a specialist for an exact quote, propose a specific day/time, and confirm they'll get a reminder text before the appointment with a number to call.\n` +
+      `  3) Estimate then book: confirm you service their ZIP, give a preliminary price RANGE based on what they shared, recommend a consultation with a specialist for an exact quote, and propose a specific day/time. Do NOT promise a reminder text, a confirmation text, or a callback number — nothing sends one.\n` +
       `- knowledgeSources: exactly 5 items the agent "learned" the business from:\n` +
       `  • 1 Document named "${name.replace(/[^A-Za-z0-9]+/g, "_")}_Sales_Playbook.pdf", type "Document", lastUpdated "03/11/2026 10:21 AM".\n` +
       `  • 4 Web Links to THIS business's MAIN pages, type "Web Link", lastUpdated "03/11/2026 10:02 AM". Each "name" MUST be a SHORT human-readable page label (e.g. "Homepage", "Services & Specialties", "Locations", "Find a Provider", "Book an Appointment") specific to ${name} — NOT a raw URL.\n` +

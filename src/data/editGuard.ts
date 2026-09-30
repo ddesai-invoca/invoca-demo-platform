@@ -164,6 +164,18 @@ const CREATABLE_WHEN_ABSENT = [
      edit the drawer's own empty state offers. Caught by checking the guard against the copy
      rather than by trying it, which would only have failed on one account. */
   /\bpaths\.\d+\.route$/i,
+  /* ⚠️⚠️ **A PRODUCT DEFAULT AN SE FLIPS THROUGH ASK AI, and no profile carries it until
+     they do — so the FIRST "have it mention the reminder text" is an undefined -> boolean
+     write, i.e. a TYPE FLIP the guard would refuse on every demo.** Without this the
+     feature would be refused on first use and work every time after, which is the exact
+     trap the greeting, `serviceZips` and the voice picker each had to be let through by
+     name. It is a boolean the prompt branches on, so there is nothing to validate beyond
+     the type the guard already checks. */
+  /^smsPlaybook\.promisesReminder$/i,
+  /* ⚠️ THE VOICE SIDE OF THE SAME RULE. No prospect carries it until an SE asks, so the
+     first "let it give a rough price on the call" is an undefined -> boolean write.
+     `agentConfigOf` omits it when unset, so absent really is absent here. */
+  /^agent\.quotesPrices$/i,
   /* ⚠️ THE AGENT'S TTS VOICE, which no prospect carries until somebody picks one on the
      Details tab — so the FIRST pick is an undefined -> string write on every demo, and
      without this the picker would be refused by the guard on its first use and work on

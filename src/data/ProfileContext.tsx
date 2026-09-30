@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useMemo, useRef, useState, type R
 import { CustomerProfile } from "./schema";
 import { PROFILE_LIST, DEFAULT_PROFILE_ID } from "./profiles";
 import { renameMarketingSources } from "./marketingSources";
-import { withoutDefaultPricing } from "./agentDefaults";
+import { withoutDefaultPricing, withoutReminderPromises } from "./agentDefaults";
 
 interface ProfileCtx {
   profile: CustomerProfile;
@@ -78,7 +78,7 @@ function loadCached(): CustomerProfile[] {
    same requirement. Both are idempotent, so the cached copy being written normalized is
    harmless. */
 const normalize = (p: CustomerProfile): CustomerProfile =>
-  withoutDefaultPricing(renameMarketingSources(p));
+  withoutReminderPromises(withoutDefaultPricing(renameMarketingSources(p)));
 
 export function ProfileProvider({ children }: { children: ReactNode }) {
   const [profiles, setProfiles] = useState<CustomerProfile[]>(() => {

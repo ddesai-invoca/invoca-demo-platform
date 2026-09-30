@@ -569,6 +569,14 @@ export const SmsPlaybook = z.object({
   offer: z.string(),                             // incentive to book ("" if none)
   providesEstimate: z.boolean(),                 // does this business quote a rough price over text?
   qualifyingQuestions: z.array(z.string()),      // ordered, business-specific questions (one at a time)
+  /* ⚠️⚠️ **APP-OWNED AND NEVER GENERATED — see `AGENT_CONFIG_GEN` in engine/core.ts.**
+     A PRODUCT DEFAULT expressed as a flag rather than a prohibition baked into the
+     prompt, which is what keeps it reachable by Ask AI: the standing rule is that an
+     SE can change everything either agent does, so anything the platform decides for
+     them has to be a value they can flip, not a sentence they cannot delete.
+     Absent/false = the agent confirms the booking and promises nothing further, which
+     is the default because nothing in this platform actually sends a reminder. */
+  promisesReminder: z.boolean().optional(),
 });
 export const AgentConfigView = z.object({
   brandConversationRules: z.array(z.string()),  // business-specific behavior rules (3–4)

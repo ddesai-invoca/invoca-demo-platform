@@ -16,7 +16,7 @@ import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor } from "../data/workflowDrawers";
-import { SMS_TRIGGER, smsBranches, smsConfigFor, repairSmsSegments } from "../data/smsTemplate";
+import { SMS_TRIGGER, smsBranches, smsConfigFor, repairSmsSegments, effectiveSmsConfig } from "../data/smsTemplate";
 import { smsDrawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
 import { voiceCopy } from "../data/voiceCopy";
@@ -448,7 +448,6 @@ export function AgentWorkflow() {
      right-hand panel covers the very thing being configured. */
   const { openDrawer, undo, canUndo, readOnly, applyEdits } = useAiAssistant();
   const pageKey = `${profileId}::${pathname}`;
-  const smsBase = useMemo(() => smsConfigFor(profile), [profile]);
   /* ⚠️ **GATED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME** — the same signal
      `pageHint` keys its empty state off. A CREATED workflow deliberately registers no `agent`
      half ("Build this voice agent" would be a promise on a page whose whole state is that
@@ -726,17 +725,18 @@ export function AgentWorkflow() {
             /* ⚠️⚠️ **THE EFFECTIVE CONFIG, NOT THE BASE — and reading the base here would have
                been a silent no-op of exactly the kind this feature exists to avoid.** `tree` is
                what `usePageData` returns, so its `sms` half already carries every Apply and every
-               Ask AI edit; `smsBase` is the template's untouched defaults. Hand the drawer the
+               Ask AI edit; `smsConfigFor` alone is the template's untouched defaults. Hand the drawer the
                base and it opens showing the pre-edit text, Apply then writes that stale copy
                back, and an edit made a minute ago is silently undone. Same trap `drawerFor`
                records for the voice spec. */
-            /* ⚠️ THE BASE IS SPREAD UNDER THE STORED CONFIG, not just used when it is missing.
+            /* ⚠️ THE BASE IS SPREAD UNDER THE STORED CONFIG (inside `effectiveSmsConfig`), not
+               just used when it is missing.
                A demo whose override was saved before a field existed would otherwise hand the
                drawer a config with that key absent — which is exactly how a click on an added
                segment threw and took the whole diagram down with it. Shallow is enough: every
                key of `SmsConfig` is replaced wholesale when it is edited, never half-written. */
             : smsTemplated ? smsDrawerFor(profile, tree, openNode,
-                { ...smsBase, ...((tree as { sms?: Partial<typeof smsBase> }).sms ?? {}) })
+                effectiveSmsConfig(profile, (tree as { sms?: object }).sms))
             : drawerFor(profile, tree, openNode);
           return d ? (
             <WorkflowNodeDrawer d={d} onClose={() => setOpenNode(null)}

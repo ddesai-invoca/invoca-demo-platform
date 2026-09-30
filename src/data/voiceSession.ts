@@ -209,6 +209,10 @@ export function useBrain(opts?: BrainOpts) {
        workflow's flow is self-contained and says so in its own hard rules. */
     voiceRules: minimal || booking ? undefined : spec?.rules,
     voiceSteps: minimal || booking ? undefined : spec?.informSteps,
+    /* ⚠️ Sent only when TRUE, so an untouched agent's prompt is byte-identical to before
+       this flag existed — the same rule `voiceEscalate` follows two fields down. Absent on
+       a minimal or booking flow, which replace the routing machinery rather than trim it. */
+    voiceQuotesPrices: minimal || booking || !spec?.quotesPrices ? undefined : true,
     /* ⚠️ SENT ONLY WHEN IT DIFFERS FROM THE DEFAULT, so an untouched agent's prompt is
        byte-identical to before this field existed. Absent on a minimal or booking flow for the
        same reason the steps are: those replace the routing machinery rather than trimming it. */

@@ -1,4 +1,5 @@
 import type { TreeBranch, TreeLeaf, TreePath } from "../components/WorkflowTree";
+import { withoutReminderPromise } from "./agentDefaults";
 import type { CustomerProfile } from "./schema";
 import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, LEAF_QUALIFY, LEAF_ESCALATE } from "./workflowChrome";
 
@@ -415,6 +416,49 @@ export function smsBranches(p: CustomerProfile): TreeBranch[] {
  *
  * Returns the SAME object when nothing needed repairing, so it never costs a re-render.
  */
+/* =============================================================================
+   The effective SMS config — ONE definition, and the reminder repair rides on it
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ **A STORED OVERRIDE KEEPS ITS OWN FROZEN COPY OF THE BRAND RULES, AND THAT
+   COPY IS WHAT REACHES THE AGENT.** `smsConfigFor` seeds `intents.*.rules` from
+   `brandConversationRules`, so a fresh config is already correct once the profile
+   is normalized — but the moment an SE opens the workflow page, that seed is
+   written into their per-demo override and stops tracking the profile. Measured in
+   the browser on a real Preview Agent request: every rule in `brain.rules` was
+   clean while `brain.workflow.intents[0].rules[2]` still promised the reminder
+   text, because it came from the override store. Same duplicated-field trap this
+   repo records for the greeting and for `repairSmsSegments`, which exists for
+   exactly this reason: an override syncs to the shared demo record, so a stale
+   copy reaches a colleague's browser where no migration ever ran.
+
+   ⚠️ **AND IT IS REPAIRED HERE RATHER THAN IN THE PROMPT BUILDER, so the Intent
+   Details drawer and the agent read one value.** Stripping it only on the way to
+   the model would leave the drawer displaying a promise the agent no longer makes
+   — the drawer-describes-what-the-agent-does-not shape recorded three times over.
+
+   ⚠️ Three call sites had been spreading this by hand (`PhonePreview`,
+   `WorkflowChatPreview`, `AgentWorkflow`); they now share one definition, so a
+   fourth cannot quietly skip the repair.
+   ============================================================================= */
+export function effectiveSmsConfig(p: CustomerProfile, sms: object | undefined): SmsConfig {
+  const cfg = { ...smsConfigFor(p), ...(sms ?? {}) } as SmsConfig;
+  const intents = cfg.intents;
+  if (!intents) return cfg;
+  let touched = false;
+  const fix = (side: "sales" | "support") => {
+    const it = intents[side];
+    if (!it?.rules?.length) return it;
+    const next = it.rules.map((r) => withoutReminderPromise(r ?? "")).filter((r) => r.trim().length > 0);
+    if (next.length === it.rules.length && next.every((r, i) => r === it.rules[i])) return it;
+    touched = true;
+    return { ...it, rules: next };
+  };
+  const sales = fix("sales");
+  const support = fix("support");
+  /* ⚠️ SAME OBJECT when nothing needed repairing, so an already-clean demo costs no re-render. */
+  return touched ? { ...cfg, intents: { ...intents, sales: sales!, support: support! } } : cfg;
+}
+
 export function repairSmsSegments(branches: TreeBranch[]): TreeBranch[] {
   let touched = false;
   const fix = (kids: TreePath[]): TreePath[] => {

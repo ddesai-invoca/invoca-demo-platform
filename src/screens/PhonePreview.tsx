@@ -6,7 +6,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { tollFreeNumber } from "../data/smsContactNumber";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
-import { smsConfigFor, type SmsConfig } from "../data/smsTemplate";
+import { effectiveSmsConfig } from "../data/smsTemplate";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 import { useAutoGrow } from "../data/useAutoGrow";
@@ -244,7 +244,7 @@ function useBrain(wfSlug?: string | null) {
     : undefined;
   const flow = useMemo(() => {
     if (!wfTree?.branches?.length) return null;
-    const cfg = { ...smsConfigFor(profile), ...((wfTree.sms as object) ?? {}) } as SmsConfig;
+    const cfg = effectiveSmsConfig(profile, wfTree.sms as object | undefined);
     try {
       return smsWorkflowFlow(profile, wfTree as never, cfg);
     } catch {
