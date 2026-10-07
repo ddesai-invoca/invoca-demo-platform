@@ -6366,25 +6366,14 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .dmk-btn--on.dmk-follow-up { color: #b33b00; background: #ffd9cc; }
 .dmk-btn--on:hover { filter: brightness(.96); background-color: inherit; }
 
-.dmk-panel {
-  /* ⚠️ WIDENED 268 -> 340 and the note grown to a real box (10/7/2026), asked for
-     because taking notes in a one-line field is awkward. The panel is portalled and
-     `position: fixed`, so it is placed and re-placed by `place()` in the component —
-     growing it here is safe ONLY because that flips it above the trigger and a
-     ResizeObserver re-places it as it grows. */
-  position: fixed; z-index: 3200; width: 340px;
-  background: #fff; border: 1px solid #e7e9eb; border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(12,0,51,.08), 0 12px 32px rgba(12,0,51,.16);
-  padding: 12px; display: flex; flex-direction: column; gap: 8px;
-}
-.dmk-head {
-  font-size: 12px; font-weight: 700; color: #15243e;
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-}
-.dmk-opts { display: flex; gap: 6px; }
+/* ⚠️ Scaled up with the move to a centred modal (10/7/2026) — asked for as
+   "100% bigger". The dialog is ~2x the old popover's width, so 12px controls in it
+   looked stranded; these roughly double in presence rather than in raw px, which
+   would have been cartoonish. */
+.dmk-opts { display: flex; gap: 10px; }
 .dmk-opt {
-  flex: 1; cursor: pointer; padding: 6px 4px; border-radius: 6px;
-  font-size: 12px; font-weight: 700; border: 1px solid #e7e9eb; background: #fff; color: #5b6577;
+  flex: 1; cursor: pointer; padding: 14px 10px; border-radius: 8px;
+  font-size: 15px; font-weight: 700; border: 1px solid #e7e9eb; background: #fff; color: #5b6577;
 }
 .dmk-opt:hover { border-color: #2666f9; color: #2666f9; }
 /* ⚠️ The platform's own titan tints, same pairs the chips and the flag use.
@@ -6402,9 +6391,9 @@ body:has(.vp-root) .aiad--left .aiad-panel {
    anything past the viewport is unreachable. `font: inherit` would take the panel's
    own 13.2px; the family is restated so a textarea does not fall back to monospace. */
 .dmk-note {
-  width: 100%; box-sizing: border-box; font-family: inherit; font-size: 12px;
-  line-height: 1.45; min-height: 76px; max-height: 180px; resize: vertical;
-  padding: 8px; border: 1px solid #e7e9eb; border-radius: 4px; color: #15243e;
+  width: 100%; box-sizing: border-box; font-family: inherit; font-size: 14px;
+  line-height: 1.5; min-height: 180px; max-height: 420px; resize: vertical;
+  padding: 12px 14px; border: 1px solid #e7e9eb; border-radius: 8px; color: #15243e;
 }
 .dmk-note:focus { outline: none; border-color: #2666f9; }
 .dmk-note::placeholder { color: #9aa1ac; }
@@ -6412,28 +6401,34 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 /* Remove-mark sits left, Submit right — the destructive one never lands where the
    confirming one is expected. `margin-left: auto` on Submit so it stays right even
    when Remove is absent (an unmarked demo). */
-.dmk-actions { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+.dmk-actions { display: flex; align-items: center; gap: 12px; margin-top: 6px; }
 .dmk-submit {
-  margin-left: auto; cursor: pointer; padding: 7px 16px; border-radius: 6px;
+  margin-left: auto; cursor: pointer; padding: 12px 28px; border-radius: 8px;
   border: 1px solid var(--color-green-bar); background: var(--color-green-bar);
-  color: #fff; font-size: 12px; font-weight: 700;
+  color: #fff; font-size: 15px; font-weight: 700;
 }
 .dmk-submit:hover:not(:disabled) { filter: brightness(.95); }
 .dmk-submit:disabled { background: #e7e9eb; border-color: #e7e9eb; color: #a1a7b2; cursor: default; }
 .dmk-clear {
   background: none; border: none; cursor: pointer;
-  font-size: 12px; color: #5b6577; padding: 0; text-decoration: underline;
+  font-size: 14px; color: #5b6577; padding: 0; text-decoration: underline;
 }
 .dmk-clear:hover { color: #e4131b; }
 
-/* The "tell the account exec" half. Off by default and visually quiet, because
+/* ⚠️ `.dmk-panel`, `.shr-panel`, `.dmk-head` and `.shr-head` were DELETED on
+   10/7/2026: both panels became centred modals, so the positioning, the box chrome
+   and the title row all moved to `.cmd-*` in CenterModal. Nothing references them.
+   The rule counts per prefix were diffed before and after — `.cd-*` was once wiped
+   as collateral by exactly this kind of edit.
+
+   The "notify the rep" half. Off by default and visually quiet, because
    the panel's job is still ONE CLICK to mark — this is the second, deliberate
    action, not the headline. */
 .dmk-notify {
-  display: flex; align-items: center; gap: 6px; cursor: pointer;
-  font-size: 12px; color: #5b6577;
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+  font-size: 14px; color: #5b6577;
 }
-.dmk-notify input { margin: 0; accent-color: #2666f9; cursor: pointer; }
+.dmk-notify input { margin: 0; width: 17px; height: 17px; accent-color: #2666f9; cursor: pointer; }
 .dmk-rep { display: flex; flex-direction: column; gap: 4px; }
 .dmk-rep-msg {
   display: flex; align-items: center; gap: 4px;
@@ -6562,38 +6557,31 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 /* ⚠️ PORTALLED TO <body> and `position: fixed`, so the demo picker's own scroll box
    cannot clip it — reported as "the box gets cut off". Its coordinates come from the
    trigger's rect in JS, which is also what lets it flip above near the bottom. */
-.shr-panel {
-  position: fixed; z-index: 3300;
-  background: #fff; border: 1px solid #e7e9eb; border-radius: 8px;
-  box-shadow: 0 8px 28px rgba(12, 0, 51, .22); padding: 16px; text-align: left;
-  max-height: min(70vh, 560px); overflow-y: auto;
-}
-.shr-head { font: 700 14px/20px Lato, sans-serif; color: #15243e; margin-bottom: 10px; }
-.shr-form { display: flex; flex-direction: column; gap: 8px; }
-.shr-label { font: 700 12px/16px Lato, sans-serif; color: #15243e; display: flex; flex-direction: column; gap: 4px; }
-.shr-input { height: 32px; padding: 0 8px; border: 1px solid #d7dae0; border-radius: 6px; font: 400 13px/18px Lato, sans-serif; }
+.shr-form { display: flex; flex-direction: column; gap: 14px; }
+.shr-label { font: 700 14px/18px Lato, sans-serif; color: #15243e; display: flex; flex-direction: column; gap: 7px; }
+.shr-input { height: 44px; padding: 0 14px; border: 1px solid #d7dae0; border-radius: 8px; font: 400 15px/20px Lato, sans-serif; }
 .shr-input:focus { outline: none; border-color: var(--color-green-bar); box-shadow: 0 0 0 3px rgba(44,191,88,.15); }
-.shr-hint { font: 400 12px/16px Lato, sans-serif; color: #5b6577; margin: 0; }
+.shr-hint { font: 400 13px/18px Lato, sans-serif; color: #5b6577; margin: 0; }
 .shr-err { font: 400 12px/16px Lato, sans-serif; color: #b33b00; margin: 0; }
 /* ⚠️ THE LAUNCH GREEN, not the platform blue — asked for directly. It is the SAME
    token `.launch-btn` uses, so the two cannot drift apart. */
 .shr-btn {
-  height: 32px; border: 0; border-radius: 6px; background: var(--color-green-bar);
-  color: #fff; font: 700 13px Lato, sans-serif; cursor: pointer; transition: background .15s;
+  height: 46px; border: 0; border-radius: 8px; background: var(--color-green-bar);
+  color: #fff; font: 700 15px Lato, sans-serif; cursor: pointer; transition: background .15s;
 }
 .shr-btn:hover:not(:disabled) { background: #26a94e; }
 .shr-btn:disabled { background: #e7e9eb; color: #a1a7b2; cursor: default; }
 .shr-list { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; max-height: 260px; overflow-y: auto; }
-.shr-item { border-top: 1px solid #e7e9eb; padding-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+.shr-item { border-top: 1px solid #e7e9eb; padding-top: 14px; display: flex; flex-direction: column; gap: 10px; }
 .shr-item-off { opacity: .6; }
 .shr-item-top { display: flex; justify-content: space-between; gap: 8px; }
-.shr-state { font: 700 12px/16px Lato, sans-serif; color: #15243e; }
+.shr-state { font: 700 14px/18px Lato, sans-serif; color: #15243e; }
 .shr-opens { font: 400 12px/16px Lato, sans-serif; color: #5b6577; }
-.shr-item-row { display: flex; gap: 6px; align-items: center; }
-.shr-link { flex: 1; min-width: 0; height: 26px; padding: 0 6px; border: 1px solid #e7e9eb; border-radius: 3px; font: 400 12px/16px Lato, sans-serif; color: #5b6577; }
+.shr-item-row { display: flex; gap: 10px; align-items: center; }
+.shr-link { flex: 1; min-width: 0; height: 38px; padding: 0 12px; border: 1px solid #e7e9eb; border-radius: 6px; font: 400 13px/18px Lato, sans-serif; color: #5b6577; }
 .shr-mini {
-  height: 28px; padding: 0 10px; border: 1px solid #d7dae0; border-radius: 6px;
-  background: #fff; color: #15243e; font: 500 12px Lato, sans-serif; cursor: pointer;
+  height: 38px; padding: 0 16px; border: 1px solid #d7dae0; border-radius: 8px;
+  background: #fff; color: #15243e; font: 500 14px Lato, sans-serif; cursor: pointer;
 }
 .shr-mini:hover:not(:disabled) { background: #f5f6fa; }
 .shr-mini:disabled { opacity: .5; cursor: default; }
@@ -6605,3 +6593,42 @@ body:has(.vp-root) .aiad--left .aiad-panel {
   font: 400 14px/20px Lato, sans-serif; color: #15243e; cursor: pointer;
 }
 .launch-share input { margin-top: 0; width: 16px; height: 16px; accent-color: var(--color-green-bar); cursor: pointer; }
+
+/* ---- CenterModal: the shared centred dialog (10/7/2026) ---------------------
+   ⚠️ Its own `.cmd-` prefix. The two panels inside it keep their own `.dmk-` and
+   `.shr-` classes, so a change to one dialog's CONTENT still cannot restyle the
+   other — the one-prefix-per-screen rule this repo paid 79 deleted `.cd-` rules
+   for. Only the shell is shared. */
+.cmd-backdrop {
+  position: fixed; inset: 0; z-index: 3200;
+  background: rgba(12, 0, 51, .38);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px; box-sizing: border-box;
+}
+.cmd-box {
+  background: #fff; border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(12,0,51,.12), 0 24px 56px rgba(12,0,51,.24);
+  /* ⚠️ `max-width/height: 100%` against the backdrop's own 24px padding is what
+     keeps a doubled-width dialog usable on a laptop — the box shrinks rather than
+     running off the edge, and the BODY scrolls rather than the page. */
+  max-width: 100%; max-height: 100%;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.cmd-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 20px 20px 0 24px; flex-shrink: 0;
+}
+.cmd-title {
+  flex: 1; min-width: 0; font-size: 20px; font-weight: 700; color: #15243e;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+/* The × is a quiet ghost button until hovered — it is an escape hatch, not an
+   action competing with the dialog's own primary button. */
+.cmd-x {
+  flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border: none; background: transparent; border-radius: 6px;
+  color: var(--color-text-faint); cursor: pointer; transition: background .12s, color .12s;
+}
+.cmd-x:hover { background: #f3f4f5; color: #15243e; }
+.cmd-x .material-icons { font-size: 20px; }
+.cmd-body { padding: 16px 24px 24px; overflow-y: auto; }

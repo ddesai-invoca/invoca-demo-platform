@@ -10661,6 +10661,60 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### Both Launch-row panels became CENTRED MODALS, and ~120 lines went with it (10/7/2026)
+Asked for: *"for both demo mark box and share demo box, lets just do it as a modal in the
+center of the page, and make them both bigger, like 100% bigger. and also put a 'x' on the top
+right to close it out"*. `src/components/CenterModal.tsx` + `.cmd-*`.
+
+⚠️⚠️ **THE DELETION IS THE POINT, NOT THE CENTRING.** Both panels were `position: fixed`
+popovers anchored to their trigger, and each carried the same ~60 lines: measure the trigger,
+**flip above it** when there was no room below, a **rAF pass** because the height is unknown
+until it renders, a **ResizeObserver** because the panel GROWS when a rep lookup or a link list
+arrives, and a **capture-phase scroll listener** because the row's own container scrolls, not
+the window. Every one of those fixed a REAL measured bug — a fixed panel hanging past the
+viewport cannot be scrolled to, and the rows most likely to be marked are the last ones in a
+76-row roster. **A centred dialog cannot have that bug at all**, so the entire defence left
+with the defect rather than being maintained forever.
+
+⚠️⚠️ **`data-picker-safe` MOVED TO THE BACKDROP AND IS STILL LOAD-BEARING.** The backdrop covers
+the whole screen, and the Launch library dropdown closes on any capture-phase mousedown outside
+itself — so without it, a click anywhere on the backdrop closes the dropdown, UNMOUNTS the row,
+and takes the modal (rendered by a component inside that row) with it. That is exactly the
+"Create link does nothing" bug this repo already paid a debugging session for.
+⚠️ **THE BACKDROP CLOSES ON `e.target === e.currentTarget`, NOT ON "outside the box".** A
+selection drag that starts in the note and ends on the backdrop would otherwise dismiss the
+dialog and throw the note away — which the bigger note box makes much likelier.
+
+⚠️ **ONE SHELL, TWO PREFIXES.** `.cmd-*` owns the backdrop, box, title row and ×; the dialogs
+keep their own `.dmk-*` and `.shr-*` for their CONTENTS, so a change to one still cannot
+restyle the other. `.dmk-panel`, `.shr-panel`, `.dmk-head` and `.shr-head` are deleted — and the
+blast radius was measured the way this file demands after any CSS move, by diffing rule counts
+per prefix: **dmk 43→41, shr 27→25, cmd 0→8, and all 100+ other prefixes unchanged.**
+
+⚠️ **"100% bigger" WAS READ AS LINEAR, AND THE DIALOGS CLAMP.** Mark 340→**640**, share
+360→**680**, with the internals scaled to match (the note box 76→180px, inputs 32→44, status
+buttons to 47 tall). `max-width/max-height: 100%` against the backdrop's own padding plus
+`overflow-y: auto` on the BODY is what keeps that usable on a laptop — measured at **600x420 it
+clamps to 552x372, the body scrolls rather than the page, and the × stays reachable**.
+
+**Verified with real behaviour, not construction**: both open centred (±2px on both axes), ×,
+backdrop and Escape each close them, and **the library dropdown survives all three** (22 rows
+every time) — which is the `data-picker-safe` guarantee. Submit still writes through the modal
+(status and a 2-line note reached `/api/marks`), and **"Create link" still fires through the
+portal**, replacing the demo's existing link rather than adding a second.
+⚠️ **A PROBE FAULT WORTH RECORDING:** the first viewport sweep reported the mark dialog as 680
+and the share as 640 — swapped — because a share modal was still open from the previous step
+and `querySelector(".cmd-box")` returned it. The probe now asserts no modal is open before each
+case. Nothing was wrong with the code.
+
+**`audit:app` gained 9 checks** (the shell exists and both use it, the backdrop is picker-safe,
+the target test, Escape, the labelled ×, neither panel anchors any more, the dead rules are
+gone, the clamp). Three sabotages fire: dropping `data-picker-safe`, closing on any outside
+target, and removing the clamp.
+⚠️ **THREE EXISTING `audit:share` CHECKS WERE RE-AIMED RATHER THAN DELETED**, and one got
+STRONGER: it used to require a `ResizeObserver` (patching the off-screen bug) and now forbids
+anchoring outright (removing its habitat). Both re-aimed checks were verified to still bite.
+
 ### The mark panel: three statuses, a real note box, and Submit (10/7/2026)
 Asked for against the panel: *"make this box bigger so its easier to take notes in, and for
 the 'Tell the Account Exe' change it to 'Notify the Rep' and also on along with the rep also

@@ -17,8 +17,8 @@
    the trigger.
    ============================================================================= */
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
+import { useRef, useState } from "react";
+import CenterModal from "./CenterModal";
 import { useDemoLibrary, type MarkStatus, type NotifyResult, type RepLookup } from "../data/DemoLibraryContext";
 /* ⚠️ Labels and the offered set come from the one shared module — this component
    used to declare its own copy, which is how it kept offering statuses the server
@@ -52,98 +52,15 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
   /* Whether THIS SE has connected their own mailbox. Null while unknown, so the
      row says nothing rather than flashing "not connected" and correcting itself. */
   const [gmail, setGmail] = useState<{ connected: boolean; address: string } | null>(null);
-  const [rect, setRect] = useState<{ top: number; left: number } | null>(null);
   const btnRef = useRef<HTMLButtonElement | null>(null);
-  const panelRef = useRef<HTMLDivElement | null>(null);
 
-  /* ⚠️ FIXED AND PORTALLED, not absolute inside the row. The library list sits in
-     its own scroll box, so a panel positioned inside it is CLIPPED at the box's
-     edge — the same trap the Create Workflow channel popup and the sidebar flyout
-     both document. Anchored to the trigger's own rect instead. */
-  const place = useCallback(() => {
-    const b = btnRef.current?.getBoundingClientRect();
-    if (!b) return;
-    const W = 268;
-    /* ⚠️⚠️ IT FLIPS ABOVE THE TRIGGER WHEN THERE IS NO ROOM BELOW, and that
-       is not polish. The panel is `position: fixed`, so one hanging past the
-       bottom of the viewport cannot be scrolled to at all — and the rows most
-       likely to be marked are the LAST ones in a long list, which is exactly
-       where that happens. Measured before the fix: 34px off screen on a
-       one-row list, and far worse further down the Summit roster.
-       The height is unknown until the panel has rendered, so the first pass
-       uses a conservative estimate and the rAF pass below re-places it against
-       the real box. */
-    const h = panelRef.current?.getBoundingClientRect().height ?? 210;
-    const below = b.bottom + 6;
-    const top = below + h <= window.innerHeight - 8 ? below : Math.max(8, b.top - 6 - h);
-    const left = Math.max(8, Math.min(b.right - W, window.innerWidth - W - 8));
-    /* ⚠️ BAILS WHEN NOTHING MOVED, and that is load-bearing rather than tidiness:
-       a ResizeObserver fires once on `observe()`, so a `setRect` that always
-       produced a fresh object would re-render, re-subscribe and fire again. */
-    setRect((prev) => (prev && prev.top === top && prev.left === left ? prev : { top, left }));
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
-    place();
-    /* A second pass once the panel has actually rendered, so the flip above
-       decides against the real height rather than the estimate. */
-    const raf = requestAnimationFrame(place);
-    /* Scroll does not bubble, so the listener is on the capture phase — the row's
-       own scroll container is what moves, not the window. */
-    const onScroll = () => place();
-    window.addEventListener("scroll", onScroll, true);
-    window.addEventListener("resize", onScroll);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onScroll, true);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [open, place]);
-
-  /* ⚠️⚠️ **THE PANEL GROWS AFTER IT IS PLACED, AND WITHOUT THIS IT FALLS BACK OFF
-     THE SCREEN — the very defect the flip above exists to prevent, arriving through
-     a later door.** Ticking "tell the account exec" resolves a rep a second later,
-     and an ambiguous answer adds a row per candidate. Measured before this
-     observer: a panel flipped above a trigger at y=889 sat at 715 while 168px
-     tall, then grew to 288 and hung **39px past a 964px viewport** — unreachable,
-     because it is `position: fixed`. The rAF pass above only covers the first
-     render; anything arriving later has to re-place too.
-
-     ⚠️ **ITS OWN EFFECT, KEYED ON THE PANEL BEING MOUNTED — and the first version
-     was wrong for exactly the reason this comment exists.** Put in the effect
-     above it observed nothing: on the render that sets `open`, `rect` is still
-     null, so the panel is not in the DOM and `panelRef.current` is null. The
-     effect does not re-run when `rect` arrives, so the observer was created,
-     attached to nothing, and the bug it was written for still reproduced. */
-  const placed = rect !== null;
-  useEffect(() => {
-    const el = panelRef.current;
-    if (!open || !placed || !el) return;
-    const ro = new ResizeObserver(() => place());
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, [open, placed, place]);
-
-  /* ⚠️ POINTERDOWN IN THE CAPTURE PHASE. On bubble, a click on the trigger while
-     the panel is open closes it here and immediately reopens it in the button's
-     own onClick, so the trigger can never dismiss its own panel — a trap this repo
-     has already paid for on the Signal flyout and the workflow combobox. */
-  useEffect(() => {
-    if (!open) return;
-    const onDown = (e: PointerEvent) => {
-      const t = e.target as Node;
-      if (btnRef.current?.contains(t) || panelRef.current?.contains(t)) return;
-      setOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
-    document.addEventListener("pointerdown", onDown, true);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("pointerdown", onDown, true);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
+  /* ⚠️⚠️ **NO ANCHORING, AND THAT IS WHY ~60 LINES WENT.** This used to measure the
+     trigger, flip above it when there was no room below, re-place on a rAF once the
+     real height was known, re-place again from a ResizeObserver when a rep lookup
+     grew it, and listen for scroll in the capture phase. Every one of those fixed a
+     real bug — a `position: fixed` panel hanging past the viewport cannot be
+     scrolled to. A CENTRED modal cannot have that bug, so the defence is gone with
+     the defect. `CenterModal` owns the backdrop, Escape and `data-picker-safe`. */
 
   function toggle(ev: React.MouseEvent) {
     ev.stopPropagation();
@@ -225,18 +142,8 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
         {mark && <span className="dmk-btn-label">{LABEL[mark.status]}</span>}
       </button>
 
-      {open && rect && createPortal(
-        <div
-          ref={panelRef}
-          className="dmk-panel"
-          /* Read by the Launch library picker's outside-click handler: this
-             panel lives on <body>, so without it the dropdown closes on the
-             pointerdown that is picking a status. See the note there. */
-          data-picker-safe=""
-          style={{ top: rect.top, left: rect.left }}
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="dmk-head">{name}</div>
+      {open && (
+        <CenterModal title={name} width={640} onClose={() => setOpen(false)}>
           <div className="dmk-opts">
             {MARK_STATUSES.map((s) => (
               <button
@@ -387,8 +294,7 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
               {saving ? "Saving…" : "Submit"}
             </button>
           </div>
-        </div>,
-        document.body,
+        </CenterModal>
       )}
     </>
   );

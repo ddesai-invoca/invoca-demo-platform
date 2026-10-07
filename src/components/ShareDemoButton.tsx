@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DEFAULT_SHARE_DAYS } from "../data/shareDefaults";
-import { createPortal } from "react-dom";
+import CenterModal from "./CenterModal";
 
 /* =============================================================================
    ShareDemoButton — the SE's half: make a prospect link, then manage it
@@ -31,57 +31,14 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
   const [copied, setCopied] = useState("");
-  const panelRef = useRef<HTMLDivElement | null>(null);
   const btnRef = useRef<HTMLButtonElement | null>(null);
-  const [rect, setRect] = useState<{ top: number; left: number } | null>(null);
 
-  /* ⚠️⚠️ **PORTALLED AND `position: fixed`, BECAUSE THE DEMO PICKER IS A SCROLL BOX.**
-     Reported as "the box gets cut off": `.lib-list` is `overflow-y: auto`, so a panel
-     positioned inside it is clipped at its edge. Identical to the Create Workflow
-     channel popup, which had to escape `.cwm-content` for the same reason. */
-  const W = 360;
-  const place = useCallback(() => {
-    const b = btnRef.current?.getBoundingClientRect();
-    if (!b) return;
-    /* The height is unknown until it has rendered, so the first pass estimates and the
-       rAF pass below re-places against the real box. */
-    const h = panelRef.current?.getBoundingClientRect().height ?? 300;
-    const below = b.bottom + 6;
-    const top = below + h <= window.innerHeight - 8 ? below : Math.max(8, b.top - 6 - h);
-    const left = Math.max(8, Math.min(b.right - W, window.innerWidth - W - 8));
-    /* ⚠️ Bails when nothing moved: a ResizeObserver fires once on observe(), so an
-       always-fresh object would re-render, re-subscribe and fire again. */
-    setRect((prev) => (prev && prev.top === top && prev.left === left ? prev : { top, left }));
-  }, []);
-
-  useEffect(() => {
-    if (!open) { setRect(null); return; }
-    place();
-    const raf = requestAnimationFrame(place);
-    /* Scroll does not bubble, and it is the demo LIST that scrolls, not the window. */
-    const onMove = () => place();
-    window.addEventListener("scroll", onMove, true);
-    window.addEventListener("resize", onMove);
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", onMove, true);
-      window.removeEventListener("resize", onMove);
-    };
-  }, [open, place]);
-
-  /* ⚠️ The panel GROWS as links load, so it must re-place — the same late-growth
-     defect DemoMarkButton records, where a flipped panel ended 39px off screen. Its
-     own effect keyed on the panel being mounted: on the render that sets `open`,
-     `rect` is still null and `panelRef.current` is null, so an observer created in
-     the effect above would attach to nothing. */
-  const placed = rect !== null;
-  useEffect(() => {
-    const el = panelRef.current;
-    if (!open || !placed || !el) return;
-    const ro = new ResizeObserver(() => place());
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, [open, placed, place]);
+  /* ⚠️⚠️ **NO ANCHORING ANY MORE (10/7/2026).** This measured the trigger, flipped
+     above it, re-placed on a rAF and again from a ResizeObserver as the link list
+     loaded, and listened for scroll in the capture phase — all because a
+     `position: fixed` popover that hangs past the viewport cannot be scrolled to.
+     A CENTRED modal has no anchor to fall off, so the whole defence went with the
+     defect. `CenterModal` owns the backdrop, Escape and `data-picker-safe`. */
 
   async function load() {
     setErr("");
@@ -90,22 +47,6 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
     setShares((await res.json()).shares ?? []);
   }
   useEffect(() => { if (open) load(); /* eslint-disable-next-line */ }, [open]);
-
-  /* ⚠️ Capture-phase pointerdown, the trap this repo records three times: on bubble,
-     a second click of the trigger closes the panel here and reopens it in the
-     button's own onClick, so it can never dismiss itself. */
-  useEffect(() => {
-    if (!open) return;
-    const onDown = (e: PointerEvent) => {
-      const t = e.target as Node;
-      if (panelRef.current?.contains(t) || btnRef.current?.contains(t)) return;
-      setOpen(false);
-    };
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
-    document.addEventListener("pointerdown", onDown, true);
-    document.addEventListener("keydown", onKey);
-    return () => { document.removeEventListener("pointerdown", onDown, true); document.removeEventListener("keydown", onKey); };
-  }, [open]);
 
   async function create(e: React.FormEvent) {
     e.preventDefault(); e.stopPropagation();
@@ -161,24 +102,8 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
           picker closed on the very mousedown that was pressing the button, the row
           unmounted, and the click never fired. Reported as "nothing happens when I click
           create link"; this repo hit the identical bug on the demo-mark panel. */}
-      {open && rect && createPortal(
-        <div
-          className="shr-panel"
-          ref={panelRef}
-          data-picker-safe=""
-          style={{ top: rect.top, left: rect.left, width: W }}
-          /* ⚠️⚠️ **`stopPropagation` ONLY — NEVER `preventDefault` HERE.** A React portal
-             bubbles through the REACT tree, not the DOM, so a click inside this panel
-             still reaches the row's handler and has to be stopped. But `preventDefault`
-             on an ancestor cancels the click's DEFAULT ACTION, and for the submit button
-             below that IS submitting the form — so "Create link" fired no request at all.
-             Reported as "nothing happens when I click create link"; the picker-safe fix
-             above was only half of it, and this half was my own. */
-          onClick={(e) => e.stopPropagation()}
-          onMouseDown={(e) => e.stopPropagation()}
-          onPointerDown={(e) => e.stopPropagation()}
-        >
-          <div className="shr-head">Share with {name}</div>
+      {open && (
+        <CenterModal title={`Share with ${name}`} width={680} onClose={() => setOpen(false)}>
           <form className="shr-form" onSubmit={create}>
             <label className="shr-label">Days of access
               <input className="shr-input" type="number" min={1} max={365} value={days}
@@ -222,8 +147,7 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
               </div>
             ))}
           </div>
-        </div>,
-        document.body,
+        </CenterModal>
       )}
     </span>
   );

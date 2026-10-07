@@ -483,5 +483,72 @@ console.log("\nDemo marks — one status set, and Submit is the only writer (10/
     : bad("the notify row still carries the old wording");
 }
 
+console.log("\nCenterModal — the mark and share panels are centred dialogs (10/7/2026)\n");
+{
+  const cm = code("src/components/CenterModal.tsx");
+  const dmk = code("src/components/DemoMarkButton.tsx");
+  const shr = code("src/components/ShareDemoButton.tsx");
+  const css = read("src/styles/app.css");
+
+  /\bfunction CenterModal\b/.test(cm) && /createPortal/.test(cm)
+    ? ok("there is one shared modal shell, portalled to <body>")
+    : bad("CenterModal is missing or no longer portals");
+
+  /from "\.\/CenterModal"/.test(dmk) && /from "\.\/CenterModal"/.test(shr)
+    ? ok("both panels render through the shared shell")
+    : bad("a panel still renders its own dialog chrome");
+
+  /* ⚠️⚠️ **THE LOAD-BEARING ONE.** The backdrop covers the whole screen, and the
+     Launch library dropdown closes on any capture-phase mousedown outside itself.
+     Without this the backdrop's own click closes the dropdown, UNMOUNTS the row,
+     and takes the modal with it — the share panel's "Create link does nothing"
+     bug, which cost a debugging session the first time. */
+  /className="cmd-backdrop"[\s\S]{0,200}?data-picker-safe/.test(cm)
+    ? ok("the backdrop is picker-safe, so the row underneath cannot unmount")
+    : bad("the backdrop would close the library dropdown and destroy the modal");
+
+  /* ⚠️ Closing on `target === currentTarget` rather than "outside the box": a drag
+     that starts in the note and ends on the backdrop would otherwise dismiss the
+     dialog and throw the note away. */
+  /e\.target === e\.currentTarget/.test(cm)
+    ? ok("only a press on the backdrop itself closes — not a drag out of the box")
+    : bad("a selection drag ending on the backdrop would discard the dialog");
+
+  /key === "Escape"/.test(cm)
+    ? ok("Escape closes the dialog")
+    : bad("Escape no longer closes");
+
+  /className="cmd-x"/.test(cm) && /aria-label="Close"/.test(cm)
+    ? ok("there is a labelled close button, top right")
+    : bad("the close button is missing or unlabelled");
+
+  /* ⚠️⚠️ **THE ANCHORING MUST STAY GONE.** Both panels used to measure their
+     trigger, flip above it, re-place on a rAF and again from a ResizeObserver.
+     Every line of that existed because a `position: fixed` popover can hang past
+     the viewport where it cannot be scrolled to. A centred dialog has no anchor,
+     so re-introducing any of it would be re-introducing the bug's habitat. */
+  ![dmk, shr].some((f) => /ResizeObserver/.test(f) || /getBoundingClientRect/.test(f) || /setRect\(/.test(f))
+    ? ok("neither panel anchors itself any more")
+    : bad("trigger-anchoring is back — a dialog can fall off the viewport again");
+
+  /* The four rules those panels used are dead; leaving them invites a future
+     reader to style a class nothing renders. */
+  !/\.dmk-panel\s*\{/.test(css) && !/\.shr-panel\s*\{/.test(css)
+    && !/\.dmk-head\s*\{/.test(css) && !/\.shr-head\s*\{/.test(css)
+    ? ok("the retired panel rules are gone from the stylesheet")
+    : bad("a dead panel rule is still in app.css");
+
+  /* ⚠️ The dialogs roughly doubled, so they MUST clamp — otherwise a 680px box on
+     a small laptop runs off the edge, and the body must scroll rather than the
+     page. Measured at 600x420: clamps to 552x372 with the body scrolling. */
+  (() => {
+    const i = css.indexOf(".cmd-box {");
+    const rule = i < 0 ? "" : css.slice(i, css.indexOf("}", i));
+    return /max-width:\s*100%/.test(rule) && /max-height:\s*100%/.test(rule);
+  })() && /\.cmd-body\s*\{[^}]*overflow-y:\s*auto/.test(css)
+    ? ok("the dialog clamps to the viewport and scrolls its body, not the page")
+    : bad("a doubled dialog could run off a small screen");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);

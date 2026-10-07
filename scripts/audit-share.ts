@@ -231,10 +231,15 @@ console.log("\nThe prospect's bundle and chrome\n");
      is a scroll box, so an in-flow panel was CUT OFF; and the picker closes on a
      document mousedown whose target is not `[data-picker-safe]`, so the row unmounted
      before the click landed and "Create link" did nothing. */
-  /createPortal\(/.test(c) && /document\.body/.test(c)
+  /* ⚠️ RE-AIMED 10/7/2026: the panel became a CENTRED MODAL, so both halves moved
+     into `CenterModal` — it portals to <body> and its backdrop carries
+     `data-picker-safe`. The invariants are unchanged and are asserted where they
+     now live; the mechanism is not the invariant. `audit:app` pins the shell. */
+  const shell = code("src/components/CenterModal.tsx");
+  /from "\.\/CenterModal"/.test(c) && /createPortal\(/.test(shell) && /document\.body/.test(shell)
     ? ok("the share panel is portalled out of the demo list's scroll box")
     : bad("the share panel renders inside the scroll box and will be clipped");
-  /data-picker-safe/.test(c)
+  /data-picker-safe/.test(shell)
     ? ok("the panel is picker-safe, so pressing it does not close the demo list")
     : bad("pressing the share panel closes the picker and swallows the click");
 
@@ -247,9 +252,14 @@ console.log("\nThe prospect's bundle and chrome\n");
     ? ok("the panel does not preventDefault, so the form can submit")
     : bad("the panel cancels its own submit — Create link will do nothing");
 
-  /* ⚠️ It must re-place as links load, or a flipped panel ends up off screen. */
-  /ResizeObserver/.test(c)
-    ? ok("the panel re-places as it grows")
+  /* ⚠️⚠️ RE-AIMED, AND THE INVARIANT GOT STRONGER RATHER THAN WEAKER. This used to
+     require a ResizeObserver, because an ANCHORED panel that grew after being
+     placed could end up past the bottom of the viewport — unreachable, since it is
+     `position: fixed`. A centred modal has no anchor to fall off: it stays centred
+     however much it grows, and clamps to the viewport. So the check is now that it
+     CANNOT anchor, which forbids the whole class rather than patching it. */
+  !/getBoundingClientRect|ResizeObserver|setRect\(/.test(c)
+    ? ok("the panel is centred, so growing cannot push it off screen")
     : bad("a growing panel can end up off screen");
 })();
 
