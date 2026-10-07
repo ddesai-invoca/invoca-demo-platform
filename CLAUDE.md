@@ -11923,6 +11923,143 @@ IS CSC Holdings' brand, Vyve resells DIRECTV) — the fix is to fail only when t
 absent from THIS profile's own config; and counting a pre-existing `href="#"` in the Refresh
 column, which is inert captured chrome and nothing to do with this.
 
+## Share a demo with a prospect — ADMIN-ONLY while it is piloted (10/7/2026)
+
+Asked for as seven requirements: a shareable agentic demo carrying **only Agent Studio and
+Reports**, a link the prospect opens, a number of days it lasts, a password defaulting to the
+prospect's name, the SE's edits reaching them, and **no Ask AI on their side**. Then clarified:
+*"the prospect will only [see] their information and not any other prospects, so they cant
+switch networks or anything, they dont even [get] the home page … the first page that they see
+is the agent studio page."* Both previews fully live; the two reports are **AI SMS Conversation
+Intelligence** and **AI Voice Conversation Intelligence**.
+
+`engine/shareStore.ts` (records), `engine/shareApi.ts` (public + owner handlers),
+`src/data/shareMode.ts` (the client's view of being shared), `src/screens/ShareApp.tsx` (the
+prospect's whole app), `src/components/ShareDemoButton.tsx` (the SE's control).
+
+### ⚠️⚠️ A SHARED LINK NEVER BOOTS THE REAL APP, and that is the strongest guarantee here
+`src/main.tsx` chooses `isShareMode() ? <ShareApp/> : <App/>` **before** the root renders. `App`
+mounts the full route tree, the demo library, the launch screen and the AI assistant; `ShareApp`
+mounts ONE profile and four routes. Choosing at the root means none of that is ever
+*constructed* on a prospect's machine — not hidden, not disabled, not mounted. Everything below
+is defence in depth behind that one line.
+
+⚠️ **THE TOP BAR GIVES A PROSPECT A LABEL WHERE AN SE GETS A PICKER.** The store holds exactly
+one profile, so the `<select>` would list only their own name anyway — rendering it is still
+wrong, because a control that looks like it switches customers invites the question of what else
+is in there. Same for the green Network chip, which opens a Google results screen the share does
+not carry.
+
+⚠️⚠️ **ASK AI IS ABSENT, NOT HIDDEN — and it had to be EXTRACTED to be absent.** `useAiAssistant`
+THROWS without its provider and `ShareApp` deliberately mounts none, so the top bar's pair moved
+into a `TopBarAi` child that is simply not rendered (a hook cannot be called conditionally). The
+SE keeps Ask AI everywhere; the prospect's bundle never constructs it.
+
+⚠️ **MY REPORTS IS FILTERED BY DESTINATION, not by name.** The routes were already refused, so an
+out-of-scope row was never a way *in* — but it rendered a list of links that all answer "Not part
+of this demo", which reads as a broken product. Filtered on `shareAllows(r.to)` so renaming a
+report cannot slip it back.
+
+### The containment rule: the demo id comes from the RECORD, never the request
+⚠️⚠️ **THE ONE LINE THAT KEEPS A SHARE FROM BEING A KEY TO THE LIBRARY.** Every share route reads
+`rec.demoId` off the stored record; a body naming another demo changes nothing. `audit:share`
+attacks this directly — 23 tests including pointing a token at another demo, a forged cookie, a
+missing cookie, and **another live link's valid cookie**, which must not open this one.
+
+⚠️ **THE TOKEN IS THE REAL SECRET** (32 bytes of `randomBytes`, base64url), and the password is a
+second factor against shoulder-surfing a URL. It is still **hashed at rest** (scrypt, per-record
+salt) and never logged, because a prospect's name is a guessable password and people reuse
+things they should not.
+⚠️⚠️ **`timingSafeEqual` THROWS ON A LENGTH MISMATCH rather than returning false**, so comparing
+a wrong-length candidate would crash the unlock route instead of refusing the password. The
+length guard (`got.length === want.length &&`) is part of the constant-time comparison, not a
+shortcut around it.
+
+⚠️ **ONE LINK PER DEMO.** `createShare` calls `deleteSharesFor(demoId)` first — reported as "why
+is there 2 shareable links, it should just override the existing one". ⚠️ This bit the audit's own
+fixtures: a later test reused `acme-health`, so creating destroyed the record earlier sections
+depended on and `shareActive(null)` crashed. Fixtures that create shares need their OWN demo
+(`replace-a` / `replace-b`, and `live-link` for the public-side check).
+
+⚠️ **A SHARED DEMO SPENDS OUR BUDGET**, so `CAPS = { chat: 120, voice: 10 }` per link per day on
+the share-scoped `chat | analyze | livekit-token` routes. The link is outside Invoca and whoever
+holds it can use it.
+
+### The admin gate (10/7/2026) — BOTH HALVES OR NEITHER
+Asked for as *"are you able to only push this to admins?"*, scoped to **the share feature only**;
+everything else ships to everyone.
+
+⚠️⚠️ **HIDING THE BUTTON IS COSMETIC — anyone signed in can POST the route.** So the gate is where
+the decision is made: `handleShareAdminApi` takes an `isAdmin` boolean and returns
+**403 "Sharing a demo is limited to project admins."** for `/api/demos/:id/shares` and
+`/api/shares/:token`. **Passed IN, not imported**, the shape `handleFeedbackApi` already uses, so
+the module stays transport-agnostic and both twins decide who the user is.
+⚠️ **AND REFUSING THE ROUTE ALONE LEAVES A CONTROL THAT ONLY EVER SAYS NO.** The client half
+hides the share button, the launch checkbox and the launch-time POST — **hidden rather than
+disabled, because a greyed control invites "why not me?"**.
+⚠️⚠️ **THE PUBLIC HANDLER TAKES NO ADMIN FLAG AND MUST NOT GROW ONE**, or every link already in a
+prospect's inbox dies the moment the feature is piloted. Only CREATING and managing is
+restricted. `audit:share` asserts this **by use** (a real link still opens) rather than by
+reading the signature.
+⚠️ The launch POST is gated on `admin` as well as on the checkbox: `admin` arrives from the
+server asynchronously, so the flag and the request must read the same answer at the moment it is
+used.
+⚠️ **ADMIN IS NOT OWNERSHIP, AND BOTH TESTS APPLY.** `canManage` (creator-or-admin) still guards
+each demo; the admin gate is an additional pilot restriction on top of it.
+
+### Traps paid for while building it
+⚠️⚠️ **THE BUNDLE CARRIED 15 REAL PROSPECTS.** `profiles.ts` used an EAGER `import.meta.glob`, so
+a prospect's shared page shipped every other prospect's data in its JavaScript. Profiles are
+fetched from `/api/profiles` instead (`engine/generatedProfiles.ts` reads them fresh); the bundle
+roughly halved. **Chosen over code-splitting**, which the service worker depends on not existing.
+⚠️⚠️ **"Create link" DID NOTHING, AND IT WAS TWO BUGS AT ONCE.** The panel is portalled to escape
+the library's scroll box, so `LibraryPicker`'s outside-click closed it on the very `mousedown`
+that was choosing an option and the row unmounted before the click landed — **a portalled popover
+is OUTSIDE by DOM and INSIDE by intent**, fixed with `[data-picker-safe]`. And my own
+`preventDefault()` on the panel cancelled the submit button's default action, because **React
+portals bubble through the REACT tree, not the DOM**. Either alone is invisible.
+⚠️ The panel flips above its trigger and re-places on a `ResizeObserver`, the same fix the
+demo-mark panel needed: it is `position: fixed`, so a panel off the bottom cannot be scrolled to.
+⚠️ **AN INTERNAL ERROR REACHED A PROSPECT'S PAGE** (`auth.parseCookies is not a function`). Both
+twins return fixed messages on the public routes now, and `audit:share` checks it.
+⚠️ **THE DEV TWIN CONSUMED THE REQUEST BODY BEFORE `next()`**, which broke the live-agent routes
+with "brain.customerName is required". The body read moved AFTER the live-agent branch.
+⚠️ **THE PREVIEW AGENT ESCAPED THE SHARE** — `window.open` with an absolute path. Everything a
+prospect opens goes through `SHARE_BASENAME`.
+⚠️ **"Oct 13 / 7 days" WAS MY OWN TEST DATA ON DISK**, not a live bug. Six test share records were
+verified and deleted. Default days is **30**.
+⚠️⚠️ **A ROUTE STRING CAN BE A COMMENT OPENER.** `["/share/:token", "/share/:token/*"]` contains
+the literal bytes `/*`, which every naive comment-stripper in `scripts/` reads as a comment
+opener — it swallowed the rest of `server.ts` up to the next `*` + `/` and took `installAuth(app)`
+with it, so `audit:alerts` reported the auth gate as MISSING when it sat three lines below. It is
+a RegExp route now. Mid-line block comments (`} catch { /* … */ }`, JSX `{/* … */}`) are
+legitimate and common, so tightening the stripper would break it the other way — remove the
+landmine instead.
+
+### Public routes, and where they sit
+`/share/:token` (the SPA) and `/api/share/*` are registered **BEFORE `installAuth`**, like
+`/healthz`, `/api/status`, `/api/canary` and `/api/client-error` — a prospect has no Invoca
+session and never will. The owner-side routes (`/api/demos/:id/shares`, `/api/shares/:token`) sit
+behind the gate as normal.
+
+**`npm run audit:share` is 54 checks** (also in `npm run audit`): containment, the password and
+its length guard, one-link-per-demo, the caps, the route surface a prospect can reach, the
+bundle not carrying other prospects, the portal fixes, and the admin gate.
+⚠️ **Four sabotages fire on the gate alone**: removing the server check (4 red), making it refuse
+admins too, and un-hiding the client controls (3 red). ⚠️ One existing check was **re-aimed rather
+than loosened** — it pinned `shareOnLaunch && demo`, which went red when the request became
+admin-gated; the condition was never the invariant, the try/catch that stops a failed link losing
+a three-minute generation is.
+⚠️ **AND ONE NEW CHECK FIRED FOR THE WRONG REASON FIRST.** The "a prospect's link still opens"
+check used `acme-health`, so under the remove-the-gate sabotage the non-admin creates above
+revoked its link and the check failed with a misleading message. It has its own fixture now.
+
+⚠️ **THE GOOGLE GATE CANNOT BE EXERCISED LOCALLY** (`authEnabled` is false without OAuth creds),
+so the admin list itself is verified by the audit and by flipping the additive
+`DEMO_ADMIN_EMAILS` env var — **no code edit**, per the note on the admin list. Measured both
+ways: an admin sees 11 share buttons and the launch checkbox, a non-admin sees **0** of each
+while Delete and Mark-as-demoed still render, and a direct POST bypassing the UI returns 403.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO
