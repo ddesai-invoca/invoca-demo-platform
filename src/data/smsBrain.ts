@@ -28,6 +28,9 @@
    ============================================================================= */
 
 import type { CustomerProfile, AgentConfigView } from "./schema";
+/* ⚠️ A prospect on a shared link must call the share-scoped twin: the signed-in
+   route is behind the Google gate, and only the share path applies the daily caps. */
+import { apiPath } from "./shareMode";
 
 /** Mirrors `SmsWorkflowFlow` in `workflowDrawers.ts`, declared here so the brain type is local. */
 export interface SmsFlowNodeShape {
@@ -55,6 +58,8 @@ export interface SmsBrain {
   agentLabel?: string;
   customerName: string;
   industry: string;
+  /** The prospect's own word for a customer, so the agent can introduce itself correctly. */
+  customerNoun?: string;
   rules: string[];
   qaPairs: { question: string; answer: string }[];
   knowledge: string[];
@@ -284,6 +289,7 @@ export function buildSmsBrain(
     agentLabel: wf?.label,
     customerName: profile.customerName,
     industry: profile.industry,
+    customerNoun: profile.customerNoun,
     rules: ac?.brandConversationRules ?? [],
     qaPairs: ac?.aiRecommendations?.find((r) => r.qaPairs?.length)?.qaPairs ?? [],
     knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
@@ -321,7 +327,7 @@ export async function askSmsAgent(brain: SmsBrain, history: { role: "user" | "as
   for (let attempt = 0; attempt < 3; attempt++) {
     if (attempt > 0) await new Promise((r) => setTimeout(r, 600 * attempt));
     try {
-      const res = await fetch("/api/chat", {
+      const res = await fetch(apiPath("/api/chat"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ brain, messages: history }),

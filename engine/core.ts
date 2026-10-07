@@ -16,6 +16,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
+import { qmLabels, type QmLabels } from "./careVocab.ts";
 import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, SmsConversation, VoiceConversationIntelligenceView, VoiceConversation, AgentConfigView, SmsPlaybook, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
 import { contextBlock, contextProvenance, type GenerationContext, type GenerationScope } from "./genContext.ts";
 import { sweepValue } from "./dashSweep.ts";
@@ -493,7 +494,11 @@ const DashboardSegments = z.object({
 const metricCols = (conversionTerm: string) =>
   `["Call Count","Quote Discussed (Percent)","${conversionTerm} (Percent)","Total Revenue (Sale Amount)"]`;
 
-export function generateDashboardCore(client: Anthropic, name: string, brief: string, bookingTerm: string, qualifiedCallTerm: string, conversionTerm: string, sc: Scale) {
+export function generateDashboardCore(client: Anthropic, name: string, brief: string, bookingTerm: string, qualifiedCallTerm: string, conversionTerm: string, sc: Scale, industry = "", customerNoun = "") {
+  /* ⚠️ The KPI group that NEGATES the qualified call. Everything else in this prompt
+     already interpolates `qualifiedCallTerm`, so this one literal was the last place a
+     healthcare dashboard still said "Sales". Defaulted so existing callers are unchanged. */
+  const nonQualified = qmLabels(qualifiedCallTerm, industry, customerNoun).nonQualified;
   return structured<z.infer<typeof DashboardCore>>(
     client,
     DashboardCore,
@@ -504,7 +509,7 @@ export function generateDashboardCore(client: Anthropic, name: string, brief: st
       `- title: "Marketing Performance Dashboard (${name})". dateRange: "${DATE_RANGE}".\n` +
       `- kpiGroups: exactly these 3, each 4 tiles (values as strings; percents like "84%"; currency like "${$(sc.revenue)}"; counts use commas):\n` +
       `  1) "Call Performance Summary": Call Count, ${qualifiedCallTerm} (Percent), ${conversionTerm} (Percent), Total Revenue (Sale Amount)\n` +
-      `  2) "Non-Sales Inquiries": Call Count = ONLY the non-sales calls (${n(sc.nonSalesCalls)}, NOT the ${n(sc.calls)} total — repeating the total here is wrong), then three non-sales call types whose percents are shares of ALL calls and MUST sum to exactly ${100 - sc.salesPct}% (e.g. 8% + 5% + 3%), so sales + non-sales = 100%.\n` +
+      `  2) "${nonQualified}": Call Count = ONLY the non-sales calls (${n(sc.nonSalesCalls)}, NOT the ${n(sc.calls)} total — repeating the total here is wrong), then three non-sales call types whose percents are shares of ALL calls and MUST sum to exactly ${100 - sc.salesPct}% (e.g. 8% + 5% + 3%), so sales + non-sales = 100%.\n` +
       `  3) "${qualifiedCallTerm} Breakout Metrics": ${qualifiedCallTerm} (Percent), Quote Discussed (Percent), Unqualified Lead (Percent), ${conversionTerm} (Percent)\n` +
       `- salesCallBreakoutGraph: yLabel "${qualifiedCallTerm} (Count)", xLabels EXACTLY ${JSON.stringify(WEEK_LABELS)}, series in order "${qualifiedCallTerm} (Count)","Quote Discussed (Count)","Unqualified Lead (Count)","${conversionTerm} (Count)", each one weekly count per label (${qualifiedCallTerm} highest). These series roll up INTO group 3's percents, so they must be consistent with them.\n` +
       `All numbers plausible for THIS business.`,
@@ -903,13 +908,13 @@ const QmGen = z.object({
   bottomRows: z.array(QmAgentRow), // 5–6, low scores (~40–42%)
   topRows: z.array(QmAgentRow),    // 5–6, higher scores (~46–49%)
 });
-function composeQm(g: z.infer<typeof QmGen>, sc: Scale): z.infer<typeof QualityManagementView> {
+function composeQm(g: z.infer<typeof QmGen>, sc: Scale, L: QmLabels): z.infer<typeof QualityManagementView> {
   const convCount = `${g.conversionNoun} (Count)`;
   const convPct = `${g.conversionNoun} (Percent)`;
-  const scoreCol = "New Customer Sales Combination Scorecard (Average)";
+  const scoreCol = L.scorecardAvg;
   const cols = ["Agent", scoreCol, convPct, "Total Revenue (Sale Amount)", "Call Count"];
   const mkBars = (rows: z.infer<typeof QmAgentRow>[]) => ({
-    legend: "New Customer Sales Combination Scorecard", axisMax: 100, axisTicks: [0, 25, 50, 75, 100], axisSuffix: "%",
+    legend: L.scorecard, axisMax: 100, axisTicks: [0, 25, 50, 75, 100], axisSuffix: "%",
     bars: rows.map((r) => ({ name: r.agent, value: r.score, display: `${r.score}%` })),
   });
   const mkTable = (rows: z.infer<typeof QmAgentRow>[]) => ({
@@ -922,22 +927,25 @@ function composeQm(g: z.infer<typeof QmGen>, sc: Scale): z.infer<typeof QualityM
   return {
     title: "QM | Actionable Insights Dashboard",
     dateRange: DATE_RANGE,
-    salesOpportunities: { title: "Sales Opportunities", chips: ["Answered by Agent: Yes"], tiles: [{ label: "Call Count", value: g.salesOppCallCount }, { label: "Buying Intent (Industry) (Count)", value: g.salesOppBuyingIntent }] },
-    salesConversions: { title: "Sales Conversions", chips: ["2 Filters"], tiles: [{ label: convCount, value: g.salesConvCount }, { label: "Total Revenue (Sale Amount)", value: g.salesConvRevenue }] },
-    callsNeedingReview: { title: "Calls Needing Review - Lost Sales Opportunities", chips: ["5 Filters"], chart: { legend: "New Customer Sales Fail (Range & Count)", axisMax: lostMax, axisTicks: [0, lostMax / 4, lostMax / 2, (lostMax * 3) / 4, lostMax], axisSuffix: "", bars: g.lostAgents.map((a) => ({ name: a.name, value: a.value, display: String(a.value) })) } },
+    salesOpportunities: { title: L.opportunities, chips: ["Answered by Agent: Yes"], tiles: [{ label: "Call Count", value: g.salesOppCallCount }, { label: "Buying Intent (Industry) (Count)", value: g.salesOppBuyingIntent }] },
+    salesConversions: { title: L.conversions, chips: ["2 Filters"], tiles: [{ label: convCount, value: g.salesConvCount }, { label: "Total Revenue (Sale Amount)", value: g.salesConvRevenue }] },
+    callsNeedingReview: { title: L.lostOpportunities, chips: ["5 Filters"], chart: { legend: L.fail, axisMax: lostMax, axisTicks: [0, lostMax / 4, lostMax / 2, (lostMax * 3) / 4, lostMax], axisSuffix: "", bars: g.lostAgents.map((a) => ({ name: a.name, value: a.value, display: String(a.value) })) } },
     highestConvertingAgents: { yLabel: convCount, xLabels: WEEK_LABELS, series: g.weeklyAgents.map((a) => ({ name: a.name, values: a.values })) },
     baselineSkills: { title: "Baseline Skills", chips: [], tiles: [{ label: "Proper Greeting (Scorecard) (Percent)", value: g.greetingPct }, { label: "Asked for the Sale (Scorecard) (Percent)", value: g.askedForSalePct }] },
     scoredCalls: { title: "Scored Calls", chips: [], tiles: [{ label: "Information Gathering (Average)", value: g.infoGatheringPct }, { label: "Call Etiquette (Average)", value: g.callEtiquettePct }, { label: "New Customer Sales (Average)", value: g.newCustomerSalesPct }] },
-    baselineQualityScore: { title: "Baseline Sales Quality Score", cadence: "Daily", barLabel: scoreCol, average: QM_SCORE_MEAN, yMax: 100, yTicks: [0, 25, 50, 75, 100], suffix: "%", points: qmDays(QM_SCORE_MEAN, 8, 0, 0, false) },
-    bottomByAgentBar: { title: "Bottom Quality Scores by Agent", chips: ["New Customer Sales Combination Scorecard: Applied"], chart: mkBars(g.bottomRows), pager: "1 - 6 of 30" },
-    bottomByAgentTable: { title: "Bottom Quality Scores by Agent", chips: ["New Customer Sales Combination Scorecard: Applied"], table: mkTable(g.bottomRows) },
+    baselineQualityScore: { title: L.baselineScore, cadence: "Daily", barLabel: scoreCol, average: QM_SCORE_MEAN, yMax: 100, yTicks: [0, 25, 50, 75, 100], suffix: "%", points: qmDays(QM_SCORE_MEAN, 8, 0, 0, false) },
+    bottomByAgentBar: { title: "Bottom Quality Scores by Agent", chips: [`${L.scorecard}: Applied`], chart: mkBars(g.bottomRows), pager: "1 - 6 of 30" },
+    bottomByAgentTable: { title: "Bottom Quality Scores by Agent", chips: [`${L.scorecard}: Applied`], table: mkTable(g.bottomRows) },
     topByAgentBar: { title: "Top Quality Scores by Agent", chips: [], chart: mkBars(g.topRows), pager: "1 - 6 of 30" },
     qualityByAgentTable: { title: "Quality Scores by Agent", chips: [], table: mkTable(g.topRows) },
     trendingToConversion: { title: "Trending Sales Quality Score to Conversion", cadence: "Daily", barLabel: scoreCol, lineLabel: convCount, yMax: 100, yTicks: [0, 25, 50, 75, 100], suffix: "%", rightLabel: convCount, rightMax: convRightMax, rightTicks: [0, convRightMax / 4, convRightMax / 2, (convRightMax * 3) / 4, convRightMax], points: qmDays(QM_SCORE_MEAN, 8, Math.round(sc.consultations / 31), Math.round(sc.consultations / 31 / 8), true, sc.consultations) },
     trendingToRevenue: { title: "Trending Sales Quality Score to Revenue", cadence: "Daily", barLabel: scoreCol, lineLabel: "Total Revenue (Sale Amount)", yMax: 100, yTicks: [0, 25, 50, 75, 100], suffix: "%", rightLabel: "Total Revenue (Sale Amount)", rightMax: revRightMax, rightTicks: [0, revRightMax / 3, (revRightMax * 2) / 3, revRightMax], rightPrefix: "$", points: qmDays(QM_SCORE_MEAN, 8, Math.round(sc.revenue / 31), Math.round(sc.revenue / 31 / 8), true, sc.revenue) },
   };
 }
-async function generateQualityManagement(client: Anthropic, name: string, brief: string, bookingTerm: string, sc: Scale): Promise<z.infer<typeof QualityManagementView>> {
+async function generateQualityManagement(client: Anthropic, name: string, brief: string, bookingTerm: string, sc: Scale, qualifiedCallTerm: string, industry: string, customerNoun: string): Promise<z.infer<typeof QualityManagementView>> {
+  /* ⚠️ THE PROSPECT'S OWN CANONICAL TERM DECIDES THE WORDING — see engine/careVocab.ts.
+     A non-care prospect gets today's literals back character for character. */
+  const L = qmLabels(qualifiedCallTerm, industry, customerNoun);
   const g = await structured<z.infer<typeof QmGen>>(
     client,
     QmGen,
@@ -956,7 +964,7 @@ async function generateQualityManagement(client: Anthropic, name: string, brief:
     3500,
     FAST_MODEL
   );
-  return composeQm(g, sc);
+  return composeQm(g, sc, L);
 }
 
 /* Signal — the "Manage Signals" grid. Ten signals in the three groups an SE
@@ -1239,7 +1247,7 @@ export async function generateProfile(
     maybe("callReview", () => generateCallReview(client, name, brief, bookingTerm, scale)),
     () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm)),
     maybe("signalManager", () => generateSignalManager(client, name, brief, bookingTerm)),
-    () => phase("dashboard", () => generateDashboardCore(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale)),
+    () => phase("dashboard", () => generateDashboardCore(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale, terms.industry, customerNoun)),
     () => phase("digitalInsights", async () => stripAppOwnedFields(await generateDigitalInsights(client, name, brandDomain, brief, bookingTerm, scale))),
     maybe("conversationIntelligence", () => generateConversationIntelligence(client, name, brief, bookingTerm, customerNoun, scale)),
     maybe("callDetail", () => generateCallDetail(client, name, brief, bookingTerm)),
@@ -1249,7 +1257,7 @@ export async function generateProfile(
     maybe("aiMessagingImpact", () => generateAiMessagingImpact(client, name, brief, bookingTerm, customerNoun, scale)),
     maybe("voiceRoutingDemo", () => generateVoiceRoutingDemo(client, name, brandDomain, brief, bookingTerm)),
     maybe("screenpops", () => generateScreenpops(client, name, brief, bookingTerm, customerNoun)),
-    maybe("qualityManagement", () => generateQualityManagement(client, name, brief, bookingTerm, scale)),
+    maybe("qualityManagement", () => generateQualityManagement(client, name, brief, bookingTerm, scale, qualifiedCallTerm, terms.industry, customerNoun)),
     maybe("qmInstantInsights", () => generateQmInstantInsights(client, name, brief, scale)),
   ], CONCURRENCY);
   const dashboard = assembleDashboard(dashCore, dashChannels, dashSegments);

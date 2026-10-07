@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isShareMode, shareAllows } from "../data/shareMode";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import type { GumloopArtifact } from "../data/schema";
@@ -92,6 +93,14 @@ function reportsFor(
       artifact: a,
     });
   }
+  /* ⚠️⚠️ **A SHARED DEMO LISTS ONLY THE TWO REPORTS IT CARRIES.** The routes are already
+     refused by `shareAllows`, so an out-of-scope row was not a way IN — but it rendered a
+     list of links that all answer "Not part of this demo", which reads as a broken product
+     rather than a focused one. Filtered on the row's own destination rather than its NAME,
+     so a renamed report cannot slip back in.
+     ⚠️ An ARTIFACT row has no `to` at all (it opens a Blob in a new tab), so the filter
+     drops those too — the three leave-behinds are not part of what was shared. */
+  if (isShareMode()) return rows.filter((r) => r.to !== undefined && shareAllows(r.to));
   return rows;
 }
 

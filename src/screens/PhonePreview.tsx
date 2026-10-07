@@ -1,4 +1,7 @@
 import { useEffect, useRef, useState, useMemo } from "react";
+/* ⚠️ A prospect on a shared link must call the share-scoped twin: the signed-in
+   route is behind the Google gate, and only the share path applies the daily caps. */
+import { apiPath } from "../data/shareMode";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
@@ -302,7 +305,7 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
     for (let attempt = 0; attempt < 3; attempt++) {
       if (attempt > 0) await new Promise((r) => setTimeout(r, 600 * attempt));
       try {
-        const res = await fetch("/api/chat", {
+        const res = await fetch(apiPath("/api/chat"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ brain, messages: history }),
@@ -416,7 +419,7 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
     analyzeTimer.current = setTimeout(() => {
       if (analyzedForCount.current === messages.length) return; // no new turns since last analyze
       analyzedForCount.current = messages.length;
-      fetch("/api/analyze", {
+      fetch(apiPath("/api/analyze"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

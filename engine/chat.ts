@@ -16,6 +16,7 @@
 
 import Anthropic from "@anthropic-ai/sdk";
 import { slotTable } from "../src/data/voiceBooking.ts";
+import { servesPatients } from "./careVocab.ts";
 
 const CHAT_MODEL = "claude-haiku-4-5-20251001";
 
@@ -87,6 +88,8 @@ export interface SmsFlowNode {
 export interface ChatBrain {
   customerName: string;
   industry?: string;
+  /** The prospect's own word for a customer ("Patient"), so the agent introduces itself right. */
+  customerNoun?: string;
   rules?: string[];
   qaPairs?: { question: string; answer: string }[];
   knowledge?: string[];
@@ -498,7 +501,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
   // generics so the agent still works if a profile lacks one.
   const p = brain.playbook;
   const bookingType = p?.bookingType?.trim() || "appointment";
-  const goal = p?.goal?.trim() || `answer questions, qualify the customer, and schedule a ${bookingType}`;
+  const goal = p?.goal?.trim() || `answer questions, qualify the ${(brain.customerNoun ?? "customer").toLowerCase()}, and schedule a ${bookingType}`;
   const offer = p?.offer?.trim() || "";
   const providesEstimate = p?.providesEstimate ?? false;
   const promisesReminder = p?.promisesReminder ?? false;
@@ -513,7 +516,18 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
 
   return [
     NO_DASH_RULE,
-    `You are the SMS sales assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
+    /* ⚠️⚠️ **A HOSPITAL'S AGENT MUST NOT INTRODUCE ITSELF AS A SALES ASSISTANT.** Asked for
+       directly: healthcare prospects get healthcare language. This line is the headline case
+       and it is HARDCODED, so fixing the generation prompts alone would not have fixed even a
+       FUTURE healthcare prospect — every agent, old and new, read "sales assistant".
+       ⚠️ **CONSEQUENCE, STATED: this one is derived at runtime rather than stored, so it also
+       corrects the healthcare demos already saved.** No stored data is touched; the wording is
+       simply assembled from the prospect's own `customerNoun`, which already says "Patient".
+       ⚠️ A non-care prospect is byte-identical — `servesPatients` is false and the original
+       sentence is returned unchanged. */
+    servesPatients(brain.industry ?? "", brain.customerNoun ?? "")
+      ? `You are the SMS scheduling assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} organization` : ""}.`
+      : `You are the SMS sales assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
     `You are texting a prospective customer. Your goal: ${goal}.`,
     ``,
     `CONVERSATION FLOW — follow this path start to finish. Adapt your WORDING to what the customer says, never the order of the steps or the set of questions below:`,
@@ -919,7 +933,12 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
   return [
     NO_DASH_RULE,
     `You are the AI phone assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
-    `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
+    /* ⚠️ Same vertical split as the SMS identity: "you do NOT sell" is the right phrasing for
+       a retailer and the wrong one for a hospital, whose agent was never selling anything.
+       The JOB is identical in both — qualify and route — only the wording moves. */
+    servesPatients(brain.industry ?? "", brain.customerNoun ?? "")
+      ? `You are on a LIVE PHONE CALL. Your ONLY job is to understand what the caller needs and ROUTE them to the right team — you do NOT give clinical advice, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`
+      : `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
     ``,
     ...flow,
     placeholderRule,

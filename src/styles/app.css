@@ -6463,3 +6463,92 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 }
 .fup-done:hover { color: #0d7a3e; }
 .fup-done .material-icons { font-size: 20px; }
+
+/* ── The shared-demo gate: unlock, expired, and "not part of this demo" ──────
+   ⚠️ Its own `.share-*` prefix. One prefix per screen is what stops a change here
+   restyling anything an SE sees — this repo has already lost 79 rules to that once.
+   ⚠️ A prospect sees this BEFORE any demo chrome, so it carries its own centred
+   layout rather than borrowing the app shell's. */
+.share-gate {
+  position: fixed; inset: 0; display: grid; place-items: center;
+  background: var(--color-bg-page, #f6f7f9); padding: 24px;
+}
+.share-card {
+  width: min(420px, 100%); background: #fff; border: 1px solid #e7e9eb;
+  border-radius: 8px; padding: 32px; box-shadow: 0 2px 4px rgba(12, 0, 51, .08);
+}
+.share-title { font: 400 24px/32px Lato, sans-serif; color: #15243e; margin: 0 0 8px; }
+.share-muted { font: 400 14px/20px Lato, sans-serif; color: #5b6577; margin: 0 0 8px; }
+.share-form { margin-top: 20px; display: flex; flex-direction: column; gap: 6px; }
+.share-label { font: 700 13px/18px Lato, sans-serif; color: #15243e; }
+.share-input {
+  height: 36px; padding: 0 10px; border: 1px solid #e7e9eb; border-radius: 3px;
+  font: 400 15px/20px Lato, sans-serif; color: #15243e;
+}
+.share-input:focus { outline: 2px solid #2666f9; outline-offset: -1px; border-color: #2666f9; }
+.share-error { font: 400 13px/18px Lato, sans-serif; color: #b33b00; margin: 2px 0 0; }
+.share-btn {
+  margin-top: 10px; height: 36px; border: 0; border-radius: 3px; cursor: pointer;
+  background: #2666f9; color: #fff; font: 500 14px/36px Lato, sans-serif;
+}
+.share-btn:disabled { background: #e7e9eb; color: #a1a7b2; cursor: default; }
+/* The customer name where an SE has a picker. Matches .net-select's metrics so the
+   bar does not reflow between the two views. */
+.net-select-static {
+  /* ⚠️ The arrow and the hit area come from `.net-select`; a prospect who sees a
+     chevron reasonably expects a list of customers behind it. Caught in a screenshot,
+     not by reading the markup. */
+  display: inline-flex; align-items: center;
+  appearance: none; -webkit-appearance: none; background-image: none; cursor: default;
+  padding-right: 8px;
+}
+
+/* ── The SE's share dialog on a Launch row (.shr-*) ──────────────────────────
+   ⚠️ Anchored to the row and stops its own clicks: the row itself opens the demo. */
+.shr-wrap { display: inline-flex; }
+/* ⚠️ PORTALLED TO <body> and `position: fixed`, so the demo picker's own scroll box
+   cannot clip it — reported as "the box gets cut off". Its coordinates come from the
+   trigger's rect in JS, which is also what lets it flip above near the bottom. */
+.shr-panel {
+  position: fixed; z-index: 3300;
+  background: #fff; border: 1px solid #e7e9eb; border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(12, 0, 51, .22); padding: 16px; text-align: left;
+  max-height: min(70vh, 560px); overflow-y: auto;
+}
+.shr-head { font: 700 14px/20px Lato, sans-serif; color: #15243e; margin-bottom: 10px; }
+.shr-form { display: flex; flex-direction: column; gap: 8px; }
+.shr-label { font: 700 12px/16px Lato, sans-serif; color: #15243e; display: flex; flex-direction: column; gap: 4px; }
+.shr-input { height: 32px; padding: 0 8px; border: 1px solid #d7dae0; border-radius: 6px; font: 400 13px/18px Lato, sans-serif; }
+.shr-input:focus { outline: none; border-color: var(--color-green-bar); box-shadow: 0 0 0 3px rgba(44,191,88,.15); }
+.shr-hint { font: 400 12px/16px Lato, sans-serif; color: #5b6577; margin: 0; }
+.shr-err { font: 400 12px/16px Lato, sans-serif; color: #b33b00; margin: 0; }
+/* ⚠️ THE LAUNCH GREEN, not the platform blue — asked for directly. It is the SAME
+   token `.launch-btn` uses, so the two cannot drift apart. */
+.shr-btn {
+  height: 32px; border: 0; border-radius: 6px; background: var(--color-green-bar);
+  color: #fff; font: 700 13px Lato, sans-serif; cursor: pointer; transition: background .15s;
+}
+.shr-btn:hover:not(:disabled) { background: #26a94e; }
+.shr-btn:disabled { background: #e7e9eb; color: #a1a7b2; cursor: default; }
+.shr-list { margin-top: 12px; display: flex; flex-direction: column; gap: 10px; max-height: 260px; overflow-y: auto; }
+.shr-item { border-top: 1px solid #e7e9eb; padding-top: 8px; display: flex; flex-direction: column; gap: 6px; }
+.shr-item-off { opacity: .6; }
+.shr-item-top { display: flex; justify-content: space-between; gap: 8px; }
+.shr-state { font: 700 12px/16px Lato, sans-serif; color: #15243e; }
+.shr-opens { font: 400 12px/16px Lato, sans-serif; color: #5b6577; }
+.shr-item-row { display: flex; gap: 6px; align-items: center; }
+.shr-link { flex: 1; min-width: 0; height: 26px; padding: 0 6px; border: 1px solid #e7e9eb; border-radius: 3px; font: 400 12px/16px Lato, sans-serif; color: #5b6577; }
+.shr-mini {
+  height: 28px; padding: 0 10px; border: 1px solid #d7dae0; border-radius: 6px;
+  background: #fff; color: #15243e; font: 500 12px Lato, sans-serif; cursor: pointer;
+}
+.shr-mini:hover:not(:disabled) { background: #f5f6fa; }
+.shr-mini:disabled { opacity: .5; cursor: default; }
+.shr-danger { border-color: rgba(179,59,0,.5); color: #b33b00; }
+
+/* The "make this demo shareable" opt-in on the launch form. */
+.launch-share {
+  display: flex; gap: 10px; align-items: center; margin-top: 2px;
+  font: 400 14px/20px Lato, sans-serif; color: #15243e; cursor: pointer;
+}
+.launch-share input { margin-top: 0; width: 16px; height: 16px; accent-color: var(--color-green-bar); cursor: pointer; }

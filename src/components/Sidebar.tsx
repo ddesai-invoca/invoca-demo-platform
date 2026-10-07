@@ -1,4 +1,5 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { isShareMode } from "../data/shareMode";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { NAV, type NavItem } from "./nav";
 
@@ -52,6 +53,18 @@ function SubMenu({ item, anchorTop, onClose }: {
   );
 }
 
+/**
+ * ⚠️⚠️ **A PROSPECT'S RAIL CARRIES ONLY WHAT THEIR DEMO CONTAINS.** The real nav is
+ * 14 items — Dashboards, Call Review, Signal, Integrations, Settings — and every one
+ * of them leads somewhere a shared demo does not go. Leaving them rendered would be
+ * a rail full of links that answer "Not part of this demo", which reads as a broken
+ * product rather than a focused one.
+ * ⚠️ Filtered from the SAME `NAV` the real app renders rather than a second hand-written
+ * list, so an icon or label fixed in one place cannot drift in the other.
+ */
+const SHARE_NAV_PATHS = new Set(["/agent-studio", "/reports"]);
+const NAV_FOR_VIEW = () => (isShareMode() ? NAV.filter((n) => SHARE_NAV_PATHS.has(n.path)) : NAV);
+
 export function Sidebar() {
   const [open, setOpen] = useState<string | null>(null);
   const [anchorTop, setAnchorTop] = useState(0);
@@ -93,7 +106,7 @@ export function Sidebar() {
   return (
     <nav className="sidebar">
       <div className="nav-scroll" ref={scrollRef}>
-        {NAV.map((item) => {
+        {NAV_FOR_VIEW().map((item) => {
           if (!item.submenu) {
             return (
               <NavLink
@@ -144,7 +157,7 @@ export function Sidebar() {
 
       {open && (
         <SubMenu
-          item={NAV.find((n) => n.path === open)!}
+          item={NAV_FOR_VIEW().find((n) => n.path === open)!}
           anchorTop={anchorTop}
           onClose={() => setOpen(null)}
         />

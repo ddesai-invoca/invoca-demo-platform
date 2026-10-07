@@ -1,4 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+/* ⚠️ A prospect on a shared link must call the share-scoped twin: the signed-in
+   route is behind the Google gate, and only the share path applies the daily caps. */
+import { apiPath } from "./shareMode";
 /* ⚠️⚠️ **`livekit-client` IS LOADED ON DEMAND, AND THE MEASUREMENT IS WHY.** Imported at
    the top of this module it put the single bundle from 2,166,613 to 2,661,260 bytes —
    **+124 KB gzipped, 576 -> 700** — carried by every screen in the app, for a library only
@@ -331,7 +334,7 @@ export function useLiveKitVoice(): LiveKitVoice {
     setPhase("connecting");
 
     connecting = (async (): Promise<LiveCall | null> => {
-      const res = await fetch("/api/livekit-token", {
+      const res = await fetch(apiPath("/api/livekit-token"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ brain, profileId, greeting, voice }),
@@ -499,7 +502,7 @@ export function useLiveKitReady(): boolean {
   const [ready, setReady] = useState(false);
   useEffect(() => {
     let alive = true;
-    readyCache ??= fetch("/api/livekit-token", {
+    readyCache ??= fetch(apiPath("/api/livekit-token"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       /* No brain: the endpoint answers 400 when it IS configured and 501 when it is not, so

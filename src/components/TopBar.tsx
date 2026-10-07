@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { isShareMode } from "../data/shareMode";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 
@@ -24,12 +25,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 export function TopBar() {
   const { profileId, setProfileId, profiles } = useProfile();
   const navigate = useNavigate();
-  const { pathname } = useLocation();
-  const { openDrawer, undo, canUndo, readOnly } = useAiAssistant();
-  const scopeKey = `${profileId}::${pathname}`;
-  /* Undo is per page by design: the button can never change a screen you are not
-     looking at. It greys out when THIS page has nothing left to undo. */
-  const undoable = canUndo(scopeKey) && !readOnly;
+
 
   return (
     <header className="topbar">
@@ -38,22 +34,38 @@ export function TopBar() {
       </Link>
       <span className="demo-badge">Demo<br />Network</span>
       <div className="net-wrap">
-        <button
-          className="net-label net-label-btn"
-          onClick={() => navigate("/google-search")}
-          title="Open the Google results page for this prospect"
-        >
-          Network
-        </button>
-        <select
-          className="net-select"
-          value={profileId}
-          onChange={(e) => setProfileId(e.target.value)}
-        >
-          {profiles.map((p) => (
-            <option key={p.id} value={p.id}>{p.customerName}</option>
-          ))}
-        </select>
+        {/* ⚠️ The chip opens the Google results screen, which is NOT part of a shared
+            demo — so for a prospect it is a plain label rather than a dead button. */}
+        {isShareMode() ? (
+          <span className="net-label">Network</span>
+        ) : (
+          <button
+            className="net-label net-label-btn"
+            onClick={() => navigate("/google-search")}
+            title="Open the Google results page for this prospect"
+          >
+            Network
+          </button>
+        )}
+        {/* ⚠️⚠️ **A PROSPECT GETS A PLAIN LABEL, NOT A PICKER.** On a shared link the
+            store holds exactly one profile, so the <select> would list only their own
+            name anyway — rendering it is still wrong, because a control that looks
+            like it switches customers invites the question of what else is in there.
+            The real guarantee is upstream (`ProfileProvider only={…}`); this is what
+            the prospect sees. */}
+        {isShareMode() ? (
+          <span className="net-select net-select-static">{profiles[0]?.customerName ?? ""}</span>
+        ) : (
+          <select
+            className="net-select"
+            value={profileId}
+            onChange={(e) => setProfileId(e.target.value)}
+          >
+            {profiles.map((p) => (
+              <option key={p.id} value={p.id}>{p.customerName}</option>
+            ))}
+          </select>
+        )}
       </div>
       <div className="search-wrap">
         <div className="search">
@@ -65,25 +77,11 @@ export function TopBar() {
         {/* Hover zone: both buttons hold their layout space at all times, so the
             invisible area is still hoverable. focus-visible reveals them too, so
             they stay reachable by keyboard. */}
-        <span className="tb-ai">
-          <button
-            className="tb-ai-btn tb-ai-spark"
-            onClick={() => openDrawer()}
-            title="Ask AI about this page"
-            aria-label="Ask AI about this page"
-          >
-            <span className="material-icons">auto_awesome</span>
-          </button>
-          <button
-            className={"tb-ai-btn" + (undoable ? "" : " tb-ai-btn-off")}
-            onClick={() => undoable && undo(scopeKey)}
-            disabled={!undoable}
-            title={undoable ? "Undo the last AI change on this page" : "Nothing to undo on this page"}
-            aria-label="Undo the last AI change on this page"
-          >
-            <span className="material-icons">undo</span>
-          </button>
-        </span>
+        {/* ⚠️⚠️ **EXTRACTED SO A PROSPECT NEVER CALLS `useAiAssistant`.** That hook
+            THROWS without its provider, and `ShareApp` deliberately does not mount one —
+            Ask AI is not hidden on a shared demo, it is absent. A hook cannot be called
+            conditionally, so the call moved into a child that is simply not rendered. */}
+        {!isShareMode() && <TopBarAi />}
         <span className="material-icons">star</span>
         <span className="icon-badge">
           <span className="material-icons">notifications</span>
@@ -96,5 +94,38 @@ export function TopBar() {
         <span className="avatar">DD</span>
       </div>
     </header>
+  );
+}
+
+/** The SE's Ask AI pair. Never rendered on a shared demo. */
+function TopBarAi() {
+  const { openDrawer, undo, canUndo, readOnly } = useAiAssistant();
+  const { profileId } = useProfile();
+  const { pathname } = useLocation();
+  const scopeKey = `${profileId}::${pathname}`;
+  /* Undo is per page by design: the button can never change a screen you are not
+     looking at. It greys out when THIS page has nothing left to undo. */
+  const undoable = canUndo(scopeKey) && !readOnly;
+  return (
+        <span className="tb-ai">
+      <button
+        className="tb-ai-btn tb-ai-spark"
+        onClick={() => openDrawer()}
+        title="Ask AI about this page"
+        aria-label="Ask AI about this page"
+      >
+        <span className="material-icons">auto_awesome</span>
+      </button>
+      <button
+        className={"tb-ai-btn" + (undoable ? "" : " tb-ai-btn-off")}
+        onClick={() => undoable && undo(scopeKey)}
+        disabled={!undoable}
+        title={undoable ? "Undo the last AI change on this page" : "Nothing to undo on this page"}
+        aria-label="Undo the last AI change on this page"
+      >
+        <span className="material-icons">undo</span>
+      </button>
+    </span>
+
   );
 }

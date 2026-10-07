@@ -1,4 +1,7 @@
 import { useEffect, useMemo } from "react";
+/* ⚠️ A prospect on a shared link must call the share-scoped twin: the signed-in
+   route is behind the Google gate, and only the share path applies the daily caps. */
+import { apiPath } from "./shareMode";
 import { useProfile } from "./ProfileContext";
 import { useAiAssistant } from "./AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "./smsBrain";
@@ -168,6 +171,7 @@ export function useBrain(opts?: BrainOpts) {
   return {
     customerName: profile.customerName,
     industry: profile.industry,
+    customerNoun: profile.customerNoun,
     rules: ac?.brandConversationRules ?? [],
     qaPairs: ac?.aiRecommendations?.find((r) => r.qaPairs?.length)?.qaPairs ?? [],
     knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
@@ -307,7 +311,7 @@ export function captureVoiceCall(
 ): void {
   const conv = buildVoiceConversation(msgs, durationSecs);
   addCaptured(profile.id, conv);
-  fetch("/api/analyze", {
+  fetch(apiPath("/api/analyze"), {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

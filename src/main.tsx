@@ -9,6 +9,8 @@ import './styles/app.css'
 import './styles/ts.css'
 import './styles/standalone.css'
 import App from './App.tsx'
+import ShareApp from './screens/ShareApp.tsx'
+import { isShareMode } from './data/shareMode.ts'
 import { installClientErrorReporting } from './data/clientErrors.ts'
 
 /* ---- the browser reports its own failures ----------------------------------
@@ -18,9 +20,15 @@ import { installClientErrorReporting } from './data/clientErrors.ts'
    `src/data/clientErrors.ts` for the dedupe and why both channels are hooked. */
 installClientErrorReporting()
 
+/* ⚠️⚠️ **A SHARED LINK NEVER BOOTS THE REAL APP, and that is the strongest guarantee
+   in this feature.** `App` mounts the full route tree, the demo library, the AI
+   assistant and the launch screen; a prospect gets `ShareApp`, which mounts one
+   profile and four routes. Choosing here rather than inside `App` means none of
+   that is ever constructed on a prospect's machine — not hidden, not disabled,
+   not mounted. */
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    {isShareMode() ? <ShareApp /> : <App />}
   </StrictMode>,
 )
 

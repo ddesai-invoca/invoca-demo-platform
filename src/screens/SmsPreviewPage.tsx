@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { isShareMode } from "../data/shareMode";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
@@ -51,28 +52,33 @@ export function SmsPreviewPage() {
 
   return (
     <>
+      {/* ⚠️ This page renders OUTSIDE the app shell, so it carries its own Ask AI pair
+          and its own drawer — neither of which the shell's guard can reach. A shared
+          demo gets neither. */}
+      {!isShareMode() && (
       <span className="pp-ai">
-        <button
-          className="tb-ai-btn tb-ai-spark"
-          onClick={() => openDrawer()}
-          title="Ask AI — set what this agent asks"
-          aria-label="Ask AI to set what this agent asks"
-        >
-          <span className="material-icons">auto_awesome</span>
-        </button>
-        <button
-          className={"tb-ai-btn" + (undoable ? "" : " tb-ai-btn-off")}
-          onClick={() => undoable && undo(scopeKey)}
-          disabled={!undoable}
-          title={undoable ? "Undo the last AI change to this agent" : "Nothing to undo"}
-          aria-label="Undo the last AI change to this agent"
-        >
-          <span className="material-icons">undo</span>
-        </button>
-      </span>
+          <button
+            className="tb-ai-btn tb-ai-spark"
+            onClick={() => openDrawer()}
+            title="Ask AI — set what this agent asks"
+            aria-label="Ask AI to set what this agent asks"
+          >
+            <span className="material-icons">auto_awesome</span>
+          </button>
+          <button
+            className={"tb-ai-btn" + (undoable ? "" : " tb-ai-btn-off")}
+            onClick={() => undoable && undo(scopeKey)}
+            disabled={!undoable}
+            title={undoable ? "Undo the last AI change to this agent" : "Nothing to undo"}
+            aria-label="Undo the last AI change to this agent"
+          >
+            <span className="material-icons">undo</span>
+          </button>
+        </span>
+      )}
 
       <PhonePreview mode="page" wf={wf} />
-      <AiAssistantDrawer />
+      {!isShareMode() && <AiAssistantDrawer />}
     </>
   );
 }

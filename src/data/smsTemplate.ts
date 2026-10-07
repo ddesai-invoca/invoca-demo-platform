@@ -57,14 +57,50 @@ export const SMS_SALES_LEAF = `All ${INTENT_SALES} Users`;
    "Inform & Route", which is what that constant is for, so the two stay separate. */
 export const ACT_INFORM = "Inform";
 
-/* ⚠️ THE CONDITION LABELS ARE VERBATIM, INCLUDING THEIR UNEVEN SPACING. The capture reads
-   `found= true` and `found = false` — one space before the equals on one and after it on the
-   other. That is what the SE typed, it is what the product draws, and tidying it would be the
-   replica drifting from the thing it replicates. Left exactly as measured. */
-export const SEG_SERVICEABLE_YES = "Serviceable=true";
-export const SEG_SERVICEABLE_NO = "Serviceable=false";
-export const SEG_FOUND_YES = "found= true";
-export const SEG_FOUND_NO = "found = false";
+/* ⚠️⚠️ **A DELIBERATE DEPARTURE FROM THE CAPTURE, ASKED FOR DIRECTLY (10/6/2026):** *"have
+   simple titles, for example instead of Serviceable = true and serviceable = false just have a
+   serviceable and non service."*
+
+   The captured workflow reads `Serviceable=true`, `Serviceable=false`, `found= true` and
+   `found = false` — the last two with uneven spacing around the equals, which an earlier note
+   here preserved on the grounds that tidying it would be the replica drifting from the thing it
+   replicates. That reasoning was right about FIDELITY and wrong about this screen's job: these
+   are one SE's own typed condition labels in one account, not product chrome, and they read as
+   debug output on a diagram shown to a prospect. The four LOCKED chrome names are untouched —
+   those genuinely are the product's and still cannot be renamed.
+
+   ⚠️ They remain DEFAULTS, not constants in the renderer: an SE can still rename any of them
+   through the drawer, and `q.*.segments` overrides them. */
+export const SEG_SERVICEABLE_YES = "Serviceable";
+export const SEG_SERVICEABLE_NO = "Not Serviceable";
+export const SEG_FOUND_YES = "Record Found";
+export const SEG_FOUND_NO = "No Record Found";
+
+/* ⚠️ The three paths under All Support Users (10/6/2026). The support side used to be a single
+   terminal box, so a prospect saw the agent triage sales and simply stop on support. These
+   are the three things an existing customer texts in about, in the prospect's own vocabulary
+   where there is one. */
+export const SEG_SUPPORT_BILLING = "Billing Question";
+export const SEG_SUPPORT_HUMAN = "Talk to a Person";
+
+/**
+ * The three paths under All Support Users — every one of them Support & Escalate, like the
+ * node they hang from.
+ *
+ * ⚠️ Built in one place from one action so they cannot drift apart: changing the parent's
+ * action means changing this `kind`, not three node literals.
+ */
+export function supportPaths(p: CustomerProfile): TreePath[] {
+  const mk = (title: string, collect: SmsCollectKey): TreePath => ({
+    title, action: LEAF_ESCALATE, actionIcon: "headsetMic", tone: "orange",
+    actionKind: "escalate", chips: collectFor(p, collect).map((c) => c.name),
+  });
+  return [
+    mk(SEG_SUPPORT_BILLING, "supportBilling"),
+    mk(`Change or Cancel ${p.bookingTerm}`, "supportChange"),
+    mk(SEG_SUPPORT_HUMAN, "supportHuman"),
+  ];
+}
 
 /** One row of a What To Collect list: the chip, and the italic line under it in the drawer. */
 export interface CollectItem { name: string; help: string }
@@ -132,6 +168,12 @@ const ORDER = {
   serviceableNo: ["first", "last", "zip", "category", "isNew", "isExisting", "disposition"],
   foundYes: ["first", "last", "zip", "isExisting", "isNew", "category", "score", "disposition"],
   foundNo: [] as string[],
+  /* ⚠️ The support paths collect what a human would need to pick the request up: who it is,
+     and the reference they have. Drawn from the SAME pool as the sales side, so a prospect's
+     own vocabulary carries across and the two halves cannot describe different fields. */
+  supportBilling: ["first", "last", "isExisting", "zip"],
+  supportChange: ["first", "last", "isExisting", "disposition"],
+  supportHuman: ["first", "last", "isExisting"],
 } as const;
 
 const listOf = (p: CustomerProfile, keys: readonly string[]): CollectItem[] => {
@@ -155,7 +197,14 @@ export function qualifyCopy(p: CustomerProfile): Record<"root" | "newSide" | "ex
   return {
     root: {
       question: `Are you a new or existing ${p.customerName} ${lower}?`,
-      segments: [`New ${noun}, No`, `Existing ${noun}, Yes`],
+      /* ⚠️ SIMPLE TITLES, asked for alongside the condition labels below (10/6/2026).
+         The capture reads `New Customer, No` / `Existing Customer, Yes` — the trailing
+         Yes/No is the SE's own shorthand for which way the match went, and on a diagram
+         shown to a prospect it reads as a contradiction ("New Patient, No"). These are
+         the answers to the question directly above them, so the answers are what they
+         should say. Still DEFAULTS: `q.root.segments` overrides them and the drawer can
+         rename either. */
+      segments: [`New ${noun}`, `Existing ${noun}`],
       fallback: `Sorry, I didn't quite catch that. Are you a new ${lower} or do you already have ${p.customerName} service?`,
     },
     newSide: {
@@ -180,7 +229,7 @@ export function qualifyCopy(p: CustomerProfile): Record<"root" | "newSide" | "ex
   };
 }
 
-export function informCopy(p: CustomerProfile): Record<"serviceableYes" | "serviceableNo" | "foundYes" | "foundNo", string> {
+export function informCopy(p: CustomerProfile): SmsConfig["inform"] {
   const phone = demoPhone(p);
   return {
     serviceableYes: [
@@ -206,6 +255,26 @@ export function informCopy(p: CustomerProfile): Record<"serviceableYes" | "servi
       `Let the consumer know that a ${p.customerName} team member was not able to locate an account associated with their information.`,
       `Ask them whether there is another number associated with the account.`,
       `Let them know the ${p.customerName} team can help locate it, and share ${phone} for them to call directly.`,
+    ].join("\n"),
+    /* ⚠️ THE SUPPORT PATHS' OWN INSTRUCTIONS (10/6/2026). The support side was a single
+       terminal box, so the agent's prompt said nothing about what to DO with an existing
+       customer — the three paths below are what it now triages into. Written in the
+       prospect's own vocabulary, and none of them promises an action nothing performs:
+       the agent gathers and hands off, exactly as the escalate node above it does. */
+    supportBilling: [
+      `Ask what the ${p.customerNoun.toLowerCase()} is seeing on their bill or statement, and for any invoice or account reference they have.`,
+      `Never quote, adjust, refund or explain a charge yourself — billing is handled by a ${p.customerName} team member.`,
+      `Confirm the best phone number, then let them know billing will follow up shortly.`,
+    ].join("\n"),
+    supportChange: [
+      `Find out which ${p.bookingTerm.toLowerCase()} they mean and whether they want to move it or cancel it.`,
+      `Ask for the date and time they currently have, plus any reference number, so the team can find it.`,
+      `Never confirm a new date yourself and never state that something has been cancelled — a ${p.customerName} team member makes the change and confirms it.`,
+    ].join("\n"),
+    supportHuman: [
+      `Acknowledge the request for a person straight away and do not try to resolve the issue yourself.`,
+      `Ask only for their name and the best number to reach them on, plus one short line on what it is about.`,
+      `Tell them a ${p.customerName} team member will pick it up, then stop asking questions.`,
     ].join("\n"),
   };
 }
@@ -235,7 +304,15 @@ export interface SmsConfig {
      nobody draws. `Add` therefore appends to the TREE, which is what makes a new answer appear
      as a node. Only the fields the diagram cannot draw live in this object. */
   qualify: Record<SmsQualifyNode, { question: string; fallback: string }>;
-  inform: { serviceableYes: string; serviceableNo: string; foundYes: string; foundNo: string };
+  inform: {
+    serviceableYes: string; serviceableNo: string; foundYes: string; foundNo: string;
+    /* ⚠️ ADDED INSIDE `inform` RATHER THAN AS A NEW TOP-LEVEL KEY, on this file's own rule:
+       a new field must sit at a path whose PARENTS already exist in stored overrides, or
+       `setByPath` walks into a missing intermediate and the write vanishes. Every demo with
+       an SMS override already has `inform`. `effectiveSmsConfig` deep-merges it so a demo
+       saved before these existed still gets their defaults. */
+    supportBilling: string; supportChange: string; supportHuman: string;
+  };
   escalate: string;
   intents: {
     sales: { looksLike: string; rules: string[] };
@@ -392,8 +469,29 @@ export function smsBranches(p: CustomerProfile): TreeBranch[] {
     { title: INTENT_SALES, subtitle: intents.sales.looksLike, icon: "cart", locked: true, leaves: [sales] },
     {
       title: INTENT_SUPPORT, subtitle: intents.support.looksLike, icon: "headsetMic", locked: true,
-      leaves: [{ title: SUPPORT_LEAF, action: LEAF_ESCALATE, actionIcon: "headsetMic",
-        tone: "orange", actionKind: "escalate", locked: true }],
+      leaves: [{
+        title: SUPPORT_LEAF, action: LEAF_ESCALATE, actionIcon: "headsetMic",
+        tone: "orange", actionKind: "escalate", locked: true,
+        /* ⚠️⚠️ **THREE PATHS UNDER ALL SUPPORT USERS, asked for directly (10/6/2026).** The
+           support side was a single terminal box, so the diagram showed the agent triaging
+           sales three rows deep and simply stopping on support — the half of the workflow a
+           prospect is most likely to ask about.
+           ⚠️ **THE LEAF ITSELF KEEPS ITS LOCKED NAME AND ACTION.** It is product chrome; what
+           was missing is what hangs BELOW it, which is configuration.
+           ⚠️ Two Informs and one Escalate rather than three of a kind: billing and a change
+           are things the agent gathers and hands on, while "talk to a person" IS the
+           escalation, and the action tints make that difference visible on the diagram. */
+        /* ⚠️⚠️ **ALL THREE ARE Support & Escalate, MATCHING THE PARENT — corrected on the
+           user's own instruction (10/6/2026): "make them all support and escalate, remember
+           the action of the parent needs to match the child".** A first pass made two of them
+           Inform on the reasoning that billing and a reschedule are gathered and handed on
+           while only the third is a true escalation. That was a product opinion dressed as a
+           design choice, and it contradicts the rule this repo already follows for a node an
+           SE adds: a new answer INHERITS ITS SIBLINGS' ACTION, because peers under one
+           question do the same kind of thing. Every path under an escalate node escalates;
+           what differs is the queue it lands in, not the action. */
+        paths: supportPaths(p),
+      }],
     },
   ];
 }
@@ -441,7 +539,14 @@ export function smsBranches(p: CustomerProfile): TreeBranch[] {
    fourth cannot quietly skip the repair.
    ============================================================================= */
 export function effectiveSmsConfig(p: CustomerProfile, sms: object | undefined): SmsConfig {
-  const cfg = { ...smsConfigFor(p), ...(sms ?? {}) } as SmsConfig;
+  const base = smsConfigFor(p);
+  const cfg = { ...base, ...(sms ?? {}) } as SmsConfig;
+  /* ⚠️⚠️ **`inform` IS DEEP-MERGED, AND IT HAS TO BE.** The top-level spread replaces the whole
+     object, so a demo whose override was saved before the three support keys existed would
+     come back with `inform` missing them — the drawer opens empty and the agent is told
+     nothing, on exactly the demos most likely to be set up already. Same reasoning as spreading
+     the base under the stored config in the first place, one level further down. */
+  cfg.inform = { ...base.inform, ...(cfg.inform ?? {}) };
   const intents = cfg.intents;
   if (!intents) return cfg;
   let touched = false;

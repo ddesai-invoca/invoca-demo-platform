@@ -460,7 +460,13 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
      real LiveKit call from silently storing no outcome once. */
   const shared = read("src/data/voiceSession.ts");
   const live = read("src/screens/VoiceCallLive.tsx");
-  const fetches = (src: string) => (src.match(/fetch\(\s*["'`]\/api\/analyze/g) ?? []).length;
+  /* ⚠️⚠️ **RE-AIMED 10/6/2026, NOT LOOSENED — and it went red on correct code, which is
+     the check doing its job.** The call is now wrapped in `apiPath(...)` so a prospect on a
+     shared link reaches the capped `/api/share/<token>/analyze` twin instead of the gated
+     route. The INVARIANT was never the spelling: it is that the capture lives in ONE place
+     and the engine calls it rather than carrying its own copy, which is what stopped a real
+     LiveKit call from silently storing no outcome. Both spellings count. */
+  const fetches = (src: string) => (src.match(/fetch\(\s*(?:apiPath\(\s*)?["'`]\/api\/analyze/g) ?? []).length;
   check(fetches(shared) + fetches(live) === 1,
     "exactly ONE /api/analyze call exists across the voice session and its engine",
     `shared ${fetches(shared)}, live ${fetches(live)}`);

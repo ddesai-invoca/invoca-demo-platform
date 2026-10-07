@@ -816,6 +816,24 @@ const SMS_INFORM: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsC
   "sub-0-0-1-1": { key: "foundNo", collect: "foundNo" },
 };
 
+/**
+ * The three paths under All Support Users — ESCALATE nodes, each with its own text.
+ *
+ * ⚠️⚠️ **A SEPARATE TABLE FROM `SMS_INFORM`, AND THE SPLIT IS NOT COSMETIC.** They were
+ * briefly registered as informs, and when their action changed to Support & Escalate the
+ * drawer opened EMPTY — because `kindOfNode` outranks every id table, which is the guard
+ * that stops a switched node borrowing another node's write paths. The table has to match
+ * the action the node actually carries.
+ * ⚠️ The text lives under `sms.inform.*` because that object exists in every stored
+ * override and is deep-merged; a new top-level key would be a path whose parent is missing
+ * on exactly the demos already set up, which `setByPath` drops silently.
+ */
+const SMS_ESCALATE_PATH: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsCollectKey }> = {
+  "path-1-0-0": { key: "supportBilling", collect: "supportBilling" },
+  "path-1-0-1": { key: "supportChange", collect: "supportChange" },
+  "path-1-0-2": { key: "supportHuman", collect: "supportHuman" },
+};
+
 /** Walk a dot-path (arrays included) into the effective tree. ONE definition, several readers. */
 function readPath(tree: WorkflowTreeModel, path: string): unknown {
   return path.split(".").reduce<unknown>((acc, k) => {
@@ -1103,7 +1121,19 @@ export function smsDrawerFor(
     };
   }
 
-  /* The support user group. The only escalate node this template has. */
+  /* The three support paths, each escalating with its own instruction and collect list. */
+  const escPath = SMS_ESCALATE_PATH[nodeId];
+  if (escPath && selfKind === "escalate") {
+    return {
+      kind: "action", title: "Action", action: "escalate", channel: ch,
+      handling: cfg.inform[escPath.key],
+      edits: { handling: `sms.inform.${escPath.key}`, ...extraEdits },
+      actionSlot: actionSlotFor(tree, nodeId),
+      ...extraFields("escalate", collectFor(profile, escPath.collect)),
+    };
+  }
+
+  /* The support user group itself. */
   if (nodeId === "leaf-1-0" && selfKind === "escalate") {
     return {
       kind: "action", title: "Action", action: "escalate", channel: ch,

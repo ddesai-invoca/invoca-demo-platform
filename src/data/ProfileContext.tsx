@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { CustomerProfile } from "./schema";
-import { PROFILE_LIST, DEFAULT_PROFILE_ID } from "./profiles";
+import { PROFILE_LIST, DEFAULT_PROFILE_ID, fetchGeneratedProfiles } from "./profiles";
 import { renameMarketingSources } from "./marketingSources";
 import { withoutDefaultPricing, withoutReminderPromises } from "./agentDefaults";
 
@@ -80,7 +80,40 @@ function loadCached(): CustomerProfile[] {
 const normalize = (p: CustomerProfile): CustomerProfile =>
   withoutReminderPromises(withoutDefaultPricing(renameMarketingSources(p)));
 
-export function ProfileProvider({ children }: { children: ReactNode }) {
+/**
+ * ⚠️⚠️ **`only` IS WHAT MAKES A SHARED DEMO AIRTIGHT, and it is a whole separate
+ * path rather than a filter laid over the normal one.** A prospect's app must hold
+ * exactly ONE profile: not the cache (another SE's browser state), not the bundled
+ * seed, not whatever `invoca-demo:activeId` happens to say. With one profile in the
+ * store there is nothing to switch to even if a control slipped through, which is a
+ * much stronger guarantee than hiding the switcher and hoping.
+ * ⚠️ It also writes NOTHING to localStorage: a prospect's browser is not a cache for
+ * our demo library, and a stale copy left on their machine outlives the link.
+ */
+export function ProfileProvider({ children, only }: { children: ReactNode; only?: CustomerProfile }) {
+  if (only) return <OneProfileProvider profile={only}>{children}</OneProfileProvider>;
+  return <FullProfileProvider>{children}</FullProfileProvider>;
+}
+
+function OneProfileProvider({ profile, children }: { profile: CustomerProfile; children: ReactNode }) {
+  const value = useMemo(() => {
+    const p = normalize(profile);
+    return {
+      profile: p,
+      profileId: p.id,
+      profiles: [p],
+      /* ⚠️ Every mutator is a no-op rather than absent, so a component that calls one
+         degrades instead of throwing — and nothing a prospect does can reach storage
+         or the server. */
+      setProfileId: () => {},
+      addProfile: () => {},
+      removeProfile: () => {},
+    };
+  }, [profile]);
+  return <Ctx.Provider value={value as never}>{children}</Ctx.Provider>;
+}
+
+function FullProfileProvider({ children }: { children: ReactNode }) {
   const [profiles, setProfiles] = useState<CustomerProfile[]>(() => {
     // Cached generated customers first, then the static registry (seeds + files
     // loaded at build time) — files/seeds win on id collisions so a regenerated
@@ -90,6 +123,29 @@ export function ProfileProvider({ children }: { children: ReactNode }) {
     for (const p of [...loadCached(), ...PROFILE_LIST]) merged[p.id] = normalize(p);
     return Object.values(merged);
   });
+
+  /* ⚠️⚠️ **THE GENERATED PROFILES ARRIVE BY FETCH NOW, NOT IN THE BUNDLE.** See the
+     header of `profiles.ts`: 15 real companies were shipping inside the public JS and
+     only the Google gate was hiding them, which a prospect-facing share link removes.
+     The seed renders immediately, so nothing waits on this.
+     ⚠️ **NO CANCELLATION FLAG.** StrictMode double-mounts, and a cancelled first run
+     plus a guarded second is how this repo's demo-hydration effect silently did
+     nothing in dev — one request, 200 OK, empty store. The work is idempotent
+     (replace-by-id), and a setState after unmount is a no-op in React 18.
+     ⚠️ On a share link this 302s or 401s and returns [], which is correct: a prospect
+     sees the one demo their token names and nothing else. */
+  useEffect(() => {
+    fetchGeneratedProfiles().then((list) => {
+      if (!list.length) return;
+      setProfiles((prev) => {
+        const merged: Record<string, CustomerProfile> = {};
+        for (const p of prev) merged[p.id] = p;
+        /* Fetched files win over a cached copy, exactly as the eager glob did. */
+        for (const p of list) merged[p.id] = normalize(p);
+        return Object.values(merged);
+      });
+    });
+  }, []);
 
   const [profileId, setProfileIdState] = useState<string>(() => {
     try { return localStorage.getItem(LS_ACTIVE) || DEFAULT_PROFILE_ID; } catch { return DEFAULT_PROFILE_ID; }

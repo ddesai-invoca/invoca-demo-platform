@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import { DEFAULT_SHARE_DAYS } from "../data/shareDefaults";
+import { ShareDemoButton } from "../components/ShareDemoButton";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useDemoLibrary } from "../data/DemoLibraryContext";
@@ -168,6 +170,7 @@ export function Launch() {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
   const [busy, setBusy] = useState(false);
+  const [shareOnLaunch, setShareOnLaunch] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [statuses, setStatuses] = useState<Record<string, StepStatus>>({});
   const [, setTick] = useState(0);
@@ -282,6 +285,12 @@ export function Launch() {
               id, so a local unpublished profile has nothing to attach one to —
               offering the control there would be a button that silently fails. */}
           {e.inLibrary && <DemoMarkButton demoId={e.id} name={e.name} />}
+          {/* ⚠️ LIBRARY DEMOS ONLY — a local unpublished profile has no demo record for a
+              link to point at — and ADMINS ONLY while the feature is piloted (10/7/2026).
+              ⚠️ This is the cosmetic half: `admin` comes from the SERVER, and the server
+              refuses share creation from anyone else regardless of what the browser shows.
+              Hidden rather than disabled, because a greyed control invites "why not me?" */}
+          {e.inLibrary && admin && <ShareDemoButton demoId={e.id} name={e.name} />}
           {!e.inLibrary && !SEED_IDS.has(e.id) && (
             <button
               className="prospect-dup"
@@ -415,6 +424,22 @@ export function Launch() {
       const saved = demo ? { ...profile, id: demo.id } : profile;
       addProfile(saved);
       if (demo) hydrateDemo(demo.id, { overrides: {}, tiles: {} }, true, demo.creator);
+      /* ⚠️⚠️ **AFTER the demo is published, and it CANNOT fail the launch.** A share
+         points at a demo record, so there is nothing to point at until `createDemo`
+         returns — and an SE who just waited three minutes must not lose the prospect
+         because a link could not be made. The failure is reported where it can be acted
+         on (the share button on the row), not by discarding the demo. */
+      /* ⚠️ ADMIN-GATED like the checkbox that sets it, and NOT only because the
+         checkbox is hidden: `admin` arrives from the server asynchronously, so the
+         flag and the request must read the same answer at the moment it is used. */
+      if (shareOnLaunch && admin && demo) {
+        try {
+          await fetch(`/api/demos/${encodeURIComponent(demo.id)}/shares`, {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ days: DEFAULT_SHARE_DAYS, password: "", prospect: profile.customerName }),
+          });
+        } catch { /* the row's share button is the recovery path */ }
+      }
       open(saved.id);
     } catch (err: any) {
       setError(err?.message || "Something went wrong generating this prospect.");
@@ -485,6 +510,19 @@ export function Launch() {
                 placeholder="e.g. https://www.shadyblindsnow.com"
               />
             </label>
+            {/* ⚠️ Above the button and opt-IN: a link that reaches a prospect is not a
+                thing to create by accident, and the password defaults to the prospect's
+                own name, so it is guessable by anyone holding the URL.
+                ⚠️ ADMINS ONLY while the feature is piloted — and a non-admin never sees it,
+                so they cannot tick a box whose request the server would then refuse. */}
+            {admin && <label className="launch-share">
+              <input
+                type="checkbox"
+                checked={shareOnLaunch}
+                onChange={(e) => setShareOnLaunch(e.target.checked)}
+              />
+              <span>Make this demo shareable</span>
+            </label>}
             {error && <div className="launch-error">{error}</div>}
             <button className="launch-btn" type="submit">Launch demo</button>
           </form>

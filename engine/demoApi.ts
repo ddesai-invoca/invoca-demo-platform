@@ -63,7 +63,10 @@ export const isAdmin = (user: DemoUser) => isAdminEmail(user.email);
 
 /* The single write rule. Both PATCH and DELETE go through this so they can never
    drift apart. */
-const canWrite = (rec: DemoRecord, user: DemoUser) => owns(rec, user) || isAdmin(user);
+/* ⚠️ EXPORTED so the share routes reuse it rather than re-deriving who may open a
+   door into a demo. Two copies of an ownership test is how one of them ends up
+   more permissive than the other. */
+export const canWrite = (rec: DemoRecord, user: DemoUser) => owns(rec, user) || isAdmin(user);
 
 /* Pull the library-facing fields out of a CustomerProfile. */
 function describe(profile: any) {

@@ -66,6 +66,24 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-10-07",
+    title: "Share a demo with a prospect",
+    changes: [
+      n("Send a prospect their own demo as a link. They get Agent Studio and the two AI Conversation Intelligence reports, land straight on Agent Studio, and can text and call the agent for real. Set how many days it lasts and a password \u2014 their name by default \u2014 from the share button on any demo in the library, where you can also copy the link, add days, or turn it off instantly."),
+      n("Your edits reach them automatically: the shared view reads the same demo you do, so anything you change shows up for the prospect. Ask AI stays yours \u2014 it is not part of what they see \u2014 and nothing they do on their end can change your demo."),
+      n("Sharing is limited to project admins while it is being piloted. Everything else in this release is for everyone; a link already sent to a prospect keeps working either way."),
+      i("The app no longer ships every prospect\u2019s data in its JavaScript. Demos load on demand instead, which means a shared link carries nothing about any other prospect, and the app itself is about half the size it was."),
+    ],
+  },
+  {
+    date: "2026-10-06",
+    title: "Healthcare demos speak healthcare, not sales",
+    changes: [
+      i("A healthcare prospect's agent used to introduce itself as the \"SMS sales assistant\", and its voice agent was told it does not sell \u2014 odd on a demo for a hospital. Both now read as scheduling and care, built from the prospect's own vocabulary, so a hospital says \"patient\" because its data already does. Every other vertical is word-for-word unchanged, and so are prospects that sell INTO healthcare, like a group selling services to dentists."),
+      i("Newly generated healthcare prospects also get patient wording on the Quality Management dashboards and the marketing breakdown that used to read \"Sales Opportunities\" and \"Non-Sales Inquiries\". Demos you have already saved keep exactly the wording they were built with."),
+    ],
+  },
+  {
     date: "2026-09-29",
     title: "A cleaner booking confirmation, and interaction wording on the AI dashboard",
     changes: [

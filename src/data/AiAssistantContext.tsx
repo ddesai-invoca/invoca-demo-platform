@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
+import { isShareMode } from "./shareMode";
 import { getByPath, isLockedEdit, isStructuralChange } from "./editGuard";
 
 /* Global state for the "Ask AI" dashboard assistant. Holds:
@@ -286,6 +287,13 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
      debounced so a burst of edits is one write. */
   useEffect(() => {
     const demo = activeDemo;
+    /* ⚠️⚠️ **A PROSPECT'S EDITS ARE THEIRS ALONE AND NEVER REACH THE SE'S DEMO.** A
+       shared view hydrates with `canEdit: true` on purpose — the drawers' Apply and the
+       voice picker were asked to keep working — but syncing that back would let whoever
+       holds a link rewrite the demo an SE is about to present. The server would refuse
+       it anyway (no session), so this also stops a stream of 401s from a page we do not
+       want logging errors. */
+    if (isShareMode()) return;
     if (!demo?.canEdit) return;
     const prefix = `${demo.id}::`;
     const slice: DemoCustomizations = { overrides: {}, tiles: {} };

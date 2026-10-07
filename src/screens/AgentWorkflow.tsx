@@ -5,6 +5,7 @@ import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, ZERO_TRIGGER, emptyWorkflow
   extraTree, LEAF_QUALIFY, LEAF_ESCALATE, LEAF_INFORM } from "../data/workflowChrome";
 import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
+import { SHARE_BASENAME } from "../data/shareMode";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
 import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCallLive } from "./VoiceCallLive";
@@ -539,9 +540,14 @@ export function AgentWorkflow() {
               </button>
             </>
           )}
+          {/* ⚠️⚠️ **THE BASENAME HAS TO BE APPLIED BY HAND HERE, because `window.open` takes
+              an ABSOLUTE path and knows nothing about React Router.** Without it a prospect
+              clicking Preview Agent opens `/agent-studio/agent/preview` on the SIGNED-IN app
+              — escaping their share entirely. Caught by walking the share as a prospect, not
+              by reading the diff. */}
           {isSms && !created && <button className="wf-preview wf-preview-agent" onClick={() => window.open(
-            extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
-                  : "/agent-studio/agent/preview",
+            SHARE_BASENAME + (extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
+                  : "/agent-studio/agent/preview"),
             "_blank", "noopener")}>Preview Agent</button>}
           {/* ⚠️ **ENABLED, AS MEASURED — and it previews THIS workflow.** It was briefly
               disabled here, because a preview would have run the prospect's CONFIGURED agent

@@ -627,6 +627,102 @@ function feedbackApi(): Plugin {
   }
 }
 
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   The dev twin of the share routes + /api/profiles.
+
+   ⚠️⚠️ **ITS OWN PLUGIN, AND ITS OWN PREFIX LIST, because `demoLibraryApi`'s list is
+   a documented trap**: a route the production twin serves but this one does not
+   works on the live site and looks broken on every laptop. Four prefixes here —
+   `/api/share/` (public), `/api/shares/` and `/api/demos/<id>/shares` (owner), and
+   `/api/profiles`.
+   ⚠️ **THE DEV SERVER HAS NO AUTH GATE** (`authEnabled` is false without Google
+   creds), so `/api/profiles` is reachable locally without a session. That is the
+   same latitude every other `/api` route already has in dev; the gate is what
+   production relies on, and it cannot be exercised here.
+   ───────────────────────────────────────────────────────────────────────────── */
+function shareApi(): Plugin {
+  return {
+    name: 'invoca-share-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        const url = (req.url || '').split('?')[0]
+        const isShare = url.startsWith('/api/share/') || url.startsWith('/api/shares/')
+        const isDemoShares = /^\/api\/demos\/[^/]+\/shares$/.test(url)
+        const isProfiles = url === '/api/profiles'
+        if (!isShare && !isDemoShares && !isProfiles) return next()
+        const json = (status: number, body: unknown) => {
+          res.statusCode = status
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(body))
+        }
+        try {
+          if (isProfiles) {
+            const { readGeneratedProfiles } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/generatedProfiles.ts')).href)
+            return json(200, { profiles: readGeneratedProfiles() })
+          }
+          const [share, auth, demoApi, store] = await Promise.all([
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/shareApi.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/demoApi.ts')).href),
+            import(pathToFileURL(path.resolve(process.cwd(), 'engine/demoStore.ts')).href),
+          ])
+          const cookies = auth.parseCookies(req.headers.cookie)
+
+          /* The prospect's live agent, mirroring the production twin's single handler. */
+          const live = /^\/api\/share\/([A-Za-z0-9_-]{20,64})\/(chat|analyze|livekit-token)$/.exec(url)
+          if (live) {
+            const rec = share.shareSession(cookies, live[1])
+            if (!rec) return json(401, { error: 'This demo is locked or the link has expired.' })
+            const kind = live[2] === 'livekit-token' ? 'voice' : 'chat'
+            if (!share.takeBudget(live[1], kind)) return json(429, { error: 'This demo has reached its limit for today.' })
+            /* ⚠️⚠️ **REWRITE THE URL, DO NOT JUST `next()`.** The existing dev plugins match
+               `/api/chat` exactly, so handing them `/api/share/<token>/chat` fell straight
+               through to the SPA and the prospect's agent answered 404 — caught by sending a
+               real message as a prospect, not by reading the diff. Production has no such
+               seam: `server.ts` does the work inline. The session and the budget are already
+               spent above, so the rewritten request is authorised by the time it lands. */
+            req.url = `/api/${live[2]}`
+            return next()
+          }
+
+          /* ⚠️⚠️ **THE BODY IS READ ONLY AFTER THE LIVE-AGENT BRANCH HAS RETURNED, and the
+             order is load-bearing.** Consuming the request stream here and then calling
+             `next()` hands the downstream plugin an EMPTY body — measured: the prospect's
+             agent answered "brain.customerName is required." The session and budget checks
+             need only the cookies and the URL, so nothing is lost by checking first. */
+          let raw = ''
+          if (req.method !== 'GET' && req.method !== 'DELETE') for await (const chunk of req) raw += chunk
+          const body = raw ? JSON.parse(raw) : undefined
+
+          if (isDemoShares || url.startsWith('/api/shares/')) {
+            const user = auth.currentUser(req)
+            const r = await share.handleShareAdminApi(req.method || 'GET', url, body, user, (demoId: string) => {
+              const demo = store.getDemo(demoId)
+              return !!demo && demoApi.canWrite(demo, user)
+            }, demoApi.isAdmin(user))
+            if (!r) return next()
+            return json(r.status, r.body ?? {})
+          }
+
+          const r = await share.handleShareApi(req.method || 'GET', url, body, cookies)
+          if (!r) return next()
+          if (r.setCookie) res.setHeader('Set-Cookie', `${r.setCookie.name}=${r.setCookie.value}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${r.setCookie.maxAgeSeconds}`)
+          return json(r.status, r.body ?? {})
+        } catch (e: any) {
+          /* ⚠️⚠️ **NEVER ECHO THE EXCEPTION TO A PROSPECT.** Caught live: a stale
+             Node-cached module made this render "auth.parseCookies is not a function"
+             on the prospect-facing page. The detail belongs in the server log, not on
+             somebody else's screen — and a public route is exactly where an internal
+             message becomes reconnaissance. */
+          console.error('[share] failed:', e)
+          return json(500, { error: 'This demo could not be opened right now.' })
+        }
+      })
+    },
+  }
+}
+
 function demoLibraryApi(): Plugin {
   return {
     name: 'invoca-demo-library-api',
@@ -904,6 +1000,7 @@ export default defineConfig(({ mode }) => {
       replicateApi(),
       placeApi(),
       ogImageApi(),
+      shareApi(),
       demoLibraryApi(),
     feedbackApi(),
       statusApi(),

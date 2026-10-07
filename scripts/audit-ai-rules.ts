@@ -1206,10 +1206,88 @@ console.log("\nThe built-in SMS workflow template");
   (leaves[3].chips ?? []).length === 0 && (leaves[0].chips ?? []).length > 0
     ? ok("the last leaf carries no chips, as captured, while the others do")
     : bad("chip presence on the bottom row does not match the capture");
-  /* ⚠️ VERBATIM, UNEVEN SPACING INCLUDED — `found= true` and `found = false`. */
-  leaves[2].title === "found= true" && leaves[3].title === "found = false"
-    ? ok("the condition labels keep the capture's own spacing")
-    : bad("a condition label was tidied — the replica is drifting from the capture");
+  /* ⚠️⚠️ **RE-AIMED 10/6/2026, NOT DELETED — and it went red on correct code, which is the
+     check doing its job.** It pinned `found= true` / `found = false` verbatim, uneven spacing
+     and all, on the rule that tidying a capture is the replica drifting. That was asked to
+     change: those four are ONE SE's typed condition labels in one account, and they read as
+     debug output on a diagram shown to a prospect. What the old check was really protecting
+     is that nobody quietly rewords the product's OWN chrome, and that half still holds and is
+     asserted elsewhere (the four locked names). What survives here is the narrower, still
+     useful invariant: the condition labels are plain titles with no `=`, no `true`/`false`,
+     and they are DEFAULTS an SE can still rename rather than literals in the renderer. */
+  (() => {
+    /* ⚠️ The ROW ABOVE the conditions carries the same rule: `New Customer, No` /
+       `Existing Customer, Yes` is the SE's shorthand for which way the match went, and
+       "New Patient, No" reads as a contradiction on a prospect-facing diagram. */
+    const qualifies = tree.branches[0].leaves[0].paths ?? [];
+    return qualifies.length >= 2 && !qualifies.some((q) => /,\s*(yes|no)\b/i.test(q.title ?? ""));
+  })()
+    ? ok("the qualify answers read as answers, not as match verdicts")
+    : bad(`a qualify answer still carries a Yes/No verdict: ${(tree.branches[0].leaves[0].paths ?? []).map((q) => q.title).join(", ")}`);
+  !leaves.some((l) => /[=]|\btrue\b|\bfalse\b/i.test(l.title ?? ""))
+    ? ok("the condition labels read as plain titles, not as expressions")
+    : bad(`a condition label is back to an expression: ${leaves.map((l) => l.title).join(", ")}`);
+  /\bSEG_SERVICEABLE_YES\b/.test(readCode("src/data/smsTemplate.ts"))
+    && /segments\[0\] \?\? SEG_SERVICEABLE_YES/.test(readCode("src/data/smsTemplate.ts"))
+    ? ok("the titles are defaults an SE can still rename, not renderer literals")
+    : bad("the segment titles stopped being overridable defaults");
+
+  /* ── the support side has three paths (10/6/2026) ─────────────────────── */
+  (() => {
+    const support = tree.branches[1]?.leaves?.[0];
+    if (!support) return bad("the Need Support branch has no leaf");
+    const kids = support.paths ?? [];
+    kids.length === 3
+      ? ok("All Support Users has three paths")
+      : bad(`All Support Users has ${kids.length} paths, want 3`);
+    /* ⚠️ THE LEAF ITSELF IS STILL LOCKED CHROME. What was added hangs BELOW it; the box
+       keeps the name and the action the product gives it, which this repo already pins. */
+    support.locked === true && support.action === "Support & Escalate"
+      ? ok("the All Support Users box is still locked chrome with its own action")
+      : bad("the support leaf lost its lock or its action");
+    /* ⚠️⚠️ **EVERY PATH MATCHES ITS PARENT'S ACTION — re-aimed on the user's own
+       correction, and the first version of this check enshrined my mistake.** It asserted
+       two Informs and one Escalate, which I had chosen so the tints would differ. That is a
+       product opinion dressed as a design choice, and it contradicts the inheritance rule
+       this repo already applies to a node an SE adds: peers under one question do the same
+       kind of thing. Asserted against the PARENT rather than against the literal
+       "escalate", so changing the parent's action keeps the check meaningful. */
+    kids.every((k) => k.actionKind === support.actionKind)
+      ? ok(`every support path inherits its parent's action (${support.actionKind})`)
+      : bad(`a support path's action differs from its parent: ${kids.map((k) => k.actionKind).join(", ")}`);
+    kids.every((k) => k.action === support.action && k.tone === support.tone)
+      ? ok("…and its action label and tint, so the row reads as one kind of thing")
+      : bad("a support path's label or tint differs from its parent");
+    kids.every((k) => (k.chips ?? []).length > 0)
+      ? ok("every support path collects something")
+      : bad("a support path draws no chips");
+    /* ⚠️⚠️ **REGISTERED IN `SMS_INFORM`, or they open EMPTY.** An unregistered node falls
+       through to the generic `extra__` branch, which is right for a node an SE added and
+       wrong for one the template ships — the drawer would show a placeholder and the agent
+       would be told nothing about the support side at all. */
+    /* ⚠️⚠️ **REGISTERED IN THE TABLE THAT MATCHES THEIR ACTION, which is the half that
+       actually bit.** They were first registered as informs; the moment the action became
+       Support & Escalate the drawer opened EMPTY, because `kindOfNode` outranks every id
+       table — the guard that stops a switched node borrowing another's write paths. Tested
+       by BUILDING each drawer rather than grepping the table, so a registration that no
+       longer matches the node's action still fails. */
+    (() => {
+      return ["path-1-0-0", "path-1-0-1", "path-1-0-2"].every((id) => {
+        const d = smsDrawerFor(p, tree as never, id, cfg) as
+          { action?: string; handling?: string } | null;
+        return !!d && d.action === "escalate" && !!d.handling && d.handling.length > 40;
+      });
+    })()
+      ? ok("each support path's drawer opens as an escalate with its own instruction text")
+      : bad("a support path's drawer opens empty or with the wrong action");
+  })();
+
+  /* ⚠️⚠️ **`inform` IS DEEP-MERGED, or a demo saved before the support keys existed loses
+     them.** The top-level spread replaces the whole object, so those three keys would come
+     back undefined on exactly the demos most likely to be set up already. */
+  /cfg\.inform = \{ \.\.\.base\.inform/.test(readCode("src/data/smsTemplate.ts"))
+    ? ok("a stored override keeps the template's newer inform defaults")
+    : bad("inform is replaced wholesale — an older demo loses the support instructions");
 
   /* ---- re-skinned, not Greenix ---- */
   const all = JSON.stringify([tree, cfg]);

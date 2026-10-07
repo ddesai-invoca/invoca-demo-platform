@@ -33,11 +33,13 @@ import { appEnv, isProduction } from "./engine/appEnv.ts";
 import { synthesizePreview } from "./engine/voicePreview.ts";
 import { livekitEnv, mintVoiceToken } from "./engine/livekitToken.ts";
 import { askAssistant } from "./engine/assistant.ts";
-import { installAuth, authEnabled, currentUser } from "./googleAuth.ts";
-import { handleDemoApi, isAdmin } from "./engine/demoApi.ts";
+import { installAuth, authEnabled, currentUser, parseCookies } from "./googleAuth.ts";
+import { handleShareApi, handleShareAdminApi, shareSession, takeBudget } from "./engine/shareApi.ts";
+import { handleDemoApi, isAdmin, canWrite as canWriteDemo } from "./engine/demoApi.ts";
 import { handleFeedbackApi } from "./engine/feedbackApi.ts";
 import { mailConfigured } from "./engine/mailer.ts";
-import { DATA_DIR, isPersistent } from "./engine/demoStore.ts";
+import { DATA_DIR, isPersistent, getDemo } from "./engine/demoStore.ts";
+import { readGeneratedProfiles } from "./engine/generatedProfiles.ts";
 import { alert, alertSummary, type AlertLevel } from "./engine/alerts.ts";
 import { deployStatus } from "./engine/status.ts";
 import { parseGenerationRequest } from "./engine/genContext.ts";
@@ -191,6 +193,102 @@ app.post("/api/client-error", (req, res) => {
    ⚠️ PUBLIC. engine/canary.ts::toPublic() decides what is safe to expose, and it
    deliberately omits the target company names and URLs. Do not add them here. */
 app.get("/api/canary", (_req, res) => res.json(canaryPublic()));
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SHARED AGENTIC DEMOS — public, and deliberately so.
+
+   ⚠️⚠️ **REGISTERED BEFORE `installAuth` BECAUSE A PROSPECT HAS NO GOOGLE ACCOUNT.**
+   Same placement and the same reasoning as `/api/status`, `/healthz` and
+   `/api/client-error`. Everything reachable here is scoped to the ONE demo the
+   token names: `engine/shareApi.ts` reads the demo id from the share RECORD and
+   never from the request, there is no route that lists demos, and nothing writes.
+
+   ⚠️⚠️ **THE LIVE AGENT RUNS ON THIS PATH, which was asked for explicitly, so it
+   spends our Anthropic key and LiveKit minutes for whoever holds the link.** Hence
+   the per-link daily caps — without them one leaked link is an open bill — and an
+   SE can revoke instantly from the share dialog.
+   ───────────────────────────────────────────────────────────────────────────── */
+app.get("/api/share/*", async (req, res) => {
+  const r = await handleShareApi("GET", req.path, undefined, parseCookies(req.headers.cookie));
+  if (!r) return res.status(404).json({ error: "Not found." });
+  res.status(r.status).json(r.body ?? {});
+});
+app.post("/api/share/:token/unlock", async (req, res) => {
+  const r = await handleShareApi("POST", req.path, req.body || {}, parseCookies(req.headers.cookie));
+  if (!r) return res.status(404).json({ error: "Not found." });
+  if (r.setCookie) {
+    /* ⚠️ HttpOnly so page script cannot read it, SameSite=Lax so it survives the
+       prospect following the link from their mail client, Secure in production. */
+    res.cookie(r.setCookie.name, r.setCookie.value, {
+      httpOnly: true, sameSite: "lax", secure: isProduction(), maxAge: r.setCookie.maxAgeSeconds * 1000, path: "/",
+    });
+  }
+  res.status(r.status).json(r.body ?? {});
+});
+
+/* The prospect's live agent. One handler for the three calls it needs, so the
+   budget and the session check cannot be applied to two of them and forgotten on
+   the third. */
+app.post("/api/share/:token/:action(chat|analyze|livekit-token)", async (req, res) => {
+  const token = req.params.token;
+  const action = req.params.action as "chat" | "analyze" | "livekit-token";
+  const rec = shareSession(parseCookies(req.headers.cookie), token);
+  if (!rec) return res.status(401).json({ error: "This demo is locked or the link has expired." });
+  const kind = action === "livekit-token" ? "voice" : "chat";
+  if (!takeBudget(token, kind)) {
+    return res.status(429).json({ error: kind === "voice"
+      ? "This demo has reached its call limit for today. Please try again tomorrow."
+      : "This demo has reached its message limit for today. Please try again tomorrow." });
+  }
+  try {
+    if (action === "chat") {
+      const { brain, messages, voice } = req.body || {};
+      if (!brain?.customerName) return res.status(400).json({ error: "brain.customerName is required." });
+      if (!apiKey) return res.status(500).json({ error: "ANTHROPIC_API_KEY is not set on the server." });
+      const reply = await chatReply(brain, Array.isArray(messages) ? messages : [], apiKey, { voice: !!voice });
+      return res.json({ reply });
+    }
+    if (action === "analyze") {
+      const { analyzeSms } = await import("./engine/analyze.ts");
+      if (!apiKey) return res.status(500).json({ error: "ANTHROPIC_API_KEY is not set on the server." });
+      return res.json(await analyzeSms({ ...(req.body || {}), apiKey } as never));
+    }
+    /* ⚠️ Voice mints through the SAME `mintVoiceToken` + `livekitEnv()` the signed-in
+       route uses, in the same order — config before body, because a body-less probe
+       must read 501 on a server with no LiveKit keys rather than 400. That ordering is
+       documented at the signed-in route and copying it wrong would make Start Call do
+       nothing on a shared link while the probe said voice was available. */
+    const cfg = livekitEnv();
+    if (!cfg) return res.status(501).json({ error: "LiveKit is not configured on the server." });
+    const { brain, profileId, greeting, voice } = req.body || {};
+    if (!brain) return res.status(400).json({ error: "brain is required." });
+    return res.json(await mintVoiceToken({ brain, profileId: profileId || "demo", greeting, voice }, cfg));
+  } catch (e: any) {
+    routeFailed(`share:${action}`, e, { level: isOverloaded(e) ? "record" : "page" });
+    /* ⚠️ A FIXED MESSAGE, not `e.message`: this route is PUBLIC, and an exception
+       string is reconnaissance on a page we do not control the audience of. The
+       detail is already captured by `routeFailed`. */
+    res.status(isOverloaded(e) ? 503 : 500).json({ error: isOverloaded(e)
+      ? "The agent is briefly busy — please send that again."
+      : "That did not work. Please try again." });
+  }
+});
+
+/* ⚠️⚠️ **THE SHARE PAGE ITSELF MUST BE PUBLIC, or a prospect following the link is
+   bounced to a Google sign-in they can never complete.** It serves the ordinary SPA
+   shell — the app then asks `/api/share/:token` what to render, so no demo data
+   rides on this response and an invalid token simply reaches the unlock screen's
+   "not valid" state. `express.static(DIST)` runs later in the file, so the file is
+   read directly here rather than relying on middleware that has not mounted yet. */
+/* ⚠️ A REGEXP ROUTE RATHER THAN `["/share/:token", "/share/:token/*"]`, AND THE REASON
+   IS NOT STYLE: that second pattern contains the literal bytes `/*`, which every naive
+   comment-stripper in `scripts/` reads as a comment OPENER — it swallowed the rest of the
+   file up to the next `*​/` and took `installAuth(app)` with it, so `audit:alerts` reported
+   the gate as missing when it was three lines below. A string that looks like a comment is
+   a landmine for every scanner, not just that one. Matches /share/<token> and anything
+   beneath it; the handler reads no params. */
+app.get(/^\/share\/[^/]+(?:\/.*)?$/, (_req, res) =>
+  res.sendFile(path.join(DIST, "index.html")));
 
 installAuth(app);
 
@@ -413,6 +511,34 @@ app.post("/api/generate", async (req, res) => {
     routeFailed("generate", e, { title: "Generation failed" });
     sse({ type: "error", error: e?.message || "Generation failed." });
     res.end();
+  }
+});
+
+/* ---- Share links (the OWNER's half) ----------------------------------------
+   ⚠️ Behind the gate with the rest of `/api/demos`. `canManage` is the demo
+   library's own creator-or-admin test, so whoever may not edit a demo may not
+   open a door into it either. */
+app.all(["/api/demos/:id/shares", "/api/shares/:token"], async (req, res, next) => {
+  const user = currentUser(req);
+  const r = await handleShareAdminApi(req.method, req.path, req.body || {}, user, (demoId) => {
+    const demo = getDemo(demoId);
+    return !!demo && canWriteDemo(demo, user);
+  }, isAdmin(user));
+  if (!r) return next();
+  res.status(r.status).json(r.body ?? {});
+});
+
+/* GET /api/profiles → the generated profiles that used to be bundled.
+   ⚠️ BEHIND THE GATE, which is the entire point: these name real companies, and the
+   share link is public. A prospect's request carries no Invoca session, so this 302s
+   to Google and `fetchGeneratedProfiles` falls back to [] — the shared view runs on
+   the one demo its token names. */
+app.get("/api/profiles", (_req, res) => {
+  try {
+    res.json({ profiles: readGeneratedProfiles() });
+  } catch (e: any) {
+    routeFailed("profiles", e, { level: "record" });
+    res.status(500).json({ error: "Could not read the generated profiles." });
   }
 });
 

@@ -55,7 +55,7 @@ function verify(token?: string): { email: string; name?: string; exp: number } |
     return typeof p.exp === "number" && p.exp > Date.now() ? p : null;
   } catch { return null; }
 }
-function parseCookies(header?: string): Record<string, string> {
+export function parseCookies(header?: string): Record<string, string> {
   const out: Record<string, string> = {};
   (header || "").split(";").forEach((p) => { const i = p.indexOf("="); if (i > 0) out[p.slice(0, i).trim()] = decodeURIComponent(p.slice(i + 1).trim()); });
   return out;
