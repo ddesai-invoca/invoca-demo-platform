@@ -408,5 +408,80 @@ console.log("\nThe completion comment reaches the email");
     : bad("the render fallback is gone — a missing profile would crash");
 }
 
+console.log("\nDemo marks — one status set, and Submit is the only writer (10/7/2026)\n");
+{
+  const ms = await import("../src/data/markStatus.ts");
+
+  JSON.stringify(ms.MARK_STATUSES) === JSON.stringify(["urgent-lead", "lead", "no-interest"])
+    ? ok("the three offered statuses are Urgent lead / Lead / No interest")
+    : bad(`the offered statuses are ${JSON.stringify(ms.MARK_STATUSES)}`);
+
+  /* ⚠️⚠️ **READ WIDER THAN YOU WRITE.** Real marks on disk still say `demoed` and
+     `follow-up`; the user chose to keep them readable rather than remap or delete.
+     So a legacy value must still LABEL and still pass the READ gate, while the
+     WRITE gate refuses it — nobody can newly set a retired status. */
+  ms.isStoredMarkStatus("demoed") && ms.isStoredMarkStatus("follow-up")
+    && !ms.isMarkStatus("demoed") && !ms.isMarkStatus("follow-up")
+    ? ok("retired statuses stay readable but can never be set again")
+    : bad("a retired status is either unreadable or still settable");
+
+  ms.MARK_LABEL["demoed"] === "Demoed" && ms.MARK_LABEL["follow-up"] === "Follow-up"
+    && ms.MARK_LABEL["urgent-lead"] === "Urgent lead" && ms.MARK_LABEL["no-interest"] === "No interest"
+    ? ok("every status a mark can carry has a label, retired ones included")
+    : bad("a stored status would render as a raw slug");
+
+  ms.isMarkStatus("lead") && !ms.isMarkStatus("nonsense")
+    ? ok("the write gate accepts a current status and refuses an unknown one")
+    : bad("the write gate is wrong");
+
+  /* ⚠️ What OWES something is what the follow-up count and the menu badge mean.
+     "No interest" is a decision and "Demoed" is a record — neither is a task. */
+  ms.owesFollowUp("urgent-lead") && ms.owesFollowUp("lead") && ms.owesFollowUp("follow-up")
+    && !ms.owesFollowUp("no-interest") && !ms.owesFollowUp("demoed")
+    ? ok("only the statuses that owe a follow-up are counted as owing")
+    : bad("the owing set is wrong — the follow-up count would mislead");
+
+  /* ⚠️⚠️ **ONE DEFINITION.** The client used to re-declare this union, and when the
+     statuses changed the server was edited while the client silently kept offering
+     the old ones — `tsc -b --force` had no opinion, because the two types were
+     independent. Both sides must come from `markStatus.ts`. */
+  const ctx = code("src/data/DemoLibraryContext.tsx");
+  !/export type MarkStatus =\s*"/.test(ctx) && /from "\.\/markStatus"/.test(ctx)
+    ? ok("the client re-exports the shared status type instead of declaring its own")
+    : bad("the client declares its own MarkStatus again — it will drift");
+
+  /engine\/demoMarks\.ts/.test("engine/demoMarks.ts") &&
+  /from "\.\.\/src\/data\/markStatus\.ts"/.test(code("engine/demoMarks.ts"))
+    ? ok("the engine reads the same module, with the .ts extension nodenext needs")
+    : bad("the engine declares statuses separately from the client");
+
+  const dmk = code("src/components/DemoMarkButton.tsx");
+
+  /* ⚠️ Nothing may write except `submit`. A status button that still committed
+     would make the Submit button decorative, which is worse than not having one. */
+  (() => {
+    const choose = dmk.slice(dmk.indexOf("function choose"), dmk.indexOf("async function clear"));
+    return !/setMark\(/.test(choose) && /setDraft\(/.test(choose);
+  })()
+    ? ok("picking a status only selects it — it does not save")
+    : bad("a status button still writes, so Submit is decorative");
+
+  /\bfunction submit\(\)/.test(dmk) && /className="dmk-submit"/.test(dmk)
+    ? ok("there is a Submit button, and a submit() that writes")
+    : bad("no Submit button");
+
+  /disabled=\{!draft \|\| saving\}/.test(dmk)
+    ? ok("Submit is disabled until a status is chosen")
+    : bad("Submit would save a mark with no status");
+
+  /<textarea/.test(dmk) && /className="dmk-note"/.test(dmk)
+    ? ok("the note is a textarea, not a one-line input")
+    : bad("the note box is still a single-line input");
+
+  /Notify the Rep/.test(dmk) && !/Tell the account exec/.test(dmk)
+    ? ok("the notify row reads \"Notify the Rep\"")
+    : bad("the notify row still carries the old wording");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);

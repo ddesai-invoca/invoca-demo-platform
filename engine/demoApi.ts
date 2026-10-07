@@ -30,7 +30,7 @@
 import { type DemoRecord, deleteDemo, getDemo, listDemos, saveDemo, uniqueId } from "./demoStore.ts";
 import { isAdminEmail } from "./admins.ts";
 import { pendingAdminNotice, ackAdminNotice } from "./adminNotices.ts";
-import { isMarkStatus, listMarks, markDemo, marksFor, unmarkDemo } from "./demoMarks.ts";
+import { MARK_STATUSES, MARK_LABEL, isMarkStatus, listMarks, markDemo, marksFor, unmarkDemo } from "./demoMarks.ts";
 import { lookupRep, salesforceConfigured, type RepCandidate } from "./salesforceApi.ts";
 import { markNoticeEmail, sendMail } from "./mailer.ts";
 import { orgEmailDomain } from "./appEnv.ts";
@@ -193,7 +193,7 @@ export async function handleDemoApi(
   if (sub === "/mark") {
     if (method === "POST") {
       const status = body?.status;
-      if (!isMarkStatus(status)) return err(400, "Status must be demoed, follow-up or lead.");
+      if (!isMarkStatus(status)) return err(400, `Status must be one of: ${MARK_STATUSES.join(", ")}.`);
       const mark = markDemo(id, user, status, body?.note);
       if (!mark) return err(400, "Invalid demo id.");
       const notified = body?.notify ? await notifyRep(rec, user, mark, body?.accountId, baseUrl) : undefined;
@@ -266,6 +266,11 @@ export interface NotifyResult {
    *  claiming a vague success. */
   to?: string;
   name?: string;
+  /** The rep's MANAGER, copied in when Salesforce lists one and their address is
+   *  on our own domain. Absent means nobody was copied — which is a normal
+   *  outcome (no manager set), so the UI reports it rather than implying one. */
+  ccName?: string;
+  cc?: string;
   /** Why not, in words an SE can act on. Never a stack trace. */
   reason?: string;
   /** More than one owner matched; the UI asks which. */
@@ -303,12 +308,23 @@ async function notifyRep(
     return { sent: false, reason: `${rep.ownerName} isn't an @${domain} address, so nothing was sent.`, name: rep.ownerName };
   }
 
-  const LABEL: Record<string, string> = { demoed: "Demoed", "follow-up": "Follow-up", lead: "Lead" };
+  /* ⚠️⚠️ **THE MANAGER IS HELD TO THE SAME TEST AS THE REP, AND IT IS THE SAME
+     REASON.** A Salesforce User can carry a partner's or an integration account's
+     address, so an off-domain manager is dropped rather than mailed — and dropped
+     QUIETLY, because the rep still gets told and failing the whole notification
+     over a copy would be worse than sending it. `managerEmail` is null far more
+     often than it is wrong: plenty of reps have no manager set. */
+  const domainOk = (e: string | null): boolean => !!e && e.endsWith(`@${domain}`);
+  const cc = domainOk(rep.managerEmail) && rep.managerActive && rep.managerEmail !== rep.ownerEmail
+    ? rep.managerEmail!
+    : undefined;
+
   const r = await sendMail(markNoticeEmail({
     to: rep.ownerEmail,
+    ...(cc ? { cc } : {}),
     repName: rep.ownerName,
     prospect: rec.prospect,
-    status: LABEL[mark.status] ?? mark.status,
+    status: MARK_LABEL[mark.status as keyof typeof MARK_LABEL] ?? mark.status,
     note: mark.note,
     seName: user.name,
     seEmail: user.email,
@@ -327,6 +343,7 @@ async function notifyRep(
     sent: r.sent,
     to: rep.ownerEmail,
     name: rep.ownerName,
+    ...(cc ? { cc, ccName: rep.managerName ?? cc } : {}),
     ...(r.sentAs ? { sentAs: r.sentAs } : {}),
     ...(r.reason ? { reason: r.reason } : {}),
   };

@@ -6357,13 +6357,22 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .dmk-btn .material-icons { font-size: 18px; }
 .dmk-btn-label { font-size: 11px; font-weight: 700; letter-spacing: .01em; }
 /* Marked: the status carries the colour, so the row reads at a glance. */
+/* The flag pill on a marked row. Same pairs as the panel and the follow-up chip;
+   the last two are RETIRED but still on disk, so they must still render. */
+.dmk-btn--on.dmk-urgent-lead { color: #b33b00; background: #ffd9cc; }
+.dmk-btn--on.dmk-lead { color: #11228c; background: #b0cdff; }
+.dmk-btn--on.dmk-no-interest { color: #5b6577; background: #e7e9eb; }
 .dmk-btn--on.dmk-demoed { color: #0d5400; background: #abe5bc; }
 .dmk-btn--on.dmk-follow-up { color: #b33b00; background: #ffd9cc; }
-.dmk-btn--on.dmk-lead { color: #11228c; background: #b0cdff; }
 .dmk-btn--on:hover { filter: brightness(.96); background-color: inherit; }
 
 .dmk-panel {
-  position: fixed; z-index: 3200; width: 268px;
+  /* ⚠️ WIDENED 268 -> 340 and the note grown to a real box (10/7/2026), asked for
+     because taking notes in a one-line field is awkward. The panel is portalled and
+     `position: fixed`, so it is placed and re-placed by `place()` in the component —
+     growing it here is safe ONLY because that flips it above the trigger and a
+     ResizeObserver re-places it as it grows. */
+  position: fixed; z-index: 3200; width: 340px;
   background: #fff; border: 1px solid #e7e9eb; border-radius: 8px;
   box-shadow: 0 2px 4px rgba(12,0,51,.08), 0 12px 32px rgba(12,0,51,.16);
   padding: 12px; display: flex; flex-direction: column; gap: 8px;
@@ -6378,16 +6387,41 @@ body:has(.vp-root) .aiad--left .aiad-panel {
   font-size: 12px; font-weight: 700; border: 1px solid #e7e9eb; background: #fff; color: #5b6577;
 }
 .dmk-opt:hover { border-color: #2666f9; color: #2666f9; }
+/* ⚠️ The platform's own titan tints, same pairs the chips and the flag use.
+   Urgent takes the ORANGE that already means "needs attention" here, Lead keeps
+   its blue, and No interest is deliberately the quiet grey — it is a closed
+   outcome, not an alarm. The two RETIRED statuses keep their rules because marks
+   made before 10/7/2026 still render with them on the flag and on /follow-ups. */
+.dmk-opt--on.dmk-urgent-lead { background: #ffd9cc; border-color: #ffd9cc; color: #b33b00; }
+.dmk-opt--on.dmk-lead { background: #b0cdff; border-color: #b0cdff; color: #11228c; }
+.dmk-opt--on.dmk-no-interest { background: #e7e9eb; border-color: #e7e9eb; color: #5b6577; }
 .dmk-opt--on.dmk-demoed { background: #abe5bc; border-color: #abe5bc; color: #0d5400; }
 .dmk-opt--on.dmk-follow-up { background: #ffd9cc; border-color: #ffd9cc; color: #b33b00; }
-.dmk-opt--on.dmk-lead { background: #b0cdff; border-color: #b0cdff; color: #11228c; }
+/* ⚠️ `resize: vertical` lets an SE make it bigger still, but `max-height` stops a
+   drag from pushing the submit button off a short screen — the panel is fixed, so
+   anything past the viewport is unreachable. `font: inherit` would take the panel's
+   own 13.2px; the family is restated so a textarea does not fall back to monospace. */
 .dmk-note {
-  width: 100%; box-sizing: border-box; font: inherit; font-size: 12px;
-  padding: 6px 8px; border: 1px solid #e7e9eb; border-radius: 4px; color: #15243e;
+  width: 100%; box-sizing: border-box; font-family: inherit; font-size: 12px;
+  line-height: 1.45; min-height: 76px; max-height: 180px; resize: vertical;
+  padding: 8px; border: 1px solid #e7e9eb; border-radius: 4px; color: #15243e;
 }
 .dmk-note:focus { outline: none; border-color: #2666f9; }
+.dmk-note::placeholder { color: #9aa1ac; }
+
+/* Remove-mark sits left, Submit right — the destructive one never lands where the
+   confirming one is expected. `margin-left: auto` on Submit so it stays right even
+   when Remove is absent (an unmarked demo). */
+.dmk-actions { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+.dmk-submit {
+  margin-left: auto; cursor: pointer; padding: 7px 16px; border-radius: 6px;
+  border: 1px solid var(--color-green-bar); background: var(--color-green-bar);
+  color: #fff; font-size: 12px; font-weight: 700;
+}
+.dmk-submit:hover:not(:disabled) { filter: brightness(.95); }
+.dmk-submit:disabled { background: #e7e9eb; border-color: #e7e9eb; color: #a1a7b2; cursor: default; }
 .dmk-clear {
-  align-self: flex-start; background: none; border: none; cursor: pointer;
+  background: none; border: none; cursor: pointer;
   font-size: 12px; color: #5b6577; padding: 0; text-decoration: underline;
 }
 .dmk-clear:hover { color: #e4131b; }
@@ -6450,7 +6484,12 @@ body:has(.vp-root) .aiad--left .aiad-panel {
   flex: none; min-width: 78px; text-align: center;
   border-radius: 100px; padding: 3px 10px; font-size: 11px; font-weight: 700;
 }
+/* ⚠️ Matched to the panel's own `.dmk-opt--on` pairs, or one screen's Lead would
+   be a different blue from the other's. The last two are RETIRED statuses kept
+   because marks made before 10/7/2026 still render here. */
+.fup-urgent-lead { background: #ffd9cc; color: #b33b00; }
 .fup-lead { background: #b0cdff; color: #11228c; }
+.fup-no-interest { background: #e7e9eb; color: #5b6577; }
 .fup-follow-up { background: #ffd9cc; color: #b33b00; }
 .fup-demoed { background: #abe5bc; color: #0d5400; }
 .fup-text { flex: 1; min-width: 0; }

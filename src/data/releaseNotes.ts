@@ -71,6 +71,8 @@ export const RELEASES: Release[] = [
     changes: [
       n("Send a prospect their own demo as a link. They get Agent Studio and the two AI Conversation Intelligence reports, land straight on Agent Studio, and can text and call the agent for real. Set how many days it lasts and a password \u2014 their name by default \u2014 from the share button on any demo in the library, where you can also copy the link, add days, or turn it off instantly."),
       n("Your edits reach them automatically: the shared view reads the same demo you do, so anything you change shows up for the prospect. Ask AI stays yours \u2014 it is not part of what they see \u2014 and nothing they do on their end can change your demo."),
+      i("Marking a demo after you deliver it got a proper form. The statuses are now No interest, Lead and Urgent lead; the note is a real box you can actually write in; and nothing saves until you press Submit, so you can pick a status and write the note in either order. Marks you made before today keep their original label and are still in your follow-up list."),
+      i("\u201CNotify the Rep\u201D now copies the rep\u2019s manager too, when Salesforce lists one. The panel names both people before anything is sent, and says so plainly when there is no manager on the record."),
       n("Sharing is limited to project admins while it is being piloted. Everything else in this release is for everyone; a link already sent to a prospect keeps working either way."),
       i("The app no longer ships every prospect\u2019s data in its JavaScript. Demos load on demand instead, which means a shared link carries nothing about any other prospect, and the app itself is about half the size it was."),
     ],

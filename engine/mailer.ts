@@ -94,6 +94,7 @@ function rawMessage(from: string, mail: Mail): string {
   const boundary = "b" + Math.random().toString(36).slice(2);
   const headers = [
     `From: ${from}`, `To: ${mail.to}`, `Reply-To: ${mail.replyTo || GMAIL_SENDER || from}`,
+    ...(mail.cc ? [`Cc: ${mail.cc}`] : []),
     `Subject: ${subject}`, "MIME-Version: 1.0",
   ];
   const body = mail.html
@@ -175,6 +176,12 @@ export interface Mail {
      what the completion email wants (a reply there should reach the maintainer,
      not be sent to the person who is already the recipient). */
   replyTo?: string;
+  /* ⚠️⚠️ **SET IT IN BOTH TRANSPORTS OR NEITHER.** This file sends by two routes —
+     a hand-built RFC822 message for the Gmail API and nodemailer for SMTP — and a
+     header added to one silently depends on which route happens to be configured.
+     That exact trap is already recorded here for `Reply-To`; `audit:rep` pins both.
+     Used by the mark notice to copy the rep's manager. */
+  cc?: string;
 }
 
 /**
@@ -246,6 +253,7 @@ export async function sendMail(
       from: `"${FROM_NAME}" <${USER}>`,
       replyTo: mail.replyTo || USER,
       to: mail.to,
+      ...(mail.cc ? { cc: mail.cc } : {}),
       subject: mail.subject,
       text: mail.text,
       html: mail.html,
@@ -389,6 +397,8 @@ export function completionEmail(opts: {
 export function markNoticeEmail(opts: {
   to: string; repName: string; prospect: string; status: string;
   note?: string; seName: string; seEmail: string; when: string; demoUrl: string;
+  /** The rep's manager, copied in. Omitted when Salesforce lists none. */
+  cc?: string;
 }): Mail {
   const who = opts.seName || opts.seEmail;
   const first = (opts.repName || "").trim().split(/\s+/)[0];
@@ -419,6 +429,7 @@ export function markNoticeEmail(opts: {
     `</div>`;
   return {
     to: opts.to,
+    ...(opts.cc ? { cc: opts.cc } : {}),
     subject: `${opts.status}: ${opts.prospect} — demoed by ${who}`,
     text: lines.join("\n"),
     html,

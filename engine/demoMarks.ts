@@ -32,18 +32,21 @@ import { DATA_DIR, isValidId, type DemoCreator } from "./demoStore.ts";
 
 const MARKS_DIR = path.join(DATA_DIR, "demo-marks");
 
-/** The three the SE asked for, in the words they used. Anything else is refused
- *  at the boundary rather than stored and rendered as an unknown chip. */
-export const MARK_STATUSES = ["demoed", "follow-up", "lead"] as const;
-export type MarkStatus = (typeof MARK_STATUSES)[number];
-
-export const isMarkStatus = (v: unknown): v is MarkStatus =>
-  typeof v === "string" && (MARK_STATUSES as readonly string[]).includes(v);
+/* ⚠️ ONE DEFINITION, in `src/data/markStatus.ts` — the client needs the same set
+   and used to carry its own copy, which silently drifted the moment the statuses
+   changed. Re-exported here so every existing `engine/` importer is unchanged.
+   The `.ts` extension is required: this project is `module: nodenext`. */
+export {
+  MARK_STATUSES, LEGACY_MARK_STATUSES, MARK_LABEL, MARK_ORDER,
+  isMarkStatus, isStoredMarkStatus, owesFollowUp,
+} from "../src/data/markStatus.ts";
+export type { MarkStatus, LegacyMarkStatus, StoredMarkStatus } from "../src/data/markStatus.ts";
+import type { StoredMarkStatus as _Stored, MarkStatus as _Write } from "../src/data/markStatus.ts";
 
 export interface DemoMark {
   email: string;
   name: string;
-  status: MarkStatus;
+  status: _Stored;
   /** One line, the SE's own ("met Sarah, wants pricing"). Optional by design —
    *  a required note is how a one-click action becomes one nobody performs. */
   note?: string;
@@ -104,7 +107,7 @@ export function marksFor(demoId: string): DemoMark[] {
 export function markDemo(
   demoId: string,
   user: DemoCreator,
-  status: MarkStatus,
+  status: _Write,
   note?: string,
 ): DemoMark | null {
   const file = fileFor(demoId);

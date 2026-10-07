@@ -10661,6 +10661,68 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### The mark panel: three statuses, a real note box, and Submit (10/7/2026)
+Asked for against the panel: *"make this box bigger so its easier to take notes in, and for
+the 'Tell the Account Exe' change it to 'Notify the Rep' and also on along with the rep also
+notify their manager that is listed in salesforce as well. and have a submit button as well.
+Also change the status to No interest, Lead, Urgent lead"*.
+
+⚠️⚠️ **THE STATUS SET LIVED IN TWO PLACES AND `tsc -b --force` HAD NO OPINION.**
+`engine/demoMarks.ts` declared it and `src/data/DemoLibraryContext.tsx` declared its own copy
+as a string union. Editing the server left the client offering values the server had stopped
+accepting, with **nothing failing** — the duplicated-field failure this file already records
+for the voice greeting, the SMS brain and the drawer fallback. One definition now lives in
+**`src/data/markStatus.ts`**, DOM-free like `shareDefaults.ts` so the engine can import it
+(with the explicit `.ts` extension `nodenext` needs, as `signalTiers.ts` already does).
+It owns the offered set, the retired set, the labels, the sort order and WHICH STATUSES OWE
+SOMETHING — so the panel, the follow-up list and the server cannot disagree.
+
+⚠️⚠️ **READ WIDER THAN YOU WRITE, and that was the user's own call when asked.** `lead`
+survived the rename; `demoed` and `follow-up` did not, and neither has an honest equivalent
+("demoed" means *I showed them*, not *they are not interested*). Remapping would relabel
+somebody's judgement and deleting would destroy notes taken at a conference, so they stay
+READABLE and are simply never offered again: `isMarkStatus` gates WRITES, `isStoredMarkStatus`
+gates READS, and `MARK_LABEL` covers all five. Verified live — a legacy `Demoed` mark still
+renders with its own label and tint beside the new three.
+⚠️ **`owesFollowUp` IS A SET, NOT `!== "no-interest"`** — the follow-up count and the menu
+badge both mean "what do I still owe", and a predicate by exclusion makes every status added
+later silently owe something. No interest is a decision and Demoed is a record; neither is a
+task. Measured: 6 marked, 3 owing.
+
+⚠️⚠️ **SUBMIT IS THE ONLY WRITER.** Picking a status used to save immediately and close, so
+there was never a moment when a status and a note existed together — the note had to be typed
+first and committed with Enter, which nobody would discover. The panel holds a DRAFT and
+`submit()` is the one path to `setMark`. **Proved by reading the server, not the UI**: picking
+a status left `/api/marks` with no record for that demo, and only Submit wrote it.
+⚠️ **A RETIRED STATUS CANNOT BE RE-SELECTED**, so a legacy mark opens with nothing highlighted
+rather than with a button that no longer exists. Submit then needs a deliberate pick.
+⚠️ **ENTER INSERTS A NEWLINE NOW; Cmd/Ctrl+Enter submits.** A multi-line box cannot also mean
+"commit", and the old Enter-commits shortcut was built for a one-line input.
+⚠️ The panel went 268 -> 340 wide with a 76px textarea. Safe only because `place()` already
+flips it above the trigger and a `ResizeObserver` re-places it as it grows — the fix that
+section documents. Verified it still fits the viewport at 1280x1000.
+
+#### The manager is copied in, and held to the same tests as the rep
+`Account.Owner.Manager` — pulled in the SAME query (SOQL resolves two hops natively; a second
+round trip would run while an SE waits on a one-click action).
+⚠️⚠️ **`cc` HAD TO GO INTO BOTH TRANSPORTS.** `engine/mailer.ts` sends by a hand-built RFC822
+message for the Gmail API and by nodemailer for SMTP, and a header added to one silently
+depends on which route is configured — the trap this file already records for `Reply-To`.
+`audit:rep` pins both, and the half-fix (nodemailer only) was verified to redden.
+⚠️ **AN OFF-DOMAIN MANAGER IS DROPPED QUIETLY** — same `orgEmailDomain()` test the rep gets,
+because a Salesforce User can carry a partner's or an integration account's address — but the
+rep is still told, since failing a whole notification over a copy is worse than sending it.
+Also dropped when inactive, or when the manager IS the rep.
+⚠️ **NULL IS THE COMMON CASE, NOT AN ERROR.** Plenty of reps have no manager set, so the panel
+says *"(no manager listed in Salesforce)"* rather than implying somebody was copied — the same
+rule that makes it name the rep before sending.
+
+**`audit:app` gained 12 checks and `audit:rep` 9**, all against the real functions or a MOCKED
+Salesforce (never the live org — an audit that depends on somebody else's service is flaky by
+construction). Six sabotages fire: a status button writing again, the client re-declaring its
+union, a retired status becoming settable, `cc` dropped from one transport, the manager dropped
+from the SOQL, and the manager cc'd with no domain check.
+
 ### Telling the account exec: the match is a DOMAIN, and it refuses rather than guesses (9/23/2026)
 
 Asked for as the next step on the same feature: *"is there a way to see who the sales rep is on

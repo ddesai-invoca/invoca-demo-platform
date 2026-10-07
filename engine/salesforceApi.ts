@@ -75,6 +75,11 @@ export interface RepCandidate {
   ownerName: string;
   ownerEmail: string;
   ownerActive: boolean;
+  /** The owner's manager in Salesforce (`Owner.Manager`), or null when none is
+   *  set — notified alongside the rep, never instead of them. */
+  managerName: string | null;
+  managerEmail: string | null;
+  managerActive: boolean;
 }
 
 export interface RepLookup {
@@ -234,7 +239,12 @@ interface AccountRow {
   Id: string;
   Name: string;
   Website: string | null;
-  Owner: { Name: string; Email: string; IsActive: boolean } | null;
+  Owner: {
+    Name: string; Email: string; IsActive: boolean;
+    /* ⚠️ `Owner.Manager` is a User lookup on a User, so it is null for anyone with
+       no manager set in Salesforce — a real and common state, not an error. */
+    Manager: { Name: string; Email: string | null; IsActive: boolean } | null;
+  } | null;
 }
 
 /**
@@ -256,7 +266,11 @@ export async function lookupRep(websiteUrl: string): Promise<RepLookup> {
        so a hostname cannot contain one. */
     const like = domain.replace(/'/g, "\\'");
     rows = await soql<AccountRow>(
-      `SELECT Id, Name, Website, Owner.Name, Owner.Email, Owner.IsActive ` +
+      /* ⚠️ The manager is pulled in the SAME query rather than a second round trip:
+         this runs while an SE waits on a one-click action, and `Owner.Manager.X` is
+         a two-hop relationship SOQL resolves natively (the limit is five). */
+      `SELECT Id, Name, Website, Owner.Name, Owner.Email, Owner.IsActive, ` +
+      `Owner.Manager.Name, Owner.Manager.Email, Owner.Manager.IsActive ` +
       `FROM Account WHERE Website LIKE '%${like}%' LIMIT 50`,
     );
   } catch (e: any) {
@@ -277,6 +291,11 @@ export async function lookupRep(websiteUrl: string): Promise<RepLookup> {
       ownerName: r.Owner!.Name,
       ownerEmail: r.Owner!.Email.toLowerCase(),
       ownerActive: !!r.Owner!.IsActive,
+      /* ⚠️ NULL IS A NORMAL ANSWER — no manager set, or one with no email. The
+         caller notifies whoever it got and says so, rather than refusing. */
+      managerName: r.Owner!.Manager?.Name ?? null,
+      managerEmail: r.Owner!.Manager?.Email ? r.Owner!.Manager!.Email!.toLowerCase() : null,
+      managerActive: !!r.Owner!.Manager?.IsActive,
     }));
   if (!cands.length) {
     return none(domain, `The Salesforce account for ${domain} has no owner email.`);

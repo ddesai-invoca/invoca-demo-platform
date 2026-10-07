@@ -20,19 +20,22 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useDemoLibrary, type MarkStatus, type NotifyResult, type RepLookup } from "../data/DemoLibraryContext";
-
-const LABEL: Record<MarkStatus, string> = {
-  demoed: "Demoed",
-  "follow-up": "Follow-up",
-  lead: "Lead",
-};
-
-const ORDER: MarkStatus[] = ["demoed", "follow-up", "lead"];
+/* ⚠️ Labels and the offered set come from the one shared module — this component
+   used to declare its own copy, which is how it kept offering statuses the server
+   had stopped accepting. `MARK_STATUSES` is the WRITE set, so a retired status is
+   rendered on the flag (via MARK_LABEL) but can never be chosen again. */
+import { MARK_STATUSES, MARK_LABEL as LABEL } from "../data/markStatus";
 
 export default function DemoMarkButton({ demoId, name }: { demoId: string; name: string }) {
   const { markFor, setMark, lookupRep, gmailStatus } = useDemoLibrary();
   const mark = markFor(demoId);
   const [open, setOpen] = useState(false);
+  /* ⚠️⚠️ **NOTHING SAVES UNTIL SUBMIT (10/7/2026).** Picking a status used to write
+     immediately and close, so there was no moment at which a note and a status
+     existed together — the note had to be typed first and committed by Enter, which
+     is not discoverable. The panel now holds a DRAFT and `submit()` is the only
+     writer, which is also what makes the note worth enlarging. */
+  const [draft, setDraft] = useState<MarkStatus | null>(null);
   const [note, setNote] = useState("");
   /* ⚠️⚠️ **OFF BY DEFAULT, AND THAT IS THE FEATURE.** Marking happens ~25 times
      in an afternoon; a notification on every one is a burst a colleague filters
@@ -146,6 +149,10 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
     ev.stopPropagation();
     ev.preventDefault();
     setNote(mark?.note ?? "");
+    /* ⚠️ A RETIRED status cannot be re-selected, so a legacy mark opens with no
+       status chosen rather than with a button that does not exist highlighted.
+       Submit then requires a deliberate pick, which is the honest outcome. */
+    setDraft(mark && (MARK_STATUSES as readonly string[]).includes(mark.status) ? (mark.status as MarkStatus) : null);
     /* Every opening starts clean: an outcome left over from the last demo marked
        would read as a report about THIS one. */
     setNotify(false);
@@ -171,11 +178,12 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
     setGmail(g);
   }
 
-  async function commit(status: MarkStatus) {
+  async function submit() {
+    if (!draft || saving) return;
     setSaving(true);
     const r = await setMark(
       demoId,
-      status,
+      draft,
       note.trim() || undefined,
       notify ? { accountId: picked ?? undefined } : undefined,
     );
@@ -187,9 +195,10 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
     else setOpen(false);
   }
 
-  async function choose(ev: React.MouseEvent, status: MarkStatus) {
+  /* Selects only. The write is `submit()`. */
+  function choose(ev: React.MouseEvent, status: MarkStatus) {
     ev.stopPropagation();
-    await commit(status);
+    setDraft((cur) => (cur === status ? null : status));
   }
 
   async function clear(ev: React.MouseEvent) {
@@ -229,32 +238,38 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
         >
           <div className="dmk-head">{name}</div>
           <div className="dmk-opts">
-            {ORDER.map((s) => (
+            {MARK_STATUSES.map((s) => (
               <button
                 key={s}
-                className={"dmk-opt dmk-" + s + (mark?.status === s ? " dmk-opt--on" : "")}
+                type="button"
+                className={"dmk-opt dmk-" + s + (draft === s ? " dmk-opt--on" : "")}
+                aria-pressed={draft === s}
                 disabled={saving}
-                onClick={(e) => void choose(e, s)}
+                onClick={(e) => choose(e, s)}
               >
                 {LABEL[s]}
               </button>
             ))}
           </div>
-          <input
+          {/* ⚠️ A TEXTAREA, NOT AN INPUT (10/7/2026): asked for directly, because a
+              one-line box is hard to take notes in. `maxLength` stays 280 — the
+              store and the notification email are both built around a short note —
+              and the box SCROLLS past that rather than growing without limit.
+              ⚠️ Enter inserts a newline now; it used to commit, which a multi-line
+              box cannot also mean. Cmd/Ctrl+Enter submits, the usual pairing. */}
+          <textarea
             className="dmk-note"
             value={note}
             placeholder="Optional — who you met, what they asked for"
             maxLength={280}
+            rows={4}
             onChange={(e) => setNote(e.target.value)}
             onClick={(e) => e.stopPropagation()}
-            /* Enter commits the status already on the demo, or Demoed when there
-               is none — so a note can be typed and saved without reaching for the
-               mouse, which is the whole point at conference pace. */
             onKeyDown={(e) => {
               e.stopPropagation();
-              if (e.key === "Enter") {
+              if (e.key === "Enter" && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
-                void commit(mark?.status ?? "demoed");
+                void submit();
               }
             }}
           />
@@ -269,7 +284,7 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
               checked={notify}
               onChange={(e) => { e.stopPropagation(); void toggleNotify(e.target.checked); }}
             />
-            <span>Tell the account exec</span>
+            <span>Notify the Rep</span>
           </label>
 
           {notify && (
@@ -279,7 +294,16 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
               {!repLoading && chosen && (
                 <span className="dmk-rep-msg dmk-rep-ok">
                   <span className="material-icons">mail_outline</span>
-                  Emails <strong>{chosen.ownerName}</strong> — {chosen.accountName}
+                  Emails <strong>{chosen.ownerName}</strong>
+                  {/* ⚠️ The manager is NAMED before anything is sent, for the same
+                      reason the rep is: copying somebody in without saying who is a
+                      click nobody should have to take on trust. Salesforce lists no
+                      manager for plenty of reps, and that says so rather than
+                      implying one was told. */}
+                  {chosen.managerName
+                    ? <> and their manager <strong>{chosen.managerName}</strong></>
+                    : <> (no manager listed in Salesforce)</>}
+                  {" — "}{chosen.accountName}
                 </span>
               )}
 
@@ -341,13 +365,28 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
           {sent && (
             <div className={"dmk-sent" + (sent.sent ? " dmk-sent--ok" : " dmk-sent--no")}>
               {sent.sent
-                ? `Emailed ${sent.name ?? sent.to}${sent.sentAs ? ` from ${sent.sentAs}` : ""}.`
+                ? `Emailed ${sent.name ?? sent.to}${sent.ccName ? ` and ${sent.ccName}` : ""}${sent.sentAs ? ` from ${sent.sentAs}` : ""}.`
                 : `Marked, but nothing was emailed — ${sent.reason ?? "the send did not go through."}`}
             </div>
           )}
-          {mark && (
-            <button className="dmk-clear" onClick={(e) => void clear(e)}>Remove mark</button>
-          )}
+          {/* ⚠️⚠️ **SUBMIT IS THE ONLY WRITER (10/7/2026).** Asked for directly. It is
+              disabled until a status is chosen, because a note with no status is not
+              a mark the store can hold — and saying so on the button beats saving
+              something nobody asked for. */}
+          <div className="dmk-actions">
+            {mark && (
+              <button type="button" className="dmk-clear" onClick={(e) => void clear(e)}>Remove mark</button>
+            )}
+            <button
+              type="button"
+              className="dmk-submit"
+              disabled={!draft || saving}
+              title={draft ? undefined : "Pick a status first"}
+              onClick={(e) => { e.stopPropagation(); void submit(); }}
+            >
+              {saving ? "Saving…" : "Submit"}
+            </button>
+          </div>
         </div>,
         document.body,
       )}

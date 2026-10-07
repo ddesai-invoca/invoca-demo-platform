@@ -82,8 +82,13 @@ async function withSf(records: any[] | Error, run: () => Promise<void>) {
     delete process.env.SALESFORCE_CLIENT_SECRET;
   }
 }
-const acct = (Id: string, Name: string, Website: string, owner: string, email: string, IsActive = true) =>
-  ({ Id, Name, Website, Owner: { Name: owner, Email: email, IsActive } });
+const acct = (Id: string, Name: string, Website: string, owner: string, email: string, IsActive = true,
+  /* ⚠️ `Owner.Manager` is null for any rep with no manager set in Salesforce — a
+     real and common state, which is why it defaults to null here rather than to a
+     fixture everything else quietly depends on. */
+  Manager: { Name: string; Email: string | null; IsActive: boolean } | null = null) =>
+  ({ Id, Name, Website, Owner: { Name: owner, Email: email, IsActive, Manager } });
+const mgr = (Name: string, Email: string | null, IsActive = true) => ({ Name, Email, IsActive });
 
 /* Unconfigured is a SUPPORTED state — it must report, never throw. */
 {
@@ -190,6 +195,102 @@ await withSf([{ Id: "1", Name: "No Owner", Website: "https://acme.com", Owner: n
   !r.rep && !!r.reason ? ok("a demo with no website refuses rather than querying")
     : no("an empty website should refuse");
 }
+
+/* ---- the rep's MANAGER is copied in (10/7/2026) ------------------------------
+   Asked for: "along with the rep also notify their manager that is listed in
+   salesforce as well." The manager is `Account.Owner.Manager`, pulled in the SAME
+   query, and held to the same org-domain test the rep is — a Salesforce User can
+   carry a partner's or an integration account's address. */
+console.log("\nThe rep's manager\n");
+
+/* ⚠️ Two hops in ONE query. A second round trip would run while an SE waits on a
+   one-click action; SOQL resolves `Owner.Manager.X` natively (the limit is five). */
+(() => {
+  const src = code("engine/salesforceApi.ts");
+  return /Owner\.Manager\.Name/.test(src) && /Owner\.Manager\.Email/.test(src)
+    && /Owner\.Manager\.IsActive/.test(src);
+})()
+  ? ok("the account query asks Salesforce for the owner's manager")
+  : no("the manager is not in the SOQL, so there is nothing to notify");
+
+await withSf([acct("1", "Claffey Pools", "https://www.claffeypools.com", "Jacob Burkhardt",
+  "jburkhardt@invoca.com", true, mgr("Dana Reed", "dreed@invoca.com"))], async () => {
+  const r = await lookupRep("https://claffeypools.com/");
+  r.rep?.managerEmail === "dreed@invoca.com" && r.rep?.managerName === "Dana Reed" && r.rep?.managerActive === true
+    ? ok("a listed manager comes back with the rep")
+    : no("the manager did not survive the lookup");
+});
+
+/* ⚠️ NULL IS A NORMAL ANSWER, not an error — plenty of reps have no manager set,
+   and the lookup must still resolve the rep rather than refusing the whole thing. */
+await withSf([acct("1", "Claffey Pools", "https://www.claffeypools.com", "Jacob Burkhardt",
+  "jburkhardt@invoca.com", true, null)], async () => {
+  const r = await lookupRep("https://claffeypools.com/");
+  r.rep?.ownerEmail === "jburkhardt@invoca.com" && r.rep?.managerEmail === null && r.rep?.managerName === null
+    ? ok("no manager set: the rep still resolves, manager is null")
+    : no("a rep with no manager should still resolve");
+});
+
+/* ⚠️ A manager record with no email address is the same case as none at all. */
+await withSf([acct("1", "Claffey Pools", "https://www.claffeypools.com", "Jacob Burkhardt",
+  "jburkhardt@invoca.com", true, mgr("Dana Reed", null))], async () => {
+  const r = await lookupRep("https://claffeypools.com/");
+  r.rep?.managerEmail === null
+    ? ok("a manager with no email address resolves to null, not to a broken address")
+    : no("a manager with no email should be treated as absent");
+});
+
+/* ⚠️⚠️ **BOTH TRANSPORTS OR NEITHER.** This file sends by a hand-built RFC822
+   message for the Gmail API and by nodemailer for SMTP; a header added to one
+   silently depends on which route is configured. Already recorded here for
+   Reply-To — the same trap, so the same check. */
+(() => {
+  const m = code("engine/mailer.ts");
+  return /cc\?: string/.test(m)
+    && /`Cc: \$\{mail\.cc\}`/.test(m)
+    && /\{ cc: mail\.cc \}/.test(m);
+})()
+  ? ok("cc is declared and set in BOTH transports")
+  : no("cc is missing from the Mail type or from one of the two transports");
+
+/* The notice itself has to forward it, or the two transports have nothing to send. */
+(() => {
+  const m = code("engine/mailer.ts");
+  const i = m.indexOf("export function markNoticeEmail");
+  return i > 0 && /cc\?: string/.test(m.slice(i, i + 900)) && /\{ cc: opts\.cc \}/.test(m.slice(i));
+})()
+  ? ok("the mark notice passes a cc through to the mail")
+  : no("markNoticeEmail drops the cc");
+
+/* ⚠️ The manager is held to the SAME org-domain test as the rep, and an
+   off-domain one is dropped QUIETLY — the rep is still told, because failing the
+   whole notification over a copy would be worse than sending it. */
+(() => {
+  const d = code("engine/demoApi.ts");
+  const i = d.indexOf("async function notifyRep");
+  const body = d.slice(i, d.indexOf("\n}", i));
+  return /domainOk\(rep\.managerEmail\)/.test(body)
+    && /rep\.managerActive/.test(body)
+    && /rep\.managerEmail !== rep\.ownerEmail/.test(body);
+})()
+  ? ok("the manager must be on our domain, active, and not the rep themselves")
+  : no("the manager is cc'd without the same checks the rep gets");
+
+/* ⚠️ And the UI must be able to SAY who was copied — "sent" without naming the
+   recipients is the vague success this whole result shape exists to avoid. */
+(() => {
+  const d = code("engine/demoApi.ts");
+  return /ccName\?: string/.test(d) && /cc, ccName: rep\.managerName/.test(d);
+})()
+  ? ok("the result names the manager who was copied")
+  : no("nothing reports who was copied");
+
+(() => {
+  const c = code("src/components/DemoMarkButton.tsx");
+  return /chosen\.managerName/.test(c) && /no manager listed in Salesforce/.test(c);
+})()
+  ? ok("the panel names the manager before sending, or says there is none")
+  : no("the panel copies someone in without saying who");
 
 /* ---- 3. the send guards ------------------------------------------------------ */
 console.log("\nThe notification — server-resolved, org-only, opt-in\n");

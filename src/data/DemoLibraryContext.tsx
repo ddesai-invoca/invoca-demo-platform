@@ -51,9 +51,13 @@ export interface LoadedDemo {
   canEdit: boolean;
 }
 
-/** The three statuses an SE can put on a demo they delivered. Mirrors
- *  `MARK_STATUSES` in engine/demoMarks.ts — the server refuses anything else. */
-export type MarkStatus = "demoed" | "follow-up" | "lead";
+/* ⚠️⚠️ **RE-EXPORTED, NOT RE-DECLARED.** This was its own string union mirroring
+   the server's, and on 10/7/2026 the statuses changed, the server was edited, and
+   `tsc -b --force` said NOTHING — the client kept offering values the server had
+   stopped accepting. One definition now lives in `markStatus.ts`, which the engine
+   imports too. Importers below are unchanged. */
+export type { MarkStatus, StoredMarkStatus } from "./markStatus";
+import type { MarkStatus, StoredMarkStatus } from "./markStatus";
 
 /** One person's mark on one demo, joined with that demo's own name by the API
  *  so a follow-up list reads as prospects rather than as ids. */
@@ -61,7 +65,7 @@ export interface DemoMark {
   demoId: string;
   email: string;
   name: string;
-  status: MarkStatus;
+  status: StoredMarkStatus;
   note?: string;
   at: string;
   prospect?: string;
@@ -77,6 +81,9 @@ export interface Rep {
   website: string;
   ownerName: string;
   ownerEmail: string;
+  /** The owner's manager in Salesforce, or null when none is set. */
+  managerName?: string | null;
+  managerEmail?: string | null;
   ownerActive: boolean;
 }
 
@@ -98,6 +105,9 @@ export interface NotifyResult {
   sentAs?: string;
   to?: string;
   name?: string;
+  /** The manager copied in, when there was one to copy. */
+  cc?: string;
+  ccName?: string;
   reason?: string;
   candidates?: Rep[];
 }

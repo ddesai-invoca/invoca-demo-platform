@@ -17,17 +17,12 @@
    ============================================================================= */
 
 import { Link } from "react-router-dom";
-import { useDemoLibrary, type DemoMark, type MarkStatus } from "../data/DemoLibraryContext";
-
-const LABEL: Record<MarkStatus, string> = {
-  demoed: "Demoed",
-  "follow-up": "Follow-up",
-  lead: "Lead",
-};
-
-/* Follow-up and Lead are the ones that OWE something, so they lead the page —
-   "demoed and done" is a record, not a task. */
-const ORDER: MarkStatus[] = ["lead", "follow-up", "demoed"];
+import { useDemoLibrary, type DemoMark } from "../data/DemoLibraryContext";
+/* ⚠️ The labels, the sort order and WHICH STATUSES OWE SOMETHING all come from the
+   one shared module, so this page cannot disagree with the panel that writes them
+   or with the server that stores them. It also renders RETIRED statuses, because
+   marks made before 10/7/2026 are still on disk and still somebody's real work. */
+import { MARK_LABEL as LABEL, MARK_ORDER as ORDER, owesFollowUp } from "../data/markStatus";
 
 const EVENT_LABEL: Record<string, string> = { "dallas-2026": "2026 Dallas Invoca Summit" };
 
@@ -50,7 +45,7 @@ export default function FollowUps() {
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key)!.push(m);
   }
-  const owing = marks.filter((m) => m.status !== "demoed").length;
+  const owing = marks.filter((m) => owesFollowUp(m.status)).length;
 
   return (
     <div className="fup-page">
