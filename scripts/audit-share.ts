@@ -317,6 +317,42 @@ console.log("\nThe prospect's bundle and chrome\n");
   ? ok("the share routes do not echo internal errors")
   : bad("an internal error message reaches a prospect's page");
 
+/* ⚠️⚠️ **A CLASSNAME IS NOT STYLING.** The trigger shipped carrying `row-icon`, a class
+   NO stylesheet defines, so the browser fell back to its default button chrome — `2px
+   outset`, `#efefef`, square corners — next to two flat ghost buttons, and it was
+   reported as standing out. `tsc` cannot see this and neither can a render test that
+   only asks whether the button exists. Every class this component renders must resolve
+   to a real rule; `material-icons` is the one global exception (fonts, not layout). */
+(() => {
+  const src = fs.readFileSync("src/components/ShareDemoButton.tsx", "utf8");
+  const css = fs.readFileSync("src/styles/app.css", "utf8");
+  const used = new Set<string>();
+  for (const m of src.matchAll(/className=(?:"([^"]+)"|\{"([^"]+)")/g))
+    (m[1] ?? m[2]).split(/\s+/).filter(Boolean).forEach((c) => used.add(c));
+  const orphans = [...used].filter((c) => c !== "material-icons" && !new RegExp(`\\.${c}[\\s,:.{\\[]`).test(css));
+  if (orphans.length) bad(`ShareDemoButton renders class(es) with no CSS rule: ${orphans.join(", ")}`);
+  else ok("every class the share button renders resolves to a real CSS rule");
+})();
+
+/* ⚠️ And it must read as its NEIGHBOURS do — a ghost button, not a boxed one. Pinned
+   against `.prospect-delete`, the sibling it sits beside, rather than against literals. */
+(() => {
+  const css = fs.readFileSync("src/styles/app.css", "utf8");
+  const rule = (sel: string) => {
+    const i = css.indexOf(sel + " {");
+    return i < 0 ? "" : css.slice(i, css.indexOf("}", i));
+  };
+  const t = rule(".shr-trigger"), d = rule(".prospect-delete");
+  const same = (prop: string) => {
+    const g = (r: string) => (new RegExp(`${prop}:\\s*([^;]+)`).exec(r)?.[1] ?? "").trim();
+    return !!g(t) && g(t) === g(d);
+  };
+  return !!t && same("width") && same("height") && same("border-radius")
+    && /background:\s*transparent/.test(t) && /border:\s*none/.test(t);
+})()
+  ? ok("the share trigger is a ghost button with the delete button's own box")
+  : bad("the share trigger does not match its sibling row controls");
+
 console.log("\nAdmin gate (the feature is piloted with admins, 10/7/2026)\n");
 
 /* ⚠️⚠️ **BOTH HALVES OR NEITHER.** Hiding the button is cosmetic — anyone signed in can

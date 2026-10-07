@@ -144,7 +144,7 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
     <span className="shr-wrap">
       <button
         ref={btnRef}
-        className="row-icon"
+        className="shr-trigger"
         title={`Share ${name} with the prospect`}
         aria-label={`Share ${name} with the prospect`}
         /* ⚠️ Every handler stops propagation: the ROW's own click opens the demo, and a

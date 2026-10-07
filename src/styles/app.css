@@ -6506,6 +6506,20 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 /* ── The SE's share dialog on a Launch row (.shr-*) ──────────────────────────
    ⚠️ Anchored to the row and stops its own clicks: the row itself opens the demo. */
 .shr-wrap { display: inline-flex; }
+/* ⚠️ THE TRIGGER NEEDS A RULE OF ITS OWN, and shipping without one is why it stood out:
+   it carried `row-icon`, a class NO stylesheet defines, so the browser fell back to its
+   default button chrome — `2px outset`, `#efefef`, square corners — beside two flat ghost
+   buttons. A className is not styling; grep the stylesheet before inventing one.
+   ⚠️ Matched to `.prospect-delete`'s box (30x30, radius 6, transparent, faint ink) with
+   `.prospect-dup`'s BLUE hover rather than that one's red, because sharing is not a
+   destructive action and red is the row's signal for delete. */
+.shr-trigger {
+  flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center;
+  width: 30px; height: 30px; border: none; background: transparent; border-radius: 6px;
+  color: var(--color-text-faint); cursor: pointer; transition: background .12s, color .12s;
+}
+.shr-trigger:hover { background: #eaf1ff; color: #2666f9; }
+.shr-trigger .material-icons { font-size: 18px; }
 /* ⚠️ PORTALLED TO <body> and `position: fixed`, so the demo picker's own scroll box
    cannot clip it — reported as "the box gets cut off". Its coordinates come from the
    trigger's rect in JS, which is also what lets it flip above near the bottom. */
