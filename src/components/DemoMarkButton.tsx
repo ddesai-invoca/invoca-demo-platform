@@ -37,6 +37,10 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
      writer, which is also what makes the note worth enlarging. */
   const [draft, setDraft] = useState<MarkStatus | null>(null);
   const [note, setNote] = useState("");
+  /* ⚠️ ONE EMPTY ROW TO START, and blank rows are dropped at submit rather than
+     flagged — the form opens with one, so blank is the normal state, not an error.
+     Same rule the share dialog uses for an unanswered segment. */
+  const [people, setPeople] = useState<{ name: string; title: string }[]>([{ name: "", title: "" }]);
   /* ⚠️⚠️ **OFF BY DEFAULT, AND THAT IS THE FEATURE.** Marking happens ~25 times
      in an afternoon; a notification on every one is a burst a colleague filters
      away, and one stray click would tell them about an account that is not
@@ -66,6 +70,11 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
     ev.stopPropagation();
     ev.preventDefault();
     setNote(mark?.note ?? "");
+    setPeople(
+      mark?.attendees?.length
+        ? mark.attendees.map((a) => ({ name: a.name, title: a.title ?? "" }))
+        : [{ name: "", title: "" }],
+    );
     /* ⚠️ A RETIRED status cannot be re-selected, so a legacy mark opens with no
        status chosen rather than with a button that does not exist highlighted.
        Submit then requires a deliberate pick, which is the honest outcome. */
@@ -103,6 +112,9 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
       draft,
       note.trim() || undefined,
       notify ? { accountId: picked ?? undefined } : undefined,
+      /* The server drops nameless rows too — this just avoids posting the empty
+         row the form always starts with. */
+      people.filter((p) => p.name.trim()).map((p) => ({ name: p.name.trim(), title: p.title.trim() })),
     );
     setSaving(false);
     /* ⚠️ THE PANEL STAYS OPEN WHEN SOMETHING WAS MEANT TO BE SENT, because this is
@@ -194,19 +206,63 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
               and the box SCROLLS past that rather than growing without limit.
               ⚠️ Enter inserts a newline now; it used to commit, which a multi-line
               box cannot also mean. Cmd/Ctrl+Enter submits, the usual pairing. */}
-          <div className="dmk-label dmk-label--notes">
-            <span>Notes</span>
-            {/* A quiet counter: the cap is 280 and hitting it silently is the
-                kind of thing you only notice after losing a sentence. */}
-            <span className={"dmk-count" + (note.length > 240 ? " dmk-count--near" : "")}>
-              {note.length}/280
-            </span>
+          {/* ⚠️ WHO WAS IN THE ROOM (10/7/2026), asked for directly. A NAME is enough
+              for a row to count — plenty of demos end without catching everyone's
+              job title, and demanding one would mean losing the name too. */}
+          <div className="dmk-label dmk-label--notes"><span>Who you demoed to</span></div>
+          <div className="dmk-people">
+            {people.map((p, i) => (
+              <div className="dmk-person" key={i}>
+                <input
+                  className="dmk-pin"
+                  value={p.name}
+                  placeholder="Name"
+                  onChange={(e) => setPeople((ps) => ps.map((x, n) => (n === i ? { ...x, name: e.target.value } : x)))}
+                  onClick={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => e.stopPropagation()}
+                />
+                <input
+                  className="dmk-pin dmk-pin--title"
+                  value={p.title}
+                  placeholder="Title or role"
+                  onChange={(e) => setPeople((ps) => ps.map((x, n) => (n === i ? { ...x, title: e.target.value } : x)))}
+                  onClick={(e) => e.stopPropagation()}
+                  onKeyDown={(e) => e.stopPropagation()}
+                />
+                {/* ⚠️ The last remaining row is CLEARED rather than removed, or the
+                    section vanishes with no way to get it back. */}
+                <button
+                  type="button"
+                  className="dmk-prm"
+                  aria-label={`Remove ${p.name || "this person"}`}
+                  title="Remove"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setPeople((ps) => (ps.length === 1 ? [{ name: "", title: "" }] : ps.filter((_, n) => n !== i)));
+                  }}
+                >
+                  <span className="material-icons">close</span>
+                </button>
+              </div>
+            ))}
           </div>
+          <button
+            type="button"
+            className="dmk-add"
+            onClick={(e) => { e.stopPropagation(); setPeople((ps) => [...ps, { name: "", title: "" }]); }}
+          >
+            + Add person
+          </button>
+
+          {/* ⚠️ NO `maxLength` AND NO COUNTER (10/7/2026) — asked for directly. The
+              counter only existed to warn about the 280 cap, so it went with it.
+              The server keeps a 20,000-character sanity bound that no real note
+              reaches; see NOTE_MAX. */}
+          <div className="dmk-label dmk-label--notes"><span>Notes</span></div>
           <textarea
             className="dmk-note"
             value={note}
-            placeholder="Optional — who you met, what they asked for"
-            maxLength={280}
+            placeholder="Optional — what they asked for, what to do next"
             rows={4}
             onChange={(e) => setNote(e.target.value)}
             onClick={(e) => e.stopPropagation()}

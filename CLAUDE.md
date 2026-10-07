@@ -10715,6 +10715,48 @@ target, and removing the clamp.
 STRONGER: it used to require a `ResizeObserver` (patching the off-screen bug) and now forbids
 anchoring outright (removing its habitat). Both re-aimed checks were verified to still bite.
 
+#### Then: no length limit, and WHO was in the room (10/7/2026)
+*"dont limit the number of characters . and also i want the user to be able to put the name and
+position of the person / people that they have demoed too as well"*.
+
+⚠️⚠️ **`NOTE_MAX` WENT 280 -> 20,000, AND THAT IS A SANITY BOUND, NOT A WORD LIMIT.** The UI sets
+no `maxLength` and the counter is deleted (it existed only to warn about the cap). Something must
+still stop a malformed or hostile payload: this is free text from a browser that lands in a JSON
+file and is rendered into HTML email, and an unbounded string there is the shape that grows until
+a read fails. 20,000 characters is ~4,000 words — nobody meets it between demos. **Do not lower
+it back toward a human-sized number**; `audit:app` fails under 10,000.
+
+⚠️ **A NAME IS ENOUGH FOR A PERSON TO COUNT.** `DemoMark.attendees?: { name, title? }[]`. Plenty
+of demos end without catching somebody's job title, and demanding one would mean losing the name
+too. Rows with no name are DROPPED rather than reported — the form always opens with one empty
+row, so blank is the normal state, not an error (the same rule the share dialog uses for an
+unanswered segment). Validated in `cleanAttendees` inside the store rather than at the route, so
+every caller gets one rule; bounded at 24 people and 120 characters a field, because a list from
+a browser can arrive with ten thousand entries.
+⚠️ **Absent rather than `[]` when nobody was listed**, so a mark made before this serialises
+exactly as it did.
+⚠️ **THE LAST REMAINING ROW CLEARS RATHER THAN DISAPPEARING**, or the section vanishes with no
+way to get it back.
+
+⚠️⚠️ **A FIELD ONLY EVER WRITTEN IS A FIELD NOBODY FILLS IN TWICE**, so it is readable in both
+places the work happens: the follow-up list shows `Sarah Chen (VP Operations) · Marcus Webb` ABOVE
+the note (on a worklist, who you met is what you scan for and is shorter), and the rep's
+notification lists them — arguably its most useful line, since it names the people on the AE's own
+account who have now seen the product. A person with no title renders as a bare name rather than
+an empty bracket, and the whole section is omitted when nobody was listed.
+
+**Verified end to end**: a 1,079-character note (past the old cap) and two attendees with titles
+saved and read back from `/api/marks`; reopening the dialog seeds all of it, including the status;
+adding a third row and removing it leaves two; and the email renders the list in both text and
+HTML, with the section absent when there are no attendees.
+**`audit:app` gained 5 checks**, one of which calls the real `cleanAttendees` (trimming, nameless
+rows dropped, bounded, non-array refused). Four sabotages fire.
+⚠️ **ONE SABOTAGE DID NOT FIRE AND THAT EXPOSED REAL SLOPPINESS OF MINE** — the text builder had
+`people.length === 1 ? \`They demoed to:\` : \`They demoed to:\``, a ternary with two identical
+branches, so replacing one occurrence left the other and the check still passed. The ternary is
+gone. **A sabotage that does not fire is worth reading twice: here the probe was right and the
+code was silly.**
+
 #### Then: the dialog was SCALED, not designed — reported and fixed (10/7/2026)
 *"make this box look better"*, against the mark dialog's body. Fair: the previous pass
 doubled every number and changed no decisions, which is how you get three identical white

@@ -47,10 +47,23 @@ export interface DemoMark {
   email: string;
   name: string;
   status: _Stored;
-  /** One line, the SE's own ("met Sarah, wants pricing"). Optional by design —
-   *  a required note is how a one-click action becomes one nobody performs. */
+  /** The SE's own ("met Sarah, wants pricing"). Optional by design — a required
+   *  note is how a one-click action becomes one nobody performs. Length-capped
+   *  only for sanity; see NOTE_MAX. */
   note?: string;
+  /** ⚠️ WHO WAS IN THE ROOM (10/7/2026), asked for directly. Name is required for a
+   *  row to survive; the title is optional, because "Sarah" is still worth recording
+   *  when nobody caught her job title. Absent rather than `[]` when nobody was
+   *  listed, so an untouched mark serialises exactly as it did before. */
+  attendees?: Attendee[];
   at: string;
+}
+
+/** One person a demo was given to. */
+export interface Attendee {
+  name: string;
+  /** Their role, as the SE heard it — "VP Ops", "Head of Digital". */
+  title?: string;
 }
 
 /** A mark plus which demo it is on, for the list views. */
@@ -58,10 +71,20 @@ export interface MarkEntry extends DemoMark {
   demoId: string;
 }
 
-/* ⚠️ THE NOTE IS CAPPED AND THE FIELD IS TRIMMED. It is free text from a browser
-   that is rendered back into a list, and an unbounded string in a JSON file is
-   the shape that quietly grows until a read fails. */
-const NOTE_MAX = 280;
+/* ⚠️⚠️ **THE 280 CAP IS GONE (10/7/2026), ASKED FOR DIRECTLY — "dont limit the
+   number of characters".** What remains is a SANITY bound, not a word limit: this
+   is free text from a browser that lands in a JSON file and is rendered into HTML
+   email, so something has to stop a malformed or hostile payload growing the store
+   until a read fails. 20,000 characters is ~4,000 words — far past any note anybody
+   types between demos, so nobody meets it in practice, and the UI shows no counter
+   and sets no `maxLength`. **Do not lower this back toward a human-sized number.** */
+const NOTE_MAX = 20_000;
+
+/* ⚠️ Attendees are bounded the same way and for the same reason — a list from a
+   browser is a list that can arrive with ten thousand entries. A demo has a room,
+   not a stadium; 24 is generous and still bounded. */
+const ATTENDEE_MAX = 24;
+const ATTENDEE_FIELD_MAX = 120;
 
 function ensureDir() {
   fs.mkdirSync(MARKS_DIR, { recursive: true });
@@ -109,21 +132,42 @@ export function markDemo(
   user: DemoCreator,
   status: _Write,
   note?: string,
+  attendees?: unknown,
 ): DemoMark | null {
   const file = fileFor(demoId);
   if (!file) return null;
   const clean = (note ?? "").trim().slice(0, NOTE_MAX);
+  const people = cleanAttendees(attendees);
   const mark: DemoMark = {
     email: user.email,
     name: user.name,
     status,
     ...(clean ? { note: clean } : {}),
+    ...(people.length ? { attendees: people } : {}),
     at: new Date().toISOString(),
   };
   const kept = readFile(demoId).filter((m) => !sameUser(m.email, user.email));
   ensureDir();
   writeAtomic(file, JSON.stringify({ demoId, marks: [...kept, mark] }, null, 2));
   return mark;
+}
+
+/** ⚠️ Validated HERE rather than at the route, so every caller gets the same rule.
+ *  A row with no NAME is dropped — a title with nobody attached is not a person, and
+ *  the form starts with an empty row, so blank rows are the normal case rather than
+ *  an error to report. Same shape as the share dialog's blank-answer filtering. */
+export function cleanAttendees(raw: unknown): Attendee[] {
+  if (!Array.isArray(raw)) return [];
+  const out: Attendee[] = [];
+  for (const a of raw) {
+    if (!a || typeof a !== "object") continue;
+    const name = String((a as Attendee).name ?? "").trim().slice(0, ATTENDEE_FIELD_MAX);
+    if (!name) continue;
+    const title = String((a as Attendee).title ?? "").trim().slice(0, ATTENDEE_FIELD_MAX);
+    out.push({ name, ...(title ? { title } : {}) });
+    if (out.length >= ATTENDEE_MAX) break;
+  }
+  return out;
 }
 
 /** Remove this person's mark. Returns whether one was actually there, so the

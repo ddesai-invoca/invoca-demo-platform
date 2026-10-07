@@ -399,14 +399,20 @@ export function markNoticeEmail(opts: {
   note?: string; seName: string; seEmail: string; when: string; demoUrl: string;
   /** The rep's manager, copied in. Omitted when Salesforce lists none. */
   cc?: string;
+  /** ⚠️ WHO THE DEMO WAS GIVEN TO. Arguably the most useful line in this email for
+   *  an AE — it names the people on their own account who have now seen the
+   *  product. Omitted entirely when nobody was listed. */
+  attendees?: { name: string; title?: string }[];
 }): Mail {
   const who = opts.seName || opts.seEmail;
   const first = (opts.repName || "").trim().split(/\s+/)[0];
+  const people = (opts.attendees ?? []).map((a) => (a.title ? `${a.name} (${a.title})` : a.name));
   const lines = [
     `${first ? `Hi ${first},` : "Hi,"}`,
     ``,
     `${who} demoed ${opts.prospect} and marked it ${opts.status}.`,
     ``,
+    ...(people.length ? [`They demoed to:`, ...people.map((p) => `  - ${p}`), ``] : []),
     ...(opts.note ? [`Their note:`, ``, `  "${opts.note}"`, ``] : []),
     `Marked ${opts.when}.`,
     ``,
@@ -419,6 +425,10 @@ export function markNoticeEmail(opts: {
     `<p>${first ? `Hi ${esc(first)},` : "Hi,"}</p>` +
     `<p><strong>${esc(who)}</strong> demoed <strong>${esc(opts.prospect)}</strong> and marked it ` +
     `<strong>${esc(opts.status)}</strong>.</p>` +
+    (people.length
+      ? `<p style="margin:16px 0 4px"><strong>They demoed to</strong></p><ul style="margin:0 0 16px;padding-left:20px">` +
+        people.map((x) => `<li style="margin:2px 0">${esc(x)}</li>`).join("") + `</ul>`
+      : "") +
     (opts.note
       ? `<blockquote style="margin:16px 0;padding:12px 16px;background:#f8faf1;border-left:3px solid #00b388;border-radius:0 8px 8px 0">` +
         `<span style="color:#3d4d48">${esc(opts.note).replace(/\n/g, "<br>")}</span></blockquote>`

@@ -194,7 +194,7 @@ export async function handleDemoApi(
     if (method === "POST") {
       const status = body?.status;
       if (!isMarkStatus(status)) return err(400, `Status must be one of: ${MARK_STATUSES.join(", ")}.`);
-      const mark = markDemo(id, user, status, body?.note);
+      const mark = markDemo(id, user, status, body?.note, body?.attendees);
       if (!mark) return err(400, "Invalid demo id.");
       const notified = body?.notify ? await notifyRep(rec, user, mark, body?.accountId, baseUrl) : undefined;
       return ok({ mark, ...(notified ? { notified } : {}) });
@@ -280,7 +280,7 @@ export interface NotifyResult {
 async function notifyRep(
   rec: DemoRecord,
   user: DemoUser,
-  mark: { status: string; note?: string; at: string },
+  mark: { status: string; note?: string; at: string; attendees?: { name: string; title?: string }[] },
   accountId: unknown,
   baseUrl: string,
 ): Promise<NotifyResult> {
@@ -325,6 +325,7 @@ async function notifyRep(
     repName: rep.ownerName,
     prospect: rec.prospect,
     status: MARK_LABEL[mark.status as keyof typeof MARK_LABEL] ?? mark.status,
+    ...(mark.attendees?.length ? { attendees: mark.attendees } : {}),
     note: mark.note,
     seName: user.name,
     seEmail: user.email,

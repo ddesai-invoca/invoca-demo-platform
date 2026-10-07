@@ -67,6 +67,8 @@ export interface DemoMark {
   name: string;
   status: StoredMarkStatus;
   note?: string;
+  /** Who the demo was given to. Mirrors `Attendee` in engine/demoMarks.ts. */
+  attendees?: { name: string; title?: string }[];
   at: string;
   prospect?: string;
   industry?: string;
@@ -146,6 +148,7 @@ interface Ctx {
     status: MarkStatus | null,
     note?: string,
     notify?: { accountId?: string },
+    attendees?: { name: string; title?: string }[],
   ) => Promise<{ ok: boolean; notified?: NotifyResult }>;
   /** Who owns this prospect's Salesforce account, so the panel can NAME them
    *  before an SE commits to emailing them. */
@@ -289,11 +292,13 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
     status: MarkStatus | null,
     note?: string,
     notify?: { accountId?: string },
+    attendees?: { name: string; title?: string }[],
   ) => {
     const before = marks;
     const optimistic: DemoMark[] = status
       ? [
-          { demoId, email: me?.email ?? "", name: me?.name ?? "", status, ...(note ? { note } : {}), at: new Date().toISOString() },
+          { demoId, email: me?.email ?? "", name: me?.name ?? "", status, ...(note ? { note } : {}),
+            ...(attendees?.length ? { attendees } : {}), at: new Date().toISOString() },
           ...marks.filter((m) => m.demoId !== demoId),
         ]
       : marks.filter((m) => m.demoId !== demoId);
@@ -303,7 +308,8 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
           method: "POST",
           /* ⚠️ THE ADDRESS IS NEVER SENT — only whether to notify, and which of
              the candidates the server itself resolved. See engine/demoApi.ts. */
-          body: JSON.stringify({ status, note, ...(notify ? { notify: true, accountId: notify.accountId } : {}) }),
+          body: JSON.stringify({ status, note, ...(attendees?.length ? { attendees } : {}),
+            ...(notify ? { notify: true, accountId: notify.accountId } : {}) }),
         })
       : await api<{ removed: boolean }>(`/api/demos/${demoId}/mark`, { method: "DELETE" });
     if (!r) { setMarks(before); return { ok: false }; }

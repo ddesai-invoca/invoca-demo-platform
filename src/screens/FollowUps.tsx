@@ -75,6 +75,15 @@ export default function FollowUps() {
                   <span className={"fup-chip fup-" + m.status}>{LABEL[m.status]}</span>
                   <div className="fup-text">
                     <div className="fup-name">{m.prospect ?? m.demoId}</div>
+                    {/* ⚠️ WHO WAS IN THE ROOM, shown here because a field that is only
+                        ever written is a field nobody fills in twice. Titles are
+                        optional, so a person with none renders as a bare name rather
+                        than as an empty bracket. */}
+                    {!!m.attendees?.length && (
+                      <div className="fup-people">
+                        {m.attendees.map((a) => a.title ? `${a.name} (${a.title})` : a.name).join(" · ")}
+                      </div>
+                    )}
                     {m.note && <div className="fup-note">{m.note}</div>}
                   </div>
                   <span className="fup-when">{when(m.at)}</span>

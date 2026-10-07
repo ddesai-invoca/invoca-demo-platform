@@ -411,6 +411,7 @@ console.log("\nThe completion comment reaches the email");
 console.log("\nDemo marks — one status set, and Submit is the only writer (10/7/2026)\n");
 {
   const ms = await import("../src/data/markStatus.ts");
+  const { cleanAttendees } = await import("../engine/demoMarks.ts");
 
   JSON.stringify(ms.MARK_STATUSES) === JSON.stringify(["urgent-lead", "lead", "no-interest"])
     ? ok("the three offered statuses are Urgent lead / Lead / No interest")
@@ -477,6 +478,59 @@ console.log("\nDemo marks — one status set, and Submit is the only writer (10/
   /<textarea/.test(dmk) && /className="dmk-note"/.test(dmk)
     ? ok("the note is a textarea, not a one-line input")
     : bad("the note box is still a single-line input");
+
+  /* ⚠️⚠️ **NO CHARACTER LIMIT ON THE NOTE (10/7/2026), asked for directly.** What
+     remains server-side is a SANITY bound, not a word limit — free text from a
+     browser lands in a JSON file and an HTML email, so something must stop a
+     malformed payload growing the store until a read fails. 20,000 is ~4,000 words,
+     far past any real note. **Do not lower it back toward a human-sized number.** */
+  (() => {
+    const dm = code("engine/demoMarks.ts");
+    const m = /const NOTE_MAX = ([\d_]+)/.exec(dm);
+    const n = m ? Number(m[1].replace(/_/g, "")) : 0;
+    return n >= 10_000 && !/maxLength=\{\d+\}/.test(dmk) && !/dmk-count/.test(dmk);
+  })()
+    ? ok("the note has no UI cap and only a far-off sanity bound on the server")
+    : bad("the note is capped again, or the counter is back");
+
+  /* ⚠️ Who was in the room. A NAME is enough — plenty of demos end without catching
+     a job title, and requiring one would lose the name too. */
+  /* Calls the REAL validator rather than grepping for it: a nameless row is
+     dropped (the form always starts with one), a title with nobody attached is not
+     a person, fields are trimmed, and the list is bounded — a list from a browser
+     is one that can arrive with ten thousand entries. */
+  (() => {
+    const out = cleanAttendees([
+      { name: "  Sarah Chen  ", title: "  VP Ops " },
+      { name: "", title: "Head of Nothing" },
+      { name: "Marcus Webb" },
+      "not an object",
+      null,
+    ]);
+    const bounded = cleanAttendees(Array.from({ length: 500 }, (_, i) => ({ name: `P${i}` })));
+    return out.length === 2
+      && out[0].name === "Sarah Chen" && out[0].title === "VP Ops"
+      && out[1].name === "Marcus Webb" && out[1].title === undefined
+      && bounded.length > 0 && bounded.length <= 24
+      && cleanAttendees("nonsense").length === 0;
+  })()
+    ? ok("attendee rows are trimmed, nameless ones dropped, and the list bounded")
+    : bad("the attendee validator does not hold");
+
+  /className="dmk-pin"/.test(dmk) && /\+ Add person/.test(dmk) && /className="dmk-prm"/.test(dmk)
+    ? ok("the panel collects a name and title per person, with add and remove")
+    : bad("there is no way to record who the demo was given to");
+
+  /* ⚠️ A field only ever WRITTEN is a field nobody fills in twice. It has to be
+     readable where the work happens — the follow-up list and the rep's email. */
+  /fup-people/.test(code("src/screens/FollowUps.tsx"))
+    ? ok("the follow-up list shows who was in the room")
+    : bad("attendees are write-only on the follow-up list");
+
+  /attendees\?: \{ name: string; title\?: string \}\[\]/.test(code("engine/mailer.ts"))
+    && /They demoed to/.test(code("engine/mailer.ts"))
+    ? ok("the rep's notification names who the demo was given to")
+    : bad("the notification does not say who saw the demo");
 
   /Notify the Rep/.test(dmk) && !/Tell the account exec/.test(dmk)
     ? ok("the notify row reads \"Notify the Rep\"")
