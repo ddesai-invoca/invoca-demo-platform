@@ -143,7 +143,33 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
       </button>
 
       {open && (
-        <CenterModal title={name} width={640} onClose={() => setOpen(false)}>
+        <CenterModal
+          title={name}
+          width={600}
+          onClose={() => setOpen(false)}
+          /* ⚠️ The actions sit in the footer so the primary button is anchored
+             while the rep-lookup results grow the body above it. */
+          footer={
+            <>
+              {mark && (
+                <button type="button" className="dmk-clear" onClick={(e) => void clear(e)}>Remove mark</button>
+              )}
+              <button
+                type="button"
+                className="dmk-submit"
+                disabled={!draft || saving}
+                title={draft ? undefined : "Pick a status first"}
+                onClick={(e) => { e.stopPropagation(); void submit(); }}
+              >
+                {saving ? "Saving…" : "Submit"}
+              </button>
+            </>
+          }
+        >
+          {/* ⚠️ A LABEL ON EACH GROUP. Three unlabelled buttons and a bare box read
+              as a form you have to decode; naming them costs one line each and is
+              what makes the dialog scannable at conference pace. */}
+          <div className="dmk-label">How did it go?</div>
           <div className="dmk-opts">
             {MARK_STATUSES.map((s) => (
               <button
@@ -154,6 +180,10 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
                 disabled={saving}
                 onClick={(e) => choose(e, s)}
               >
+                {/* ⚠️ The dot is what makes an UNSELECTED row meaningful. Without it
+                    the three are identical white rectangles and the colour only
+                    appears after you have already chosen — too late to help. */}
+                <span className="dmk-dot" aria-hidden="true" />
                 {LABEL[s]}
               </button>
             ))}
@@ -164,6 +194,14 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
               and the box SCROLLS past that rather than growing without limit.
               ⚠️ Enter inserts a newline now; it used to commit, which a multi-line
               box cannot also mean. Cmd/Ctrl+Enter submits, the usual pairing. */}
+          <div className="dmk-label dmk-label--notes">
+            <span>Notes</span>
+            {/* A quiet counter: the cap is 280 and hitting it silently is the
+                kind of thing you only notice after losing a sentence. */}
+            <span className={"dmk-count" + (note.length > 240 ? " dmk-count--near" : "")}>
+              {note.length}/280
+            </span>
+          </div>
           <textarea
             className="dmk-note"
             value={note}
@@ -276,24 +314,11 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
                 : `Marked, but nothing was emailed — ${sent.reason ?? "the send did not go through."}`}
             </div>
           )}
-          {/* ⚠️⚠️ **SUBMIT IS THE ONLY WRITER (10/7/2026).** Asked for directly. It is
-              disabled until a status is chosen, because a note with no status is not
-              a mark the store can hold — and saying so on the button beats saving
-              something nobody asked for. */}
-          <div className="dmk-actions">
-            {mark && (
-              <button type="button" className="dmk-clear" onClick={(e) => void clear(e)}>Remove mark</button>
-            )}
-            <button
-              type="button"
-              className="dmk-submit"
-              disabled={!draft || saving}
-              title={draft ? undefined : "Pick a status first"}
-              onClick={(e) => { e.stopPropagation(); void submit(); }}
-            >
-              {saving ? "Saving…" : "Submit"}
-            </button>
-          </div>
+          {/* ⚠️⚠️ **SUBMIT IS THE ONLY WRITER (10/7/2026).** It lives in the modal's
+              FOOTER now (see the prop above) so it stays put while the rep lookup
+              grows the body — but it is still the one path to `setMark`, and it is
+              disabled until a status is chosen, because a note with no status is
+              not a mark the store can hold. */}
         </CenterModal>
       )}
     </>

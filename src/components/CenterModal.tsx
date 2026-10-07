@@ -34,12 +34,18 @@ export default function CenterModal({
   onClose,
   width,
   children,
+  footer,
 }: {
   title: string;
   onClose: () => void;
   /** Content width. The modal caps itself to the viewport on a short/narrow screen. */
   width: number;
   children: React.ReactNode;
+  /** ⚠️ OPT-IN, defaulted absent, so a dialog that does not pass one is rendered
+   *  exactly as before — the share dialog's primary button lives INSIDE its form
+   *  and must stay there, or the submit stops working. A footer sits OUTSIDE the
+   *  scrolling body, so the primary action stays put while long content scrolls. */
+  footer?: React.ReactNode;
 }) {
   const boxRef = useRef<HTMLDivElement | null>(null);
 
@@ -80,6 +86,7 @@ export default function CenterModal({
           </button>
         </div>
         <div className="cmd-body">{children}</div>
+        {footer && <div className="cmd-foot">{footer}</div>}
       </div>
     </div>,
     document.body,

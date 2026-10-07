@@ -541,6 +541,38 @@ console.log("\nCenterModal — the mark and share panels are centred dialogs (10
   /* ⚠️ The dialogs roughly doubled, so they MUST clamp — otherwise a 680px box on
      a small laptop runs off the edge, and the body must scroll rather than the
      page. Measured at 600x420: clamps to 552x372 with the body scrolling. */
+  /* ⚠️⚠️ **THE DOT IS WHAT MAKES AN UNSELECTED OPTION MEAN ANYTHING.** The three
+     were identical white rectangles, so the colour only appeared after a choice —
+     too late to help the person deciding. Each dot takes its status's own hue, the
+     one its chip and flag pill already use. */
+  (() => {
+    const hues = ["\.dmk-urgent-lead \.dmk-dot", "\.dmk-lead \.dmk-dot", "\.dmk-no-interest \.dmk-dot"];
+    return /className="dmk-dot"/.test(dmk) && hues.every((h) => new RegExp(h).test(css));
+  })()
+    ? ok("each status option carries its own colour before anything is selected")
+    : bad("the status options are indistinguishable until one is picked");
+
+  /* ⚠️ The primary action must sit OUTSIDE the scrolling body, or it drifts down the
+     dialog as the rep-lookup result grows it. */
+  /footer=\{/.test(dmk) && /className="cmd-foot"/.test(cm) && !/\.dmk-actions\s*\{/.test(css)
+    ? ok("Submit is in the modal footer, and the old actions row is gone")
+    : bad("the actions row is still inside the scrolling body, or its dead rule remains");
+
+  /* ⚠️⚠️ **THE SHARE DIALOG MUST NOT GROW A FOOTER.** Its primary button is a form
+     SUBMIT and has to stay inside the <form>; hoisting it into the footer would
+     need a `form=` attribute and would silently stop "Create link" working — the
+     exact bug that panel already cost a session. */
+  /* ⚠️ Slices the real <form>…</form> rather than guessing a character window —
+     a window is an assumption about formatting, and a 400-char one failed on
+     perfectly correct code here. */
+  (() => {
+    const i = shr.indexOf("<form");
+    const j = shr.indexOf("</form>", i);
+    return !/footer=\{/.test(shr) && i > 0 && j > i && /className="shr-btn"/.test(shr.slice(i, j));
+  })()
+    ? ok("the share dialog keeps its submit inside its form, with no footer")
+    : bad("the share dialog's submit moved out of its form — Create link will break");
+
   (() => {
     const i = css.indexOf(".cmd-box {");
     const rule = i < 0 ? "" : css.slice(i, css.indexOf("}", i));

@@ -10715,6 +10715,45 @@ target, and removing the clamp.
 STRONGER: it used to require a `ResizeObserver` (patching the off-screen bug) and now forbids
 anchoring outright (removing its habitat). Both re-aimed checks were verified to still bite.
 
+#### Then: the dialog was SCALED, not designed — reported and fixed (10/7/2026)
+*"make this box look better"*, against the mark dialog's body. Fair: the previous pass
+doubled every number and changed no decisions, which is how you get three identical white
+rectangles, a 180px grey well and a floating grey slab.
+
+⚠️⚠️ **THE DOT IS THE ONE THAT MATTERS.** Each option now carries its status's own hue as a
+9px dot — the SAME hue its chip and flag pill already use, so colour means one thing across
+every surface. Before, all three were identical until one was chosen, so the colour only
+appeared AFTER the decision it was meant to inform. Hover also borrows the option's own hue
+rather than one shared blue, so the preview matches what selecting it will do.
+⚠️ The selected dot takes the text ink rather than keeping its hue, or it fights the tint
+behind it.
+
+⚠️ **THE ACTIONS MOVED INTO A FOOTER, which `CenterModal` gained as an OPT-IN prop.** It sits
+OUTSIDE the scrolling body, so the primary button stays put while the rep lookup grows the
+content above it — measured: the footer is still on screen with the notify block expanded.
+⚠️⚠️ **THE SHARE DIALOG DELIBERATELY PASSES NO FOOTER, and that is not an oversight.** Its
+"Create link" is a form SUBMIT and must stay inside the `<form>`; hoisting it would need a
+`form=` attribute and would silently stop it working — the exact bug that panel already cost a
+session. `audit:app` asserts the share submit stays in its form AND that no footer is passed.
+⚠️ `.dmk-actions` was deleted with the move; the footer is the flex row now, and a second one
+would nest two.
+
+Smaller calls, all for the same reason — it should read as a form, not a scaled-up popover:
+the note well 180 -> **132** with a faint `#fcfcfd` fill (so it reads as a field, not a hole)
+and a focus ring; group labels **"How did it go?"** and **"Notes"**, because three unlabelled
+buttons and a bare box are a form you decode; a quiet **0/280 counter** that turns orange past
+240, since hitting the cap silently is how you lose a sentence; the notify row in its own
+hairlined band; and **disabled Submit as a ghost rather than a grey slab**, so the eye goes to
+the choice it is waiting on. Width 640 -> **600**, because three options across 640 read as
+sparse.
+
+**`audit:app` gained 3 checks** (every option coloured before selection, Submit in the footer
+with the dead rule gone, the share submit still in its form). Three sabotages fire.
+⚠️ **ONE OF THEM FAILED ON CORRECT CODE FIRST — a character-window probe again.** It matched
+`<form[\s\S]{0,400}?shr-btn`, and the real form is longer than 400 characters, so a perfectly
+good file reddened. It slices the real `<form>…</form>` now. **A window is an assumption about
+formatting; slice the thing you mean.**
+
 ### The mark panel: three statuses, a real note box, and Submit (10/7/2026)
 Asked for against the panel: *"make this box bigger so its easier to take notes in, and for
 the 'Tell the Account Exe' change it to 'Notify the Rep' and also on along with the rep also
