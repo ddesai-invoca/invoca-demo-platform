@@ -6713,3 +6713,23 @@ body:has(.vp-root) .aiad--left .aiad-panel {
   flex-shrink: 0; display: flex; align-items: center; gap: 12px;
   padding: 16px 24px; border-top: 1px solid #eceff2; background: #fcfcfd;
 }
+
+/* ---- Tooltip (10/7/2026) ----------------------------------------------------
+   ⚠️ Matched to `.ind-tip`, the dark panel this app already uses for chart
+   hovers, so a hover label means the same thing everywhere. Its own `.ttp-`
+   prefix: `.ind-tip` is rendered by DonutChart on three Dashboards screens, and
+   restyling it here would reach all of them. */
+.ttp-wrap { display: inline-flex; }
+.ttp {
+  position: fixed; z-index: 3400; pointer-events: none;
+  transform: translate(-50%, -100%);
+  max-width: 260px; padding: 7px 10px; border-radius: 4px;
+  background: #2f3a4a; color: #fff;
+  font: 400 12px/1.45 Lato, sans-serif; text-align: center;
+  box-shadow: 0 2px 8px rgba(12,0,51,.24);
+  animation: ttp-in .12s ease-out;
+}
+/* Below the control when there is no room above; the translate flips with it. */
+.ttp--below { transform: translate(-50%, 0); }
+@keyframes ttp-in { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .ttp { animation: none; } }

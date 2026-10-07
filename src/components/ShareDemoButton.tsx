@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { DEFAULT_SHARE_DAYS } from "../data/shareDefaults";
 import CenterModal from "./CenterModal";
+import Tooltip from "./Tooltip";
 
 /* =============================================================================
    ShareDemoButton — the SE's half: make a prospect link, then manage it
@@ -83,10 +84,12 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
 
   return (
     <span className="shr-wrap">
+      {/* ⚠️ `title` removed with the tooltip rather than kept beside it — both would
+          show the label, then the OS one a second later on top. `aria-label` stays. */}
+      <Tooltip label="Create a password-protected link so the prospect can open this demo themselves">
       <button
         ref={btnRef}
         className="shr-trigger"
-        title={`Share ${name} with the prospect`}
         aria-label={`Share ${name} with the prospect`}
         /* ⚠️ Every handler stops propagation: the ROW's own click opens the demo, and a
            stray click here would cost a full profile load mid-conference. */
@@ -95,6 +98,7 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
       >
         <span className="material-icons">ios_share</span>
       </button>
+      </Tooltip>
 
       {/* ⚠️⚠️ **`data-picker-safe` IS WHY "Create link" NOW DOES ANYTHING.** The demo
           picker closes on a document MOUSEDOWN whose target is not inside its own

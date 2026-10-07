@@ -19,6 +19,7 @@
 
 import { useRef, useState } from "react";
 import CenterModal from "./CenterModal";
+import Tooltip from "./Tooltip";
 import { useDemoLibrary, type MarkStatus, type NotifyResult, type RepLookup } from "../data/DemoLibraryContext";
 /* ⚠️ Labels and the offered set come from the one shared module — this component
    used to declare its own copy, which is how it kept offering statuses the server
@@ -143,16 +144,25 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
 
   return (
     <>
+      {/* ⚠️ `title` REMOVED with the tooltip, not left beside it — both would mean
+          the custom label, then the OS one a second later on top of it. The
+          `aria-label` stays: it is the control's NAME, where the tooltip is a
+          description. */}
+      <Tooltip
+        label={mark
+          ? `Marked ${LABEL[mark.status].toLowerCase()} — click to change the outcome, who you met or your notes`
+          : "Record how this demo went: the outcome, who you demoed to, and your notes"}
+      >
       <button
         ref={btnRef}
         className={"dmk-btn" + (mark ? ` dmk-btn--on dmk-${mark.status}` : "")}
-        title={mark ? `${LABEL[mark.status]} — click to change` : `Mark ${name} as delivered`}
         aria-label={mark ? `${name}: ${LABEL[mark.status]}` : `Mark ${name} as delivered`}
         onClick={toggle}
       >
         <span className="material-icons">{mark ? "flag" : "outlined_flag"}</span>
         {mark && <span className="dmk-btn-label">{LABEL[mark.status]}</span>}
       </button>
+      </Tooltip>
 
       {open && (
         <CenterModal

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { DEFAULT_SHARE_DAYS } from "../data/shareDefaults";
 import { ShareDemoButton } from "../components/ShareDemoButton";
+import Tooltip from "../components/Tooltip";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useDemoLibrary } from "../data/DemoLibraryContext";
@@ -292,34 +293,47 @@ export function Launch() {
               Hidden rather than disabled, because a greyed control invites "why not me?" */}
           {e.inLibrary && admin && <ShareDemoButton demoId={e.id} name={e.name} />}
           {!e.inLibrary && !SEED_IDS.has(e.id) && (
+            <Tooltip label="Publish to the team library so colleagues can open it">
             <button
               className="prospect-dup"
-              title={`Publish ${e.name} to the team library`}
               aria-label={`Publish ${e.name}`}
               onClick={(ev) => { ev.stopPropagation(); void publish(e); }}
             >
               <span className="material-icons">cloud_upload</span>
             </button>
+            </Tooltip>
           )}
           {e.inLibrary && !e.mine && (
+            <Tooltip label="Make your own editable copy — the original stays with its owner">
             <button
               className="prospect-dup"
-              title={`Duplicate ${e.name} — makes an editable copy that's yours`}
               aria-label={`Duplicate ${e.name}`}
               onClick={(ev) => { ev.stopPropagation(); void duplicate(e); }}
             >
               <span className="material-icons">content_copy</span>
             </button>
+            </Tooltip>
           )}
+          {/* ⚠️ The delete label states the REAL consequence, and it differs: deleting a
+              library demo removes it for the whole team, which is the one thing here
+              that cannot be taken back. Same wording as the confirm dialog, so the
+              hover and the dialog cannot say different things.
+              ⚠️ The comment sits OUTSIDE the `&&` — a JSX comment inside it would be a
+              second child of an expression that may return only one element. */}
           {canDelete && (
+            <Tooltip
+              label={e.inLibrary
+                ? "Delete this demo from the team library — it goes for everyone, and cannot be undone"
+                : "Delete this demo — this cannot be undone"}
+            >
             <button
               className="prospect-delete"
-              title={`Delete ${e.name}`}
               aria-label={`Delete ${e.name}`}
               onClick={(ev) => { ev.stopPropagation(); setPendingDelete(e); }}
             >
               <span className="material-icons">delete_outline</span>
             </button>
+            </Tooltip>
           )}
         </span>
       </div>

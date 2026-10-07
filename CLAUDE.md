@@ -10661,6 +10661,55 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### Tooltips on the demo-row controls (10/7/2026)
+*"Add tooltips when users hover over the flag, share and delete, telling them what they are
+do"*. `src/components/Tooltip.tsx` + `.ttp-*`.
+
+⚠️⚠️ **ALL THREE ALREADY HAD `title`, WHICH IS WHY THE ASK IS FAIR RATHER THAN A DUPLICATE.** A
+native title waits about a second, renders in the OS's own styling and is invisible on touch, so
+in practice nobody reads one. **The `title` attributes are REMOVED at each call site**, not left
+alongside — both would mean this label, then the OS one a second later on top of it. The
+`aria-label` stays: it is the control's NAME, where the tooltip is a DESCRIPTION, wired with
+`aria-describedby` and only while it is on screen.
+
+⚠️⚠️ **PORTALLED AND `position: fixed`, BECAUSE THE ROW LIVES IN A SCROLL BOX.** The demo list is
+`overflow-y: auto`, so a tooltip positioned inside it is clipped at the box's edge — and the
+first and last visible rows, as likely to be hovered as any, are exactly where that bites. Same
+trap as the two Launch panels, the sidebar flyout and the Create Workflow combobox.
+⚠️ **IT NEEDS ONE MEASUREMENT, NOT THE ANCHORING MACHINERY THOSE PANELS HAD TO DELETE.** They
+grew asynchronously (a rep lookup, a link list) and so needed a rAF pass and a ResizeObserver; a
+tooltip's content is fixed the moment it opens, so measuring on enter is correct and nothing can
+grow out from under it. Any scroll or resize CLOSES it rather than letting it drift off its
+control.
+
+⚠️ **FIVE CONTROLS, NOT THREE.** Duplicate and Publish sit in the same row as the three named,
+and a row with three tooltips and two bare buttons reads as broken.
+⚠️ **THE DELETE LABEL STATES THE REAL CONSEQUENCE AND IT DIFFERS** — removing a LIBRARY demo
+takes it from the whole team, which is the one thing in that row that cannot be taken back. Same
+wording as the confirm dialog, so the hover and the dialog cannot disagree.
+⚠️ **NOTHING ON TOUCH** (`pointerType !== "touch"`): there is no hover there, so it would fire on
+every tap. A **350ms delay**, or scrolling a 76-row roster flashes labels past you. Hidden on
+press, because the click is already happening.
+⚠️ **ITS OWN `.ttp-` PREFIX THOUGH IT COPIES `.ind-tip`'s LOOK** — that class is rendered by
+`DonutChart` on three Dashboards screens, so restyling it here would reach all of them.
+
+**Verified live**: all five labels render in the dark panel, above the control and fully on
+screen; at a 300px-tall viewport, with the control at y=-12, it **flips below** and is still
+fully visible; it hides on leave, on press and on blur; keyboard focus opens it and sets
+`aria-describedby`; a touch pointer opens nothing; and **zero native `title` attributes remain**
+on the five controls.
+⚠️⚠️ **TWO HARNESS FAULTS, BOTH MINE, AND THE SECOND WAS THE USEFUL ONE.** First, calling
+`.remove()` on React-rendered portal nodes to "clean up between probes" corrupted reconciliation
+and made the whole launch screen stop rendering — it looked like a product bug and was not.
+**Never remove a node React owns.** Second, the "no native title" check matched
+`className="dmk-btn"`, but the flag button writes `className={"dmk-btn" + …}` as an EXPRESSION,
+so the pattern matched nothing and the check was **vacuous** — putting a `title` back went
+undetected. It slices the control's own `<button …>` opening tag now. **A check that passes is
+not evidence until a sabotage makes it fail.**
+
+**`audit:app` gained 8 checks**; four sabotages fire (in-flow rendering, firing on touch, losing
+the flip, and the native title restored once the check was fixed).
+
 ### Both Launch-row panels became CENTRED MODALS, and ~120 lines went with it (10/7/2026)
 Asked for: *"for both demo mark box and share demo box, lets just do it as a modal in the
 center of the page, and make them both bigger, like 100% bigger. and also put a 'x' on the top

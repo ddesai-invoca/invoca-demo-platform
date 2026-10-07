@@ -537,6 +537,86 @@ console.log("\nDemo marks — one status set, and Submit is the only writer (10/
     : bad("the notify row still carries the old wording");
 }
 
+console.log("\nTooltips on the demo-row controls (10/7/2026)\n");
+{
+  const tip = code("src/components/Tooltip.tsx");
+  const dmk = code("src/components/DemoMarkButton.tsx");
+  const shr = code("src/components/ShareDemoButton.tsx");
+  const lau = code("src/screens/Launch.tsx");
+  const css = read("src/styles/app.css");
+
+  /* ⚠️⚠️ **PORTALLED, BECAUSE THE ROW IS IN A SCROLL BOX.** The demo list is
+     `overflow-y: auto`; a tooltip positioned inside it is clipped at the box's edge,
+     and the first and last visible rows — as likely to be hovered as any — are
+     exactly where that bites. Same trap as the panels, the flyout and the combobox. */
+  /createPortal\(/.test(tip) && /document\.body/.test(tip) && /position: fixed/.test(css.slice(css.indexOf(".ttp {"), css.indexOf("}", css.indexOf(".ttp {"))))
+    ? ok("the tooltip is portalled and fixed, so a scroll box cannot clip it")
+    : bad("the tooltip renders in flow and will be clipped by the demo list");
+
+  /* ⚠️⚠️ **THE NATIVE `title` MUST GO WHERE A TOOLTIP ARRIVES**, or a viewer gets
+     this label and then the OS's own a second later, on top of it. */
+  (() => {
+    /* ⚠️ Slices the control's OWN opening tag rather than a character window after a
+       quoted className — the flag button writes `className={"dmk-btn" + …}`, so the
+       quoted form matched nothing and the check was VACUOUS. Found by sabotaging it:
+       a native title put back went undetected. Walk back to the `<button` that owns
+       the marker, forward to the end of that tag, and look only inside. */
+    const titledTag = (src: string, marker: string): boolean => {
+      for (let i = src.indexOf(marker); i >= 0; i = src.indexOf(marker, i + 1)) {
+        const open = src.lastIndexOf("<button", i);
+        if (open < 0) continue;
+        const close = src.indexOf(">", i);
+        if (close < 0) continue;
+        if (/\stitle=/.test(src.slice(open, close))) return true;
+      }
+      return false;
+    };
+    const markers: [string, string][] = [
+      [dmk, "dmk-btn"], [shr, "shr-trigger"],
+      [lau, "prospect-delete"], [lau, "prospect-dup"],
+    ];
+    return markers.every(([src, m]) => !titledTag(src, m));
+  })()
+    ? ok("no row control keeps a native title beside its tooltip")
+    : bad("a control has both a tooltip and a native title — both will show");
+
+  /* ⚠️ `aria-label` is the control's NAME and must survive; the tooltip is a
+     DESCRIPTION, wired with aria-describedby only while it is on screen. */
+  /aria-describedby=\{box \? id : undefined\}/.test(tip)
+    && /aria-label/.test(dmk) && /aria-label/.test(shr) && /aria-label/.test(lau)
+    ? ok("the tooltip describes the control without replacing its accessible name")
+    : bad("the tooltip replaced the aria-label, or describes a node that is not shown");
+
+  /* All five row controls are covered — a row with three tooltips and two without
+     reads as broken, and they sit side by side. */
+  (/<Tooltip/.test(dmk) ? 1 : 0) + (/<Tooltip/.test(shr) ? 1 : 0) +
+  ((lau.match(/<Tooltip/g) ?? []).length) >= 5
+    ? ok("flag, share, delete, duplicate and publish all carry a tooltip")
+    : bad("some row controls still have no tooltip");
+
+  /* ⚠️ It flips below when there is no room above — a fixed tooltip off the top of
+     the viewport simply cannot be read. Verified live at a short viewport. */
+  /ttp--below/.test(tip) && /ttp--below/.test(css)
+    ? ok("it flips below the control when there is no room above")
+    : bad("a tooltip near the top of the screen would be unreadable");
+
+  /* ⚠️ Not on touch: there is no hover, so it would fire on every tap. */
+  /pointerType !== "touch"/.test(tip)
+    ? ok("a touch pointer opens no tooltip")
+    : bad("tapping a control on a touch screen would open a tooltip");
+
+  /* ⚠️ A delay, or scrolling a 76-row roster flashes tooltips past you. */
+  /DELAY_MS = \d+/.test(tip) && /setTimeout/.test(tip)
+    ? ok("it waits before appearing rather than firing on every pass")
+    : bad("the tooltip appears instantly and will flicker while scrolling");
+
+  /* ⚠️ The dark panel is `.ind-tip`'s, which DonutChart renders on three Dashboards
+     screens — so this has its own prefix rather than reusing that class. */
+  !/\.ind-tip/.test(tip) && /\.ttp \{/.test(css)
+    ? ok("it has its own prefix and does not restyle the charts' shared tooltip")
+    : bad("the row tooltip reuses .ind-tip and would reach the dashboards");
+}
+
 console.log("\nCenterModal — the mark and share panels are centred dialogs (10/7/2026)\n");
 {
   const cm = code("src/components/CenterModal.tsx");
