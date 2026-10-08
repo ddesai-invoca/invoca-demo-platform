@@ -115,6 +115,13 @@ export const KEY_COLUMN = "Prospect";
 /** ⚠️ ONE TAB FOR EVERYTHING, asked for directly — it was one per event. */
 export const TAB_NAME = "Demo Notes";
 
+/** The second tab: who opened a shared demo and what they did in it. */
+export const ACTIVITY_TAB = "Activity";
+
+export const ACTIVITY_COLUMNS = [
+  "Prospect / Person", "Opened", "SMS demos", "Voice demos", "First seen", "Last seen",
+] as const;
+
 export interface SheetTarget {
   /** Whose grant writes the rows. */
   email: string;
@@ -252,4 +259,190 @@ export function colLetter(i: number): string {
   let n = i, out = "";
   do { out = String.fromCharCode(65 + (n % 26)) + out; n = Math.floor(n / 26) - 1; } while (n >= 0);
   return out;
+}
+
+/* =============================================================================
+   The sheet's own look, and the Activity tab (10/8/2026)
+   -----------------------------------------------------------------------------
+   Asked for: *"make it look really nice… should not just look like a white generic
+   sheet"*, and a second tab grouping each prospect's people under one row.
+
+   ⚠️⚠️ **THE ACTIVITY TAB IS REWRITTEN WHOLE, NOT APPENDED TO.** Its shape is a main
+   row per prospect with a subline per person, so adding somebody MOVES rows — and
+   editing rows in place around a moving target is where incremental sheet writing
+   goes wrong. The server owns the data (`activityStore`), this renders it. Demo Notes
+   is still an upsert, because there a row never moves.
+   ============================================================================= */
+
+/** Invoca's own ink, so the sheet reads as part of the product rather than a default. */
+const INK = { r: 0x15 / 255, g: 0x24 / 255, b: 0x3e / 255 };
+const GREEN = { r: 0x2c / 255, g: 0xbf / 255, b: 0x58 / 255 };
+const PALE = { r: 0xf4 / 255, g: 0xfb / 255, b: 0xf6 / 255 };
+const RULE = { r: 0xe7 / 255, g: 0xe9 / 255, b: 0xeb / 255 };
+const MUTED = { r: 0x5b / 255, g: 0x65 / 255, b: 0x77 / 255 };
+const WHITE = { r: 1, g: 1, b: 1 };
+
+async function sheetIdFor(t: SheetTarget, title: string): Promise<number | null> {
+  const meta = await api(t.email, `/${t.spreadsheetId}?fields=sheets.properties`);
+  const hit = (meta?.sheets ?? []).find((x: any) => String(x?.properties?.title ?? "") === title);
+  return hit ? Number(hit.properties.sheetId) : null;
+}
+
+/**
+ * The house style, applied to a tab.
+ *
+ * ⚠️ **IT NEVER TOUCHES CELL VALUES**, only formatting and widths — so it is safe to run
+ * on every write, and safe on a sheet somebody has added their own columns to.
+ * ⚠️ `widths` is applied from the LEFT and stops at the end of the list, so a hand-added
+ * column past the known ones keeps whatever width its owner gave it.
+ */
+async function applyTheme(
+  t: SheetTarget, title: string, widths: number[], opts: { wrapCol?: number } = {},
+): Promise<void> {
+  const sheetId = await sheetIdFor(t, title);
+  if (sheetId === null) return;
+  const requests: unknown[] = [
+    /* A real header band: Invoca navy, white, bold, padded and centred vertically. */
+    { repeatCell: {
+      range: { sheetId, startRowIndex: 0, endRowIndex: 1 },
+      cell: { userEnteredFormat: {
+        backgroundColor: INK,
+        textFormat: { bold: true, fontSize: 11, foregroundColor: WHITE, fontFamily: "Inter" },
+        verticalAlignment: "MIDDLE",
+        padding: { top: 6, bottom: 6, left: 10, right: 10 },
+      } },
+      fields: "userEnteredFormat(backgroundColor,textFormat,verticalAlignment,padding)",
+    } },
+    { updateSheetProperties: {
+      properties: { sheetId, gridProperties: { frozenRowCount: 1 } },
+      fields: "gridProperties.frozenRowCount",
+    } },
+    { updateDimensionProperties: {
+      range: { sheetId, dimension: "ROWS", startIndex: 0, endIndex: 1 },
+      properties: { pixelSize: 34 }, fields: "pixelSize",
+    } },
+    /* The body: readable size, top-aligned so a long note does not centre itself. */
+    { repeatCell: {
+      range: { sheetId, startRowIndex: 1 },
+      cell: { userEnteredFormat: {
+        textFormat: { fontSize: 10, foregroundColor: INK, fontFamily: "Inter" },
+        verticalAlignment: "TOP",
+        padding: { top: 6, bottom: 6, left: 10, right: 10 },
+      } },
+      fields: "userEnteredFormat(textFormat,verticalAlignment,padding)",
+    } },
+  ];
+  widths.forEach((px, i) => requests.push({ updateDimensionProperties: {
+    range: { sheetId, dimension: "COLUMNS", startIndex: i, endIndex: i + 1 },
+    properties: { pixelSize: px }, fields: "pixelSize",
+  } }));
+  if (opts.wrapCol !== undefined) {
+    requests.push({ repeatCell: {
+      range: { sheetId, startRowIndex: 1, startColumnIndex: opts.wrapCol, endColumnIndex: opts.wrapCol + 1 },
+      cell: { userEnteredFormat: { wrapStrategy: "WRAP" } },
+      fields: "userEnteredFormat.wrapStrategy",
+    } });
+  }
+  await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {
+    method: "POST", body: JSON.stringify({ requests }),
+  });
+}
+
+/** Demo Notes: the notes column wraps, the rest are sized to what they hold. */
+export async function themeNotes(t: SheetTarget): Promise<void> {
+  await applyTheme(t, TAB_NAME, [190, 210, 110, 380, 220, 165, 230], { wrapCol: 3 });
+}
+
+export interface ActivityLine {
+  /** A prospect's own row, or one of its people. */
+  main: boolean;
+  label: string;
+  opened: number;
+  sms: number;
+  voice: number;
+  firstAt: string;
+  lastAt: string;
+}
+
+/**
+ * Rewrite the Activity tab from the lines given.
+ *
+ * ⚠️⚠️ **CLEARED FIRST, over a range WIDER than what is written.** Rebuilding without
+ * clearing leaves the tail of a previously longer sheet sitting under the new content —
+ * rows for people who are still listed above, which reads as duplicates nobody can
+ * explain. It clears to the old last row, not to a guess.
+ */
+export async function writeActivity(t: SheetTarget, lines: ActivityLine[]): Promise<void> {
+  const title = ACTIVITY_TAB;
+  await ensureNamedSheet(t, title);
+  const values = [
+    [...ACTIVITY_COLUMNS],
+    ...lines.map((l) => [
+      /* ⚠️ The indent IS the subline. Sheets has no row hierarchy that survives a
+         rewrite cleanly, and an outline group would have to be deleted and re-added on
+         every write; a leading arrow and an indent read as a child at a glance and
+         cannot drift out of step with the rows. */
+      l.main ? l.label : `    ↳  ${l.label}`,
+      l.opened || "", l.sms || "", l.voice || "",
+      l.firstAt, l.lastAt,
+    ]),
+  ];
+
+  const meta = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(title)}!A:A`);
+  const was = (meta?.values?.length ?? 0);
+  if (was > values.length) {
+    await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(title)}!A${values.length + 1}:Z${was}:clear`,
+      { method: "POST", body: "{}" });
+  }
+  await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(title)}!A1?valueInputOption=RAW`, {
+    method: "PUT", body: JSON.stringify({ values }),
+  });
+
+  await applyTheme(t, title, [300, 90, 110, 120, 170, 170]);
+
+  /* Per-row emphasis: a prospect reads as a heading, its people as detail under it. */
+  const sheetId = await sheetIdFor(t, title);
+  if (sheetId === null) return;
+  const requests: unknown[] = [
+    { repeatCell: {
+      range: { sheetId, startRowIndex: 1, startColumnIndex: 1, endColumnIndex: 4 },
+      cell: { userEnteredFormat: { horizontalAlignment: "CENTER" } },
+      fields: "userEnteredFormat.horizontalAlignment",
+    } },
+  ];
+  lines.forEach((l, i) => {
+    const r = i + 1;
+    requests.push({ repeatCell: {
+      range: { sheetId, startRowIndex: r, endRowIndex: r + 1 },
+      cell: { userEnteredFormat: {
+        backgroundColor: l.main ? PALE : WHITE,
+        textFormat: {
+          bold: l.main, fontSize: l.main ? 11 : 10, fontFamily: "Inter",
+          foregroundColor: l.main ? INK : MUTED,
+        },
+        /* A hairline above each prospect separates the blocks without a heavy grid. */
+        borders: l.main ? { top: { style: "SOLID", color: RULE } } : {},
+      } },
+      fields: "userEnteredFormat(backgroundColor,textFormat,borders)",
+    } });
+  });
+  /* The three count columns in the brand green, so the numbers are what the eye finds. */
+  requests.push({ repeatCell: {
+    range: { sheetId, startRowIndex: 1, startColumnIndex: 1, endColumnIndex: 4 },
+    cell: { userEnteredFormat: { textFormat: { foregroundColor: GREEN, bold: true } } },
+    fields: "userEnteredFormat.textFormat(foregroundColor,bold)",
+  } });
+  await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {
+    method: "POST", body: JSON.stringify({ requests }),
+  });
+}
+
+/** Create a tab by name if it is missing. ⚠️ Never renames anything — unlike the
+ *  Demo Notes resolver, which may claim an empty first sheet. */
+async function ensureNamedSheet(t: SheetTarget, title: string): Promise<void> {
+  if ((await sheetIdFor(t, title)) !== null) return;
+  await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {
+    method: "POST",
+    body: JSON.stringify({ requests: [{ addSheet: { properties: { title } } }] }),
+  });
 }

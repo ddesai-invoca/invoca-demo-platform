@@ -76,6 +76,7 @@ export const RELEASES: Release[] = [
       i("A shared demo no longer needs you to pass the password along. The prospect enters their email on the unlock page and the password is sent to them, and you can see who asked. A link where you typed your own password still works the old way."),
       n("Events can have their own section in the demo library, and there is now a 2026 Invoca Chicago Summit alongside Dallas."),
       n("An event can be connected to a Google Sheet. Every time demo notes are submitted for a prospect in that event, a row is written \u2014 one row per prospect, updated in place when the notes change. Connect Google once, then paste the sheet's link (or have one created for you); everyone else's notes are written with that connection, so they do not have to set anything up."),
+      n("A connected event sheet now has a second tab, Activity: who opened each shared demo and whether they ran an SMS or voice conversation in it. Several people on one prospect appear as sublines under a single row rather than repeated rows. Both tabs are styled rather than a plain grid."),
       n("Advanced \u203a bulk generate: download a template, fill in a prospect name and website per row, upload it, and pick which event to file them under. Rows already in the library are skipped and one failure no longer stops the rest."),
     ],
   },

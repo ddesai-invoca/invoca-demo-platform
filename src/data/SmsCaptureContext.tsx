@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { reportShareActivity } from "./shareActivity";
 import type { SmsConversation } from "./schema";
 
 /* Holds SMS conversations captured live from the Preview Agent, keyed by prospect
@@ -66,16 +67,22 @@ export function SmsCaptureProvider({ children }: { children: ReactNode }) {
 
   const capturedFor = (profileId: string) => (store[profileId] ?? []).map((e) => e.conv);
 
-  const addCaptured = (profileId: string, conv: SmsConversation) =>
+  const addCaptured = (profileId: string, conv: SmsConversation) => {
+    /* ⚠️ Share mode only, deduped on the conversation's id by the server — see
+       `shareActivity`. A no-op in the signed-in app. */
+    reportShareActivity("sms", conv.id);
     mutate((prev) => ({ ...prev, [profileId]: [{ savedAt: Date.now(), conv }, ...(prev[profileId] ?? [])].slice(0, MAX_PER_PROFILE) }));
+  };
 
-  const upsertCaptured = (profileId: string, conv: SmsConversation) =>
-    mutate((prev) => {
+  const upsertCaptured = (profileId: string, conv: SmsConversation) => {
+    reportShareActivity("sms", conv.id);
+    return mutate((prev) => {
       const arr = prev[profileId] ?? [];
       const idx = arr.findIndex((e) => e.conv.id === conv.id);
       if (idx >= 0) { const next = arr.slice(); next[idx] = { ...arr[idx], conv }; return { ...prev, [profileId]: next }; }
       return { ...prev, [profileId]: [{ savedAt: Date.now(), conv }, ...arr].slice(0, MAX_PER_PROFILE) };
     });
+  };
 
   const patchCaptured = (profileId: string, id: string, patch: Partial<SmsConversation>) =>
     mutate((prev) => ({ ...prev, [profileId]: (prev[profileId] ?? []).map((e) => (e.conv.id === id ? { ...e, conv: { ...e.conv, ...patch } } : e)) }));

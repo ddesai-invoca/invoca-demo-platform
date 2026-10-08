@@ -126,7 +126,11 @@ export default function ShareApp() {
     try {
       const res = await fetch(`/api/share/${SHARE_TOKEN}/unlock`, {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+        /* ⚠️ The address rides the unlock so the server can stamp it into the session
+           cookie — activity has to stay attributable after a reload, and this is the only
+           moment the page is certain to know it. Empty when somebody came through
+           "I already have the password", which the Activity sheet shows as such. */
+        body: JSON.stringify({ password, email: sentTo ?? "" }),
       });
       const body = await res.json().catch(() => ({}));
       if (res.status === 410) return setPhase({ k: "gone", message: body?.error || "This demo link has expired." });

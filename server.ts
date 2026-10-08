@@ -223,6 +223,14 @@ const shareBase = (req: { protocol: string; get: (h: string) => string | undefin
 /* ⚠️⚠️ REGISTERED BEFORE `installAuth`, like the rest of /api/share — a prospect has no
    Invoca session and never will. It sends mail to a caller-chosen address, so its guards
    are in `handleShareApi`: a shape check, a live link, and the per-link daily cap. */
+/* ⚠️ Public like the rest of /api/share. Records that a prospect had an SMS or voice
+   conversation; `handleShareApi` requires the unlock cookie and dedupes on the
+   conversation's own id, so the page may fire it liberally. */
+app.post("/api/share/:token/activity", async (req, res) => {
+  const r = await handleShareApi("POST", req.path, req.body || {}, parseCookies(req.headers.cookie), shareBase(req));
+  if (!r) return res.status(404).json({ error: "Not found." });
+  res.status(r.status).json(r.body ?? {});
+});
 app.post("/api/share/:token/request-password", async (req, res) => {
   const r = await handleShareApi("POST", req.path, req.body || {}, parseCookies(req.headers.cookie), shareBase(req));
   if (!r) return res.status(404).json({ error: "Not found." });

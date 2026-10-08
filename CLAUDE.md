@@ -12845,6 +12845,84 @@ the 13th request in a day returned 429.
 ⚠️ **NOT VERIFIED: a real email has never been sent by this path** — local deliberately does
 not send, so the first genuine test is on the deployed site.
 
+### An Activity tab, and both tabs styled (10/8/2026)
+
+Asked for: *"create a sheet called 'Activity' and… track create a row / update a row,
+everytime a prospect opens a shared demo, and also everytime a prospect finishes an SMS demo
+or finishes a voice agent demo… if there are multiple users on the same prospect, add all of
+them as sublines for the main prospect instead of having multiple rows… make it look really
+nice."*
+
+⚠️⚠️ **THE SERVER OWNS THE DATA AND THE TAB IS A RENDERING OF IT** (`engine/activityStore.ts`
+→ `engine/sheetActivity.ts`). Appending a row per event cannot produce the shape that was
+asked for: a main row per prospect with a subline per person means rows MOVE as people are
+added, and in-place surgery around a moving target is where incremental sheet writing goes
+wrong. The tab is rewritten whole, **cleared first over a range wider than it writes** — a
+shorter rebuild would otherwise leave the old tail under the new content, reading as
+duplicates nobody can explain. Demo Notes stays an upsert, because there a row never moves.
+
+#### ⚠️⚠️ `/analyze` LOOKED LIKE THE "FINISHED" HOOK AND IS NOT — checked before building on it
+The obvious wiring is the analyze call that already happens when a conversation is captured.
+Two things kill it, and both were found by reading rather than by a failing test:
+1. **The SMS capture is PROGRESSIVE by design** — it upserts after EVERY turn and debounces
+   analyze, precisely so nothing is lost when the tab closes. Hooking it would have made the
+   column a MESSAGE count wearing a conversation's name.
+2. **The dev twin deliberately never reads that body** (it rewrites the URL and calls
+   `next()`, because consuming the stream hands the downstream plugin an empty body — a trap
+   already recorded at that line). So the `channel` is not even available there.
+
+So the client posts an explicit `/api/share/:token/activity` with the **conversation's own
+id**, and **the server dedupes**. ⚠️ That inversion is the design: the page may fire liberally
+— every capture, every turn — and a conversation still counts once, which is what makes it
+reliable without inventing a "finished" moment a prospect can sidestep. An OPEN carries no id
+and counts every time, because an open is not a conversation.
+
+⚠️⚠️ **IDENTITY RIDES THE UNLOCK COOKIE: `<hmac>.<base64url email>`.** Activity has to stay
+attributable after a reload, and the address is only certainly known at the gate. The email
+half is NOT signed and does not need to be — it is self-declared anyway, so forging the
+cookie grants nothing typing a different address would not. **The PROOF half is compared on
+its own**, so appending to the value can never loosen the unlock; `audit:share` pins that.
+⚠️⚠️ **THE EMAIL IS SELF-DECLARED AND THE SHEET SHOULD BE READ THAT WAY.** Nobody is made to
+prove it — they could not be, because the password is derivable from the unlock page, so
+receiving it proves nothing. This records who SAID they were opening the demo. "I already
+have the password" shows as `(no email given)`.
+
+⚠️ **ONE PERSON IS ONE SUBLINE** — addresses are lower-cased, so `Buyer@` and `buyer@` do not
+split into two lines.
+⚠️ **THE TAB IS SCOPED TO THE EVENT**, so two events sharing one spreadsheet do not overwrite
+each other's Activity with their own prospects.
+⚠️ **A FAILED SHEET WRITE IS SWALLOWED.** A prospect unlocking a demo must not see an error
+because somebody's spreadsheet moved, and the event is already on disk — the contract
+`postMarkRow` has, for the same reason.
+
+#### The look
+A header band in Invoca navy with white bold text, a frozen header, sized columns, a wrapping
+Notes column; on Activity, prospect rows in bold on a pale green ground with a hairline above
+each block and the counts in the brand green. Applied on every write so a hand-made sheet
+picks it up as soon as the first row lands.
+⚠️ **STYLING NEVER FAILS A WRITE** — `themeNotes` is in its own try/catch after the row,
+because it is what makes the sheet readable, not what makes it correct.
+⚠️ **AN OUTLINE GROUP WAS CONSIDERED AND REJECTED** for the sublines: it would have to be
+deleted and re-added on every rewrite, and a leading `↳` plus an indent reads as a child at a
+glance and cannot drift out of step with the rows.
+⚠️⚠️ **THE APPS SCRIPT FALLBACK DOES DEMO NOTES ONLY** — no Activity tab and no styling. Both
+need `batchUpdate` calls that would make the script far larger than the thing it is a fallback
+for. Stated in `docs/SHEETS-SETUP.md` rather than left to be discovered.
+
+**`npm run audit:share` gained 22 checks**; five sabotages verified to fire (removing the
+dedupe, splitting one person by case, dropping the unlock requirement, skipping the clear, and
+letting the reporter run in the signed-in app).
+⚠️ **A PROBE WROTE INTO THE REAL LOCAL STORE** while testing: it set `process.env.DATA_DIR` at
+the top of the file, but `import` is HOISTED and `demoStore` resolves that at module load — so
+the assignment ran too late. The audit does it correctly (set before the import); a one-off
+script must too, or it writes to `.data`.
+
+**Verified end to end in the browser**: a real unlock as `buyer@unitedvetcare.com` recorded the
+open against that address, two reports of one SMS conversation counted as one, and the rendered
+lines came out as one main row per prospect with its people indented beneath, most recent first.
+⚠️ **NOT VERIFIED: nothing has been written to a real Google Sheet** — same gap as the rest of
+this feature.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

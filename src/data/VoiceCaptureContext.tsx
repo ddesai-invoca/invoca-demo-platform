@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { reportShareActivity } from "./shareActivity";
 import type { VoiceConversation } from "./schema";
 
 /* Holds AI-voice calls captured live from the Preview Agent, keyed by prospect
@@ -50,11 +51,15 @@ export function VoiceCaptureProvider({ children }: { children: ReactNode }) {
   }, [store]);
 
   const capturedFor = (profileId: string) => (store[profileId] ?? []).map((e) => e.conv);
-  const addCaptured = (profileId: string, conv: VoiceConversation) =>
+  const addCaptured = (profileId: string, conv: VoiceConversation) => {
+    /* ⚠️ A voice call has a real end — this runs when one is captured. Still deduped on
+       the call's own id server-side, so a re-capture cannot double it. */
+    reportShareActivity("voice", conv.id);
     setStore((prev) => ({
       ...prev,
       [profileId]: [{ savedAt: Date.now(), conv }, ...(prev[profileId] ?? [])].slice(0, MAX_PER_PROFILE),
     }));
+  };
   const patchCaptured = (profileId: string, id: string, patch: Partial<VoiceConversation>) =>
     setStore((prev) => ({
       ...prev,

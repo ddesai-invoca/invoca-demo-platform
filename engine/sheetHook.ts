@@ -29,7 +29,7 @@
    ============================================================================= */
 
 import { eventSettings } from "./eventSettings.ts";
-import { upsertRow, SheetsReconnectError, COLUMNS } from "./sheetsApi.ts";
+import { upsertRow, themeNotes, SheetsReconnectError, COLUMNS } from "./sheetsApi.ts";
 import { appEnv } from "./appEnv.ts";
 import type { DemoMark } from "./demoMarks.ts";
 
@@ -92,10 +92,12 @@ export async function postMarkRow(
      switching back is just reconnecting. */
   if (cfg.spreadsheetId && cfg.sheetOwner) {
     try {
-      const res = await upsertRow(
-        { email: cfg.sheetOwner, spreadsheetId: cfg.spreadsheetId },
-        rowCells(body),
-      );
+      const target = { email: cfg.sheetOwner, spreadsheetId: cfg.spreadsheetId };
+      const res = await upsertRow(target, rowCells(body));
+      /* ⚠️ AFTER the row, and its failure is not the row's failure. Styling is what makes
+         the sheet readable, not what makes it correct — a theme call that threw would
+         otherwise lose a mark that had already landed. */
+      try { await themeNotes(target); } catch { /* cosmetic only */ }
       return { posted: true, updated: res.updated };
     } catch (e: unknown) {
       /* ⚠️ A REVOKED GRANT IS ITS OWN ANSWER. "Try again" would send somebody round a

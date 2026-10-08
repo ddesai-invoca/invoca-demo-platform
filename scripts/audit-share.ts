@@ -565,6 +565,127 @@ console.log("\nEmailed share password\n");
 }
 
 
+
+/* =============================================================================
+   THE ACTIVITY TAB (10/8/2026)
+   -----------------------------------------------------------------------------
+   Asked for: track every time a prospect opens a shared demo, finishes an SMS demo
+   or finishes a voice demo, with several people on one prospect shown as sublines
+   under a single main row rather than as repeated rows.
+   ============================================================================= */
+console.log("\nActivity tracking\n");
+{
+  const { recordActivity, listActivity, totals, ANONYMOUS } =
+    await import("../engine/activityStore.ts");
+  const { activityLines } = await import("../engine/sheetActivity.ts");
+  const { ACTIVITY_COLUMNS, ACTIVITY_TAB } = await import("../engine/sheetsApi.ts");
+
+  recordActivity("acme-co", "Acme Co", "Buyer@Acme.com", "opened");
+  recordActivity("acme-co", "Acme Co", "buyer@acme.com", "opened");
+  /* ⚠️⚠️ THE DEDUPE IS THE WHOLE REASON THE NUMBERS MEAN ANYTHING. The SMS capture
+     upserts after EVERY turn, so one conversation reports itself a dozen times; without
+     this the column would be a message count wearing a conversation's name. */
+  for (let i = 0; i < 9; i++) recordActivity("acme-co", "Acme Co", "buyer@acme.com", "sms", "conv-1");
+  recordActivity("acme-co", "Acme Co", "buyer@acme.com", "sms", "conv-2");
+  recordActivity("acme-co", "Acme Co", "cto@acme.com", "voice", "call-9");
+  recordActivity("acme-co", "Acme Co", "cto@acme.com", "voice", "call-9");
+  recordActivity("acme-co", "Acme Co", "", "opened");
+
+  const rec = listActivity().find((r) => r.demoId === "acme-co")!;
+  const buyer = rec.users.find((u) => u.email === "buyer@acme.com");
+  buyer?.sms === 2
+    ? ok("nine reports of one SMS conversation count once; a second counts again")
+    : bad(`the SMS dedupe is wrong (sms=${buyer?.sms}, expected 2)`);
+  rec.users.find((u) => u.email === "cto@acme.com")?.voice === 1
+    ? ok("a re-captured voice call is not double counted")
+    : bad("the voice dedupe is wrong");
+  buyer?.opened === 2
+    ? ok("an event with no id still counts every time — opens are not conversations")
+    : bad(`opens are being deduped (opened=${buyer?.opened}, expected 2)`);
+  /* ⚠️ ONE PERSON IS ONE SUBLINE however they typed their address. */
+  rec.users.length === 3 && !!rec.users.find((u) => u.email === ANONYMOUS)
+    ? ok("case differences are one person, and a missing address is its own line")
+    : bad(`users did not collapse by case: ${rec.users.map((u) => u.email).join(", ")}`);
+
+  const t = totals(rec);
+  t.opened === 3 && t.sms === 2 && t.voice === 1
+    ? ok("the main row totals its people")
+    : bad(`totals are wrong: ${JSON.stringify(t)}`);
+
+  /* ⚠️⚠️ THE SHAPE THAT WAS ASKED FOR: one main row, then its people. */
+  const lines = activityLines([rec]);
+  lines[0]?.main && lines.slice(1).every((l) => !l.main) && lines.length === 4
+    ? ok("one main row per prospect with a subline per person, not a row each")
+    : bad(`the grouping is wrong: ${lines.map((l) => (l.main ? "MAIN" : "sub")).join(",")}`);
+  lines[0].label === "Acme Co" && lines[0].opened === 3
+    ? ok("the main row is the prospect and carries the totals")
+    : bad("the main row is not the prospect");
+
+  /* ⚠️ Most recent first — the sheet answers "who has been in this lately". */
+  recordActivity("zz-later", "Zeta Later", "a@z.com", "opened");
+  const two = activityLines(listActivity().filter((r) => ["acme-co", "zz-later"].includes(r.demoId)));
+  two[0]?.label === "Zeta Later"
+    ? ok("the most recently active prospect is at the top")
+    : bad("the Activity tab is not ordered by recency");
+
+  ACTIVITY_TAB === "Activity" && ACTIVITY_COLUMNS[0] === "Prospect / Person"
+    ? ok("the tab is called Activity and leads with the prospect/person column")
+    : bad("the Activity tab name or columns drifted");
+
+  /* ── the wiring ────────────────────────────────────────────────────────── */
+  const api = code("engine/shareApi.ts");
+  /recordActivity\(rec\.demoId, rec\.prospect, who, "opened"\)/.test(api)
+    ? ok("unlocking a shared demo records an open")
+    : bad("opening a shared demo records nothing");
+  /* ⚠️ The address has to survive a reload, which is why it rides the session cookie. */
+  /unlockedAs/.test(api) && /base64url/.test(api)
+    ? ok("who opened it is carried in the unlock cookie, so activity stays attributable")
+    : bad("the email is not carried — every later event would be anonymous");
+  /* ⚠️ APPENDING TO THE COOKIE MUST NOT LOOSEN THE UNLOCK: the proof half is compared
+     on its own. */
+  /const \{ proof \} = splitCookie/.test(api) && /timingSafeEqual/.test(api)
+    ? ok("the unlock still compares only the signed half of the cookie")
+    : bad("the cookie change weakened the unlock comparison");
+  /leaf === "\/activity"/.test(api) && /kind must be sms or voice/.test(api)
+    ? ok("there is one public endpoint for a conversation, and it validates the kind")
+    : bad("the activity endpoint is missing or unvalidated");
+  /if \(!unlocked\(cookies, token\)\) return \{ status: 401[\s\S]{0,200}?leaf === "\/activity"|leaf === "\/activity"[\s\S]{0,300}?if \(!unlocked\(cookies, token\)\)/.test(api)
+    ? ok("it needs the unlock, so a bare link cannot post activity")
+    : bad("anybody holding the URL could write activity without unlocking");
+
+  /* ⚠️ The client fires liberally BECAUSE the server dedupes — both halves or neither. */
+  const client = code("src/data/shareActivity.ts");
+  /isShareMode\(\)/.test(client) && /keepalive: true/.test(client)
+    ? ok("the reporter is share-mode only and survives the navigation after a call ends")
+    : bad("the reporter runs in the signed-in app, or dies with the page");
+  /reportShareActivity\("sms"/.test(code("src/data/SmsCaptureContext.tsx"))
+  && /reportShareActivity\("voice"/.test(code("src/data/VoiceCaptureContext.tsx"))
+    ? ok("both capture paths report, with the conversation's own id")
+    : bad("a conversation type is never reported");
+
+  /* ⚠️ The sheet write must never be able to break the thing that triggered it. */
+  const sync = code("engine/sheetActivity.ts");
+  /catch \(e: unknown\)[\s\S]{0,200}?return \{ written: false/.test(sync)
+    ? ok("a failed Activity write is swallowed — the event is already on disk")
+    : bad("a spreadsheet problem could break a prospect unlocking a demo");
+  /getDemo\(r\.demoId\)\?\.event === demo\?\.event/.test(sync)
+    ? ok("the tab is scoped to the event, so two events cannot overwrite each other")
+    : bad("every event would write every prospect into the same Activity tab");
+
+  /* ⚠️ Rewritten whole, and CLEARED first — a shorter rebuild must not leave the old tail. */
+  const sheets = code("engine/sheetsApi.ts");
+  /:clear/.test(sheets) && /was > values\.length/.test(sheets)
+    ? ok("a shorter rebuild clears the rows it no longer writes")
+    : bad("stale rows survive under a rebuilt Activity tab");
+  /themeNotes/.test(code("engine/sheetHook.ts")) && /frozenRowCount/.test(sheets)
+    ? ok("both tabs get the house style, not a default white grid")
+    : bad("the sheets are unstyled");
+  /try \{ await themeNotes\(target\); \} catch/.test(code("engine/sheetHook.ts"))
+    ? ok("a styling failure cannot lose a row that already landed")
+    : bad("the theme call can fail a mark");
+}
+
+
 fs.rmSync(process.env.DATA_DIR!, { recursive: true, force: true });
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll share checks passed\n");
 process.exit(fail ? 1 : 0);

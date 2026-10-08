@@ -25,6 +25,8 @@ import crypto from "node:crypto";
 import { DEFAULT_SHARE_DAYS } from "../src/data/shareDefaults.ts";
 import { getShare, passwordMatches, shareActive, noteOpen, noteRequest, expiresAt, type ShareRecord } from "./shareStore.ts";
 import { sendMail, sharePasswordEmail } from "./mailer.ts";
+import { recordActivity } from "./activityStore.ts";
+import { syncActivitySheet } from "./sheetActivity.ts";
 import { sharePassword } from "../src/data/sharePassword.ts";
 import { getDemo } from "./demoStore.ts";
 
@@ -41,13 +43,36 @@ export function cookieNameFor(token: string): string {
   return COOKIE_PREFIX + crypto.createHash("sha256").update(token).digest("hex").slice(0, 16);
 }
 
+/* ⚠️⚠️ **THE COOKIE CARRIES THE PROOF *AND* WHO TYPED IT: `<hmac>.<base64url email>`.**
+   Activity has to be attributable after a reload, and the alternative — a second cookie —
+   meant widening `ShareResult.setCookie` to a list and touching both twins for a value
+   that belongs to the same session as the proof. The email half is NOT signed and does not
+   need to be: it is self-declared at the gate anyway (somebody can type any address), so
+   forging the cookie grants nothing typing a different address would not. The PROOF half is
+   compared on its own, so appending to the value can never loosen the unlock. */
+const splitCookie = (raw: string) => {
+  const dot = raw.indexOf(".");
+  return dot < 0 ? { proof: raw, who: "" } : { proof: raw.slice(0, dot), who: raw.slice(dot + 1) };
+};
+
 export function unlocked(cookies: Record<string, string>, token: string): boolean {
-  const got = cookies[cookieNameFor(token)] ?? "";
+  const { proof } = splitCookie(cookies[cookieNameFor(token)] ?? "");
   const want = stamp(token);
   /* ⚠️ Length-guarded for the same reason the password compare is — timingSafeEqual
      throws on a mismatch rather than returning false. */
-  const a = Buffer.from(got), b = Buffer.from(want);
+  const a = Buffer.from(proof), b = Buffer.from(want);
   return a.length === b.length && crypto.timingSafeEqual(a, b);
+}
+
+/** Who said they were opening this link, or "" when they never gave an address. */
+export function unlockedAs(cookies: Record<string, string>, token: string): string {
+  if (!unlocked(cookies, token)) return "";
+  const { who } = splitCookie(cookies[cookieNameFor(token)] ?? "");
+  try {
+    const email = Buffer.from(who, "base64url").toString("utf8");
+    /* Shape-checked on the way out as well as in — the cookie is user-editable. */
+    return /^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(email) && email.length <= 254 ? email : "";
+  } catch { return ""; }
 }
 
 /* ── per-link spend caps ──────────────────────────────────────────────────── */
@@ -183,16 +208,38 @@ export async function handleShareApi(
       return { status: 401, body: { error: "That password is not right." } };
     }
     noteOpen(token);
+    /* ⚠️ The address is whatever the gate collected; it is not re-sent on later calls,
+       which is why it goes into the cookie rather than being asked for again. */
+    const who = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
+    recordActivity(rec.demoId, rec.prospect, who, "opened");
+    void syncActivitySheet(rec.demoId);
     return {
       status: 200,
       body: { ok: true, prospect: rec.prospect },
       setCookie: {
         name: cookieNameFor(token),
-        value: stamp(token),
+        value: who ? `${stamp(token)}.${Buffer.from(who, "utf8").toString("base64url")}` : stamp(token),
         /* ⚠️ The cookie never outlives the link itself. */
         maxAgeSeconds: Math.max(60, Math.floor((expiresAt(rec).getTime() - Date.now()) / 1000)),
       },
     };
+  }
+
+  /* ⚠️⚠️ **AN EXPLICIT EVENT, BECAUSE `/analyze` IS NOT ONE.** The obvious hook looked
+     like the analyze call that already happens when a conversation is captured — but the
+     SMS capture fires it after EVERY turn (it is progressive by design, so nothing is lost
+     when the tab closes), so it says "a message happened", not "a demo finished". This
+     takes the conversation's own id instead and the store counts it once. */
+  if (method === "POST" && leaf === "/activity") {
+    if (!unlocked(cookies, token)) return { status: 401, body: { error: "This demo is locked." } };
+    if (!shareActive(rec)) return gone(rec);
+    const kind = String(body?.kind ?? "") === "voice" ? "voice" : String(body?.kind ?? "") === "sms" ? "sms" : null;
+    if (!kind) return { status: 400, body: { error: "kind must be sms or voice." } };
+    const id = typeof body?.id === "string" ? body.id.slice(0, 120) : undefined;
+    recordActivity(rec.demoId, rec.prospect, unlockedAs(cookies, token), kind, id);
+    void syncActivitySheet(rec.demoId);
+    /* ⚠️ 204-shaped: the page is mid-demo and has nothing to do with the answer. */
+    return { status: 200, body: { ok: true } };
   }
 
   /* Everything past here needs the password to have been accepted. */
@@ -297,3 +344,5 @@ export async function handleShareAdminApi(
   }
   return null;
 }
+
+

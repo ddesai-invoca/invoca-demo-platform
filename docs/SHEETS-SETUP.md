@@ -42,7 +42,62 @@ Use this if the org will not enable the scope above. In the same dialog, open
 "Anyone" is what lets the server POST without a credential. The URL is the only secret:
 it is stored server-side, shown only to admins, and re-deploying rotates it.
 
-## What lands in the sheet
+## The two tabs
+
+### Demo Notes
+One tab, **Demo Notes** — the sheet's first tab, renamed (a tab that already holds
+something is left alone and a new one is added instead). One row per prospect:
+
+| Prospect | Website | Status | Notes | Audience | Date/Time | Open demo |
+|---|---|---|---|---|---|---|
+
+Re-submitting notes for the same prospect updates that row; clearing a mark empties the
+status, notes and audience but keeps the row. Columns you add by hand are preserved.
+
+⚠️ The row is matched on **Prospect**, so two demos with the same prospect name share a
+row — including the same prospect across two different events, since everything lands on
+one tab. **Date/Time** is Chicago time (US Central), written by the server so it does not
+depend on the spreadsheet's own timezone.
+
+### Activity
+
+Who opened a shared demo, and what they did in it. One **main row per prospect** carrying
+the totals, with a **subline per person** indented under it — several people on one
+prospect do not produce several top-level rows.
+
+| Prospect / Person | Opened | SMS demos | Voice demos | First seen | Last seen |
+|---|---|---|---|---|---|
+| **United Veterinary Care** | 3 | 2 | 1 | … | … |
+| ↳ buyer@unitedvetcare.com | 2 | 2 | | … | … |
+| ↳ cto@unitedvetcare.com | 1 | | 1 | … | … |
+
+Most recently active prospect first. Counts are **conversations, not messages**: the SMS
+capture reports itself after every turn, and the server counts each conversation once by
+its own id.
+
+⚠️ **The email is self-declared.** It is what somebody typed on the unlock page, and they
+are not made to prove it — they could not be, because the password is derivable from that
+page. This records who *said* they were opening the demo. Somebody who clicked "I already
+have the password" shows as `(no email given)`.
+
+⚠️ **This tab is rewritten whole on every event**, scoped to the demos in that event. The
+server holds the truth (`DATA_DIR/activity`), so a sheet connected later is filled in with
+everything that already happened.
+
+## Styling
+
+Both tabs get a header band in Invoca navy with white bold text, a frozen header row,
+sized columns, a wrapping Notes column, and — on Activity — prospect rows picked out in
+bold on a pale green ground with the counts in the brand green. It is applied on every
+write, so a sheet you create by hand picks it up as soon as the first row lands.
+
+⚠️ Styling is **cosmetic and never fails a write**: if it errors, the row is already in.
+
+⚠️ **The Apps Script fallback does Demo Notes only** — no Activity tab and no styling.
+Those need `batchUpdate` calls that would make the script far larger than the thing it is
+a fallback for. If you need Activity, use the Connect Google path.
+
+---
 
 One tab, **Demo Notes** — the sheet's first tab, renamed (a tab that already holds
 something is left alone and a new one is added instead). One row per prospect:
