@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { GEO, rowLayout } from "../data/workflowRows";
+import { actionKindOf, type ActionKind } from "../data/workflowChrome";
 
 /* =============================================================================
    WorkflowTree — ONE data-driven renderer for every Agent Studio flow diagram
@@ -39,7 +40,7 @@ export interface TreePath {
    *
    * ⚠️ OPT-IN, so every diagram that does not set it keeps `tone` and is byte-identical.
    */
-  actionKind?: "callback" | "qualify" | "inform" | "informRoute" | "escalate";
+  actionKind?: ActionKind;
   /**
    * The team this branch hands off to, drawn on the action line and named aloud on transfer.
    *
@@ -83,7 +84,7 @@ export interface TreeLeaf {
      copies would disagree the first time an SE edited one. */
   paths?: TreePath[];
   /** See `TreePath.actionKind` — the same opt-in one row up. */
-  actionKind?: "callback" | "qualify" | "inform" | "informRoute" | "escalate";
+  actionKind?: ActionKind;
   /* ⚠️ PRODUCT CHROME, same flag and same reason as `TreeBranch.locked` — but here it covers
      the ACTION as well as the title, because a leaf has one and a branch does not. Set on the
      voice tree's two default leaves: the real page names the user group after the intent and
@@ -216,6 +217,14 @@ const CHIP_MAX = 4;
 /* ⚠️ LOWERCASED, so `informRoute` yields `.wf-act-informroute` rather than a camelCase
    selector nobody would think to grep for. A no-op for the three kinds that predate it. */
 const actClass = (k?: string) => (k ? ` wf-act-${k.toLowerCase()}` : "");
+
+/* ⚠️⚠️ **RESOLVES THE KIND RATHER THAN REQUIRING THE FIELD, AND THAT IS THE WHOLE FIX
+   (10/8/2026).** This read `node.actionKind` and tinted nothing without it — but only
+   the SMS template sets that field. Every VOICE node and every authored extra workflow
+   carries an `action` STRING ("Support & Escalate", "Refer to Primary Care"), so they
+   rendered with no colour while their drawers resolved the action correctly: two
+   answers to one question. `actionKindOf` is the single resolver both now use. */
+const actOf = (n: { action?: string; actionKind?: ActionKind } | undefined) => actClass(actionKindOf(n));
 
 /**
  * A connector takes the colour of the node it POINTS AT, and ends in an arrowhead.
@@ -923,7 +932,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
                  leaves — the National Van Lines split makes that real, not hypothetical.
                  Same class of bug as building an edit path from a filtered index. */
               <div {...open(`leaf-${s.branch}-${s.leaf}`)}
-                className={"wf-node wf-leaf" + toneClass(leaf.tone) + actClass(leaf.actionKind) + " " + open("").className}
+                className={"wf-node wf-leaf" + toneClass(leaf.tone) + actOf(leaf) + " " + open("").className}
                 key={`leaf-${i}`}
               ref={(el) => { leafRefs.current[`${s.branch}-${s.leaf}`] = el; }}
               style={{ left: leafCx(s.branch, s.leaf) - g.nodeW / 2, top: leafTop, width: g.nodeW }}>
@@ -960,7 +969,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
           const key = `${s.branch}-${s.leaf}-${s.path}`;
           return (
             <div {...open(`path-${key}`)}
-              className={"wf-node wf-leaf" + toneClass(pth.tone ?? "green") + actClass(pth.actionKind) + " " + open("").className}
+              className={"wf-node wf-leaf" + toneClass(pth.tone ?? "green") + actOf(pth) + " " + open("").className}
               key={`path-${key}`}
               ref={(el) => { pathRefs.current[key] = el; }}
               style={{ left: pathCx(s.branch, s.leaf, s.path) - g.nodeW / 2, top: pathTop, width: g.nodeW }}>
@@ -987,7 +996,7 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
           const key = `${s.branch}-${s.leaf}-${s.path}-${s.sub}`;
           return (
             <div {...open(`sub-${key}`)}
-              className={"wf-node wf-leaf" + toneClass(sb.tone ?? "blue") + actClass(sb.actionKind) + " " + open("").className}
+              className={"wf-node wf-leaf" + toneClass(sb.tone ?? "blue") + actOf(sb) + " " + open("").className}
               key={`sub-${key}`}
               ref={(el) => { subRefs.current[key] = el; }}
               style={{ left: colX(i) - g.nodeW / 2, top: subTop, width: g.nodeW }}>

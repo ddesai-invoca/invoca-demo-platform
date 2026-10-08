@@ -1383,6 +1383,63 @@ console.log("\nThe built-in SMS workflow template");
       : bad("a voice drawer writes somewhere the agent never reads");
   }
 
+  /* ---- the five actions decide the colour, on SMS AND voice (10/8/2026) --------
+     Asked for with a capture built for it: a workflow carrying all five actions on
+     real nodes — `reference/agent-workflow/sms-voice-all-actions.html`. */
+  {
+    const { actionKindOf } = await import("../src/data/workflowChrome.ts");
+    const kinds = (a: string) => actionKindOf({ action: a });
+
+    /* ⚠️⚠️ ONE RESOLVER, BECAUSE THERE WERE TWO AND THEY DISAGREED. The drawer read a
+       node's action TEXT while the renderer read `actionKind` and tinted nothing
+       without it — so every voice node and every authored extra workflow opened the
+       right drawer and rendered with no colour. */
+    kinds("Qualify") === "qualify" && kinds("Schedule Callback") === "callback"
+      && kinds("Inform") === "inform" && kinds("Inform & Route") === "informRoute"
+      && kinds("Support & Escalate") === "escalate"
+      ? ok("each of the five canonical actions resolves to its own kind")
+      : bad("a canonical action does not resolve to its own kind");
+
+    /* ⚠️⚠️ THE KEYWORD ORDER IS DECIDED BY REAL STRINGS, AND THIS IS THE CASE THAT
+       FIXES IT: "Refer to Scheduling" contains BOTH "refer" and "schedul". It is a
+       referral, so routing must beat callback — while "Schedule Appointment", which
+       carries no routing word, must still be callback. Every string below exists in a
+       demo or a seed on disk; do not add one that does not. */
+    kinds("Refer to Scheduling") === "informRoute" && kinds("Schedule Appointment") === "callback"
+      ? ok("routing beats scheduling on 'Refer to Scheduling', and only there")
+      : bad("the resolver's keyword order is wrong");
+    kinds("Warm Hand-off") === "escalate" && kinds("Transfer Registration") === "escalate"
+      && kinds("Hand to a Person or 911") === "escalate"
+      ? ok("hand-offs and transfers escalate rather than route")
+      : bad("a hand-off resolves as routing");
+    kinds("Book Appointment") === "callback" && kinds("Book Virtual") === "callback"
+      ? ok("authored booking actions take the scheduling green")
+      : bad("a booking action is not scheduling");
+    kinds("Answer & Nurture") === "inform" && kinds("Stay Available") === "inform"
+      ? ok("inform is the fallback, so an unmatched action is never left colourless")
+      : bad("an unmatched action resolves to nothing");
+
+    /* ⚠️ An explicit `actionKind` still wins — the SMS dropdown writes it, and a node
+       switched there must not be re-read from its stale action text. */
+    actionKindOf({ action: "Book Appointment", actionKind: "inform" }) === "inform"
+      ? ok("an explicit actionKind outranks the action text")
+      : bad("a node switched in the dropdown would be re-read from its old text");
+    actionKindOf(undefined) === undefined && actionKindOf({ action: "  " }) === undefined
+      ? ok("a node with no action resolves to no kind, so it stays neutral")
+      : bad("a node with no action would be tinted");
+
+    /* ⚠️ The RENDERER must RESOLVE, not just read the field — that is the whole fix. */
+    const wt = readAny("src/components/WorkflowTree.tsx");
+    /actionKindOf/.test(wt) && !/actClass\(leaf\.actionKind\)/.test(wt)
+      ? ok("the renderer resolves the kind, so an action-only node still tints")
+      : bad("the renderer still reads actionKind directly — voice nodes stay grey");
+
+    /* ⚠️ And the drawer must not keep its own copy. */
+    !/\/qualify\/i\.test\(a\) \? "qualify"/.test(readAny("src/data/workflowDrawers.ts"))
+      ? ok("the drawer delegates instead of keeping a second resolver")
+      : bad("the drawer has its own action resolver again — they will drift");
+  }
+
   /* ---- the measured palette (9/17/2026) ---------------------------------------
      Reported: "the boxes and pills are not the right color", "the background dots are too far
      apart and also make them lighter", and the intents "are missing their description". Every
@@ -1390,17 +1447,34 @@ console.log("\nThe built-in SMS workflow template");
      emotion CSS, so these are real computed styles rather than screenshot readings. */
   {
     const css = readAny("src/styles/app.css");
-    const v2 = css.slice(css.indexOf(".wf-v2 .wf-node {"));
-    /* A card is tinted by its ACTION: the hue at 8%, a 5px left edge, no other border. */
+    const v2 = css;
+    /* ⚠️⚠️ RE-AIMED 10/8/2026, AND THE SCOPE INVERTED. These pinned
+       `.wf-v2 .wf-act-*` — the tints applied to the SMS template ONLY, so the voice
+       tree and every authored extra fell back to an old pastel palette. Reported as
+       "some of the actions, and the colors are wrong", with the five colours asked
+       for on SMS *and* voice. The invariant is now the five measured hues wherever a
+       card is drawn, which the check below pins at (0,2,0) so a tone class cannot
+       outrank it. Measured off `sms-voice-all-actions.html`. */
+    const FIVE: [string, string, string][] = [
+      ["qualify",     "208,193,242", "#440066"],
+      ["callback",    "44,191,88",   "#0d5400"],
+      ["inform",      "38,102,249",  "#11228c"],
+      ["informroute", "51,229,201",  "#007e73"],
+      ["escalate",    "255,112,69",  "#b33b00"],
+    ];
+    /* ⚠️ The card is the hue at 8%, a 5px left edge, AND a 1px border on the other
+       three sides — Invoca declares that border's width and style with NO colour, so
+       it resolves to the card's own `color`, measured #15243e on all five. The
+       earlier "no other border" reading came from the UNTINTED card and was wrong. */
     const tint = (k: string, hue: string) =>
-      new RegExp(`\\.wf-v2 \\.wf-act-${k}\\s*\\{[^}]*rgba\\(${hue},\\.08\\)[^}]*border-left: 5px solid #`).test(v2);
-    tint("qualify", "208,193,242") && tint("inform", "38,102,249") && tint("escalate", "255,112,69")
-      ? ok("each action tints its card at 8% with a 5px left edge, as measured")
-      : bad("an action tint is not the measured 8% + 5px edge");
-    /(#440066)/.test(v2) && /(#11228c)/.test(v2) && /(#b33b00)/.test(v2)
-      ? ok("the action text takes the measured dark ink of its own hue")
-      : bad("an action ink is missing — the measured inks are #440066 / #11228c / #b33b00");
-    /\.wf-v2 \.wf-act-\w+ \.wf-leaf-action \.wf-svg-ic \{ background: rgba\([\d,]+,\.12\)/.test(v2)
+      new RegExp(`\\.wf-node\\.wf-act-${k}\\s*\\{[^}]*rgba\\(${hue},\\.08\\)[^}]*border: 1px solid #15243e[^}]*border-left: 5px solid #`).test(v2);
+    FIVE.every(([k, hue]) => tint(k, hue))
+      ? ok("all five actions tint at 8% with a 1px border and a 5px edge, as measured")
+      : bad("an action tint is not the measured 8% + 1px border + 5px edge");
+    FIVE.every(([k, , ink]) => new RegExp(`\\.wf-act-${k}\\s+\\.wf-leaf-action \\{ color: ${ink}`).test(v2))
+      ? ok("each action's text takes the measured dark ink of its own hue")
+      : bad("an action ink is missing or wrong");
+    FIVE.every(([k, hue]) => new RegExp(`\\.wf-act-${k}\\s+\\.wf-leaf-action \\.wf-svg-ic \\{ background: rgba\\(${hue},\\.12\\)`).test(v2))
       ? ok("the glyph sits in a box of its hue at 12%")
       : bad("the icon box is not the hue at 12%");
     /* The chip is neutral and fully rounded — ours had been white on a green border. */
@@ -1422,7 +1496,7 @@ console.log("\nThe built-in SMS workflow template");
       : bad("the two-line clamp is gone — a paragraph would render in full");
     /* Connectors: 1px, coloured by the node they point at. */
     /\.wf-v2 \.wf-l \{ stroke-width: 1; stroke: #d0d3d8/.test(v2)
-      && /\.wf-v2 \.wf-l-act-inform\s*\{ stroke: #2666f9/.test(v2)
+      && /\.wf-l-act-inform\s*\{ stroke: #2666f9/.test(v2)
       ? ok("connectors are 1px and take their target's colour")
       : bad("connectors are not the measured 1px / target-coloured");
     /* The dots. */
@@ -1768,11 +1842,15 @@ console.log("\nThe built-in SMS workflow template");
       ? ok("the voice tables are keyed on the three voice kinds, so none was invented for voice")
       : bad("voice copy has been invented for the SMS-only actions");
 
-    /* the two new tints, scoped, plus the lowercase class */
-    (/\.wf-v2 \.wf-act-informroute\s*\{/.test(css) && /\.wf-v2 \.wf-act-callback\s*\{/.test(css)
+    /* ⚠️ RE-AIMED 10/8/2026: these two were the INFERRED hues, placed from the titan
+       token system because no capture had ever shown a node carrying them. The user's
+       own capture now shows all five applied, and **both were correct** — teal
+       #33e5c9/#007e73 and green #2cbf58/#0d5400 match it exactly. So the check is no
+       longer "inferred and scoped" but "measured, and reaching every tree". */
+    (/\.wf-node\.wf-act-informroute\s*\{/.test(css) && /\.wf-node\.wf-act-callback\s*\{/.test(css)
       && /#33e5c9/i.test(css) && /#2cbf58/i.test(css) && /#007e73/i.test(css) && /#0d5400/i.test(css))
-      ? ok("both new actions are tinted from the titan palette, scoped to .wf-v2")
-      : bad("a new action's tint is missing or unscoped");
+      ? ok("Inform & Route and Schedule Callback carry their measured hues")
+      : bad("a new action's tint is missing or wrong");
     /wf-act-\$\{k\.toLowerCase\(\)\}/.test(treeSrc)
       ? ok("the action class is lowercased, so informRoute cannot yield a camelCase selector")
       : bad("actClass no longer lowercases, so .wf-act-informRoute would never match");
@@ -2120,11 +2198,18 @@ console.log("\nThe built-in SMS workflow template");
         : bad(`a per-node instruction reached the prompt ${hits} times, not exactly once`);
     }
 
-    /* ⚠️⚠️ AND THE TREE ITSELF IS UNTOUCHED — the one thing that was asked to stay put. */
+    /* ⚠️⚠️ **THIS CHECK INVERTED ON 10/8/2026, AND THE INVERSION IS THE REQUEST.** It
+       asserted the action tints stayed scoped to `.wf-v2` so the voice tree kept its
+       own look — which was right while the voice tree was signed off on an older
+       palette, and became the DEFECT once the five colours were asked for on SMS and
+       voice alike. What it protects now is the thing that still matters: the voice
+       tree must be REACHED by the tints, and its old tone-keyed inks must not come
+       back to outrank them (they were (0,3,0) and silently won). */
     const css = readAny("src/styles/app.css");
-    !/\.wf-act-[a-z]+\s*\{/.test(css.replace(/\.wf-v2 \.wf-act-[a-z]+/g, ""))
-      ? ok("the SMS action tints are still scoped to .wf-v2, so voice nodes are unstyled by them")
-      : bad("an action tint escaped .wf-v2 and would repaint the voice tree");
+    (/\.wf-node\.wf-act-escalate\s*\{/.test(css)
+      && !/\.wf-voice \.wf-leaf-(green|orange) \.wf-leaf-action\s*\{\s*color/.test(css))
+      ? ok("the tints reach the voice tree, and no tone-keyed ink outranks them")
+      : bad("the voice tree is unreachable by the action tints, or a tone ink is back");
     /* ⚠️ `marker-end` IS AN ATTRIBUTE, so no stylesheet scope can keep it off another diagram —
        only this conditional can. Measured in the browser too: the voice tree renders 0 markers. */
     /\.\.\.\(arrows \? \{ markerEnd:/.test(readCode("src/components/WorkflowTree.tsx"))

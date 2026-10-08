@@ -1,4 +1,5 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
+import { actionKindOf, type ActionKind } from "./workflowChrome";
 import type { CustomerProfile } from "./schema";
 import { voiceSpecFor, specWithConfig, DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT, type VoiceAgentConfig } from "./voiceAgentSpec";
 import { collectFor, collectPool, type SmsCollectKey, type SmsConfig, type SmsQualifyNode } from "./smsTemplate";
@@ -45,7 +46,9 @@ export interface CollectField {
  * five has `aria-expanded=false`, so the open listbox never serialised. Same provenance split
  * the Create Workflow channel combobox already records.
  */
-export type ActionKind = "callback" | "qualify" | "inform" | "informRoute" | "escalate";
+/* ⚠️ Declared in `workflowChrome.ts` now (the DOM-free module the engine and the
+   audits can import) and re-exported here so every existing importer is unchanged. */
+export type { ActionKind };
 /**
  * The three the VOICE captures measured — the kinds voice has its OWN copy for.
  *
@@ -884,16 +887,15 @@ function nodeAt(tree: WorkflowTreeModel, nodeId: string): Record<string, unknown
  * different door, and the tables are the door. They now supply only WHERE THE TEXT LIVES, and
  * only while the action they were written for is still the one set.
  */
+/* ⚠️⚠️ **DELEGATES NOW — THIS USED TO BE A SECOND COPY AND IT DISAGREED WITH THE
+   RENDERER.** The drawer resolved a node's action from its TEXT while
+   `WorkflowTree` read `actionKind` directly and tinted nothing without it, so every
+   voice node and every authored extra workflow opened the right drawer and rendered
+   with no colour. One resolver in `workflowChrome.ts`, imported by both — and its
+   keyword ORDER is decided by the action strings that actually exist on disk (see
+   the note there; "Refer to Scheduling" is the case that fixes it). */
 function kindOfNode(node: Record<string, unknown> | undefined): ActionKind | undefined {
-  if (!node) return undefined;
-  const k = node.actionKind as ActionKind | undefined;
-  if (k) return k;
-  const a = String(node.action ?? "");
-  /* ⚠️ ORDER MATTERS: "Inform & Route" contains "inform". */
-  return /qualify/i.test(a) ? "qualify"
-    : /escalate/i.test(a) ? "escalate"
-    : /callback/i.test(a) ? "callback"
-    : /route/i.test(a) ? "informRoute" : "inform";
+  return actionKindOf(node as { action?: string; actionKind?: ActionKind } | undefined);
 }
 
 function actionSlotFor(tree: WorkflowTreeModel, nodeId: string):

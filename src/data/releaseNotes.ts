@@ -66,6 +66,13 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-10-08",
+    title: "Workflow boxes take the colour of their action",
+    changes: [
+      i("Every box in an SMS or voice workflow is now coloured by the action it performs \u2014 Qualify, Schedule Callback, Inform, Inform & Route or Support & Escalate \u2014 matching the platform exactly, including the tint, the border and the coloured edge. Voice workflows were using an older palette and now match SMS; a prospect generated from here on gets the right colours automatically."),
+    ],
+  },
+  {
     date: "2026-10-07",
     title: "Share a demo with a prospect",
     changes: [

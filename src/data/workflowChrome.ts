@@ -139,6 +139,53 @@ export function emptyWorkflowGreeting(customerName: string): string {
 
 /* The two leaf ACTIONS the product defaults to. Not the prospect's queue: "Route to <queue>"
    was ours, and the real page shows one of a fixed set of agent behaviours here. */
+/* ---- the five actions, and how a node's colour is decided ------------------
+   ⚠️⚠️ **ONE RESOLVER, BECAUSE THERE WERE TWO AND THEY DISAGREED.** The DRAWER
+   resolved a node's action (a private `kindOfNode` in `workflowDrawers.ts`) while
+   the RENDERER read `node.actionKind` directly and fell back to a neutral card. So
+   a node carrying only an `action` STRING — which is every voice node and every
+   authored extra workflow — opened the right drawer and rendered with no colour at
+   all. Both now call this.
+
+   ⚠️ **IT LIVES HERE** so `engine/` and the audits can import it: this module is
+   already the DOM-free home of the chrome constants, for exactly that reason. */
+export type ActionKind = "callback" | "qualify" | "inform" | "informRoute" | "escalate";
+
+/** The five the product offers, in the dropdown's own order. */
+export const ACTION_KINDS: ActionKind[] = ["callback", "qualify", "inform", "informRoute", "escalate"];
+
+/**
+ * Which of the five an action is. `actionKind` wins when set; otherwise the action
+ * TEXT decides, because authored and generated workflows write prose ("Book
+ * Appointment", "Refer to Primary Care") rather than picking from the five.
+ *
+ * ⚠️⚠️ **THE ORDER IS LOAD-BEARING AND EVERY LINE OF IT IS DECIDED BY REAL DATA.**
+ * Measured across the demos and seeds on disk, these are the strings that exist:
+ *   - `escalate` is tested before `route`, or "Warm Hand-off" and "Transfer
+ *     Registration" would read as routing rather than as handing a person over.
+ *   - `route` is tested before `callback`, and that one case settles the order:
+ *     **"Refer to Scheduling" contains BOTH "refer" and "schedul"**. It is a
+ *     referral to a team, so routing must win — while "Schedule Appointment",
+ *     which carries no routing word, still lands on callback.
+ *   - `inform` is the FALLBACK rather than a keyword, because it is the generic
+ *     action; "Answer & Nurture", "Confirm & Update" and "Stay Available" are all
+ *     informing and share no word.
+ * ⚠️ `911` and `hand to` are in the escalate set for Orlando Health's ER flows,
+ * where "Hand to a Person or 911" and "Return to the ER or 911" are the urgent
+ * hand-offs. Add a keyword only against a real action string, not a guess.
+ */
+export function actionKindOf(node: { action?: string; actionKind?: ActionKind } | undefined): ActionKind | undefined {
+  if (!node) return undefined;
+  if (node.actionKind) return node.actionKind;
+  const a = String(node.action ?? "");
+  if (!a.trim()) return undefined;
+  if (/qualify/i.test(a)) return "qualify";
+  if (/escalate|hand[- ]?off|\bhand to\b|911|transfer/i.test(a)) return "escalate";
+  if (/\broute\b|routing|\brefer\b|referral|refer to/i.test(a)) return "informRoute";
+  if (/callback|\bbook\b|booking|schedul/i.test(a)) return "callback";
+  return "inform";
+}
+
 export const LEAF_QUALIFY = "Qualify";
 export const LEAF_ESCALATE = "Support & Escalate";
 export const LEAF_INFORM = "Inform & Route";

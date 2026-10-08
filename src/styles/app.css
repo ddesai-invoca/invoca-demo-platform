@@ -1138,6 +1138,9 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-leaf-action { display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: var(--color-text); }
 .wf-leaf-action .material-icons { font-size: 16px; }
 .wf-leaf-green { background: #eefaf1; border-color: #b7e6c4; }
+/* ⚠️ Dead: a leaf's glyph is `.wf-svg-ic` (an inline svg at `currentColor`), not a
+   Material ligature — the only `.material-icons` in this tree are the zoom controls.
+   Kept as a no-op rather than deleted blind; remove once the tone classes go. */
 .wf-leaf-green .wf-leaf-action .material-icons { color: #2fae4e; }
 .wf-leaf-orange { background: #fff4ef; border-color: #f6cdb8; }
 .wf-leaf-orange .wf-leaf-action .material-icons { color: #ef7d3b; }
@@ -1193,50 +1196,69 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
   font-size: 12px; border-radius: 100px; padding: 3px 10px;
 }
 
-/* ---- the three action tints, measured ------------------------------------- */
-.wf-v2 .wf-act-qualify  { background: rgba(208,193,242,.08); border: none; border-left: 5px solid #d0c1f2; }
-.wf-v2 .wf-act-inform   { background: rgba(38,102,249,.08);  border: none; border-left: 5px solid #2666f9; }
-.wf-v2 .wf-act-escalate { background: rgba(255,112,69,.08);  border: none; border-left: 5px solid #ff7045; }
-/* The action text AND its glyph take a dark ink of the same hue. */
-.wf-v2 .wf-act-qualify  .wf-leaf-action { color: #440066; }
-.wf-v2 .wf-act-inform   .wf-leaf-action { color: #11228c; }
-.wf-v2 .wf-act-escalate .wf-leaf-action { color: #b33b00; }
-/* ⚠️ THE GLYPH SITS IN A 26px BOX OF THE SAME HUE AT 12%, radius 3px — not a bare icon.
-   `currentColor` on the svg is what makes one ink rule above cover both. */
-.wf-v2 .wf-leaf-action .wf-svg-ic {
+/* ---- the FIVE action tints, all measured (10/8/2026) -----------------------
+   Measured off `reference/agent-workflow/sms-voice-all-actions.html`, a capture the
+   user built with every one of the five actions applied to a real node — which is
+   what the earlier note here asked for and could not get.
+
+   ⚠️⚠️ **THE TWO INFERRED HUES WERE RIGHT, AND THE BORDER WAS WRONG.** Inform &
+   Route (teal `#33e5c9`/`#007e73`) and Schedule Callback (green `#2cbf58`/`#0d5400`)
+   had been placed from the titan token system without ever being seen on a card;
+   both match the capture exactly. What was wrong on all five is the BORDER: this
+   said `border: none`, and the real card carries **1px solid on top/right/bottom**.
+
+   ⚠️⚠️ **THAT BORDER IS `currentColor` IN INVOCA'S OWN CSS, WHICH IS WHY IT WAS
+   MISREAD.** The authored rule declares `border-top/right/bottom-width: 1px` and
+   `-style: solid` and NO `-color`, so it resolves to the card's own `color` —
+   measured `#15243e` on every one of the five. The earlier reading of "no other
+   border" came from the UNTINTED card (`.css-153njh3`), which really does set
+   `border-color: #e7e9eb`. Two different cards, one of which I conflated.
+
+   ⚠️⚠️ **NO LONGER SCOPED TO `.wf-v2`, WHICH IS THE OTHER HALF OF THE REPORT.** The
+   tints only ever applied to the SMS template, so the VOICE tree and the authored
+   extra workflows fell back to an old pastel green/orange that is not in this system
+   at all — "some of the actions, and the colors are wrong". Asked for directly: the
+   five colours apply to SMS *and* voice. The hue now follows the ACTION wherever it
+   is drawn, which is also what makes a generated prospect correct for free.
+   ⚠️⚠️ **SPECIFICITY: THE ACTION RULES ARE WRITTEN `.wf-node.wf-act-*` (0,2,0) SO
+   THEY BEAT `.wf-leaf-green`/`-orange` (0,1,0) OUTRIGHT.** A node can still carry
+   both — the voice tree and the authored extras set `tone` as well as an action —
+   and a bare `.wf-act-*` would only TIE, leaving the winner to source order. That
+   is the fragility `.ts-tablewrap .ts-table` and `.wf-leaf .wf-leaf-add` both exist
+   to avoid in this stylesheet already. */
+.wf-node.wf-act-qualify     { background: rgba(208,193,242,.08); border: 1px solid #15243e; border-left: 5px solid #d0c1f2; }
+.wf-node.wf-act-callback    { background: rgba(44,191,88,.08);   border: 1px solid #15243e; border-left: 5px solid #2cbf58; }
+.wf-node.wf-act-inform      { background: rgba(38,102,249,.08);  border: 1px solid #15243e; border-left: 5px solid #2666f9; }
+.wf-node.wf-act-informroute { background: rgba(51,229,201,.08);  border: 1px solid #15243e; border-left: 5px solid #33e5c9; }
+.wf-node.wf-act-escalate    { background: rgba(255,112,69,.08);  border: 1px solid #15243e; border-left: 5px solid #ff7045; }
+
+/* The action text AND its glyph take their hue's `-100` token as ink. */
+.wf-act-qualify     .wf-leaf-action { color: #440066; }
+.wf-act-callback    .wf-leaf-action { color: #0d5400; }
+.wf-act-inform      .wf-leaf-action { color: #11228c; }
+.wf-act-informroute .wf-leaf-action { color: #007e73; }
+.wf-act-escalate    .wf-leaf-action { color: #b33b00; }
+
+/* ⚠️ THE GLYPH SITS IN A 26px BOX OF THE SAME HUE AT 12%, radius 3px — not a bare
+   icon. Re-measured on the new capture: all five are `26x26`, radius
+   `var(--titan-shape-borderRadius)` = 3px. `currentColor` on the svg is what makes
+   one ink rule above cover both the text and the glyph. */
+.wf-leaf-action .wf-svg-ic {
   box-sizing: content-box; width: 18px; height: 18px; padding: 4px; border-radius: 3px; flex: none;
 }
-.wf-v2 .wf-act-qualify  .wf-leaf-action .wf-svg-ic { background: rgba(208,193,242,.12); }
-.wf-v2 .wf-act-inform   .wf-leaf-action .wf-svg-ic { background: rgba(38,102,249,.12); }
-.wf-v2 .wf-act-escalate .wf-leaf-action .wf-svg-ic { background: rgba(255,112,69,.12); }
-
-/* ⚠️⚠️ THE OTHER TWO ACTIONS THE DROPDOWN OFFERS (9/17/2026), and their hues are DERIVED FROM
-   THE PALETTE RATHER THAN INVENTED. The capture's own titan variables show the system exactly:
-   every measured ink is its hue's `-100` token — Qualify purple-20 `#d0c1f2` / purple-100
-   `#440066`, Inform blue-50 `#2666f9` / blue-100 `#11228c`, Escalate orange-50 `#ff7045` /
-   orange-100 `#b33b00`. So Inform & Route is teal-40 `#33e5c9` / teal-100 `#007e73` — and
-   `#33e5c9` is exactly what the Create Workflow capture independently measured for that action —
-   and Schedule Callback is green-50 `#2cbf58` / green-100 `#0d5400`.
-   ⚠️ NO CAPTURE SHOWS A NODE CARRYING EITHER, because the dropdown was never applied in any of
-   the five. The 8% / 12% / 5px treatment is the measured one; only the hue is placed by the
-   palette. Replace if a capture ever shows such a card. */
-.wf-v2 .wf-act-informroute { background: rgba(51,229,201,.08); border: none; border-left: 5px solid #33e5c9; }
-.wf-v2 .wf-act-callback    { background: rgba(44,191,88,.08);  border: none; border-left: 5px solid #2cbf58; }
-.wf-v2 .wf-act-informroute .wf-leaf-action { color: #007e73; }
-.wf-v2 .wf-act-callback    .wf-leaf-action { color: #0d5400; }
-.wf-v2 .wf-act-informroute .wf-leaf-action .wf-svg-ic { background: rgba(51,229,201,.12); }
-.wf-v2 .wf-act-callback    .wf-leaf-action .wf-svg-ic { background: rgba(44,191,88,.12); }
+.wf-act-qualify     .wf-leaf-action .wf-svg-ic { background: rgba(208,193,242,.12); }
+.wf-act-callback    .wf-leaf-action .wf-svg-ic { background: rgba(44,191,88,.12); }
+.wf-act-inform      .wf-leaf-action .wf-svg-ic { background: rgba(38,102,249,.12); }
+.wf-act-informroute .wf-leaf-action .wf-svg-ic { background: rgba(51,229,201,.12); }
+.wf-act-escalate    .wf-leaf-action .wf-svg-ic { background: rgba(255,112,69,.12); }
 
 /* ---- connectors: 1px, and the colour of the node they point at ------------- */
 .wf-v2 .wf-l { stroke-width: 1; stroke: #d0d3d8; }
-.wf-v2 .wf-l-act-qualify  { stroke: #d0c1f2; }
-.wf-v2 .wf-l-act-inform   { stroke: #2666f9; }
-.wf-v2 .wf-l-act-escalate { stroke: #ff7045; }
-
-/* ⚠️ THE TINT MUST BEAT THE OLD TONE CLASSES, which the template still sets so that a tree
-   rendered WITHOUT the v2 scope (a snapshot, a test) still reads sensibly. `.wf-leaf-orange` is
-   (0,1,0) and so is `.wf-act-escalate`; scoping under `.wf-v2` makes these (0,2,0) and they win
-   outright rather than by source order — the tie `.ts-tablewrap .ts-table` exists to avoid. */
+.wf-l-act-qualify     { stroke: #d0c1f2; }
+.wf-l-act-callback    { stroke: #2cbf58; }
+.wf-l-act-inform      { stroke: #2666f9; }
+.wf-l-act-informroute { stroke: #33e5c9; }
+.wf-l-act-escalate    { stroke: #ff7045; }
 
 /* Voice flow tree: taller (intent subtitles + chips on both leaves) and neutral
    chips (so the Support leaf's chips aren't green-tinted). */
@@ -1246,8 +1268,13 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wf-voice .wf-chip { background: #f4f6f8; border-color: #d9dee4; color: #5b6577; }
 .wf-svg-ic { flex: none; }
 .wf-voice .wf-node-title .wf-svg-ic { color: #5b6577; }              /* grey node icons (MUI colorAction) */
-.wf-voice .wf-leaf-green .wf-leaf-action { color: #0d7a3e; }         /* Inform & Route — Invoca success green */
-.wf-voice .wf-leaf-orange .wf-leaf-action { color: #b33b00; }        /* Support & Escalate — Invoca warning orange */
+/* ⚠️⚠️ **THE TWO VOICE LEAF-INK RULES WERE DELETED HERE (10/8/2026).** They were
+   `.wf-voice .wf-leaf-green/-orange .wf-leaf-action { color: #0d7a3e / #b33b00 }`
+   at (0,3,0), which OUTRANKED the action inks at (0,2,0) — so once the five tints
+   reached the voice tree, a Qualify card came out lilac with GREEN text and an
+   Inform & Route card teal with green text. The ink now follows the action like
+   everything else. They also keyed off `tone`, which says nothing about what the
+   node does: four different actions on that tree all shared one green. */
 /* Voice tree is taller — hide the decorative minimap so it doesn't overlap the leaves. */
 .wf-canvas-voice .wf-minimap { display: none; }
 /* SAME REASON, SAME FIX, ON THE SMS CANVAS (9/8/2026). An SMS workflow that carries a

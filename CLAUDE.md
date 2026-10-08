@@ -10661,6 +10661,81 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### The FIVE action colours, measured at last, and they now reach VOICE too (10/8/2026)
+Asked for with a capture built for the purpose — *"I've created a workflow in a live website
+that has all of the colors and the design… I want you to match it exactly: the right color, the
+transparency, if there's a border around the box"* — and reported alongside it: *"I'm looking at
+some of the actions, and the colors are wrong."* Capture:
+`reference/agent-workflow/sms-voice-all-actions.html`, every one of the five applied to a real
+node, which is exactly what the 9/17 note in `app.css` asked for and could not get.
+
+| action | 8% fill + 5px left edge | icon box 12% | ink |
+|---|---|---|---|
+| Qualify | `#d0c1f2` | ✓ | `#440066` |
+| Schedule Callback | `#2cbf58` | ✓ | `#0d5400` |
+| Inform | `#2666f9` | ✓ | `#11228c` |
+| Inform & Route | `#33e5c9` | ✓ | `#007e73` |
+| Support & Escalate | `#ff7045` | ✓ | `#b33b00` |
+
+⚠️ **THE TWO INFERRED HUES WERE RIGHT.** Inform & Route and Schedule Callback had been placed
+from the titan token system without ever being seen on a card; both match the capture exactly.
+Card: 248px, padding 12, radius 6, **no shadow**. Icon box re-measured at **26x26, radius 3**.
+
+#### Two things WERE wrong, and the second is what was reported
+⚠️⚠️ **1. THE BORDER. `border: none` WAS A MISREADING OF A DIFFERENT CARD.** The real tinted card
+carries **1px solid on top/right/bottom** as well as the 5px left edge. Invoca's own rule declares
+those three sides' `width` and `style` and **no `color`**, so it resolves to the card's own
+`color` — measured `#15243e` on all five. The earlier "no other border" came from the UNTINTED
+card (`.css-153njh3`), which genuinely does set `border-color: #e7e9eb`. Two different cards, and
+I had conflated them. **A border-colour that is absent is not a border that is absent.**
+
+⚠️⚠️ **2. THE TINTS WERE SCOPED TO `.wf-v2`, SO THE VOICE TREE NEVER GOT THEM.** That scoping was
+right when it was written (the voice tree and seven authored extras share `.wf-node`/`.wf-leaf-*`,
+and restyling them for an SMS change is what cost this repo 79 deleted `.cd-` rules once) and it
+became the defect the moment the five colours were asked for on both channels. Voice fell back to
+an old pastel `#eefaf1`/`#b7e6c4` green and `#fff4ef`/`#f6cdb8` orange that is not in this system
+at all. **Un-scoped now**, so the hue follows the ACTION wherever a card is drawn.
+⚠️ **SPECIFICITY: the card rules are `.wf-node.wf-act-*` (0,2,0)** so they beat `.wf-leaf-green`
+/`-orange` (0,1,0) OUTRIGHT — a node carries both, and a bare `.wf-act-*` would only TIE and leave
+the winner to source order.
+⚠️⚠️ **AND TWO `.wf-voice` INK RULES HAD TO GO, OR THE FIX WAS HALF-APPLIED AND LOOKED BROKEN.**
+`.wf-voice .wf-leaf-green/-orange .wf-leaf-action { color: … }` is (0,3,0) and outranked the
+action inks at (0,2,0) — measured: a Qualify card came out lilac with **green** text, and four
+different actions all shared one green because `tone` says nothing about what a node does.
+
+#### `actionKindOf` — one resolver, because there were two and they disagreed
+⚠️⚠️ The DRAWER resolved a node's action from its TEXT (a private `kindOfNode`) while the RENDERER
+read `node.actionKind` and tinted nothing without it. Only the SMS template sets that field, so
+**every voice node and every authored extra opened the right drawer and rendered with no colour**
+— two answers to one question. One exported resolver in `workflowChrome.ts` (DOM-free, so the
+engine and the audits import it); the drawer delegates and the renderer calls it.
+⚠️⚠️ **ITS KEYWORD ORDER IS DECIDED BY THE STRINGS THAT ACTUALLY EXIST**, enumerated across the
+demos and seeds (29 of them). `escalate` before `route`, or "Warm Hand-off" and "Transfer
+Registration" read as routing. **`route` before `callback`, and one string settles it: "Refer to
+Scheduling" contains BOTH "refer" and "schedul"** — it is a referral, so routing wins, while
+"Schedule Appointment" carries no routing word and still lands on callback. `inform` is the
+FALLBACK rather than a keyword, so an unmatched action is never left colourless.
+⚠️ **A NODE WITH NO ACTION RESOLVES TO NOTHING** and stays neutral; an explicit `actionKind` still
+outranks the text, so a node switched in the SMS dropdown is not re-read from its stale label.
+⚠️ **CONSEQUENCE, STATED: authored prose actions are INFERRED, not declared.** "Book Appointment"
+→ green, "Refer to Primary Care" → teal, "Offer the Nearest Facility" → blue. Defensible, and a
+one-line fix per string if one reads wrong.
+
+⚠️ **PROVENANCE, STATED: the capture's open tree is "Aptive SMS".** Its sub-nav lists a voice
+workflow but the rendered tree is the SMS one, so the five values are measured on an SMS card and
+applied to voice **on the user's explicit instruction**, not from a voice capture. Same component
+and same token system, so this is very likely right — but it is an instruction, not a measurement.
+
+**`audit:ai` gained 10 checks** and **five existing ones were re-aimed**, one of which **inverted**:
+it asserted the tints stayed scoped to `.wf-v2` so the voice tree kept its own look, which was the
+signed-off behaviour and is now the defect. What it protects instead is what still matters — the
+tints must REACH voice, and the tone-keyed inks must not come back to outrank them.
+⚠️ Five sabotages fire: swapping the route/callback order, the renderer reading the field again,
+the border back to `none`, re-scoping to `.wf-v2`, and a voice tone ink restored.
+**Verified in the browser on both trees**: SMS 8 leaves and voice 9 leaves, **zero mismatches**
+against the capture's fill/edge/ink for every node, including nodes carrying BOTH a tone class and
+an action class.
+
 ### Tooltips on the demo-row controls (10/7/2026)
 *"Add tooltips when users hover over the flag, share and delete, telling them what they are
 do"*. `src/components/Tooltip.tsx` + `.ttp-*`.
