@@ -209,12 +209,26 @@ app.get("/api/canary", (_req, res) => res.json(canaryPublic()));
    SE can revoke instantly from the share dialog.
    ───────────────────────────────────────────────────────────────────────────── */
 app.get("/api/share/*", async (req, res) => {
-  const r = await handleShareApi("GET", req.path, undefined, parseCookies(req.headers.cookie));
+  const r = await handleShareApi("GET", req.path, undefined, parseCookies(req.headers.cookie), shareBase(req));
+  if (!r) return res.status(404).json({ error: "Not found." });
+  res.status(r.status).json(r.body ?? {});
+});
+/* ⚠️ The link that goes in the password email has to be the one the prospect can open,
+   so it comes from the request rather than a constant — BASE_URL when set, the host
+   otherwise, exactly as the demo library's own routes resolve it. */
+const shareBase = (req: { protocol: string; get: (h: string) => string | undefined }) =>
+  process.env.BASE_URL || `${req.protocol}://${req.get("host")}`;
+
+/* ⚠️⚠️ REGISTERED BEFORE `installAuth`, like the rest of /api/share — a prospect has no
+   Invoca session and never will. It sends mail to a caller-chosen address, so its guards
+   are in `handleShareApi`: a shape check, a live link, and the per-link daily cap. */
+app.post("/api/share/:token/request-password", async (req, res) => {
+  const r = await handleShareApi("POST", req.path, req.body || {}, parseCookies(req.headers.cookie), shareBase(req));
   if (!r) return res.status(404).json({ error: "Not found." });
   res.status(r.status).json(r.body ?? {});
 });
 app.post("/api/share/:token/unlock", async (req, res) => {
-  const r = await handleShareApi("POST", req.path, req.body || {}, parseCookies(req.headers.cookie));
+  const r = await handleShareApi("POST", req.path, req.body || {}, parseCookies(req.headers.cookie), shareBase(req));
   if (!r) return res.status(404).json({ error: "Not found." });
   if (r.setCookie) {
     /* ⚠️ HttpOnly so page script cannot read it, SameSite=Lax so it survives the

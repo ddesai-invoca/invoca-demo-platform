@@ -43,9 +43,22 @@ export interface ShareRecord {
   days: number;
   passwordHash: string;
   passwordSalt: string;
+  /* ⚠️⚠️ **CAN THE PASSWORD BE EMAILED?** Only a DERIVED one can: the store keeps a hash,
+     so a password somebody typed cannot be recovered to send. Without this flag the
+     request route would cheerfully email `sharePassword(prospect)` to a link protected by
+     something else — a password that does not work, with nothing to explain why. Absent on
+     every share created before 10/8/2026, which is why the route treats missing as FALSE
+     rather than assuming. */
+  derivedPassword?: boolean;
   revokedAt?: string;
-  /** Bumped on every successful unlock, so an SE can see the link was opened. */
+  /** Bumped on every successful unlock, so the owner can see the link was opened. */
   opens?: number;
+  /* ⚠️⚠️ **WHO ASKED FOR THE PASSWORD (10/8/2026), AND IT IS THE POINT OF THE CHANGE.**
+     Asked for as *"instead of us giving them the password… they have to enter their email,
+     and then a password is send to them"*. The password itself is the prospect's own name,
+     so this list — not the password — is what the flow actually buys: a record of who
+     opened the demo, and the only thing that makes an abusive request visible. */
+  requests?: { email: string; at: string }[];
   lastOpenedAt?: string;
 }
 
@@ -81,6 +94,21 @@ function hash(password: string, salt: string): string {
  * THROWS on a length mismatch rather than returning false, so comparing a wrong-
  * length candidate would crash the unlock route instead of refusing the password.
  */
+/** ⚠️ CAPPED IN THE RECORD AS WELL AS AT THE ROUTE. The route's daily budget stops a
+ *  burst; this stops a slow drip growing a JSON file nobody reads until it fails to parse.
+ *  Newest last, oldest dropped. */
+const REQUESTS_MAX = 200;
+
+/** Record that this address asked for the password. Returns false for an unknown token. */
+export function noteRequest(token: string, email: string): boolean {
+  const rec = getShare(token);
+  if (!rec) return false;
+  const kept = (rec.requests ?? []).filter((r) => r.email.toLowerCase() !== email.toLowerCase());
+  rec.requests = [...kept, { email, at: new Date().toISOString() }].slice(-REQUESTS_MAX);
+  write(rec);
+  return true;
+}
+
 export function passwordMatches(rec: ShareRecord, candidate: string): boolean {
   const got = Buffer.from(hash(candidate ?? "", rec.passwordSalt), "hex");
   const want = Buffer.from(rec.passwordHash, "hex");
@@ -125,7 +153,7 @@ export function deleteSharesFor(demoId: string): number {
   return n;
 }
 
-export function createShare(opts: { demoId: string; prospect: string; createdBy: string; days: number; password: string }): ShareRecord {
+export function createShare(opts: { demoId: string; prospect: string; createdBy: string; days: number; password: string; derivedPassword?: boolean }): ShareRecord {
   ensureDir();
   /* ⚠️⚠️ **ONE LIVE LINK PER DEMO: creating REPLACES.** Asked for directly — a second
      link is two secrets to track and two things to remember to turn off, and an SE
@@ -144,6 +172,7 @@ export function createShare(opts: { demoId: string; prospect: string; createdBy:
        that never expires is the one nobody remembers to revoke. */
     days: Math.min(365, Math.max(1, Math.round(opts.days || DEFAULT_SHARE_DAYS))),
     passwordHash: hash(opts.password, salt),
+    ...(opts.derivedPassword ? { derivedPassword: true } : {}),
     passwordSalt: salt,
   };
   write(rec);

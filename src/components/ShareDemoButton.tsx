@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { DEFAULT_SHARE_DAYS } from "../data/shareDefaults";
 import CenterModal from "./CenterModal";
 import Tooltip from "./Tooltip";
+import { sharePassword } from "../data/sharePassword";
 
 /* =============================================================================
    ShareDemoButton — the SE's half: make a prospect link, then manage it
@@ -117,7 +118,14 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
               <input className="shr-input" type="text" value={password} placeholder={name}
                 onChange={(e) => setPassword(e.target.value)} />
             </label>
-            <p className="shr-hint">Leave the password blank to use “{name}”.</p>
+            {/* ⚠️ SHOWS WHAT THE PASSWORD WILL ACTUALLY BE, which is the name with the spaces
+                  taken out — not the name itself. It is also what gets emailed, so a hint
+                  that printed the spaced form would have somebody reading out a password
+                  that does not work. */}
+              <p className="shr-hint">
+                Leave blank to use “{sharePassword(name)}”, which we email to whoever asks for it.
+                Setting one here means they have to get it from you instead.
+              </p>
             {err && <p className="shr-err">{err}</p>}
             <button className="shr-btn" type="submit" disabled={busy}>
               {busy ? "Working…" : "Create link"}

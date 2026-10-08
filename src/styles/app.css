@@ -6623,6 +6623,17 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 }
 .share-input:focus { outline: 2px solid #2666f9; outline-offset: -1px; border-color: #2666f9; }
 .share-error { font: 400 13px/18px Lato, sans-serif; color: #b33b00; margin: 2px 0 0; }
+/* ⚠️ A NOTE IS NOT AN ERROR. "We could not send the email" is information the prospect
+   can act on (ask their contact), not something they got wrong — same box, calmer ink. */
+.share-note { font: 400 13px/18px Lato, sans-serif; color: #5b6577; margin: 2px 0 0; }
+/* The secondary way through, under the primary button. Deliberately quiet: it is the
+   path for a mail that did not arrive, not a choice anybody should weigh first. */
+.share-link {
+  margin-top: 10px; background: none; border: 0; padding: 0; cursor: pointer;
+  font: 400 13px/18px Lato, sans-serif; color: #5b6577; text-decoration: underline;
+  align-self: center;
+}
+.share-link:hover { color: #15243e; }
 .share-btn {
   margin-top: 10px; height: 36px; border: 0; border-radius: 3px; cursor: pointer;
   background: #2666f9; color: #fff; font: 500 14px/36px Lato, sans-serif;

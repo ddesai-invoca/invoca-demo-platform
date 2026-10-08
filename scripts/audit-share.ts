@@ -441,6 +441,113 @@ const L = code("src/screens/Launch.tsx");
   ? ok("the launch-time share request is admin-gated")
   : bad("the launch-time share request is not admin-gated");
 
+
+/* =============================================================================
+   THE PASSWORD IS EMAILED, NOT PASSED ALONG (10/8/2026)
+   -----------------------------------------------------------------------------
+   Asked for: *"instead of us giving them the password, i want to setup it up so that
+   they have to enter their email, and then a password is send to them from
+   noreply@invoca.com, the password is the prospect's name with no spaces."*
+
+   ⚠️⚠️ **WHAT THIS BUYS IS A RECORD OF WHO OPENED THE DEMO, NOT A SECOND FACTOR.** The
+   password is the prospect's own name and the unlock page prints that name in its own
+   heading, so anybody holding the link can derive it without asking. The 32-byte token
+   in the URL is still the only real secret. These checks are written to that reading.
+   ============================================================================= */
+console.log("\nEmailed share password\n");
+{
+  const { sharePassword } = await import("../src/data/sharePassword.ts");
+  const { sharePasswordEmail } = await import("../engine/mailer.ts");
+
+  sharePassword("United Veterinary Care") === "UnitedVeterinaryCare"
+    ? ok("the password is the prospect's name with the spaces taken out")
+    : bad(`sharePassword is wrong: ${sharePassword("United Veterinary Care")}`);
+  /* ⚠️ EVERY whitespace run, not just " " — a pasted name can carry a non-breaking
+     space or a tab, and a password nobody can type is worse than a weak one. */
+  sharePassword("Avi  &\tCo.") === "Avi&Co."
+    ? ok("tabs and non-breaking spaces are stripped too, and punctuation is kept")
+    : bad(`unusual whitespace survives: ${JSON.stringify(sharePassword("Avi  &\tCo."))}`);
+
+  /* ⚠️ The emailed string and the stored hash must come from ONE function, or the
+     password that arrives is not the one that opens the link. */
+  const api = code("engine/shareApi.ts");
+  (api.match(/sharePassword\(/g)?.length ?? 0) >= 2 && !/replace\(\/\\s/.test(api)
+    ? ok("both the create route and the email derive the password from one function")
+    : bad("the password is derived twice — the sent string and the stored hash can disagree");
+
+  /* ⚠️⚠️ A CUSTOM PASSWORD CANNOT BE EMAILED. The store keeps a hash, so one somebody
+     typed cannot be recovered — and sending the DERIVED one instead would be worse than
+     sending nothing, because it would not open the link and nothing would say why. */
+  /if \(!rec\.derivedPassword\)/.test(api) && /password set by your Invoca contact/.test(api)
+    ? ok("a link with a custom password refuses to email one, and says why")
+    : bad("a custom-password link would be emailed a password that does not work");
+  /derivedPassword: !custom/.test(api)
+    ? ok("only a derived password is flagged as emailable")
+    : bad("the derived flag is not set from whether a password was supplied");
+
+  /* ⚠️ The recipient is caller-chosen, so the shape check and the cap are the guards. */
+  /\[\^\\s@\]\+@/.test(api) && /email\.length > 254/.test(api)
+    ? ok("the address is shape-checked and length-bounded")
+    : bad("any string is accepted as an email address");
+  /takeBudget\(token, "email"\)/.test(api) && /CAPS = \{ chat: 120, voice: 10, email: 12 \}/.test(api)
+    ? ok("requests are capped per link per day, so a leaked link is not a mail relay")
+    : bad("the request route is uncapped — a share link could push unsolicited mail");
+  /noteRequest\(token, email\)/.test(api)
+    ? ok("every request is recorded on the share, so a burst is visible afterwards")
+    : bad("nobody can see who asked for the password — the point of the change");
+  /* ⚠️ RECORDED EVEN WHEN NOTHING IS SENT. Who asked is the fact worth keeping; whether
+     the mail left is a separate question. */
+  api.indexOf("noteRequest(token, email)") < api.indexOf("if (!rec.derivedPassword)")
+    ? ok("the request is recorded before the send is attempted")
+    : bad("a refused send loses the record of who asked");
+
+  /* The mail itself. */
+  const mail = sharePasswordEmail("buyer@acme.com", "United Veterinary Care",
+    "UnitedVeterinaryCare", "https://x/share/tok", "noreply@invoca.com");
+  mail.from === "noreply@invoca.com" && mail.to === "buyer@acme.com"
+    ? ok("the mail carries the configured From") : bad("the From is not set on the mail");
+  mail.text.includes("UnitedVeterinaryCare") && mail.text.includes("https://x/share/tok")
+    && (mail.html ?? "").includes("UnitedVeterinaryCare")
+    ? ok("both bodies carry the password and the link")
+    : bad("the email is missing the password or the link");
+  /* ⚠️ The prospect name is AI-written text going into HTML mail. */
+  !(sharePasswordEmail("b@a.com", "<script>x</script>", "p", "u").html ?? "").includes("<script>")
+    ? ok("the prospect name is escaped into the HTML body")
+    : bad("the prospect name is injected into HTML mail unescaped");
+
+  /* ⚠️ SET IT IN BOTH TRANSPORTS OR NEITHER — the rule mailer.ts already states for
+     Reply-To and Cc; a From honoured by one route silently depends on which is live. */
+  const mailer = code("engine/mailer.ts");
+  /From: \$\{mail\.from \?/.test(mailer) && /from: `"\$\{FROM_NAME\}" <\$\{mail\.from \|\| USER\}>`/.test(mailer)
+    ? ok("both transports honour the From")
+    : bad("one transport ignores mail.from — it depends which happens to be configured");
+
+  /* ⚠️ PUBLIC, like the rest of /api/share — a prospect has no Invoca session. */
+  const srv = code("server.ts");
+  srv.indexOf('app.post("/api/share/:token/request-password"') > 0
+  && srv.indexOf('app.post("/api/share/:token/request-password"') < srv.indexOf("installAuth(app)")
+    ? ok("the request route is public, registered before the auth gate")
+    : bad("the request route is behind the gate, or missing — a prospect could never reach it");
+  /\/api\/share\//.test(code("vite.config.ts"))
+    ? ok("the dev twin serves it too") : bad("the route 404s in dev while production serves it");
+  /baseUrl = ""/.test(api) && /shareBase\(req\)/.test(srv)
+    ? ok("the emailed link is built from the request, not a constant")
+    : bad("the link in the email would be wrong off production");
+
+  /* The gate itself. */
+  const gate = code("src/screens/ShareApp.tsx");
+  /requestPassword/.test(gate) && /Email me the password/.test(gate)
+    ? ok("the gate asks for an email first")
+    : bad("the gate still asks for a password nobody was sent");
+  /I already have the password/.test(gate)
+    ? ok("there is still a way through when the mail does not arrive")
+    : bad("a spam filter or an unconfigured mailer leaves the prospect with no route");
+  /if \(!body\?\.sent\) setNote/.test(gate)
+    ? ok("an unsent email says so rather than pointing at an empty inbox")
+    : bad("the gate claims an email was sent whatever happened");
+}
+
+
 fs.rmSync(process.env.DATA_DIR!, { recursive: true, force: true });
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll share checks passed\n");
 process.exit(fail ? 1 : 0);

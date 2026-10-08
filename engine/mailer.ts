@@ -93,7 +93,8 @@ function rawMessage(from: string, mail: Mail): string {
     : `=?UTF-8?B?${b64(mail.subject)}?=`;
   const boundary = "b" + Math.random().toString(36).slice(2);
   const headers = [
-    `From: ${from}`, `To: ${mail.to}`, `Reply-To: ${mail.replyTo || GMAIL_SENDER || from}`,
+    `From: ${mail.from ? `"${FROM_NAME}" <${mail.from}>` : from}`,
+    `To: ${mail.to}`, `Reply-To: ${mail.replyTo || GMAIL_SENDER || from}`,
     ...(mail.cc ? [`Cc: ${mail.cc}`] : []),
     `Subject: ${subject}`, "MIME-Version: 1.0",
   ];
@@ -176,6 +177,13 @@ export interface Mail {
      what the completion email wants (a reply there should reach the maintainer,
      not be sent to the person who is already the recipient). */
   replyTo?: string;
+  /* ⚠️⚠️ **SETTING THIS DOES NOT GUARANTEE IT.** Gmail only honours a `From` the sending
+     account is allowed to send as — the account itself, or an address verified under
+     Settings > Accounts > "Send mail as". Anything else is REWRITTEN to the real account
+     silently, so the mail still arrives, just not from the address asked for. Nothing here
+     can detect that; `docs/SHARE-EMAIL.md` says what to configure. SMTP behaves the same
+     way at most providers. Defaults to the sending account. */
+  from?: string;
   /* ⚠️⚠️ **SET IT IN BOTH TRANSPORTS OR NEITHER.** This file sends by two routes —
      a hand-built RFC822 message for the Gmail API and nodemailer for SMTP — and a
      header added to one silently depends on which route happens to be configured.
@@ -250,7 +258,10 @@ export async function sendMail(
   try {
     if (gmailReady()) await sendViaGmail(mail);
     else await getTransport().sendMail({
-      from: `"${FROM_NAME}" <${USER}>`,
+      /* ⚠️ BOTH TRANSPORTS OR NEITHER — the rule this file already states for Reply-To
+         and Cc. A `from` honoured by one route and ignored by the other silently depends
+         on which happens to be configured. */
+      from: `"${FROM_NAME}" <${mail.from || USER}>`,
       replyTo: mail.replyTo || USER,
       to: mail.to,
       ...(mail.cc ? { cc: mail.cc } : {}),
@@ -444,5 +455,42 @@ export function markNoticeEmail(opts: {
     text: lines.join("\n"),
     html,
     replyTo: opts.seEmail,
+  };
+}
+
+/* =============================================================================
+   The share-link password, emailed to whoever asks for it (10/8/2026)
+   -----------------------------------------------------------------------------
+   Asked for directly: *"instead of us giving them the password, i want to setup it
+   up so that they have to enter their email, and then a password is send to them
+   from noreply@invoca.com, the password is the prospect's name with no spaces."*
+
+   ⚠️⚠️ **THE PASSWORD IS NOT A SECRET, AND THE DESIGN SHOULD BE READ THAT WAY.** It
+   is the prospect's own company name, and the unlock page prints that name in its
+   own heading — so anybody holding the link can guess it without ever asking. What
+   this flow actually buys is a RECORD OF WHO OPENED THE DEMO (`ShareRecord.requests`)
+   and one less thing for a rep to pass along by hand. **The real secret is still the
+   32-byte token in the URL**, exactly as before; nothing here weakens that, but
+   nothing here strengthens it either. If the password ever needs to be a gate, it has
+   to stop being derivable from the page it guards.
+   ============================================================================= */
+export function sharePasswordEmail(
+  to: string, prospect: string, password: string, url: string, from?: string,
+): Mail {
+  const name = esc(prospect);
+  return {
+    to,
+    ...(from ? { from } : {}),
+    subject: `Your password for the ${prospect} demo`,
+    text:
+      `Here is the password for the ${prospect} AI Agent demo:\n\n` +
+      `    ${password}\n\n` +
+      `Open the demo: ${url}\n\n` +
+      `If you did not ask for this, you can ignore it.`,
+    html:
+      `<p>Here is the password for the <strong>${name}</strong> AI Agent demo:</p>` +
+      `<p style="font-size:20px;font-weight:700;letter-spacing:.02em">${esc(password)}</p>` +
+      `<p><a href="${esc(url)}">Open the demo</a></p>` +
+      `<p style="color:#868e96;font-size:13px">If you did not ask for this, you can ignore it.</p>`,
   };
 }

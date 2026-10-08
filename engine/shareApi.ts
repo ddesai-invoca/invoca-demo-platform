@@ -23,7 +23,9 @@
    ============================================================================= */
 import crypto from "node:crypto";
 import { DEFAULT_SHARE_DAYS } from "../src/data/shareDefaults.ts";
-import { getShare, passwordMatches, shareActive, noteOpen, expiresAt, type ShareRecord } from "./shareStore.ts";
+import { getShare, passwordMatches, shareActive, noteOpen, noteRequest, expiresAt, type ShareRecord } from "./shareStore.ts";
+import { sendMail, sharePasswordEmail } from "./mailer.ts";
+import { sharePassword } from "../src/data/sharePassword.ts";
 import { getDemo } from "./demoStore.ts";
 
 const SECRET = process.env.SESSION_SECRET || process.env.GOOGLE_CLIENT_SECRET || "insecure-dev-secret";
@@ -56,18 +58,31 @@ export function unlocked(cookies: Record<string, string>, token: string): boolea
  * deploy. That is an acceptable trade for a link an SE can revoke instantly, and the
  * cap's real job is stopping a runaway script, not a patient adversary.
  */
-const spend = new Map<string, { day: string; chat: number; voice: number }>();
-export const CAPS = { chat: 120, voice: 10 };
+const spend = new Map<string, { day: string; chat: number; voice: number; email: number }>();
+
+/* ⚠️⚠️ **`SHARE_FROM` IS A REQUEST, NOT A GUARANTEE.** Gmail only honours a From the
+   sending account may send as — itself, or an address verified under "Send mail as".
+   Anything else is silently REWRITTEN to the real account, so the mail arrives from the
+   wrong address and nothing errors. Unset, it falls through to the sending account, which
+   is the honest default. See `docs/SHARE-EMAIL.md`. */
+const shareFrom = (): string | undefined => process.env.SHARE_FROM?.trim() || undefined;
+/* ⚠️⚠️ `email` IS AN ABUSE BOUND, NOT A FAIRNESS ONE. The request route sends mail to an
+   address the CALLER chooses, so anybody holding a share link could otherwise use it to
+   push unsolicited mail from an invoca.com address. The body is fixed — a password and the
+   demo's own link, nothing the caller can influence — so the worst case is a handful of
+   confusing emails rather than a spam relay, and 12 a day per link bounds even that. Every
+   request is also recorded on the share, so a burst is visible rather than merely blocked. */
+export const CAPS = { chat: 120, voice: 10, email: 12 };
 
 function budget(token: string) {
   const day = new Date().toISOString().slice(0, 10);
   const cur = spend.get(token);
-  if (!cur || cur.day !== day) { const fresh = { day, chat: 0, voice: 0 }; spend.set(token, fresh); return fresh; }
+  if (!cur || cur.day !== day) { const fresh = { day, chat: 0, voice: 0, email: 0 }; spend.set(token, fresh); return fresh; }
   return cur;
 }
 
 /** Returns false when this link has spent its allowance for the day. */
-export function takeBudget(token: string, kind: "chat" | "voice"): boolean {
+export function takeBudget(token: string, kind: keyof typeof CAPS): boolean {
   const b = budget(token);
   if (b[kind] >= CAPS[kind]) return false;
   b[kind] += 1;
@@ -105,6 +120,10 @@ export async function handleShareApi(
   urlPath: string,
   body: Record<string, unknown> | undefined,
   cookies: Record<string, string>,
+  /* ⚠️ PASSED IN BY EACH TWIN, never read from process.env here — the same rule
+     `status.ts` states at the top of its own file, and what lets the emailed link be
+     correct on staging and on a laptop as well as in production. */
+  baseUrl = "",
 ): Promise<ShareResult | null> {
   const m = /^\/api\/share\/([A-Za-z0-9_-]{20,64})(\/[a-z-]+)?$/.exec(urlPath);
   if (!m) return null;
@@ -120,6 +139,40 @@ export async function handleShareApi(
   if (method === "GET" && leaf === "") {
     if (!shareActive(rec)) return gone(rec);
     return { status: 200, body: { prospect: rec.prospect, expiresAt: expiresAt(rec).toISOString(), needsPassword: !unlocked(cookies, token) } };
+  }
+
+  /* ⚠️⚠️ **PUBLIC, AND IT SENDS MAIL TO AN ADDRESS THE CALLER CHOOSES** — so every guard
+     here is load-bearing. The body is fixed (the password and this demo's own link), the
+     recipient is validated, the link must be live, and the per-link daily cap bounds the
+     worst case. Each request is recorded on the share so a burst is visible afterwards
+     rather than only blocked at the time. */
+  if (method === "POST" && leaf === "/request-password") {
+    const email = String(body?.email ?? "").trim();
+    /* ⚠️ A SHAPE CHECK, NOT A DELIVERABILITY ONE. Rejecting anything that is not plausibly
+       an address keeps obvious junk out of the record and out of the mailer; whether it
+       EXISTS is not knowable here, and the reply must not reveal it either way. */
+    if (!/^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(email) || email.length > 254) {
+      return { status: 400, body: { error: "That does not look like an email address." } };
+    }
+    if (!takeBudget(token, "email")) {
+      return { status: 429, body: { error: "Too many requests for this link today. Please contact your Invoca contact." } };
+    }
+    /* ⚠️⚠️ **A CUSTOM PASSWORD CANNOT BE EMAILED, AND SENDING THE DERIVED ONE WOULD BE
+       WORSE THAN SENDING NOTHING** — it would not open the link, and the prospect would
+       have no way to know why. Recorded either way, because who asked is the point. */
+    noteRequest(token, email);
+    if (!rec.derivedPassword) {
+      return { status: 200, body: { sent: false, reason: "This link uses a password set by your Invoca contact — please ask them for it." } };
+    }
+    const password = sharePassword(rec.prospect);
+    const url = `${baseUrl}/share/${token}`;
+    const sent = await sendMail(sharePasswordEmail(email, rec.prospect, password, url, shareFrom()));
+    /* ⚠️ **THE OUTCOME IS REPORTED HONESTLY.** `sendMail` legitimately declines off
+       production and with no mailer configured, and telling somebody to check an inbox
+       nothing was sent to is the silent no-op this repo keeps paying for. */
+    return sent.sent
+      ? { status: 200, body: { sent: true } }
+      : { status: 200, body: { sent: false, reason: sent.reason || "The email could not be sent." } };
   }
 
   if (method === "POST" && leaf === "/unlock") {
@@ -213,7 +266,12 @@ export async function handleShareAdminApi(
     if (method === "GET") return { status: 200, body: { shares: listShares(demoId).map(summarize) } };
     if (method === "POST") {
       const days = Number(body?.days ?? DEFAULT_SHARE_DAYS);
-      const password = typeof body?.password === "string" && body.password.trim() ? body.password : String(body?.prospect ?? "");
+      /* ⚠️ The default is the prospect's name with the spaces taken out (10/8/2026),
+         where it used to be the name verbatim. ONE definition, in `sharePassword` —
+         the email reads the same function, so the stored hash and the sent string
+         cannot disagree. An explicit password still wins for anyone who wants one. */
+      const custom = typeof body?.password === "string" && body.password.trim();
+      const password = custom ? String(body.password) : sharePassword(String(body?.prospect ?? ""));
       if (!password.trim()) return { status: 400, body: { error: "A password is required." } };
       const rec = createShare({
         demoId,
@@ -221,6 +279,9 @@ export async function handleShareAdminApi(
         createdBy: user.email,
         days,
         password,
+        /* ⚠️ Only a DERIVED password can be emailed — the store keeps a hash, so a typed
+           one cannot be recovered to send. See `ShareRecord.derivedPassword`. */
+        derivedPassword: !custom,
       });
       return { status: 201, body: { share: summarize(rec) } };
     }

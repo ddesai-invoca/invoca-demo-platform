@@ -52,6 +52,15 @@ export default function ShareApp() {
   const [phase, setPhase] = useState<Phase>({ k: "loading" });
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
+  /* ⚠️⚠️ **TWO STEPS, NOT A SECOND FACTOR (10/8/2026).** Asked for as *"instead of us
+     giving them the password… they have to enter their email, and then a password is
+     send to them."* The password is the prospect's own name, which this page prints in
+     its own heading — so the email step is what RECORDS WHO OPENED THE DEMO, and the
+     32-byte token in the URL is still the only real secret. `sentTo` is what moves the
+     card from asking for an address to asking for the password. */
+  const [email, setEmail] = useState("");
+  const [sentTo, setSentTo] = useState<string | null>(null);
+  const [note, setNote] = useState<string | null>(null);
 
   /** Pull the demo once the link is unlocked. */
   async function openDemo(): Promise<boolean> {
@@ -78,6 +87,29 @@ export default function ShareApp() {
       setPhase({ k: "locked", prospect: body.prospect || "" });
     })().catch(() => setPhase({ k: "gone", message: "This demo link is not available right now." }));
   }, []);
+
+  async function requestPassword(e: React.FormEvent) {
+    e.preventDefault();
+    if (busy) return;
+    setBusy(true);
+    try {
+      const res = await fetch(`/api/share/${SHARE_TOKEN}/request-password`, {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: email.trim() }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        setPhase((p) => (p.k === "locked" ? { ...p, error: body?.error || "That could not be sent." } : p));
+        return;
+      }
+      setSentTo(email.trim());
+      setPhase((p) => (p.k === "locked" ? { ...p, error: undefined } : p));
+      /* ⚠️ **AN UNSENT EMAIL SAYS SO RATHER THAN SENDING SOMEBODY TO AN EMPTY INBOX.**
+         `sendMail` legitimately declines off production and with no mailer configured,
+         and the step still advances so a password given by hand is usable. */
+      if (!body?.sent) setNote("We could not send the email. Please ask your Invoca contact for the password.");
+    } finally { setBusy(false); }
+  }
 
   async function unlock(e: React.FormEvent) {
     e.preventDefault();
@@ -111,17 +143,56 @@ export default function ShareApp() {
   }
 
   if (phase.k === "locked") {
+    const title = phase.prospect ? `${phase.prospect} — AI Agent demo` : "AI Agent demo";
+    /* Step one: who are you? The password is emailed rather than passed along by hand. */
+    if (!sentTo) {
+      return (
+        <Shell>
+          <h1 className="share-title">{title}</h1>
+          <p className="share-muted">
+            Enter your email and we will send you the password for this demo.
+          </p>
+          <form onSubmit={requestPassword} className="share-form">
+            <label className="share-label" htmlFor="share-email">Email</label>
+            <input id="share-email" className="share-input" type="email" value={email} autoFocus
+              autoComplete="email" inputMode="email" placeholder="you@company.com"
+              onChange={(e) => { setEmail(e.target.value); setNote(null); }} />
+            {phase.error && <p className="share-error">{phase.error}</p>}
+            <button className="share-btn" type="submit" disabled={busy || !email.trim()}>
+              {busy ? "Sending…" : "Email me the password"}
+            </button>
+            {/* ⚠️ A way through when the mail does not arrive — a spam filter or a mailer
+                that is not configured must not leave somebody with no route at all, and
+                somebody who was given the password by hand should not have to ask for a
+                second copy. */}
+            <button type="button" className="share-link" onClick={() => setSentTo("")}>
+              I already have the password
+            </button>
+          </form>
+        </Shell>
+      );
+    }
+
     return (
       <Shell>
-        <h1 className="share-title">{phase.prospect ? `${phase.prospect} — AI Agent demo` : "AI Agent demo"}</h1>
-        <p className="share-muted">Enter the password your Invoca contact shared with you.</p>
+        <h1 className="share-title">{title}</h1>
+        <p className="share-muted">
+          {sentTo
+            ? <>We sent the password to <strong>{sentTo}</strong>. Enter it below.</>
+            : "Enter the password for this demo."}
+        </p>
         <form onSubmit={unlock} className="share-form">
           <label className="share-label" htmlFor="share-pw">Password</label>
           <input id="share-pw" className="share-input" type="password" value={password} autoFocus
             autoComplete="current-password" onChange={(e) => setPassword(e.target.value)} />
+          {note && <p className="share-note">{note}</p>}
           {phase.error && <p className="share-error">{phase.error}</p>}
           <button className="share-btn" type="submit" disabled={busy || !password}>
             {busy ? "Checking…" : "Open demo"}
+          </button>
+          <button type="button" className="share-link"
+            onClick={() => { setSentTo(null); setNote(null); setPassword(""); }}>
+            Use a different email
           </button>
         </form>
       </Shell>

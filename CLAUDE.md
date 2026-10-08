@@ -12776,6 +12776,62 @@ and it had been edited after the server started. **Restart the dev server after 
 under `engine/`.** The create-with-event path was then proved directly against a restarted
 server.
 
+### The share password is emailed, not passed along (10/8/2026)
+
+Asked for: *"instead of us giving them the password, i want to setup it up so that they have
+to enter their email, and then a password is send to them from noreply@invoca.com, the
+password is the prospect's name with no spaces."* Two steps on the gate now — email, then
+password — and `docs/SHARE-EMAIL.md` is the runbook.
+
+⚠️⚠️ **IT IS A RECORD OF WHO OPENED THE DEMO, NOT A SECOND FACTOR, AND THE CODE SAYS SO IN
+THREE PLACES.** The password is the prospect's own name and **the unlock page prints that
+name in its own heading**, so anybody holding the link can derive it without ever asking.
+The 32-byte token in the URL is still the only real secret; nothing here weakens that and
+nothing strengthens it. What the step buys is `ShareRecord.requests` — who asked, and when.
+If the password ever has to be a gate, it must stop being derivable from the page it guards.
+
+⚠️⚠️ **A CUSTOM PASSWORD CANNOT BE EMAILED, AND THAT WAS A BUG CAUGHT BEFORE IT SHIPPED.**
+The share dialog lets somebody type their own, and the store keeps only a hash — so the first
+version would have cheerfully emailed `sharePassword(prospect)` to a link protected by
+something else: a password that does not open it, with nothing to explain why.
+`ShareRecord.derivedPassword` records whether the stored one is derivable; the route refuses
+and says to ask the Invoca contact. **Absent on every share created before today, which is
+why the route treats missing as FALSE rather than assuming.**
+
+⚠️⚠️ **THE ROUTE IS PUBLIC AND SENDS MAIL TO AN ADDRESS THE CALLER TYPES, so every guard is
+load-bearing**: the body is fixed (the password and that demo's own link, nothing
+caller-controlled), the address is shape-checked and length-bounded, the link must be live,
+and `CAPS.email = 12` per link per day bounds the worst case. Each request is RECORDED
+BEFORE the send is attempted, so who asked survives a refusal — the ordering `feedbackApi`
+already records for its own mail.
+
+⚠️⚠️ **`SHARE_FROM` IS A REQUEST, NOT A GUARANTEE.** Gmail honours a `From` only when the
+sending account may send as it — itself, or an address verified under "Send mail as".
+Anything else is silently REWRITTEN to the real account: the mail arrives from the wrong
+address and nothing errors, and nothing here can detect it. `Mail.from` is honoured in BOTH
+transports, the rule `mailer.ts` already states for Reply-To and Cc.
+
+⚠️ **ONE DEFINITION OF THE PASSWORD** (`src/data/sharePassword.ts`), read by the create
+route and the email. Two would present as "the password you sent me doesn't work" with
+nothing in any log to explain it. It strips every whitespace RUN rather than `" "` — a
+pasted name can carry a non-breaking space — and keeps punctuation, because stripping it
+would be a second rule to remember when reading one out.
+⚠️ **EXISTING SHARES ARE UNAFFECTED.** The default changed, not anything stored: a link made
+before today keeps the spaced password it was created with and still opens.
+⚠️ **THE GATE KEEPS "I already have the password"** — a spam filter, an unconfigured mailer
+or a password handed over in person must not leave somebody with no way in. And an unsent
+email SAYS so rather than pointing at an inbox nothing was sent to.
+
+**`npm run audit:share` gained 19 checks**; six sabotages verified to fire (emailing a custom
+password, removing the cap, dropping the record, one transport ignoring the From, keeping the
+spaces, and the gate claiming an email was sent whatever happened).
+**Verified end to end locally**: a request for `buyer@unitedvetcare.com` was recorded on the
+share, reported honestly that local does not send, and `UnitedVeterinaryCare` opened the demo
+while `United Veterinary Care` was refused 401. A custom-password link declined to email one;
+the 13th request in a day returned 429.
+⚠️ **NOT VERIFIED: a real email has never been sent by this path** — local deliberately does
+not send, so the first genuine test is on the deployed site.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

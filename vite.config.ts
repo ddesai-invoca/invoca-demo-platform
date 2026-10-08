@@ -705,7 +705,8 @@ function shareApi(): Plugin {
             return json(r.status, r.body ?? {})
           }
 
-          const r = await share.handleShareApi(req.method || 'GET', url, body, cookies)
+          const base = process.env.BASE_URL || `http://${req.headers.host || 'localhost:5173'}`
+          const r = await share.handleShareApi(req.method || 'GET', url, body, cookies, base)
           if (!r) return next()
           if (r.setCookie) res.setHeader('Set-Cookie', `${r.setCookie.name}=${r.setCookie.value}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${r.setCookie.maxAgeSeconds}`)
           return json(r.status, r.body ?? {})
