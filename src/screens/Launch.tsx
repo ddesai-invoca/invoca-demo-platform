@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { DEFAULT_SHARE_DAYS } from "../data/shareDefaults";
 import { ShareDemoButton } from "../components/ShareDemoButton";
 import Tooltip from "../components/Tooltip";
@@ -8,7 +8,10 @@ import { useDemoLibrary } from "../data/DemoLibraryContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { CustomerProfile } from "../data/schema";
 import { SEED_IDS } from "../data/profiles";
-import { DALLAS_EVENT } from "../data/eventDemos";
+import { EVENTS, eventGroupOf } from "../data/eventDemos";
+import { generateProfile } from "../data/generateStream";
+import BulkGenerate from "../components/BulkGenerate";
+import EventSheetButton, { type EventSheetState } from "../components/EventSheetButton";
 import DemoMarkButton from "../components/DemoMarkButton";
 
 /* Where a prospect opens (both a fresh generation and revisiting one) — the
@@ -55,7 +58,7 @@ const TOTAL_WEIGHT = BUILD_STEPS.reduce((s, st) => s + st.weight, 0);
 /* A row in the prospect list — either a shared-library demo (has a creator) or a
    built-in/locally-cached sample (doesn't), or a demo tagged into an EVENT
    section like "dallas" below (see the note there). */
-type EntryGroup = "mine" | "team" | "dallas" | "sample";
+type EntryGroup = string;
 
 /* Section order + headers — each is now its own dropdown.
    ⚠️ THE THIRD ELEMENT IS "ALWAYS SHOW, EVEN EMPTY" — every other section omits
@@ -67,14 +70,25 @@ type EntryGroup = "mine" | "team" | "dallas" | "sample";
 const GROUP_ORDER: [EntryGroup, string, boolean?][] = [
   ["mine", "My demos"],
   ["team", "Team demos"],
-  ["dallas", "2026 Dallas Invoca Summit", true],
+  /* ⚠️ DERIVED FROM `EVENTS`, NOT LISTED HERE — a second event used to mean editing
+     this table AND the ternary below, and a third would have meant editing both
+     again. `alwaysShow` is true for every event for the reason the Dallas note
+     gives: its rows come from the SERVER, so with the library unreachable a
+     conference roster that silently vanishes reads as the demos having been
+     deleted rather than as an offline library. */
+  ...EVENTS.map(({ group, label }) => [group, label, true] as [EntryGroup, string, boolean?]),
   ["sample", "Samples"],
 ];
 
 /* One self-contained library dropdown (one per group). Owns its search text +
    open state + outside-click close, and filters its own rows by prospect,
    industry, or creator name/email. */
-function LibraryPicker({ label, entries, renderRow }: { label: string; entries: Entry[]; renderRow: (e: Entry) => ReactNode }) {
+function LibraryPicker({ label, entries, renderRow, action }: {
+  label: string; entries: Entry[]; renderRow: (e: Entry) => ReactNode;
+  /** ⚠️ OPT-IN AND DEFAULTED ABSENT, so My demos / Team demos / Samples render
+   *  byte-identically — only an EVENT section carries a control. */
+  action?: ReactNode;
+}) {
   const [query, setQuery] = useState("");
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -115,6 +129,7 @@ function LibraryPicker({ label, entries, renderRow }: { label: string; entries: 
       <div className="prospect-picker-label">
         {label}
         <span className="prospect-picker-count">{entries.length}</span>
+        {action}
       </div>
       <div className="prospect-select">
         <div className={"prospect-search" + (open ? " open" : "")}>
@@ -165,6 +180,21 @@ interface Entry {
 export function Launch() {
   const { profiles, addProfile, removeProfile, setProfileId } = useProfile();
   const { demos, me, admin, isMine, openDemo, createDemo, duplicateDemo, deleteDemo } = useDemoLibrary();
+
+  /* ⚠️ WHICH EVENTS HAVE A SHEET, FETCHED ONCE. The URL half comes back only for an
+     admin — the SERVER decides that, so a client that lied would just collect 403s
+     on the PUT. Re-read after a save so the chip and the trigger label move without
+     a reload. */
+  const [eventCfg, setEventCfg] = useState<{ admin: boolean; events: EventSheetState[] } | null>(null);
+  const loadEvents = useCallback(() => {
+    fetch("/api/events")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((j) => j && setEventCfg(j))
+      /* The library already degrades to local profiles when the API is unreachable;
+         an absent config simply renders no control rather than an error. */
+      .catch(() => {});
+  }, []);
+  useEffect(loadEvents, [loadEvents]);
   const { hydrateDemo } = useAiAssistant();
   const navigate = useNavigate();
 
@@ -208,7 +238,7 @@ export function Launch() {
           ? d.updatedBy.name : undefined,
         /* An EVENT demo is filed under its event, whoever owns it — the roster is
            the point, not whose copy it is. Ordinary demos split mine/team. */
-        group: (d.event === DALLAS_EVENT ? "dallas" : mine ? "mine" : "team") as EntryGroup,
+        group: (eventGroupOf(d.event) ?? (mine ? "mine" : "team")) as EntryGroup,
         listedAs: d.listedAs,
       };
     }),
@@ -378,58 +408,21 @@ export function Launch() {
     setBusy(true);
 
     try {
-      const res = await fetch("/api/generate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        /* ⚠️ THE ADVANCED SETTINGS PANEL IS UNMOUNTED (9/25/2026, asked for:
-           *"remove the advanced settings options for now"*), so this is back to
-           the two fields the form always sent.
-           ⚠️⚠️ **NOTHING SERVER-SIDE WAS REMOVED, AND THAT IS THE POINT OF "FOR
-           NOW".** `/api/generate` still accepts `steer`, `scope` and `sources`,
-           `engine/genContext.ts` still folds them into the brief, and
-           `src/components/AdvancedSettings.tsx` is still here and still audited.
-           Putting the panel back is re-adding the import, the `adv` state and
-           the three spreads below — not rebuilding a feature. */
-        body: JSON.stringify({ name: trimmedName, url: trimmedUrl }),
+      /* ⚠️ THE SSE READER LIVES IN `src/data/generateStream.ts` NOW (10/8/2026), shared
+         with the bulk-generate panel — see the note there on why a second copy would
+         drift. The two fields are still all this form sends: the advanced settings panel
+         is unmounted (9/25/2026, "remove the advanced settings options for now") and
+         nothing server-side was removed, so `/api/generate` still accepts `steer`,
+         `scope` and `sources`. */
+      const finalProfile = await generateProfile({
+        name: trimmedName,
+        url: trimmedUrl,
+        onPhase: (phase, status) => {
+          if (status === "building" && !stepStartRef.current[phase]) stepStartRef.current[phase] = Date.now();
+          setStatuses((prev) => ({ ...prev, [phase]: status }));
+        },
       });
-      if (!res.body) throw new Error("Generation failed: no response stream.");
 
-      // Read the Server-Sent Events stream: {type:"progress",phase,status} events
-      // during the build, then a final {type:"done",profile} (or {type:"error"}).
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let buf = "";
-      let finalProfile: unknown = null;
-      let streamError: string | null = null;
-
-      for (;;) {
-        const { value, done } = await reader.read();
-        if (done) break;
-        buf += decoder.decode(value, { stream: true });
-        let sep: number;
-        while ((sep = buf.indexOf("\n\n")) !== -1) {
-          const rawEvent = buf.slice(0, sep);
-          buf = buf.slice(sep + 2);
-          const dataLine = rawEvent.split("\n").find((l) => l.startsWith("data:"));
-          if (!dataLine) continue;
-          let evt: any;
-          try { evt = JSON.parse(dataLine.slice(5).trim()); } catch { continue; }
-          if (evt.type === "progress") {
-            if (evt.status !== "done" && !stepStartRef.current[evt.phase]) stepStartRef.current[evt.phase] = Date.now();
-            setStatuses((prev) => ({
-              ...prev,
-              [evt.phase]: evt.status === "done" ? "done" : evt.status === "skip" ? "skipped" : "building",
-            }));
-          } else if (evt.type === "done") {
-            finalProfile = evt.profile;
-          } else if (evt.type === "error") {
-            streamError = evt.error;
-          }
-        }
-      }
-
-      if (streamError) throw new Error(streamError);
-      if (!finalProfile) throw new Error("Generation ended without a profile.");
       const profile = CustomerProfile.parse(finalProfile);
       // Publish to the shared library under your name. If the library is
       // unreachable, fall back to the old local-only behavior rather than
@@ -537,6 +530,20 @@ export function Launch() {
               />
               <span>Make this demo shareable</span>
             </label>}
+            {/* ⚠️ A DISCLOSURE, CLOSED BY DEFAULT — the launch form is two fields and a
+                button and must stay that way at rest.
+                ⚠️ **NAMED FOR WHAT IT IS, AND IT SITS ABOVE THE BUTTON** (asked for
+                10/8/2026: *"move the advanced settings above the 'Launch Demo' button and
+                call it Bulk Generation"*). It was "Advanced", which was the word in the
+                request that prompted it — but it holds exactly one thing, and a generic
+                label on a single-purpose control is how somebody never finds it. Saying
+                so also keeps it clear of the old `AdvancedSettings` panel (custom prompt,
+                scope, Gong, Drive), which was removed from this form on request and must
+                not come back by having a drawer called "Advanced" to live in. */}
+            <details className="launch-bulk">
+              <summary>Bulk Generation</summary>
+              <BulkGenerate />
+            </details>
             {error && <div className="launch-error">{error}</div>}
             <button className="launch-btn" type="submit">Launch demo</button>
           </form>
@@ -552,7 +559,17 @@ export function Launch() {
               {GROUP_ORDER.map(([g, label, alwaysShow]) => {
                 const rows = entries.filter((e) => e.group === g);
                 if (!rows.length && !alwaysShow) return null;
-                return <LibraryPicker key={g} label={label} entries={rows} renderRow={renderRow} />;
+                const ev = EVENTS.find((e) => e.group === g);
+                return (
+                  <LibraryPicker key={g} label={label} entries={rows} renderRow={renderRow}
+                    action={ev ? (
+                      <EventSheetButton
+                        event={ev.key} label={label} admin={!!eventCfg?.admin}
+                        state={eventCfg?.events.find((x) => x.key === ev.key)}
+                        onSaved={loadEvents}
+                      />
+                    ) : undefined} />
+                );
               })}
             </div>
           </div>

@@ -20,7 +20,7 @@
 import { useRef, useState } from "react";
 import CenterModal from "./CenterModal";
 import Tooltip from "./Tooltip";
-import { useDemoLibrary, type MarkStatus, type NotifyResult, type RepLookup } from "../data/DemoLibraryContext";
+import { useDemoLibrary, type MarkStatus, type NotifyResult, type RepLookup , type SheetResult } from "../data/DemoLibraryContext";
 /* ⚠️ Labels and the offered set come from the one shared module — this component
    used to declare its own copy, which is how it kept offering statuses the server
    had stopped accepting. `MARK_STATUSES` is the WRITE set, so a retired status is
@@ -28,7 +28,7 @@ import { useDemoLibrary, type MarkStatus, type NotifyResult, type RepLookup } fr
 import { MARK_STATUSES, MARK_LABEL as LABEL } from "../data/markStatus";
 
 export default function DemoMarkButton({ demoId, name }: { demoId: string; name: string }) {
-  const { markFor, setMark, lookupRep, gmailStatus } = useDemoLibrary();
+  const { markFor, setMark, lookupRep, gmailStatus, eventOf } = useDemoLibrary();
   const mark = markFor(demoId);
   const [open, setOpen] = useState(false);
   /* ⚠️⚠️ **NOTHING SAVES UNTIL SUBMIT (10/7/2026).** Picking a status used to write
@@ -53,6 +53,7 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
   /* What actually happened to the email, shown in place after committing —
      "the panel closed" is not evidence anybody was told. */
   const [sent, setSent] = useState<NotifyResult | null>(null);
+  const [sheet, setSheet] = useState<SheetResult | null>(null);
   const [saving, setSaving] = useState(false);
   /* Whether THIS SE has connected their own mailbox. Null while unknown, so the
      row says nothing rather than flashing "not connected" and correcting itself. */
@@ -121,8 +122,16 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
     /* ⚠️ THE PANEL STAYS OPEN WHEN SOMETHING WAS MEANT TO BE SENT, because this is
        the one moment the SE needs to know WHO was told — or why nobody was. With
        notify off it closes immediately, exactly as before. */
-    if (r.ok && notify) setSent(r.notified ?? { sent: false, reason: "The server said nothing about the email." });
-    else setOpen(false);
+    /* ⚠️⚠️ A FAILED SHEET WRITE HOLDS THE PANEL OPEN TOO, for the same reason a failed
+       email does: the row is what the SE wired the sheet FOR, and a dialog that closes
+       on a row that never landed is the silent no-op this repo keeps paying for. A
+       SUCCESSFUL one says nothing and closes — it is the expected case, and a toast per
+       mark across 25 demos is noise. A demo in no event reports nothing at all. */
+    const sheetFailed = r.ok && r.sheet && !r.sheet.posted && !!eventOf(demoId);
+    if (r.ok && (notify || sheetFailed)) {
+      if (notify) setSent(r.notified ?? { sent: false, reason: "The server said nothing about the email." });
+      if (r.sheet) setSheet(r.sheet);
+    } else setOpen(false);
   }
 
   /* Selects only. The write is `submit()`. */
@@ -378,6 +387,13 @@ export default function DemoMarkButton({ demoId, name }: { demoId: string; name:
               {sent.sent
                 ? `Emailed ${sent.name ?? sent.to}${sent.ccName ? ` and ${sent.ccName}` : ""}${sent.sentAs ? ` from ${sent.sentAs}` : ""}.`
                 : `Marked, but nothing was emailed — ${sent.reason ?? "the send did not go through."}`}
+            </div>
+          )}
+          {/* ⚠️ ONLY WHEN IT FAILED. A row that landed is the expected outcome, and a
+              confirmation per mark is 25 banners over a conference afternoon. */}
+          {sheet && !sheet.posted && (
+            <div className="dmk-sent dmk-sent--no">
+              Marked, but no row reached the sheet — {sheet.reason ?? "the post did not go through."}
             </div>
           )}
           {/* ⚠️⚠️ **SUBMIT IS THE ONLY WRITER (10/7/2026).** It lives in the modal's

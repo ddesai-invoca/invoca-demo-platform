@@ -12520,6 +12520,170 @@ so the admin list itself is verified by the audit and by flipping the additive
 ways: an admin sees 11 share buttons and the launch checkbox, a non-admin sees **0** of each
 while Delete and Mark-as-demoed still render, and a direct POST bypassing the UI returns 403.
 
+## A second event, a connected Google Sheet, and bulk generation (10/8/2026)
+
+Asked for in one message: *"create a new event similar to the 2026 Dallas Invoca Summit and
+call it 2026 Invoca Chicago Summit, and what i want to be able to do is add a google sheet to
+it so that everytime submit is click in the Demo notes modal, it creates a row for that
+prospect or updates a row if changes are made to a existing prospect"* — then, on how demos get
+into it: *"add a advance settings and have a mass generate option (maybe they can download a
+template and fill in the information and then upload it) and also allow them to pick which
+event they want to add it to."*
+
+### The event: a REGISTRY, because the second one is what exposed the shape
+⚠️⚠️ **THE EVENT WAS BAKED INTO A TERNARY AND A TABLE, so a second one meant editing both and
+a third would mean editing them again.** `Launch.tsx` had
+`d.event === DALLAS_EVENT ? "dallas" : …` and a hand-written `GROUP_ORDER` row. `EVENTS` in
+`src/data/eventDemos.ts` is now one list of `{ key, group, label, idPrefix }` and the Launch
+screen derives both from it, so **a new event is ONE ENTRY**.
+⚠️ **`key` IS STORED ON THE RECORD AND `group` IS NOT.** The section id is the Launch screen's
+own and may be renamed freely; the key is on demos already on the server disk, and changing one
+orphans every demo tagged with it. Both are in the registry so the distinction is written down
+where somebody adds the third event.
+⚠️ **EVERY EVENT SECTION IS `alwaysShow`**, for the reason the Dallas note already gives: its
+rows come from the SERVER, and with the library unreachable a conference roster that silently
+vanishes reads as the demos having been deleted rather than as an offline library.
+
+### The sheet: an Apps Script webhook, which needs NO credential on this server
+Three options were costed and the user chose this one. ⚠️⚠️ **AN ASSISTANT'S OWN SHEETS
+CONNECTOR IS NOT THIS SERVER'S CREDENTIAL**, so the real question was which credential the
+SERVER gets: the Sheets API needs enabling plus either a new consent scope every signed-in user
+then sees, or a service account whose private key lives in Render's env. A deployed Apps Script
+is **a URL and nothing more** — exactly the reasoning `engine/alerts.ts` records for preferring
+a Slack incoming webhook, "which is what keeps an approval off the critical path".
+
+| | |
+|---|---|
+| `engine/eventSettings.ts` | one JSON per event under `DATA_DIR/event-settings/`, same disk and same atomic write as the marks |
+| `engine/sheetHook.ts` | posts the row; **resolves rather than throws** |
+| `public/event-sheet.gs` | the script, served so the UI can hand out one copy |
+| `GET /api/events` · `PUT /api/events/:key/sheet` | read state · wire it (admin) |
+
+⚠️⚠️ **THE URL IS AN ALLOW-LIST, AND THAT IS A SECURITY RULE RATHER THAN TIDINESS.** It is
+pasted by a human and the server then POSTs the prospect's name, the SE's note and who was in
+the room to it — so anything looser is a way to make this server send real customer data to any
+host somebody can type. Only a `script.google.com` `/exec` deployment is accepted.
+⚠️⚠️ **AND THE FIRST PATTERN REFUSED EVERY WORKSPACE DEPLOYMENT — the only shape an invoca.com
+account produces.** There are two real forms and the Workspace one puts its domain in the
+MIDDLE (`/a/macros/<domain>/s/<id>/exec`, not `/a/<domain>/macros/s/…`). Caught by the audit,
+not by reading it.
+⚠️ **THE URL IS RETURNED ONLY TO AN ADMIN and `PUT` refuses everyone else** — anyone holding it
+can append to that sheet, so it is a secret in the same sense the share token is. A non-admin
+still sees a quiet "Sheet connected" chip, because an SE marking a demo deserves to know
+whether their rows are being recorded.
+⚠️ **NOT GATED ON PRODUCTION, UNLIKE `sendMail` AND THE ALERT FUNNEL — a deliberate difference.**
+Those reach OTHER PEOPLE from any environment holding the credential, so they default to silence
+off production. This reaches one sheet an admin wired by hand: configuring it IS the opt-in, and
+gating it would mean the feature cannot be exercised anywhere it will be set up. A `Source`
+column carries `production` / `staging` / `local` so a test row is identifiable.
+
+⚠️⚠️ **THE POST CAN NEVER FAIL A MARK, AND THE ORDER IS THE INVARIANT.** `markDemo` writes
+first; `postMarkRow` resolves with a reason rather than throwing — the contract `sendMail` has,
+and the ordering `feedbackApi` records ("the item is saved BEFORE the mail is attempted"). It is
+**awaited**, because a floating promise dies with the SIGTERM drain mid-deploy, and it is
+bounded by its own 8s timeout so the Submit button is never held on hotel wifi. Measured: a
+wired-but-wrong URL reported "The sheet replied 404" in **167ms** with the mark safely stored.
+⚠️ **A FAILED ROW HOLDS THE MODAL OPEN AND SAYS WHY; a successful one says nothing and closes** —
+a confirmation per mark is 25 banners over a conference afternoon.
+⚠️ **CLEARING A MARK EMPTIES THE ROW, IT DOES NOT DELETE IT.** That this prospect was demoed is
+the one fact the sheet exists to hold, and it must survive somebody tidying a status.
+
+#### The upsert lives in the script, and the script is tested here
+`demoId` is the key — that is what makes "creates a row for that prospect or updates a row if
+changes are made" possible at all. Doing it the other way (read the sheet, find the row number,
+write it back) is three round trips racing every other SE marking at the same conference.
+⚠️⚠️ **THE HALF THAT IS NOT IN THIS REPO AT RUNTIME IS STILL EXERCISED: `audit:events` RUNS
+`doPost` AGAINST A STUBBED `SpreadsheetApp`.** Shipping it unexercised would leave the feature's
+core claim as the one thing nothing checks. It proved a real bug immediately — **a "mark
+cleared" post wiped the prospect's own NAME**, because the script wrote every known column on
+every post and that message carries little more than the id. It builds a PATCH from what the
+payload actually contains now, which also makes a hand-added column ("Owner", "Next step")
+survive every later write — asserted.
+
+### Bulk Generation: a template, an upload, and an event picker
+`src/components/BulkGenerate.tsx` + `src/data/rosterImport.ts`, behind a **Bulk Generation**
+disclosure sitting ABOVE the Launch demo button.
+⚠️ **IT WAS "Advanced", AND IT SITS ABOVE THE BUTTON** — asked for directly: *"move the
+advanced settings above the 'Launch Demo' button and call it Bulk Generation"*. "Advanced"
+was the word in the request that prompted it, but the drawer holds exactly ONE thing, and a
+generic label on a single-purpose control is how somebody never finds it. The name also keeps
+it clear of the old `AdvancedSettings` panel, which must not come back by having a drawer
+called "Advanced" to live in. `audit:events` checks the position by INDEX rather than by the
+markup around it, so reformatting the form cannot quietly flip it back.
+⚠️⚠️ **A NEW PANEL, NOT `AdvancedSettings` REMOUNTED.** That component still exists and is still
+audited, but it holds the custom prompt, scope toggle, Gong and Drive — all removed from this
+form on request ("remove the advanced settings options for now"). Remounting it to reach one new
+control would quietly undo that. `audit:events` asserts it stays unmounted.
+⚠️ **PARSED LOCALLY, NO MODEL CALL** — the same rule `parseQuestionList` records, for the same
+reason. Quoted commas stay inside a company name ("Smith, Jones & Co"), the two columns are
+found BY HEADER in either order, a headerless file and a TSV paste both parse, a bare domain
+becomes `https://`, and **every dropped row is reported with its line number and reason** —
+finding out two hours later that 7 of 40 never ran is the failure this exists to avoid.
+⚠️ **RESUMABLE: a prospect already in the library is SKIPPED**, the same rule the 59-row seeder
+follows. **One failure does not stop the roster** — a single site that blocks a datacenter IP
+would otherwise take the other 39 with it.
+⚠️ **SEQUENTIAL, IN THE BROWSER, AND THE TAB HAS TO STAY OPEN — said on screen** (~2.5 min
+each). `scripts/generate-event-demos.ts` is still the right tool for a 59-row roster; this is
+the in-app path for the size an SE assembles between sessions.
+
+⚠️⚠️ **`src/data/generateStream.ts` IS NOW THE ONLY SSE READER.** The launch form had its own
+inline copy; a second one in the bulk panel would drift the first time the engine added an event
+type — one surface keeps working and the other silently stops advancing, which this repo records
+for the SMS brain and the workflow scope key. `audit:events` fails if `getReader()` reappears in
+either screen.
+⚠️ **AN UNKNOWN EVENT ON CREATE IS REFUSED, NOT IGNORED.** Silently dropping it would publish
+the demo into "My demos" while the panel reported it filed under the conference — a
+disagreement nobody notices until the roster is short.
+
+⚠️⚠️ **THE CONTROLS ARE GREEN, NOT THE PLATFORM BLUE — reported directly: *"i dont like
+the blue, stay on theme"*.** `#2666f9` is the accent on every REPLICA screen and reaching
+for it here was reflex: **the launch screen is OUR tool, not a replica**, and its own
+accent has always been green — `.launch-page`'s gradient, `.launch-btn`, `.launch-spinner`
+and `.prospect-card:hover` are all `--color-green-bar`. The new rules use the TOKENS
+(`--color-green-bar` for fills and borders, `--color-green-active` for ink on white) so a
+launch-screen control added later cannot drift a third way, and `audit:events` fails if
+`#2666f9` reappears in them.
+⚠️ **A CHECK OVER CSS MUST STRIP COMMENTS BEFORE SLICING, NOT AFTER.** That one failed on
+correct CSS at first because it sliced from the section's comment HEADER — starting inside
+a `/* … */` block leaves the first `*/` unpaired and shifts every later comment boundary by
+one, so prose survives into the "code" and the note documenting this very correction
+matched its own banned string. Strip first, then slice at real CSS.
+⚠️ **THE PRE-EXISTING `.dmk-*` BLUES ARE LEFT ALONE** — the Lead chip's `#2666f9` is a
+STATUS colour (one per mark status), not an accent, and those rules are signed off.
+
+**`npm run audit:events` is 66 checks** (was 23): the registry (distinct keys, groups and
+prefixes, no prefix nesting, `eventGroupOf` called not grepped), the URL allow-list against 2
+good and 7 hostile shapes, the settings round trip, `postMarkRow` against a **mocked fetch**
+(never the real network — the rule `audit:advanced` follows for Gong) including the body shape,
+a 500, a throw and the no-event cases, the mark/sheet ordering, the admin boundary, the Apps
+Script upsert harness, and the roster parser plus the bulk wiring.
+⚠️ **FIVE EXISTING CHECKS WERE RE-AIMED, NOT LOOSENED**, and two got STRONGER by being CALLED
+rather than grepped: the three Launch ones pinned the Dallas ternary and its literal
+`GROUP_ORDER` row (exactly what a second event replaces), and the duplicate check asserted
+`createDemo` never mentions `event` — true while nothing could set one, backwards once bulk
+generation needed to. It now calls the real function and asserts a copy inherits none.
+⚠️ **ONE RE-AIMED CHECK MATCHED THE IMPORT RATHER THAN THE USE**, so replacing the call with
+`null` left it green while every roster demo fell into My/Team demos. It asserts the call site
+now — the dead-code trap this file already records three times.
+
+**Verified in the browser:** the Chicago section renders above Dallas with Dallas's 76 intact;
+an arbitrary host, a `/dev` deployment and an unknown event key are each refused with their own
+message while a real-shaped `/exec` saves and reads back; a mark on a wired event posted and
+reported its failure honestly in 167ms **with the mark stored**; the modal shows the steps, the
+copy/open-script buttons and the stored URL; the roster parser handled quoted commas, dupes and
+four kinds of bad row with per-line reasons; and a demo created with `event` landed in the
+Chicago dropdown while one created without it went to My demos.
+⚠️⚠️ **WHAT IS NOT VERIFIED, STATED PLAINLY: no row has ever reached a REAL Google Sheet.**
+Deploying an Apps Script needs a Google account, which is the user's. The wire format, the
+upsert, the clear and the column-preservation are all exercised against stubs; the one unproven
+link is Apps Script accepting the body as posted. **Wire a sheet and mark one demo before
+trusting it in front of a prospect.**
+⚠️ **A REAL BULK RUN GENERATED AND PUBLISHED A PROSPECT but filed it under no event — the
+dev-server Node-cache trap, hit again.** `engine/demoApi.ts` is dynamically imported and cached,
+and it had been edited after the server started. **Restart the dev server after editing anything
+under `engine/`.** The create-with-event path was then proved directly against a restarted
+server.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

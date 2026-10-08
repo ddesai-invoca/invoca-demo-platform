@@ -35,7 +35,8 @@ const code = (p: string) =>
 /* ── the roster ──────────────────────────────────────────────────────────── */
 console.log("\nEvent roster\n");
 
-const { DALLAS_EVENT, DALLAS_ID_PREFIX, dallasDemoId } = await import("../src/data/eventDemos.ts");
+const { DALLAS_EVENT, DALLAS_ID_PREFIX, dallasDemoId, EVENTS, eventGroupOf } =
+  await import("../src/data/eventDemos.ts");
 const roster = JSON.parse(read("scripts/dallas-roster.json")) as {
   prospects: { slug: string; name: string; listedAs?: string; url: string }[];
 };
@@ -170,18 +171,38 @@ console.log("\nLaunch screen wiring\n");
 
 const launch = code("src/screens/Launch.tsx");
 
-/\bDALLAS_EVENT\b/.test(launch) && /from\s+"\.\.\/data\/eventDemos"/.test(launch)
-  ? ok("Launch reads the event key from the one shared definition")
-  : bad("Launch does not import DALLAS_EVENT from src/data/eventDemos");
-!/["']dallas-2026["']/.test(launch)
-  ? ok("Launch does not hardcode a second copy of the event key")
-  : bad("Launch hardcodes the event key — two copies is how one side reads a key nobody writes");
-/d\.event\s*===\s*DALLAS_EVENT\s*\?\s*"dallas"/.test(launch)
-  ? ok('a demo carrying the event key is grouped as "dallas"')
-  : bad("the dallas grouping is gone — roster demos would fall back to My/Team demos");
-/\["dallas",\s*"2026 Dallas Invoca Summit",\s*true\]/.test(launch)
-  ? ok("the Dallas section is present and shown even when empty")
-  : bad("the Dallas section is missing or no longer always shown");
+/* ⚠️⚠️ RE-AIMED 10/8/2026 WHEN A SECOND EVENT ARRIVED, NOT LOOSENED. These three used
+   to pin the Dallas TERNARY and its literal row in `GROUP_ORDER` character for character,
+   which is exactly what a second event had to replace — the ternary and the table each
+   grew a branch per event. The invariants that survive are stronger, because they hold
+   for every event rather than for one: the screen reads the shared registry, every event
+   gets a section, and every section is always-shown. */
+/* ⚠️ THE IMPORT IS NOT THE USE. The first version of this matched `eventGroupOf`
+   anywhere in the file, so replacing the CALL with `null` left the import behind and
+   the check stayed green while every roster demo fell into My/Team demos. It asserts
+   the call site now — the same dead-code trap recorded three times in CLAUDE.md. */
+/eventGroupOf\(d\.event\)/.test(launch) && /from\s+"\.\.\/data\/eventDemos"/.test(launch)
+  ? ok("Launch groups a demo by calling eventGroupOf on its own event key")
+  : bad("Launch does not call eventGroupOf(d.event) — roster demos fall back to My/Team demos");
+!EVENTS.some((e) => new RegExp(`["']${e.key}["']`).test(launch))
+  ? ok("Launch hardcodes no event key")
+  : bad("Launch hardcodes an event key — two copies is how one side reads a key nobody writes");
+/* ⚠️ CALLED, NOT GREPPED: a grep passes against `if (false && ...)`, which this file
+   has already been bitten by once. */
+EVENTS.every((e) => eventGroupOf(e.key) === e.group) && eventGroupOf("nope-2026") === null
+  ? ok(`every event key groups to its own section (${EVENTS.length} events), and an unknown one does not`)
+  : bad("eventGroupOf does not map every event — roster demos would fall back to My/Team demos");
+/\.\.\.EVENTS\.map\(/.test(launch) && /\[group,\s*label,\s*true\]/.test(launch)
+  ? ok("every event gets its own section, shown even when empty")
+  : bad("the event sections are not derived from EVENTS, or are hidden when empty");
+new Set(EVENTS.map((e) => e.group)).size === EVENTS.length &&
+new Set(EVENTS.map((e) => e.key)).size === EVENTS.length &&
+new Set(EVENTS.map((e) => e.idPrefix)).size === EVENTS.length
+  ? ok("event keys, groups and id prefixes are all distinct")
+  : bad("two events share a key, a section id or an id prefix — one would swallow the other");
+EVENTS.every((e) => EVENTS.every((o) => o === e || !o.idPrefix.startsWith(e.idPrefix)))
+  ? ok("no event's id prefix is a prefix of another's")
+  : bad("one event's id prefix starts with another's — eventForId would answer the wrong event");
 /\(e\.listedAs\s*\?\?\s*""\)\.toLowerCase\(\)\.includes\(q\)/.test(launch)
   ? ok("the search matches the source-list name too")
   : bad("listedAs is not searchable — pasting the spreadsheet name would find nothing");
@@ -208,17 +229,338 @@ const server = code("server.ts");
   ? ok("server.ts runs the seed import at boot")
   : bad("server.ts never calls importEventSeeds — the roster would never reach the live library");
 
-/* A DUPLICATE must not inherit the event: a copy is the SE's own working demo
-   and belongs in "My demos", not in the conference roster. createDemo builds
-   every copy, so its record literal must not mention `event`. */
+/* ⚠️⚠️ RE-AIMED 10/8/2026, NOT LOOSENED. It used to assert that `createDemo`'s body
+   never mentions `event` at all — true while nothing could set one, and backwards the
+   moment bulk generation needed to file a demo under an event. The invariant that
+   survives is the one that always mattered, and it is now CHECKED BY CALLING the real
+   function rather than by grepping a slice of it: a copy inherits no event, and an event
+   is set only when one is passed. A duplicate belongs in "My demos" — it is the SE's own
+   working copy, not part of the conference roster. */
 const api = code("engine/demoApi.ts");
-const createBody = api.slice(api.indexOf("export function createDemo"), api.indexOf("export async function handleDemoApi"));
-!/\bevent\b/.test(createBody)
-  ? ok("a duplicated demo does not inherit the event roster")
-  : bad("createDemo carries `event` — duplicating a roster demo would clone it into the roster");
+{
+  const { createDemo } = await import("../engine/demoApi.ts");
+  const who = { name: "Audit", email: "audit@invoca.com" };
+  const prof = { customerName: "Audit Co", industry: "Testing", networkName: "n" };
+  const plain = createDemo(prof, who);
+  const filed = createDemo(prof, who, undefined, "", EVENTS[0].key);
+  const copied = createDemo(filed.profile, who, undefined, " (copy)");
+  plain.event === undefined && filed.event === EVENTS[0].key && copied.event === undefined
+    ? ok("an event is set only when passed, and a duplicate inherits none")
+    : bad(`createDemo mishandles the event (plain=${plain.event}, filed=${filed.event}, copy=${copied.event})`);
+}
+/* And the duplicate ROUTE passes none — the call site, not just the function. */
+/createDemo\(rec\.profile, user, structuredClone\(rec\.customizations\), " \(copy\)"\)/.test(api)
+  ? ok("the duplicate route passes no event")
+  : bad("the duplicate route now passes an event — a copy would land in the conference roster");
 /\.\.\.rec,/.test(api)
   ? ok("PATCH spreads the record, so an edited roster demo keeps its event")
   : bad("PATCH no longer spreads the record — editing a roster demo could drop its event");
+
+
+/* =============================================================================
+   THE EVENT'S CONNECTED GOOGLE SHEET (10/8/2026)
+   ============================================================================= */
+console.log("\nEvent sheet\n");
+{
+  const { isSheetWebhookUrl, setEventSheet, eventSettings } =
+    await import("../engine/eventSettings.ts");
+
+  /* ⚠️⚠️ THE URL IS AN ALLOW-LIST, AND THAT IS A SECURITY RULE. This value is pasted by
+     a human and the server then POSTs the prospect's name, the SE's note and who was in
+     the room to it — so anything looser is a way to make this server send real customer
+     data to any host somebody can type. */
+  const good = [
+    "https://script.google.com/macros/s/AKfycbx_123-abc/exec",
+    "https://script.google.com/a/macros/invoca.com/s/AKfycbx_123/exec",
+  ];
+  const evil = [
+    "https://evil.example.com/collect",
+    "http://script.google.com/macros/s/AKfycbx/exec",           // not https
+    "https://script.google.com/macros/s/AKfycbx/dev",            // a test deployment
+    "https://script.google.com.evil.com/macros/s/A/exec",        // lookalike host
+    "https://script.google.com/macros/s/AKfycbx/exec?next=http://evil",
+    "javascript:alert(1)",
+    "",
+  ];
+  good.every(isSheetWebhookUrl) ? ok("a deployed Apps Script /exec URL is accepted")
+    : bad("a real Apps Script URL is refused — nobody could wire a sheet");
+  evil.every((u) => !isSheetWebhookUrl(u))
+    ? ok(`every one of ${evil.length} hostile or wrong-shaped URLs is refused`)
+    : bad("a URL outside script.google.com is accepted — marks would be POSTed off-site");
+
+  /* The store, against a throwaway DATA_DIR (set before demoStore resolves it). */
+  setEventSheet("nope-2026", good[0], "x") === null
+    ? ok("an unknown event key stores nothing")
+    : bad("setEventSheet writes a file for an event that does not exist");
+  setEventSheet(EVENTS[0].key, "https://evil.example.com/x", "x") === null
+    ? ok("a refused URL is not stored")
+    : bad("an unusable URL is stored — every later mark would report 'could not be reached'");
+  const saved = setEventSheet(EVENTS[0].key, good[0], "tester@invoca.com");
+  saved?.sheetWebhookUrl === good[0] && eventSettings(EVENTS[0].key).sheetWebhookUrl === good[0]
+    ? ok("a good URL is stored and read back")
+    : bad("the sheet URL does not survive a write/read round trip");
+  setEventSheet(EVENTS[0].key, "", "tester@invoca.com");
+  !eventSettings(EVENTS[0].key).sheetWebhookUrl
+    ? ok("an empty string unwires the sheet")
+    : bad("a sheet cannot be disconnected");
+
+  /* ── postMarkRow, against a MOCKED fetch ──────────────────────────────────
+     ⚠️ NEVER THE REAL NETWORK. An audit that depends on somebody else's service is
+     flaky by construction and cannot run on a machine with no sheet — the rule
+     audit:advanced already follows for Gong. */
+  const { postMarkRow, attendeeCell } = await import("../engine/sheetHook.ts");
+  const realFetch = globalThis.fetch;
+  let lastBody: any = null;
+  const row = {
+    demoId: "chicago-acme", prospect: "Acme", website: "https://acme.com",
+    status: "Lead", note: "wants pricing", attendees: "Sarah Chen (VP Ops)",
+    markedBy: "Local Dev", markedByEmail: "local@dev",
+    at: "2026-10-08T00:00:00.000Z", demoUrl: "http://x/launch?demo=chicago-acme",
+    action: "upsert" as const,
+  };
+
+  (await postMarkRow(undefined, row)).posted === false
+    ? ok("a demo in no event posts nothing") : bad("a demo with no event still posts a row");
+  (await postMarkRow(EVENTS[0].key, row)).posted === false
+    ? ok("an event with no sheet posts nothing") : bad("an unwired event still posts");
+
+  setEventSheet(EVENTS[0].key, good[0], "tester@invoca.com");
+  globalThis.fetch = (async (_u: any, init: any) => {
+    lastBody = JSON.parse(init.body);
+    return { ok: true, status: 200 } as any;
+  }) as any;
+  const sent = await postMarkRow(EVENTS[0].key, row);
+  sent.posted ? ok("a wired event posts the row") : bad(`a wired event did not post (${sent.reason})`);
+  /* ⚠️ THE KEY IS THE WHOLE FEATURE — "creates a row for that prospect or updates a row
+     if changes are made to an existing prospect" is only possible if demoId travels. */
+  lastBody?.demoId === "chicago-acme" && lastBody?.event === EVENTS[0].key && !!lastBody?.env
+    ? ok("the body carries the upsert key, the event and which deployment wrote it")
+    : bad("the posted body is missing demoId, event or env");
+  lastBody?.note === "wants pricing" && lastBody?.attendees === "Sarah Chen (VP Ops)"
+    ? ok("the note and who was in the room reach the sheet")
+    : bad("the note or the attendee list does not reach the sheet");
+
+  globalThis.fetch = (async () => ({ ok: false, status: 500 } as any)) as any;
+  (await postMarkRow(EVENTS[0].key, row)).reason?.includes("500")
+    ? ok("a failing sheet is reported with its status, not silently swallowed")
+    : bad("a failing sheet does not report why");
+  globalThis.fetch = (async () => { throw new Error("boom"); }) as any;
+  const thrown = await postMarkRow(EVENTS[0].key, row);
+  thrown.posted === false && !!thrown.reason
+    ? ok("a thrown fetch resolves with a reason rather than throwing")
+    : bad("postMarkRow can throw — it would take a mark down with it");
+  globalThis.fetch = realFetch;
+
+  attendeeCell({ attendees: [{ name: "A", title: "VP" }, { name: "B" }] }) === "A (VP), B"
+    ? ok("the attendee cell reads as one list") : bad("the attendee cell is malformed");
+  setEventSheet(EVENTS[0].key, "", "tester@invoca.com");
+
+  /* ── the wiring ────────────────────────────────────────────────────────── */
+  const api = code("engine/demoApi.ts");
+  /* ⚠️⚠️ ORDER IS THE INVARIANT: the mark is on disk BEFORE the sheet is attempted, so a
+     sheet that moved can never lose an SE's note. Same rule feedbackApi records for mail. */
+  api.indexOf("markDemo(id, user, status") < api.indexOf("postMarkRow(rec.event")
+    ? ok("the mark is stored before the row is attempted")
+    : bad("the sheet post runs before the mark is saved — a sheet failure could lose the note");
+  /* ⚠️ EVERY CALL SITE, NOT ANY. The first version tested `/await postMarkRow\(/` — which
+     passes while ONE of the two (mark, unmark) is still awaited, so dropping the await on
+     the other went undetected. A floating promise is killed by the SIGTERM drain mid-deploy,
+     exactly when the last request through is most likely to be somebody's. */
+  (() => {
+    const sites = api.match(/\bpostMarkRow\(/g)?.length ?? 0;
+    const awaited = api.match(/\bawait postMarkRow\(/g)?.length ?? 0;
+    return sites >= 2 && sites === awaited;
+  })()
+    ? ok("every postMarkRow call is awaited, so the SIGTERM drain cannot kill one mid-deploy")
+    : bad("a sheet post is fire-and-forget — a deploy would drop the last rows");
+  /isAdmin\(user\)[\s\S]{0,400}?sheetWebhookUrl/.test(api)
+    ? ok("the URL is returned only to an admin")
+    : bad("the sheet URL reaches every signed-in user — anyone could append to the sheet");
+  /Connecting a sheet is limited to project admins/.test(api)
+    ? ok("a non-admin cannot wire a sheet")
+    : bad("any signed-in user can repoint an event's sheet");
+  /action: "removed"/.test(api)
+    ? ok("clearing a mark tells the sheet, so the row does not keep a status nobody stands behind")
+    : bad("unmarking leaves a stale status in the sheet");
+
+  /\/api\/events/.test(code("vite.config.ts"))
+    ? ok("the dev twin serves /api/events")
+    : bad("/api/events 404s in dev while production serves it — the documented twin trap");
+}
+
+/* =============================================================================
+   THE APPS SCRIPT'S OWN UPSERT — run against a stubbed Spreadsheet
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ THE HALF THAT IS NOT IN THIS REPO AT RUNTIME IS STILL TESTED HERE. "Creates a row
+   for that prospect or updates a row if changes are made" is decided entirely by that
+   script, so shipping it unexercised would mean the feature's core claim is the one
+   thing nothing checks.
+   ============================================================================= */
+console.log("\nApps Script upsert\n");
+{
+  const src = readFileSync("public/event-sheet.gs", "utf8");
+  const rows: string[][] = [];
+  const sheet = {
+    getLastRow: () => rows.length,
+    getLastColumn: () => (rows[0]?.length ?? 0),
+    getRange: (r: number, c: number, nr: number, nc: number) => ({
+      getValues: () => Array.from({ length: nr }, (_, i) =>
+        Array.from({ length: nc }, (_, j) => rows[r - 1 + i]?.[c - 1 + j] ?? "")),
+      setValues: (vals: string[][]) => vals.forEach((line, i) => {
+        rows[r - 1 + i] = rows[r - 1 + i] ?? [];
+        line.forEach((v, j) => { rows[r - 1 + i][c - 1 + j] = v; });
+      }),
+      setFontWeight: () => {},
+    }),
+    appendRow: (line: string[]) => { rows.push([...line]); },
+    setFrozenRows: () => {},
+  };
+  const sandbox = {
+    SpreadsheetApp: { getActiveSpreadsheet: () => ({ getSheetByName: () => sheet, insertSheet: () => sheet }) },
+    LockService: { getScriptLock: () => ({ waitLock: () => {}, releaseLock: () => {} }) },
+    ContentService: { MimeType: { JSON: "json" },
+      createTextOutput: (t: string) => ({ setMimeType: () => JSON.parse(t) }) },
+  };
+  const run = new Function(...Object.keys(sandbox), `${src}; return doPost;`)(
+    ...Object.values(sandbox)) as (e: any) => any;
+  const post = (o: Record<string, unknown>) => run({ postData: { contents: JSON.stringify(o) } });
+
+  const a1 = post({ event: "chicago-2026", demoId: "d1", prospect: "Acme", status: "Lead", note: "first" });
+  a1?.ok ? ok("the script accepts a post") : bad(`the script threw: ${a1?.error}`);
+  rows.length === 2 ? ok("a header row and one data row after the first mark")
+    : bad(`expected header + 1 row, got ${rows.length}`);
+
+  /* ⚠️ THE CORE CLAIM. */
+  post({ event: "chicago-2026", demoId: "d1", prospect: "Acme", status: "Urgent lead", note: "changed" });
+  rows.length === 2 && rows[1].includes("Urgent lead") && rows[1].includes("changed")
+    ? ok("re-marking the SAME prospect UPDATES its row rather than adding one")
+    : bad(`a second mark on one prospect produced ${rows.length - 1} rows`);
+
+  post({ event: "chicago-2026", demoId: "d2", prospect: "Northwind", status: "Lead" });
+  rows.length === 3 ? ok("a different prospect appends a new row")
+    : bad("a second prospect did not get its own row");
+
+  post({ event: "chicago-2026", demoId: "d1", action: "removed" });
+  const head = rows[0];
+  const statusAt = head.indexOf("Status");
+  rows.length === 3 && rows[1][statusAt] === "" && rows[1][head.indexOf("Prospect")] === ""
+    ? bad("unmarking cleared the prospect name too — the row stops being findable")
+    : rows.length === 3 && rows[1][statusAt] === ""
+      ? ok("clearing a mark empties the status but keeps the row")
+      : bad("clearing a mark did not empty the status, or removed the row");
+
+  /* ⚠️ A COLUMN SOMEBODY ADDED BY HAND MUST SURVIVE EVERY LATER WRITE — otherwise the
+     first mark after an SE adds an "Owner" column wipes it. */
+  rows[0].push("Owner"); rows[1].push("Dana");
+  post({ event: "chicago-2026", demoId: "d2", prospect: "Northwind", status: "Lead", note: "x" });
+  rows[1][rows[0].indexOf("Owner")] === "Dana"
+    ? ok("a hand-added column survives a later write")
+    : bad("writing a row wipes columns the script does not know about");
+}
+
+/* =============================================================================
+   BULK GENERATE (10/8/2026)
+   ============================================================================= */
+console.log("\nBulk generate\n");
+{
+  const { parseRoster, normalizeUrl, ROSTER_MAX, ROSTER_TEMPLATE } =
+    await import("../src/data/rosterImport.ts");
+
+  const p = parseRoster(
+    'name,website\n"Smith, Jones & Co",smithjones.com\nNorthwind,https://northwind.org\n' +
+    '"Smith, Jones & Co",dupe.com\nNoSite,\n,https://noname.com\nBad,not a url\n');
+  p.rows.length === 2 && p.rows[0].name === "Smith, Jones & Co"
+    ? ok("a quoted comma stays inside one company name")
+    : bad(`a quoted name was split — got ${JSON.stringify(p.rows.map((r) => r.name))}`);
+  p.rows[0].url === "https://smithjones.com"
+    ? ok("a bare domain becomes an https URL") : bad("a bare domain is not normalised");
+  p.skipped.length === 4 && p.skipped.every((s) => !!s.reason && s.line > 0)
+    ? ok("every dropped row is reported with its line and a reason")
+    : bad(`skips are not fully reported — ${JSON.stringify(p.skipped)}`);
+
+  /* ⚠️ THE HEADER IS FOUND, NOT ASSUMED — somebody will reorder the two columns. */
+  const flipped = parseRoster("website,name\nacme.com,Acme\n");
+  flipped.rows[0]?.name === "Acme" && flipped.rows[0]?.url === "https://acme.com"
+    ? ok("the columns are read by header, in either order")
+    : bad("a reordered template is parsed backwards — every prospect would get the wrong URL");
+  const headerless = parseRoster("Acme,acme.com\n");
+  headerless.rows[0]?.name === "Acme"
+    ? ok("a file with no header still parses") : bad("a headerless file yields nothing");
+  const tsv = parseRoster("name\twebsite\nAcme\tacme.com\n");
+  tsv.rows[0]?.url === "https://acme.com"
+    ? ok("a tab-separated paste parses too") : bad("a TSV paste is not handled");
+
+  parseRoster(Array.from({ length: ROSTER_MAX + 5 },
+    (_, i) => `P${i},p${i}.com`).join("\n")).rows.length === ROSTER_MAX
+    ? ok(`the roster is capped at ${ROSTER_MAX} and the overflow is reported`)
+    : bad("the roster cap does not hold — one click could queue weeks of generation");
+  normalizeUrl("localhost") === null && normalizeUrl("javascript:alert(1)") === null
+    ? ok("a hostname with no dot and a javascript: URL are both refused")
+    : bad("normalizeUrl accepts something that is not a web address");
+  parseRoster(ROSTER_TEMPLATE).rows.length === 2 && parseRoster(ROSTER_TEMPLATE).skipped.length === 0
+    ? ok("the downloadable template parses cleanly through the same parser")
+    : bad("the template this hands out does not survive its own parser");
+
+  /* ── the wiring ────────────────────────────────────────────────────────── */
+  const launch = code("src/screens/Launch.tsx");
+  /<BulkGenerate \/>/.test(launch) && /<details className="launch-bulk">/.test(launch)
+  && /<summary>Bulk Generation<\/summary>/.test(launch)
+    ? ok("the panel is mounted behind a Bulk Generation disclosure, closed by default")
+    : bad("bulk generate is not mounted, or its disclosure is missing/renamed");
+  /* ⚠️ ABOVE the submit button, asked for directly. Checked by POSITION rather than by
+     the markup around it, so reformatting the form cannot quietly flip it back. */
+  launch.indexOf('<details className="launch-bulk">') < launch.indexOf('className="launch-btn" type="submit"')
+    ? ok("it sits above the Launch demo button")
+    : bad("bulk generation dropped below the Launch demo button again");
+  !/<AdvancedSettings/.test(launch)
+    ? ok("the old AdvancedSettings panel is still unmounted")
+    : bad("the removed advanced panel came back — it was taken off this form on request");
+  /* ⚠️ ONE SSE READER. Two copies drift the first time the engine adds an event type:
+     one surface keeps working and the other silently stops advancing. */
+  !/getReader\(\)/.test(launch) && /generateProfile\(\{/.test(launch)
+    ? ok("the launch form reads the stream through the shared module")
+    : bad("the launch form has its own copy of the SSE reader again");
+  const bulk = code("src/components/BulkGenerate.tsx");
+  /generateProfile\(\{/.test(bulk) && !/getReader\(\)/.test(bulk)
+    ? ok("the bulk panel uses that same reader")
+    : bad("the bulk panel parses the stream itself");
+  /existing\.has\(/.test(bulk)
+    ? ok("a prospect already in the library is skipped, so a run is resumable")
+    : bad("bulk generation rebuilds prospects that already exist");
+  /catch[\s\S]{0,200}?state: "failed"/.test(bulk)
+    ? ok("one failed prospect does not stop the roster")
+    : bad("a single failure aborts the run — one blocked site would take the roster with it");
+
+  /* ⚠️⚠️ **THE LAUNCH SCREEN IS GREEN, NOT THE PLATFORM BLUE — reported directly: "i
+     dont like the blue, stay on theme".** `#2666f9` is the accent on every REPLICA
+     screen, and reaching for it here was reflex: this screen is OUR tool, and
+     `.launch-btn`, `.launch-spinner`, `.launch-page` and `.prospect-card:hover` have
+     always been `--color-green-bar`. Checked over the CSS with COMMENTS STRIPPED — the
+     note recording this very correction names the blue it replaced, and a check that
+     reddens on its own documentation gets deleted as a nuisance (the fix `audit:place`
+     and the vendor scan already carry). */
+  {
+    /* ⚠️ SLICED AT REAL CSS, NOT AT THE SECTION'S COMMENT HEADER. Starting the slice
+       inside a `/* … *\/` block leaves the first `*\/` unpaired, which shifts every
+       later comment boundary by one and leaves prose in the "code" — this check failed
+       on correct CSS exactly that way, matching the note that documents the fix. */
+    const css = readFileSync("src/styles/app.css", "utf8")
+      .replace(/\/\*[\s\S]*?\*\//g, " ");
+    const mine = css.slice(css.indexOf(".evs-trigger {"));
+    !/#2666f9|rgba\(38,\s*102,\s*249/i.test(mine)
+      ? ok("the launch-screen controls carry no platform blue")
+      : bad("a launch-screen control uses the replica accent #2666f9 — it is green here");
+    /--color-green-bar/.test(mine) && /--color-green-active/.test(mine)
+      ? ok("they use the green TOKENS rather than a hex, so a later control cannot drift a third way")
+      : bad("the green is hardcoded — use --color-green-bar / --color-green-active");
+  }
+
+  const api2 = code("engine/demoApi.ts");
+  /if \(event && !isEventKey\(event\)\) return err\(400/.test(api2)
+    ? ok("an unknown event on create is refused rather than silently dropped")
+    : bad("createDemo accepts any event string — a demo could be filed into a section that does not exist");
+}
+
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll event-roster checks passed\n");
 process.exit(fail ? 1 : 0);

@@ -344,9 +344,18 @@ const btn = code("src/components/DemoMarkButton.tsx");
   ? ok("the lookup fires on the tick, not on opening the panel")
   : no("opening the panel must not spend a SOQL query");
 
-/if \(r\.ok && notify\) setSent\(/.test(btn)
+/* ⚠️ RE-AIMED 10/8/2026, NOT LOOSENED. It pinned `if (r.ok && notify) setSent(`
+   character for character, which went red when a failed SHEET write also earned the
+   right to hold the panel open. The invariant is unchanged and is now asserted as two
+   facts rather than one literal: a requested notify always reports its result, and the
+   panel does not close on the path that reported one. */
+/if \(notify\) setSent\(/.test(btn) && /r\.ok && \(notify \|\|/.test(btn)
   ? ok("the panel reports what happened to the email instead of just closing")
   : no("a closed panel is not evidence anybody was told");
+/* And the same rule for the row: a sheet that did not take it says so. */
+/sheet && !sheet\.posted/.test(btn)
+  ? ok("a row that never reached the sheet is reported too")
+  : no("a failed sheet write closes the panel silently");
 
 /* ---- 4. wiring ---------------------------------------------------------------- */
 console.log("\nWiring — both twins, and the public status flag\n");

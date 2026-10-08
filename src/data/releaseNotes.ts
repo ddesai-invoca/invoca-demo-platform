@@ -73,6 +73,9 @@ export const RELEASES: Release[] = [
       i("Boxes on an extra workflow now open their action settings, and those settings can be edited and applied \u2014 the instruction, the signal, what to collect, the destination and the transfer number. Previously they opened read-only."),
       f("A voice workflow's \u201cwhere should the agent escalate\u201d box could not be typed into. Every other field beside it was editable, so it looked like an ordinary field until you tried."),
       f("On an extra workflow, a Qualify box's \u201cif the agent can't determine the answer\u201d field was blank and could not be typed into. It now saves like every other field."),
+      n("Events can have their own section in the demo library, and there is now a 2026 Invoca Chicago Summit alongside Dallas."),
+      n("An event can be connected to a Google Sheet. Every time demo notes are submitted for a prospect in that event, a row is written \u2014 one row per prospect, updated in place when the notes change. Connect it from the event's section on the launch screen."),
+      n("Advanced \u203a bulk generate: download a template, fill in a prospect name and website per row, upload it, and pick which event to file them under. Rows already in the library are skipped and one failure no longer stops the rest."),
     ],
   },
   {

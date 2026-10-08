@@ -729,14 +729,15 @@ function demoLibraryApi(): Plugin {
     configureServer(server) {
       server.middlewares.use(async (req, res, next) => {
         const url = req.url || ''
-        /* ⚠️ WIDENED 9/21/2026 for /api/admin-notice/ack and 9/23/2026 for
-           /api/marks, alongside /api/me and /api/demos — handleDemoApi owns all
-           four, and a narrower prefix here silently 404s a route the production
-           twin already serves (that one forwards every /api/* path and lets
+        /* ⚠️ WIDENED 9/21/2026 for /api/admin-notice/ack, 9/23/2026 for /api/marks
+           and 10/8/2026 for /api/events, alongside /api/me and /api/demos —
+           handleDemoApi owns all five, and a narrower prefix here silently 404s a
+           route the production twin already serves (that one forwards every /api/* path and lets
            handleDemoApi return null). The symptom is the feature working on the
            live site and appearing broken on every laptop. */
         if (!url.startsWith('/api/me') && !url.startsWith('/api/demos')
-          && !url.startsWith('/api/admin-notice') && !url.startsWith('/api/marks')) return next()
+          && !url.startsWith('/api/admin-notice') && !url.startsWith('/api/marks')
+          && !url.startsWith('/api/events')) return next()
         try {
           let raw = ''
           if (req.method !== 'GET' && req.method !== 'DELETE') for await (const chunk of req) raw += chunk

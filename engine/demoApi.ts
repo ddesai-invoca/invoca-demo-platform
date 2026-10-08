@@ -25,12 +25,16 @@
      POST   /api/demos/:id/mark        → mark it Demoed / Follow-up / Lead (+ notify the AE)
      GET    /api/demos/:id/rep         → who owns this prospect's Salesforce account
      GET    /api/marks                 → my follow-up list (?all=1 for an admin)
+     GET    /api/events                → every event + whether a sheet is wired
+     PUT    /api/events/:key/sheet     → connect/disconnect that event's sheet (admin)
    ============================================================================= */
 
 import { type DemoRecord, deleteDemo, getDemo, listDemos, saveDemo, uniqueId } from "./demoStore.ts";
 import { isAdminEmail } from "./admins.ts";
 import { pendingAdminNotice, ackAdminNotice } from "./adminNotices.ts";
 import { MARK_STATUSES, MARK_LABEL, isMarkStatus, listMarks, markDemo, marksFor, unmarkDemo } from "./demoMarks.ts";
+import { listEventSettings, setEventSheet, isEventKey } from "./eventSettings.ts";
+import { postMarkRow, attendeeCell } from "./sheetHook.ts";
 import { lookupRep, salesforceConfigured, type RepCandidate } from "./salesforceApi.ts";
 import { markNoticeEmail, sendMail } from "./mailer.ts";
 import { orgEmailDomain } from "./appEnv.ts";
@@ -85,6 +89,13 @@ export function createDemo(
   user: DemoUser,
   customizations?: DemoRecord["customizations"],
   nameSuffix = "",
+  /** ⚠️ FILES IT UNDER AN EVENT (10/8/2026, for bulk generation). VALIDATED AT THE
+   *  ROUTE against `isEventKey`, never trusted from a body — the Launch screen reads
+   *  this key to decide a demo's section and the sheet hook reads it to decide which
+   *  sheet a mark goes to, so an arbitrary string here would file a demo in a section
+   *  that does not exist and post rows nowhere. A DUPLICATE still inherits nothing:
+   *  `duplicateDemo` passes none, so a copy lands in "My demos", which is right. */
+  event?: string,
 ): DemoRecord {
   const meta = describe(profile);
   if (nameSuffix) meta.prospect = `${meta.prospect}${nameSuffix}`;
@@ -99,6 +110,7 @@ export function createDemo(
     createdAt: now,
     updatedAt: now,
     profile: { ...(profile as object), id, customerName: meta.prospect },
+    ...(event ? { event } : {}),
     customizations: customizations ?? emptyCustomizations(),
   };
   return saveDemo(rec);
@@ -133,7 +145,12 @@ export async function handleDemoApi(
     if (method === "POST") {
       const profile = body?.profile;
       if (!profile?.customerName) return err(400, "A generated profile is required.");
-      return ok({ demo: createDemo(profile, user, body?.customizations) });
+      /* ⚠️ AN UNKNOWN EVENT IS REFUSED, NOT IGNORED. Silently dropping it would
+         publish the demo into "My demos" while the bulk panel reported it filed under
+         the conference — a disagreement nobody would notice until the roster was short. */
+      const event = body?.event ? String(body.event) : undefined;
+      if (event && !isEventKey(event)) return err(400, "Unknown event.");
+      return ok({ demo: createDemo(profile, user, body?.customizations, "", event) });
     }
     return err(405, "Method not allowed.");
   }
@@ -144,6 +161,40 @@ export async function handleDemoApi(
      is how somebody concludes the feature is broken. The narrowing happens in
      `listMarks` before anything is serialised, so a colleague's note never reaches
      a browser that should not have it (the rule `feedbackApi` already follows). */
+  /* ⚠️⚠️ **THE URL IS RETURNED ONLY TO AN ADMIN, AND THE BOUNDARY IS HERE RATHER THAN
+     IN THE BROWSER.** Anyone holding an Apps Script /exec URL can append to that sheet,
+     so it is a secret in the same sense the share token is — every SE needs to know
+     WHETHER an event is wired (so the mark modal can say so honestly), and nobody but an
+     admin needs the address. `listEventSettings` returns both; this drops the half that
+     is not the caller's. */
+  if (p === "/api/events") {
+    if (method !== "GET") return err(405, "Method not allowed.");
+    const admin = isAdmin(user);
+    return ok({
+      admin,
+      events: listEventSettings().map((e) => ({
+        key: e.key,
+        wired: e.wired,
+        ...(admin ? { sheetWebhookUrl: e.settings.sheetWebhookUrl ?? "",
+                      updatedAt: e.settings.updatedAt, updatedBy: e.settings.updatedBy } : {}),
+      })),
+    });
+  }
+
+  const sheetRoute = p.match(/^\/api\/events\/([^/]+)\/sheet$/);
+  if (sheetRoute) {
+    if (method !== "PUT") return err(405, "Method not allowed.");
+    if (!isAdmin(user)) return err(403, "Connecting a sheet is limited to project admins.");
+    const key = decodeURIComponent(sheetRoute[1]);
+    if (!isEventKey(key)) return err(404, "Unknown event.");
+    const saved = setEventSheet(key, String(body?.url ?? ""), user.email);
+    /* ⚠️ A REFUSED URL IS A 400 THAT SAYS WHY. Storing an unusable address would
+       make every later mark report "the sheet could not be reached", which sends
+       somebody debugging their network rather than their paste. */
+    if (!saved) return err(400, "That is not an Apps Script web-app URL. Deploy the script and paste the /exec address.");
+    return ok({ key, wired: !!saved.sheetWebhookUrl, settings: saved });
+  }
+
   if (p === "/api/marks") {
     if (method !== "GET") return err(405, "Method not allowed.");
     const wantsAll = /(^|[?&])all=1(&|$)/.test(urlPath.split("?")[1] ?? "");
@@ -197,9 +248,44 @@ export async function handleDemoApi(
       const mark = markDemo(id, user, status, body?.note, body?.attendees);
       if (!mark) return err(400, "Invalid demo id.");
       const notified = body?.notify ? await notifyRep(rec, user, mark, body?.accountId, baseUrl) : undefined;
-      return ok({ mark, ...(notified ? { notified } : {}) });
+      /* ⚠️⚠️ **THE MARK IS ON DISK BEFORE THIS RUNS, AND THIS CANNOT UNDO THAT.**
+         `postMarkRow` resolves rather than throws — the same contract `sendMail` has, and
+         the same ordering `feedbackApi` records ("the item is saved BEFORE the mail is
+         attempted, so a mail failure can never lose a report"). An SE's note surviving a
+         sheet that moved matters more than the row.
+         ⚠️ AWAITED, NOT FIRE-AND-FORGET: a floating promise can be killed by the SIGTERM
+         drain mid-deploy, which is exactly when the last request through is most likely to
+         be somebody's. It is bounded by its own timeout, so the await is short. */
+      const sheet = await postMarkRow(rec.event, {
+        demoId: id,
+        prospect: rec.prospect,
+        website: rec.websiteUrl,
+        status: MARK_LABEL[mark.status] ?? mark.status,
+        note: mark.note,
+        attendees: attendeeCell(mark),
+        markedBy: user.name,
+        markedByEmail: user.email,
+        at: mark.at,
+        demoUrl: `${baseUrl}/launch?demo=${encodeURIComponent(id)}`,
+        action: "upsert",
+      });
+      return ok({ mark, ...(notified ? { notified } : {}), sheet });
     }
-    if (method === "DELETE") return ok({ removed: unmarkDemo(id, user.email) });
+    if (method === "DELETE") {
+      const removed = unmarkDemo(id, user.email);
+      /* ⚠️ THE ROW IS EMPTIED, NOT DELETED — the script keeps the line and clears the
+         status, notes and who was in the room. A prospect vanishing from the sheet when
+         somebody tidies a mark would lose the record that they were demoed at all, which
+         is the one fact the sheet exists to hold. */
+      const sheet = removed
+        ? await postMarkRow(rec.event, {
+            demoId: id, prospect: rec.prospect, website: rec.websiteUrl,
+            status: "", markedBy: user.name, markedByEmail: user.email,
+            at: new Date().toISOString(), action: "removed",
+          })
+        : undefined;
+      return ok({ removed, ...(sheet ? { sheet } : {}) });
+    }
     if (method === "GET") {
       const all = marksFor(id);
       /* Same boundary as the list: your own unless you are an admin. */

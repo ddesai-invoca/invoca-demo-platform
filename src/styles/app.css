@@ -6760,3 +6760,104 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .ttp--below { transform: translate(-50%, 0); }
 @keyframes ttp-in { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .ttp { animation: none; } }
+
+/* ── Connect a Google Sheet to an event (Launch screen) ──────────────────────
+   ⚠️⚠️ **GREEN, NOT THE PLATFORM BLUE — reported directly: "i dont like the blue, stay
+   on theme".** `#2666f9` is the accent on every REPLICA screen, and reaching for it here
+   was reflex: the launch screen is OUR tool, not a replica, and its own accent has
+   always been green — `.launch-page`'s gradient, `.launch-btn`, `.launch-spinner` and
+   `.prospect-card:hover` are all `--color-green-bar`. Use the TOKENS
+   (`--color-green-bar` for fills and borders, `--color-green-active` for ink on white)
+   rather than a hex, so a launch-screen control added later cannot drift a third way.─
+   ⚠️ ITS OWN `.evs-` PREFIX. Grepped for zero prior uses before writing, the rule
+   `.fbb-page` is in this file to record — and the submit button deliberately REUSES
+   `.dmk-submit` rather than cloning it, because it is the same control in the same
+   shared `CenterModal` footer and two copies would drift on the first fix. */
+.evs-trigger {
+  display: inline-flex; align-items: center; gap: 5px;
+  margin-left: auto; padding: 3px 9px;
+  background: none; border: 1px solid var(--color-border, #e7e9eb); border-radius: 100px;
+  font: inherit; font-size: 11px; font-weight: 600; letter-spacing: .01em;
+  color: #66708e; cursor: pointer;
+}
+.evs-trigger .material-icons { font-size: 14px; }
+.evs-trigger:hover { border-color: var(--color-green-bar); color: var(--color-green-active); }
+.evs-trigger--on { color: var(--color-green-active); border-color: #abe5bc; background: #f4fbf6; }
+.evs-trigger--on:hover { color: var(--color-green-active); border-color: var(--color-green-bar); }
+
+.evs-chip {
+  display: inline-flex; align-items: center; gap: 5px; margin-left: auto;
+  font-size: 11px; font-weight: 600; color: var(--color-green-active);
+}
+.evs-chip .material-icons { font-size: 14px; }
+
+.evs-body { display: flex; flex-direction: column; gap: 14px; }
+.evs-lede { margin: 0; font-size: 14px; line-height: 1.5; color: #5b6577; }
+.evs-steps { margin: 0; padding-left: 20px; font-size: 13px; line-height: 1.7; color: #15243e; }
+.evs-steps code { font-size: 12px; background: #f5f6fa; padding: 1px 5px; border-radius: 3px; }
+.evs-script { display: flex; gap: 8px; }
+.evs-ghost {
+  display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px;
+  background: #fff; border: 1px solid var(--color-border, #e7e9eb); border-radius: 6px;
+  font-size: 13px; font-weight: 600; color: var(--color-green-active); text-decoration: none; cursor: pointer;
+}
+.evs-ghost .material-icons { font-size: 16px; }
+.evs-ghost:hover { border-color: var(--color-green-bar); background: #f4fbf6; }
+.evs-label { font-size: 13px; font-weight: 700; color: #15243e; }
+.evs-input {
+  width: 100%; box-sizing: border-box; padding: 10px 12px;
+  border: 1px solid var(--color-border, #e7e9eb); border-radius: 6px;
+  font: inherit; font-size: 13px; color: #15243e; background: #fcfcfd;
+}
+.evs-input:focus { outline: none; border-color: var(--color-green-bar); box-shadow: 0 0 0 3px rgba(44,191,88,.16); }
+.evs-hint { font-size: 12px; line-height: 1.5; color: #868e96; }
+.evs-err { font-size: 13px; color: #b33b00; }
+.evs-unlink {
+  padding: 11px 18px; background: none; border: 1px solid #e7e9eb; border-radius: 8px;
+  font: inherit; font-size: 14px; font-weight: 700; color: #b33b00; cursor: pointer;
+}
+.evs-unlink:hover { border-color: #ff7045; }
+
+/* ── Bulk Generation (Launch screen) ──────────────────────────────────────────
+   ⚠️ `.blk-` is its own prefix (grepped for zero prior uses). It REUSES `.evs-ghost`,
+   `.evs-err`, `.evs-unlink` and `.dmk-submit` rather than cloning them — the same
+   controls doing the same job, and two copies drift on the first fix. */
+/* ⚠️ ABOVE the Launch demo button now, so it is bounded on BOTH sides — a rule above
+   separates it from the fields, and the margin below keeps it off the button. Open, its
+   own content is what fills the gap. */
+.launch-bulk {
+  margin: 18px 0 16px; border-top: 1px solid var(--color-border, #e7e9eb); padding-top: 14px;
+}
+.launch-bulk > summary {
+  cursor: pointer; font-size: 13px; font-weight: 700; color: #66708e;
+  list-style: none; display: inline-flex; align-items: center; gap: 6px;
+}
+.launch-bulk > summary::-webkit-details-marker { display: none; }
+.launch-bulk > summary::before { content: "expand_more"; font-family: "Material Icons"; font-size: 18px; }
+.launch-bulk[open] > summary::before { content: "expand_less"; }
+.launch-bulk > summary:hover { color: var(--color-green-active); }
+
+.blk { display: flex; flex-direction: column; gap: 12px; padding-top: 14px; }
+.blk-lede { margin: 0; font-size: 13px; line-height: 1.55; color: #5b6577; }
+.blk-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.blk-label { font-size: 13px; font-weight: 700; color: #15243e; }
+.blk-select {
+  padding: 9px 12px; border: 1px solid var(--color-border, #e7e9eb); border-radius: 6px;
+  font: inherit; font-size: 13px; color: #15243e; background: #fff;
+}
+.blk-summary { font-size: 13px; color: #15243e; }
+.blk-skips { margin: 6px 0 0; padding-left: 18px; font-size: 12px; color: #b33b00; line-height: 1.6; }
+.blk-rows { list-style: none; margin: 0; padding: 0; max-height: 260px; overflow-y: auto;
+  border: 1px solid var(--color-border, #e7e9eb); border-radius: 6px; }
+.blk-row { display: flex; justify-content: space-between; gap: 12px; align-items: baseline;
+  padding: 7px 12px; font-size: 13px; border-top: 1px solid #f1f2f5; }
+.blk-row:first-child { border-top: none; }
+.blk-row-name { font-weight: 600; color: #15243e; }
+.blk-row-state { font-size: 12px; color: #868e96; text-align: right; }
+.blk-row--done .blk-row-state { color: var(--color-green-active); }
+.blk-row--failed .blk-row-state { color: #b33b00; }
+.blk-row--building { background: #f4fbf6; }
+.blk-row--building .blk-row-state { color: var(--color-green-active); }
+.blk-foot { display: flex; align-items: center; gap: 12px; }
+.blk-count { font-size: 13px; font-weight: 600; color: #5b6577; }
+.blk-hint { font-size: 12px; color: #868e96; }

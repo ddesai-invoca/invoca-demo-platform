@@ -99,6 +99,14 @@ export interface RepLookup {
   reason?: string;
 }
 
+/** What the event's connected Google Sheet did with this mark. Absent when the demo
+ *  is in no event; `posted: false` with a reason when there is nowhere to post or the
+ *  post failed — never silence, because a row is the whole point of wiring one. */
+export interface SheetResult {
+  posted: boolean;
+  reason?: string;
+}
+
 /** What happened to the optional "tell the rep" half of a mark. */
 export interface NotifyResult {
   sent: boolean;
@@ -132,7 +140,7 @@ interface Ctx {
   /** Mine OR I am an admin — i.e. the server will accept my writes. */
   canManage: (d: { creator?: DemoCreator }) => boolean;
   openDemo: (id: string) => Promise<LoadedDemo | null>;
-  createDemo: (profile: unknown, customizations?: DemoCustomizations) => Promise<DemoSummary | null>;
+  createDemo: (profile: unknown, customizations?: DemoCustomizations, event?: string) => Promise<DemoSummary | null>;
   duplicateDemo: (id: string) => Promise<DemoSummary | null>;
   deleteDemo: (id: string) => Promise<boolean>;
   saveCustomizations: (id: string, customizations: DemoCustomizations) => Promise<boolean>;
@@ -143,13 +151,17 @@ interface Ctx {
   /** Set or replace my mark. Passing null removes it.
    *  `notify` opts into telling the prospect's Salesforce account owner — off
    *  unless asked for, per demo (see engine/demoApi.notifyRep for why). */
+  /** What the event's connected sheet did with this mark, when there is one. */
+  /** The event key this demo is filed under, or undefined. One lookup, so the mark
+   *  modal and the Launch sections cannot disagree about whether a demo is in an event. */
+  eventOf: (demoId: string) => string | undefined;
   setMark: (
     demoId: string,
     status: MarkStatus | null,
     note?: string,
     notify?: { accountId?: string },
     attendees?: { name: string; title?: string }[],
-  ) => Promise<{ ok: boolean; notified?: NotifyResult }>;
+  ) => Promise<{ ok: boolean; notified?: NotifyResult; sheet?: SheetResult }>;
   /** Who owns this prospect's Salesforce account, so the panel can NAME them
    *  before an SE commits to emailing them. */
   lookupRep: (demoId: string) => Promise<RepLookup | null>;
@@ -287,6 +299,11 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
     [],
   );
 
+  const eventOf = useCallback(
+    (demoId: string) => demos.find((d) => d.id === demoId)?.event,
+    [demos],
+  );
+
   const setMark = useCallback(async (
     demoId: string,
     status: MarkStatus | null,
@@ -304,7 +321,7 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
       : marks.filter((m) => m.demoId !== demoId);
     setMarks(optimistic);
     const r = status
-      ? await api<{ mark: DemoMark; notified?: NotifyResult }>(`/api/demos/${demoId}/mark`, {
+      ? await api<{ mark: DemoMark; notified?: NotifyResult; sheet?: SheetResult }>(`/api/demos/${demoId}/mark`, {
           method: "POST",
           /* ⚠️ THE ADDRESS IS NEVER SENT — only whether to notify, and which of
              the candidates the server itself resolved. See engine/demoApi.ts. */
@@ -316,7 +333,15 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
     /* Re-read so the row carries the SERVER's timestamp and its joined prospect
        name, rather than the placeholder the optimistic entry was built with. */
     void refreshMarks();
-    return { ok: true, notified: (r as { notified?: NotifyResult }).notified };
+    /* ⚠️ THE SHEET RESULT IS CARRIED BACK SO THE MODAL CAN SAY WHAT ACTUALLY HAPPENED.
+       A row is a side effect of Submit, and a feature that silently does not fire is the
+       no-op this repo keeps paying for — the modal reports a failure rather than letting
+       a closed dialog imply a row appeared. */
+    return {
+      ok: true,
+      notified: (r as { notified?: NotifyResult }).notified,
+      sheet: (r as { sheet?: SheetResult }).sheet,
+    };
   }, [marks, me, refreshMarks]);
 
   /* ⚠️ CLEARED LOCALLY BEFORE THE REQUEST RESOLVES. The popup's own "Got it" click is
@@ -330,8 +355,12 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
     await fetch("/api/admin-notice/ack", { method: "POST" }).catch(() => { /* best effort */ });
   }, []);
 
-  const createDemo = useCallback(async (profile: unknown, customizations?: DemoCustomizations) => {
-    const r = await api<{ demo: DemoSummary }>("/api/demos", { method: "POST", body: JSON.stringify({ profile, customizations }) });
+  const createDemo = useCallback(async (profile: unknown, customizations?: DemoCustomizations, event?: string) => {
+    const r = await api<{ demo: DemoSummary }>("/api/demos", {
+      method: "POST",
+      /* ⚠️ Sent only when set, so an ordinary launch posts the body it always did. */
+      body: JSON.stringify({ profile, customizations, ...(event ? { event } : {}) }),
+    });
     if (r?.demo) await refresh();
     return r?.demo ?? null;
   }, [refresh]);
@@ -401,7 +430,7 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   }, [demos, profiles, openDemo, addProfile]);
 
   return (
-    <Ctx.Provider value={{ me, admin, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations, marks, markFor, setMark, lookupRep, gmailStatus }}>
+    <Ctx.Provider value={{ me, admin, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations, marks, markFor, setMark, eventOf, lookupRep, gmailStatus }}>
       {children}
     </Ctx.Provider>
   );

@@ -179,9 +179,23 @@ const adv = code("src/components/AdvancedSettings.tsx");
    are checked, because either one alone lets the feature rot: a mounted panel
    would contradict the request, and a server that stopped accepting the fields
    would make "for now" false. */
-/body: JSON\.stringify\(\{ name: trimmedName, url: trimmedUrl \}\)/.test(launch)
-  ? ok("the generate request is back to the plain two fields")
+/* ⚠️ RE-AIMED 10/8/2026 WHEN THE SSE READER WAS EXTRACTED, NOT LOOSENED. The body
+   literal moved out of this screen into `src/data/generateStream.ts` (shared with the
+   bulk-generate panel), so pinning it here could only ever go red. The invariant is the
+   same and is now asserted where the request is actually built: the launch form hands
+   over a name and a url and nothing else, and the shared poster sends exactly those two
+   fields — a `steer`, `scope` or `sources` creeping back into either would mean the
+   panel was effectively remounted without anybody saying so. */
+/generateProfile\(\{\s*name: trimmedName,\s*url: trimmedUrl,/.test(launch)
+  ? ok("the launch form passes only a name and a url")
   : bad("the launch form is not sending the default two-field body");
+(() => {
+  const gen = code("src/data/generateStream.ts");
+  return /body: JSON\.stringify\(\{ name, url \}\)/.test(gen)
+    && !/\b(steer|scope|sources)\b/.test(gen);
+})()
+  ? ok("the shared generate poster sends the two fields and nothing else")
+  : bad("the shared generate poster carries advanced settings — the panel is back by the side door");
 !/<AdvancedSettings/.test(launch) && !/\badv\.[a-z]/.test(launch)
   ? ok("the Advanced settings panel is not mounted on the launch form")
   : bad("AdvancedSettings is still rendered or still feeding the request");
