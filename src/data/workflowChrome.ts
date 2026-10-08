@@ -230,16 +230,34 @@ export function extraTree(wf: ExtraWorkflow): WorkflowTreeModel {
   const spoken = /voice/i.test(wf.channel ?? "");
   /* The node's own drawer content travels with it — see `TreePath.instruction`. */
   const fields = (b: {
-    chips?: string[]; instruction?: string; signal?: string; phone?: string; destination?: string;
+    chips?: string[]; instruction?: string; fallback?: string;
+    signal?: string; phone?: string; destination?: string;
   }) => ({
     ...(b.chips ? { chips: b.chips } : {}),
     ...(b.instruction ? { instruction: b.instruction } : {}),
+    ...(b.fallback ? { fallback: b.fallback } : {}),
     ...(b.signal ? { signal: b.signal } : {}),
     ...(b.phone ? { phone: b.phone } : {}),
     /* ⚠️ NOT gated on the channel, unlike `route`. Nothing on the card draws it, so carrying
        it on an SMS workflow cannot blank an authored action the way a route would. */
     ...(b.destination ? { destination: b.destination } : {}),
   });
+  /* ⚠️ A LEAF'S CONFIG IS SPREAD ONLY WHERE IT IS SET, never as `{ instruction: undefined }`:
+     an explicit undefined is still an own property, and a drawer that reads one cannot tell it
+     from a field somebody cleared. */
+  const leaf = (c?: {
+    instruction?: string; fallback?: string; signal?: string;
+    chips?: string[]; phone?: string; destination?: string;
+  }) => (c ? {
+    ...(c.instruction ? { instruction: c.instruction } : {}),
+    ...(c.fallback ? { fallback: c.fallback } : {}),
+    ...(c.signal ? { signal: c.signal } : {}),
+    ...(c.chips?.length ? { chips: c.chips } : {}),
+    /* The phone row is voice-only, the same gate `fields()` applies one row down. */
+    ...(spoken && c.phone ? { phone: c.phone } : {}),
+    ...(c.destination ? { destination: c.destination } : {}),
+  } : {});
+
   const asPath = (b: (typeof wf.branches)[number]): TreePath => {
     /* ⚠️⚠️ **ONLY A QUALIFY MAY NEST, AND IT IS ENFORCED HERE RATHER THAN TRUSTED.** A Qualify
        is the one action that branches — its answers ARE the nodes below it. The other four are
@@ -278,6 +296,9 @@ export function extraTree(wf: ExtraWorkflow): WorkflowTreeModel {
           action: LEAF_QUALIFY,
           tone: "green",
           locked: true,
+          /* ⚠️ Spread BEFORE `paths`: a Qualify's answers are the nodes below it and never a
+             stored copy, so nothing the leaf config carries may overwrite them. */
+          ...leaf(wf.leafConfig?.sales),
           ...(sales.length ? { paths: sales } : {}),
         }],
       },
@@ -288,6 +309,7 @@ export function extraTree(wf: ExtraWorkflow): WorkflowTreeModel {
           action: LEAF_ESCALATE,
           tone: "orange",
           locked: true,
+          ...leaf(wf.leafConfig?.support),
           /* A workflow with no support-side use case renders the leaf as a terminal, exactly
              as Comfort Keepers' voice tree does. */
           ...(support.length ? { paths: support } : {}),

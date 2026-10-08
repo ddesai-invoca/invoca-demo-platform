@@ -1,4 +1,4 @@
-import type { CustomerProfile, ExtraWorkflow, WorkflowBranch } from "./schema";
+import type { CustomerProfile, ExtraWorkflow, WorkflowBranch, WorkflowLeafConfig } from "./schema";
 import { isProspect } from "./prospect";
 import { areaCodeOf, demoPhone, signalOptions } from "./workflowDrawers";
 
@@ -89,6 +89,40 @@ function siteNames(p: CustomerProfile): string[] {
   return names.length ? names : [p.customerName];
 }
 
+/**
+ * The two LOCKED chrome leaves' own drawer content.
+ *
+ * ⚠️⚠️ **THEY OPEN ACTION DRAWERS TOO, which the first build of these six missed entirely** —
+ * the probe walked the use-case rows and never clicked "All Sales Inquiry Users" or "All
+ * Support Users", so both opened with an empty question, instruction and destination while
+ * every node beneath them was filled. These are the FIRST two drawers an SE opens.
+ *
+ * ⚠️ The sales leaf is the Qualify that sorts the conversation, so it carries the question and
+ * nothing else — a Qualify renders neither a signal nor a collect list. The support leaf is
+ * terminal, so it carries all five.
+ */
+function chrome(v: V, ask: string): {
+  sales: WorkflowLeafConfig; support: WorkflowLeafConfig;
+} {
+  return {
+    sales: { instruction: ask, fallback: REPROMPT },
+    support: {
+      instruction: `Confirm who they are and what they need, answer it if the knowledge base covers it, and otherwise hand them to the service team with everything captured so far. Never attempt to resolve a billing question yourself.`,
+      signal: v.sig("(industry)", "discussed"),
+      chips: ["Consumer Name", `Existing ${v.noun}`],
+      phone: v.phone,
+      destination: v.support,
+    },
+  };
+}
+
+/** ⚠️ ONE REPROMPT, SHARED. It says what to do when the answer is unclear and that is the same
+ *  instruction on every Qualify in every one of the six; six near-identical sentences would
+ *  drift on the first edit and say nothing more. */
+const REPROMPT =
+  "Ask once more in plainer words, and give them the two choices back. If it is still unclear, " +
+  "take the safer path and hand them to a person rather than guessing.";
+
 const wf = (o: ExtraWorkflow): ExtraWorkflow => o;
 
 /* ---- SMS 1: speed to lead -------------------------------------------------- */
@@ -106,6 +140,7 @@ function smsSpeedToLead(v: V): ExtraWorkflow {
     {
       title: "Comparing Quotes", action: "Qualify", intent: "sales",
       instruction: `They are weighing us against someone else. Ask what is driving the comparison so you can answer the real objection: is it the price, or is it how soon we can get there?`,
+      fallback: REPROMPT,
       paths: [
         {
           title: "Price Is the Concern", action: "Inform",
@@ -139,6 +174,7 @@ function smsSpeedToLead(v: V): ExtraWorkflow {
   ];
   return wf({
     slug: "sms-speed-to-lead",
+    leafConfig: chrome(v, `Are you looking to get started with a new ${v.term}, or is this about an account you already have with us?`),
     label: `${v.brand} - SMS - Speed to Lead`,
     channel: "SMS",
     status: "Live",
@@ -166,6 +202,7 @@ function smsMissedCall(v: V): ExtraWorkflow {
     {
       title: "New Service Request", action: "Qualify", intent: "sales",
       instruction: `Ask for their ZIP code first so you can check it against ${v.area}, then confirm what they need. Do not offer a time before the ZIP is confirmed.`,
+      fallback: REPROMPT,
       paths: [
         {
           title: "In the Service Area", action: "Schedule Callback",
@@ -204,6 +241,7 @@ function smsMissedCall(v: V): ExtraWorkflow {
   ];
   return wf({
     slug: "sms-missed-call",
+    leafConfig: chrome(v, `Are you getting in touch about new service, or about something already booked with us?`),
     label: `${v.brand} - SMS - Missed Call Text Back`,
     channel: "SMS",
     status: "Live",
@@ -237,6 +275,7 @@ function smsConfirmReschedule(v: V): ExtraWorkflow {
     {
       title: "Needs a Different Time", action: "Qualify", intent: "sales",
       instruction: `Do not cancel anything yet. Ask how soon they need it instead — whether later this week still works, or whether it has to move further out.`,
+      fallback: REPROMPT,
       paths: [
         {
           title: "Later This Week Works", action: "Schedule Callback",
@@ -262,6 +301,7 @@ function smsConfirmReschedule(v: V): ExtraWorkflow {
   ];
   return wf({
     slug: "sms-confirm-reschedule",
+    leafConfig: chrome(v, `Is tomorrow's ${v.termLower} still good for you, or do you need to move it?`),
     label: `${v.brand} - SMS - Confirm & Reschedule`,
     channel: "SMS",
     status: "Live",
@@ -286,6 +326,7 @@ function voiceQualifyRoute(v: V): ExtraWorkflow {
     {
       title: "New Service Inquiry", action: "Qualify", intent: "sales",
       instruction: `Before routing anyone who wants new service, ask for their ZIP code and capture it. Check it against ${v.area}. If they are outside it, say so politely and end the call without routing. If they are inside it, confirm we serve their area and carry on.`,
+      fallback: REPROMPT,
       paths: [
         {
           title: "Inside the Service Area", action: "Inform & Route",
@@ -324,6 +365,7 @@ function voiceQualifyRoute(v: V): ExtraWorkflow {
   ];
   return wf({
     slug: "voice-qualify-route",
+    leafConfig: chrome(v, `Are you calling about new service, or about an ${v.termLower} you already have with us?`),
     label: `${v.brand} - Voice - Qualify & Route`,
     channel: "Voice",
     status: "Live",
@@ -355,6 +397,7 @@ function voiceBooking(v: V): ExtraWorkflow {
     {
       title: "Wants a Figure First", action: "Qualify", intent: "sales",
       instruction: `They will not commit without knowing roughly what it costs. Ask what they need covered and how big the property is, so the estimate you hand over is grounded rather than invented.`,
+      fallback: REPROMPT,
       paths: [
         {
           title: "Happy With the Estimate", action: "Schedule Callback",
@@ -380,6 +423,7 @@ function voiceBooking(v: V): ExtraWorkflow {
   ];
   return wf({
     slug: "voice-booking",
+    leafConfig: chrome(v, `Are you looking to book a new ${v.termLower}, or to move one you already have?`),
     label: `${v.brand} - Voice - Booking Agent`,
     channel: "Voice",
     status: "Live",
@@ -424,6 +468,7 @@ function voiceAfterHours(v: V): ExtraWorkflow {
     {
       title: "Existing Account, Urgent", action: "Qualify", intent: "support",
       instruction: `Find out whether this can safely wait until the morning. Ask what is happening right now and whether anyone is at risk or any property is being damaged — then decide, and say which it is.`,
+      fallback: REPROMPT,
       paths: [
         {
           title: "Cannot Wait", action: "Support & Escalate",
@@ -445,6 +490,7 @@ function voiceAfterHours(v: V): ExtraWorkflow {
   ];
   return wf({
     slug: "voice-after-hours",
+    leafConfig: chrome(v, `Is this about new service, or about an account you already have with us?`),
     label: `${v.brand} - Voice - After Hours Triage`,
     channel: "Voice",
     status: "Live",

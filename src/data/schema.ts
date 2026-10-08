@@ -754,6 +754,10 @@ const WorkflowNodeFields = {
   /** The instruction box — "How should the agent inform users?" and its siblings. On a Qualify
    *  node this is the QUESTION it asks, which is what its answers below are answers to. */
   instruction: z.string().optional(),
+  /** A Qualify's reprompt — the drawer's "If the agent can't determine the answer" box. It
+   *  pairs with `instruction` (the question) and is meaningless on the other four actions,
+   *  which the drawer enforces by only rendering it inside the Qualify branch. */
+  fallback: z.string().optional(),
   /** The Signal row. Empty means the drawer's own "Select a signal..." state. */
   signal: z.string().optional(),
   /** Voice only: "What phone number should the agent transfer callers to?" An SMS drawer has no
@@ -797,6 +801,25 @@ export const WorkflowBranch = z.object({
 });
 export type WorkflowBranch = z.infer<typeof WorkflowBranch>;
 
+/* ⚠️⚠️ **THE TWO LOCKED CHROME LEAVES ARE CONFIGURABLE; THEIR NAMES ARE NOT.** "All Sales
+   Inquiry Users" and "All Support Users" are product chrome and stay un-renameable — that rule
+   is about their NAMES, and `editGuard` still refuses a rename — but each one OPENS AN ACTION
+   DRAWER, and what the agent ASKS there and where it escalates to is configuration. Before this
+   they were built from constants alone, so both drawers opened EMPTY on every extra workflow
+   while every use case below them was filled. No `title` and no `action` here: those are the
+   chrome, and a node whose drawer could rewrite them would be the lock wearing a costume. */
+export const WorkflowLeafConfig = z.object({
+  /** The Qualify question on the sales leaf, the escalation instruction on the support one. */
+  instruction: z.string().optional(),
+  /** The Qualify reprompt. Ignored on the support leaf, which is terminal. */
+  fallback: z.string().optional(),
+  signal: z.string().optional(),
+  chips: z.array(z.string()).optional(),
+  phone: z.string().optional(),
+  destination: z.string().optional(),
+});
+export type WorkflowLeafConfig = z.infer<typeof WorkflowLeafConfig>;
+
 export const ExtraWorkflow = z.object({
   slug: z.string(),                     // URL segment under /workflow/<slug>
   label: z.string(),                    // "Reyes Law - SMS - Nurture"
@@ -805,6 +828,12 @@ export const ExtraWorkflow = z.object({
   triggeredBy: z.string().optional(),
   startLabel: z.string(),               // subtitle on the Conversation Start node
   branches: z.array(WorkflowBranch),
+  /** ⚠️ OPTIONAL AND DEFAULTED ABSENT, so every authored workflow already on disk parses and
+   *  renders exactly as before. See `WorkflowLeafConfig`. */
+  leafConfig: z.object({
+    sales: WorkflowLeafConfig.optional(),
+    support: WorkflowLeafConfig.optional(),
+  }).optional(),
   systemPrompt: z.string(),             // the agent's playbook, used by Preview Agent
   openingMessage: z.string().optional(),// what the agent texts first
   /* THE ORDERED FLOW, AS A LIST — the SMS counterpart to the voice spec's `informSteps`.

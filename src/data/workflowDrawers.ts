@@ -1334,11 +1334,16 @@ export function extraDrawerFor(
     return {
       kind: "action", title: "Action", action: "qualify", channel,
       question: str("instruction"),
+      /* ⚠️⚠️ THE REPROMPT WAS NEVER RETURNED, so the drawer's "If the agent can't determine the
+         answer" box rendered EMPTY AND READ-ONLY on every extra workflow's Qualify — the same
+         shape as the voice escalate's destination, found the same way (clicking it). */
+      fallback: str("fallback"),
       segments: kids.map((k) => String(k?.title ?? "")),
       segmentNodes: kids,
       ...(slot ? { actionSlot: slot } : {}),
       edits: {
         ...(put("instruction") ? { question: put("instruction") } : {}),
+        ...(put("fallback") ? { fallback: put("fallback") } : {}),
         ...(at ? { segments: `${at}.paths` } : {}),
         /* Carried though a Qualify renders neither, so switching the action to one
            that DOES have them finds somewhere to write without rebuilding the drawer. */

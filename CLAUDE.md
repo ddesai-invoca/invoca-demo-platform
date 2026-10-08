@@ -2011,8 +2011,8 @@ call site is a plain spread.
 `extraDrawerFor` reads a node's own `instruction` / `signal` / `phone` / `chips` / `route` /
 `destination`, and Apply writes back to those same paths. An unset field renders as an empty box
 whose FIRST write is `undefined -> string` — a TYPE FLIP `editGuard` refuses — so the drawer
-reports success and the edit vanishes. Seeded fields keep every write string -> string. Measured:
-**32 action drawers across the six, 0 empty fields**, asserted by opening every one.
+reports success and the edit vanishes. Seeded fields keep every write string -> string. Measured: **44 action drawers across the six, 0 empty fields and 0 read-only**, asserted by
+opening every one — including the two chrome leaves, which the first sweep missed (below).
 
 ⚠️⚠️ **"disposition" IS A COLLECT FIELD, NOT A SIGNAL — six drawers shipped with an empty Signal
 before this was measured.** Every chain now ENDS in a term swept across **179 profiles on disk**:
@@ -2023,6 +2023,37 @@ behaviour and the reason this is not a fallback to an invented name.
 ⚠️ **A NODE THAT TURNS A CALLER AWAY IS NOT TAGGED WITH A SALES SIGNAL.** "Outside the Service
 Area" first resolved to `Quote Provided`, which contradicts the node beside it; it takes the
 industry signal instead.
+
+#### ⚠️⚠️ THREE FIELDS SHIPPED EMPTY ANYWAY, AND THE PROBE IS WHY — REPORTED AS "all the fields in the actions drawers are not filled in"
+The sweep above walked `path-*` and `sub-*` ids and **never clicked a `leaf-*` one**, so the two
+LOCKED CHROME LEAVES were never opened — and they are the FIRST two drawers an SE opens.
+`audit:ai` said "32 drawers, 0 empty fields" and was telling the truth about the nodes it looked
+at. **A green check is only as wide as its walk**; both probe loops now `unshift` the leaf id.
+44 drawers, same assertion.
+
+| was empty on every extra workflow | now |
+|---|---|
+| "All Sales Inquiry Users" — the Qualify QUESTION | the workflow's own sorting question |
+| "All Support Users" — instruction + destination (+ phone on voice) | filled, from one shared `chrome()` helper |
+| **every Qualify's "If the agent can't determine the answer"** | a shared `REPROMPT` |
+
+⚠️⚠️ **THE REPROMPT WAS THE WORST OF THE THREE, because it was empty AND READ-ONLY on every
+Qualify of every extra workflow** — `extraDrawerFor` never returned `fallback` and never gave it
+a write path, so the box could not even be typed into. Same shape as the voice escalate's
+destination below, found the same way: by clicking it, not by reading the diff. `fallback` is a
+schema field now, carried by `extraTree` and written through `actionSlot`.
+
+⚠️⚠️ **`ExtraWorkflow.leafConfig` IS WHY SEEDING THEM DID NOT RESTYLE EVERY OTHER WORKFLOW.** The
+chrome leaves are built from constants shared by Orlando Health's five ER trees, Avi & Co's,
+Reyes Law's and every generated quote-request one — so filling them in `extraTree` directly would
+have put this content on all of them. The config is **opt-in and defaulted absent**, spread only
+where set (never as `{ instruction: undefined }`, which is still an own property), and
+`audit:ai` asserts an authored workflow that sets none renders its leaves exactly as before.
+⚠️ **NO `title` AND NO `action` IN IT.** Those two ARE the chrome and stay un-renameable; a
+config that could rewrite them would be the lock wearing a costume.
+⚠️ **CONSEQUENCE, STATED: every AUTHORED extra workflow still has those three empty boxes.**
+Verified live on Orlando Health. The mechanism now exists, so filling them is a data edit per
+workflow — not done here, because nobody asked and those demos are signed off.
 
 ⚠️⚠️ **A VOICE ESCALATE'S DESTINATION BOX WAS READ-ONLY ON EVERY VOICE WORKFLOW — a pre-existing
 bug this build exposed, found in the browser rather than in the diff.** `extraDrawerFor` gated the
@@ -2059,15 +2090,16 @@ records five times.** It read the BRANCH DATA ("is every nesting branch a Qualif
 says the content module behaves; letting `extraTree` nest *everything* left it green. It now builds
 a probe tree with a child hung off an `Inform` and asserts the tree drops it. Verified to fire.
 
-**`npm run audit:ai` gained 19 checks** for this: the gate matches somebody and still excludes
+**`npm run audit:ai` gained 20 checks** for this: the gate matches somebody and still excludes
 somebody, six unique slugs split 3+3, the copy carries the prospect's own terms and no other
 prospect's name, no em dash in an opener, the depth rule in both directions, 32 drawers with 0
 empty fields, every rendered field writable, every named signal one the prospect actually has, no
 route on SMS, the booking locations being real rows, every number on the 555 exchange, and the
 merge at the assembly point.
-⚠️ **Seven sabotages fire**: dropping the merge, nesting under a terminal action, blanking a
-signal, restoring an em dash, putting a route on an SMS node, removing the gate, and reverting the
-voice-destination write path.
+⚠️ **Twelve sabotages fire**: dropping the merge, nesting under a terminal action, blanking a
+signal, restoring an em dash, putting a route on an SMS node, removing the gate, reverting the
+voice-destination write path, dropping the leaf config, having `extraTree` ignore it, leaking it
+onto every authored workflow, and dropping the reprompt's value or its write path.
 ⚠️ **ONE EXISTING CHECK WAS RE-AIMED, NOT LOOSENED.** It pinned `onApply={smsTemplated || (!isSms
 && !created)` character for character and went red the moment an EXTRA workflow earned an Apply —
 which is a real capability (these six carry full drawer content and write to their own tree), not
@@ -2076,8 +2108,8 @@ Apply, and a CREATED one still cannot.
 
 **Verified in the browser on Aptive**: all six list in the Agent Studio sub-nav beside the built-in
 pair; `sms-speed-to-lead` draws **12 nodes on six rows** with the Qualify's two answers on the
-sixth; its Inform drawer opens filled and editable with its own signal and three collect chips; the
-escalate drawer carries a filled, editable destination; a real edit **Applied, survived a reload,
+sixth; **all 44 action drawers across the six open with 0 empty and 0 read-only fields**, chrome leaves
+included; a real edit **Applied, survived a reload,
 and the page's undo took it back**; and the voice after-hours escalate drawer shows **0 read-only
 fields** with instruction, phone and destination all filled.
 ⚠️ **The built-in voice tree is untouched: 12 nodes / 15 chips / 0 `.wf-v2` / 0 arrowheads**,

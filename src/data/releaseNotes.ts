@@ -72,6 +72,7 @@ export const RELEASES: Release[] = [
       i("Every box in an SMS or voice workflow is now coloured by the action it performs \u2014 Qualify, Schedule Callback, Inform, Inform & Route or Support & Escalate \u2014 matching the platform exactly, including the tint, the border and the coloured edge. Voice workflows were using an older palette and now match SMS; a prospect generated from here on gets the right colours automatically."),
       i("Boxes on an extra workflow now open their action settings, and those settings can be edited and applied \u2014 the instruction, the signal, what to collect, the destination and the transfer number. Previously they opened read-only."),
       f("A voice workflow's \u201cwhere should the agent escalate\u201d box could not be typed into. Every other field beside it was editable, so it looked like an ordinary field until you tried."),
+      f("On an extra workflow, a Qualify box's \u201cif the agent can't determine the answer\u201d field was blank and could not be typed into. It now saves like every other field."),
     ],
   },
   {

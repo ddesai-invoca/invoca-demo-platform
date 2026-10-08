@@ -2795,12 +2795,20 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
         (lf.paths ?? []).forEach((pth, pi) => {
           const ids = [`path-${bi}-${li}-${pi}`,
                        ...(pth.paths ?? []).map((_x, si) => `sub-${bi}-${li}-${pi}-${si}`)];
+          /* ⚠️⚠️ THE LOCKED CHROME LEAF OPENS AN ACTION DRAWER TOO, and leaving it out of
+             this walk is exactly how both of them shipped empty. Added once per leaf. */
+          if (pi === 0) ids.unshift(`leaf-${bi}-${li}`);
           for (const id of ids) {
             const d = extraDrawerFor(gated, tree, id, channel as "sms" | "voice") as any;
             if (!d || d.kind !== "action") { empty++; continue; }
             drawers++;
             const blank = (k: string) => { if (!d[k]) { empty++; } };
-            if (d.action === "qualify") { blank("question"); if (!d.segments?.length) empty++; }
+            /* ⚠️ A Qualify has a QUESTION *and* a reprompt. The reprompt was the field left
+               empty and read-only on every extra workflow until 10/8. */
+            if (d.action === "qualify") {
+              blank("question"); blank("fallback");
+              if (!d.segments?.length) empty++;
+            }
             else {
               if (d.action !== "callback") blank("handling");
               blank("signal");
@@ -2829,11 +2837,17 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
           (lf.paths ?? []).forEach((pth, pi) => {
             const ids = [`path-${bi}-${li}-${pi}`,
                          ...(pth.paths ?? []).map((_x, si) => `sub-${bi}-${li}-${pi}-${si}`)];
+          /* ⚠️⚠️ THE LOCKED CHROME LEAF OPENS AN ACTION DRAWER TOO, and leaving it out of
+             this walk is exactly how both of them shipped empty. Added once per leaf. */
+          if (pi === 0) ids.unshift(`leaf-${bi}-${li}`);
             for (const id of ids) {
               const d = extraDrawerFor(gated, tree, id, channel as "sms" | "voice") as any;
               if (!d || d.kind !== "action") continue;
               const e = d.edits ?? {};
-              if (d.action === "qualify") { if (!e.question || !e.segments) locked++; continue; }
+              if (d.action === "qualify") {
+                if (!e.question || !e.segments || !e.fallback) locked++;
+                continue;
+              }
               if (d.action !== "callback" && !e.handling) locked++;
               if (d.signal !== undefined && !e.signal) locked++;
               if ("phonePlaceholder" in d && !e.phone) locked++;
@@ -2847,6 +2861,23 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
     })()
       ? ok("every rendered field also has somewhere to write")
       : bad("a drawer renders a field with no write path — it is read-only and looks editable");
+
+    /* ⚠️⚠️ AN AUTHORED EXTRA WORKFLOW THAT SETS NO `leafConfig` IS BYTE-IDENTICAL. The two
+       chrome leaves are shared by every extra workflow on the platform — Orlando Health's five
+       ER trees, Avi & Co's, Reyes Law's, every generated quote-request one — so seeding them
+       for these six must not reach any of them. */
+    (() => {
+      const authored = everyProfile
+        .flatMap((q) => q.reports.extraWorkflows ?? [])
+        .filter((w) => !(w as { leafConfig?: unknown }).leafConfig);
+      if (!authored.length) return false;
+      return authored.every((w) => extraTree(w as never).branches
+        .flatMap((b) => b.leaves)
+        .every((l) => l.instruction === undefined && l.signal === undefined &&
+                      l.phone === undefined && l.destination === undefined));
+    })()
+      ? ok("an authored extra workflow with no leafConfig renders its chrome leaves unchanged")
+      : bad("seeding the chrome leaves reached a workflow that never asked for it");
 
     /* ⚠️ A SIGNAL IS ONLY EVER ONE THIS PROSPECT ACTUALLY HAS. */
     const sigs = new Set(signalOptions(gated));

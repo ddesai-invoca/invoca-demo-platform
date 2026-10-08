@@ -82,6 +82,8 @@ export interface TreePath {
    * ⚠️ OPT-IN, so every diagram that does not set them is byte-identical.
    */
   instruction?: string;
+  /** A Qualify's reprompt — see the schema. */
+  fallback?: string;
   signal?: string;
   phone?: string;
   /** SMS: the hand-off destination the drawer collects. Never drawn — see the schema. */
@@ -109,6 +111,17 @@ export interface TreeLeaf {
   locked?: boolean;
   tone?: "green" | "orange" | "blue" | "grey";
   chips?: string[];
+  /* ⚠️⚠️ THE FOUR FIELDS THE LEAF'S OWN ACTION DRAWER RENDERS, which `TreePath` has carried
+     since 10/8 and this did not — so clicking either chrome leaf opened a drawer with an
+     EMPTY instruction, signal and destination while every use case below it was filled.
+     Nothing on the card draws them; they exist so the node and its drawer are one object.
+     All opt-in and defaulted absent, so every existing diagram is byte-identical. */
+  instruction?: string;
+  /** A Qualify's reprompt — see the schema. */
+  fallback?: string;
+  signal?: string;
+  phone?: string;
+  destination?: string;
   /* ⚠️ BOTH OPT-IN, DEFAULTED TO TODAY'S BEHAVIOUR — the same pattern DonutChart's extra
      props follow, and for the same reason: these two exist for ONE prospect's SMS tree
      (Comfort Keepers) and every other diagram in the app must render byte-identically.
