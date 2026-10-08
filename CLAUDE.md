@@ -12822,7 +12822,20 @@ before today keeps the spaced password it was created with and still opens.
 or a password handed over in person must not leave somebody with no way in. And an unsent
 email SAYS so rather than pointing at an inbox nothing was sent to.
 
-**`npm run audit:share` gained 19 checks**; six sabotages verified to fire (emailing a custom
+⚠️⚠️ **AND IT SHIPPED WITH THE "I already have the password" LINK DEAD — reported, and the
+cause is a rule this file already states.** The step was DERIVED from `sentTo`
+(`if (!sentTo)` showed the email form) and that link advanced by setting it to `""`. An
+empty string is FALSY, so the guard could not tell "advanced without an address" from "has
+not advanced", and clicking did nothing at all. **One value was answering two questions —
+WHICH STEP, and WHICH ADDRESS to name.** They are two states now; `sentTo` is only ever the
+address and only ever for the message.
+⚠️⚠️ **THE CHECK THAT SHOULD HAVE CAUGHT IT ONLY MATCHED THE BUTTON'S LABEL**, which says
+nothing about whether clicking it does anything — the dead-control trap recorded here
+repeatedly, and this time it let a reported bug through. Three checks replace it: the step
+is its own state, the render branches on IT, and the link sets it. Verified by putting the
+original bug back: 2 red.
+
+**`npm run audit:share` gained 22 checks**; seven sabotages verified to fire (emailing a custom
 password, removing the cap, dropping the record, one transport ignoring the From, keeping the
 spaces, and the gate claiming an email was sent whatever happened).
 **Verified end to end locally**: a request for `buyer@unitedvetcare.com` was recorded on the

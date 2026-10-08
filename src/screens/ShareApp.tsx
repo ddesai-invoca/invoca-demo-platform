@@ -59,6 +59,13 @@ export default function ShareApp() {
      32-byte token in the URL is still the only real secret. `sentTo` is what moves the
      card from asking for an address to asking for the password. */
   const [email, setEmail] = useState("");
+  /* ⚠️⚠️ **WHICH STEP WE ARE ON IS ITS OWN STATE, AND IT HAS TO BE.** It was derived from
+     `sentTo` — `if (!sentTo)` showed the email step — and "I already have the password"
+     advanced by setting it to `""`. An empty string is FALSY, so that guard could not tell
+     "advanced without an address" from "has not advanced", and the link did nothing at all.
+     One value was answering two questions: WHICH STEP, and WHICH ADDRESS to name. They are
+     two now; `sentTo` is only ever the address, and only ever for the message. */
+  const [step, setStep] = useState<"email" | "password">("email");
   const [sentTo, setSentTo] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
 
@@ -103,6 +110,7 @@ export default function ShareApp() {
         return;
       }
       setSentTo(email.trim());
+      setStep("password");
       setPhase((p) => (p.k === "locked" ? { ...p, error: undefined } : p));
       /* ⚠️ **AN UNSENT EMAIL SAYS SO RATHER THAN SENDING SOMEBODY TO AN EMPTY INBOX.**
          `sendMail` legitimately declines off production and with no mailer configured,
@@ -145,7 +153,7 @@ export default function ShareApp() {
   if (phase.k === "locked") {
     const title = phase.prospect ? `${phase.prospect} — AI Agent demo` : "AI Agent demo";
     /* Step one: who are you? The password is emailed rather than passed along by hand. */
-    if (!sentTo) {
+    if (step === "email") {
       return (
         <Shell>
           <h1 className="share-title">{title}</h1>
@@ -165,7 +173,8 @@ export default function ShareApp() {
                 that is not configured must not leave somebody with no route at all, and
                 somebody who was given the password by hand should not have to ask for a
                 second copy. */}
-            <button type="button" className="share-link" onClick={() => setSentTo("")}>
+            <button type="button" className="share-link"
+              onClick={() => { setStep("password"); setNote(null); }}>
               I already have the password
             </button>
           </form>
@@ -191,8 +200,8 @@ export default function ShareApp() {
             {busy ? "Checking…" : "Open demo"}
           </button>
           <button type="button" className="share-link"
-            onClick={() => { setSentTo(null); setNote(null); setPassword(""); }}>
-            Use a different email
+            onClick={() => { setStep("email"); setSentTo(null); setNote(null); setPassword(""); }}>
+            {sentTo ? "Use a different email" : "Email me the password instead"}
           </button>
         </form>
       </Shell>

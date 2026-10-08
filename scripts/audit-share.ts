@@ -539,9 +539,26 @@ console.log("\nEmailed share password\n");
   /requestPassword/.test(gate) && /Email me the password/.test(gate)
     ? ok("the gate asks for an email first")
     : bad("the gate still asks for a password nobody was sent");
+  /* ⚠️⚠️ **PRESENCE WAS NOT ENOUGH, AND THIS CHECK LET A REAL BUG THROUGH.** It matched the
+     button's LABEL, which says nothing about whether clicking it does anything — the
+     dead-control trap CLAUDE.md records repeatedly. It shipped broken: the step was derived
+     from `sentTo` (`if (!sentTo)`) and the button advanced by setting it to `""`, which is
+     FALSY, so the guard could not tell "advanced without an address" from "not advanced"
+     and the link did nothing. One value was answering two questions. The checks below pin
+     the fix rather than the label: the step is its OWN state, the render branches on IT,
+     and the button sets it. */
   /I already have the password/.test(gate)
     ? ok("there is still a way through when the mail does not arrive")
     : bad("a spam filter or an unconfigured mailer leaves the prospect with no route");
+  /useState<"email" \| "password">\("email"\)/.test(gate)
+    ? ok("which step the gate is on is its own state")
+    : bad("the step is derived from another value again — an empty one reads as 'not yet'");
+  /if \(step === "email"\)/.test(gate) && !/if \(!sentTo\)/.test(gate)
+    ? ok("the render branches on the step, not on whether an address was captured")
+    : bad("the step guard reads a value that can legitimately be empty");
+  /I already have the password[\s\S]{0,120}?setStep\("password"\)|setStep\("password"\);[\s\S]{0,160}?I already have the password/.test(gate)
+    ? ok("the 'I already have the password' link actually advances the step")
+    : bad("that link does not change the step — it is a dead control");
   /if \(!body\?\.sent\) setNote/.test(gate)
     ? ok("an unsent email says so rather than pointing at an empty inbox")
     : bad("the gate claims an email was sent whatever happened");
