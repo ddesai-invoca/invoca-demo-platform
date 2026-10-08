@@ -562,6 +562,18 @@ console.log("\nPaste a sheet link\n");
   btn.indexOf("Google Sheet link") < btn.indexOf("Use a script instead")
     ? ok("pasting a link comes before the script fallback")
     : bad("the script path is above the paste field again");
+  /* ⚠️⚠️ THE DIALOG MUST NAME THE ACCOUNT THAT WRITES, WHICH IS `sheetOwner` — the one
+     that CONNECTED the event, not whoever is reading. Asked directly, and the first
+     version said the signed-in user unconditionally: a second admin opening an event
+     somebody else wired was told to check THEIR access while rows went through the
+     original connector's grant. One fact, two sources. */
+  /state\?\.sheetOwner && state\.sheetOwner !== connectedAs/.test(btn)
+    ? ok("the dialog names the connecting account, not whoever is reading it")
+    : bad("the access hint names the signed-in user even on an event somebody else wired");
+  /* And the API has to hand `sheetOwner` over, or the branch above can never be true. */
+  /sheetOwner: e\.settings\.sheetOwner/.test(code("engine/demoApi.ts"))
+    ? ok("the API returns which account the event is wired with")
+    : bad("sheetOwner never reaches the browser — the dialog cannot name the real writer");
 }
 
 /* =============================================================================

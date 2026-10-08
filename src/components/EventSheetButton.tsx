@@ -183,10 +183,29 @@ export default function EventSheetButton({
                     </a>
                   )}
                 </div>
-                <div className="evs-hint">
-                  Make sure {connectedAs ?? "your account"} can edit the sheet — that is the
-                  connection the rows are written with.
-                </div>
+                {/* ⚠️⚠️ **IT MUST NAME THE ACCOUNT THAT ACTUALLY WRITES, WHICH IS THE ONE
+                    THAT CONNECTED THIS EVENT — not whoever is reading the dialog.** Asked
+                    directly: *"does that mean that i need to be added to even other people
+                    sheets, or is that saying ddesai@invoca.com because that is my account"* —
+                    and the first version said `me.email` unconditionally, so a second admin
+                    opening an event somebody else wired was told to check THEIR access while
+                    the rows went through the original connector's grant. One fact, two
+                    sources: `sheetOwner` is what `sheetHook` writes with, so it is what this
+                    reads. Falls back to the signed-in account only when nothing is connected
+                    yet, because then they ARE the one about to become the owner. */}
+                {state?.sheetOwner && state.sheetOwner !== connectedAs ? (
+                  <div className="evs-hint">
+                    Rows are written with <strong>{state.sheetOwner}</strong>'s connection, set up
+                    when this event was wired — so that account needs edit access, not yours.
+                    Saving a new link here switches it to {connectedAs ?? "your account"}.
+                  </div>
+                ) : (
+                  <div className="evs-hint">
+                    Rows are written with your connection ({connectedAs ?? "your account"}), so
+                    that account needs edit access to this one sheet. Nobody else does — everyone
+                    else's demo notes go through it too.
+                  </div>
+                )}
               </>
             )}
 
