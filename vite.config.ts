@@ -561,6 +561,7 @@ function statusApi(): Plugin {
             googlePlacesKey: !!env.GOOGLE_PLACES_API_KEY,
             mapboxTokenInServerEnv: !!env.VITE_MAPBOX_TOKEN,
             emailConfigured: !!(env.SMTP_USER && env.SMTP_APP_PASSWORD),
+            shareFromConfigured: !!env.SHARE_FROM,
             gongConfigured: gongConfigured(),
             renderConfigured: Boolean(env.BROWSERLESS_TOKEN || process.env.BROWSERLESS_TOKEN),
             slackConfigured: slackConfigured(),

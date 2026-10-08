@@ -44,6 +44,12 @@ export interface StatusInput {
   mapboxTokenInServerEnv: boolean;
   authGate: boolean;
   emailConfigured: boolean;
+  /* ⚠️ A BOOLEAN, NEVER THE ADDRESS — this endpoint is PUBLIC and the standing rule is
+     counts and booleans only. It exists to answer one question from outside the gate:
+     when a password email arrives from the wrong sender, was SHARE_FROM simply unset, or
+     was it set and SILENTLY REWRITTEN by Gmail? Those need different fixes and nothing
+     else can tell them apart. */
+  shareFromConfigured: boolean;
   /* Advanced-settings context sources — see the integrations block below. */
   gongConfigured: boolean;
   slackConfigured: boolean;
@@ -109,6 +115,7 @@ export function deployStatus(input: StatusInput) {
          what it is configured to. Lets you confirm SMTP landed after a Render
          restart without signing in or mailing a colleague to find out. */
       emailConfigured: input.emailConfigured,
+      shareFromConfigured: input.shareFromConfigured,
       googlePlacesKey: input.googlePlacesKey,
       /* The frontend needs the Mapbox token at BUILD time, so its presence in the
          SERVER env does not prove the deployed bundle carries it. Named for what

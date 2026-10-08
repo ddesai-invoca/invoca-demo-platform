@@ -129,6 +129,7 @@ app.get("/api/status", (_req, res) => res.json(deployStatus({
   mapboxTokenInServerEnv: !!process.env.VITE_MAPBOX_TOKEN,
   authGate: authEnabled,
   emailConfigured: mailConfigured(),
+  shareFromConfigured: !!process.env.SHARE_FROM?.trim(),
   gongConfigured: gongConfigured(),
   renderConfigured: renderConfigured(),
   slackConfigured: slackConfigured(),
