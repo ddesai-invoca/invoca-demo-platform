@@ -683,6 +683,49 @@ console.log("\nActivity tracking\n");
   /try \{ await themeNotes\(target\); \} catch/.test(code("engine/sheetHook.ts"))
     ? ok("a styling failure cannot lose a row that already landed")
     : bad("the theme call can fail a mark");
+
+  /* ⚠️⚠️ THE PALETTE IS THE PRODUCT'S, AND IT IS CHECKED AGAINST THE FILES THAT OWN IT
+     rather than against a list copied in here — a copied list is a second definition of
+     the house style, free to drift from the artifacts it is supposed to match. Every
+     colour the sheet paints must also appear in the sales playbook, which is this repo's
+     own signed-off "Invoca white + green" document. */
+  const playbook = code("src/artifacts/salesPlaybook.ts").toLowerCase();
+  const hexes = [...sheets.matchAll(/0x([0-9a-f]{2}) \/ 255, g: 0x([0-9a-f]{2}) \/ 255, b: 0x([0-9a-f]{2})/gi)]
+    .map((m) => `#${m[1]}${m[2]}${m[3]}`.toLowerCase());
+  hexes.length >= 6
+    ? ok(`the sheet names ${hexes.length} colours as hex, so they can be checked`)
+    : bad("the sheet palette could not be read — the check is not measuring anything");
+  const stray = hexes.filter((h) => !playbook.includes(h));
+  stray.length === 0
+    ? ok("every sheet colour is one the sales playbook already ships")
+    : bad(`off-palette colour(s) in the sheet: ${stray.join(", ")}`);
+
+  /* ⚠️ The brand green is a GROUND. Text that wants to read as green takes #00624d, or a
+     count column comes out on-brand and unreadable at 10pt on white. */
+  /backgroundColor: BRAND/.test(sheets) && !/foregroundColor: BRAND/.test(sheets)
+    ? ok("#00b388 grounds the header band and is never used as small text")
+    : bad("the brand green is painted as text, where it sits near 2.3:1 on white");
+  /foregroundColor: GREEN_INK/.test(sheets)
+    ? ok("green text takes the deeper #00624d")
+    : bad("nothing uses the readable green ink");
+
+  /* ⚠️ Lato is the platform's face; Inter is nobody's font here. */
+  /const FONT = "Lato"/.test(sheets) && !/fontFamily: "/.test(sheets)
+    ? ok("both tabs are set in Lato, from one constant")
+    : bad("the sheet is set in a font this product does not use");
+
+  /* ⚠️⚠️ A subline must RESTATE the hairline rather than omitting it: `borders` is in the
+     field mask, so `{}` clears the bottom rule the base format just set.
+     ⚠️ **THE FIRST VERSION OF THIS COULD NOT FAIL — the tautological-check trap again.**
+     It searched the whole file for `: { bottom: { style: "SOLID", color: RULE } }`, which
+     the BASE body format also contains, so the sabotage that empties the subline branch
+     passed. Slice the ternary and read its else-branch. */
+  const borders = sheets.slice(sheets.indexOf("borders: l.main"));
+  const elseBranch = borders.slice(0, borders.indexOf("} },")).split("\n")
+    .find((ln) => ln.trim().startsWith(": ")) ?? "";
+  elseBranch.includes("bottom:")
+    ? ok("a subline keeps its hairline instead of clearing it")
+    : bad("quiet rows lose the rule under them");
 }
 
 

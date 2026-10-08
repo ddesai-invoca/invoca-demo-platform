@@ -12895,11 +12895,42 @@ each other's Activity with their own prospects.
 because somebody's spreadsheet moved, and the event is already on disk — the contract
 `postMarkRow` has, for the same reason.
 
-#### The look
-A header band in Invoca navy with white bold text, a frozen header, sized columns, a wrapping
-Notes column; on Activity, prospect rows in bold on a pale green ground with a hairline above
-each block and the counts in the brand green. Applied on every write so a hand-made sheet
-picks it up as soon as the first row lands.
+#### The look: the house palette, not a palette invented for a spreadsheet (10/8/2026)
+❌ **SUPERSEDED — this first shipped as a NAVY band set in INTER, and both were wrong.**
+Reported as *"make the sheet is invoca design theme"*. Navy-on-white is a reasonable-looking
+default and Inter is nobody's font here; the product's own face is **Lato** (what
+`tokens.css` bundles, what every replica renders in, and what ThoughtSpot's embed config
+names for the Insights tab).
+
+⚠️⚠️ **EVERY COLOUR IS ONE THIS REPO ALREADY SHIPS, AND THE AUDIT CHECKS THAT AGAINST THE
+FILE THAT OWNS IT RATHER THAN AGAINST A LIST COPIED INTO THE CHECK.** It is the same set
+`src/artifacts/salesPlaybook.ts` uses and the same pairing `engine/mailer.ts` sends — the
+"Invoca white + green" treatment that document was already signed off on. A copied list
+would be a second definition of the house style, free to drift from the artifacts it is
+supposed to match, so the check extracts the hexes from `sheetsApi.ts` and fails on any the
+playbook does not contain. Measured: 7 of 7 present.
+
+| | |
+|---|---|
+| `#00b388` brand green | the header band, white and bold — the treatment the playbook's own section bars and contents heading carry |
+| `#15243e` / `#343a40` | title ink / body text |
+| `#f4fbf8` | the pale green ground under a prospect row |
+| `#00624d` | the counts |
+| `#e7e9eb` | a hairline under every row, plus one above each prospect to open the block |
+
+⚠️⚠️ **`#00624d` IS A SEPARATE TOKEN FROM `#00b388` AND BOTH ARE NEEDED.** The brand green
+is a GROUND: as 10pt text on white it sits near **2.3:1**, below anything readable, which is
+exactly why the playbook carries its own `--g-ink`. The counts were in a brand green before
+this and were the worst-affected cell on the sheet. `audit:share` asserts `BRAND` is never a
+`foregroundColor`, so a later edit cannot quietly make a column on-brand and illegible.
+⚠️ **HAIRLINES, NOT `addBanding`.** Banding creates a persistent banded-range OBJECT on the
+tab, which would have to be found and deleted on every rewrite of the Activity sheet; a
+per-row border is a FORMAT, so it is replaced in place like everything else.
+⚠️⚠️ **A QUIET ROW HAS TO RESTATE ITS HAIRLINE RATHER THAN OMIT IT.** `borders` is in the
+field mask, so writing `borders: {}` for a subline CLEARS the bottom rule the base body
+format just set — the row loses its rule and the file still reads as if it has one.
+Frozen header, sized columns and the wrapping Notes column are unchanged, and the theme is
+still applied on every write so a hand-made sheet picks it up as soon as the first row lands.
 ⚠️ **STYLING NEVER FAILS A WRITE** — `themeNotes` is in its own try/catch after the row,
 because it is what makes the sheet readable, not what makes it correct.
 ⚠️ **AN OUTLINE GROUP WAS CONSIDERED AND REJECTED** for the sublines: it would have to be
@@ -12909,7 +12940,16 @@ glance and cannot drift out of step with the rows.
 need `batchUpdate` calls that would make the script far larger than the thing it is a fallback
 for. Stated in `docs/SHEETS-SETUP.md` rather than left to be discovered.
 
-**`npm run audit:share` gained 22 checks**; five sabotages verified to fire (removing the
+**`npm run audit:share` gained 22 checks for the tab and 5 more for the palette** (the
+hexes read back against the playbook, the brand green never used as text, the readable green
+ink present, Lato from one constant, and the subline keeping its rule).
+⚠️⚠️ **ONE OF THOSE FIVE COULD NOT FAIL AT FIRST — the tautological-check trap, caught by
+sabotaging it rather than by reading it.** The hairline check searched the whole file for
+`: { bottom: { style: "SOLID", color: RULE } }`, which the BASE body format also contains, so
+emptying the subline branch left it green. It slices the ternary and reads the else-branch
+now, and was verified to redden. Four sabotages fire on the rest: an off-palette colour, the
+font back to Inter, and the brand green as text (2 red).
+Earlier, five sabotages verified to fire (removing the
 dedupe, splitting one person by case, dropping the unlock requirement, skipping the clear, and
 letting the reporter run in the signed-in app).
 ⚠️ **A PROBE WROTE INTO THE REAL LOCAL STORE** while testing: it set `process.env.DATA_DIR` at

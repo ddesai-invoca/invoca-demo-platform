@@ -274,13 +274,35 @@ export function colLetter(i: number): string {
    is still an upsert, because there a row never moves.
    ============================================================================= */
 
-/** Invoca's own ink, so the sheet reads as part of the product rather than a default. */
-const INK = { r: 0x15 / 255, g: 0x24 / 255, b: 0x3e / 255 };
-const GREEN = { r: 0x2c / 255, g: 0xbf / 255, b: 0x58 / 255 };
-const PALE = { r: 0xf4 / 255, g: 0xfb / 255, b: 0xf6 / 255 };
-const RULE = { r: 0xe7 / 255, g: 0xe9 / 255, b: 0xeb / 255 };
-const MUTED = { r: 0x5b / 255, g: 0x65 / 255, b: 0x77 / 255 };
+/* ============================================================================
+   THE INVOCA HOUSE PALETTE, NOT A PALETTE INVENTED FOR A SPREADSHEET.
+
+   ⚠️⚠️ **EVERY VALUE HERE IS ONE THIS REPO ALREADY SHIPS**, so the sheet reads as
+   part of the product rather than as a tool that happens to write to Google. It is
+   the same set `src/artifacts/salesPlaybook.ts` uses and the same pairing
+   `engine/mailer.ts` sends: brand green `#00b388` on white, with `#f8faf1`/`#f4fbf8`
+   beside it, `#15243e` as the platform's title ink and `#e7e9eb` as the hairline.
+   Do not reach for a colour that is not in one of those two files.
+
+   ⚠️ **`#00624d` IS A SEPARATE TOKEN FROM `#00b388` AND BOTH ARE NEEDED.** The brand
+   green is a GROUND colour — as 10pt text on white it sits near 2.3:1, which is below
+   anything readable — so text that wants to read as green takes the deeper `#00624d`,
+   exactly as the playbook's own `--g-ink` does. A single green used for both is how a
+   count column comes out technically on-brand and practically unreadable.
+   ============================================================================ */
+const BRAND = { r: 0x00 / 255, g: 0xb3 / 255, b: 0x88 / 255 }; // #00b388 grounds
+const GREEN_INK = { r: 0x00 / 255, g: 0x62 / 255, b: 0x4d / 255 }; // #00624d green text
+const INK = { r: 0x15 / 255, g: 0x24 / 255, b: 0x3e / 255 }; // #15243e titles
+const BODY = { r: 0x34 / 255, g: 0x3a / 255, b: 0x40 / 255 }; // #343a40 body text
+const MUTED = { r: 0x5b / 255, g: 0x65 / 255, b: 0x77 / 255 }; // #5b6577 secondary
+const WASH = { r: 0xf4 / 255, g: 0xfb / 255, b: 0xf8 / 255 }; // #f4fbf8 pale green
+const RULE = { r: 0xe7 / 255, g: 0xe9 / 255, b: 0xeb / 255 }; // #e7e9eb hairline
 const WHITE = { r: 1, g: 1, b: 1 };
+
+/** ⚠️ **LATO, NOT INTER.** Lato is the platform's own face — it is what `tokens.css`
+ *  bundles, what every replica screen renders in, and what ThoughtSpot's own embed
+ *  config names for the Insights tab. Inter is nobody's font here. */
+const FONT = "Lato";
 
 async function sheetIdFor(t: SheetTarget, title: string): Promise<number | null> {
   const meta = await api(t.email, `/${t.spreadsheetId}?fields=sheets.properties`);
@@ -302,12 +324,13 @@ async function applyTheme(
   const sheetId = await sheetIdFor(t, title);
   if (sheetId === null) return;
   const requests: unknown[] = [
-    /* A real header band: Invoca navy, white, bold, padded and centred vertically. */
+    /* The header band is the brand green, which is the same treatment the playbook's
+       own section bars and its contents heading carry: white bold on `#00b388`. */
     { repeatCell: {
       range: { sheetId, startRowIndex: 0, endRowIndex: 1 },
       cell: { userEnteredFormat: {
-        backgroundColor: INK,
-        textFormat: { bold: true, fontSize: 11, foregroundColor: WHITE, fontFamily: "Inter" },
+        backgroundColor: BRAND,
+        textFormat: { bold: true, fontSize: 11, foregroundColor: WHITE, fontFamily: FONT },
         verticalAlignment: "MIDDLE",
         padding: { top: 6, bottom: 6, left: 10, right: 10 },
       } },
@@ -321,15 +344,21 @@ async function applyTheme(
       range: { sheetId, dimension: "ROWS", startIndex: 0, endIndex: 1 },
       properties: { pixelSize: 34 }, fields: "pixelSize",
     } },
-    /* The body: readable size, top-aligned so a long note does not centre itself. */
+    /* The body: readable size, top-aligned so a long note does not centre itself, and
+       separated by a hairline per row rather than by a grid or a banded fill — which is
+       how every table in the playbook is set, and it is the lighter of the two.
+       ⚠️ **NOT `addBanding`.** That creates a persistent banded-range OBJECT on the tab,
+       which would have to be found and deleted on every rewrite of the Activity sheet;
+       a per-row border is a format, so it is replaced in place like everything else. */
     { repeatCell: {
       range: { sheetId, startRowIndex: 1 },
       cell: { userEnteredFormat: {
-        textFormat: { fontSize: 10, foregroundColor: INK, fontFamily: "Inter" },
+        textFormat: { fontSize: 10, foregroundColor: BODY, fontFamily: FONT },
         verticalAlignment: "TOP",
         padding: { top: 6, bottom: 6, left: 10, right: 10 },
+        borders: { bottom: { style: "SOLID", color: RULE } },
       } },
-      fields: "userEnteredFormat(textFormat,verticalAlignment,padding)",
+      fields: "userEnteredFormat(textFormat,verticalAlignment,padding,borders)",
     } },
   ];
   widths.forEach((px, i) => requests.push({ updateDimensionProperties: {
@@ -415,21 +444,28 @@ export async function writeActivity(t: SheetTarget, lines: ActivityLine[]): Prom
     requests.push({ repeatCell: {
       range: { sheetId, startRowIndex: r, endRowIndex: r + 1 },
       cell: { userEnteredFormat: {
-        backgroundColor: l.main ? PALE : WHITE,
+        backgroundColor: l.main ? WASH : WHITE,
         textFormat: {
-          bold: l.main, fontSize: l.main ? 11 : 10, fontFamily: "Inter",
+          bold: l.main, fontSize: l.main ? 11 : 10, fontFamily: FONT,
           foregroundColor: l.main ? INK : MUTED,
         },
-        /* A hairline above each prospect separates the blocks without a heavy grid. */
-        borders: l.main ? { top: { style: "SOLID", color: RULE } } : {},
+        /* ⚠️ Every row keeps the body hairline UNDER it; a prospect additionally gets one
+           ABOVE, which is what opens each block. Writing `borders: {}` for a subline
+           would CLEAR the bottom rule the base format just set, because `borders` is in
+           the field mask — so the quiet rows have to restate it rather than omit it. */
+        borders: l.main
+          ? { top: { style: "SOLID", color: RULE }, bottom: { style: "SOLID", color: RULE } }
+          : { bottom: { style: "SOLID", color: RULE } },
       } },
       fields: "userEnteredFormat(backgroundColor,textFormat,borders)",
     } });
   });
-  /* The three count columns in the brand green, so the numbers are what the eye finds. */
+  /* The three count columns carry the deep green, so the numbers are what the eye finds.
+     ⚠️ `GREEN_INK`, not `BRAND` — see the palette note: the brand green is a ground and
+     is close to illegible as 10pt text on white. */
   requests.push({ repeatCell: {
     range: { sheetId, startRowIndex: 1, startColumnIndex: 1, endColumnIndex: 4 },
-    cell: { userEnteredFormat: { textFormat: { foregroundColor: GREEN, bold: true } } },
+    cell: { userEnteredFormat: { textFormat: { foregroundColor: GREEN_INK, bold: true } } },
     fields: "userEnteredFormat.textFormat(foregroundColor,bold)",
   } });
   await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {

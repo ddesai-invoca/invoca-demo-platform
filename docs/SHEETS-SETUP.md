@@ -86,10 +86,16 @@ everything that already happened.
 
 ## Styling
 
-Both tabs get a header band in Invoca navy with white bold text, a frozen header row,
-sized columns, a wrapping Notes column, and — on Activity — prospect rows picked out in
-bold on a pale green ground with the counts in the brand green. It is applied on every
-write, so a sheet you create by hand picks it up as soon as the first row lands.
+Both tabs are set in the product's own palette and its own face (Lato): a header band in
+the Invoca brand green `#00b388` with white bold text, a frozen header row, sized columns,
+a wrapping Notes column, a hairline under every row, and — on Activity — prospect rows
+picked out in bold on the pale green `#f4fbf8` with the counts in `#00624d`. It is applied
+on every write, so a sheet you create by hand picks it up as soon as the first row lands.
+
+Every colour here is one the platform already uses elsewhere (the sales playbook and the
+notification emails use the same set), so the sheet reads as part of the product. The
+counts use the deeper `#00624d` rather than the brand green, which is a background colour
+and is close to unreadable as small text on white.
 
 ⚠️ Styling is **cosmetic and never fails a write**: if it errors, the row is already in.
 
