@@ -29,7 +29,7 @@ what each vendor actually offers, and it decides how much setup each one costs.
 | | model | who it reads as | setup cost | "works for everyone"? |
 |---|---|---|---|---|
 | **Gong** | one service credential | the app | one key, once | **Yes**, immediately |
-| **Google Drive** | per-user OAuth | the signed-in SE | reuses the existing client | Yes, after each SE consents once |
+| **Google Drive** | per-user OAuth | the signed-in user | reuses the existing client | Yes, after each user consents once |
 | **Slack** | workspace app | a bot | needs approval | Yes, once installed |
 
 **Okta does not help here.** Okta is sign-in identity — it gets a person *into*
@@ -42,7 +42,7 @@ still leaves you needing a Gong key and a Slack app.
 ## 1. Gong — BUILT (9/10/2026)
 
 Gong is the one where your instinct was exactly right: **connect it once and it
-works for every SE.** Gong's API uses a workspace-level Access Key + Secret, so
+works for every user.** Gong's API uses a workspace-level Access Key + Secret, so
 the app calls Gong as itself rather than as each person.
 
 **What to set**
@@ -119,7 +119,7 @@ A short or common name therefore still *undermatches* rather than overmatching
 — a generic word claiming the wrong company is the worse failure.
 
 ⚠️ **Everyone shares the app's Gong visibility.** A service credential sees what
-it is scoped to see, for every SE. Scope the key to the workspace you want
+it is scoped to see, for every user. Scope the key to the workspace you want
 demoed against and no more.
 
 ---
@@ -135,23 +135,23 @@ that as "isn't shared with Anyone with the link" rather than failing silently.
 
 This is NOT the per-user OAuth Drive integration in section 2 below — it needs no server
 credential, no `GOOGLE_DRIVE_ENABLED`, and no consent flow, but it also only ever works for
-a doc an SE has deliberately made link-shareable. A private company Drive doc still needs
+a doc a user has deliberately made link-shareable. A private company Drive doc still needs
 the OAuth path.
 
 ## 2. Google Drive — BUILT (9/10/2026)
 
 Unlike Gong and Slack, this one is done — turning it on is an admin setting the
-credential, then each SE clicking one button, not a new code change.
+credential, then each user clicking one button, not a new code change.
 
 The app **already has a Google OAuth client**, because that is what signs
 everyone in. Drive needed one more scope on it, not a new vendor — the same
 shape the Gmail sending route (`/auth/gmail`) already proved, though Drive is
-**per-user, not admin-only**: `/auth/drive` is open to any signed-in SE, and
-each SE's own refresh token is stored server-side (`engine/driveTokens.ts`,
+**per-user, not admin-only**: `/auth/drive` is open to any signed-in user, and
+each user's own refresh token is stored server-side (`engine/driveTokens.ts`,
 under `DATA_DIR/drive-tokens/`, the same disk the demo library and feedback
 board already use — never in git, never logged) rather than displayed once for
 someone to paste into an env var. That is the real difference from Gmail: Gmail
-mints ONE shared credential for the sending account; Drive mints one PER SE.
+mints ONE shared credential for the sending account; Drive mints one PER USER.
 
 **What to turn on**
 
@@ -170,7 +170,7 @@ mints ONE shared credential for the sending account; Drive mints one PER SE.
 4. **Restart the service**, then check `/api/status` shows
    `"integrations": { "driveConfigured": true, ... }`.
 
-**Each SE then connects their own account, once**: open Advanced settings on
+**Each user then connects their own account, once**: open Advanced settings on
 the launch form, and the Google Drive row shows a **Connect** button once the
 server capability above is on. It walks through the same consent screen sign-in
 already uses, plus the one added scope, and comes back to a **Connected**
@@ -181,10 +181,10 @@ access from `myaccount.google.com/permissions` is the belt-and-braces version).
 **What it gives the generation:** pasting a Google Doc link into Advanced
 settings — a *private*, internal one now, not only a publicly-shared one —
 reads that doc's text as context. `engine/driveApi.ts` calls the Drive API v3
-as the connected SE (`files.get` for the mimeType, then `files.export` for a
+as the connected user (`files.get` for the mimeType, then `files.export` for a
 native Google Doc or a raw download through the existing `.docx`/`.txt` reader
 for anything else uploaded to Drive). The paste-a-link field tries this path
-FIRST when the SE has connected, and falls back to the credential-free
+FIRST when the user has connected, and falls back to the credential-free
 public-export path (section 0 above, `engine/driveLink.ts`) automatically — so
 connecting Drive only ever widens what a pasted link can reach, it never
 narrows it.
@@ -193,7 +193,7 @@ narrows it.
 reported plainly rather than silently swallowed** — the paste-a-link field
 says "reconnect it in Advanced settings" instead of falling back to the public
 path and giving a confusing "isn't shared" error for a doc that plainly is
-shared with that SE.
+shared with that user.
 
 ⚠️ **Per-user is the right model and worth the extra consent step.** Strategy
 docs live in individual and team Drives. A service account with domain-wide
@@ -226,7 +226,7 @@ Slack as last and plan for it not to happen.
 
 **What it powers:** the optional "tell the account exec" half of marking a demo.
 The platform resolves the prospect's Salesforce **Account** and emails its
-**Owner** with the status and the SE's note.
+**Owner** with the status and their note.
 
 ### The fast path: a CLI refresh token (no admin, ~10 minutes)
 
@@ -259,7 +259,7 @@ destination.
 ### The durable path: a Connected App
 
 **What to obtain** — a Salesforce admin does this once, and it then works for
-every SE (same shape as Gong; nobody consents to anything):
+every user (same shape as Gong; nobody consents to anything):
 
 1. Setup → App Manager → **New Connected App**.
 2. Enable OAuth Settings, scope **`api`** (`Manage user data via APIs`). A
@@ -303,7 +303,7 @@ dot-suffix — never `includes`).
 
 ### Who the notification comes from
 
-**The SE who marked the demo — automatically, with nothing to click.** Asked
+**The person who marked the demo — automatically, with nothing to click.** Asked
 for directly: *"it should automatically just be sent as that user, they dont
 need to click anything"*.
 
@@ -314,7 +314,7 @@ need to click anything"*.
   connected because they logged in.
 - `From` is their address, the message lands in **their** Sent folder, and a
   reply reaches them naturally.
-- Tokens live per SE in `engine/gmailTokens.ts`, in their own directory —
+- Tokens live per user in `engine/gmailTokens.ts`, in their own directory —
   **not** shared with Drive's, because the two are revoked independently.
 
 ⚠️ **The consequence, stated plainly: the Google consent screen now says "Send
@@ -336,9 +336,9 @@ Drive's read scope; send is strictly worse.
 ### What it refuses to do
 
 - **Duplicate accounts with different owners** (`goaptive.com` → two "Aptive
-  Environmental" records, two AEs) come back as **candidates**; the SE picks.
+  Environmental" records, two AEs) come back as **candidates**; the user picks.
   Guessing would tell the wrong colleague about an account that is not theirs.
-- **Nothing is emailed unless the SE ticks the box**, per demo.
+- **Nothing is emailed unless the user ticks the box**, per demo.
 - **The recipient is resolved server-side and must be `@invoca.com`.** The
   browser only ever sends a flag and, when asked, which candidate.
 
@@ -387,19 +387,19 @@ result today, just by hand instead of automatically.
 
 ## Where Drive's code actually lives (already built)
 
-- `googleAuth.ts` — `/auth/drive` (open to any signed-in SE) and the `drive:`
+- `googleAuth.ts` — `/auth/drive` (open to any signed-in user) and the `drive:`
   branch of `/auth/callback`, which stores the refresh token rather than
   displaying it.
-- `engine/driveTokens.ts` — one JSON file per SE, on the same `DATA_DIR` disk
+- `engine/driveTokens.ts` — one JSON file per user, on the same `DATA_DIR` disk
   as the demo library. `saveDriveToken` / `getDriveToken` / `hasDriveToken` /
   `removeDriveToken`.
 - `engine/driveApi.ts` — `fetchPrivateGoogleDocText(url, email)`: mints a
-  short-lived access token from the stored refresh token (cached per SE until
+  short-lived access token from the stored refresh token (cached per user until
   near expiry, same pattern as `engine/mailer.ts`'s Gmail token), then calls
   the Drive API. Throws `DriveReconnectError` specifically for a dead
   connection, so the caller can tell that apart from an ordinary "not found."
 - `GET /api/drive-status` / `POST /api/drive/disconnect` (both servers) — what
   the Advanced panel's Drive row reads and calls.
 - `POST /api/generate/doc-link` (both servers) — tries `driveApi.ts` first
-  when the SE has connected, then falls back to `engine/driveLink.ts`'s
+  when the user has connected, then falls back to `engine/driveLink.ts`'s
   public-export path.

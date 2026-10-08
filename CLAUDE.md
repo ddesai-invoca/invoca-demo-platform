@@ -1,11 +1,17 @@
 # Invoca Demo Platform — Project Guide
 
 ## What this is
-A **demo-generation platform** for Invoca Sales Engineers. It replicates Invoca
-platform screens as **templates**, then customizes all the on-screen data for a
-given prospect from just a **customer name + website URL**. Goal: an SE enters a
-name + URL and gets a fully clickable, on-brand Invoca demo tailored to that
-prospect (report data, dashboard, campaigns, products, etc.).
+A **demo-generation platform** for Invoca. It replicates Invoca platform screens as
+**templates**, then customizes all the on-screen data for a given prospect from just a
+**customer name + website URL**. Goal: a user enters a name + URL and gets a fully
+clickable, on-brand Invoca demo tailored to that prospect (report data, dashboard,
+campaigns, products, etc.).
+
+⚠️ **THE AUDIENCE IS "USERS", NOT "SEs" (10/8/2026).** Reported directly: *"everyone uses
+this tool not just SEs so remove that language just say users."* It began as an SE tool and
+the early prose says so throughout — every surface a user READS has been corrected; the
+engineering notes below still say "an SE" where they record who originally asked for
+something, because those are history rather than claims about who the tool is for.
 
 The end state is a clickable React app mirroring the Invoca platform, where every
 data-driven screen reads from one **canonical customer profile** that an AI

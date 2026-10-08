@@ -22,7 +22,7 @@ prefix, exactly as `/auth/drive` and `/auth/gmail-connect` do.
 2. **Connect Google Sheets** (once per admin, not per event).
 3. Paste the sheet's link, or press **Or create one for this event**.
 
-Every SE's demo notes are then written with that admin's connection. Nobody else grants
+Everyone's demo notes are then written with that admin's connection. Nobody else grants
 anything, and nobody else needs edit access to the sheet.
 
 ⚠️ The grant belongs to a person. If they revoke it or leave, rows stop and the mark

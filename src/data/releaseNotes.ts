@@ -321,7 +321,7 @@ export const RELEASES: Release[] = [
     changes: [
       n("Location Performance Comparison — every location side by side, reconciling with the other dashboards."),
       n("A Lead Form Performance Summary tile on the Marketing dashboard."),
-      i("Every Call Outcome Summary now opens on the highest-volume row with the worst conversion and closes on the smallest with the best, which is the point an SE makes from it."),
+      i("Every Call Outcome Summary now opens on the highest-volume row with the worst conversion and closes on the smallest with the best, which is the point the story makes."),
     ],
   },
   {

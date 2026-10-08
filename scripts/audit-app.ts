@@ -716,5 +716,56 @@ console.log("\nCenterModal — the mark and share panels are centred dialogs (10
     : bad("a doubled dialog could run off a small screen");
 }
 
+
+/* =============================================================================
+   WHO THE TOOL SAYS IT IS FOR (10/8/2026)
+   -----------------------------------------------------------------------------
+   Reported directly: *"everyone uses this tool not just SEs so remove that language
+   just say users."* It began as an SE tool and the early copy said so on the Read.Me
+   page, in the release notes and in the sheet dialog.
+
+   ⚠️ **RENDERED COPY ONLY.** The engineering notes still say "an SE" where they record
+   WHO ORIGINALLY ASKED for something — that is history, not a claim about the audience,
+   and rewriting a quoted request would falsify it. What must stay clean is anything a
+   user reads, which is what this walks.
+
+   ⚠️ **COMMENTS ARE STRIPPED FIRST, THEN SEARCHED.** Every one of these files carries a
+   comment explaining the correction and naming the word it replaced, so a check that
+   searched the raw text would redden on its own documentation — the fix `audit:place`
+   and the vendor scan already carry, hit twice more in this session.
+   ============================================================================= */
+console.log("\nAudience language\n");
+{
+  const AUDIENCE = /\bSEs?\b|Sales Engineers?|Sales Rep/;
+  /* The surfaces a user actually reads. `public/readme.html` is served at /readme.html
+     from the launch menu; releaseNotes renders at /release-notes. */
+  const surfaces = [
+    "public/readme.html",
+    "src/data/releaseNotes.ts",
+    ...readdirSync("src/components").filter((f) => f.endsWith(".tsx")).map((f) => `src/components/${f}`),
+    ...readdirSync("src/screens").filter((f) => f.endsWith(".tsx")).map((f) => `src/screens/${f}`),
+  ];
+  const dirty: string[] = [];
+  for (const f of surfaces) {
+    if (!existsSync(f)) continue;
+    /* ⚠️ An .html file has no JS comments to strip and no code/prose split — all of it
+       is read, so it is searched whole. */
+    const body = f.endsWith(".html") ? read(f) : code(f);
+    body.split("\n").forEach((l, i) => { if (AUDIENCE.test(l)) dirty.push(`${f}:${i + 1}`); });
+  }
+  dirty.length === 0
+    ? ok(`no rendered copy calls the audience SEs (${surfaces.length} surfaces checked)`)
+    : bad(`copy still names SEs as the audience: ${dirty.slice(0, 6).join(", ")}`);
+
+  /* ⚠️ AND THE PROJECT'S OWN DESCRIPTION, which is the first thing anybody reads. */
+  !/for Invoca Sales Engineers/.test(read("CLAUDE.md").slice(0, 2000))
+    ? ok("the project description no longer says the tool is for Sales Engineers")
+    : bad("CLAUDE.md still describes this as a tool for Sales Engineers");
+  !AUDIENCE.test(read("ARCHITECTURE.md")) && !AUDIENCE.test(read("docs/INTEGRATIONS.md"))
+    ? ok("the architecture and integrations docs say users too")
+    : bad("a doc still describes the audience as SEs");
+}
+
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);

@@ -14,8 +14,8 @@
 ## 1. Overview
 
 The Invoca Demo Generator turns a prospect's name and website into a complete, believable
-walkthrough of the Invoca platform, re-skinned entirely to that prospect's business. An SE or
-Sales Rep types "Roto-Rooter" and its URL, waits a few minutes, and gets a working set of
+walkthrough of the Invoca platform, re-skinned entirely to that prospect's business. A user
+types "Roto-Rooter" and its URL, waits a few minutes, and gets a working set of
 Invoca screens — dashboards, call transcripts, AI agent configuration, Signal management,
 Insights reports — where every number, campaign name, product category, agent script, and
 conversion label reads as though it came from that prospect's own Invoca account. It exists
@@ -33,7 +33,7 @@ anyone else. As of this writing the shared library holds **58 saved demos** (sou
 ```mermaid
 flowchart TB
     subgraph user["Who uses it"]
-        SE["SE / Sales Rep<br/>browser"]
+        USER["User<br/>browser"]
     end
 
     subgraph render["Render — one Node service (invoca-demo-platform)"]
@@ -56,7 +56,7 @@ flowchart TB
         SITE["The prospect's own website<br/>logo scrape only"]
     end
 
-    SE -->|"1. sign in"| AUTH
+    USER -->|"1. sign in"| AUTH
     AUTH <-->|"verify identity"| GOOG
     AUTH -->|"2. gate passed"| UI
     UI -->|"3. all feature calls"| API
@@ -107,7 +107,7 @@ voice all run on **LiveKit Cloud**, which is the one integration that charges pe
 call rather than per token.
 
 **What this means for the spend.** The bill scales with how many *new prospects* the team
-generates, not with how many demos they give. Ten SEs re-using the 58 demos already in the
+generates, not with how many demos they give. Ten people re-using the 58 demos already in the
 library generate no new Anthropic cost at all. The expensive model (Claude Opus) is used only
 during generation; everything interactive deliberately uses the cheap one.
 
@@ -290,7 +290,7 @@ the result. Re-opening the demo later replays those saved customizations over th
 
 ## 5. Maintenance Guide
 
-*Written for a second SE joining to help maintain this.*
+*Written for somebody joining to help maintain this.*
 
 ### Local setup
 
@@ -506,7 +506,7 @@ reach anybody" is `alerts.channel`.
 | **Insights / Reporting 2.0 tab** | **Shipped — Aug 6** | Three reports (Summary Dashboard, Details Report, Connect AI), a call-detail page, interactive charts with drill-through. Commit `e8b5fa8`. *The brief listed this as In Progress; it shipped.* |
 | **Signal tab rebuild** | **In progress — not yet deployed** | Flyout nav, source type-select, Semantic Signal Library, template drawer, Edit Rule Signal. Working locally; **uncommitted**, so not on the live service. |
 | Signal AI Studio / Rule-based Signal builders | **Not started** | The type-select links exist; both return to Manage Signals. |
-| Voice agent | **Live, on LiveKit** | Hosted worker (`invoca-voice`) with streaming STT/LLM/TTS. An SE picks the agent's voice on a workflow's Details tab. **⚠️ The earlier "blocked pending Deepgram access" framing is obsolete** — Deepgram and ElevenLabs were removed 9/3/2026 and voice needs no vendor key, only LiveKit. |
+| Voice agent | **Live, on LiveKit** | Hosted worker (`invoca-voice`) with streaming STT/LLM/TTS. A user picks the agent's voice on a workflow's Details tab. **⚠️ The earlier "blocked pending Deepgram access" framing is obsolete** — Deepgram and ElevenLabs were removed 9/3/2026 and voice needs no vendor key, only LiveKit. |
 | Video enablement | **⚠️ NOT CONFIRMED IN CODE** | The brief lists this as shipped Aug 5. No commit, file, or dependency in this repo relates to video. If it means a recorded walkthrough *about* the tool, it is not a code feature and should be described separately. |
 | Engine fix: hardcoded signal counts | **In progress** | Spun out as its own task; see §7. |
 

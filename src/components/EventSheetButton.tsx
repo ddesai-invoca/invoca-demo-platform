@@ -141,7 +141,7 @@ export default function EventSheetButton({
         >
           <div className="evs-body">
             <p className="evs-lede">
-              Every time an SE submits the demo notes for a prospect in this event, a row is
+              Every time somebody submits the demo notes for a prospect in this event, a row is
               written here — one row per prospect, updated in place when the notes change.
             </p>
 
