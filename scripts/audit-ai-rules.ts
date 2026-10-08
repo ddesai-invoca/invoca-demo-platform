@@ -33,6 +33,8 @@ import { tollFreeNumber } from "../src/data/smsContactNumber.ts";
 import { interactionLabels } from "../src/data/aiAgentLabels.ts";
 import { withoutReminderPromise, withoutReminderPromises } from "../src/data/agentDefaults.ts";
 import { effectiveSmsConfig } from "../src/data/smsTemplate.ts";
+import { demoWorkflowsFor } from "../src/data/demoWorkflows.ts";
+import { extraDrawerFor, signalOptions } from "../src/data/workflowDrawers.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -2117,10 +2119,26 @@ console.log("\nThe built-in SMS workflow template");
     const spec = readCode("src/data/voiceAgentSpec.ts");
     const chatSrc = readCode("engine/chat.ts");
 
-    /* every voice action drawer can be applied at all */
-    /onApply=\{smsTemplated \|\| \(!isSms && !created\)/.test(page)
-      ? ok("the built-in voice workflow's drawers can Apply")
+    /* ⚠️ RE-AIMED 10/8/2026, NOT LOOSENED. It used to pin the condition character for
+       character and went red the moment an EXTRA workflow earned an Apply too — which is a
+       real capability (the derived six carry full drawer content and write to their own
+       tree), not a drift. The two invariants that survive are asserted separately: the
+       built-in VOICE workflow can Apply, and a CREATED one still cannot — that one has no
+       agent half and no config slot for a node the template never made. */
+    (() => {
+      const m = page.match(/onApply=\{([^?]+)\?/);
+      if (!m) return false;
+      const cond = m[1];
+      return /!isSms && !created/.test(cond) && /\bcreated\b/.test(cond);
+    })()
+      ? ok("the built-in voice workflow's drawers can Apply, and a created one still cannot")
       : bad("voice drawers are read-only again, or a created workflow gained an Apply");
+
+    /* ⚠️ AND AN EXTRA WORKFLOW'S DRAWERS APPLY NOW, which is what makes the derived six
+       editable rather than a read-only diagram. */
+    /onApply=\{[^?]*\bextra\b/.test(page)
+      ? ok("an extra workflow's action drawers can Apply")
+      : bad("an extra workflow's drawers are read-only — the derived six cannot be edited");
     (q?.kind === "action" && !!q.actionSlot && esc?.kind === "action" && !!esc.actionSlot)
       ? ok("both voice chrome leaves offer the action picker, as on SMS")
       : bad("a voice leaf has no action slot");
@@ -2693,6 +2711,176 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
       ? ok(`${field} is a flag the prompt branches on AND the assistant is told about`)
       : bad(`${field} is not reachable by Ask AI (named=${named}, branches=${branches}) — "${phrase}" would be un-overridable`);
   }
+}
+
+
+/* =============================================================================
+   THE SIX DERIVED WORKFLOWS (10/8/2026)
+   -----------------------------------------------------------------------------
+   Asked for as "make sure all the fields in the action drawers are filled in and
+   match the use case", so the checks BUILD each tree and open each drawer rather
+   than grepping the content module — the same reason the chrome constants moved to
+   `workflowChrome.ts`. A grep passes against `if (false && ...)`.
+   ============================================================================= */
+{
+  console.log("\nTHE SIX DERIVED WORKFLOWS");
+
+  const everyProfile = [...load("src/data/generated", (j: any) => j),
+                        ...load(".data/demos", (j: any) => j?.profile)] as CustomerProfile[];
+  const gated = everyProfile.find((p) => demoWorkflowsFor(p).length > 0);
+  const other = everyProfile.find((p) => demoWorkflowsFor(p).length === 0);
+
+  gated ? ok(`the six are derived for ${gated.customerName}`)
+        : bad("no profile on disk gets the derived workflows — the gate matches nobody");
+  other ? ok("an off-gate prospect gets none of them")
+        : bad("every profile gets them — the gate is not gating");
+
+  if (gated) {
+    const six = demoWorkflowsFor(gated);
+    six.length === 6 ? ok("exactly six") : bad(`expected 6 workflows, got ${six.length}`);
+    new Set(six.map((w) => w.slug)).size === six.length
+      ? ok("slugs are unique") : bad("two derived workflows share a slug");
+    six.filter((w) => /sms/i.test(w.channel)).length === 3 &&
+    six.filter((w) => /voice/i.test(w.channel)).length === 3
+      ? ok("three SMS and three voice") : bad("the channel split is not 3 + 3");
+
+    /* ⚠️ THE CONTENT IS THE PROSPECT'S OWN VOCABULARY, NOT TYPED FOR ONE ACCOUNT. */
+    const blob = JSON.stringify(six);
+    blob.includes(gated.bookingTerm) && blob.includes(gated.customerNoun)
+      ? ok("the copy carries the prospect's own bookingTerm and customerNoun")
+      : bad("the six do not use the prospect's own terms — they are authored for one account");
+    for (const q of everyProfile.filter((x) => x.id !== gated.id).slice(0, 12))
+      if (q.customerName.length > 6 && blob.includes(q.customerName))
+        bad(`another prospect's name (${q.customerName}) leaked into the derived workflows`);
+    ok("no other prospect's name appears in them");
+
+    /* ⚠️ `openingMessage` IS THE ONE FIELD TEXTED TO A REAL PERSON, and the dash sweep
+       deliberately does NOT exempt it. systemPrompt and playbookSteps ARE exempt. */
+    six.every((w) => !/[\u2014\u2013]/.test(w.openingMessage ?? ""))
+      ? ok("no dash-joined clause in any opening message")
+      : bad("an opening message carries an em dash — it reads as AI-written");
+
+    /* ⚠️ DEPTH: a child may hang only off a Qualify. */
+    const deep = six.flatMap((w) => w.branches).filter((b) => b.paths?.length);
+    deep.length >= 3 ? ok(`${deep.length} branches use the sixth row`)
+                     : bad("no workflow goes two layers deep");
+    deep.every((b) => /qualify/i.test(b.action))
+      ? ok("only a Qualify is AUTHORED with answers")
+      : bad("a non-Qualify branch carries answers — a row nobody can reach");
+
+    /* ⚠️ AND THE ENFORCEMENT IS CHECKED ON THE TREE, NOT ON THE DATA — the check above only
+       says the content module behaves; this says `extraTree` would drop a child hung off a
+       terminal action whoever authored it. The first version of this check read the branches
+       and passed against an `extraTree` that nested everything. */
+    (() => {
+      const probe = { ...six[0], branches: [{ title: "T", action: "Inform", intent: "sales" as const,
+        paths: [{ title: "child", action: "Inform" }] }] };
+      const t = extraTree(probe as never);
+      return !(t.branches[0].leaves[0].paths?.[0] as { paths?: unknown[] })?.paths?.length;
+    })()
+      ? ok("extraTree refuses to nest under a terminal action")
+      : bad("extraTree nests under any action — a child under Inform is drawn where the agent cannot reach");
+    six.flatMap((w) => w.branches).some((b) => !b.paths?.length)
+      ? ok("not every branch nests (terminal actions stay terminal)")
+      : bad("every branch nests — the depth rule is not being exercised");
+
+    /* ⚠️ EVERY FIELD THE DRAWER RENDERS IS SEEDED. An unset one would render as an empty
+       box whose first write is `undefined -> string`, which `editGuard` refuses as a TYPE
+       FLIP — the edit vanishes and the drawer reports success. */
+    let empty = 0, drawers = 0;
+    for (const w of six) {
+      const tree = extraTree(w);
+      const channel = /voice/i.test(w.channel) ? "voice" : "sms";
+      tree.branches.forEach((br, bi) => br.leaves.forEach((lf, li) =>
+        (lf.paths ?? []).forEach((pth, pi) => {
+          const ids = [`path-${bi}-${li}-${pi}`,
+                       ...(pth.paths ?? []).map((_x, si) => `sub-${bi}-${li}-${pi}-${si}`)];
+          for (const id of ids) {
+            const d = extraDrawerFor(gated, tree, id, channel as "sms" | "voice") as any;
+            if (!d || d.kind !== "action") { empty++; continue; }
+            drawers++;
+            const blank = (k: string) => { if (!d[k]) { empty++; } };
+            if (d.action === "qualify") { blank("question"); if (!d.segments?.length) empty++; }
+            else {
+              if (d.action !== "callback") blank("handling");
+              blank("signal");
+              if (!d.collect?.length) empty++;
+              if ("destinationPrompt" in d) blank("destination");
+              if ("phonePlaceholder" in d) blank("phone");
+            }
+          }
+        })));
+    }
+    drawers >= 25 ? ok(`${drawers} action drawers open across the six`)
+                  : bad(`only ${drawers} action drawers resolved — nodes are not reaching a drawer`);
+    empty === 0 ? ok("every field in every one of those drawers is filled")
+                : bad(`${empty} drawer field(s) are empty — an SE edits them into a silent no-op`);
+
+    /* ⚠️⚠️ EVERY FIELD THE DRAWER RENDERS IS ALSO WRITABLE. A box with a value and no write
+       path is READ-ONLY, which looks identical to an editable one until somebody types into
+       it — exactly how a voice escalate's destination shipped locked while every neighbour
+       was editable. The gate is `onApply` PLUS a write path, so both halves are asserted. */
+    (() => {
+      let locked = 0;
+      for (const w of six) {
+        const tree = extraTree(w);
+        const channel = /voice/i.test(w.channel) ? "voice" : "sms";
+        tree.branches.forEach((br, bi) => br.leaves.forEach((lf, li) =>
+          (lf.paths ?? []).forEach((pth, pi) => {
+            const ids = [`path-${bi}-${li}-${pi}`,
+                         ...(pth.paths ?? []).map((_x, si) => `sub-${bi}-${li}-${pi}-${si}`)];
+            for (const id of ids) {
+              const d = extraDrawerFor(gated, tree, id, channel as "sms" | "voice") as any;
+              if (!d || d.kind !== "action") continue;
+              const e = d.edits ?? {};
+              if (d.action === "qualify") { if (!e.question || !e.segments) locked++; continue; }
+              if (d.action !== "callback" && !e.handling) locked++;
+              if (d.signal !== undefined && !e.signal) locked++;
+              if ("phonePlaceholder" in d && !e.phone) locked++;
+              /* An Inform & Route on voice writes its destination through `actionSlot`
+                 (`destinationOnNode`), so it legitimately has no flat path. */
+              if ("destinationPrompt" in d && !d.destinationOnNode && !e.destination) locked++;
+            }
+          })));
+      }
+      return locked === 0;
+    })()
+      ? ok("every rendered field also has somewhere to write")
+      : bad("a drawer renders a field with no write path — it is read-only and looks editable");
+
+    /* ⚠️ A SIGNAL IS ONLY EVER ONE THIS PROSPECT ACTUALLY HAS. */
+    const sigs = new Set(signalOptions(gated));
+    const named = six.flatMap((w) => [...w.branches, ...w.branches.flatMap((b) => b.paths ?? [])])
+      .map((n) => n.signal).filter(Boolean) as string[];
+    named.every((x) => sigs.has(x))
+      ? ok(`all ${named.length} named signals are the prospect's own`)
+      : bad("a derived workflow names a signal the Signal Manager does not list");
+
+    /* ⚠️ `route` IS VOICE-ONLY — on SMS the renderer draws `Route to <team>` INSTEAD OF the
+       action, which would blank every authored action into data nothing draws. */
+    six.filter((w) => !/voice/i.test(w.channel))
+       .flatMap((w) => [...w.branches, ...w.branches.flatMap((b) => b.paths ?? [])])
+       .every((n) => !n.route)
+      ? ok("no SMS node carries a route") : bad("an SMS node carries a route — its action would vanish");
+
+    /* ⚠️ THE BOOKING LOCATIONS ARE THE PROSPECT'S OWN SITES, not an invented pair. */
+    const booking = six.find((w) => w.bookingLocations?.length);
+    const siteCol = gated.reports.opsDashboard?.locationHandling?.rows?.map((r: any) => String(r.cells?.[0] ?? "")) ?? [];
+    booking && booking.bookingLocations!.every((l) => siteCol.includes(l))
+      ? ok("the booking agent offers the prospect's own locations")
+      : bad("the booking workflow's locations are not rows of this prospect's own location table");
+
+    /* ⚠️ EVERY PHONE NUMBER IS ON THE RESERVED 555 EXCHANGE — a demo must never ring a real line. */
+    const nums = blob.match(/\+1\d{10}/g) ?? [];
+    nums.length > 0 && nums.every((n) => n.slice(5, 8) === "555")
+      ? ok(`all ${nums.length} numbers are on the reserved 555 exchange`)
+      : bad("a derived workflow prints a number outside the reserved 555 exchange");
+  }
+
+  /* ⚠️ MERGED AT THE ONE ASSEMBLY POINT, so the six list wherever the authored ones do. */
+  /\.\.\.demoWorkflowsFor\(profile\)/.test(readCode("src/data/quoteWorkflow.ts"))
+    ? ok("extraWorkflowsFor spreads the derived six")
+    : bad("the six are never merged — they would exist and list nowhere");
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");

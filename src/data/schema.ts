@@ -738,35 +738,62 @@ export const SignalManagerView = z.object({
 
    `systemPrompt` is the agent's own playbook and drives the Preview Agent, which
    is why it lives in data: the whole point is that it differs per workflow. */
-export const WorkflowBranch = z.object({
-  title: z.string(),                    // "Re-engaged"
-  action: z.string(),                   // "Book Consultation"
+/* One node's own drawer content, shared by a use case and by a Qualify answer below it.
+   ⚠️⚠️ **EVERY FIELD IS WHAT THE ACTION DRAWER RENDERS, which is why they live on the NODE
+   rather than in a config table beside it.** The built-in SMS template keeps its drawer text in
+   `SmsConfig` because its nodes are fixed and known; an authored workflow's nodes are not, and
+   this repo has already paid twice for a second copy of a node's own data (the pills saying one
+   thing while What To Collect said another, and the collect list stored apart from `chips`).
+   One node, one source — the card, the drawer and the prompt all read these. */
+const WorkflowNodeFields = {
+  title: z.string(),
+  action: z.string(),
   tone: z.enum(["green", "orange", "blue", "grey"]).optional(),
+  /** What To Collect. Already what the diagram draws as pills, so the drawer reads the same. */
   chips: z.array(z.string()).optional(),
+  /** The instruction box — "How should the agent inform users?" and its siblings. On a Qualify
+   *  node this is the QUESTION it asks, which is what its answers below are answers to. */
+  instruction: z.string().optional(),
+  /** The Signal row. Empty means the drawer's own "Select a signal..." state. */
+  signal: z.string().optional(),
+  /** Voice only: "What phone number should the agent transfer callers to?" An SMS drawer has no
+   *  phone row at all, measured on all four SMS captures. */
+  phone: z.string().optional(),
+  /** Voice only: the team, drawn as `Route to <team>` and named aloud on transfer. Carried on
+   *  the SUB-node as well, because a Qualify answer is where a real routing decision lands —
+   *  "in the service area" routes somewhere, "outside it" does not. `extraTree` gates it to a
+   *  Voice workflow, so setting it on an SMS one cannot blank that node's authored action. */
+  route: z.string().optional(),
+  /** SMS only: the "Where should the agent send users?" / "...escalate unresolved users?" box.
+   *  A URL or a phone number, which is what the capture's own placeholders say. Separate from
+   *  `route` because nothing on the diagram DRAWS it — a spoken route replaces the action text,
+   *  where this is a destination the agent hands off to and the card never mentions. */
+  destination: z.string().optional(),
+};
+
+/* ⚠️⚠️ **THE SIXTH ROW, AND ONLY A QUALIFY MAY HAVE ONE.** The product's model is recursive —
+   every node under an intent is the same `react-flow__node-segment` — but a Qualify is the only
+   action that BRANCHES: its answers are the nodes below it. The other four are terminal, so a
+   child under one would be a node the agent can never reach. `extraTree` enforces that rather
+   than trusting whoever authors the data. */
+export const WorkflowSubNode = z.object({ ...WorkflowNodeFields });
+
+export const WorkflowBranch = z.object({
+  ...WorkflowNodeFields,                // title, action, tone, chips, instruction, signal, phone
+  /** A Qualify use case's own answers — the sixth row. See `WorkflowSubNode`. */
+  paths: z.array(WorkflowSubNode).optional(),
   /* ⚠️ WHICH LOCKED LEAF THIS USE CASE HANGS UNDER (9/2/2026). An extra workflow's branches
      used to be drawn as top-level intent nodes of their own, which skipped the four chrome
      boxes the product does not let anyone rename. They are USE CASES, so they belong on the
      row below "All Sales Inquiry Users" / "All Support Users", and this says which. Optional,
      defaulting to the sales side, so existing data parses. */
   intent: z.enum(["sales", "support"]).optional(),
-  /* ⚠️⚠️ **`route` IS VOICE-ONLY, AND THE NOTE THIS REPLACES WAS RIGHT ABOUT SMS (9/25/2026).**
-     It read "NO `route` FIELD HERE, DELIBERATELY", because the renderer draws
-     `Route to <route>` INSTEAD OF the action — so on an SMS extra it would have made every
-     authored action ("Book Appointment", "Warm Hand-off") dead data that is stored and never
-     drawn. That reasoning is unchanged and still holds.
-
-     What it did not cover is a VOICE extra, where naming the destination aloud on transfer is
-     the entire point and is exactly why `TreePath.route` exists. Without it a voice extra's
-     use cases fall back to the locked leaf's title ("All Sales Inquiry Users"), which
-     `isGroupLabel()` then refuses to say out loud — so the agent qualifies a caller and
-     transfers them to nowhere it can name.
-
-     ⚠️ **THE SMS RULE IS MADE STRUCTURAL RATHER THAN LEFT TO CARE:** `extraTree` maps this
-     through ONLY for a Voice workflow, so setting it on an SMS one cannot replace its action.
-     Optional, so every workflow already on disk parses unchanged. Safe as `.optional()`
-     because `ExtraWorkflow` is not part of any generation schema — `sanitize()` would
-     otherwise force it onto the model (verified: no engine phase writes `extraWorkflows`). */
-  route: z.string().optional(),          // "New Business Consultation, Term Life"
+  /* ⚠️ `route` MOVED INTO `WorkflowNodeFields` (10/8/2026) so a Qualify's ANSWERS can carry
+     one too — that is where a real routing decision lands on a voice tree. Its rule is
+     unchanged and still structural: `extraTree` maps it through only for a Voice workflow,
+     because the renderer draws `Route to <team>` INSTEAD OF the action, which on an SMS
+     workflow would blank every authored action ("Book Appointment", "Warm Hand-off") into
+     data that is stored and never drawn. */
 });
 export type WorkflowBranch = z.infer<typeof WorkflowBranch>;
 

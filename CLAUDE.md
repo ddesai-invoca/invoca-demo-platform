@@ -1978,6 +1978,113 @@ each render their own measured fields. **Untouched and checked: the voice tree**
 `.wf-v2`, no arrowheads, **no picker on any drawer**, and its voice-only phone row still reading
 "What phone number should unresolved callers be transferred to?".
 
+### Six more agentic workflows, DERIVED per prospect and gated to one (10/8/2026)
+
+Asked for after ranking the use cases that apply across Invoca's customer base: *"build all 6
+that you recommended, leave the exisitng onces alone, build addtional 6, and also make sure all
+the fields in the action drawers are filled in and match the use case, and remember that you can
+go 2 layers deep for the qualify action."* Two answers given when asked: **"for right now just do
+it for aptive until we finalize which flows i want to keep"** and drawers **"filled and fully
+editable"**. `src/data/demoWorkflows.ts`, merged at the one assembly point in `quoteWorkflow.ts`.
+
+| | SMS | Voice |
+|---|---|---|
+| 1 | Speed to Lead (form/web lead -> qualify -> schedule) | Qualify & Route |
+| 2 | Missed Call Text Back (qualify, then sales vs support) | Booking Agent, end to end |
+| 3 | Confirm & Reschedule (the post-booking half) | After Hours Triage |
+
+⚠️⚠️ **DERIVED, NOT AUTHORED AS DATA — and that is what makes "widen it later" a one-line
+change.** Every noun comes from the profile's own `bookingTerm`, `customerNoun`, `serviceArea`,
+Signal Manager list and location rows, so the same six read correctly on any account and a
+prospect generated next month gets them with no engine phase, no schema slice and no
+regeneration. **The gate (`SHOW_FOR`) is the only prospect-specific line in the file**, and it
+matches by NAME through the shared `isProspect`, never a guessed id — Aptive's id differs between
+the two stores it lives in.
+⚠️ **AND THEY ARE NOT WRITTEN INTO EITHER `aptive.json`.** That prospect exists in BOTH a tracked
+`src/data/generated/aptive.json` and a git-ignored `.data/demos/aptive.json` that overrides it, so
+authoring into one is invisible when the other serves. Code travels by push and survives both.
+⚠️ **THE SIX COME LAST in `extraWorkflowsFor`**, after a prospect's authored ones, so a sub-nav an
+SE already knows does not reshuffle. `demoWorkflowsFor` returns `[]` off-gate, which is why the
+call site is a plain spread.
+
+#### ⚠️⚠️ EVERY DRAWER FIELD IS SEEDED, AND THAT IS A CORRECTNESS REQUIREMENT, NOT POLISH
+`extraDrawerFor` reads a node's own `instruction` / `signal` / `phone` / `chips` / `route` /
+`destination`, and Apply writes back to those same paths. An unset field renders as an empty box
+whose FIRST write is `undefined -> string` — a TYPE FLIP `editGuard` refuses — so the drawer
+reports success and the edit vanishes. Seeded fields keep every write string -> string. Measured:
+**32 action drawers across the six, 0 empty fields**, asserted by opening every one.
+
+⚠️⚠️ **"disposition" IS A COLLECT FIELD, NOT A SIGNAL — six drawers shipped with an empty Signal
+before this was measured.** Every chain now ENDS in a term swept across **179 profiles on disk**:
+170 have signals at all, and **all 170 carry both a `(Conversion)`-tagged and an `(Industry)`-tagged
+one**, so `sig("(industry)", "discussed")` is a guaranteed-honest last resort. The 9 with no
+signals fail closed to the drawer's own "Nothing to choose from", which is the documented
+behaviour and the reason this is not a fallback to an invented name.
+⚠️ **A NODE THAT TURNS A CALLER AWAY IS NOT TAGGED WITH A SALES SIGNAL.** "Outside the Service
+Area" first resolved to `Quote Provided`, which contradicts the node beside it; it takes the
+industry signal instead.
+
+⚠️⚠️ **A VOICE ESCALATE'S DESTINATION BOX WAS READ-ONLY ON EVERY VOICE WORKFLOW — a pre-existing
+bug this build exposed, found in the browser rather than in the diff.** `extraDrawerFor` gated the
+flat destination write path on `channel !== "voice"`, with a comment explaining that voice writes
+`route` through `actionSlot`. True for **Inform & Route** (`destinationOnNode`), and false for
+**Support & Escalate**, which renders the ordinary destination box on both channels because
+`SMS_DESTINATION_PROMPT` has an entry for it. So one box sat locked while every neighbour was
+editable, which looks identical to an editable one until somebody types. Keyed on the same
+condition the RENDER uses now. `audit:ai` asserts every rendered field also has somewhere to
+write, which is a different question from "is it filled".
+
+⚠️ **TWO DIFFERENT NUMBERS, ON THE RESERVED 555 EXCHANGE.** These workflows hand a sales caller to
+one line and a support caller to another; printing one number in both drawers would say the
+opposite. Both go through `demoPhone`, so a demo can never ring a real business.
+⚠️ **THE BOOKING AGENT'S LOCATIONS ARE THE PROSPECT'S OWN SITES**, read off the same
+`opsDashboard.locationHandling` rows the Location dashboards render (found by HEADER, never by
+index). The first draft used `"<Brand> — morning window"`, which would have made the prompt ask
+which *time window* is closest to the caller's ZIP. Falls back to the brand itself rather than to
+nothing, because the PRESENCE of that list is what marks the workflow a booking one.
+
+⚠️ **`WorkflowNodeFields` GAINED `destination`, AND IT IS NOT GATED ON THE CHANNEL the way `route`
+is.** Nothing on the card draws it, so carrying it on an SMS workflow cannot blank an authored
+action; a route would. `audit:ai` asserts no SMS node carries a route.
+⚠️ **NO DASH-JOINED CLAUSE IN AN `openingMessage`.** That is the one field here the agent TEXTS to
+a real person, and the dash sweep deliberately does not exempt it (`systemPrompt` and
+`playbookSteps` ARE exempt — they are instructions to the model).
+
+#### Depth: only a Qualify nests, and not every one uses the sixth row
+Its answers ARE the nodes below it; the other four actions are terminal, so a child under one is a
+node the agent can never reach. `extraTree` enforces it rather than trusting whoever authors the
+data. Six of the branches go two layers deep and the rest stay terminal.
+⚠️⚠️ **THE FIRST VERSION OF THAT CHECK COULD NOT FAIL — the tautological-check trap this file
+records five times.** It read the BRANCH DATA ("is every nesting branch a Qualify?"), which only
+says the content module behaves; letting `extraTree` nest *everything* left it green. It now builds
+a probe tree with a child hung off an `Inform` and asserts the tree drops it. Verified to fire.
+
+**`npm run audit:ai` gained 19 checks** for this: the gate matches somebody and still excludes
+somebody, six unique slugs split 3+3, the copy carries the prospect's own terms and no other
+prospect's name, no em dash in an opener, the depth rule in both directions, 32 drawers with 0
+empty fields, every rendered field writable, every named signal one the prospect actually has, no
+route on SMS, the booking locations being real rows, every number on the 555 exchange, and the
+merge at the assembly point.
+⚠️ **Seven sabotages fire**: dropping the merge, nesting under a terminal action, blanking a
+signal, restoring an em dash, putting a route on an SMS node, removing the gate, and reverting the
+voice-destination write path.
+⚠️ **ONE EXISTING CHECK WAS RE-AIMED, NOT LOOSENED.** It pinned `onApply={smsTemplated || (!isSms
+&& !created)` character for character and went red the moment an EXTRA workflow earned an Apply —
+which is a real capability (these six carry full drawer content and write to their own tree), not
+drift. The two invariants that survive are asserted separately: the built-in voice workflow can
+Apply, and a CREATED one still cannot.
+
+**Verified in the browser on Aptive**: all six list in the Agent Studio sub-nav beside the built-in
+pair; `sms-speed-to-lead` draws **12 nodes on six rows** with the Qualify's two answers on the
+sixth; its Inform drawer opens filled and editable with its own signal and three collect chips; the
+escalate drawer carries a filled, editable destination; a real edit **Applied, survived a reload,
+and the page's undo took it back**; and the voice after-hours escalate drawer shows **0 read-only
+fields** with instruction, phone and destination all filled.
+⚠️ **The built-in voice tree is untouched: 12 nodes / 15 chips / 0 `.wf-v2` / 0 arrowheads**,
+confirmed by temporarily clearing that demo's stored override — **a 13th node on this machine is
+SAVED STATE on the Aptive record (an answer added during the 9/17 Add testing), not a regression**;
+it was restored from the record afterwards.
+
 ### ⚠️ THE SMS WORKFLOW'S FOUR NODE NAMES ARE FIXED, AND LOCKED (8/24/2026)
 The real Invoca page does not let a user rename them, so the template must not either. They
 are always **"Triggered by"**, **"Conversation Start"**, **"Sales Inquiry"** and

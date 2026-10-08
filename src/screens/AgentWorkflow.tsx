@@ -16,7 +16,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
-import { drawerFor } from "../data/workflowDrawers";
+import { drawerFor, extraDrawerFor } from "../data/workflowDrawers";
 import { SMS_TRIGGER, smsBranches, smsConfigFor, repairSmsSegments, effectiveSmsConfig } from "../data/smsTemplate";
 import { smsDrawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
@@ -722,7 +722,14 @@ export function AgentWorkflow() {
               Appointment", "Refer to Primary Care"), so they would fall through to a drawer
               confidently naming the wrong action. The built-in template's nodes all map to a
               captured drawer, so those open; an extra workflow's still do not. */}
-            <WorkflowTree model={tree} onNode={smsTemplated || !isSms ? setOpenNode : undefined} />
+            {/* ⚠️⚠️ **AN AUTHORED WORKFLOW'S NODES ARE CLICKABLE NOW (10/8/2026).** The note
+                above was right for its time — an authored leaf carries actions with no captured
+                drawer, so it would have fallen through to one confidently naming the wrong
+                action. `extraDrawerFor` removes that risk at the source: it builds from the
+                NODE'S OWN fields rather than from a table keyed by a node id it has never seen,
+                so a drawer can only ever describe the node it was opened from. A CREATED
+                workflow is still inert — its nodes carry no authored content at all. */}
+            <WorkflowTree model={tree} onNode={created ? undefined : setOpenNode} />
         {/* ⚠️ THE DRAWER IS RESOLVED FROM THE EFFECTIVE TREE, so a node the AI renamed opens a
             drawer naming the same thing. `drawerFor` returns null for a node the real page has
             no drawer for — Conversation Start — and nothing opens rather than an empty panel. */}
@@ -743,6 +750,11 @@ export function AgentWorkflow() {
                key of `SmsConfig` is replaced wholesale when it is edited, never half-written. */
             : smsTemplated ? smsDrawerFor(profile, tree, openNode,
                 effectiveSmsConfig(profile, (tree as { sms?: object }).sms))
+            /* ⚠️ An AUTHORED workflow reads its own nodes. `drawerFor` builds from the
+               prospect's configured VOICE agent, which is right for the built-in voice
+               diagram and wrong for a bespoke one — it would describe a different agent's
+               greeting, rules and routing steps. */
+            : extra ? extraDrawerFor(profile, tree, openNode, isSms ? "sms" : "voice")
             : drawerFor(profile, tree, openNode);
           return d ? (
             <WorkflowNodeDrawer d={d} onClose={() => setOpenNode(null)}
@@ -757,7 +769,12 @@ export function AgentWorkflow() {
                  ⚠️ STILL ABSENT for an authored extra workflow and a created one: neither has a
                  config slot for a node the template never made, so an edit there would have
                  nowhere to land. */
-              onApply={smsTemplated || (!isSms && !created) ? (es) => {
+              /* ⚠️ AN AUTHORED WORKFLOW APPLIES TOO NOW: every field `extraDrawerFor`
+                 offers writes to the node's own dot-path in this page's registered tree, so
+                 Apply inherits persistence, undo and the read-only refusal like every other
+                 drawer. A CREATED workflow still does not — it has no authored content and
+                 no slot for a node the template never made. */
+              onApply={smsTemplated || extra || (!isSms && !created) ? (es) => {
                 applyEdits(pageKey, es.map((e) => ({ path: e.path, value: JSON.stringify(e.value) })));
               } : undefined} />
           ) : null;

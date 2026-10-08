@@ -70,6 +70,22 @@ export interface TreePath {
    * component already follows for `actionIcon`, `warn` and `route`.
    */
   paths?: TreePath[];
+  /**
+   * The node's own drawer content, so the TREE is self-describing.
+   *
+   * ⚠️⚠️ **THE DRAWER FOR AN AUTHORED WORKFLOW READS THESE, AND APPLY WRITES BACK TO THEM.**
+   * The built-in SMS template keeps its drawer text in a `SmsConfig` table beside the tree,
+   * which works only because its node ids are fixed and known. An authored workflow's nodes are
+   * not, so a table would have no row for them — the exact gap that left those drawers empty.
+   * Putting the text on the node means the card, the drawer and the built prompt read ONE value,
+   * and Apply's write path is just the node's own dot-path.
+   * ⚠️ OPT-IN, so every diagram that does not set them is byte-identical.
+   */
+  instruction?: string;
+  signal?: string;
+  phone?: string;
+  /** SMS: the hand-off destination the drawer collects. Never drawn — see the schema. */
+  destination?: string;
 }
 
 export interface TreeLeaf {

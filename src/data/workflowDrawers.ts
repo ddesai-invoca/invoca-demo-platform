@@ -439,7 +439,7 @@ export const collectNames = (a: ActionKind): string[] => COLLECT_FOR[a].map((f) 
  * ⚠️ 555 IS RESERVED FOR FICTION. Real area code so it reads local, `555` so it cannot
  * connect — the same rule the Google Search ad's call extension follows.
  */
-function demoPhone(areaCode: string): string {
+export function demoPhone(areaCode: string): string {
   return `+1${areaCode}5550142`;
 }
 
@@ -451,7 +451,7 @@ function demoPhone(areaCode: string): string {
 type Profile = CustomerProfile;
 
 /** Pull an area code out of whatever number the profile already shows, else a default. */
-function areaCodeOf(p: Profile): string {
+export function areaCodeOf(p: Profile): string {
   const m = (p.reports.voiceScreenpop?.callerPhone ?? "").match(/(\d{3})/);
   return m ? m[1] : "805";
 }
@@ -1216,4 +1216,157 @@ export function smsDrawerFor(
 
   /* Conversation Start opens nothing, exactly as on the voice page. */
   return null;
+}
+
+/* =============================================================================
+   extraDrawerFor — the action drawers for an AUTHORED workflow (10/8/2026)
+   -----------------------------------------------------------------------------
+   Asked for with the six new workflows: *"make sure all the fields in the action
+   drawers are filled in and match the use case"*.
+
+   ⚠️⚠️ **AN AUTHORED SMS WORKFLOW HAD NO DRAWERS AT ALL — its nodes were not even
+   clickable.** The gate read `smsTemplated || !isSms`, and `smsTemplated` is false
+   for any extra, so every box on an authored SMS diagram was inert. A VOICE extra
+   did open drawers, but `drawerFor` builds them from the prospect's CONFIGURED voice
+   agent — so a node in a bespoke workflow opened a drawer describing a different
+   agent's greeting, rules and routing steps. Both are the same root cause: there was
+   nowhere for an authored node's own drawer content to live.
+
+   ⚠️⚠️ **SO THE CONTENT LIVES ON THE NODE, AND THAT IS THE WHOLE DESIGN.** The
+   built-in template keeps its drawer text in `SmsConfig` keyed by node id, which
+   works only because its nodes are fixed and known; an authored workflow's are not,
+   so that table has no row for them. `TreePath.instruction` / `.signal` / `.phone`
+   (plus `chips` and `route`, which the card already drew) make the tree
+   self-describing: the card, this drawer and the built prompt read ONE value.
+
+   ⚠️⚠️ **WHICH IS ALSO WHAT MAKES APPLY REAL RATHER THAN A LIE.** Every edit path
+   below is the node's own dot-path into the page's registered tree, so Apply writes
+   through `applyEdits` and inherits persistence per demo, an undo step on the page's
+   stack, and the refusal on somebody else's demo. The fields are SEEDED on every
+   authored node, so each write is string -> string: `setByPath` only ever creates a
+   LAST segment and `editGuard` refuses a `undefined -> string` TYPE FLIP, which is
+   the trap that ate `sms.extra.*` and the first greeting write.
+   ============================================================================= */
+export function extraDrawerFor(
+  profile: CustomerProfile,
+  tree: WorkflowTreeModel,
+  nodeId: string,
+  channel: "sms" | "voice",
+): NodeDrawer | null {
+  if (nodeId === "trigger") {
+    const m = tree.triggeredBy.match(/(\d+)\s*campaign/i);
+    return { kind: "trigger", title: "Triggered by",
+      summary: `${m ? m[1] : "0"} Campaigns, 0 Forms, and 0 Inbound SMS` };
+  }
+
+  /* ⚠️ The two locked intents keep the chrome drawer they already had. An authored
+     workflow contributes USE CASES, not intents — the four chrome boxes are the
+     product's and are not renameable, which this repo settled on 9/2/2026. */
+  const bi = nodeId.startsWith("intent-") ? Number(nodeId.slice(7)) : -1;
+  if (bi >= 0) {
+    const b = tree.branches[bi];
+    if (!b) return null;
+    return { kind: "intent", title: "Intent Details", name: b.title, channel,
+      looksLike: bi === 0 ? tree.startLabel : DEFAULT_SUPPORT_INTENT, rules: [] };
+  }
+
+  const node = nodeAt(tree, nodeId);
+  if (!node) return null;
+  const kind = actionKindOf(node as { action?: string; actionKind?: ActionKind });
+  if (!kind) return null;
+
+  const slot = actionSlotFor(tree, nodeId);
+  /* The node's own dot-path. Every field below hangs off it. */
+  const at = slot ? `${slot.path}.${slot.index}` : undefined;
+  const put = (f: string) => (at ? `${at}.${f}` : undefined);
+  const str = (f: string) => String((node as Record<string, unknown>)[f] ?? "");
+
+  const opts = infoFieldOptions(profile);
+  const help = (n: string) => opts.find((o) => o.name === n)?.help ?? "";
+  const chips = Array.isArray(node.chips) ? (node.chips as string[]) : [];
+
+  /* ⚠️ A QUALIFY RENDERS NEITHER A SIGNAL NOR A COLLECT LIST — measured on the real
+     drawer, and it reads as an omission until you see why: it is the one BRANCHING
+     action, and the other four are terminal. Its answers are the nodes below it. */
+  const terminalFields = kind === "qualify" ? {} : {
+    ...(SMS_DESTINATION_PROMPT[kind] || (channel === "voice" && kind === "informRoute")
+      ? {
+          destinationPrompt: channel === "voice" && kind === "informRoute"
+            ? VOICE_ROUTE_DESTINATION
+            : SMS_DESTINATION_PROMPT[kind],
+          /* ⚠️ ON VOICE THE DESTINATION IS THE NODE'S OWN `route` — the value the card
+             draws as "Route to Billing" and the one `treeToVoicePaths` hands the prompt
+             as the route's team. A second copy beside it is the two-sources failure this
+             file records for the pills. SMS keeps a plain field, because its destination
+             is a URL or a number nothing on the diagram draws. */
+          ...(channel === "voice" && kind === "informRoute"
+            ? { destination: String(node.route ?? ""), destinationOnNode: true }
+            : { destination: str("destination"),
+                destinationPlaceholder: SMS_DESTINATION_PLACEHOLDER[kind] }),
+        }
+      : {}),
+    signal: str("signal"),
+    signalChoices: signalOptions(profile),
+    infoChoices: opts,
+    collect: chips.map((n) => ({ name: n, help: help(n) })),
+  };
+
+  /* ⚠️ Schedule Callback has NO instruction box at all — Description, then its fixed
+     Signal, then What To Collect. A prompt label would have to be invented for it,
+     which is why `SMS_ACTION_PROMPT` excludes it at the type level. */
+  const instructionFields = kind === "callback" ? {} : {
+    handling: str("instruction"),
+    handlingPlaceholder: SMS_ACTION_PROMPT[kind],
+  };
+
+  /* ⚠️ The voice phone row. An SMS drawer has no phone row at all, measured on all
+     four SMS captures, so `phone` is left undefined and the row is omitted. */
+  const phoneFields = channel === "voice" && kind !== "qualify" && kind !== "callback"
+    ? { phone: str("phone"), phonePlaceholder: "e.g. +1-800-555-0100" }
+    : {};
+
+  if (kind === "qualify") {
+    /* ⚠️ THE ANSWERS COME FROM THE TREE, ALWAYS — the rule `drawerFor` settled on
+       8/27 and `smsDrawerFor` repeats. The tree handed in is the page's EFFECTIVE
+       object, so it already carries every Apply and every Ask AI edit; a second list
+       would disagree the first time either was touched. */
+    const kids = Array.isArray(node.paths) ? (node.paths as Record<string, unknown>[]) : [];
+    return {
+      kind: "action", title: "Action", action: "qualify", channel,
+      question: str("instruction"),
+      segments: kids.map((k) => String(k?.title ?? "")),
+      segmentNodes: kids,
+      ...(slot ? { actionSlot: slot } : {}),
+      edits: {
+        ...(put("instruction") ? { question: put("instruction") } : {}),
+        ...(at ? { segments: `${at}.paths` } : {}),
+        /* Carried though a Qualify renders neither, so switching the action to one
+           that DOES have them finds somewhere to write without rebuilding the drawer. */
+        ...(put("destination") ? { destination: put("destination") } : {}),
+        ...(put("signal") ? { signal: put("signal") } : {}),
+      },
+    };
+  }
+
+  return {
+    kind: "action", title: "Action", action: kind, channel,
+    ...instructionFields,
+    ...phoneFields,
+    ...terminalFields,
+    ...(slot ? { actionSlot: slot } : {}),
+    edits: {
+      ...(kind !== "callback" && put("instruction") ? { handling: put("instruction") } : {}),
+      ...(put("signal") ? { signal: put("signal") } : {}),
+      ...(channel === "voice" && put("phone") ? { phone: put("phone") } : {}),
+      /* ⚠️⚠️ KEYED ON THE SAME CONDITION THE RENDER USES, NOT ON THE CHANNEL. Only an
+         `Inform & Route` on voice puts the destination ON THE NODE (`destinationOnNode`,
+         writing `route` through `actionSlot`); a voice **escalate** renders the ordinary
+         destination box, because `SMS_DESTINATION_PROMPT` has an entry for that action on
+         both channels. Keying this on `channel !== "voice"` therefore left that one box
+         READ-ONLY on every voice workflow while every other field was editable — measured
+         in the browser, not read off the diff. */
+      ...(!(channel === "voice" && kind === "informRoute") && put("destination")
+        ? { destination: put("destination") } : {}),
+    },
+  };
 }

@@ -1,5 +1,6 @@
 import type { CustomerProfile, ExtraWorkflow } from "./schema";
 import { useQuoteCaptures, type LsaQuote } from "./QuoteCaptureContext";
+import { demoWorkflowsFor } from "./demoWorkflows";
 
 /* =============================================================================
    The SMS workflow a submitted LSA quote request creates (9/12/2026)
@@ -266,6 +267,12 @@ export function extraWorkflowsFor(profile: CustomerProfile, quotes: LsaQuote[]):
   return [
     ...(latest ? [quoteWorkflow(profile, latest)] : []),
     ...(profile.reports.extraWorkflows ?? []),
+    /* ⚠️ THE SIX DERIVED ONES COME LAST, so a prospect's own AUTHORED workflows keep the
+       order they were authored in and the sub-nav an SE already knows does not reshuffle.
+       `demoWorkflowsFor` returns [] for everyone it is not gated to, which is why this is a
+       plain spread — widening it later is deleting one line in that module, not editing this
+       assembly point. */
+    ...demoWorkflowsFor(profile),
   ];
 }
 

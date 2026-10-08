@@ -67,9 +67,11 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 export const RELEASES: Release[] = [
   {
     date: "2026-10-08",
-    title: "Workflow boxes take the colour of their action",
+    title: "Workflow boxes take their action\u2019s colour, and extra workflows are editable",
     changes: [
       i("Every box in an SMS or voice workflow is now coloured by the action it performs \u2014 Qualify, Schedule Callback, Inform, Inform & Route or Support & Escalate \u2014 matching the platform exactly, including the tint, the border and the coloured edge. Voice workflows were using an older palette and now match SMS; a prospect generated from here on gets the right colours automatically."),
+      i("Boxes on an extra workflow now open their action settings, and those settings can be edited and applied \u2014 the instruction, the signal, what to collect, the destination and the transfer number. Previously they opened read-only."),
+      f("A voice workflow's \u201cwhere should the agent escalate\u201d box could not be typed into. Every other field beside it was editable, so it looked like an ordinary field until you tried."),
     ],
   },
   {

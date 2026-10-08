@@ -228,13 +228,41 @@ export function extraTree(wf: ExtraWorkflow): WorkflowTreeModel {
      workflow's authored actions. Gating it here rather than trusting whoever
      authors the data makes that rule structural. */
   const spoken = /voice/i.test(wf.channel ?? "");
-  const asPath = (b: (typeof wf.branches)[number]): TreePath => ({
-    title: b.title,
-    action: b.action,
-    tone: b.tone,
-    chips: b.chips,
-    ...(spoken && b.route?.trim() ? { route: b.route.trim() } : {}),
+  /* The node's own drawer content travels with it — see `TreePath.instruction`. */
+  const fields = (b: {
+    chips?: string[]; instruction?: string; signal?: string; phone?: string; destination?: string;
+  }) => ({
+    ...(b.chips ? { chips: b.chips } : {}),
+    ...(b.instruction ? { instruction: b.instruction } : {}),
+    ...(b.signal ? { signal: b.signal } : {}),
+    ...(b.phone ? { phone: b.phone } : {}),
+    /* ⚠️ NOT gated on the channel, unlike `route`. Nothing on the card draws it, so carrying
+       it on an SMS workflow cannot blank an authored action the way a route would. */
+    ...(b.destination ? { destination: b.destination } : {}),
   });
+  const asPath = (b: (typeof wf.branches)[number]): TreePath => {
+    /* ⚠️⚠️ **ONLY A QUALIFY MAY NEST, AND IT IS ENFORCED HERE RATHER THAN TRUSTED.** A Qualify
+       is the one action that branches — its answers ARE the nodes below it. The other four are
+       terminal, so a child under one would be drawn in a row the agent can never reach: data
+       stored and never reachable, which is the silent no-op this repo keeps paying for. */
+    const nests = actionKindOf(b) === "qualify";
+    return {
+      title: b.title,
+      action: b.action,
+      tone: b.tone,
+      ...fields(b),
+      ...(spoken && b.route?.trim() ? { route: b.route.trim() } : {}),
+      ...(nests && b.paths?.length
+        ? { paths: b.paths.map((sp) => ({
+            title: sp.title,
+            action: sp.action,
+            tone: sp.tone,
+            ...fields(sp),
+            ...(spoken && sp.route?.trim() ? { route: sp.route.trim() } : {}),
+          })) }
+        : {}),
+    };
+  };
   const sales = wf.branches.filter((b) => b.intent !== "support").map(asPath);
   const support = wf.branches.filter((b) => b.intent === "support").map(asPath);
 
