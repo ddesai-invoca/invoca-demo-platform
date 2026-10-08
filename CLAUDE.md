@@ -12544,7 +12544,56 @@ where somebody adds the third event.
 rows come from the SERVER, and with the library unreachable a conference roster that silently
 vanishes reads as the demos having been deleted rather than as an offline library.
 
-### The sheet: an Apps Script webhook, which needs NO credential on this server
+### The sheet: PASTE A LINK (10/8/2026) — the Apps Script path is now the fallback
+Reported immediately after the first build: *"connecting a sheet is too complicated for not
+technical people, what is the most seamless and easiest way to do this, ideally all i want
+users to do is paste the google sheet URL."* Fair — four steps including a code editor is
+not something a non-technical SE finishes.
+
+⚠️⚠️ **THE REASON IT WAS FOUR STEPS IS THE REASON IT COULD BE ONE: a webhook needs no
+credential, and accepting a bare sheet URL does.** Three ways to get one were costed and
+the user chose per-user OAuth. The one-time cost is a Cloud Console step (enable the Sheets
+API, add `spreadsheets` to the consent screen — **no new client, no key, no redirect URI**,
+because `/auth/sheets` reuses `/auth/callback` with a `sheets:` state prefix like
+`/auth/drive` and `/auth/gmail-connect` already do).
+
+⚠️⚠️ **ONE GRANT SERVES EVERY SE, WHICH IS THE WHOLE DESIGN AND THE OPPOSITE OF `driveTokens`.**
+Drive reads a document belonging to the person generating, so it must read AS them. A
+conference sheet is one destination for twenty-five people's marks: requiring each of them to
+consent AND hold edit access would mean rows silently missing for whoever had not. The admin
+who connects the event grants once, `eventSettings` records WHOSE grant it is
+(`spreadsheetId` + `sheetOwner`, stored together — reading them apart is how an event starts
+writing as whoever happens to be marking), and every later mark uses it. Other SEs do nothing.
+⚠️ **CONSEQUENCE, STATED: the grant belongs to a person.** Revoked or gone and rows stop —
+surfaced as `reconnect`, never "try again", which would send somebody round a loop that
+cannot help. A service account would not have that property and would cost a key in Render's
+env plus a share step on every sheet; that trade was put to the user and this is their side.
+⚠️ **NOT FOLDED INTO THE SIGN-IN SCOPE, unlike `gmail.send`.** That one is in the gate because
+the alternative was a click nobody takes; this one would show *"see, edit, create and delete
+all your spreadsheets"* to every person who opens the platform. It is consented to where it
+is used — one dialog, one admin, once. `audit:events` fails if the gate grows it.
+⚠️ **A SHEET IS PROVED REACHABLE BEFORE IT IS STORED** (`describeSheet` then
+`setEventSpreadsheet`). Storing first and finding out at the first mark is the silent-failure
+shape this repo keeps paying for — and it is why the dialog can show the sheet's real TITLE
+rather than echoing the URL back.
+⚠️ **ONLY THE ID IS KEPT.** `spreadsheetIdFrom` parses a pasted link, so `#gid=`, `/edit`,
+`?usp=sharing` and a query string cannot reach an API path; a Google DOC link is refused.
+⚠️ **"Or create one for this event" means there is no URL to paste at all** — the scope
+allows `spreadsheets.create`.
+⚠️ **THE UPSERT MOVED SERVER-SIDE, and that is a real trade.** The script held a lock and was
+one request; this reads the key column then writes. **UPSERT RACE, stated rather than hidden:**
+two SEs marking the SAME prospect in the same second could both see "no row" and append two.
+Accepted because it needs the same prospect (not merely the same event) at the same instant
+and the outcome is a duplicate row rather than lost data. The fix, if it ever bites, is a
+mutex keyed on `spreadsheetId:demoId`.
+
+⚠️ **THE APPS SCRIPT PATH SURVIVES, COLLAPSED BEHIND "Can't connect Google?"** — it is the
+only thing that works for an org that will not enable the scope, and it was already built and
+audited. `sheetHook` prefers the API when both are set, so an event moved onto the simple path
+cannot keep posting to a webhook somebody left behind; neither save fills in the other, so
+switching is explicit. Everything in the section below still applies to it.
+
+### The original Apps Script path, which is now the fallback
 Three options were costed and the user chose this one. ⚠️⚠️ **AN ASSISTANT'S OWN SHEETS
 CONNECTOR IS NOT THIS SERVER'S CREDENTIAL**, so the real question was which credential the
 SERVER gets: the Sheets API needs enabling plus either a new consent scope every signed-in user
@@ -12651,7 +12700,7 @@ matched its own banned string. Strip first, then slice at real CSS.
 ⚠️ **THE PRE-EXISTING `.dmk-*` BLUES ARE LEFT ALONE** — the Lead chip's `#2666f9` is a
 STATUS colour (one per mark status), not an accent, and those rules are signed off.
 
-**`npm run audit:events` is 66 checks** (was 23): the registry (distinct keys, groups and
+**`npm run audit:events` is 98 checks** (was 23): the registry (distinct keys, groups and
 prefixes, no prefix nesting, `eventGroupOf` called not grepped), the URL allow-list against 2
 good and 7 hostile shapes, the settings round trip, `postMarkRow` against a **mocked fetch**
 (never the real network — the rule `audit:advanced` follows for Gong) including the body shape,
@@ -12674,7 +12723,9 @@ copy/open-script buttons and the stored URL; the roster parser handled quoted co
 four kinds of bad row with per-line reasons; and a demo created with `event` landed in the
 Chicago dropdown while one created without it went to My demos.
 ⚠️⚠️ **WHAT IS NOT VERIFIED, STATED PLAINLY: no row has ever reached a REAL Google Sheet.**
-Deploying an Apps Script needs a Google account, which is the user's. The wire format, the
+Both paths end at a Google account, which is the user's — the API path needs the Cloud Console
+step and a real OAuth round trip (never done on somebody's behalf), the script path needs a
+deployment. The wire format, the
 upsert, the clear and the column-preservation are all exercised against stubs; the one unproven
 link is Apps Script accepting the body as posted. **Wire a sheet and mark one demo before
 trusting it in front of a prospect.**

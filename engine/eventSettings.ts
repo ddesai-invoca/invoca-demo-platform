@@ -27,7 +27,19 @@ import { EVENTS } from "../src/data/eventDemos.ts";
 const DIR = path.join(DATA_DIR, "event-settings");
 
 export interface EventSettings {
-  /** The Apps Script web-app URL the mark rows are POSTed to. Absent = not wired. */
+  /* ⚠️⚠️ TWO WAYS TO WIRE AN EVENT, AND THE SIMPLE ONE IS FIRST (10/8/2026). Reported:
+     *"connecting a sheet is too complicated for not technical people… ideally all i want
+     users to do is paste the google sheet URL."* So `spreadsheetId` + `sheetOwner` is the
+     path the UI leads with — paste a link, done — and the Apps Script webhook stays as the
+     fallback for an org that will not grant the scope. `sheetHook` prefers the API when
+     both are set; neither is ever filled in by the other's save, so switching is explicit. */
+  /** The sheet itself, written with `sheetOwner`'s stored Google grant. */
+  spreadsheetId?: string;
+  /** WHOSE grant writes the rows. One grant serves every SE — see sheetsTokens.ts. */
+  sheetOwner?: string;
+  /** Shown back so the UI can name what was connected rather than echo a URL. */
+  sheetTitle?: string;
+  /** The Apps Script web-app URL the mark rows are POSTed to. The older, no-credential path. */
   sheetWebhookUrl?: string;
   /** For the UI to show "wired by X on Y" rather than a bare field. */
   updatedAt?: string;
@@ -92,10 +104,36 @@ export function setEventSheet(
     updatedAt: new Date().toISOString(),
     updatedBy: by,
   };
+  write(file, next);
+  return next;
+}
+
+function write(file: string, next: EventSettings) {
   fs.mkdirSync(DIR, { recursive: true });
   const tmp = `${file}.${process.pid}.tmp`;
   fs.writeFileSync(tmp, JSON.stringify(next, null, 2));
   fs.renameSync(tmp, file);
+}
+
+/**
+ * Connect (or disconnect) the event's real Google Sheet.
+ *
+ * ⚠️ `owner` IS STORED BESIDE THE ID because the grant is a person's. Reading the two
+ * apart — the id here, the signed-in user at write time — is how an event silently
+ * starts writing with whoever happens to be marking, which is exactly the per-SE model
+ * this design rejects.
+ */
+export function setEventSpreadsheet(
+  key: string, spreadsheetId: string, owner: string, title: string, by: string,
+): EventSettings | null {
+  const file = fileFor(key);
+  if (!file) return null;
+  const next: EventSettings = {
+    ...(spreadsheetId ? { spreadsheetId, sheetOwner: owner, sheetTitle: title } : {}),
+    updatedAt: new Date().toISOString(),
+    updatedBy: by,
+  };
+  write(file, next);
   return next;
 }
 
@@ -104,6 +142,6 @@ export function setEventSheet(
 export function listEventSettings(): { key: string; wired: boolean; settings: EventSettings }[] {
   return EVENTS.map((e) => {
     const s = eventSettings(e.key);
-    return { key: e.key, wired: !!s.sheetWebhookUrl, settings: s };
+    return { key: e.key, wired: !!(s.spreadsheetId || s.sheetWebhookUrl), settings: s };
   });
 }

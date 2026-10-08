@@ -185,7 +185,8 @@ export function Launch() {
      admin — the SERVER decides that, so a client that lied would just collect 403s
      on the PUT. Re-read after a save so the chip and the trigger label move without
      a reload. */
-  const [eventCfg, setEventCfg] = useState<{ admin: boolean; events: EventSheetState[] } | null>(null);
+  const [eventCfg, setEventCfg] =
+    useState<{ admin: boolean; sheetsConnected: boolean; events: EventSheetState[] } | null>(null);
   const loadEvents = useCallback(() => {
     fetch("/api/events")
       .then((r) => (r.ok ? r.json() : null))
@@ -195,6 +196,13 @@ export function Launch() {
       .catch(() => {});
   }, []);
   useEffect(loadEvents, [loadEvents]);
+  /* ⚠️ `/auth/sheets` lands back on `/?sheets=connected`. Without stripping it a refresh
+     would keep re-announcing the connection; the same tidy-up `?drive=connected` does. */
+  useEffect(() => {
+    if (new URLSearchParams(location.search).get("sheets") === "connected") {
+      window.history.replaceState({}, "", location.pathname);
+    }
+  }, []);
   const { hydrateDemo } = useAiAssistant();
   const navigate = useNavigate();
 
@@ -565,6 +573,7 @@ export function Launch() {
                     action={ev ? (
                       <EventSheetButton
                         event={ev.key} label={label} admin={!!eventCfg?.admin}
+                        connected={!!eventCfg?.sheetsConnected} connectedAs={me?.email}
                         state={eventCfg?.events.find((x) => x.key === ev.key)}
                         onSaved={loadEvents}
                       />

@@ -29,6 +29,7 @@
    ============================================================================= */
 
 import { eventSettings } from "./eventSettings.ts";
+import { upsertRow, SheetsReconnectError, COLUMNS } from "./sheetsApi.ts";
 import { appEnv } from "./appEnv.ts";
 import type { DemoMark } from "./demoMarks.ts";
 
@@ -60,6 +61,10 @@ export interface SheetRow {
 
 export interface SheetResult {
   posted: boolean;
+  /** Whether an existing row moved or a new one was added. API path only. */
+  updated?: boolean;
+  /** The grant is gone — the UI offers a Connect link rather than "try again". */
+  reconnect?: boolean;
   /** Why not, for the UI to report honestly rather than implying a row appeared. */
   reason?: string;
 }
@@ -78,10 +83,32 @@ export async function postMarkRow(
   row: Omit<SheetRow, "event" | "env">,
 ): Promise<SheetResult> {
   if (!eventKey) return { posted: false, reason: "This demo is not in an event." };
-  const url = eventSettings(eventKey).sheetWebhookUrl;
-  if (!url) return { posted: false, reason: "No sheet is connected to this event yet." };
-
+  const cfg = eventSettings(eventKey);
   const body: SheetRow = { ...row, event: eventKey, env: appEnv() };
+
+  /* ⚠️⚠️ THE API PATH WINS WHEN BOTH ARE SET. It is the one a non-technical SE can
+     actually finish (paste a link), so an event that has been moved onto it must not
+     keep posting to a webhook somebody left behind. Neither save clears the other, so
+     switching back is just reconnecting. */
+  if (cfg.spreadsheetId && cfg.sheetOwner) {
+    try {
+      const res = await upsertRow(
+        { email: cfg.sheetOwner, spreadsheetId: cfg.spreadsheetId, tab: eventKey },
+        rowCells(body),
+      );
+      return { posted: true, updated: res.updated };
+    } catch (e: unknown) {
+      /* ⚠️ A REVOKED GRANT IS ITS OWN ANSWER. "Try again" would send somebody round a
+         loop that cannot help; `reconnect` is what the UI turns into a Connect link. */
+      if (e instanceof SheetsReconnectError) {
+        return { posted: false, reconnect: true, reason: e.message };
+      }
+      return { posted: false, reason: (e as Error)?.message || "The sheet could not be written." };
+    }
+  }
+
+  const url = cfg.sheetWebhookUrl;
+  if (!url) return { posted: false, reason: "No sheet is connected to this event yet." };
   const ctl = new AbortController();
   const timer = setTimeout(() => ctl.abort(), TIMEOUT_MS);
   try {
@@ -113,3 +140,24 @@ export async function postMarkRow(
 /** The attendee list as one cell — "Sarah Chen (VP Ops), Marcus Webb". */
 export const attendeeCell = (m: Pick<DemoMark, "attendees">): string =>
   (m.attendees ?? []).map((a) => (a.title ? `${a.name} (${a.title})` : a.name)).join(", ");
+
+/** ⚠️ ONE MAPPING, so the API path and the Apps Script path put the same value under
+ *  the same heading. The script reads these names off the payload; this turns the same
+ *  payload into the same columns. Two tables would drift on the first added column. */
+export function rowCells(b: SheetRow): Record<string, string> {
+  const cleared = b.action === "removed";
+  return {
+    "Demo ID": b.demoId,
+    "Prospect": b.prospect,
+    "Website": b.website ?? "",
+    "Status": cleared ? "" : b.status,
+    "Notes": cleared ? "" : (b.note ?? ""),
+    "Who was in the room": cleared ? "" : (b.attendees ?? ""),
+    "Demoed by": cleared ? "" : b.markedBy,
+    "Email": cleared ? "" : b.markedByEmail,
+    "Marked at": b.at,
+    "Event": b.event,
+    "Open demo": b.demoUrl ?? "",
+    "Source": b.env,
+  } satisfies Record<(typeof COLUMNS)[number], string>;
+}

@@ -26,14 +26,17 @@
      GET    /api/demos/:id/rep         → who owns this prospect's Salesforce account
      GET    /api/marks                 → my follow-up list (?all=1 for an admin)
      GET    /api/events                → every event + whether a sheet is wired
-     PUT    /api/events/:key/sheet     → connect/disconnect that event's sheet (admin)
+     PUT    /api/events/:key/sheet-link → paste a Google Sheet link, or create one (admin)
+     PUT    /api/events/:key/sheet     → the Apps Script webhook fallback (admin)
    ============================================================================= */
 
 import { type DemoRecord, deleteDemo, getDemo, listDemos, saveDemo, uniqueId } from "./demoStore.ts";
 import { isAdminEmail } from "./admins.ts";
 import { pendingAdminNotice, ackAdminNotice } from "./adminNotices.ts";
 import { MARK_STATUSES, MARK_LABEL, isMarkStatus, listMarks, markDemo, marksFor, unmarkDemo } from "./demoMarks.ts";
-import { listEventSettings, setEventSheet, isEventKey } from "./eventSettings.ts";
+import { listEventSettings, setEventSheet, setEventSpreadsheet, isEventKey } from "./eventSettings.ts";
+import { spreadsheetIdFrom, describeSheet, createSheet, sheetUrlFor, SheetsReconnectError } from "./sheetsApi.ts";
+import { hasSheetsToken } from "./sheetsTokens.ts";
 import { postMarkRow, attendeeCell } from "./sheetHook.ts";
 import { lookupRep, salesforceConfigured, type RepCandidate } from "./salesforceApi.ts";
 import { markNoticeEmail, sendMail } from "./mailer.ts";
@@ -172,13 +175,61 @@ export async function handleDemoApi(
     const admin = isAdmin(user);
     return ok({
       admin,
+      /* Whether THIS admin can write sheets, so the dialog shows Connect or the paste
+         field rather than offering one and failing on the other. */
+      sheetsConnected: admin ? hasSheetsToken(user.email) : false,
       events: listEventSettings().map((e) => ({
         key: e.key,
         wired: e.wired,
-        ...(admin ? { sheetWebhookUrl: e.settings.sheetWebhookUrl ?? "",
-                      updatedAt: e.settings.updatedAt, updatedBy: e.settings.updatedBy } : {}),
+        ...(admin ? {
+          /* ⚠️ The sheet's LINK and TITLE are fine for an admin to see; the Apps Script
+             URL is the one that is a capability, and it is already admin-only here. */
+          sheetUrl: e.settings.spreadsheetId ? sheetUrlFor(e.settings.spreadsheetId) : "",
+          sheetTitle: e.settings.sheetTitle ?? "",
+          sheetOwner: e.settings.sheetOwner ?? "",
+          sheetWebhookUrl: e.settings.sheetWebhookUrl ?? "",
+          updatedAt: e.settings.updatedAt, updatedBy: e.settings.updatedBy,
+        } : {}),
       })),
     });
+  }
+
+  /* ⚠️⚠️ THE SIMPLE PATH: paste a Google Sheet link, or let us make one. Both write
+     `spreadsheetId` + the CONNECTING ADMIN as `sheetOwner`, so every later mark — by
+     any SE — is written with that one grant. */
+  const linkRoute = p.match(/^\/api\/events\/([^/]+)\/sheet-link$/);
+  if (linkRoute) {
+    if (method !== "PUT") return err(405, "Method not allowed.");
+    if (!isAdmin(user)) return err(403, "Connecting a sheet is limited to project admins.");
+    const key = decodeURIComponent(linkRoute[1]);
+    if (!isEventKey(key)) return err(404, "Unknown event.");
+    const raw = String(body?.url ?? "").trim();
+
+    /* Empty unwires, exactly as the webhook field does. */
+    if (!raw && !body?.create) {
+      return ok({ key, wired: false, settings: setEventSpreadsheet(key, "", "", "", user.email) });
+    }
+    try {
+      let id: string;
+      if (body?.create) {
+        const made = await createSheet(user.email, String(body?.title ?? key));
+        id = made.id;
+      } else {
+        const parsed = spreadsheetIdFrom(raw);
+        /* ⚠️ A LINK THAT IS NOT A SHEET IS A 400 THAT SAYS SO, rather than a stored id
+           that fails on every later mark and sends somebody debugging their network. */
+        if (!parsed) return err(400, "That is not a Google Sheets link. Copy the address from the sheet's own tab.");
+        id = parsed;
+      }
+      /* ⚠️ PROVED REACHABLE BEFORE IT IS STORED. Storing first and finding out at the
+         first mark is the silent-failure shape this repo keeps paying for. */
+      const title = await describeSheet(user.email, id);
+      const saved = setEventSpreadsheet(key, id, user.email, title, user.email);
+      return ok({ key, wired: true, sheetUrl: sheetUrlFor(id), sheetTitle: title, settings: saved });
+    } catch (e: unknown) {
+      if (e instanceof SheetsReconnectError) return err(409, e.message);
+      return err(400, (e as Error)?.message || "That sheet could not be connected.");
+    }
   }
 
   const sheetRoute = p.match(/^\/api\/events\/([^/]+)\/sheet$/);

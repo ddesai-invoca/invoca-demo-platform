@@ -21,6 +21,7 @@ import crypto from "node:crypto";
    ones who may connect the sending account. A second list here would drift. */
 import { isAdmin } from "./engine/demoApi.ts";
 import { saveDriveToken } from "./engine/driveTokens.ts";
+import { saveSheetsToken } from "./engine/sheetsTokens.ts";
 import { saveGmailToken } from "./engine/gmailTokens.ts";
 import { orgEmailDomain } from "./engine/appEnv.ts";
 import type { Express, Request, Response, NextFunction } from "express";
@@ -213,6 +214,43 @@ export function installAuth(app: Express) {
     res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
   });
 
+  /* ---- SHEETS CONSENT, FOR AN EVENT'S FOLLOW-UP SHEET ------------------------
+     Asked for 10/8/2026 after the Apps Script flow was reported as too much for a
+     non-technical SE. Pasting a bare Google Sheet URL only works if the SERVER can
+     reach that sheet, and this is the grant that lets it.
+
+     ⚠️⚠️ **ONE GRANT SERVES EVERY SE, UNLIKE /auth/drive.** Drive reads a document
+     belonging to the person generating, so it must read AS them; a conference sheet
+     is one destination for twenty-five people's marks, so requiring each of them to
+     consent would mean rows silently missing for whoever had not. The admin who
+     connects an event grants once and `eventSettings` records whose grant it is.
+
+     ⚠️ **NOT FOLDED INTO THE SIGN-IN SCOPE.** `gmail.send` is in the gate because the
+     alternative was a click nobody takes; this one would show "see, edit, create and
+     delete all your spreadsheets" to every person who opens the platform, including
+     the majority who never touch an event. It is consented to where it is used, which
+     is one dialog, by one admin, once.
+
+     ⚠️ Reuses the existing /auth/callback redirect URI, distinguished by its state
+     prefix, so nothing new is registered in the Cloud Console beyond adding the scope
+     and enabling the Sheets API. */
+  app.get("/auth/sheets", (req: Request, res: Response) => {
+    const state = "sheets:" + crypto.randomBytes(16).toString("hex");
+    res.setHeader("Set-Cookie", `oauth_state=${state}; HttpOnly; Path=/; Max-Age=600; SameSite=Lax${secure(req) ? "; Secure" : ""}`);
+    const params = new URLSearchParams({
+      client_id: CLIENT_ID,
+      redirect_uri: `${baseUrl(req)}/auth/callback`,
+      response_type: "code",
+      scope: "openid email profile https://www.googleapis.com/auth/spreadsheets",
+      hd: ALLOWED_DOMAIN,
+      state,
+      // offline + consent is what actually returns a refresh token, as above.
+      access_type: "offline",
+      prompt: "consent",
+    });
+    res.redirect(`https://accounts.google.com/o/oauth2/v2/auth?${params}`);
+  });
+
   /* ---- PER-SE GMAIL SEND CONSENT ---------------------------------------------
      Asked for directly: the "tell the account exec" notification should come
      FROM the SE who marked the demo, and land in THEIR Sent folder, because they
@@ -304,6 +342,24 @@ export function installAuth(app: Express) {
       /* The Drive consent leg: store the refresh token for THIS account and
          send them back to the app — no page to read, no value to copy, because
          nobody has to paste anything into Render for this one. */
+      /* ⚠️ `"sheets:"` collides with nothing: no other prefix here is a prefix of it
+         and it is a prefix of none of them (checked — the trap recorded at `gmailc:`,
+         where getting it wrong would have displayed a colleague's credential). */
+      if (state.startsWith("sheets:")) {
+        const claims2: any = JSON.parse(Buffer.from(tok.id_token.split(".")[1], "base64url").toString());
+        const acct = String(claims2.email || "").toLowerCase();
+        res.setHeader("Set-Cookie", `oauth_state=; Path=/; Max-Age=0`);
+        if (!tok.refresh_token) {
+          return res.status(400).send(deniedPage(
+            "Google didn't return a new grant for Sheets — that usually means it was already connected. " +
+            "Disconnect it on the event and try again to get a fresh one, or it may already be working: " +
+            "<a href=\"/\">go back and check</a>."));
+        }
+        /* Stored, never displayed — there is nothing here for anyone to copy. */
+        saveSheetsToken(acct, tok.refresh_token);
+        return res.redirect("/?sheets=connected");
+      }
+
       if (state.startsWith("drive:")) {
         const claims2: any = JSON.parse(Buffer.from(tok.id_token.split(".")[1], "base64url").toString());
         const acct = String(claims2.email || "").toLowerCase();

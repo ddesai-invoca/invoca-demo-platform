@@ -6861,3 +6861,19 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .blk-foot { display: flex; align-items: center; gap: 12px; }
 .blk-count { font-size: 13px; font-weight: 600; color: #5b6577; }
 .blk-hint { font-size: 12px; color: #868e96; }
+
+/* Sheet dialog: the pasted-link path leads, the script path is a collapsed fallback. */
+.evs-connect { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.evs-connect p { margin: 0; font-size: 13px; line-height: 1.55; color: #5b6577; }
+.evs-connect-btn { text-decoration: none; display: inline-block; margin-left: 0 !important; }
+.evs-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.evs-alt { border-top: 1px solid var(--color-border, #e7e9eb); padding-top: 12px; }
+.evs-alt > summary {
+  cursor: pointer; font-size: 12px; font-weight: 600; color: #868e96; list-style: none;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.evs-alt > summary::-webkit-details-marker { display: none; }
+.evs-alt > summary::before { content: "expand_more"; font-family: "Material Icons"; font-size: 16px; }
+.evs-alt[open] > summary::before { content: "expand_less"; }
+.evs-alt > summary:hover { color: var(--color-green-active); }
+.evs-alt > *:not(summary) { margin-top: 10px; }

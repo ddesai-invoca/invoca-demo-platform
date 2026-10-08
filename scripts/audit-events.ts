@@ -373,8 +373,28 @@ console.log("\nEvent sheet\n");
   })()
     ? ok("every postMarkRow call is awaited, so the SIGTERM drain cannot kill one mid-deploy")
     : bad("a sheet post is fire-and-forget — a deploy would drop the last rows");
-  /isAdmin\(user\)[\s\S]{0,400}?sheetWebhookUrl/.test(api)
-    ? ok("the URL is returned only to an admin")
+  /* ⚠️ SLICED, NOT WINDOWED — the third character-window probe fault in this session.
+     It matched `isAdmin(user)` within 400 chars of `sheetWebhookUrl`, and went red the
+     moment the handler grew three more fields between them. A window is a guess about
+     formatting; the handler's own body is the thing the invariant is about. */
+  (() => {
+    const start = api.indexOf('if (p === "/api/events")');
+    const body = api.slice(start, api.indexOf("const linkRoute", start));
+    if (start < 0 || !body) return false;
+    /* Every address field must sit inside the `admin ? { … } : {}` branch. */
+    /* ⚠️ The invariant is "no address field OUTSIDE the admin branch", which is what to
+       assert. Counting occurrences instead was a probe fault: `sheetWebhookUrl:
+       e.settings.sheetWebhookUrl` carries the token twice on ONE line, so an `=== 1`
+       count failed on correct code. */
+    const open = body.indexOf("...(admin ? {");
+    const close = body.indexOf("} : {})");
+    if (open < 0 || close < open) return false;
+    const guarded = body.slice(open, close);
+    const outside = body.slice(0, open) + body.slice(close);
+    const fields = ["sheetWebhookUrl", "sheetUrl", "sheetOwner"];
+    return fields.every((f) => guarded.includes(f)) && fields.every((f) => !outside.includes(f));
+  })()
+    ? ok("every sheet address is returned only to an admin")
     : bad("the sheet URL reaches every signed-in user — anyone could append to the sheet");
   /Connecting a sheet is limited to project admins/.test(api)
     ? ok("a non-admin cannot wire a sheet")
@@ -386,6 +406,162 @@ console.log("\nEvent sheet\n");
   /\/api\/events/.test(code("vite.config.ts"))
     ? ok("the dev twin serves /api/events")
     : bad("/api/events 404s in dev while production serves it — the documented twin trap");
+}
+
+/* =============================================================================
+   PASTE A SHEET LINK (10/8/2026)
+   -----------------------------------------------------------------------------
+   Reported: "connecting a sheet is too complicated for not technical people…
+   ideally all i want users to do is paste the google sheet URL." So the Sheets API
+   path is now the one the dialog leads with and the Apps Script webhook is the
+   collapsed fallback.
+   ============================================================================= */
+console.log("\nPaste a sheet link\n");
+{
+  const { spreadsheetIdFrom, sheetUrlFor, colLetter, COLUMNS, upsertRow, SheetsReconnectError } =
+    await import("../engine/sheetsApi.ts");
+  const { setEventSpreadsheet, eventSettings } = await import("../engine/eventSettings.ts");
+  const { saveSheetsToken, hasSheetsToken, removeSheetsToken } =
+    await import("../engine/sheetsTokens.ts");
+
+  /* ⚠️ ONLY THE ID IS KEPT, so a pasted link carrying #gid=, /edit, ?usp=sharing or a
+     query string cannot reach an API path. */
+  const ID = "1aBcD3fGhIjKlMnOpQrStUvWxYz0123456789abcd";
+  const good: [string, string][] = [
+    [`https://docs.google.com/spreadsheets/d/${ID}/edit#gid=0`, ID],
+    [`https://docs.google.com/spreadsheets/d/${ID}/edit?usp=sharing`, ID],
+    [`https://docs.google.com/spreadsheets/d/${ID}`, ID],
+    [ID, ID],
+  ];
+  good.every(([raw, want]) => spreadsheetIdFrom(raw) === want)
+    ? ok("a pasted sheet link yields its id however it was copied")
+    : bad("a normal Google Sheets link is not parsed — the whole point is pasting one");
+  ["https://example.com/x", "https://docs.google.com/document/d/" + ID + "/edit", "", "   ", "short"]
+    .every((u) => spreadsheetIdFrom(u) === null)
+    ? ok("a non-sheet link, a Google DOC and an empty paste are all refused")
+    : bad("something that is not a spreadsheet is accepted as one");
+  sheetUrlFor(ID).includes(ID)
+    ? ok("the stored id round-trips back to a link the UI can show")
+    : bad("sheetUrlFor does not rebuild the link");
+
+  colLetter(0) === "A" && colLetter(25) === "Z" && colLetter(26) === "AA" && colLetter(51) === "AZ"
+    ? ok("column letters carry past Z, so a sheet with 27+ columns still addresses correctly")
+    : bad(`colLetter is wrong past Z (26 -> ${colLetter(26)})`);
+  COLUMNS[0] === "Demo ID"
+    ? ok("Demo ID is the first column — the upsert key findRow reads")
+    : bad("the key column moved; the upsert would read the wrong column");
+
+  /* The settings store's second shape, against the same throwaway DATA_DIR. */
+  setEventSpreadsheet(EVENTS[0].key, ID, "admin@invoca.com", "Chicago follow-ups", "admin@invoca.com");
+  const st = eventSettings(EVENTS[0].key);
+  /* ⚠⚠ THE OWNER IS STORED BESIDE THE ID. Reading the two apart — the id here, the
+     signed-in user at write time — is how an event silently starts writing with whoever
+     happens to be marking, which is the per-SE model this design rejects. */
+  st.spreadsheetId === ID && st.sheetOwner === "admin@invoca.com"
+    ? ok("the sheet id is stored WITH whose grant writes it")
+    : bad("the connecting admin is not recorded — rows would be written as whoever marks");
+
+  /* ⚠️ The API path must WIN when both are configured: an event moved onto the simple
+     path must not keep posting to a webhook somebody left behind. */
+  const { postMarkRow } = await import("../engine/sheetHook.ts");
+  const realFetch2 = globalThis.fetch;
+  let hitWebhook = false;
+  globalThis.fetch = (async (u: any) => {
+    if (String(u).includes("script.google.com")) hitWebhook = true;
+    return { ok: false, status: 500, json: async () => ({}) } as any;
+  }) as any;
+  saveSheetsToken("admin@invoca.com", "probe-refresh");
+  await postMarkRow(EVENTS[0].key, {
+    demoId: "d1", prospect: "Acme", status: "Lead", markedBy: "A", markedByEmail: "a@invoca.com",
+    at: "2026-10-08T00:00:00.000Z", action: "upsert",
+  });
+  !hitWebhook
+    ? ok("with both configured the API path is used, not the leftover webhook")
+    : bad("a wired sheet still posts to the Apps Script webhook");
+  globalThis.fetch = realFetch2;
+
+  /* ⚠️ A REVOKED GRANT IS ITS OWN ANSWER — `reconnect`, not "try again", which would
+     send somebody round a loop that cannot help. */
+  removeSheetsToken("admin@invoca.com");
+  !hasSheetsToken("admin@invoca.com") ? ok("a grant can be removed") : bad("removeSheetsToken does nothing");
+  const gone = await postMarkRow(EVENTS[0].key, {
+    demoId: "d1", prospect: "Acme", status: "Lead", markedBy: "A", markedByEmail: "a@invoca.com",
+    at: "2026-10-08T00:00:00.000Z", action: "upsert",
+  });
+  gone.posted === false && gone.reconnect === true
+    ? ok("a missing grant reports reconnect rather than a generic failure")
+    : bad(`a missing grant did not report reconnect (${JSON.stringify(gone)})`);
+
+  /* ⚠️ UPSERT, against a mocked Sheets API: the same claim the Apps Script harness
+     proves for the other path. Same prospect updates; a new one appends. */
+  saveSheetsToken("admin@invoca.com", "probe-refresh");
+  const calls: { url: string; method: string; body?: any }[] = [];
+  const mock = (rowsIds: string[][]) => (async (u: any, init: any) => {
+    const url = String(u);
+    /* ⚠️ The token exchange posts form-encoded, not JSON — parsing blind throws and
+       takes the whole audit down with a stack trace instead of a failed check. */
+    let parsed: any;
+    try { parsed = init?.body ? JSON.parse(init.body) : undefined; } catch { parsed = undefined; }
+    calls.push({ url, method: init?.method ?? "GET", body: parsed });
+    if (url.includes("oauth2.googleapis.com")) return { ok: true, status: 200, json: async () => ({ access_token: "t", expires_in: 3600 }) } as any;
+    if (url.includes("fields=sheets.properties.title")) return { ok: true, status: 200, json: async () => ({ sheets: [{ properties: { title: EVENTS[0].key } }] }) } as any;
+    if (url.includes("!1:1")) return { ok: true, status: 200, json: async () => ({ values: [[...COLUMNS]] }) } as any;
+    if (url.includes("!A2:A") || /![A-Z]2:[A-Z]$/.test(decodeURIComponent(url).split("/values/")[1] ?? ""))
+      return { ok: true, status: 200, json: async () => ({ values: rowsIds }) } as any;
+    return { ok: true, status: 200, json: async () => ({ values: [[]] }) } as any;
+  }) as any;
+
+  globalThis.fetch = mock([["d1"], ["d2"]]);
+  const hit = await upsertRow({ email: "admin@invoca.com", spreadsheetId: ID, tab: "t" }, { "Demo ID": "d2", Prospect: "N" });
+  hit.updated === true && hit.row === 3
+    ? ok("a prospect already in the sheet UPDATES its own row")
+    : bad(`an existing prospect did not update in place (${JSON.stringify(hit)})`);
+  calls.some((c) => c.method === "PUT") && !calls.some((c) => c.url.includes(":append"))
+    ? ok("updating writes in place and does not append")
+    : bad("an update appended a second row");
+
+  calls.length = 0;
+  globalThis.fetch = mock([["d1"]]);
+  const miss = await upsertRow({ email: "admin@invoca.com", spreadsheetId: ID, tab: "t" }, { "Demo ID": "zzz", Prospect: "New" });
+  miss.updated === false && calls.some((c) => c.url.includes(":append"))
+    ? ok("a prospect not in the sheet is appended")
+    : bad("a new prospect did not append");
+  globalThis.fetch = realFetch2;
+  removeSheetsToken("admin@invoca.com");
+  setEventSpreadsheet(EVENTS[0].key, "", "", "", "x");
+
+  /* ── the wiring ────────────────────────────────────────────────────────── */
+  const auth = code("googleAuth.ts");
+  /\/auth\/sheets/.test(auth) && /auth\/spreadsheets/.test(auth)
+    ? ok("the Sheets consent route exists and asks for the spreadsheets scope")
+    : bad("there is no /auth/sheets leg — nobody could connect");
+  /* ⚠️ The gate's own scope must NOT grow it: "see, edit, create and delete all your
+     spreadsheets" shown to everyone who opens the platform is the opposite of seamless. */
+  !/scope: "openid email profile https:\/\/www\.googleapis\.com\/auth\/spreadsheets"[\s\S]{0,600}?hd: ALLOWED_DOMAIN[\s\S]{0,200}?app\.get\("\/auth\/callback"/.test(auth)
+    ? ok("the sign-in gate did not grow the spreadsheets scope")
+    : bad("every user now consents to full Sheets access just to sign in");
+  /state\.startsWith\("sheets:"\)/.test(auth) && /saveSheetsToken\(/.test(auth)
+    ? ok("the callback stores the grant rather than displaying it")
+    : bad("the Sheets callback does not store the token");
+
+  const api3 = code("engine/demoApi.ts");
+  /describeSheet\([\s\S]{0,200}?setEventSpreadsheet\(/.test(api3)
+    ? ok("a sheet is proved reachable BEFORE it is stored")
+    : bad("an unreachable sheet can be stored — it would fail at the first mark instead");
+  /Connecting a sheet is limited to project admins[\s\S]*?sheet-link|sheet-link[\s\S]{0,600}?Connecting a sheet is limited to project admins/.test(api3)
+    ? ok("the paste-a-link route is admin-only too")
+    : bad("any signed-in user can repoint an event's sheet by link");
+
+  const btn = code("src/components/EventSheetButton.tsx");
+  /\/auth\/sheets/.test(btn) && /Connect Google Sheets/.test(btn)
+    ? ok("the dialog offers Connect when the admin has not granted yet")
+    : bad("there is no Connect control — the paste field would just fail");
+  /<details className="evs-alt">/.test(btn)
+    ? ok("the Apps Script path is demoted to a collapsed fallback")
+    : bad("the script steps are still front and centre — that is what was reported");
+  btn.indexOf("Google Sheet link") < btn.indexOf("Use a script instead")
+    ? ok("pasting a link comes before the script fallback")
+    : bad("the script path is above the paste field again");
 }
 
 /* =============================================================================
