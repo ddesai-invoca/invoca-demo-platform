@@ -44,6 +44,16 @@ it is stored server-side, shown only to admins, and re-deploying rotates it.
 
 ## What lands in the sheet
 
-One tab per event, one row per prospect, keyed on a hidden **Demo ID** column.
+One tab, **Demo Notes** — the sheet's first tab, renamed (a tab that already holds
+something is left alone and a new one is added instead). One row per prospect:
+
+| Prospect | Website | Status | Notes | Audience | Date/Time | Open demo |
+|---|---|---|---|---|---|---|
+
 Re-submitting notes for the same prospect updates that row; clearing a mark empties the
-status and notes but keeps the row. Columns you add by hand are preserved.
+status, notes and audience but keeps the row. Columns you add by hand are preserved.
+
+⚠️ The row is matched on **Prospect**, so two demos with the same prospect name share a
+row — including the same prospect across two different events, since everything lands on
+one tab. **Date/Time** is Chicago time (US Central), written by the server so it does not
+depend on the spreadsheet's own timezone.

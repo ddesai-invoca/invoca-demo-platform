@@ -95,19 +95,30 @@ export function spreadsheetIdFrom(raw: string): string | null {
 export const sheetUrlFor = (id: string): string =>
   `https://docs.google.com/spreadsheets/d/${id}/edit`;
 
-/** ⚠️ COLUMN ORDER IS THE HEADER ROW, and `Demo ID` must stay first — it is the
- *  upsert key and `findRow` reads column A. Add a column by appending here. */
+/* ⚠️⚠️ **TRIMMED TO SEVEN (10/8/2026), AND THE UPSERT KEY CHANGED WITH IT.** Asked for
+   directly: drop Demo ID, Demoed by, Email, Source and Event. Demo ID was the key — the
+   thing that made "update the row for an existing prospect" possible — so the key is now
+   **Prospect**, the only remaining column that identifies one.
+   ⚠️ **CONSEQUENCE, STATED: two demos with the SAME prospect name now share one row**,
+   where the id kept them apart. That is likelier than it was, because everything also
+   lands on ONE tab rather than one per event — so "AutoNation" marked under Dallas and
+   again under Chicago is a single line. Within one conference roster the names are
+   unique, which is the case this is for; if it ever bites, the fix is a hidden key
+   column rather than a visible one. */
 export const COLUMNS = [
-  "Demo ID", "Prospect", "Website", "Status", "Notes", "Who was in the room",
-  "Demoed by", "Email", "Marked at", "Event", "Open demo", "Source",
+  "Prospect", "Website", "Status", "Notes", "Audience", "Date/Time", "Open demo",
 ] as const;
+
+/** ⚠️ ONE NAME, READ BY BOTH PATHS. The Apps Script keys on the same header. */
+export const KEY_COLUMN = "Prospect";
+
+/** ⚠️ ONE TAB FOR EVERYTHING, asked for directly — it was one per event. */
+export const TAB_NAME = "Demo Notes";
 
 export interface SheetTarget {
   /** Whose grant writes the rows. */
   email: string;
   spreadsheetId: string;
-  /** The tab. One per event, so one spreadsheet can serve several. */
-  tab: string;
 }
 
 /** Confirms the sheet is reachable and returns its name, so the UI can show what
@@ -128,24 +139,59 @@ export async function createSheet(email: string, title: string): Promise<{ id: s
   return { id, url: sheetUrlFor(id) };
 }
 
-async function ensureTab(t: SheetTarget): Promise<string[]> {
-  const meta = await api(t.email, `/${t.spreadsheetId}?fields=sheets.properties.title`);
-  const titles: string[] = (meta?.sheets ?? []).map((s: any) => String(s?.properties?.title ?? ""));
-  if (!titles.includes(t.tab)) {
-    await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {
-      method: "POST",
-      body: JSON.stringify({ requests: [{ addSheet: { properties: { title: t.tab } } }] }),
-    });
+/**
+ * Resolves the one tab everything is written to, creating or renaming as needed.
+ *
+ * ⚠️⚠️ **THE FIRST SHEET, RENAMED — asked for directly** ("just do it on the first sheet and
+ * call it Demo Notes"), where it used to add a tab per event.
+ * ⚠️ **BUT IT WILL NOT RENAME A SHEET THAT ALREADY HOLDS SOMETHING.** Renaming somebody's
+ * populated Sheet1 and writing a header into row 1 would overwrite real data in a document
+ * they pasted rather than created — a one-way loss in somebody else's file. So: an existing
+ * "Demo Notes" wins, else the first sheet is used when it is EMPTY, else a new tab is added
+ * under that name. In the normal case (a sheet we created, or a fresh one) that is exactly
+ * "the first sheet, called Demo Notes"; the guard only changes the case that would destroy
+ * something.
+ */
+async function ensureSheet(t: SheetTarget): Promise<string[]> {
+  const meta = await api(t.email, `/${t.spreadsheetId}?fields=sheets.properties`);
+  const sheets: { title: string; id: number; index: number }[] = (meta?.sheets ?? []).map((x: any) => ({
+    title: String(x?.properties?.title ?? ""),
+    id: Number(x?.properties?.sheetId ?? 0),
+    index: Number(x?.properties?.index ?? 0),
+  }));
+
+  let tab = sheets.find((x) => x.title === TAB_NAME)?.title;
+  if (!tab) {
+    const first = sheets.slice().sort((a, b) => a.index - b.index)[0];
+    const used = first
+      ? ((await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(first.title)}!A1:A1`))?.values?.length ?? 0) > 0
+      : false;
+    if (first && !used) {
+      await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {
+        method: "POST",
+        body: JSON.stringify({ requests: [{ updateSheetProperties: {
+          properties: { sheetId: first.id, title: TAB_NAME }, fields: "title",
+        } }] }),
+      });
+    } else {
+      await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {
+        method: "POST",
+        body: JSON.stringify({ requests: [{ addSheet: { properties: { title: TAB_NAME } } }] }),
+      });
+    }
+    tab = TAB_NAME;
   }
-  /* ⚠️ READS THE EXISTING HEADER RATHER THAN IMPOSING ONE, so a column somebody added
-     by hand ("Owner", "Next step") survives every later write — the same rule the Apps
-     Script version needed, and the audit that caught it there still applies here. */
-  const head = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(t.tab)}!1:1`);
+
+  /* ⚠️ READS THE EXISTING HEADER RATHER THAN IMPOSING ONE, so a column somebody added by
+     hand ("Owner", "Next step") survives every later write — and so do the five that were
+     REMOVED from `COLUMNS`, which simply stop being written rather than being deleted out
+     of a sheet somebody may still be reading. */
+  const head = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(tab)}!1:1`);
   const existing: string[] = (head?.values?.[0] ?? []).map(String);
   const missing = COLUMNS.filter((c) => !existing.includes(c));
   if (missing.length) {
     const next = [...existing, ...missing];
-    await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(t.tab)}!1:1?valueInputOption=RAW`, {
+    await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(tab)}!1:1?valueInputOption=RAW`, {
       method: "PUT",
       body: JSON.stringify({ values: [next] }),
     });
@@ -168,14 +214,14 @@ async function ensureTab(t: SheetTarget): Promise<string[]> {
 export async function upsertRow(
   t: SheetTarget, values: Record<string, string>,
 ): Promise<{ updated: boolean; row: number }> {
-  const head = await ensureTab(t);
-  const keyAt = head.indexOf("Demo ID");
-  if (keyAt < 0) throw new Error("That sheet has no Demo ID column.");
+  const head = await ensureSheet(t);
+  const keyAt = head.indexOf(KEY_COLUMN);
+  if (keyAt < 0) throw new Error(`That sheet has no ${KEY_COLUMN} column.`);
 
   const col = colLetter(keyAt);
-  const keys = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(t.tab)}!${col}2:${col}`);
+  const keys = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(TAB_NAME)}!${col}2:${col}`);
   const ids: string[] = (keys?.values ?? []).map((r: string[]) => String(r?.[0] ?? ""));
-  const found = ids.findIndex((v) => v === values["Demo ID"]);
+  const found = ids.findIndex((v) => v === values[KEY_COLUMN]);
 
   const line = head.map((name) => values[name] ?? "");
   if (found >= 0) {
@@ -183,17 +229,17 @@ export async function upsertRow(
     /* ⚠️ ONLY THE CELLS THIS POST CARRIES. Reading the row first is what makes a
        hand-added column — and a field a "mark cleared" post says nothing about —
        survive, which is the bug the Apps Script harness caught. */
-    const cur = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(t.tab)}!A${rowNo}:${colLetter(head.length - 1)}${rowNo}`);
+    const cur = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(TAB_NAME)}!A${rowNo}:${colLetter(head.length - 1)}${rowNo}`);
     const existing: string[] = (cur?.values?.[0] ?? []);
     const merged = head.map((name, i) => (values[name] !== undefined ? values[name] : (existing[i] ?? "")));
-    await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(t.tab)}!A${rowNo}?valueInputOption=RAW`, {
+    await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(TAB_NAME)}!A${rowNo}?valueInputOption=RAW`, {
       method: "PUT",
       body: JSON.stringify({ values: [merged] }),
     });
     return { updated: true, row: rowNo };
   }
 
-  await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(t.tab)}!A1:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`, {
+  await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(TAB_NAME)}!A1:append?valueInputOption=RAW&insertDataOption=INSERT_ROWS`, {
     method: "POST",
     body: JSON.stringify({ values: [line] }),
   });

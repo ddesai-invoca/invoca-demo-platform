@@ -418,8 +418,8 @@ console.log("\nEvent sheet\n");
    ============================================================================= */
 console.log("\nPaste a sheet link\n");
 {
-  const { spreadsheetIdFrom, sheetUrlFor, colLetter, COLUMNS, upsertRow, SheetsReconnectError } =
-    await import("../engine/sheetsApi.ts");
+  const { spreadsheetIdFrom, sheetUrlFor, colLetter, COLUMNS, KEY_COLUMN, TAB_NAME,
+    upsertRow, SheetsReconnectError } = await import("../engine/sheetsApi.ts");
   const { setEventSpreadsheet, eventSettings } = await import("../engine/eventSettings.ts");
   const { saveSheetsToken, hasSheetsToken, removeSheetsToken } =
     await import("../engine/sheetsTokens.ts");
@@ -447,9 +447,27 @@ console.log("\nPaste a sheet link\n");
   colLetter(0) === "A" && colLetter(25) === "Z" && colLetter(26) === "AA" && colLetter(51) === "AZ"
     ? ok("column letters carry past Z, so a sheet with 27+ columns still addresses correctly")
     : bad(`colLetter is wrong past Z (26 -> ${colLetter(26)})`);
-  COLUMNS[0] === "Demo ID"
-    ? ok("Demo ID is the first column — the upsert key findRow reads")
-    : bad("the key column moved; the upsert would read the wrong column");
+  /* ⚠️⚠️ RE-AIMED 10/8/2026, NOT LOOSENED. Asked for directly: drop Demo ID, Demoed by,
+     Email, Source and Event. Demo ID WAS the key, so the invariant is no longer "it is
+     first" — it is that the key is a column that exists, that both paths agree which one,
+     and that the trimmed set is actually what ships. */
+  COLUMNS.includes(KEY_COLUMN as never) && KEY_COLUMN === "Prospect"
+    ? ok(`the upsert key (${KEY_COLUMN}) is one of the columns`)
+    : bad("the key column is not in COLUMNS — every mark would append a new row");
+  JSON.stringify([...COLUMNS]) ===
+    JSON.stringify(["Prospect", "Website", "Status", "Notes", "Audience", "Date/Time", "Open demo"])
+    ? ok("the seven asked-for columns, in order")
+    : bad(`the column set drifted: ${[...COLUMNS].join(", ")}`);
+  !["Demo ID", "Demoed by", "Email", "Source", "Event"].some((c) => (COLUMNS as readonly string[]).includes(c))
+    ? ok("none of the five removed columns came back")
+    : bad("a removed column is being written again");
+  /* ⚠️ ONE TAB, not one per event — and both paths must name it identically. */
+  TAB_NAME === "Demo Notes" && code("public/event-sheet.gs").includes("var TAB_NAME = 'Demo Notes'")
+    ? ok("both paths write the one tab, Demo Notes")
+    : bad("the tab name differs between the API path and the script");
+  code("public/event-sheet.gs").includes("var KEY_COLUMN = 'Prospect'")
+    ? ok("the script keys on the same column the app does")
+    : bad("the script and the app disagree about the upsert key");
 
   /* The settings store's second shape, against the same throwaway DATA_DIR. */
   setEventSpreadsheet(EVENTS[0].key, ID, "admin@invoca.com", "Chicago follow-ups", "admin@invoca.com");
@@ -504,15 +522,15 @@ console.log("\nPaste a sheet link\n");
     try { parsed = init?.body ? JSON.parse(init.body) : undefined; } catch { parsed = undefined; }
     calls.push({ url, method: init?.method ?? "GET", body: parsed });
     if (url.includes("oauth2.googleapis.com")) return { ok: true, status: 200, json: async () => ({ access_token: "t", expires_in: 3600 }) } as any;
-    if (url.includes("fields=sheets.properties.title")) return { ok: true, status: 200, json: async () => ({ sheets: [{ properties: { title: EVENTS[0].key } }] }) } as any;
+    if (url.includes("fields=sheets.properties")) return { ok: true, status: 200, json: async () => ({ sheets: [{ properties: { title: "Demo Notes", sheetId: 0, index: 0 } }] }) } as any;
     if (url.includes("!1:1")) return { ok: true, status: 200, json: async () => ({ values: [[...COLUMNS]] }) } as any;
     if (url.includes("!A2:A") || /![A-Z]2:[A-Z]$/.test(decodeURIComponent(url).split("/values/")[1] ?? ""))
       return { ok: true, status: 200, json: async () => ({ values: rowsIds }) } as any;
     return { ok: true, status: 200, json: async () => ({ values: [[]] }) } as any;
   }) as any;
 
-  globalThis.fetch = mock([["d1"], ["d2"]]);
-  const hit = await upsertRow({ email: "admin@invoca.com", spreadsheetId: ID, tab: "t" }, { "Demo ID": "d2", Prospect: "N" });
+  globalThis.fetch = mock([["Acme"], ["Northwind"]]);
+  const hit = await upsertRow({ email: "admin@invoca.com", spreadsheetId: ID }, { Prospect: "Northwind" });
   hit.updated === true && hit.row === 3
     ? ok("a prospect already in the sheet UPDATES its own row")
     : bad(`an existing prospect did not update in place (${JSON.stringify(hit)})`);
@@ -521,14 +539,32 @@ console.log("\nPaste a sheet link\n");
     : bad("an update appended a second row");
 
   calls.length = 0;
-  globalThis.fetch = mock([["d1"]]);
-  const miss = await upsertRow({ email: "admin@invoca.com", spreadsheetId: ID, tab: "t" }, { "Demo ID": "zzz", Prospect: "New" });
+  globalThis.fetch = mock([["Acme"]]);
+  const miss = await upsertRow({ email: "admin@invoca.com", spreadsheetId: ID }, { Prospect: "Somebody Else" });
   miss.updated === false && calls.some((c) => c.url.includes(":append"))
     ? ok("a prospect not in the sheet is appended")
     : bad("a new prospect did not append");
   globalThis.fetch = realFetch2;
   removeSheetsToken("admin@invoca.com");
   setEventSpreadsheet(EVENTS[0].key, "", "", "", "x");
+
+  /* ⚠️ THE TIMESTAMP IS CHICAGO TIME, formatted server-side so both paths agree and the
+     script does no date maths — asked for directly. DST matters: October is CDT (UTC-5)
+     and January is CST (UTC-6), so a fixed offset would be wrong half the year. */
+  const { centralTime } = await import("../engine/sheetHook.ts");
+  centralTime("2026-10-08T21:15:11.592Z") === "Oct 8, 2026, 4:15 PM"
+  && centralTime("2026-01-15T03:00:00.000Z") === "Jan 14, 2026, 9:00 PM"
+    ? ok("Date/Time reads in Chicago time, across the DST boundary")
+    : bad(`centralTime is wrong (${centralTime("2026-10-08T21:15:11.592Z")})`);
+  centralTime("not-a-date") === "not-a-date"
+    ? ok("an unparseable instant falls back rather than printing Invalid Date")
+    : bad("a bad timestamp renders as Invalid Date in the sheet");
+
+  /* ⚠️ THE SCRIPT IS SENT THE SAME CELLS THE API PATH WRITES, so neither can gain a
+     column the other silently does not. */
+  /cells: rowCells\(body\)/.test(code("engine/sheetHook.ts"))
+    ? ok("the webhook carries the same cells the API path writes")
+    : bad("the two paths map fields separately — they will drift on the first column added");
 
   /* ── the wiring ────────────────────────────────────────────────────────── */
   const auth = code("googleAuth.ts");
@@ -588,7 +624,15 @@ console.log("\nApps Script upsert\n");
 {
   const src = readFileSync("public/event-sheet.gs", "utf8");
   const rows: string[][] = [];
+  let tabName = "Sheet1";
+  /* ⚠️ WHICH ROUTE WAS TAKEN, not just the end state. The first version asserted only
+     `tabName === "Demo Notes"`, which is true whether the empty first sheet was RENAMED
+     or a brand-new tab was inserted beside it — so disabling the rename went undetected.
+     Distinguishing them is the whole check. */
+  let renamed = false, inserted = false;
   const sheet = {
+    getName: () => tabName,
+    setName: (n: string) => { tabName = n; renamed = true; },
     getLastRow: () => rows.length,
     getLastColumn: () => (rows[0]?.length ?? 0),
     getRange: (r: number, c: number, nr: number, nc: number) => ({
@@ -604,43 +648,56 @@ console.log("\nApps Script upsert\n");
     setFrozenRows: () => {},
   };
   const sandbox = {
-    SpreadsheetApp: { getActiveSpreadsheet: () => ({ getSheetByName: () => sheet, insertSheet: () => sheet }) },
+    SpreadsheetApp: { getActiveSpreadsheet: () => ({
+      /* ⚠️ The REAL sequence: no "Demo Notes" tab at first, so the script renames the
+         first (empty) sheet — which is what "just do it on the first sheet and call it
+         Demo Notes" asks for. Once renamed, getSheetByName finds it. */
+      getSheetByName: (n: string) => (n === tabName ? sheet : null),
+      getSheets: () => [sheet],
+      insertSheet: (n: string) => { tabName = n; inserted = true; return sheet; },
+    }) },
     LockService: { getScriptLock: () => ({ waitLock: () => {}, releaseLock: () => {} }) },
     ContentService: { MimeType: { JSON: "json" },
       createTextOutput: (t: string) => ({ setMimeType: () => JSON.parse(t) }) },
   };
   const run = new Function(...Object.keys(sandbox), `${src}; return doPost;`)(
     ...Object.values(sandbox)) as (e: any) => any;
-  const post = (o: Record<string, unknown>) => run({ postData: { contents: JSON.stringify(o) } });
+  /* ⚠️ POSTS WHAT THE SERVER POSTS: `cells`, already in the sheet's own column names and
+     already in Chicago time. The script does no mapping, so neither does this. */
+  const post = (cells: Record<string, string>, action = "upsert") =>
+    run({ postData: { contents: JSON.stringify({ action, cells }) } });
 
-  const a1 = post({ event: "chicago-2026", demoId: "d1", prospect: "Acme", status: "Lead", note: "first" });
+  const a1 = post({ Prospect: "Acme", Status: "Lead", Notes: "first", "Date/Time": "Oct 8, 2026, 4:15 PM" });
   a1?.ok ? ok("the script accepts a post") : bad(`the script threw: ${a1?.error}`);
+  tabName === "Demo Notes" && renamed && !inserted
+    ? ok("the EMPTY first sheet is renamed to Demo Notes, not a new tab beside it")
+    : bad(`the script did not rename the first sheet (tab="${tabName}", renamed=${renamed}, inserted=${inserted})`);
   rows.length === 2 ? ok("a header row and one data row after the first mark")
     : bad(`expected header + 1 row, got ${rows.length}`);
+  !rows[0].some((h) => ["Demo ID", "Demoed by", "Email", "Source", "Event"].includes(h))
+    ? ok("none of the removed columns is written")
+    : bad(`a removed column is in the header: ${rows[0].join(", ")}`);
 
-  /* ⚠️ THE CORE CLAIM. */
-  post({ event: "chicago-2026", demoId: "d1", prospect: "Acme", status: "Urgent lead", note: "changed" });
+  /* ⚠️ THE CORE CLAIM, now keyed on the prospect's NAME rather than a hidden id. */
+  post({ Prospect: "Acme", Status: "Urgent lead", Notes: "changed" });
   rows.length === 2 && rows[1].includes("Urgent lead") && rows[1].includes("changed")
     ? ok("re-marking the SAME prospect UPDATES its row rather than adding one")
     : bad(`a second mark on one prospect produced ${rows.length - 1} rows`);
 
-  post({ event: "chicago-2026", demoId: "d2", prospect: "Northwind", status: "Lead" });
+  post({ Prospect: "Northwind", Status: "Lead" });
   rows.length === 3 ? ok("a different prospect appends a new row")
     : bad("a second prospect did not get its own row");
 
-  post({ event: "chicago-2026", demoId: "d1", action: "removed" });
   const head = rows[0];
-  const statusAt = head.indexOf("Status");
-  rows.length === 3 && rows[1][statusAt] === "" && rows[1][head.indexOf("Prospect")] === ""
-    ? bad("unmarking cleared the prospect name too — the row stops being findable")
-    : rows.length === 3 && rows[1][statusAt] === ""
-      ? ok("clearing a mark empties the status but keeps the row")
-      : bad("clearing a mark did not empty the status, or removed the row");
+  post({ Prospect: "Acme", Status: "", Notes: "", Audience: "" }, "removed");
+  rows.length === 3 && rows[1][head.indexOf("Status")] === ""
+    && rows[1][head.indexOf("Prospect")] === "Acme"
+    ? ok("clearing a mark empties the status but keeps the row and its prospect")
+    : bad("clearing a mark lost the row or its prospect name");
 
-  /* ⚠️ A COLUMN SOMEBODY ADDED BY HAND MUST SURVIVE EVERY LATER WRITE — otherwise the
-     first mark after an SE adds an "Owner" column wipes it. */
+  /* ⚠️ A COLUMN SOMEBODY ADDED BY HAND MUST SURVIVE EVERY LATER WRITE. */
   rows[0].push("Owner"); rows[1].push("Dana");
-  post({ event: "chicago-2026", demoId: "d2", prospect: "Northwind", status: "Lead", note: "x" });
+  post({ Prospect: "Acme", Status: "Lead" });
   rows[1][rows[0].indexOf("Owner")] === "Dana"
     ? ok("a hand-added column survives a later write")
     : bad("writing a row wipes columns the script does not know about");

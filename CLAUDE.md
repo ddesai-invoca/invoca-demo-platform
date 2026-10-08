@@ -12586,6 +12586,41 @@ rather than echoing the URL back.
 `?usp=sharing` and a query string cannot reach an API path; a Google DOC link is refused.
 ⚠️ **"Or create one for this event" means there is no URL to paste at all** — the scope
 allows `spreadsheets.create`.
+#### The sheet's own shape, trimmed on request (10/8/2026)
+Asked for as four changes: one tab called **Demo Notes** instead of one per event, drop
+**Demo ID / Demoed by / Email / Source / Event**, rename *Who was in the room* to
+**Audience**, and *Marked at* to **Date/Time in Chicago time**. Seven columns now:
+`Prospect · Website · Status · Notes · Audience · Date/Time · Open demo`.
+
+⚠️⚠️ **DROPPING `Demo ID` MOVED THE UPSERT KEY, which is the one consequence worth
+stating.** It WAS the key — the thing that makes "update the row for an existing prospect"
+possible — so the key is now **Prospect**, the only remaining column that identifies one.
+**Two demos with the same prospect name therefore share a row**, where the id kept them
+apart, and that is likelier than it was because everything also lands on ONE tab: the same
+prospect marked under Dallas and again under Chicago is a single line. Within one roster the
+names are unique, which is the case this is for. If it ever bites, the fix is a HIDDEN key
+column rather than a visible one.
+
+⚠️⚠️ **THE FIRST SHEET IS RENAMED, BUT NEVER ONE THAT ALREADY HOLDS SOMETHING.** "Just do it
+on the first sheet" is exactly right for a sheet we created or a fresh one — and renaming a
+populated `Sheet1` and writing a header into row 1 would overwrite real data in a document
+somebody pasted rather than created, which is a one-way loss in their file. So an existing
+"Demo Notes" wins, else the first sheet is used when it is EMPTY, else a new tab is added
+under that name. Both paths follow the same rule, and `audit:events` tells a RENAME from an
+INSERT rather than only checking the end state — the first version of that check could not,
+and a disabled rename passed it.
+⚠️ **THE FIVE REMOVED COLUMNS ARE NOT DELETED FROM AN EXISTING SHEET**, only stopped being
+written. Deleting somebody's column is not this code's call.
+⚠️ **`Date/Time` IS FORMATTED SERVER-SIDE, not in the sheet.** One formatting means the API
+path and the script cannot disagree, the script does no date maths, and it survives the
+spreadsheet itself being set to another timezone — which a formula would not. America/Chicago
+covers Dallas too, so one zone serves the roster. DST is real here: October is CDT and
+January CST, both asserted.
+⚠️⚠️ **THE WEBHOOK NOW CARRIES `cells` — THE SAME MAP THE API PATH WRITES.** The script used
+to map fields itself, which is two mappings for one fact: the first column added to one would
+silently never reach the other. It writes what it is given, under the headings it is given,
+and is ~40 lines shorter for it.
+
 ⚠️ **THE UPSERT MOVED SERVER-SIDE, and that is a real trade.** The script held a lock and was
 one request; this reads the key column then writes. **UPSERT RACE, stated rather than hidden:**
 two SEs marking the SAME prospect in the same second could both see "no row" and append two.
@@ -12706,7 +12741,7 @@ matched its own banned string. Strip first, then slice at real CSS.
 ⚠️ **THE PRE-EXISTING `.dmk-*` BLUES ARE LEFT ALONE** — the Lead chip's `#2666f9` is a
 STATUS colour (one per mark status), not an accent, and those rules are signed off.
 
-**`npm run audit:events` is 98 checks** (was 23): the registry (distinct keys, groups and
+**`npm run audit:events` is 109 checks** (was 23): the registry (distinct keys, groups and
 prefixes, no prefix nesting, `eventGroupOf` called not grepped), the URL allow-list against 2
 good and 7 hostile shapes, the settings round trip, `postMarkRow` against a **mocked fetch**
 (never the real network — the rule `audit:advanced` follows for Gong) including the body shape,

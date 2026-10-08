@@ -93,7 +93,7 @@ export async function postMarkRow(
   if (cfg.spreadsheetId && cfg.sheetOwner) {
     try {
       const res = await upsertRow(
-        { email: cfg.sheetOwner, spreadsheetId: cfg.spreadsheetId, tab: eventKey },
+        { email: cfg.sheetOwner, spreadsheetId: cfg.spreadsheetId },
         rowCells(body),
       );
       return { posted: true, updated: res.updated };
@@ -119,7 +119,10 @@ export async function postMarkRow(
     const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(body),
+      /* ⚠️⚠️ THE SAME CELLS THE API PATH WRITES, so the script does no field mapping and no
+         date maths of its own — it writes what it is given under the headings it is given.
+         Two mappings is how one path gains a column and the other silently does not. */
+      body: JSON.stringify({ ...body, cells: rowCells(body) }),
       signal: ctl.signal,
       /* Apps Script answers a 302 to googleusercontent.com; without following it the
          result is always a redirect rather than the script's own reply. */
@@ -147,17 +150,33 @@ export const attendeeCell = (m: Pick<DemoMark, "attendees">): string =>
 export function rowCells(b: SheetRow): Record<string, string> {
   const cleared = b.action === "removed";
   return {
-    "Demo ID": b.demoId,
     "Prospect": b.prospect,
     "Website": b.website ?? "",
     "Status": cleared ? "" : b.status,
     "Notes": cleared ? "" : (b.note ?? ""),
-    "Who was in the room": cleared ? "" : (b.attendees ?? ""),
-    "Demoed by": cleared ? "" : b.markedBy,
-    "Email": cleared ? "" : b.markedByEmail,
-    "Marked at": b.at,
-    "Event": b.event,
+    "Audience": cleared ? "" : (b.attendees ?? ""),
+    "Date/Time": centralTime(b.at),
     "Open demo": b.demoUrl ?? "",
-    "Source": b.env,
   } satisfies Record<(typeof COLUMNS)[number], string>;
+}
+
+/**
+ * The mark's own instant, in Chicago time — asked for directly.
+ *
+ * ⚠️⚠️ **FORMATTED HERE, NOT IN THE SHEET.** The row is a plain string either way, so doing
+ * it server-side means the API path and the Apps Script path cannot disagree about what a
+ * timestamp reads like, and the script does no date maths at all. It also survives the sheet
+ * itself being set to another timezone, which a spreadsheet formula would not.
+ * ⚠️ **"Chicago" IS US CENTRAL, which both events are in** — America/Chicago covers Dallas
+ * too, so one zone serves the roster rather than a per-event setting nobody would maintain.
+ * ⚠️ An unparseable instant falls back to the raw value rather than printing "Invalid Date".
+ */
+export function centralTime(iso: string): string {
+  const d = new Date(iso);
+  if (Number.isNaN(d.getTime())) return iso ?? "";
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/Chicago",
+    dateStyle: "medium",
+    timeStyle: "short",
+  }).format(d);
 }
