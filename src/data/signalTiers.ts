@@ -25,7 +25,7 @@ import { isProspect, HEALTH_SPRING } from "./prospect.ts";
    report first.
 
    ⚠️ **THE ARGUMENT NOW LIVES IN THE SIGNAL LIST ALONE**, which is exactly where the product
-   puts it: Silver shows 4 met and 3 UNMET, Gold shows 13 met with AI badges. The commentary
+   puts it: Silver shows 4 met and 4 UNMET, Gold shows 13 met and only AI where Silver has nothing. The commentary
    that used to sit under each row moved to the COMMENTS TAB (see `comments` below) — a real
    tab on the real report, holding real free text anchored to a call time.
 
@@ -38,6 +38,7 @@ import { isProspect, HEALTH_SPRING } from "./prospect.ts";
    | 1:52 | "I'd like to move forward" | the phrase list has "sign me up" / "enroll me" / "I want to apply" |
    | 0:45 | "I'd like to stay around five hundred a month if I can" | the list has "too expensive" / "cheaper" / "what does it cost" |
    | 0:07 | "I don't have coverage yet" | the list has "uninsured" / "no insurance" / "lost my coverage" |
+   | 1:31 | "Could I also add dental and vision?" | the list has "add-on" / "bundle" / "upgrade" |
 
    That first row is the lead of the call. The consultation IS booked ninety seconds later, so
    Silver logs a real conversion as a non-conversion — and a missed signal raises no alert, it
@@ -103,6 +104,14 @@ const SILVER_SIGNALS: TierSignal[] = [
   { name: "Enrollment Intent", badges: ["Keyword Spotting"], count: 0, met: false },
   { name: "Price Sensitivity", badges: ["Keyword Spotting"], count: 0, met: false },
   { name: "Coverage Gap: Uninsured", badges: ["Keyword Spotting"], count: 0, met: false },
+  /* ⚠⚠ **A FOURTH MISS, asked for directly (10/9/2026): "for unmet signals have 4 high
+     valuable signal that were unmet or missed because the exact phrase wasn't matched instead
+     of just the 1 right now."** Three was not enough of an argument.
+     It is grounded in this call like the other three: at 1:31 the caller asks "Could I also
+     add dental and vision? I've been putting off an eye exam." That is a SECOND product line
+     the caller raises, and the configured list holds "add-on", "bundle" and "upgrade" — none
+     of which were said. The row's Gold twin is AI-only for exactly this reason. */
+  { name: "Dental & Vision Add-On Interest", badges: ["Keyword Spotting"], count: 0, met: false },
 ];
 
 const SILVER_COMMENTS: TierComment[] = [
@@ -112,6 +121,13 @@ const SILVER_COMMENTS: TierComment[] = [
     text: `Caller: "I'd like to stay around five hundred a month if I can." No phrase matched. The list holds "too expensive", "cheaper" and "what does it cost". A budget stated as a preference is still a budget.` },
   { time: "0:07", signal: "Coverage Gap: Uninsured", miss: true,
     text: `Caller: "I don't have coverage yet." No phrase matched. The list holds "uninsured", "no insurance" and "lost my coverage".` },
+  { time: "1:31", signal: "Dental & Vision Add-On Interest", miss: true,
+    /* ⚠️ THE PHRASE LIST GETS ITS OWN SENTENCE, and that is not a style choice: `audit:tiers`
+       reads the phrases out of `list holds ([^.]+)\.` and then fails the row if the quoted
+       caller line contains one of them. A first draft went on to say `and the caller said
+       "also add"` INSIDE that sentence, so "also add" was read as a configured phrase the
+       caller demonstrably said — the check correctly calling the miss fake. */
+    text: `Caller: "Could I also add dental and vision? I've been putting off an eye exam." No phrase matched. The list holds "add-on", "bundle" and "upgrade". What the caller actually said was "also add": a second product line the member asked for, on the call, and nobody is credited with it.` },
   { time: "1:59", signal: "Consultation: Scheduled",
     text: `Matched "schedule a consultation" — spoken by the AGENT, not the caller. Phrase spotting works here, and it is worth saying so out loud: the gap is intent, not detection in general.` },
 ];
@@ -132,7 +148,10 @@ const GOLD_SIGNALS: TierSignal[] = [
   { name: "Enrollment Intent", badges: ["AI"], count: 1, met: true },
   { name: "Consultation: Scheduled", badges: ["Keyword Spotting", "AI"], count: 3, met: true },
   { name: "Individual & Family Plan Interest", badges: ["AI"], count: 2, met: true },
-  { name: "Dental & Vision Add-On Interest", badges: ["Keyword Spotting", "AI"], count: 2, met: true },
+  /* ⚠️ AI ALONE, because Silver MISSES this row (see `SILVER_SIGNALS`): the caller says
+     "Could I also add dental and vision?" and the configured list holds "add-on", "bundle"
+     and "upgrade". A keyword badge here would claim a detection Silver's own rail denies. */
+  { name: "Dental & Vision Add-On Interest", badges: ["AI"], count: 2, met: true },
   { name: "Prescription Coverage Inquiry", badges: ["Keyword Spotting", "AI"], count: 2, met: true },
   { name: "Subsidy / Cost-Sharing Question", badges: ["AI"], count: 2, met: true },
   { name: "Contact Info Captured", badges: ["Rules Based"], count: 3, met: true },
@@ -145,6 +164,8 @@ const GOLD_COMMENTS: TierComment[] = [
     text: `Caller: "I'd like to stay around five hundred a month if I can." A budget stated as a preference is still a budget. No phrase on any list would have caught this wording.` },
   { time: "0:07", signal: "Coverage Gap: Uninsured",
     text: `Caller: "I don't have coverage yet." Detected from meaning; the words "uninsured" and "no insurance" never appear in the call.` },
+  { time: "1:31", signal: "Dental & Vision Add-On Interest",
+    text: `Caller: "Could I also add dental and vision?" Read as a second product line rather than matched as a phrase, which is why this row carries the AI badge ALONE — the configured list holds "add-on" and "bundle", so Silver has nothing to fire on.` },
   { time: "1:59", signal: "Consultation: Scheduled",
     text: `Fires on both tiers. Gold keeps the keyword detection and adds intent on top of it, which is why this row carries two badges rather than replacing one with the other.` },
   { time: "2:22", signal: "Contact Info Captured",
@@ -236,20 +257,70 @@ const CONCEPTS: Concept[] = [
     soft: [/what does .{0,26}run/i, /how much .{0,30}run/i, /run me/i, /usually run/i, /in my range/i,
            /spend a fortune/i, /a month if i can/i, /stay (under|around)/i, /what would that look like/i,
            /out of pocket/i, /monthly fee/i, /just for me/i, /keep it (reasonable|manageable)/i,
-           /without breaking/i, /ballpark/i, /what am i looking at/i],
+           /without breaking/i, /ballpark/i, /what am i looking at/i,
+           /* ⚠️ WIDENED 10/9/2026 — see the note above this array. Each of these is a caller
+              asking about or constraining MONEY in words a hand-maintained list does not hold. */
+           /\$\s?\d/, /\d+\s*(dollars|bucks)/i, /\d+\s*(a|per)\s*(month|year|week|visit)/i,
+           /how much (do|would|does|are|will|might|can)/i,
+           /what (do|would|does|will) (you|that|it|this) (charge|cost|run)/i,
+           /what'?s (the|that) damage/i, /up ?front/i, /down payment/i, /deposit/i,
+           /payment plan/i, /financ(e|ing)/i, /per (unit|room|person|visit|line|vehicle|head)/i,
+           /looking to spend/i, /don'?t want to spend/i, /what kind of (money|numbers)/i,
+           /is that (negotiable|flexible)/i, /comes? to\b.{0,12}\d/i,
+           /* ⚠️ ROUND 2, READ OFF REAL TRANSCRIPTS rather than guessed: "what does the
+              consultation and the imaging run" (the old gap was {0,26} characters, and that
+              clause is 31), "money's a little tight right now", "trying to keep this
+              manageable", "won't break the bank", "about how much am I looking at total". */
+           /what does .{0,70}\brun\b/i, /money'?s? .{0,14}tight/i,
+           /keep (it|this|things|costs?) (manageable|reasonable|down|low)/i,
+           /break the bank/i, /how much am i looking at/i, /tight (budget|right now)/i,
+           /not looking to spend/i, /within (my|our) means/i,],
     hard: ["too expensive", "cheaper", "what does it cost", "price", "pricing", "discount", "budget",
            "afford", "how much is", "cost"] },
   { key: "competitor", name: () => "Competitor Comparison",
     soft: [/different from the/i, /i keep seeing/i, /hadn'?t thought about/i, /shopping around/i,
            /other (companies|places|providers|dealers|guys)/i, /compared to/i, /a couple of quotes/i,
            /someone else (quoted|said|told)/i, /the (last|previous) (company|place|guy)/i,
-           /we were with/i, /down the street/i, /online said/i],
+           /we were with/i, /down the street/i, /online said/i,
+           /* ⚠️ WIDENED 10/9/2026 */
+           /another (company|provider|vendor|agency|firm|shop|dealer|clinic|place|option)/i,
+           /our current (provider|vendor|company|carrier|agency|service|plan)/i,
+           /we (currently|already) (use|have|work with|go through)/i,
+           /been (using|with) (them|someone|another)/i, /quotes? from/i,
+           /looking at (a few|a couple|other|two|three)/i,
+           /talked to (a few|a couple|some|another|one other)/i,
+           /narrowed (it|them) down/i, /second opinion/i,
+           /switch(ing)? (from|providers|companies|over)/i,
+           /the (other|previous|current) (provider|vendor|carrier|service)/i,
+           /who else (do|does|is)/i, /weighing (a|our|my|the)/i,
+           /* ⚠️ ROUND 2: "they quoted me a lot more", "compare the HECM and the HomeSafe
+              options side by side", "I called an orthopedic place over on the other side of
+              town first". */
+           /quoted me/i, /side by side/i, /other side of town/i,
+           /compare (the|these|those|it|them)/i, /checked? with (a|another|one)/i,],
     hard: ["competitor", "versus", "better than", "another company", "somewhere else"] },
   { key: "intent", name: (b) => `${b} Intent`, late: true,
     soft: [/can we (set|hold|do)/i, /what'?s the next step/i, /come try it out/i, /come out (today|tomorrow)/i,
            /let'?s (do|include)/i, /really need to see/i, /how do i set that up/i, /want to get moving/i,
            /move forward/i, /yes,? please/i, /can i do all of that/i, /wanted to see about/i,
-           /getting rid of them/i, /can someone come out/i, /i'?d like to get started/i, /sign us up/i],
+           /getting rid of them/i, /can someone come out/i, /i'?d like to get started/i, /sign us up/i,
+           /* ⚠️ WIDENED 10/9/2026 */
+           /let'?s (get|set|go ahead)/i, /(i'?m|we'?re) ready/i, /when can (you|someone|we|i)/i,
+           /what'?s your (availability|earliest|soonest)/i, /how soon can/i,
+           /put (me|us) (down|on)/i, /go ahead and/i, /that works for (me|us)/i,
+           /i'?ll take it/i, /where do (i|we) (sign|start)/i, /count (me|us) in/i,
+           /sounds good,? (let|can|when|i|we|so)/i, /sign (me|us) up/i,
+           /do that today/i, /get (me|us) (on|in)/i, /make that happen/i,
+           /* ⚠️⚠️ ROUND 2, AND THIS IS THE ONE THAT WAS COSTING THE MOST. Every one of these
+              calls ends in a booking, and almost none of them says "book" — the caller agrees
+              to a slot instead: "Thursday at 10 works", "Thursday morning works best for me",
+              "Let me lock that in", "the Pro Plan is probably the right call", "Shield Gold
+              plus the pool add-on is the direction I want to go". A library keyed on "book" /
+              "schedule" / "appointment" catches none of them, which is exactly the point. */
+           /(monday|tuesday|wednesday|thursday|friday|saturday|sunday|morning|afternoon|evening|tomorrow)\b.{0,34}\bworks?\b/i,
+           /lock (that|it|this) in/i, /the right call/i, /direction i want/i,
+           /that would be great/i, /^sounds good/i, /i'?m in\b/i,
+           /(that|this) works (great|well|best|for)/i, /let'?s lock/i,],
     hard: ["book", "schedul", "reserve", "sign me up", "enroll", "appointment", "consultation",
            "test drive", "quote", "estimate"] },
   { key: "upsell", name: () => "Upsell Opportunity",
@@ -261,23 +332,63 @@ const CONCEPTS: Concept[] = [
     soft: [/come with any/i, /can they .{0,24}too/i, /do i earn/i, /could i also add/i,
            /could i finance/i, /putting them together/i, /down the line/i, /is that worth it/i,
            /anything else i should/i, /do you also (offer|do|handle)/i, /does it cover/i,
-           /what about .{0,30}\?/i, /while you'?re (here|out)/i],
+           /what about .{0,30}\?/i, /while you'?re (here|out)/i,
+           /* ⚠️ WIDENED 10/9/2026 — a caller raising a SECOND product or service line. */
+           /do you (also|guys) (do|offer|handle|cover|sell|have)/i, /can (you|i|we) also/i,
+           /what about/i, /also (need|interested|want)/i, /on top of/i,
+           /second (one|unit|room|vehicle|property|line|location)/i,
+           /while (you'?re|we'?re|someone'?s)/i, /throw in/i, /anything else/i,
+           /is that (included|extra|separate)/i, /add (that|it|them|another)/i,
+           /both (rooms|units|cars|properties|locations)/i, /the rest of/i,
+           /* ⚠️ ROUND 2: "We've also got some spider webs ... that I'd love handled too",
+              "Do you also deal with rodents?", "I also have a small pool ... Is that something
+              you can cover?", "could you check my alignment too while I'm there?" */
+           /do you also (deal|work|take care)/i, /(i|we)'?(ve)? ?also (got|have)/i,
+           /handled too/i, /\btoo while/i, /while i'?m (there|in)/i,
+           /something you can (cover|do|handle)/i, /check my .{0,24}\btoo\b/i,
+           /add(ing)? (dental|vision|the|a|an)/i,
+           /* ⚠️ ROUND 3: "I was also curious about the rose gold meteorite version. Do you
+              have that too?", "Phone calls too? A lot of our leads call in", "Given our home
+              value, is there anything with a higher limit?" — a caller reaching for a second
+              product or a bigger one, in words no add-on keyword list holds. */
+           /\btoo\?/i, /also curious/i, /anything with a (higher|bigger|larger|better)/i,
+           /\bhigher (limit|tier|level|coverage)/i, /also (looking at|interested in|wondering)/i,],
     hard: ["add-on", "add on", "bundle", "upgrade", "warranty", "package", "extra", "upsell"] },
   { key: "urgency", name: () => "Urgency Expressed",
     soft: [/today or tomorrow/i, /this afternoon/i, /this week/i, /before we close/i, /right away/i,
            /got a little time/i, /slow for a while/i, /it'?s time for/i, /sooner the better/i,
            /won'?t be ready/i, /couple of weeks/i, /couple weeks/i, /getting worse/i,
-           /can'?t wait (much|another)/i, /before (the|next) /i],
+           /can'?t wait (much|another)/i, /before (the|next) /i,
+           /* ⚠️ WIDENED 10/9/2026 */
+           /tomorrow/i, /this (weekend|month|morning)/i,
+           /need (it|this|someone|somebody) (today|tomorrow|now|quick|fast)/i,
+           /pretty (soon|quickly)/i, /time.?sensitive/i, /deadline/i, /running out/i,
+           /(gotten|getting) (worse|bad)/i, /out of (hand|control)/i, /no time/i],
     hard: ["urgent", "emergency", "asap", "as soon as possible", "right now", "immediately"] },
   { key: "contract", name: () => "Contract Objection",
     soft: [/locked in/i, /lock us in/i, /tied (in|down)/i, /cancel any ?time/i, /get out of it/i,
            /how long am i committing/i, /month to month/i, /no commitment/i, /if it doesn'?t work out/i,
-           /walk away/i],
+           /walk away/i,
+           /* ⚠️ WIDENED 10/9/2026 */
+           /locked? (in|into)/i, /long.?term/i, /obligat/i, /stuck (with|in|into)/i,
+           /trial period/i, /how long (is|does|am|are) (the|i|we|it)/i,
+           /get out early/i, /change my mind/i, /not performing/i, /if it'?s not working/i,
+           /without (a|any) penalty/i, /sign anything/i],
     hard: ["contract", "commitment", "cancellation fee", "terms"] },
   { key: "decider", name: () => "Decision Maker Absent",
     soft: [/talk to my (wife|husband|partner|spouse)/i, /run it by/i, /check with my/i,
            /both of us/i, /my (wife|husband|partner) handles/i, /discuss it with/i,
-           /not the one who decides/i],
+           /not the one who decides/i,
+           /* ⚠️ WIDENED 10/9/2026 */
+           /talk to my (boss|manager|family|team|son|daughter|mother|father|mom|dad)/i,
+           /(need|have|want) to (ask|talk to|check with|run this by)/i,
+           /we'?ll (talk|discuss|decide|think)/i,
+           /my (wife|husband|partner|boss|son|daughter) (will|would|needs|has)/i,
+           /family decision/i, /not just my/i, /the two of us/i, /loop in/i,
+           /* ⚠️ ROUND 3: "I want to run the numbers by my husband first" — the old
+              `/run it by/` wanted the literal word "it". */
+           /run (it|the numbers|this|that|them|those) by/i,
+           /my (ceo|boss|manager|director|partner) (wants|needs|has|would)/i,],
     hard: ["decision maker", "authorized", "approval"] },
 ];
 
@@ -316,7 +427,19 @@ function findConcepts(transcript: Turn[], bookingTerm: string): FoundConcept[] {
   const out: FoundConcept[] = [];
   for (const c of CONCEPTS) {
     const scan = c.late ? [...caller].reverse() : caller;
-    const hits = scan.filter((t) => !used.has(t.time) && c.soft.some((r) => r.test(t.text)));
+    /* ⚠⚠ **ONE TURN MAY SERVE TWO SIGNALS, AND REFUSING THAT WAS COSTING REAL MISSES
+       (10/9/2026).** `used` was a hard exclusion, so the FIRST concept in value order to match
+       a turn claimed it and every later concept that only matched the same turn found nothing.
+       Measured on Denver Health: its caller says "my wife handles our calendar, is there any
+       morning slot this week?" — one sentence carrying both a decision-maker and a timing ask.
+       Urgency (rank 5) claimed it, so `Decision Maker Absent` (rank 7) reported NOT FOUND and
+       the prospect showed a single unmet row.
+       ⚠️ A real signal engine fires every signal an utterance satisfies, so sharing a turn is
+       what the product does. `used` survives as a PREFERENCE rather than a veto: an unused
+       turn always wins, and a shared one is used only when it is the only evidence there is —
+       which keeps the Comments tab varied wherever the transcript allows it. */
+    const all = scan.filter((t) => c.soft.some((r) => r.test(t.text)));
+    const hits = all.some((t) => !used.has(t.time)) ? all.filter((t) => !used.has(t.time)) : all;
     if (!hits.length) continue;
     const hard = c.key === "intent" ? [...c.hard, ...bookWords(bookingTerm)] : c.hard;
     let missed = hits.find((t) => !hard.some((h) => t.text.toLowerCase().includes(h)));
@@ -435,22 +558,53 @@ function derive(profile: CustomerProfile, tier: SignalTier): TierView | null {
   const signals: TierSignal[] = [
     ...det.map((s) => ({ name: s.name, badges: badges(s), count: s.count ?? 0, met: true })),
     ...(conv ? [{ name: conv.name, badges: [...badges(conv), "AI"], count: conv.count ?? 1, met: true }] : []),
-    /* Gold does not REPLACE the keyword detections, it adds intent on top — so an interest row
-       keeps its original badge and gains AI. That badge mix is the point of the rail. */
-    ...interest.map((s) => ({ name: s.name, badges: [...badges(s), "AI"], count: s.count ?? 1, met: true })),
+    /* ⚠⚠ **A ROW CARRIES "Keyword Spotting" ONLY IF SILVER ACTUALLY HAS IT (10/9/2026).**
+       Reported directly against the bottom of this rail: *"remove the keyword spotting tag for
+       the bottom half because that signal was caught by AI and not a keyword spotting or a
+       rule."* Right, and the old code could not tell the difference — it stamped
+       `[...badges(s), "AI"]` on EVERY interest row, so rows like "Pest Intent: Ants & Spiders"
+       and "Competitor Mention" claimed a keyword detection on a screen where Silver does not
+       list them at all. A badge that says a phrase list found it, next to a Silver rail that
+       never shows the row, is the two screens contradicting each other.
+       ⚠️ **THE RULE IS THE SILVER RAIL, not a position in the array.** Silver's short library
+       keeps exactly ONE interest row (see the Silver branch above), so that row genuinely
+       fires on both tiers and keeps both badges — which is the "Gold adds, it does not
+       replace" point this file has always made, and there is a comment on the tab saying so.
+       Everything past it exists only because AI read it, so it is AI and nothing else.
+       ⚠️ **THE DETERMINISTIC ROWS ARE NOT TOUCHED.** A QA phrase check and a routing rule are
+       not AI on any tier; `(QA) Proper Close` is absent from Silver because this account's
+       library is small, not because a rules engine cannot do it. */
+    ...interest.map((s, i) => ({ name: s.name,
+      badges: i === 0 ? [...badges(s), "AI"] : ["AI"],
+      count: s.count ?? 1, met: true })),
     ...found.map((f) => ({ name: f.name,
       badges: f.verdict === "caught" ? ["Keyword Spotting", "AI"] : ["AI"], count: 1, met: true })),
   ];
   const comments: TierComment[] = [
+    /* ⚠️ **"Read as INTENT" WAS WRONG FOR MOST OF THESE ROWS**, and the fix matters more now
+       that there are four or five of them rather than one: a contract objection and an upsell
+       are not intent, so the same sentence was mislabelling two thirds of the tab. It also now
+       names the BADGE, which is the half of the 10/9 request about reflecting the Gold rail in
+       the comments — an SE asked "why does this row say AI and that one say both?" can read the
+       answer off the row's own comment. */
     ...misses.map((f) => ({ time: f.time, signal: f.name,
-      text: `Caller: ${quote(f.text)} Read as intent rather than matched as a phrase, which is `
-        + `why it fires here and not on Silver.` })),
+      text: `Caller: ${quote(f.text)} Read from what the caller MEANT rather than matched as a `
+        + `phrase, which is why it fires here and not on Silver — and why this row carries the `
+        + `AI badge alone, with no keyword or rule behind it.` })),
     ...(conv ? [{ time: schedulingTurn(transcript)?.time ?? "0:00", signal: conv.name,
       text: `Fires on both tiers. Gold keeps the keyword detection and adds intent on top of it, `
         + `which is why this row carries two badges rather than replacing one with the other.` }] : []),
     ...(det.length ? [{ time: "0:00", signal: det[0].name,
       text: `Rules based, unchanged between tiers. Worth pointing at when the question is `
         + `"does Gold replace what we already have" — it does not.` }] : []),
+    /* ⚠️ THE TALK TRACK FOR THE BADGE SPLIT. An SE gets asked why some rows say AI and some
+       say both, and the answer is the whole argument: both means the phrase list found it too,
+       AI alone means this row exists only because of Gold. */
+    ...(interest.length > 1 ? [{ time: "0:00", signal: interest[1].name,
+      text: `Carries the AI badge alone, and so does every row below it: these are not on the `
+        + `Silver rail at all, because no configured phrase list contains them. Where a row `
+        + `shows BOTH badges the keyword still fired and Gold added intent on top of it — `
+        + `which is the difference between adding detection and replacing it.` }] : []),
   ].slice(0, 8);
   return { tier, signals, comments };
 }

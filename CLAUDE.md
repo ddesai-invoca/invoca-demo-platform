@@ -13591,6 +13591,123 @@ the same clicks failed on the committed state too. **Derive the frame→page rat
 from one probe click** (arm a capture-phase listener, click, read `clientX/Y`) rather than
 computing it from `innerWidth`; after resetting to the desktop preset it was a clean ×1.527.
 
+## Silver has to lose convincingly: four unmet signals, and no AI anywhere (10/9/2026)
+
+Reported against a Silver rail showing **one** unmet row: *"i don't think the Signal AI Silver
+screen proves enough value of not having Signal AI Gold."* Four changes were asked for: four
+high-value unmet signals rather than one, the transcript and comments to match, **no AI Summary
+on Silver**, and on Gold **no Keyword Spotting badge on the rows AI found**.
+
+⚠⚠ **MEASURED FIRST, AND THE SHAPE OF THE PROBLEM WAS NOT WHAT IT LOOKED LIKE.** The unmet
+count was never capped — `derive()` has always shown every real miss. It was the DETECTOR that
+was short: **74% of the 95 prospects on this machine produced fewer than four**, and the
+dominant cause was `not-found`, not `caught`. The moments were in the transcripts; the `soft`
+patterns were a hand-written list of specific phrasings that happened to appear in a few calls.
+
+| | before | after |
+|---|---|---|
+| price | 78 miss / 15 not found | **88 / 5** |
+| competitor | 56 / 42 | **76 / 22** |
+| booking intent | 43 / 52 | **85 / 10** |
+| upsell | 15 / 84 | **44 / 54** |
+| prospects reaching 4 | 26% | **71%** (100% of the 15 TRACKED profiles) |
+
+### The widening was read off real transcripts, in three rounds, not invented
+Guessing patterns is how a miss gets attributed to a turn that is not about that thing — which
+a prospect reads straight off the transcript two inches away. So each round dumped the caller
+turns that no concept had claimed and took the phrasings that were actually there:
+
+| the call says | the list held | concept |
+|---|---|---|
+| "Thursday at 10 works" · "Let me lock that in" · "the Pro Plan is probably the right call" | "book", "schedule", "appointment" | **intent** — the biggest single win. Every one of these calls ends in a booking and almost none of them says "book" |
+| "what does the consultation and the imaging run" | the old pattern allowed 26 characters; that clause is 31 | price |
+| "money's a little tight right now" · "won't break the bank" · "trying to keep this manageable" | "budget", "afford", "cost" | price |
+| "they quoted me a lot more" · "compare the HECM and the HomeSafe options side by side" | "competitor", "versus" | competitor |
+| "Do you also deal with rodents?" · "check my alignment too while I'm there" · "Phone calls too?" | "add-on", "bundle", "upgrade" | upsell |
+| "I want to run the numbers by my husband first" | the old pattern wanted the literal word "it" | decider |
+
+⚠⚠ **AND ONE STRUCTURAL FIX WORTH MORE THAN ANY PATTERN: `used` WAS A VETO AND IS NOW A
+PREFERENCE.** One turn could serve only one concept, so the first concept in value order to
+match a turn claimed it and every later concept that matched only the same turn reported NOT
+FOUND. Measured on Denver Health: its caller says *"my wife handles our calendar, is there any
+morning slot this week?"* — one sentence carrying a decision-maker AND a timing ask. Urgency
+(rank 5) claimed it, so `Decision Maker Absent` (rank 7) found nothing and that prospect showed
+a single unmet row. A real signal engine fires every signal an utterance satisfies, so sharing
+a turn is what the product does; an unused turn still wins, and a shared one is used only when
+it is the only evidence there is.
+
+⚠️ **A FIFTH CONCEPT WAS DESIGNED AND THEN REJECTED BY MEASUREMENT.** "Ad Recall / Marketing
+Attribution" is squarely Invoca's own pitch and looked like an easy win — until it was tested
+against the transcripts: present in **4 of 99**, and two of those four were false positives (a
+dentist referral pattern, and a competitor mention). "Dissatisfaction with Current Provider"
+scored 5 of 99. Neither shipped. Measuring a concept before building it cost one script.
+
+### The other three asks
+⚠⚠ **SILVER HAS NO AI SUMMARY TAB, AND IT IS REMOVED RATHER THAN LOCKED.** An AI summary is
+written BY the AI, so an account without Gold does not have one — a provisioned tab is either
+there or it is not, which is a real per-account difference rather than chrome this report does
+not have. V1 of this feature put a LOCKED AI Summary tab on Silver and it was deleted on
+request as something the product does not do; absent is what an unprovisioned tab looks like.
+Gold and the untiered report keep all five.
+
+⚠⚠ **ON GOLD, A ROW CARRIES "Keyword Spotting" ONLY IF SILVER ACTUALLY HAS THAT ROW.** The old
+code stamped `[...badges(s), "AI"]` on every interest row, so rows like **Pest Intent: Ants &
+Spiders** and **Competitor Mention** claimed a phrase-list detection on a screen whose Silver
+rail does not list them at all — the two tiers contradicting each other about one signal.
+⚠️ **THE RULE IS THE SILVER RAIL, NOT A POSITION IN THE ARRAY.** Silver's short library keeps
+exactly ONE interest row, so that row genuinely fires on both tiers and keeps both badges —
+which is the "Gold adds, it does not replace" point this file has always made, and there is a
+comment on the tab saying so. Everything past it is AI and nothing else.
+⚠️ **DETERMINISTIC ROWS ARE EXEMPT.** A QA phrase check and a routing rule are not AI on any
+tier; `(QA) Proper Close` is absent from Silver because this account's library is small, not
+because a rules engine cannot do it.
+⚠️ **AND THE COMMENTS NAME THE BADGE NOW**, which is the half of the request about reflecting
+it in the comments. The derived Gold comment also stopped saying *"Read as INTENT"* for every
+miss — wrong for an upsell and a contract objection, and mislabelling two thirds of the tab
+once there were four or five rows rather than one.
+
+⚠️ **HEALTH SPRING IS HAND-AUTHORED AND GOT ITS FOURTH MISS BY HAND**: "Could I also add
+dental and vision? I've been putting off an eye exam." at **1:31**, against a list holding
+"add-on", "bundle" and "upgrade". Its Gold twin is AI-only for exactly that reason.
+⚠️ I first wrote that comment against **1:18**, a timecode I guessed. The real turn is 1:31 —
+`audit:tiers` checks the quote verbatim but not the timecode, so a wrong one would have sat
+there pointing at nothing. **Read the transcript for the timecode; do not infer it.**
+
+### Checks: four added, one re-scoped, and two faults in my own work
+⚠⚠ **MY OWN COMMENT WORDING WOULD HAVE FAILED THE "is the miss real" CHECK, and that check was
+right.** `audit:tiers` reads the phrase list out of `list holds ([^.]+)\.` and fails the row if
+the quoted caller line contains one of them. A first draft continued *"and the caller said
+\"also add\""* INSIDE that sentence, so "also add" was read as a configured phrase the caller
+demonstrably said. The phrase list gets its own sentence now — not a style choice.
+⚠️ **THE SALES-VALUE ORDERING CHECK FIRED ON HEALTH SPRING, CORRECTLY, AND IS SCOPED TO THE
+DERIVED PROSPECTS.** Its unmet rows lead with Enrollment Intent, which is the lead of that call
+and the whole reason the narrative was written that way. A human's chosen order is not drift;
+the machine's is what needs pinning — the same scoping the verbatim-quote check already uses.
+⚠️ **THE FLOOR CHECK WAS FIRST SET AT 60%, A NUMBER GUESSED BEFORE MEASURING.** All 15 tracked
+profiles reach four, so the bar is **every one of them**; a check set below what the code
+achieves is a check that lets the next regression through.
+⚠⚠ **AND ONE SABOTAGE "DID NOT FIRE" BECAUSE IT BROKE THE BUILD INSTEAD.** The regex meant to
+strip the widened patterns cut through to the next `hard:` and left the file uncompilable, so
+the audit printed nothing and read as a check that could not fail. Re-done by narrowing one
+concept's list in a way that still compiles: **14 of 15**, red. A sabotage has to leave the
+code RUNNABLE or it proves nothing.
+
+**Verified in the browser on both routes** (Aptive): Silver draws **5 met / 5 unmet** with the
+unmet group running Competitor Comparison, Service Appointment Intent, Upsell Opportunity,
+Contract Objection, Decision Maker Absent — every one quoted verbatim on the Comments tab — and
+its tabs are **Analysis · Call Info · Comments · Deliveries** with no AI Summary. Gold draws 16
+rows where the four deterministic ones keep their rules badges, the one row Silver also has
+keeps **[Keyword Spotting, AI]**, and every row Silver lacks carries **[AI]** alone.
+
+⚠⚠ **WHAT IS NOT DONE, STATED PLAINLY: 29% of the 99 profiles on this machine still produce
+fewer than four.** Those are git-ignored library demos, and their calls genuinely do not
+contain four high-value moments — a miss has to be REAL, so a fourth cannot be added without
+inventing evidence, which is the one thing this feature refuses to do. **The remedy is
+`scripts/enrich-ci-sales.ts` — add the missing moments to the TRANSCRIPT — not a looser pattern
+here**, and the generation prompt wants the same treatment so prospects are born with four.
+Neither was run: it is a model call per profile plus a PATCH per live demo, which is its own
+operation to authorise.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

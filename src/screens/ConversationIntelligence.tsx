@@ -68,6 +68,25 @@ const TABS = [
   { label: "Deliveries", icon: "work_outline" },
 ];
 
+/**
+ * The tabs a tier actually has.
+ *
+ * ⚠⚠ **SILVER HAS NO AI SUMMARY, asked for directly (10/9/2026): "Silver should not have
+ * a AI summary."** It is the right call and it is not invented chrome: the AI Summary is
+ * written BY the AI, so an account that has not bought Signal AI Gold does not have one. A
+ * provisioned tab is either there or it is not, which is a real per-account difference rather
+ * than a treatment this report does not have.
+ * ⚠️ **REMOVED, NOT LOCKED.** V1 of this feature put a LOCKED AI Summary tab on Silver and it
+ * was deleted on request as something the product does not do — a greyed tab advertising an
+ * upsell is Invoca's screen inventing a sales surface. Absent is what an unprovisioned tab
+ * looks like.
+ * ⚠️ The untiered report and Gold are untouched: `tier` is undefined for the plain
+ * Conversation Intelligence route, so it keeps all five.
+ */
+function tabsFor(tier?: SignalTier) {
+  return tier === "silver" ? TABS.filter((t) => t.label !== "AI Summary") : TABS;
+}
+
 /* ⚠️ `tier` IS OPT-IN AND DEFAULTS TO UNDEFINED, so the plain Conversation Intelligence report
    renders exactly as it did before this file learned about tiers — the standing rule that a
    change for one screen must not touch another. Everything tier-specific below is inside a
@@ -79,6 +98,7 @@ export function ConversationIntelligence({ tier }: { tier?: SignalTier } = {}) {
   const d = usePageData(profile.reports.conversationIntelligence);
   const [tab, setTab] = useState("Analysis");
   const t = tier ? tierView(profile, tier) : null;
+  const tabs = tabsFor(tier);
 
   /* A tier route on a prospect that does not have these reports: refuse rather than render a
      generic pair. The signal names are Health Spring's own. */
@@ -200,7 +220,7 @@ export function ConversationIntelligence({ tier }: { tier?: SignalTier } = {}) {
         {/* RIGHT — analysis rail */}
         <aside className="ci-analysis">
           <div className="ci-tabs">
-            {TABS.map((t) => (
+            {tabs.map((t) => (
               <button key={t.label} className={"ci-tab" + (t.label === tab ? " active" : "")} onClick={() => setTab(t.label)}>
                 <span className="material-icons">{t.icon}</span> {t.label}
               </button>
@@ -254,7 +274,10 @@ export function ConversationIntelligence({ tier }: { tier?: SignalTier } = {}) {
             </div>
           )}
 
-          {tab === "AI Summary" && (
+          {/* ⚠️ GUARDED ON THE TAB LIST, NOT JUST THE SELECTION. Nothing can select a tab that
+              is not rendered, but reading the list here is what keeps the two in step if a
+              future caller ever sets the initial tab from a URL. */}
+          {tab === "AI Summary" && tabs.some((x) => x.label === "AI Summary") && (
             d.aiSummary ? (
               <div className="ci-analysis-body ci-summary">
                 <div className="ci-section-head">
