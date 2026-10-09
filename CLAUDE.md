@@ -13708,6 +13708,75 @@ here**, and the generation prompt wants the same treatment so prospects are born
 Neither was run: it is a model call per profile plus a PATCH per live demo, which is its own
 operation to authorise.
 
+### A shared demo goes to a company address, not a personal one (10/9/2026)
+
+Asked for directly at the share gate's email field: *"i want the user that i share demos with
+to have a company domain email and not a regualr gmail, yahoo, outlook etc emails."*
+`src/data/workEmail.ts`, read by the gate AND by `engine/shareApi.ts`.
+
+⚠⚠ **THE SERVER IS WHAT ENFORCES IT.** `POST /api/share/:token/request-password` is
+registered BEFORE `installAuth` — a prospect has no Invoca session and never will — so anybody
+can POST to it, and a check living only in the browser is a suggestion. The gate runs the same
+function purely so the message arrives without a round trip.
+
+⚠⚠ **A BLOCKLIST, BECAUSE AN ALLOWLIST IS NOT KNOWABLE.** We cannot enumerate the domains of
+every prospect Invoca will ever demo to, so the test is "is this a mailbox anybody can open in
+a minute" rather than "is this a company we recognise". **Consequence, stated: a consumer
+provider not on the list gets through.** Add to the list; do not try to invert it.
+
+⚠⚠ **FALSE POSITIVES WERE THE REAL RISK, and two entries are deliberately narrow because of
+it.** Refusing a prospect their own corporate address is far worse than letting a Gmail
+through — they cannot fix it, and the demo stops there:
+| | why |
+|---|---|
+| `orange.fr` is listed, **`orange` as a family is not** | Orange S.A. is a real company whose staff use `orange.com` |
+| `mail.com` / `mail.ru` are listed, **`mail` as a family is not** | `mail.acme.com` is an ordinary corporate mail host |
+| a name that merely CONTAINS a provider's passes | `gmail-agency.io`, `yahoo-finance-partners.com` |
+Country variants still work, because the family test reads the registrable label with any
+suffix: `yahoo.co.uk`, `hotmail.fr`, `live.de` and `mail.yahoo.com` are all refused.
+
+⚠️ **THROWAWAY DOMAINS ARE BLOCKED FOR A DIFFERENT REASON AND GET THEIR OWN MESSAGE.** A free
+mailbox is the wrong KIND of address for a business demo; a ten-minute mailbox additionally
+defeats the thing the email step exists for, which is a record of who opened the demo.
+
+⚠⚠ **REFUSED BEFORE `takeBudget` AND BEFORE `noteRequest`.** Somebody who types a Gmail by
+habit and corrects it must not silently spend one of the twelve sends this link gets in a day,
+and an address that was never sent anything has no event to record — recording one would put
+addresses on the share record that never received a password.
+⚠️ **THE GATE WAITS FOR A PLAUSIBLE ADDRESS BEFORE SAYING ANYTHING.** Judging "g", "gm",
+"gma" as somebody types `gmail.com` would flash a refusal at every keystroke of a domain that
+is still being typed, so nothing is said until there is an `@` and a dot after it. Measured:
+`someone@gm` is silent and the button stays live; `someone@gmail.com` names the reason and
+disables it.
+
+⚠⚠⚠ **WHAT THIS DOES NOT DO, AND IT MATTERS: IT IS NOT AN ACCESS CONTROL.** The password is
+the prospect's own name with the spaces removed, and the unlock page prints that name in its
+own heading — this file already records that the email step is "a record of who opened the
+demo, not a second factor". So somebody with a Gmail address can still click **"I already have
+the password"**, derive it from the page, and get in. What the restriction governs is who the
+platform will EMAIL a password to and whose address goes on the share record. Making it a real
+access gate means changing the gate itself, which is a different piece of work and was not
+asked for.
+
+**`npm run audit:share` gained 8 checks**: 8 company addresses accepted including the
+look-alikes, 18 consumer mailboxes refused with their country variants, throwaway domains
+refused with their own reason, one definition imported by both readers, and the ordering
+against the budget and the record.
+⚠⚠ **AND THE ROUTE CHECK HAD TO BECOME BEHAVIOURAL, because the grep version could not
+fail.** Neutering the guard to `if (false)` left both `workEmailVerdict(email)` and
+`workEmailMessage` in the file, so a source match stayed green against a route enforcing
+nothing — the dead-code trap, walked into while writing the check FOR the feature. It calls
+the real handler now: a personal address must come back **400**, a throwaway must come back
+400 with the other message, a company one must come back 200, and the stored share must end
+up holding **only** the accepted address. All five sabotages fire, that one included.
+
+**Verified against the real route and the real gate**: `someone@gmail.com`, `x@yahoo.co.uk`
+and `t@mailinator.com` each 400 with the right message while `buyer@unitedvetcare.com` and
+`a@orange.com` went through; the share record afterwards held only the two accepted addresses.
+⚠️ The gate could only be seen by creating a THROWAWAY share on disk, because the unlock
+cookie is `HttpOnly` and per-token — JS cannot clear it, and an already-unlocked link skips
+the gate entirely. The fixture was deleted afterwards (3 shares before, 3 after).
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

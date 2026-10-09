@@ -8,6 +8,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { workEmailVerdict } from "../src/data/workEmail";
 
 process.env.DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "audit-share-"));
 
@@ -1330,6 +1331,97 @@ console.log("\nActivity tracking\n");
     : bad("quiet rows lose the rule under them");
 }
 
+
+/* =============================================================================
+   A SHARED DEMO GOES TO A COMPANY ADDRESS (10/9/2026)
+   -----------------------------------------------------------------------------
+   Asked for directly: "i want the user that i share demos with to have a company domain email
+   and not a regualr gmail, yahoo, outlook etc emails."
+
+   ⚠⚠ **THE SERVER IS WHAT ENFORCES IT.** `POST /api/share/:token/request-password` is
+   registered BEFORE `installAuth` — a prospect has no Invoca session — so anybody can POST to
+   it, and a check that lives only in the gate is a suggestion. The gate runs the same function
+   purely so the message arrives without a round trip.
+   ============================================================================= */
+{
+  const PASS = ["buyer@unitedvetcare.com", "d.desai@invoca.com", "x@mail.acme.com",
+    /* ⚠⚠ **THE FALSE-POSITIVE GUARDS, and each one is a real company that would otherwise be
+       refused by its own corporate address.** `orange.com` is Orange S.A.; only the ISP's
+       country domain is listed. `mail.acme.com` is an ordinary corporate mail host, which is
+       why "mail" is an exact domain and never a family. And a company whose name merely
+       CONTAINS a provider's is not that provider. */
+    "a@orange.com", "c@yahoo-finance-partners.com", "d@gmail-agency.io",
+    "e@my.company.co.uk", "f@sub.dept.bigcorp.com"];
+  const FREE = ["a@gmail.com", "a@googlemail.com", "a@yahoo.com", "a@yahoo.co.uk",
+    "a@mail.yahoo.com", "a@hotmail.fr", "a@outlook.com", "a@live.de", "a@icloud.com",
+    "a@proton.me", "a@aol.com", "a@gmx.net", "a@comcast.net", "a@qq.com",
+    "a@orange.fr", "a@mail.com", "a@mail.ru", "a@yandex.ru"];
+  const TEMP = ["a@mailinator.com", "a@yopmail.com", "a@10minutemail.net", "a@guerrillamail.com"];
+
+  const wrongPass = PASS.filter((e) => workEmailVerdict(e) !== "ok");
+  wrongPass.length === 0
+    ? ok(`${PASS.length} company addresses are accepted, including the look-alike domains`)
+    : bad(`a company address is refused: ${wrongPass.join(", ")}`);
+  const wrongFree = FREE.filter((e) => workEmailVerdict(e) !== "free");
+  wrongFree.length === 0
+    ? ok(`${FREE.length} consumer mailboxes are refused, country variants included`)
+    : bad(`a consumer mailbox is accepted: ${wrongFree.join(", ")}`);
+  const wrongTemp = TEMP.filter((e) => workEmailVerdict(e) !== "disposable");
+  wrongTemp.length === 0
+    ? ok("throwaway mailboxes are refused, with their own message")
+    : bad(`a throwaway mailbox is accepted: ${wrongTemp.join(", ")}`);
+
+  /* ⚠️ ONE DEFINITION, TWO READERS. A second copy in the gate would drift, and the half that
+     drifts is always the one nobody tests — here that would be the server, which is the half
+     that actually matters. */
+  const api = code("engine/shareApi.ts");
+  const gate = code("src/screens/ShareApp.tsx");
+  /* ⚠⚠ **CALLED, NOT GREPPED — and the grep version could not fail.** Neutering the guard to
+     `if (false)` left both `workEmailVerdict(email)` and `workEmailMessage` in the file, so a
+     source match stayed green against a route that enforced nothing. The dead-code trap this
+     repo records repeatedly, walked into while writing the check FOR the feature. Hit the real
+     handler instead: a personal address must come back 400 and a company one must not. */
+  {
+    const t = S.createShare({ demoId: "live-link", prospect: "Work Mail",
+      createdBy: "se@invoca.com", days: 7, password: "WorkMail", derivedPassword: true });
+    const free = (await A.handleShareApi("POST", `/api/share/${t.token}/request-password`,
+      { email: "someone@gmail.com" }, {}))!;
+    const temp = (await A.handleShareApi("POST", `/api/share/${t.token}/request-password`,
+      { email: "a@mailinator.com" }, {}))!;
+    const work = (await A.handleShareApi("POST", `/api/share/${t.token}/request-password`,
+      { email: "buyer@unitedvetcare.com" }, {}))!;
+    (free.status === 400 && /work email/i.test(String((free.body as { error?: string }).error)))
+      ? ok("the public request-password route refuses a personal address")
+      : bad(`a personal address was not refused: ${free.status} ${JSON.stringify(free.body)}`);
+    (temp.status === 400 && /temporary/i.test(String((temp.body as { error?: string }).error)))
+      ? ok("…and a throwaway one, with its own reason")
+      : bad(`a throwaway address was not refused: ${temp.status}`);
+    work.status === 200
+      ? ok("…while a company address is still accepted end to end")
+      : bad(`a company address was refused by the route: ${work.status} ${JSON.stringify(work.body)}`);
+    /* The refusals must leave no trace on the record — asserted on the stored share, not on
+       the handler's own ordering, so it holds however the code is arranged. */
+    const after = S.getShare(t.token)!;
+    const addrs = (after.requests ?? []).map((r: { email: string }) => r.email);
+    (addrs.length === 1 && addrs[0] === "buyer@unitedvetcare.com")
+      ? ok("…and a refused address is never written to the share record")
+      : bad(`a refused address was recorded: ${addrs.join(", ")}`);
+  }
+  /from "\.\.\/src\/data\/workEmail\.ts"/.test(api) && /from "\.\.\/data\/workEmail"/.test(gate)
+    ? ok("…and the gate imports the SAME test rather than keeping its own copy")
+    : bad("the gate and the server no longer share one definition");
+
+  /* ⚠⚠ **REFUSED BEFORE THE BUDGET AND BEFORE THE RECORD.** A prospect who types a personal
+     address by habit must not silently spend one of the twelve sends this link gets in a day,
+     and an address that was never sent anything has no event to record. Asserted by INDEX,
+     because both are easy to reorder without noticing. */
+  const iVerdict = api.indexOf("const verdict = workEmailVerdict(email)");
+  const iBudget = api.indexOf('takeBudget(token, "email")');
+  const iNote = api.indexOf("noteRequest(token, email)");
+  (iVerdict > 0 && iVerdict < iBudget && iVerdict < iNote)
+    ? ok("a refusal costs no send budget and records no request")
+    : bad("the company-address check runs after the budget or the record");
+}
 
 fs.rmSync(process.env.DATA_DIR!, { recursive: true, force: true });
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll share checks passed\n");

@@ -28,6 +28,7 @@ import { sendMail, sharePasswordEmail } from "./mailer.ts";
 import { recordActivity } from "./activityStore.ts";
 import { queueActivitySync } from "./sheetActivity.ts";
 import { sharePassword } from "../src/data/sharePassword.ts";
+import { workEmailVerdict, workEmailMessage } from "../src/data/workEmail.ts";
 import { getDemo } from "./demoStore.ts";
 
 const SECRET = process.env.SESSION_SECRET || process.env.GOOGLE_CLIENT_SECRET || "insecure-dev-secret";
@@ -178,6 +179,20 @@ export async function handleShareApi(
        EXISTS is not knowable here, and the reply must not reveal it either way. */
     if (!/^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(email) || email.length > 254) {
       return { status: 400, body: { error: "That does not look like an email address." } };
+    }
+    /* ⚠⚠ **A COMPANY ADDRESS, NOT A PERSONAL ONE — asked for 10/9/2026, and enforced HERE
+       because this route is PUBLIC and sends mail.** The gate runs the same test so the
+       message arrives without a round trip, but a browser check on a route anyone can POST to
+       is a suggestion. One definition, two readers; see `workEmail.ts` for why it is a
+       blocklist and which two entries are deliberately narrow.
+       ⚠️ **REFUSED BEFORE `takeBudget`**, so a prospect who types a Gmail address by habit and
+       then corrects it has not silently spent one of the twelve sends this link gets in a day.
+       ⚠️ **AND BEFORE `noteRequest`**, which is the one judgement call here: nothing was sent
+       and nobody was told anything, so there is no event to record — and writing one would put
+       addresses on the share record that never received a password. */
+    const verdict = workEmailVerdict(email);
+    if (verdict !== "ok") {
+      return { status: 400, body: { error: workEmailMessage(verdict) } };
     }
     if (!takeBudget(token, "email")) {
       return { status: 429, body: { error: "Too many requests for this link today. Please contact your Invoca contact." } };

@@ -1,6 +1,7 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { CustomerProfile } from "../data/schema";
+import { workEmailVerdict, workEmailMessage } from "../data/workEmail";
 import { ProfileProvider } from "../data/ProfileContext";
 import { SmsCaptureProvider } from "../data/SmsCaptureContext";
 import { VoiceCaptureProvider } from "../data/VoiceCaptureContext";
@@ -160,21 +161,37 @@ export default function ShareApp() {
 
   if (phase.k === "locked") {
     const title = phase.prospect ? `${phase.prospect} AI Agent demo` : "AI Agent demo";
+    /* Null until the address is complete enough to judge — see the note at the field. */
+    const typed = email.trim();
+    const localVerdict = /^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(typed)
+      ? workEmailVerdict(typed) : null;
     /* Step one: who are you? The password is emailed rather than passed along by hand. */
     if (step === "email") {
       return (
         <Shell>
           <h1 className="share-title">{title}</h1>
           <p className="share-muted">
-            Enter your email and we will send you the password for this demo.
+            Enter your work email and we will send you the password for this demo.
           </p>
           <form onSubmit={requestPassword} className="share-form">
-            <label className="share-label" htmlFor="share-email">Email</label>
+            <label className="share-label" htmlFor="share-email">Work email</label>
             <input id="share-email" className="share-input" type="email" value={email} autoFocus
               autoComplete="email" inputMode="email" placeholder="you@company.com"
               onChange={(e) => { setEmail(e.target.value); setNote(null); }} />
+            {/* ⚠⚠ **THE SAME TEST THE SERVER RUNS, FOR THE MESSAGE ONLY.** `workEmail.ts` is
+                shared with `shareApi`, which is what actually refuses the request — this is
+                here so a personal address is named the moment it is typed rather than after a
+                round trip, and so the button does not invite a press that cannot work.
+                ⚠️ IT WAITS FOR AN ADDRESS THAT IS AT LEAST PLAUSIBLE. Judging "g", "ga", "gm"
+                as somebody types gmail.com would flash a refusal at every keystroke of a
+                perfectly good domain, so nothing is said until there is an `@` and a dot
+                after it. */}
             {phase.error && <p className="share-error">{phase.error}</p>}
-            <button className="share-btn" type="submit" disabled={busy || !email.trim()}>
+            {!phase.error && localVerdict && localVerdict !== "ok" && (
+              <p className="share-error">{workEmailMessage(localVerdict)}</p>
+            )}
+            <button className="share-btn" type="submit"
+              disabled={busy || !email.trim() || (!!localVerdict && localVerdict !== "ok")}>
               {busy ? "Sending…" : "Email me the password"}
             </button>
             {/* ⚠️ A way through when the mail does not arrive — a spam filter or a mailer
