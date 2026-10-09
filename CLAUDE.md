@@ -13129,6 +13129,25 @@ not a scrim with a `pointer-events: none` gap, which fails on a scrolled page.
 ⚠️ **FIRST OPEN ONLY, ALWAYS REPLAYABLE.** Once per link per browser, with a "Take the tour"
 pill afterwards: a tour that can only be seen once is one nobody can show a colleague.
 
+#### ⚠️⚠️ AND TWO MORE, REPORTED FROM A REAL RUN — the first is a race an automated walk CANNOT see
+Reported against step 10: *"the guided tour is stopping at preview agent, and its saying one
+moment..."*
+
+1. ⚠️⚠️ **`resetAutoplayDone()` RAN ON EVERY STEP CHANGE, AND THAT IS A RACE ONLY A HUMAN
+   HITS.** The scripted conversation runs while the prospect READS the step that started it.
+   Finish the script first — which a person does, because they are reading — and the next step
+   cleared the completion flag, then waited for a completion that had already happened. "One
+   moment…" sat there until the 25-second bail-out. **My automated walk clicked Next faster
+   than the script could finish, so it never saw it**, and the bail-out hid it even then. The
+   flag's lifecycle belongs to the ARM, not to navigation. Reproduced by sitting on step 9 for
+   22 seconds before advancing, which is the test that should have existed first.
+2. ⚠️ **THE CARD COVERED THE PHONE IT WAS DESCRIBING.** Neither above nor below fits a 560px
+   phone on a 900px screen, so both branches clamped to the viewport edge and landed over the
+   spotlight. A tall target now gets the card BESIDE it, and when neither side holds 380px
+   (measured: 1060px wide puts 55px of card over the phone) it NARROWS to the room available
+   with a 300px floor rather than overlapping. Verified at 1221px (card beside, 0 overlap) and
+   1060px (card narrowed to 309px, 0 overlap).
+
 **Verified end to end on a real shared link**: all 16 steps reached, every card on screen, every
 spotlight landing on a real element, the scripted conversation running to completion in ~6s with
 live replies (and correctly deflecting a price question, per the `providesEstimate` clamp), the

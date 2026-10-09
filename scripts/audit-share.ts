@@ -974,6 +974,27 @@ console.log("\nActivity tracking\n");
       ? ok("the autoplay flag is consumed in the click handler, never during render")
       : bad("a double render would swallow the script");
 
+    /* ⚠️⚠️ THE RACE A REAL PERSON HIT AND AN AUTOMATED WALK CANNOT: the scripted
+       conversation finishes while they are still reading the step that started it, and a
+       per-step reset then cleared a completion that had already happened — "One moment…"
+       until the bail-out. The reset belongs to the ARM, not to navigation. */
+    /if \(step\.autoplay\) \{ resetAutoplayDone\(\); armAutoplay\(\); \}/.test(tour)
+      ? ok("the autoplay-done flag is reset when the script is armed, not on every step")
+      : bad("finishing the script before pressing Next would hang the tour");
+    !/\n\s*resetAutoplayDone\(\);\n\s*if \(step\.autoplay\)/.test(tour)
+      ? ok("nothing clears the completion flag on an unrelated step")
+      : bad("a step change can discard a completion that already happened");
+
+    /* ⚠️ A target taller than the room above and below gets the card BESIDE it, narrowed
+       if need be — reported against the phone, where the card covered the conversation it
+       was describing. */
+    /below < CARD_H \+ 20 && above < CARD_H \+ 20/.test(tour)
+      ? ok("a tall target puts the card beside it rather than on top of it")
+      : bad("the card can cover the thing it is pointing at");
+    /Math\.min\(CARD_W, Math\.max\(300, room\)\)/.test(tour)
+      ? ok("the card narrows to the room available instead of overlapping the spotlight")
+      : bad("on a narrow screen the card clamps over the target");
+
     /* ⚠️ Mounted by ShareApp, so the signed-in app never constructs it. */
     const appSrc = code("src/screens/ShareApp.tsx");
     /<ShareTour \/>/.test(appSrc) && /<BrowserRouter/.test(appSrc)

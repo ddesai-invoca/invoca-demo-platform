@@ -75,8 +75,15 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
     if (!step) return;
     setReady(false);
     setBox(null);
-    resetAutoplayDone();
-    if (step.autoplay) armAutoplay();
+    /* ⚠️⚠️ **THE DONE FLAG IS RESET WHEN THE SCRIPT IS ARMED, NEVER ON EVERY STEP — and
+       resetting it per step was a race that only a real person hit.** The scripted
+       conversation runs while the prospect reads the step that started it; if it FINISHES
+       before they press Next, the next step cleared the flag and then waited for a
+       completion that had already happened, so "One moment…" sat there until the 25s
+       bail-out. An automated walk advances too fast to see it, which is exactly why it
+       passed here and failed in front of somebody. The flag's lifecycle belongs to the
+       script run, not to navigation. */
+    if (step.autoplay) { resetAutoplayDone(); armAutoplay(); }
     if (step.route && step.route !== pathname) navigate(step.route);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i]);
@@ -196,13 +203,36 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
 
   /* Put the card beside the hole, flipping to whichever side has room. */
   const CARD_W = 380;
+  const CARD_H = 290;
   let cardStyle: React.CSSProperties = {};
   if (hole) {
     const below = window.innerHeight - (hole.top + hole.height);
-    const top = below > 260 ? hole.top + hole.height + 14 : Math.max(16, hole.top - 250);
-    let left = hole.left + hole.width / 2 - CARD_W / 2;
-    left = Math.max(16, Math.min(left, window.innerWidth - CARD_W - 16));
-    cardStyle = { top, left };
+    const above = hole.top;
+    const right = window.innerWidth - (hole.left + hole.width);
+    /* ⚠️⚠️ **A TALL TARGET GETS THE CARD BESIDE IT, NOT ON TOP OF IT — reported against
+       the phone preview, where the card covered the very conversation it was describing.**
+       Neither above nor below fits a 560px phone on a 900px screen, so both branches
+       clamped to the edge and landed over the thing being spotlit. Sideways is the only
+       placement that works for something taller than the room around it. */
+    if (below < CARD_H + 20 && above < CARD_H + 20) {
+      /* ⚠️ **IT NARROWS RATHER THAN OVERLAPPING.** Measured at 1060px: neither side holds a
+         380px card beside a 378px phone, so clamping to the edge put 55px of card over the
+         spotlight. Take the roomier side and fit the card to it; a 300px floor is the point
+         below which the copy stops being readable and overlapping is the lesser evil. */
+      const roomier = right >= hole.left ? "right" : "left";
+      const room = (roomier === "right" ? right : hole.left) - 32;
+      const w = Math.min(CARD_W, Math.max(300, room));
+      const left = roomier === "right"
+        ? Math.min(hole.left + hole.width + 16, window.innerWidth - w - 16)
+        : Math.max(16, hole.left - w - 16);
+      const top = Math.max(16, Math.min(hole.top, window.innerHeight - CARD_H - 16));
+      cardStyle = { top, left, width: w };
+    } else {
+      const top = below > above ? hole.top + hole.height + 14 : Math.max(16, hole.top - CARD_H + 40);
+      let left = hole.left + hole.width / 2 - CARD_W / 2;
+      left = Math.max(16, Math.min(left, window.innerWidth - CARD_W - 16));
+      cardStyle = { top, left };
+    }
   }
 
   return (
