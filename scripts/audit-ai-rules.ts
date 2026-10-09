@@ -3056,12 +3056,15 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
       ? ok(`all ${named.length} named signals are the prospect's own`)
       : bad("a derived workflow names a signal the Signal Manager does not list");
 
-    /* ⚠️ `route` IS VOICE-ONLY — on SMS the renderer draws `Route to <team>` INSTEAD OF the
-       action, which would blank every authored action into data nothing draws. */
+    /* ⚠️ `route` IS VOICE-ONLY. It USED to be a correctness rule — the renderer drew
+       `Route to <team>` instead of the action, so a route on an SMS node blanked its action —
+       and that renderer bug is fixed (see "the action line shows the action" below). What
+       survives is narrower and still worth pinning: `treeToVoicePaths` is the only consumer,
+       so a route on an SMS node is data nothing reads. */
     six.filter((w) => !/voice/i.test(w.channel))
        .flatMap((w) => [...w.branches, ...w.branches.flatMap((b) => b.paths ?? [])])
        .every((n) => !n.route)
-      ? ok("no SMS node carries a route") : bad("an SMS node carries a route — its action would vanish");
+      ? ok("no SMS node carries a route") : bad("an SMS node carries a route — nothing on that channel reads it");
 
     /* ⚠⚠ **AND THE BUILT-IN TEMPLATE IS COVERED BY THAT RULE TOO, which it was not — the
        check above only ever swept the six demo workflows.** The support branches shipped with
@@ -3072,7 +3075,82 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
       .flatMap((l: any) => [l, ...((l.paths ?? []) as any[])])
       .every((n: any) => !n.route)
       ? ok("…and neither does any node of the built-in SMS template")
-      : bad("a built-in SMS node carries a route — its action would vanish");
+      : bad("a built-in SMS node carries a route — nothing on that channel reads it");
+
+    /* ⚠⚠ **THE ACTION LINE SHOWS THE SELECTED ACTION, ON EVERY NODE OF EVERY WORKFLOW
+       (10/9/2026).** Reported directly against a card reading "Route to General Customer
+       Care" whose own drawer said Support & Escalate: the renderer REPLACED the action slot
+       with `Route to <team>` whenever a node carried a route, so the one thing the card exists
+       to say — which of the five actions this node performs — was hidden by its destination.
+       ⚠️ Asserted on the RENDERER, not on the data, because the data was never wrong: a voice
+       node legitimately carries a route and must still print its action. Checking "no node has
+       a route" would pass while the bug was fully present on voice. */
+    {
+      const tree = readCode("src/components/WorkflowTree.tsx");
+      !/`Route to \$\{/.test(tree)
+        ? ok("the renderer never substitutes a route for the action")
+        : bad("a node's action slot is replaced by `Route to <team>` again");
+      /* Both rows that draw an action line must print the node's own action. */
+      (tree.match(/\{(?:pth|sb)\.action\}/g) ?? []).length >= 2
+        ? ok("both path and sub rows print the node's own action")
+        : bad("an action line is not reading the node's action");
+    }
+
+    /* ⚠⚠ **AND THE CARD AND THE DRAWER MUST AGREE ON EVERY NODE — the rule stated outright:
+       "you have to display the same action you have selected in the action drawer".** The
+       renderer check above pins the one mechanism that broke it; this pins the OUTCOME across
+       real data, so a future divergence through some other door (a stale id table, a node
+       whose action text no longer resolves) is caught too. Swept over every prospect's
+       built-in SMS template AND every authored extra workflow, because those are the two
+       places a node's action can come from. */
+    {
+      const nodeIds = (branches: any[]) => {
+        const out: string[] = [];
+        branches.forEach((b: any, bi: number) => (b.leaves ?? []).forEach((l: any, li: number) => {
+          out.push(`leaf-${bi}-${li}`);
+          (l.paths ?? []).forEach((pt: any, pi: number) => {
+            out.push(`path-${bi}-${li}-${pi}`);
+            (pt.paths ?? []).forEach((_: any, si: number) => out.push(`sub-${bi}-${li}-${pi}-${si}`));
+          });
+        }));
+        return out;
+      };
+      const at = (branches: any[], id: string) => {
+        const m = id.split("-").slice(1).map(Number);
+        const l = branches[m[0]]?.leaves?.[m[1]];
+        if (id.startsWith("leaf")) return l;
+        const pt = l?.paths?.[m[2]];
+        return id.startsWith("path") ? pt : pt?.paths?.[m[3]];
+      };
+      let compared = 0;
+      const mismatches: string[] = [];
+      const sweep = (label: string, branches: any[], draw: (id: string) => any) => {
+        for (const id of nodeIds(branches)) {
+          const n: any = at(branches, id); if (!n) continue;
+          const d: any = draw(id); if (d?.kind !== "action") continue;
+          compared++;
+          const want = SMS_ACTION_LABEL[d.action as keyof typeof SMS_ACTION_LABEL];
+          if (String(n.action ?? "") !== want) mismatches.push(`${label} ${id}: card="${n.action}" drawer="${want}"`);
+        }
+      };
+      for (const prof of everyProfile.slice(0, 8)) {
+        const sb = smsBranches(prof as never);
+        const c = smsConfigFor(prof as never);
+        const st: any = { variant: "sms", triggeredBy: "x", startLabel: "y", branches: sb };
+        sweep(`${prof.customerName}/sms`, sb as never, (id) => smsDrawerFor(prof as never, st, id, c));
+        for (const wf of prof.reports?.extraWorkflows ?? []) {
+          const t: any = extraTree(wf as never);
+          sweep(`${prof.customerName}/${(wf as any).slug}`, t.branches, (id) => drawerFor(prof as never, t, id));
+        }
+      }
+      /* ⚠️ A sweep that compares NOTHING reports success forever. */
+      compared >= 40
+        ? ok(`${compared} nodes swept for card/drawer action agreement`)
+        : bad(`only ${compared} nodes compared — the sweep is probably broken, not the code`);
+      mismatches.length === 0
+        ? ok("every node's card shows the same action its drawer does")
+        : bad(`a card and its drawer disagree about the action: ${mismatches[0]}`);
+    }
 
     /* ⚠️ THE BOOKING LOCATIONS ARE THE PROSPECT'S OWN SITES, not an invented pair. */
     const booking = six.find((w) => w.bookingLocations?.length);

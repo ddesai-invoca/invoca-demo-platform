@@ -13504,6 +13504,47 @@ the answers orange `#ff7045` / `#b33b00`. All five SMS drawers and all four voic
 with their own text and a collect list matching their node's chips. `tsc -b`, `npm run build`
 and 20 of 21 suites green; `audit:seeds` 86 of 103, unchanged.
 
+### ⚠⚠ STANDING RULE: A NODE'S ACTION LINE SHOWS THE ACTION, NOT ITS DESTINATION (10/9/2026)
+
+Taught directly, against a card reading **"Route to General Customer Care"** whose own drawer
+said **Support & Escalate**: *"you have to display the same action you have selected in the
+action drawer."* The card's action slot is where one of Invoca's five actions is named, and
+it was being REPLACED by `Route to <team>` on any node carrying a route — so the one thing the
+card exists to tell you was hidden by its destination, and the diagram and the drawer
+described the same node two different ways.
+
+**The five actions, for the record** (confirmed in this conversation): **Schedule Callback,
+Qualify, Inform, Inform & Route, Support & Escalate.** A card's action line always reads one
+of exactly those.
+
+⚠️ **THE ROUTE IS STILL DATA AND STILL MATTERS.** `treeToVoicePaths` hands it to the prompt so
+the voice agent names the desk out loud, and the drawer edits it in its own destination field.
+It simply never stands in for the action.
+⚠️ **THE FIX IS IN THE RENDERER, SO IT REACHES EVERY WORKFLOW** — the built-in pair and all
+eight authored extras — which is what was asked for ("apply that to all the SMS and Voice
+workflows"). It is a display change only; no data moved.
+
+⚠⚠ **AND IT RETIRES THE REASON FOR A RULE THIS FILE HAS CARRIED SINCE 9/2: "NO `route` ON AN
+SMS BRANCH".** That rule existed *because* the renderer blanked the action — "the renderer
+draws `Route to <route>` INSTEAD OF the action, so those four authored actions became data
+that is stored and never drawn". With the renderer fixed, a route on an SMS node is no longer
+dangerous, merely unread (`treeToVoicePaths` is its only consumer). The checks stay, with the
+weaker and still-true rationale; **do not re-derive the old one.**
+
+⚠⚠ **CHECKED ON THE OUTCOME, NOT ONLY THE MECHANISM, and the distinction is load-bearing.**
+"No node carries a route" would have passed throughout while the bug was fully present on
+voice, where a route is legitimate. So two checks: the renderer never substitutes (pinning the
+one mechanism that broke), and a **96-node sweep** comparing every card's action against what
+its own drawer reports, across every prospect's built-in SMS template and every authored extra.
+The sweep fails if it compares fewer than 40 nodes, because a sweep that compares nothing
+reports success forever. Two sabotages fire: restoring the substitution, and giving a card an
+action its drawer does not report.
+
+**Verified in the browser on all three kinds of workflow** — built-in SMS, built-in voice, and
+an authored extra (Speed to Lead): the only action strings rendered anywhere are the five, and
+**zero** nodes read "Route to" on any of them. The reported node now reads
+`Service Issue or Re-Treatment / Support & Escalate` with its three chips intact.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

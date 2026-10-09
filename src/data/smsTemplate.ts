@@ -100,16 +100,15 @@ export function supportPaths(p: CustomerProfile): TreePath[] {
      differs. See `deriveUseCases` for the headings and the per-vertical wording.
      ⚠️ Every path keeps `Support & Escalate` to match its parent, which is the rule a node
      added by hand already follows: peers under one question do the same kind of thing. */
-  /* ⚠⚠ **NO `route` ON AN SMS NODE — and carrying one blanked every action, seen in the
-     browser rather than in the diff.** The renderer draws `Route to <team>` INSTEAD OF the
-     action, so these four rendered "Route to General Customer Care" where the drawer and the
-     tint both said Support & Escalate: one node described two ways. This file's own rule
-     already said so for the six demo workflows ("`TreePath.route` exists because the VOICE
-     agent names its destination aloud on transfer; an SMS agent books or hands off, so the
-     action is the meaningful line") and the built-in template was simply not covered by it.
-     ⚠️ The voice tree KEEPS its routes: there the agent says the desk's name out loud, and
-     the prompt reads it. Each node's SMS destination stays editable per node, as every other
-     node on this template already is. */
+  /* ⚠️ **NO `route` ON AN SMS NODE, AND THE REASON CHANGED THE DAY AFTER THIS WAS WRITTEN.**
+     It first came off because the renderer drew `Route to <team>` INSTEAD OF the action, so
+     these four read "Route to General Customer Care" while their drawer said Support &
+     Escalate. That renderer bug is fixed — the action line now always shows the action — so
+     the field is no longer DANGEROUS here; it is simply unread. `treeToVoicePaths` is what
+     consumes a route, and that is the voice path; the SMS flow takes its destination from the
+     drawer's own field. Carrying one here would be data nothing reads.
+     ⚠️ The voice tree KEEPS its routes: there the agent names the desk out loud and the
+     prompt reads the field. */
   return deriveUseCases(p).support.map((u) => ({
     title: u.title, action: LEAF_ESCALATE, actionIcon: "headsetMic", tone: "orange",
     actionKind: "escalate", chips: u.collect,

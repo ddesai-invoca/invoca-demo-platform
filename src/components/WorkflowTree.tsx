@@ -92,7 +92,7 @@ export interface TreePath {
 
 export interface TreeLeaf {
   title: string;                                  // "All Appointment Scheduling Users"
-  action: string;                                 // "Route to Appointment Scheduling"
+  action: string;                                 // one of the five: "Support & Escalate", "Qualify", …
   /* A FOURTH ROW. The Qualify action asks a question and routes on the answer, so its leaf
      has one child per answer — which is what the real Comfort Keepers voice workflow shows
      under "All Sales Inquiry Users". A leaf with no paths is a terminal, exactly as before.
@@ -1005,11 +1005,19 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
               <div className="wf-leaf-title">{pth.title}</div>
               <div className="wf-leaf-action">
                 <VIcon name={pth.actionIcon ?? "altRoute"} />
-                {/* ⚠️ "Route to <team>" REUSES THE ACTION SLOT rather than adding a line. The
-                    product itself used that wording on this diagram before these rows became
-                    chrome, so it needs no new node chrome and no new CSS — which matters on a
-                    six-branch tree that already has to fit without scrolling. */}
-                {pth.route?.trim() ? `Route to ${pth.route.trim()}` : pth.action}
+                {/* ✅✅ **THE ACTION LINE SHOWS THE ACTION. ALWAYS.** Reported directly
+                    (10/9/2026), with a node reading "Route to General Customer Care" whose own
+                    drawer said Support & Escalate: *"you have to display the same action you
+                    have selected in the action drawer."* This slot used to be REPLACED by
+                    `Route to <team>` whenever a node carried a route — so the one thing the
+                    card is supposed to tell you, which of the five actions this node performs,
+                    was hidden by its destination, and the diagram and the drawer described the
+                    same node two different ways.
+                    ⚠️ The route is still DATA and still matters: `treeToVoicePaths` hands it to
+                    the prompt so the voice agent names the desk out loud, and the drawer edits
+                    it in its own destination field. It just no longer pretends to be the
+                    action. */}
+                {pth.action}
               </div>
               <Chips of={pth.chips} />
             </div>
@@ -1032,7 +1040,8 @@ export function WorkflowTree({ model, onNode }: { model: WorkflowTreeModel; onNo
               <div className="wf-leaf-title">{sb.title}</div>
               <div className="wf-leaf-action">
                 <VIcon name={sb.actionIcon ?? "info"} />
-                {sb.route?.trim() ? `Route to ${sb.route.trim()}` : sb.action}
+                {/* Same rule one row down — see the note above. */}
+                {sb.action}
               </div>
               <Chips of={sb.chips} />
             </div>
