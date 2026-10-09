@@ -40,8 +40,20 @@ export interface TourStep {
   value?: string;
   /** Wait for the target rather than skipping — used where a click has to land first. */
   waitMs?: number;
-  /** Click the target before showing the card (opens a drawer, a tab, a preview). */
-  click?: boolean;
+  /**
+   * ⚠️⚠️ **THE STATE THIS STEP NEEDS, RE-ESTABLISHED ON ARRIVAL FROM EITHER DIRECTION.**
+   * A step that merely clicked its own target worked going forward and broke going BACK:
+   * returning to the SMS workflow remounts it with the phone closed, so the card described
+   * a preview that was not on screen. `when` is the proof the state already holds, which
+   * makes the whole thing idempotent — arriving with the phone already open clicks nothing.
+   */
+  ensure?: { open: string; when: string };
+  /**
+   * ⚠️ The mirror of `ensure`: state that must NOT be on screen. Needed because a step can
+   * be reached BACKWARDS from one that opened something — walking back from the phone to
+   * the diagram step left the modal sitting on top of the diagram it was describing.
+   */
+  dismiss?: { close: string; when: string };
   /** Arm the scripted SMS conversation before this step. */
   autoplay?: boolean;
   /** Hold here until the scripted conversation has finished. */
@@ -73,6 +85,10 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "agents",
+      /* ⚠️ Its OWN route, like every step. Inheriting looked fine going forward and put the
+         spotlight on the Knowledge Sources table coming back, because that screen also has
+         a `table` — the card describing one screen while pointing at another. */
+      route: "/agent-studio",
       target: ".as-table, table",
       title: "One brand, two channels",
       body:
@@ -116,6 +132,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "voice-node",
+      route: "/agent-studio/agent/workflow/voice",
       target: ".wf-node",
       title: "Every step is yours to set",
       body:
@@ -125,6 +142,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "voice-call",
+      route: "/agent-studio/agent/workflow/voice",
       target: ".wf-preview, .wf-preview-workflow",
       title: "Call it yourself",
       body:
@@ -137,6 +155,9 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     {
       id: "sms-tree",
       route: "/agent-studio/agent/workflow/sms",
+      /* ⚠️ Reached backwards from the phone steps, which share this route — so the modal
+         has to be sent away or it covers the diagram this step is about. */
+      dismiss: { close: ".phone-close", when: ".phone" },
       target: ".wf-canvas, .wf-scroll",
       title: "The same control over text",
       body:
@@ -146,10 +167,11 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "sms-open",
-      target: ".wf-preview-agent",
-      click: true,
+      route: "/agent-studio/agent/workflow/sms",
+      ensure: { open: ".wf-preview-agent", when: ".phone" },
+      target: ".phone-screen",
       autoplay: true,
-      waitMs: 1200,
+      waitMs: 4000,
       title: "Watch a real conversation start",
       body:
         `This is the agent's actual phone preview. We will send the first couple of messages for ` +
@@ -158,7 +180,10 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "sms-watch",
-      target: ".phone-frame, .phone-shell, .sms-thread",
+      route: "/agent-studio/agent/workflow/sms",
+      ensure: { open: ".wf-preview-agent", when: ".phone" },
+      target: ".phone-screen",
+      waitMs: 4000,
       awaitAutoplay: true,
       title: "Seconds, not hours",
       body:
@@ -168,7 +193,10 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "sms-try",
-      target: ".phone-input, textarea, input[type=text]",
+      route: "/agent-studio/agent/workflow/sms",
+      ensure: { open: ".wf-preview-agent", when: ".phone" },
+      target: ".sms-input",
+      waitMs: 4000,
       title: "Now you try",
       body:
         `Type anything a real ${nounLower} would say — a question about price, a different service, ` +
@@ -201,7 +229,9 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "report-signals",
+      route: "/reports/sms-conversation-intelligence",
       target: ".ci-analysis, .ci-tabs",
+      waitMs: 6000,
       title: "Scored without anybody listening",
       body:
         `Every conversation is read for the things you care about — intent, the ${bookingLower}, ` +
@@ -221,6 +251,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "end",
+      route: "/reports/voice-conversation-intelligence",
       title: `That is ${name}'s agent, working`,
       body:
         `Answering instantly on both channels, staying inside your brand rules, booking real ` +

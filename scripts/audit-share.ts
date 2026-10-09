@@ -953,9 +953,16 @@ console.log("\nActivity tracking\n");
     /if \(over\) \{ setBox\(null\); setReady\(true\); return; \}/.test(tour)
       ? ok("a target that never appears degrades to a centred card rather than stopping the tour")
       : bad("a missing selector would hang a prospect's first look at the product");
-    /clickedStep\.current !== i/.test(tour)
-      ? ok("a step's click is idempotent, so StrictMode cannot fire it twice")
+    /* ⚠️ RE-AIMED, NOT DELETED. This pinned a ref-based click guard; the guard is now the
+       `when` state check, which is strictly better because it is idempotent by nature — a
+       re-run sees the phone already open and clicks nothing. The invariant is unchanged:
+       StrictMode must not be able to fire the opener twice and spend the armed flag. */
+    /if \(step\.ensure && !document\.querySelector\(step\.ensure\.when\)/.test(tour)
+      ? ok("opening state is guarded by whether it is already open, so a re-run cannot double it")
       : bad("a re-run would click twice and spend the armed autoplay flag");
+    /if \(step\.autoplay\) \{ resetAutoplayDone\(\); armAutoplay\(\); \}\s*\n\s*opener\.click\(\);/.test(tour)
+      ? ok("the script is armed immediately before the click that consumes it")
+      : bad("the arm and the click can drift apart");
 
     /* ⚠️ The phone's scripted loop must survive its own state updates. */
     const phone = code("src/screens/PhonePreview.tsx");
@@ -984,6 +991,37 @@ console.log("\nActivity tracking\n");
     !/\n\s*resetAutoplayDone\(\);\n\s*if \(step\.autoplay\)/.test(tour)
       ? ok("nothing clears the completion flag on an unrelated step")
       : bad("a step change can discard a completion that already happened");
+
+    /* ⚠️⚠️ **EVERY STEP DECLARES ITS OWN ROUTE — inheriting it is what broke Back.**
+       Reported: step 12 -> Back stayed on the reports page, because steps 9-11 named no
+       route of their own and nothing navigated. Forward it looked fine, since the step
+       before had already put you there. Step 2 had the same fault with a nastier symptom:
+       coming back from Knowledge Sources it never left, and that screen also has a
+       `table`, so the spotlight landed on the WRONG screen's table while the card
+       described Agent Studio. */
+    const noRoute = steps.filter((s2) => !s2.route).map((s2) => s2.id);
+    noRoute.length === 0
+      ? ok("every step names the route it needs, so Back lands on the right screen")
+      : bad(`steps that inherit their route and break Back: ${noRoute.join(", ")}`);
+
+    /* ⚠️ State a step depends on is re-established on arrival from EITHER direction, and
+       `when` makes it idempotent so walking forward does not open it twice. */
+    const phoneSteps = steps.filter((s2) => ["sms-open", "sms-watch", "sms-try"].includes(s2.id));
+    phoneSteps.length === 3 && phoneSteps.every((s2) => s2.ensure?.when === ".phone")
+      ? ok("every phone step reopens the preview if it is closed")
+      : bad("walking back to a phone step would describe a preview that is not there");
+    steps.find((s2) => s2.id === "sms-tree")?.dismiss?.when === ".phone"
+      ? ok("the diagram step sends the phone away, so it is not covered coming back")
+      : bad("the phone modal sits over the diagram when reached backwards");
+    /if \(step\.dismiss && document\.querySelector\(step\.dismiss\.when\)/.test(tour)
+      ? ok("dismiss runs before measuring, not after")
+      : bad("the step would measure around state it is about to remove");
+
+    /* ⚠️ Placed CLEAR of the target. A 40px fudge in the "above" branch put the card over
+       the bottom of an 85px compose box — the control the step was pointing at. */
+    !/hole\.top - CARD_H \+ 40/.test(tour)
+      ? ok("the card is placed clear of a small target, not nearly clear")
+      : bad("the card overlaps the bottom of whatever it points at");
 
     /* ⚠️⚠️ **Next IS NEVER DISABLED. Reported twice, and the second time with the real
        complaint: "why is it taking too long for the next button to show up".** Measured at

@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useAgentWorkflows } from "../data/agentWorkflows";
 import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, ZERO_TRIGGER, emptyWorkflowTree,
@@ -460,6 +460,11 @@ export function AgentWorkflow() {
      second, and the conversation silently never started. A consuming read is an event, not
      a render. */
   const [phone, setPhone] = useState<null | { script?: string[] }>(null);
+  /* ⚠️⚠️ **THE PHONE IS AN SMS PREVIEW AND MUST NOT SURVIVE ONTO THE VOICE WORKFLOW.**
+     Both channels render THIS component and only the `:channel` param changes, so React
+     keeps it mounted and the modal stayed open across the switch — caught walking the tour
+     backwards, where the SMS phone was sitting on top of the voice diagram. */
+  useEffect(() => { if (!isSms) setPhone(null); }, [isSms]);
   const pageKey = `${profileId}::${pathname}`;
   /* ⚠️ **GATED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME** — the same signal
      `pageHint` keys its empty state off. A CREATED workflow deliberately registers no `agent`

@@ -13160,6 +13160,41 @@ moment..."*
    with a 300px floor rather than overlapping. Verified at 1221px (card beside, 0 overlap) and
    1060px (card narrowed to 309px, 0 overlap).
 
+#### ⚠️⚠️ BACK DID NOT RESTORE THE SCREEN, ONLY THE CARD (10/9/2026)
+Reported: *"once i am on step 12, and i click back it doesnt take to step 11 where the phone is
+shown… make sure all the forward and back buttons work and are showing the right screens its
+supposed to show and not just the box for it."* Three causes, and the first is the general one.
+
+1. ⚠️⚠️ **STEPS INHERITED THEIR ROUTE, WHICH WORKS FORWARD AND IS BROKEN BACKWARD.** Steps
+   9-11 named no route because step 8 had already navigated there — so Back from step 12 never
+   left `/reports`. **Step 2 had the same fault with a nastier symptom**: coming back from
+   Knowledge Sources it never navigated, and that screen also has a `table`, so the spotlight
+   landed on the WRONG screen's table while the card described Agent Studio. Every step now
+   declares its own route, and `audit:share` fails on any that does not.
+2. ⚠️⚠️ **`ensure` REPLACED `click`: THE STATE A STEP NEEDS, RE-ESTABLISHED FROM EITHER
+   DIRECTION.** A step that merely clicked its own target opened the phone on the way forward
+   and had nothing to point at coming back, because returning to the SMS workflow REMOUNTS it
+   with the modal closed. `ensure: { open, when }` clicks only when `when` is absent — which is
+   idempotent by nature and strictly better than the ref-based click guard it replaced, since a
+   StrictMode re-run now sees the phone already open and does nothing. `dismiss` is its mirror,
+   for a step reached backwards from one that opened something.
+   ⚠️ The script is armed INSIDE that branch, immediately before the click that consumes it, so
+   reopening the phone on a later step never replays the conversation at somebody who has
+   already watched it.
+3. ⚠️ **THE SMS PHONE SURVIVED ONTO THE VOICE WORKFLOW.** Both channels render one component and
+   only the `:channel` param changes, so React keeps it mounted and the modal stayed open across
+   the switch. Caught walking the tour backwards.
+⚠️ **AND THE CARD WAS PLACED NEARLY CLEAR OF SMALL TARGETS.** The "above" branch used
+`hole.top - CARD_H + 40`, and that 40px fudge sat over the bottom of an **85px compose box** —
+the control the step was pointing at. Below is preferred when it fits; above is exact now.
+⚠️ Overlap on a LARGE target (a whole canvas or table, 31-71% of the viewport) is unavoidable
+and fine; the check only fails when the card covers a target under 12% of the screen.
+
+**Verified by walking all 16 steps forward and then all 15 back**, asserting on every transition
+that the route is the step's own, the spotlight exists, the phone is open exactly on the three
+steps that want it, and the card is on screen and clear of small targets: **31 transitions, zero
+problems**.
+
 **Verified end to end on a real shared link**: all 16 steps reached, every card on screen, every
 spotlight landing on a real element, the scripted conversation running to completion in ~6s with
 live replies (and correctly deflecting a price question, per the `providesEstimate` clamp), the

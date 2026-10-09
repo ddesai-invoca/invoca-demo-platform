@@ -57,13 +57,6 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
   const steps = useRef<TourStep[]>(tourStepsFor(profile)).current;
 
   const [i, setI] = useState(0);
-  /* ⚠️⚠️ **THE CLICK GUARD IS A REF KEYED ON THE STEP, NOT A LOCAL — and a local cost the
-     scripted conversation twice.** StrictMode re-runs this effect, and a `let clicked` is
-     re-created on each run, so the button was pressed TWICE. The second press consumed an
-     already-spent autoplay flag and handed the phone `undefined`, overwriting the armed
-     script: the conversation silently never started. A ref keyed on the step index is what
-     actually means "this step has already done its click". */
-  const clickedStep = useRef<number | null>(null);
   const [box, setBox] = useState<Box | null>(null);
   const [ready, setReady] = useState(false);
   const step = steps[i];
@@ -75,15 +68,9 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
     if (!step) return;
     setReady(false);
     setBox(null);
-    /* ⚠️⚠️ **THE DONE FLAG IS RESET WHEN THE SCRIPT IS ARMED, NEVER ON EVERY STEP — and
-       resetting it per step was a race that only a real person hit.** The scripted
-       conversation runs while the prospect reads the step that started it; if it FINISHES
-       before they press Next, the next step cleared the flag and then waited for a
-       completion that had already happened, so "One moment…" sat there until the 25s
-       bail-out. An automated walk advances too fast to see it, which is exactly why it
-       passed here and failed in front of somebody. The flag's lifecycle belongs to the
-       script run, not to navigation. */
-    if (step.autoplay) { resetAutoplayDone(); armAutoplay(); }
+    /* ⚠️ The script is armed by `ensure` immediately before the click that consumes it —
+       see `measure`. Arming here would spend the flag on a step that reopens an already
+       open phone, and the earlier per-step reset was a race a real person hit. */
     if (step.route && step.route !== pathname) navigate(step.route);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [i]);
@@ -95,8 +82,38 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
     const budget = step.waitMs ?? 2500;
 
     let scrolls = 0;
+    let ensureTries = 0;
+    let dismissTries = 0;
     const measure = () => {
       if (!alive) return;
+
+      /* ⚠️⚠️ **RE-ESTABLISH THE STEP'S PRECONDITION BEFORE MEASURING ANYTHING — this is
+         what makes BACK work.** Reported: step 12 -> Back landed on the reports page with
+         the card describing a phone that was not there. Two causes, and this is the second:
+         returning to the SMS workflow REMOUNTS it with the phone closed, so a step that had
+         merely clicked its own target on the way forward had nothing to point at coming
+         back. `when` is the idempotent guard — arriving with the phone already open clicks
+         nothing, so going 9 -> 10 -> 11 opens it once. */
+      /* ⚠️ The mirror of `ensure`, and it runs first: a step reached backwards from one
+         that opened something must be able to send it away again. */
+      if (step.dismiss && document.querySelector(step.dismiss.when) && dismissTries < 2) {
+        const closer = document.querySelector<HTMLElement>(step.dismiss.close);
+        if (closer) { dismissTries += 1; closer.click(); setTimeout(measure, 320); return; }
+      }
+      if (step.ensure && !document.querySelector(step.ensure.when) && ensureTries < 2) {
+        const opener = document.querySelector<HTMLElement>(step.ensure.open);
+        if (opener) {
+          ensureTries += 1;
+          /* ⚠️ Armed immediately before the click, because the click handler CONSUMES the
+             flag. Only here, so reopening the phone on a later step never replays the
+             script at somebody who has already watched it. */
+          if (step.autoplay) { resetAutoplayDone(); armAutoplay(); }
+          opener.click();
+          setTimeout(measure, 450);
+          return;
+        }
+      }
+
       /* ⚠️⚠️ **THE BUDGET IS CHECKED FIRST, AND PUTTING IT LAST HUNG THE TOUR DEAD.** The
          scroll-into-view branch returned before ever reaching the timeout test, so a target
          TALLER THAN THE VIEWPORT — a report's call list, say — could never satisfy
@@ -106,14 +123,6 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
       if (!step.target) { setBox(null); setReady(true); return; }
       const el = document.querySelector<HTMLElement>(step.target);
       if (el) {
-        /* ⚠️ A step may ask for the target to be CLICKED — opening the phone preview,
-           say. Done once per step, and only after it exists. */
-        if (step.click && clickedStep.current !== i) {
-          clickedStep.current = i;
-          el.click();
-          setTimeout(measure, 420);
-          return;
-        }
         const r = el.getBoundingClientRect();
         if (r.width > 0 && r.height > 0) {
           /* Scroll it into view before measuring again, or the hole lands off screen.
@@ -237,7 +246,13 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
       const top = Math.max(16, Math.min(hole.top, window.innerHeight - CARD_H - 16));
       cardStyle = { top, left, width: w };
     } else {
-      const top = below > above ? hole.top + hole.height + 14 : Math.max(16, hole.top - CARD_H + 40);
+      /* ⚠️ **PLACED CLEAR OF THE TARGET, NOT NEARLY CLEAR.** The old "above" placement was
+         `hole.top - CARD_H + 40`, and that 40px fudge put the card over the bottom of
+         whatever it was pointing at — measured on the compose box, an 85px target with 40px
+         of card on top of it. Below is preferred when it fits; above is exact. */
+      const top = below >= CARD_H + 20
+        ? hole.top + hole.height + 14
+        : Math.max(16, hole.top - CARD_H - 14);
       let left = hole.left + hole.width / 2 - CARD_W / 2;
       left = Math.max(16, Math.min(left, window.innerWidth - CARD_W - 16));
       cardStyle = { top, left };
