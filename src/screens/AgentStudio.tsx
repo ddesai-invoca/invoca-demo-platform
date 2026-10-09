@@ -3,6 +3,8 @@ import { useProfile } from "../data/ProfileContext";
 import { useAgentWorkflows, createdWorkflowPath, type CreatedWorkflow } from "../data/agentWorkflows";
 import { WorkflowRowMenu } from "../components/WorkflowRowMenu";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
+import { isShareMode } from "../data/shareMode";
+import { TourCallout } from "../components/GuidedTour";
 
 /* Agent Studio — one AI agent per customer with a Voice + SMS workflow.
    All names derive from the customer, so this re-skins for any prospect.
@@ -122,6 +124,10 @@ export function AgentStudio() {
           ))}
         </tbody>
       </table>
+      {/* ⚠️ SHARED DEMOS ONLY: an SE opening their own Agent Studio has no tour to take.
+          It sits in the page's own flow, under the table, so it lands in the whitespace a
+          prospect is looking at and scrolls with the content rather than floating over it. */}
+      {isShareMode() && <TourCallout />}
     </div>
   );
 }

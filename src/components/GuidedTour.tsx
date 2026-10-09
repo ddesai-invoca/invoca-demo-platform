@@ -22,7 +22,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { tourStepsFor, type TourStep } from "../data/tourSteps";
-import { SHARE_TOKEN } from "../data/shareMode";
+import { SHARE_TOKEN, SHARE_LANDING } from "../data/shareMode";
 
 /** ⚠️ Per link AND per browser: a second prospect opening the same link gets the
  *  tour, and the same person reopening it does not. */
@@ -48,6 +48,38 @@ export const markAutoplayDone = () => { autoplayDone = true; };
 const takeAutoplayDone = (): boolean => autoplayDone;
 const resetAutoplayDone = () => { autoplayDone = false; };
 
+/* ⚠️⚠️ **A SCREEN ASKS FOR THE TOUR; IT DOES NOT OWN IT.** The big callout lives in the
+   Agent Studio page so it can sit in that page's own whitespace and scroll with it, while
+   whether the tour is open is `ShareTour`'s state, outside `<Routes>`. A module-level
+   subscription is the smallest thing that joins them: threading a provider through every
+   screen to pass one callback is how a shared screen ends up knowing about the tour. */
+const listeners = new Set<() => void>();
+export function onTourRequest(fn: () => void): () => void {
+  listeners.add(fn);
+  return () => { listeners.delete(fn); };
+}
+export const requestTour = (): void => { listeners.forEach((fn) => fn()); };
+
+/**
+ * The prominent way in, for the page a prospect lands on.
+ *
+ * ⚠️ Asked for directly: bigger, and centred in the whitespace under the table, *"so
+ * prospects can def see it"*. The small corner pill stays for every OTHER screen, where
+ * there is no whitespace to put this in and the tour is not the point of the page.
+ */
+export function TourCallout() {
+  return (
+    <div className="tour-cta">
+      <span className="material-icons tour-cta-ic" aria-hidden="true">play_circle</span>
+      <div className="tour-cta-text">
+        <h3>New here? Take the guided tour</h3>
+        <p>Two minutes, start to finish. See the voice agent, the SMS agent and the reporting they write themselves.</p>
+      </div>
+      <button className="tour-cta-btn" onClick={requestTour}>Start the tour</button>
+    </div>
+  );
+}
+
 interface Box { top: number; left: number; width: number; height: number }
 
 export function GuidedTour({ onClose }: { onClose: () => void }) {
@@ -68,7 +100,17 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
   const [ready, setReady] = useState(false);
   const step = steps[i];
 
-  const finish = useCallback(() => { markSeen(); onClose(); }, [onClose]);
+  /**
+   * ⚠️⚠️ **FINISHING RETURNS THEM TO THE LANDING PAGE; SKIPPING LEAVES THEM WHERE THEY
+   * ARE.** Asked for: "Start exploring" should hand them back to Agent Studio, which is
+   * where a prospect can actually begin. Skipping is the opposite intent, and yanking
+   * somebody who bailed on step 3 to another screen would be the tour overruling them.
+   */
+  const finish = useCallback((home = false) => {
+    markSeen();
+    if (home) navigate(SHARE_LANDING);
+    onClose();
+  }, [onClose, navigate]);
 
   /* Navigate, then wait for the target. */
   useEffect(() => {
@@ -316,10 +358,13 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
           <p className="tour-live"><span className="tour-live-dot" aria-hidden="true" />The agent is replying, live</p>
         )}
         <div className="tour-foot">
-          <button className="tour-skip" onClick={finish}>Skip the tour</button>
+          <button className="tour-skip" onClick={() => finish()}>Skip the tour</button>
           <div className="tour-nav">
             {i > 0 && <button className="tour-btn tour-btn--ghost" onClick={() => setI(i - 1)}>Back</button>}
-            <button className="tour-btn tour-btn--go" onClick={() => (last ? finish() : setI(i + 1))}>
+            {/* ⚠️ `finish(true)` on the LAST step only: finishing hands them back to the
+                landing page, where a prospect can start poking at things themselves.
+                Skip calls `finish()` and leaves them exactly where they are. */}
+            <button className="tour-btn tour-btn--go" onClick={() => (last ? finish(true) : setI(i + 1))}>
               {last ? "Start exploring" : "Next"}
             </button>
           </div>

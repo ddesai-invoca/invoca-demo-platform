@@ -1084,6 +1084,34 @@ console.log("\nActivity tracking\n");
       ? ok("the card narrows to the room available instead of overlapping the spotlight")
       : bad("on a narrow screen the card clamps over the target");
 
+    /* ⚠️⚠️ FINISHING GOES HOME, SKIPPING DOES NOT. Two different intents, and a bare
+       `onClick={finish}` would hand the MouseEvent in as `home` — truthy, so Skip would
+       navigate too. `tsc` caught that one; this keeps it caught. */
+    /last \? finish\(true\) : setI\(i \+ 1\)/.test(tour)
+      ? ok("finishing the tour returns to the landing page")
+      : bad("Start exploring leaves a prospect on the last report");
+    /onClick=\{\(\) => finish\(\)\}>Skip the tour/.test(tour)
+      ? ok("Skip leaves them where they are, and cannot pass an event as the home flag")
+      : bad("skipping would navigate, or an event would be read as a boolean");
+
+    /* ⚠️ The big way in on the landing page, and exactly ONE way in at any time. */
+    /export function TourCallout/.test(tour) && /tour-cta-btn/.test(tour)
+      ? ok("the landing page carries a large callout, not just a corner pill")
+      : bad("a prospect has only a small pill to find");
+    /isShareMode\(\) && <TourCallout \/>/.test(code("src/screens/AgentStudio.tsx"))
+      ? ok("the callout is rendered in Agent Studio's own flow, shared demos only")
+      : bad("an SE would see a tour callout, or it would float over the table");
+    /* ⚠️ Read locally rather than reusing the `appSrc` declared further down: a `const` in
+       the same scope is in its temporal dead zone up here, and referencing it CRASHED the
+       suite with a ReferenceError that a `grep FAIL` reported as a clean pass. */
+    const shareSrc = code("src/screens/ShareApp.tsx");
+    /!\(onLanding && ctaSeen\)/.test(shareSrc)
+      ? ok("the corner pill survives only while the callout is off screen")
+      : bad("either two entry points at once, or none on a short viewport");
+    /window\.addEventListener\("scroll", read, true\)/.test(shareSrc)
+      ? ok("the callout's visibility is measured on scroll in the capture phase")
+      : bad("scrolling the content box would not update which entry point shows");
+
     /* ⚠️ Mounted by ShareApp, so the signed-in app never constructs it. */
     const appSrc = code("src/screens/ShareApp.tsx");
     /<ShareTour \/>/.test(appSrc) && /<BrowserRouter/.test(appSrc)

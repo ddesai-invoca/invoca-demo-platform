@@ -17,7 +17,7 @@ import { SmsConversationIntelligence } from "./SmsConversationIntelligence";
 import { VoiceConversationIntelligence } from "./VoiceConversationIntelligence";
 import { SmsPreviewPage } from "./SmsPreviewPage";
 import { SHARE_TOKEN, SHARE_BASENAME, SHARE_LANDING, shareAllows } from "../data/shareMode";
-import { GuidedTour, hasSeenTour } from "../components/GuidedTour";
+import { GuidedTour, hasSeenTour, onTourRequest } from "../components/GuidedTour";
 
 /* =============================================================================
    ShareApp — what a PROSPECT sees, and deliberately nothing else
@@ -262,10 +262,51 @@ export default function ShareApp() {
  */
 function ShareTour() {
   const [open, setOpen] = useState(() => !hasSeenTour());
+  const { pathname } = useLocation();
+  /* The big callout on the landing page asks for the tour through this. */
+  useEffect(() => onTourRequest(() => setOpen(true)), []);
+  /* ⚠️ ONE WAY IN PER SCREEN. The landing page carries the large callout in its own
+     whitespace, so the corner pill would be a second, smaller version of the same button
+     six inches away. Every other screen keeps the pill, because there is no whitespace
+     there and the tour is not the point of those pages. */
+  const onLanding = pathname === SHARE_LANDING;
+
+  /* ⚠️⚠️ **ON THE LANDING PAGE THE PILL SURVIVES ONLY WHILE THE CALLOUT IS OFF SCREEN.**
+     Measured: the workflow table is tall enough that on a 935px laptop the callout sits
+     below the fold, so "hide the pill on this page" would have left a prospect with NO
+     visible way in on exactly the screen size most of them use. Observing the callout
+     gives one entry point at all times and never two at once. */
+  const [ctaSeen, setCtaSeen] = useState(false);
+  useEffect(() => {
+    if (!onLanding) { setCtaSeen(false); return; }
+    /* ⚠️⚠️ **MEASURED ON SCROLL, NOT VIA IntersectionObserver — and the observer version
+       silently never updated.** `.main` is the scroll container, not the window, and the
+       observer did not report the callout coming into view when that box scrolled. The
+       capture phase is required because scroll does not bubble, which is the same fix the
+       sidebar flyout and the tour's own spotlight already use. */
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const read = () => {
+      const el = document.querySelector(".tour-cta");
+      if (!el) { setCtaSeen(false); return; }
+      const r = el.getBoundingClientRect();
+      /* Comfortably in view, not merely touching the edge. */
+      setCtaSeen(r.top < window.innerHeight - 60 && r.bottom > 80);
+    };
+    const poll = () => { read(); timer = setTimeout(poll, 400); };
+    poll();
+    window.addEventListener("scroll", read, true);
+    window.addEventListener("resize", read);
+    return () => {
+      if (timer) clearTimeout(timer);
+      window.removeEventListener("scroll", read, true);
+      window.removeEventListener("resize", read);
+    };
+  }, [onLanding, pathname, open]);
+
   return (
     <>
       {open && <GuidedTour onClose={() => setOpen(false)} />}
-      {!open && (
+      {!open && !(onLanding && ctaSeen) && (
         <button className="tour-replay tour-replay--fixed" onClick={() => setOpen(true)}>
           <span className="material-icons" aria-hidden="true">play_circle</span>
           Take the tour

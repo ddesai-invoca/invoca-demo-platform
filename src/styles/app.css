@@ -6972,3 +6972,30 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .tour-live-dot { width: 7px; height: 7px; border-radius: 50%; background: #00b388; animation: tour-pulse 1.1s ease-in-out infinite; }
 @keyframes tour-pulse { 0%, 100% { opacity: 1; } 50% { opacity: .25; } }
 @media (prefers-reduced-motion: reduce) { .tour-live-dot { animation: none; } }
+
+/* The large way into the tour, on the page a prospect lands on. Asked for directly:
+   bigger, and centred in the whitespace under the table, "so prospects can def see it".
+   ⚠️ In the page's FLOW, not fixed: it belongs to the empty area under the table and
+   should scroll with it, where a floating panel would sit over the rows. */
+.tour-cta {
+  display: flex; align-items: center; gap: 20px;
+  width: min(720px, calc(100% - 48px)); margin: 36px auto 48px;
+  padding: 26px 30px; border-radius: 14px;
+  background: #f4fbf8; border: 1px solid #cdeee2;
+  box-shadow: 0 2px 10px rgba(12, 0, 51, .06);
+}
+.tour-cta-ic { font-size: 46px !important; color: #00b388; flex: none; }
+.tour-cta-text { flex: 1; min-width: 0; }
+.tour-cta-text h3 {
+  margin: 0 0 6px; font-size: 20px; line-height: 1.25; font-weight: 700; color: #15243e;
+}
+.tour-cta-text p { margin: 0; font-size: 14px; line-height: 1.55; color: #5b6577; }
+.tour-cta-btn {
+  flex: none; font: inherit; font-size: 15px; font-weight: 700; color: #fff;
+  background: #00b388; border: 0; border-radius: 6px; padding: 13px 26px; cursor: pointer;
+}
+.tour-cta-btn:hover { background: #00997a; }
+@media (max-width: 760px) {
+  .tour-cta { flex-direction: column; align-items: flex-start; gap: 14px; margin: 40px auto; }
+  .tour-cta-btn { width: 100%; }
+}

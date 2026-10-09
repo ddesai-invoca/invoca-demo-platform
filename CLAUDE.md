@@ -13160,6 +13160,40 @@ moment..."*
    with a 300px floor rather than overlapping. Verified at 1221px (card beside, 0 overlap) and
    1060px (card narrowed to 309px, 0 overlap).
 
+#### Finishing goes home, and the way in is unmissable (10/9/2026)
+Asked for: *"when they click start exploring at the end of the tour, take them back to the main
+agent studio page"*, and make the Take the tour button *"a lot bigger and put it centered white
+space so prospects can def see it"*.
+
+⚠️ **FINISHING RETURNS THEM TO THE LANDING PAGE; SKIPPING LEAVES THEM WHERE THEY ARE.** Two
+different intents: "Start exploring" hands them back to Agent Studio, where a prospect can
+actually begin, while yanking somebody who bailed on step 3 would be the tour overruling them.
+⚠️⚠️ **`tsc` CAUGHT A REAL BUG HERE.** `finish` took `(home = false)` and Skip was
+`onClick={finish}`, which passes the MouseEvent in as `home` — truthy, so **Skip would have
+navigated too**, the exact thing the split exists to prevent.
+
+⚠️⚠️ **THE BIG CALLOUT LIVES IN AGENT STUDIO'S OWN FLOW, NOT FIXED OVER IT.** It belongs to the
+empty area under the workflow table and should scroll with it; a floating panel would sit on the
+rows. `TourCallout` is exported from `GuidedTour` and rendered by `AgentStudio` behind
+`isShareMode()`, and it asks for the tour through a module-level subscription — whether the tour
+is OPEN is `ShareTour` state, outside `<Routes>`, and threading a provider through every screen
+to pass one callback is how a shared screen ends up knowing about the tour.
+
+⚠️⚠️ **EXACTLY ONE WAY IN AT ANY TIME, AND "HIDE THE PILL ON THIS PAGE" WAS NOT ENOUGH.**
+Measured: the workflow table is tall enough that on a **935px laptop the callout sits below the
+fold**, so hiding the pill there would have left a prospect with NO visible way in on the screen
+size most of them use. The pill now survives on the landing page only while the callout is off
+screen. Verified at the top (pill, no callout), scrolled down (callout, no pill) and back.
+⚠️ **MEASURED ON SCROLL IN THE CAPTURE PHASE, NOT VIA `IntersectionObserver`** — `.main` is the
+scroll container rather than the window, and the observer silently never updated when that box
+scrolled. Same fix the sidebar flyout and the tour's own spotlight already use.
+
+⚠️⚠️ **AND A VERIFICATION LESSON: `grep "^  FAIL"` REPORTED A CRASHED SUITE AS A PASS.** Two new
+checks referenced a `const` declared further down the same scope, so they hit its temporal dead
+zone and the script died with a ReferenceError — and grepping only for FAIL lines found none, so
+it read as green. **Check the tail and the exit code, not just the absence of failures.** That is
+the crash-not-FAIL trap this file already records, hidden behind the probe this time.
+
 #### The card stays off the phone, and no em dash anywhere in the tour (10/9/2026)
 Two things reported against step 11.
 
