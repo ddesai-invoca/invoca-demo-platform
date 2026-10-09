@@ -161,27 +161,36 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
     };
   }, [box === null, step?.target]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  /* A step that waits on the scripted conversation polls for it rather than guessing. */
-  const [autoBusy, setAutoBusy] = useState(false);
+  /**
+   * ⚠️⚠️ **THE SCRIPT NEVER BLOCKS Next, AND DISABLING IT WAS THE WRONG CALL.** Reported
+   * twice: *"why is it taking too long for the next button to show up"*. Measured at
+   * **5.3 seconds even when everything is fast** — two live `/api/chat` round trips plus
+   * the typing — and longer whenever the model is. Five seconds of a greyed-out button is
+   * indistinguishable from a broken tour, and it hands a prospect a dead end on the one
+   * screen that exists to impress them.
+   *
+   * ⚠️ So this is now a HINT, not a gate: the button always works, and a quiet line says
+   * the agent is still replying. The conversation lives in the phone and carries on
+   * whether or not they move. It also retires the whole class of bug — a gate can hang, a
+   * hint cannot, and the 25-second bail-out that was papering over it is gone.
+   */
+  const [scriptLive, setScriptLive] = useState(false);
   useEffect(() => {
-    if (!step?.awaitAutoplay) { setAutoBusy(false); return; }
-    setAutoBusy(!takeAutoplayDone());
-    const t = setInterval(() => { if (takeAutoplayDone()) { setAutoBusy(false); clearInterval(t); } }, 300);
-    /* ⚠️ Bounded. A failed `/api/chat` must not leave Next disabled forever on a
-       prospect's screen — after 25s they can carry on regardless. */
-    const give = setTimeout(() => { setAutoBusy(false); clearInterval(t); }, 25_000);
-    return () => { clearInterval(t); clearTimeout(give); };
+    if (!step?.awaitAutoplay) { setScriptLive(false); return; }
+    setScriptLive(!takeAutoplayDone());
+    const t = setInterval(() => { if (takeAutoplayDone()) { setScriptLive(false); clearInterval(t); } }, 300);
+    return () => clearInterval(t);
   }, [i, step?.awaitAutoplay]);
 
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       if (e.key === "Escape") finish();
-      if (e.key === "ArrowRight" && ready && !autoBusy) setI((n) => (n + 1 < steps.length ? n + 1 : n));
+      if (e.key === "ArrowRight" && ready) setI((n) => (n + 1 < steps.length ? n + 1 : n));
       if (e.key === "ArrowLeft") setI((n) => Math.max(0, n - 1));
     };
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
-  }, [finish, ready, autoBusy, steps.length]);
+  }, [finish, ready, steps.length]);
 
   if (!step || !ready) return null;
 
@@ -256,13 +265,15 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
         {step.value && (
           <p className="tour-value"><span className="material-icons" aria-hidden="true">check_circle</span>{step.value}</p>
         )}
+        {scriptLive && (
+          <p className="tour-live"><span className="tour-live-dot" aria-hidden="true" />The agent is replying, live</p>
+        )}
         <div className="tour-foot">
           <button className="tour-skip" onClick={finish}>Skip the tour</button>
           <div className="tour-nav">
             {i > 0 && <button className="tour-btn tour-btn--ghost" onClick={() => setI(i - 1)}>Back</button>}
-            <button className="tour-btn tour-btn--go" disabled={autoBusy}
-              onClick={() => (last ? finish() : setI(i + 1))}>
-              {autoBusy ? "One moment…" : last ? "Start exploring" : "Next"}
+            <button className="tour-btn tour-btn--go" onClick={() => (last ? finish() : setI(i + 1))}>
+              {last ? "Start exploring" : "Next"}
             </button>
           </div>
         </div>

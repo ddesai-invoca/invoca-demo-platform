@@ -985,6 +985,22 @@ console.log("\nActivity tracking\n");
       ? ok("nothing clears the completion flag on an unrelated step")
       : bad("a step change can discard a completion that already happened");
 
+    /* ⚠️⚠️ **Next IS NEVER DISABLED. Reported twice, and the second time with the real
+       complaint: "why is it taking too long for the next button to show up".** Measured at
+       5.3s even when everything is fast — two live round trips plus the typing — and five
+       seconds of a greyed-out button is indistinguishable from a broken tour. The scripted
+       conversation is a HINT now, not a gate: it cannot hang, and there is no bail-out
+       timer papering over one. */
+    !/tour-btn--go" disabled/.test(tour) && !/disabled=\{autoBusy\}/.test(tour)
+      ? ok("the tour's Next button is never disabled, whatever the script is doing")
+      : bad("a prospect can be stopped from moving on by a live API call");
+    /tour-live/.test(tour) && /The agent is replying, live/.test(tour)
+      ? ok("a non-blocking hint says the agent is still replying")
+      : bad("the script runs with nothing on screen to explain the pause");
+    !/25_000|25000/.test(tour)
+      ? ok("no bail-out timer, because there is no gate left to bail out of")
+      : bad("a gate is still there, with a timer hiding its failures");
+
     /* ⚠️ A target taller than the room above and below gets the card BESIDE it, narrowed
        if need be — reported against the phone, where the card covered the conversation it
        was describing. */

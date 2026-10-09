@@ -13141,7 +13141,19 @@ moment..."*
    than the script could finish, so it never saw it**, and the bail-out hid it even then. The
    flag's lifecycle belongs to the ARM, not to navigation. Reproduced by sitting on step 9 for
    22 seconds before advancing, which is the test that should have existed first.
-2. ⚠️ **THE CARD COVERED THE PHONE IT WAS DESCRIBING.** Neither above nor below fits a 560px
+2. ⚠️⚠️ **AND THE FIX ABOVE WAS NOT ENOUGH, BECAUSE GATING AT ALL WAS THE WRONG CALL.**
+   Reported again: *"why is it taking too long for the next button to show up"*. **Measured:
+   5.3 seconds even when everything is fast** — two live `/api/chat` round trips plus the
+   typing animation — and longer whenever the model is. Five seconds of a greyed-out button
+   is indistinguishable from a broken tour, and it hands a prospect a dead end on the one
+   screen that exists to impress them. The scripted conversation is a **HINT** now, not a
+   gate: Next always works, a quiet "The agent is replying, live" line says what is
+   happening, and the conversation carries on in the phone whether or not they move. That
+   also retires the whole class of bug — a gate can hang, a hint cannot — and the 25-second
+   bail-out that was papering over the race is gone with it.
+   ⚠️ **THE LESSON IS THE SHAPE, NOT THE TIMING: do not block a prospect on a network call
+   you do not control.** Both the race and the complaint came from the same decision.
+3. ⚠️ **THE CARD COVERED THE PHONE IT WAS DESCRIBING.** Neither above nor below fits a 560px
    phone on a 900px screen, so both branches clamped to the viewport edge and landed over the
    spotlight. A tall target now gets the card BESIDE it, and when neither side holds 380px
    (measured: 1060px wide puts 55px of card over the phone) it NARROWS to the room available
