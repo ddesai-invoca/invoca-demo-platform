@@ -684,6 +684,170 @@ console.log("\nActivity tracking\n");
     ? ok("a styling failure cannot lose a row that already landed")
     : bad("the theme call can fail a mark");
 
+  /* ==========================================================================
+     THE THEME, DRIVEN AGAINST A MOCKED GOOGLE.
+
+     ⚠️⚠️ **THIS SECTION EXISTS BECAUSE THE SOURCE-READING CHECKS ABOVE ALL PASSED ON A
+     SHEET THAT WAS COMPLETELY UNSTYLED.** The palette was right, the font constant was
+     right, every field validated against Google's own discovery document — and the first
+     real sheet came out as a plain white grid, because the request never reached Google
+     in a usable state. Reading the file could not have found that; calling the function
+     and reading what it would SEND can. Never the real API: an audit that depends on
+     somebody else's service cannot run on a machine with no credential, which is the rule
+     `audit:advanced` already follows for Gong.
+     ========================================================================== */
+  {
+    const { saveSheetsToken } = await import("../engine/sheetsTokens.ts");
+    const sheetsApi = await import("../engine/sheetsApi.ts");
+    saveSheetsToken("owner@invoca.com", "refresh-token-for-the-audit");
+    const target = { email: "owner@invoca.com", spreadsheetId: "SHEET_ID_0123456789" };
+
+    const sent: any[] = [];
+    const realFetch = globalThis.fetch;
+    /* ⚠️ **"Demo Notes" DELIBERATELY CARRIES NO `sheetId`.** That is not a lazy fixture —
+       it is exactly what Google returns for the FIRST sheet in a spreadsheet, because
+       protobuf-to-JSON omits zero-valued integers, and reproducing it is the whole point
+       of this test. */
+    globalThis.fetch = (async (url: any, init?: any) => {
+      const u = String(url);
+      const json = (body: unknown) => new Response(JSON.stringify(body), {
+        status: 200, headers: { "Content-Type": "application/json" },
+      });
+      if (u.includes("oauth2.googleapis.com")) return json({ access_token: "tok", expires_in: 3600 });
+      if (u.includes("?fields=sheets.properties")) {
+        return json({ sheets: [
+          { properties: { title: "Demo Notes" } },
+          { properties: { title: "Activity", sheetId: 1870 } },
+        ] });
+      }
+      if (u.includes(":batchUpdate")) { sent.push(JSON.parse(String(init?.body ?? "{}"))); return json({}); }
+      if (u.includes("/values/")) {
+        if (u.includes("Activity!A2:A")) {
+          return json({ values: [["Riverbend Sandler Pools"], ["    \u21b3  someone@example.com"]] });
+        }
+        return json({ values: [["h"], ["r1"], ["r2"]] });
+      }
+      return json({});
+    }) as typeof fetch;
+
+    try {
+      sent.length = 0;
+      await sheetsApi.themeNotes(target);
+      const flat = JSON.stringify(sent);
+
+      /* ⚠️⚠️ THE REGRESSION THAT SHIPPED: `Number(undefined)` is NaN, `JSON.stringify`
+         turns NaN into `null`, and Google 400s the whole batch — so every style request
+         for the first tab of every sheet was lost, silently. */
+      !/"sheetId":null/.test(flat) && !/NaN/.test(flat)
+        ? ok("the first tab's sheetId 0 survives — no NaN reaches Google")
+        : bad("sheetId came out null/NaN: the first tab of every sheet goes unstyled");
+      /"sheetId":0/.test(flat)
+        ? ok("an absent sheetId is read as 0, which is what it means")
+        : bad("the first tab's id is not being resolved to 0");
+
+      const reqs = sent.flatMap((b: any) => b.requests ?? []);
+      reqs.some((r: any) => r.updateSheetProperties?.properties?.tabColor)
+        ? ok("the tab itself is coloured, so a themed sheet is obvious at a glance")
+        : bad("nothing marks the tab as themed");
+      reqs.some((r: any) => r.updateSheetProperties?.properties?.gridProperties?.hideGridlines === true)
+        ? ok("the default grid is off — our own hairlines do the ruling")
+        : bad("the sheet still reads as a default spreadsheet grid");
+
+      /* ⚠️ Bounded to the rows that hold something. An unbounded body range rules all
+         1,000 rows of an empty grid, which is most of what made it look unfinished. */
+      const body = reqs.find((r: any) => r.repeatCell?.cell?.userEnteredFormat?.borders?.bottom);
+      body?.repeatCell?.range?.endRowIndex === 3
+        ? ok("the hairlines stop at the last row that holds something")
+        : bad("the body formatting runs past the data and rules the empty grid");
+
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+
+    /* The Activity emphasis, driven the same way. */
+    const sent2: any[] = [];
+    const realFetch2 = globalThis.fetch;
+    globalThis.fetch = (async (url: any, init?: any) => {
+      const u = String(url);
+      const json = (b: unknown) => new Response(JSON.stringify(b), { status: 200, headers: { "Content-Type": "application/json" } });
+      if (u.includes("oauth2.googleapis.com")) return json({ access_token: "tok", expires_in: 3600 });
+      if (u.includes("?fields=sheets.properties")) {
+        return json({ sheets: [{ properties: { title: "Demo Notes" } }, { properties: { title: "Activity", sheetId: 1870 } }] });
+      }
+      if (u.includes(":batchUpdate")) { sent2.push(JSON.parse(String(init?.body ?? "{}"))); return json({}); }
+      if (u.includes("Activity!A2:A")) {
+        return json({ values: [["Riverbend Sandler Pools"], [`${sheetsApi.INDENT}someone@example.com`]] });
+      }
+      if (u.includes("/values/")) return json({ values: [["h"], ["r1"], ["r2"]] });
+      return json({});
+    }) as typeof fetch;
+    try {
+      await sheetsApi.writeActivity(target, [
+        { main: true, label: "Riverbend Sandler Pools", opened: 1, sms: 1, voice: 0, firstAt: "a", lastAt: "b" },
+        { main: false, label: "someone@example.com", opened: 1, sms: 1, voice: 0, firstAt: "a", lastAt: "b" },
+      ]);
+      const reqs2 = sent2.flatMap((b: any) => b.requests ?? []);
+      /* ⚠️⚠️ THE SUBLINE IS RECOVERED FROM THE INDENT, which is the one definition the
+         writer also uses. A prospect row gets the wash and the thick green edge; a person
+         must NOT, or the whole tab reads as headings. */
+      const accents = reqs2.filter((r: any) =>
+        r.repeatCell?.cell?.userEnteredFormat?.borders?.left?.style === "SOLID_THICK");
+      accents.length === 1 && accents[0].repeatCell.range.startRowIndex === 1
+        ? ok("exactly the prospect row carries the thick green edge, not its people")
+        : bad(`the prospect accent landed on ${accents.length} row(s) — the indent test is wrong`);
+      reqs2.some((r: any) => r.repeatCell?.cell?.userEnteredFormat?.numberFormat?.pattern === "0")
+        ? ok("the counts are formatted as integers, so two columns cannot disagree")
+        : bad("a count could render as 1 in one column and 1.0 in the next");
+    } finally {
+      globalThis.fetch = realFetch2;
+    }
+  }
+
+  /* ⚠️⚠️ A MISSING TAB MUST THROW, NOT RETURN QUIETLY. The silent return is precisely what
+     made a sheet that could not be styled look exactly like one that had been, and it is
+     the shape every caller's catch now depends on having something to catch. */
+  {
+    const sheetsApi = await import("../engine/sheetsApi.ts");
+    const realFetch = globalThis.fetch;
+    globalThis.fetch = (async (url: any) => {
+      const u = String(url);
+      const json = (b: unknown) => new Response(JSON.stringify(b), { status: 200, headers: { "Content-Type": "application/json" } });
+      if (u.includes("oauth2.googleapis.com")) return json({ access_token: "tok", expires_in: 3600 });
+      if (u.includes("?fields=sheets.properties")) return json({ sheets: [{ properties: { title: "Something Else", sheetId: 9 } }] });
+      return json({});
+    }) as typeof fetch;
+    let threw = false;
+    try {
+      await sheetsApi.themeNotes({ email: "owner@invoca.com", spreadsheetId: "SHEET_ID_0123456789" });
+    } catch { threw = true; } finally { globalThis.fetch = realFetch; }
+    threw
+      ? ok("styling a tab that is not there throws, so a caller can report it")
+      : bad("a missing tab is styled silently — the failure that shipped");
+  }
+
+  /* ⚠️ Both swallow sites must REPORT. A cosmetic failure that says nothing is how a
+     broken theme shipped and stayed broken until somebody opened the file. */
+  /reportStyleFailure\(TAB_NAME, e\)/.test(code("engine/sheetHook.ts"))
+    ? ok("a Demo Notes styling failure is reported, not swallowed in silence")
+    : bad("a styling failure on Demo Notes goes nowhere");
+  /reportStyleFailure\(ACTIVITY_TAB, e\)/.test(code("engine/sheetActivity.ts"))
+    ? ok("an Activity write failure is reported, not swallowed in silence")
+    : bad("a failed Activity write goes nowhere");
+  /level: "record"/.test(sheets)
+    ? ok("a cosmetic failure is recorded, not paged at 2am")
+    : bad("styling failures would page");
+
+  /* ⚠️ The foreground path: fixes an already-written sheet AND surfaces the real error. */
+  /\/\^\\\/api\\\/events\\\/\(\[\^\/\]\+\)\\\/restyle\$\//.test(code("engine/demoApi.ts"))
+    ? ok("there is a restyle route")
+    : bad("no way to re-apply the theme to a sheet that was written while it was broken");
+  /Restyling a sheet is limited to project admins/.test(code("engine/demoApi.ts"))
+    ? ok("restyle is admin-only, like connecting")
+    : bad("any signed-in user could restyle");
+  /email: cfg\.sheetOwner/.test(code("engine/demoApi.ts"))
+    ? ok("restyle uses the connector's grant — the one every mark writes with")
+    : bad("restyle would prove a credential the sheet does not use");
+
   /* ⚠️⚠️ THE PALETTE IS THE PRODUCT'S, AND IT IS CHECKED AGAINST THE FILES THAT OWN IT
      rather than against a list copied in here — a copied list is a second definition of
      the house style, free to drift from the artifacts it is supposed to match. Every
@@ -720,7 +884,7 @@ console.log("\nActivity tracking\n");
      It searched the whole file for `: { bottom: { style: "SOLID", color: RULE } }`, which
      the BASE body format also contains, so the sabotage that empties the subline branch
      passed. Slice the ternary and read its else-branch. */
-  const borders = sheets.slice(sheets.indexOf("borders: l.main"));
+  const borders = sheets.slice(sheets.indexOf("borders: main"));
   const elseBranch = borders.slice(0, borders.indexOf("} },")).split("\n")
     .find((ln) => ln.trim().startsWith(": ")) ?? "";
   elseBranch.includes("bottom:")

@@ -34,8 +34,8 @@ import { type DemoRecord, deleteDemo, getDemo, listDemos, saveDemo, uniqueId } f
 import { isAdminEmail } from "./admins.ts";
 import { pendingAdminNotice, ackAdminNotice } from "./adminNotices.ts";
 import { MARK_STATUSES, MARK_LABEL, isMarkStatus, listMarks, markDemo, marksFor, unmarkDemo } from "./demoMarks.ts";
-import { listEventSettings, setEventSheet, setEventSpreadsheet, isEventKey } from "./eventSettings.ts";
-import { spreadsheetIdFrom, describeSheet, createSheet, sheetUrlFor, SheetsReconnectError } from "./sheetsApi.ts";
+import { listEventSettings, setEventSheet, setEventSpreadsheet, isEventKey, eventSettings } from "./eventSettings.ts";
+import { spreadsheetIdFrom, describeSheet, createSheet, sheetUrlFor, restyleSheets, SheetsReconnectError } from "./sheetsApi.ts";
 import { hasSheetsToken } from "./sheetsTokens.ts";
 import { postMarkRow, attendeeCell } from "./sheetHook.ts";
 import { lookupRep, salesforceConfigured, type RepCandidate } from "./salesforceApi.ts";
@@ -229,6 +229,33 @@ export async function handleDemoApi(
     } catch (e: unknown) {
       if (e instanceof SheetsReconnectError) return err(409, e.message);
       return err(400, (e as Error)?.message || "That sheet could not be connected.");
+    }
+  }
+
+  /* ⚠️⚠️ RE-APPLY THE HOUSE STYLE ON DEMAND, AND IT EXISTS BECAUSE A BACKGROUND STYLING
+     FAILURE IS INVISIBLE. Styling runs after a row lands and is swallowed so it can never
+     cost somebody their data — which also meant the only report of a failure was a sheet
+     that quietly looked wrong, and that is exactly how a broken theme shipped. This is the
+     same work in the foreground, so whatever Google says comes back to the person who
+     asked. It also fixes a sheet that was written while the styling was broken, without
+     waiting for the next mark. */
+  const restyleRoute = p.match(/^\/api\/events\/([^/]+)\/restyle$/);
+  if (restyleRoute) {
+    if (method !== "POST") return err(405, "Method not allowed.");
+    if (!isAdmin(user)) return err(403, "Restyling a sheet is limited to project admins.");
+    const key = decodeURIComponent(restyleRoute[1]);
+    if (!isEventKey(key)) return err(404, "Unknown event.");
+    const cfg = eventSettings(key);
+    if (!cfg.spreadsheetId || !cfg.sheetOwner) return err(400, "No Google Sheet is connected to this event.");
+    try {
+      /* ⚠️ The CONNECTOR's grant, not this admin's — the same one every mark writes with,
+         so a restyle proves the credential the sheet actually uses rather than one that
+         happens to belong to whoever clicked. */
+      const done = await restyleSheets({ email: cfg.sheetOwner, spreadsheetId: cfg.spreadsheetId });
+      return ok({ key, tabs: done.tabs });
+    } catch (e: unknown) {
+      if (e instanceof SheetsReconnectError) return err(409, e.message);
+      return err(400, (e as Error)?.message || "That sheet could not be styled.");
     }
   }
 

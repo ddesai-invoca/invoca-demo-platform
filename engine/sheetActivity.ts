@@ -18,7 +18,7 @@
 import { getDemo } from "./demoStore.ts";
 import { eventSettings } from "./eventSettings.ts";
 import { listActivity, totals, type ActivityRecord } from "./activityStore.ts";
-import { writeActivity, type ActivityLine } from "./sheetsApi.ts";
+import { writeActivity, reportStyleFailure, ACTIVITY_TAB, type ActivityLine } from "./sheetsApi.ts";
 import { centralTime } from "./sheetHook.ts";
 
 /**
@@ -78,7 +78,11 @@ export async function syncActivitySheet(demoId: string): Promise<{ written: bool
     await writeActivity(target, activityLines(mine));
     return { written: true };
   } catch (e: unknown) {
-    /* ⚠️ Swallowed BY DESIGN — see the header. The activity itself is already on disk. */
+    /* ⚠️ Swallowed BY DESIGN — see the header. The activity itself is already on disk.
+       ⚠️⚠️ **BUT NOT SILENTLY, which is the half that was missing.** Nothing reads the
+       `reason` this returns, so for a prospect's open it went nowhere at all: a tab that
+       could not be written looked exactly like one that had been. */
+    await reportStyleFailure(ACTIVITY_TAB, e);
     return { written: false, reason: (e as Error)?.message || "The sheet could not be written." };
   }
 }

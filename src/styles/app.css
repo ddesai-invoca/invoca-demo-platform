@@ -6823,6 +6823,10 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .evs-input:focus { outline: none; border-color: var(--color-green-bar); box-shadow: 0 0 0 3px rgba(44,191,88,.16); }
 .evs-hint { font-size: 12px; line-height: 1.5; color: #868e96; }
 .evs-err { font-size: 13px; color: #b33b00; }
+/* ⚠️ The success channel for a restyle, in the launch screen's own green rather than
+   the platform blue — this screen is OUR tool, not a replica, and its accent has
+   always been green. Paired with `.evs-err` so the two read as one slot. */
+.evs-note { font-size: 13px; color: var(--color-green-active); }
 .evs-unlink {
   padding: 11px 18px; background: none; border: 1px solid #e7e9eb; border-radius: 8px;
   font: inherit; font-size: 14px; font-weight: 700; color: #b33b00; cursor: pointer;

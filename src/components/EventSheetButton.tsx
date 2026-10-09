@@ -53,6 +53,8 @@ export default function EventSheetButton({
   const [hook, setHook] = useState("");
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
+  /* A restyle reports in place rather than closing, so it needs a channel of its own. */
+  const [note, setNote] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -85,6 +87,27 @@ export default function EventSheetButton({
       if (!res.ok) { setErr(body?.error || "That could not be saved."); return; }
       onSaved();
       setOpen(false);
+    } catch {
+      setErr("The server could not be reached.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  /**
+   * ⚠️⚠️ **IT STAYS OPEN AND REPORTS, WHERE `put` CLOSES.** The whole reason this action
+   * exists is that a background styling failure says nothing; a version that closed the
+   * dialog on success would reintroduce exactly that for the case it was built to expose.
+   * Success names the tabs it styled, failure shows what Google actually said.
+   */
+  async function restyle() {
+    setBusy(true); setErr(null); setNote(null);
+    try {
+      const res = await fetch(`/api/events/${encodeURIComponent(event)}/restyle`, { method: "POST" });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) { setErr(body?.error || "That sheet could not be styled."); return; }
+      const tabs: string[] = body?.tabs ?? [];
+      setNote(tabs.length ? `Restyled ${tabs.join(" and ")}.` : "Nothing to style yet.");
     } catch {
       setErr("The server could not be reached.");
     } finally {
@@ -182,6 +205,13 @@ export default function EventSheetButton({
                       <span className="material-icons">open_in_new</span>{state.sheetTitle}
                     </a>
                   )}
+                  {state?.wired && state?.sheetUrl && (
+                    <button type="button" className="evs-ghost" disabled={busy}
+                      title="Re-apply the Invoca formatting to both tabs now"
+                      onClick={() => void restyle()}>
+                      <span className="material-icons">format_paint</span>Restyle sheet
+                    </button>
+                  )}
                 </div>
                 {/* ⚠️⚠️ **IT MUST NAME THE ACCOUNT THAT ACTUALLY WRITES, WHICH IS THE ONE
                     THAT CONNECTED THIS EVENT — not whoever is reading the dialog.** Asked
@@ -248,6 +278,7 @@ export default function EventSheetButton({
               </div>
             )}
             {err && <div className="evs-err">{err}</div>}
+            {note && <div className="evs-note">{note}</div>}
           </div>
         </CenterModal>,
         document.body,

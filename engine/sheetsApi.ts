@@ -18,6 +18,7 @@
    ============================================================================= */
 
 import { getSheetsToken } from "./sheetsTokens.ts";
+import { alert } from "./alerts.ts";
 
 const SHEETS_API = "https://sheets.googleapis.com/v4/spreadsheets";
 const TOKEN_URL = "https://oauth2.googleapis.com/token";
@@ -117,6 +118,13 @@ export const TAB_NAME = "Demo Notes";
 
 /** The second tab: who opened a shared demo and what they did in it. */
 export const ACTIVITY_TAB = "Activity";
+
+/** ⚠️ **THE INDENT IS THE SUBLINE, AND IT IS ONE DEFINITION READ BY TWO SIDES.** Sheets has
+ *  no row hierarchy that survives a rewrite cleanly, and an outline group would have to be
+ *  deleted and re-added every time; a leading arrow reads as a child at a glance. The
+ *  styling pass then recovers "is this a person?" from this same string, so the two cannot
+ *  drift — change it here and both the writer and the reader move together. */
+export const INDENT = "    \u21b3  ";
 
 export const ACTIVITY_COLUMNS = [
   "Prospect / Person", "Opened", "SMS demos", "Voice demos", "First seen", "Last seen",
@@ -304,26 +312,86 @@ const WHITE = { r: 1, g: 1, b: 1 };
  *  config names for the Insights tab. Inter is nobody's font here. */
 const FONT = "Lato";
 
+/**
+ * The numeric id of a tab, by name.
+ *
+ * ⚠️⚠️ **`sheetId` IS ABSENT FROM THE RESPONSE WHEN IT IS 0, AND THAT BROKE THE FIRST TAB
+ * OF EVERY SHEET.** Google serialises protobuf to JSON and omits zero-valued integers, so
+ * the first sheet in a spreadsheet — which is always `sheetId: 0`, and which is always our
+ * **Demo Notes** tab — comes back as `{ properties: { title: "Demo Notes" } }` with no id
+ * at all. The old `Number(hit.properties.sheetId)` therefore returned **NaN**, `NaN === null`
+ * is false so the caller sailed on, `JSON.stringify` turned it into `"sheetId": null`, and
+ * Google 400'd the WHOLE batch. Every style request for Demo Notes was lost that way, from
+ * the day it shipped, and nothing anywhere said so.
+ * ⚠️ So the absent field means ZERO, never "missing": `?? 0`, and the only null is a tab
+ * that genuinely is not there.
+ */
 async function sheetIdFor(t: SheetTarget, title: string): Promise<number | null> {
   const meta = await api(t.email, `/${t.spreadsheetId}?fields=sheets.properties`);
   const hit = (meta?.sheets ?? []).find((x: any) => String(x?.properties?.title ?? "") === title);
-  return hit ? Number(hit.properties.sheetId) : null;
+  if (!hit) return null;
+  const raw = hit.properties?.sheetId;
+  const id = raw === undefined || raw === null ? 0 : Number(raw);
+  return Number.isFinite(id) ? id : null;
+}
+
+/** How many rows of the tab actually hold something, header included. */
+async function usedRows(t: SheetTarget, title: string): Promise<number> {
+  const got = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(title)}!A:A`);
+  return got?.values?.length ?? 0;
 }
 
 /**
  * The house style, applied to a tab.
  *
+ * ⚠️⚠️ **THE FORMATTING STOPS AT THE DATA, AND THAT IS A DESIGN DECISION RATHER THAN
+ * THRIFT.** An unbounded body range paints a hairline under all 1,000 rows of an empty
+ * grid, so the sheet reads as ruled notebook paper with a handful of rows at the top —
+ * which is most of what made the first version look unfinished. `rows` is the number of
+ * rows that hold something; everything below them is left clean.
+ *
  * ⚠️ **IT NEVER TOUCHES CELL VALUES**, only formatting and widths — so it is safe to run
  * on every write, and safe on a sheet somebody has added their own columns to.
  * ⚠️ `widths` is applied from the LEFT and stops at the end of the list, so a hand-added
  * column past the known ones keeps whatever width its owner gave it.
+ *
+ * ⚠️⚠️ **IT THROWS ON A MISSING TAB RATHER THAN RETURNING QUIETLY.** The old version
+ * returned `void` when the lookup failed, so a sheet that could not be styled was
+ * indistinguishable from one that had been — which is exactly how this shipped broken and
+ * stayed broken. A caller that must not fail still catches it; it just has something to
+ * catch now, and something to report.
  */
 async function applyTheme(
-  t: SheetTarget, title: string, widths: number[], opts: { wrapCol?: number } = {},
+  t: SheetTarget,
+  title: string,
+  widths: number[],
+  opts: { rows?: number; wrapCol?: number; freezeCols?: number; numberCols?: [number, number] } = {},
 ): Promise<void> {
   const sheetId = await sheetIdFor(t, title);
-  if (sheetId === null) return;
+  if (sheetId === null) throw new Error(`The sheet has no "${title}" tab to style.`);
+  const rows = opts.rows ?? (await usedRows(t, title));
+  /* The body is rows 2..rows. A tab holding only its header has no body to paint. */
+  const bodyEnd = Math.max(1, rows);
+
   const requests: unknown[] = [
+    /* ⚠️ The tab itself carries the brand green, and the default grid is turned OFF.
+       Both are deliberate and both are visible the instant you open the file: the
+       gridlines are replaced by our own hairlines, which is what makes it read as a
+       designed table rather than a spreadsheet somebody typed into, and a coloured tab
+       is the one signal that tells you at a glance the theme actually landed. */
+    { updateSheetProperties: {
+      properties: {
+        sheetId,
+        tabColor: BRAND,
+        gridProperties: {
+          frozenRowCount: 1,
+          frozenColumnCount: opts.freezeCols ?? 0,
+          hideGridlines: true,
+        },
+      },
+      fields: "tabColor,gridProperties(frozenRowCount,frozenColumnCount,hideGridlines)",
+    } },
+
     /* The header band is the brand green, which is the same treatment the playbook's
        own section bars and its contents heading carry: white bold on `#00b388`. */
     { repeatCell: {
@@ -332,54 +400,106 @@ async function applyTheme(
         backgroundColor: BRAND,
         textFormat: { bold: true, fontSize: 11, foregroundColor: WHITE, fontFamily: FONT },
         verticalAlignment: "MIDDLE",
-        padding: { top: 6, bottom: 6, left: 10, right: 10 },
+        padding: { top: 6, bottom: 6, left: 12, right: 12 },
       } },
       fields: "userEnteredFormat(backgroundColor,textFormat,verticalAlignment,padding)",
     } },
-    { updateSheetProperties: {
-      properties: { sheetId, gridProperties: { frozenRowCount: 1 } },
-      fields: "gridProperties.frozenRowCount",
-    } },
     { updateDimensionProperties: {
       range: { sheetId, dimension: "ROWS", startIndex: 0, endIndex: 1 },
-      properties: { pixelSize: 34 }, fields: "pixelSize",
-    } },
-    /* The body: readable size, top-aligned so a long note does not centre itself, and
-       separated by a hairline per row rather than by a grid or a banded fill — which is
-       how every table in the playbook is set, and it is the lighter of the two.
-       ⚠️ **NOT `addBanding`.** That creates a persistent banded-range OBJECT on the tab,
-       which would have to be found and deleted on every rewrite of the Activity sheet;
-       a per-row border is a format, so it is replaced in place like everything else. */
-    { repeatCell: {
-      range: { sheetId, startRowIndex: 1 },
-      cell: { userEnteredFormat: {
-        textFormat: { fontSize: 10, foregroundColor: BODY, fontFamily: FONT },
-        verticalAlignment: "TOP",
-        padding: { top: 6, bottom: 6, left: 10, right: 10 },
-        borders: { bottom: { style: "SOLID", color: RULE } },
-      } },
-      fields: "userEnteredFormat(textFormat,verticalAlignment,padding,borders)",
+      properties: { pixelSize: 38 }, fields: "pixelSize",
     } },
   ];
+
+  if (bodyEnd > 1) {
+    requests.push(
+      /* The body: readable size, top-aligned so a long note does not centre itself, and
+         separated by a hairline per row rather than by a grid or a banded fill — which is
+         how every table in the playbook is set, and it is the lighter of the two.
+         ⚠️ **NOT `addBanding`.** That creates a persistent banded-range OBJECT on the tab,
+         which would have to be found and deleted on every rewrite of the Activity sheet;
+         a per-row border is a format, so it is replaced in place like everything else. */
+      { repeatCell: {
+        range: { sheetId, startRowIndex: 1, endRowIndex: bodyEnd },
+        cell: { userEnteredFormat: {
+          backgroundColor: WHITE,
+          textFormat: { fontSize: 10, foregroundColor: BODY, fontFamily: FONT, bold: false },
+          verticalAlignment: "TOP",
+          padding: { top: 8, bottom: 8, left: 12, right: 12 },
+          borders: { bottom: { style: "SOLID", color: RULE } },
+        } },
+        fields: "userEnteredFormat(backgroundColor,textFormat,verticalAlignment,padding,borders)",
+      } },
+      /* The first column is the row's subject, so it is set like one. */
+      { repeatCell: {
+        range: { sheetId, startRowIndex: 1, endRowIndex: bodyEnd, startColumnIndex: 0, endColumnIndex: 1 },
+        cell: { userEnteredFormat: { textFormat: { bold: true, foregroundColor: INK } } },
+        fields: "userEnteredFormat.textFormat(bold,foregroundColor)",
+      } },
+      { updateDimensionProperties: {
+        range: { sheetId, dimension: "ROWS", startIndex: 1, endIndex: bodyEnd },
+        properties: { pixelSize: 30 }, fields: "pixelSize",
+      } },
+    );
+    if (opts.numberCols) {
+      const [from, to] = opts.numberCols;
+      /* ⚠️ A count is an integer. Without a pattern Sheets is free to render a stored 1 as
+         "1" here and "1.0" in the next column, which reads as two different measurements. */
+      requests.push({ repeatCell: {
+        range: { sheetId, startRowIndex: 1, endRowIndex: bodyEnd, startColumnIndex: from, endColumnIndex: to },
+        cell: { userEnteredFormat: {
+          horizontalAlignment: "CENTER",
+          numberFormat: { type: "NUMBER", pattern: "0" },
+        } },
+        fields: "userEnteredFormat(horizontalAlignment,numberFormat)",
+      } });
+    }
+    if (opts.wrapCol !== undefined) {
+      requests.push({ repeatCell: {
+        range: { sheetId, startRowIndex: 1, endRowIndex: bodyEnd, startColumnIndex: opts.wrapCol, endColumnIndex: opts.wrapCol + 1 },
+        cell: { userEnteredFormat: { wrapStrategy: "WRAP" } },
+        fields: "userEnteredFormat.wrapStrategy",
+      } });
+    }
+  }
+
   widths.forEach((px, i) => requests.push({ updateDimensionProperties: {
     range: { sheetId, dimension: "COLUMNS", startIndex: i, endIndex: i + 1 },
     properties: { pixelSize: px }, fields: "pixelSize",
   } }));
-  if (opts.wrapCol !== undefined) {
-    requests.push({ repeatCell: {
-      range: { sheetId, startRowIndex: 1, startColumnIndex: opts.wrapCol, endColumnIndex: opts.wrapCol + 1 },
-      cell: { userEnteredFormat: { wrapStrategy: "WRAP" } },
-      fields: "userEnteredFormat.wrapStrategy",
-    } });
-  }
+
   await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {
     method: "POST", body: JSON.stringify({ requests }),
   });
 }
 
-/** Demo Notes: the notes column wraps, the rest are sized to what they hold. */
+/** Demo Notes: the notes column wraps, the prospect column is frozen, the rest are
+ *  sized to what they hold. */
 export async function themeNotes(t: SheetTarget): Promise<void> {
-  await applyTheme(t, TAB_NAME, [190, 210, 110, 380, 220, 165, 230], { wrapCol: 3 });
+  await applyTheme(t, TAB_NAME, [220, 230, 120, 420, 240, 180, 150], {
+    wrapCol: 3, freezeCols: 1,
+  });
+}
+
+/**
+ * Re-apply the house style to both tabs on demand.
+ *
+ * ⚠️⚠️ **THIS EXISTS BECAUSE A BACKGROUND STYLING FAILURE IS INVISIBLE, AND THAT COST A
+ * SHIPPED-BROKEN SHEET.** Styling runs after a row lands and is swallowed so it can never
+ * cost somebody their data — correct, and it means the only report of a failure was a sheet
+ * that quietly looked wrong. This is the same work as a foreground action, so whatever
+ * Google says comes back to the person who asked instead of to nobody.
+ * ⚠️ Demo Notes is required; Activity is only styled if the tab exists, because a sheet
+ * that has had marks but no shared-demo activity legitimately has no Activity tab yet.
+ */
+export async function restyleSheets(t: SheetTarget): Promise<{ tabs: string[] }> {
+  const done: string[] = [];
+  await themeNotes(t);
+  done.push(TAB_NAME);
+  if ((await sheetIdFor(t, ACTIVITY_TAB)) !== null) {
+    await themeActivity(t, await usedRows(t, ACTIVITY_TAB));
+    done.push(ACTIVITY_TAB);
+  }
+  return { tabs: done };
 }
 
 export interface ActivityLine {
@@ -407,11 +527,7 @@ export async function writeActivity(t: SheetTarget, lines: ActivityLine[]): Prom
   const values = [
     [...ACTIVITY_COLUMNS],
     ...lines.map((l) => [
-      /* ⚠️ The indent IS the subline. Sheets has no row hierarchy that survives a
-         rewrite cleanly, and an outline group would have to be deleted and re-added on
-         every write; a leading arrow and an indent read as a child at a glance and
-         cannot drift out of step with the rows. */
-      l.main ? l.label : `    ↳  ${l.label}`,
+      l.main ? l.label : `${INDENT}${l.label}`,
       l.opened || "", l.sms || "", l.voice || "",
       l.firstAt, l.lastAt,
     ]),
@@ -427,49 +543,116 @@ export async function writeActivity(t: SheetTarget, lines: ActivityLine[]): Prom
     method: "PUT", body: JSON.stringify({ values }),
   });
 
-  await applyTheme(t, title, [300, 90, 110, 120, 170, 170]);
+  await themeActivity(t, values.length);
+}
 
-  /* Per-row emphasis: a prospect reads as a heading, its people as detail under it. */
-  const sheetId = await sheetIdFor(t, title);
-  if (sheetId === null) return;
-  const requests: unknown[] = [
-    { repeatCell: {
-      range: { sheetId, startRowIndex: 1, startColumnIndex: 1, endColumnIndex: 4 },
-      cell: { userEnteredFormat: { horizontalAlignment: "CENTER" } },
-      fields: "userEnteredFormat.horizontalAlignment",
-    } },
-  ];
-  lines.forEach((l, i) => {
+/**
+ * Activity's own emphasis, on top of the house style: a prospect reads as a heading and
+ * its people as detail under it.
+ *
+ * ⚠️⚠️ **WHICH ROWS ARE PROSPECTS IS READ BACK OFF THE SHEET, NOT PASSED IN — one source
+ * of truth, two callers.** A write knows its own lines and a restyle does not, so handing
+ * the flags in would mean the restyle needed a second way to work them out, and the two
+ * would disagree the first time the indent changed. The indent IS the marker, it is
+ * already in the data, and `INDENT` is the one definition both the writer and this reader
+ * use. Verified by `audit:share` against the real strings rather than by eye.
+ */
+async function themeActivity(t: SheetTarget, rows: number): Promise<void> {
+  await applyTheme(t, ACTIVITY_TAB, [320, 95, 115, 125, 185, 185], {
+    rows, numberCols: [1, 4],
+  });
+  const sheetId = await sheetIdFor(t, ACTIVITY_TAB);
+  if (sheetId === null) throw new Error(`The sheet has no "${ACTIVITY_TAB}" tab to style.`);
+  if (rows < 2) return;
+
+  const got = await api(t.email, `/${t.spreadsheetId}/values/${encodeURIComponent(ACTIVITY_TAB)}!A2:A${rows}`);
+  const labels: string[] = (got?.values ?? []).map((r: unknown[]) => String(r?.[0] ?? ""));
+
+  const requests: unknown[] = [];
+  labels.forEach((label, i) => {
+    /* ⚠️ Compared against the ARROW, not the whole indent: Sheets is free to hand back a
+       value with its leading spaces trimmed, and a test on the padded string would then
+       call every person a prospect and paint the whole tab as headings. */
+    const main = !label.trimStart().startsWith(INDENT.trim());
     const r = i + 1;
     requests.push({ repeatCell: {
       range: { sheetId, startRowIndex: r, endRowIndex: r + 1 },
       cell: { userEnteredFormat: {
-        backgroundColor: l.main ? WASH : WHITE,
+        backgroundColor: main ? WASH : WHITE,
         textFormat: {
-          bold: l.main, fontSize: l.main ? 11 : 10, fontFamily: FONT,
-          foregroundColor: l.main ? INK : MUTED,
+          bold: main, fontSize: main ? 11 : 10, fontFamily: FONT,
+          foregroundColor: main ? INK : MUTED,
         },
         /* ⚠️ Every row keeps the body hairline UNDER it; a prospect additionally gets one
            ABOVE, which is what opens each block. Writing `borders: {}` for a subline
            would CLEAR the bottom rule the base format just set, because `borders` is in
            the field mask — so the quiet rows have to restate it rather than omit it. */
-        borders: l.main
+        borders: main
           ? { top: { style: "SOLID", color: RULE }, bottom: { style: "SOLID", color: RULE } }
           : { bottom: { style: "SOLID", color: RULE } },
       } },
       fields: "userEnteredFormat(backgroundColor,textFormat,borders)",
     } });
+    /* ⚠️ The thick green edge down a prospect's first cell is the product's own action-card
+       treatment — the 5px left edge every tinted workflow node carries. It is what makes a
+       block read as a block without a heavy grid, and it is the one place the brand green
+       is allowed to be a line rather than a ground. */
+    if (main) {
+      requests.push({ repeatCell: {
+        range: { sheetId, startRowIndex: r, endRowIndex: r + 1, startColumnIndex: 0, endColumnIndex: 1 },
+        cell: { userEnteredFormat: { borders: {
+          left: { style: "SOLID_THICK", color: BRAND },
+          top: { style: "SOLID", color: RULE },
+          bottom: { style: "SOLID", color: RULE },
+        } } },
+        fields: "userEnteredFormat.borders",
+      } });
+    }
   });
   /* The three count columns carry the deep green, so the numbers are what the eye finds.
      ⚠️ `GREEN_INK`, not `BRAND` — see the palette note: the brand green is a ground and
      is close to illegible as 10pt text on white. */
   requests.push({ repeatCell: {
-    range: { sheetId, startRowIndex: 1, startColumnIndex: 1, endColumnIndex: 4 },
+    range: { sheetId, startRowIndex: 1, endRowIndex: rows, startColumnIndex: 1, endColumnIndex: 4 },
     cell: { userEnteredFormat: { textFormat: { foregroundColor: GREEN_INK, bold: true } } },
     fields: "userEnteredFormat.textFormat(foregroundColor,bold)",
   } });
+  /* The two timestamps are context, not the subject — they take the quiet ink even on a
+     prospect row, where everything else is the loud one. */
+  requests.push({ repeatCell: {
+    range: { sheetId, startRowIndex: 1, endRowIndex: rows, startColumnIndex: 4, endColumnIndex: 6 },
+    cell: { userEnteredFormat: { textFormat: { foregroundColor: MUTED, bold: false, fontSize: 10 } } },
+    fields: "userEnteredFormat.textFormat(foregroundColor,bold,fontSize)",
+  } });
   await api(t.email, `/${t.spreadsheetId}:batchUpdate`, {
     method: "POST", body: JSON.stringify({ requests }),
+  });
+}
+
+/**
+ * Say that the styling failed, to somewhere a human will actually look.
+ *
+ * ⚠️⚠️ **THE SWALLOW IS RIGHT AND THE SILENCE WAS NOT, AND THE DIFFERENCE IS THIS
+ * FUNCTION.** Styling must never cost somebody a row that already landed, so both callers
+ * catch — but the old bare catch with a "cosmetic only" note meant a sheet that could not
+ * be styled and a sheet that had been were indistinguishable from the outside. That is how
+ * a broken theme shipped and stayed broken until somebody opened the file and said so.
+ * ⚠️ That note is spelled out rather than quoted, because a comment-opener inside a comment
+ * is the landmine this repo already paid for once in `server.ts`'s route list.
+ * ⚠️ **`record`, NOT `page`.** It is cosmetic: it belongs in the count on `/api/status`,
+ * where `sheet-style:<tab>` with a number beside it is the whole diagnosis, and not in a
+ * Slack message at 2am. The signature carries the TAB and never the sheet id or the
+ * owner's address, because that endpoint is public.
+ */
+export async function reportStyleFailure(tab: string, e: unknown): Promise<void> {
+  const message = (e as Error)?.message || String(e);
+  console.error(`[sheets] styling failed for "${tab}": ${message}`);
+  await alert({
+    key: `sheet-style:${tab}`,
+    title: `Google Sheet styling failed on the ${tab} tab`,
+    detail: message,
+    level: "record",
+    context: { tab },
   });
 }
 
