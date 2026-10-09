@@ -132,8 +132,18 @@ function Combo({ id, value, placeholder, options, onPick, openId, setOpenId }: {
   );
 }
 
-export function WorkflowNodeDrawer({ d, onClose, onApply }: {
+export function WorkflowNodeDrawer({ d, onClose, onApply, locked }: {
   d: NodeDrawer; onClose: () => void; onApply?: (edits: DrawerApply) => void;
+  /**
+   * ⚠️⚠️ **A SHARED DEMO IS READ-ONLY, AND THIS IS THE PRODUCT'S OWN STATE RATHER THAN A
+   * DISABLED COSTUME WE INVENTED.** Every field in the twelve configured captures carries
+   * `disabled` with a grey ground and no footer — so a locked drawer here is what an SE
+   * sees on a configured node in the real platform, not a demo-only treatment.
+   * ⚠️ It is an explicit prop rather than a `isShareMode()` read inside this component, so
+   * the locked state can be rendered and audited without faking the URL — and so the one
+   * place that decides a prospect cannot edit is the screen, not a shared leaf.
+   */
+  locked?: boolean;
 }) {
   /* Escape closes, as the real drawer does. */
   useEffect(() => {
@@ -146,7 +156,10 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
   /* ⚠️ EDITING NEEDS BOTH: somewhere to write, and something to write with. Either missing and
      every control below falls back to `readOnly`, which is how the voice drawers stay as they
      were without a second component. */
-  const live = !!(edits && onApply);
+  /* ⚠️ `locked` wins over everything. Belt and braces on purpose: the caller already
+     withholds `onApply` in a shared demo, and a later edit that passes it by accident must
+     not quietly hand a prospect a writable field. */
+  const live = !locked && !!(edits && onApply);
 
   /* ⚠️ THE DRAFT IS KEYED ON THE DRAWER'S IDENTITY. `d` is rebuilt on every render of the page
      (it is derived), so depending on the object would reset the draft on every keystroke;
@@ -326,7 +339,7 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
   };
 
   return (
-    <div className="wnd-root" role="dialog" aria-modal="true" aria-label={d.title}>
+    <div className={"wnd-root" + (locked ? " wnd-root--locked" : "")} role="dialog" aria-modal="true" aria-label={d.title}>
       <div className="wnd-backdrop" onClick={onClose} />
       <div className="wnd-paper">
         <div className="wnd-head">
@@ -339,6 +352,18 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
         </div>
 
         <div className="wnd-body">
+          {/* ⚠️ IT SAYS WHY, AND IT SAYS WHAT THEY WOULD GET — a greyed field with no
+              explanation reads as broken, and this is a sales surface. The second sentence
+              is the point: these fields ARE editable, just not from a shared link. */}
+          {locked && (
+            <div className="wnd-locked-note">
+              <span className="material-icons" aria-hidden="true">lock</span>
+              <span>
+                Read-only in this shared preview. In your own Invoca workspace every field
+                here is yours to change, and the agent picks it up on its next conversation.
+              </span>
+            </div>
+          )}
           {d.kind === "trigger" && (
             <>
               <div className="wnd-strong">{d.summary}</div>
@@ -402,10 +427,14 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
                   </button>
                 </div>
               ))}
-              <button className="wnd-add" onClick={(e) => { e.preventDefault();
-                if (live && edits?.rules) set("rules", [...draft.rules, ""]); }}>
-                <span className="material-icons">add</span>Add
-              </button>
+              {/* ⚠️ Gone when locked, not merely inert — an Add that adds nothing is the
+                  dead control this repo keeps paying for. */}
+              {!locked && (
+                <button className="wnd-add" onClick={(e) => { e.preventDefault();
+                  if (live && edits?.rules) set("rules", [...draft.rules, ""]); }}>
+                  <span className="material-icons">add</span>Add
+                </button>
+              )}
             </>
           )}
 
@@ -479,10 +508,12 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
                       ) : null}
                     </div>
                   ))}
-                  <button className="wnd-add" onClick={(e) => { e.preventDefault();
-                    if (live && edits?.segments) set("segments", [...draft.segments, ""]); }}>
-                    <span className="material-icons">add</span>Add
-                  </button>
+                  {!locked && (
+                    <button className="wnd-add" onClick={(e) => { e.preventDefault();
+                      if (live && edits?.segments) set("segments", [...draft.segments, ""]); }}>
+                      <span className="material-icons">add</span>Add
+                    </button>
+                  )}
                   <label className="wnd-label wnd-label--info">
                     If the agent can't determine the answer<InfoDot />
                   </label>
@@ -612,9 +643,17 @@ export function WorkflowNodeDrawer({ d, onClose, onApply }: {
         </div>
 
         {/* ⚠️ ONE button on the trigger drawer and TWO everywhere else — measured, and the
-            trigger's is the FILLED one reading "Close", not an outlined Cancel. */}
+            trigger's is the FILLED one reading "Close", not an outlined Cancel.
+            ⚠️⚠️ **A LOCKED DRAWER GETS NEITHER Cancel NOR Apply.** Apply on a drawer that
+            cannot write is a dead control — it would report nothing and change nothing —
+            and the real product shows NO footer at all on a configured node. One Close,
+            like the trigger drawer, so there is still an obvious way out beside the X.
+            ⚠️ **SCOPED TO `locked`, i.e. shared demos only.** The SE's own read-only
+            drawers (a created workflow's, the voice ones) carry the same dead Apply today;
+            that is PRE-EXISTING, those screens are signed off and their audits assert the
+            current shape, so it is flagged rather than fixed here. */}
         <div className="wnd-foot">
-          {d.kind === "trigger" ? (
+          {locked || d.kind === "trigger" ? (
             <button className="wnd-btn wnd-btn--primary" onClick={onClose}>Close</button>
           ) : (
             <>

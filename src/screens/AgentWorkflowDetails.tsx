@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAiAssistant } from "../data/AiAssistantContext";
+import { isShareMode } from "../data/shareMode";
 import { ZERO_TRIGGER } from "../data/workflowChrome";
 import { VOICE_OPTIONS, voiceOption } from "../data/voiceOptions";
 
@@ -46,6 +47,7 @@ interface Props {
 
 export function AgentWorkflowDetails({ scopeKey, isSms, agent, triggeredBy }: Props) {
   const { applyEdits, readOnly } = useAiAssistant();
+  const shared = isShareMode();
   const current = voiceOption(agent?.voice);
 
   /* ---- the preview ("play") button -------------------------------------------
@@ -167,7 +169,14 @@ export function AgentWorkflowDetails({ scopeKey, isSms, agent, triggeredBy }: Pr
             </div>
           )}
           {readOnly && (
-            <div className="wfd-note">This demo belongs to someone else, so it is view only.</div>
+            /* ⚠️ TWO READ-ONLY REASONS, TWO SENTENCES. "Belongs to someone else" is true for
+               an SE looking at a colleague's demo and simply wrong for a prospect on a
+               shared link, who would read it as having opened the wrong thing. */
+            <div className="wfd-note">
+              {shared
+                ? "Read-only in this shared preview. In your own Invoca workspace the voice and the opening message are yours to set."
+                : "This demo belongs to someone else, so it is view only."}
+            </div>
           )}
         </section>
       )}

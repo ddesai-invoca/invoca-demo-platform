@@ -33,9 +33,12 @@ import { SHARE_TOKEN, SHARE_BASENAME, SHARE_LANDING, shareAllows } from "../data
    dashboard. Here the routes a prospect may reach are the only routes that exist,
    so an unlisted path has nothing to render rather than something to refuse.
 
-   ⚠️ `AiAssistantProvider` is absent on purpose. Ask AI is not hidden here, it is
-   simply not mounted — the drawer, the per-tile sparkles and the top-bar pair all
-   read that context, so none of them can render.
+   ⚠️⚠️ **`AiAssistantProvider` IS mounted, and an earlier note here claimed it was not.**
+   Correcting it rather than deleting it, because the false version was load-bearing
+   reading: screens read that context for their effective data, so it has to be here or
+   every one of them throws. What is absent is Ask AI's own UI — `TopBarAi` and the
+   per-tile sparkles are simply not rendered — and `hydrateDemo` is called with
+   `canEdit: false`, so the context a prospect gets can be READ and never written.
    ============================================================================= */
 
 type Phase =
@@ -245,7 +248,16 @@ export default function ShareApp() {
 function HydrateShared({ demoId, customizations }: { demoId: string; customizations: unknown }) {
   const { hydrateDemo } = useAiAssistant();
   useEffect(() => {
-    hydrateDemo(demoId, (customizations ?? {}) as never, true, { name: "", email: "" });
+    /* ⚠️⚠️ **`canEdit: false`, WHICH REVERSES AN EARLIER DECISION ON PURPOSE.** It used to
+       hydrate `true` so the drawers' Apply and the voice picker kept working for a
+       prospect; asked for directly on 10/8/2026, a shared demo is now a read-only preview.
+       Doing it HERE rather than screen by screen is what makes it structural: `readOnly`
+       is the one flag `applyEdits`, `mutate` and `undo` all check, so every editable
+       surface a prospect can reach is covered — including any added later, which a
+       per-screen lock would silently miss.
+       ⚠️ It does NOT hide the SE's own customizations: `readOnly` gates writes only, and
+       the overrides above are merged in regardless. */
+    hydrateDemo(demoId, (customizations ?? {}) as never, false, { name: "", email: "" });
   }, [demoId, customizations, hydrateDemo]);
   return null;
 }

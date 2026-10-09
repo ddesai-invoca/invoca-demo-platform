@@ -892,6 +892,56 @@ console.log("\nActivity tracking\n");
   }
 
   /* ==========================================================================
+     A SHARED DEMO IS READ-ONLY — asked for 10/8/2026, reversing an earlier call.
+     ========================================================================== */
+  {
+    const app = code("src/screens/ShareApp.tsx");
+    /* ⚠️⚠️ THE STRUCTURAL LOCK. `readOnly` is the one flag `applyEdits`, `mutate` and
+       `undo` all check, so hydrating false covers every editable surface a prospect can
+       reach — including ones added later, which a per-screen lock would silently miss. */
+    /hydrateDemo\(demoId, \(customizations \?\? \{\}\) as never, false,/.test(app)
+      ? ok("a shared demo hydrates read-only, so no write path exists at all")
+      : bad("a prospect can still write to the override store");
+
+    const wf = code("src/screens/AgentWorkflow.tsx");
+    /onApply=\{!shared &&/.test(wf)
+      ? ok("a shared demo is never handed a writer for the workflow drawers")
+      : bad("a prospect's keystroke could reach applyEdits");
+    /locked=\{shared\}/.test(wf)
+      ? ok("the drawer is told it is locked, so it can say why")
+      : bad("a prospect sees inert fields with no explanation");
+
+    const dr = code("src/components/WorkflowNodeDrawer.tsx");
+    /const live = !locked && !!\(edits && onApply\);/.test(dr)
+      ? ok("locked outranks everything — a stray onApply cannot unlock a prospect's drawer")
+      : bad("locking depends on the caller remembering to withhold onApply");
+    /* ⚠️ Apply on a drawer that cannot write is a dead control, and the real product shows
+       no footer at all on a configured node. */
+    /\{locked \|\| d\.kind === "trigger" \?/.test(dr)
+      ? ok("a locked drawer offers Close, not a dead Apply")
+      : bad("a prospect can press Apply and nothing happens");
+    (dr.match(/\{!locked && \(\s*<button className="wnd-add"/g) ?? []).length === 2
+      ? ok("both Add buttons are absent when locked, not present and inert")
+      : bad("an Add that adds nothing is still rendered to a prospect");
+    /Read-only in this shared preview/.test(dr)
+      ? ok("the locked drawer says why, and says the fields are editable in their own workspace")
+      : bad("greyed fields with no explanation read as broken");
+
+    /* ⚠️ The grey is scoped, so the SE's own read-only drawers keep the white they were
+       signed off with — one screen's change stays on that screen. */
+    const css = code("src/styles/app.css");
+    /\.wnd-root--locked \.wnd-input/.test(css) && !/^\.wnd-input[^,{]*\{[^}]*#f5f6fa/m.test(css)
+      ? ok("the locked grey is scoped and does not restyle the SE's drawers")
+      : bad("locking a shared drawer changed the SE's own");
+
+    /* ⚠️ "Belongs to someone else" is wrong for a prospect — they would read it as having
+       opened the wrong thing. */
+    /shared\s*\?\s*"Read-only in this shared preview/.test(code("src/screens/AgentWorkflowDetails.tsx"))
+      ? ok("the Details tab tells a prospect the right reason it is read-only")
+      : bad("a prospect is told the demo belongs to someone else");
+  }
+
+  /* ==========================================================================
      COALESCING — the guarantee that one SMS demo is one sheet write, not ten.
      ========================================================================== */
   {

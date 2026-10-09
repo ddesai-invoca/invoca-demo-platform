@@ -5,7 +5,7 @@ import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, ZERO_TRIGGER, emptyWorkflow
   extraTree, LEAF_QUALIFY, LEAF_ESCALATE, LEAF_INFORM } from "../data/workflowChrome";
 import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
-import { SHARE_BASENAME } from "../data/shareMode";
+import { SHARE_BASENAME, isShareMode } from "../data/shareMode";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
 import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCallLive } from "./VoiceCallLive";
@@ -448,6 +448,8 @@ export function AgentWorkflow() {
      ⚠️ **AND IT OPENS ON THE LEFT, like the SMS chat's**: this drawer is on the right, so a
      right-hand panel covers the very thing being configured. */
   const { openDrawer, undo, canUndo, readOnly, applyEdits } = useAiAssistant();
+  /* ⚠️ One read, used by the drawer gate and the Details tab — two reads could disagree. */
+  const shared = isShareMode();
   const pageKey = `${profileId}::${pathname}`;
   /* ⚠️ **GATED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME** — the same signal
      `pageHint` keys its empty state off. A CREATED workflow deliberately registers no `agent`
@@ -774,9 +776,14 @@ export function AgentWorkflow() {
                  Apply inherits persistence, undo and the read-only refusal like every other
                  drawer. A CREATED workflow still does not — it has no authored content and
                  no slot for a node the template never made. */
-              onApply={smsTemplated || extra || (!isSms && !created) ? (es) => {
+              /* ⚠️ A SHARED DEMO NEVER GETS A WRITER. `locked` below would stop the edit
+                 anyway, but withholding `onApply` is what makes it structural: there is no
+                 path from a prospect's keystroke to `applyEdits`, which writes to the demo
+                 record the whole team reads. */
+              onApply={!shared && (smsTemplated || extra || (!isSms && !created)) ? (es) => {
                 applyEdits(pageKey, es.map((e) => ({ path: e.path, value: JSON.stringify(e.value) })));
-              } : undefined} />
+              } : undefined}
+              locked={shared} />
           ) : null;
         })()}
 

@@ -5896,6 +5896,27 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .wnd-row { font-size: 16px; line-height: 23px; color: var(--color-text-title); }
 .wnd-input:focus, .wnd-ta:focus { outline: none; border-color: #2666f9; }
 
+/* ⚠️⚠️ THE LOCKED DRAWER OF A SHARED DEMO — and the grey is MEASURED, not invented.
+   Every field in the twelve configured workflow captures carries MUI's `disabled` state:
+   a grey ground, a muted ink and no Cancel/Apply footer. So a prospect on a shared link
+   sees exactly the read-only drawer an SE sees on a configured node in the real platform.
+   ⚠️ SCOPED UNDER `.wnd-root--locked`, which only a shared demo sets, so the SE's own
+   drawers — including the ones that are legitimately read-only, like a created workflow's
+   — keep the white fields they were signed off with. */
+.wnd-root--locked .wnd-input,
+.wnd-root--locked .wnd-ta,
+.wnd-root--locked .wnd-combo {
+  background: #f5f6fa; color: #66708e; border-color: #e7e9eb; cursor: default;
+}
+.wnd-root--locked .wnd-chip { opacity: .72; }
+.wnd-locked-note {
+  display: flex; gap: 8px; align-items: flex-start;
+  margin: 0 0 18px; padding: 10px 12px;
+  background: #f4fbf8; border: 1px solid #cdeee2; border-radius: 4px;
+  font-size: 13px; line-height: 1.5; color: #00624d;
+}
+.wnd-locked-note .material-icons { font-size: 18px; flex: none; margin-top: 1px; }
+
 .wnd-combo { display: flex; align-items: center; justify-content: space-between; height: 35px; padding: 6px 8px; cursor: default; }
 .wnd-combo--empty > span { color: #66708e; }
 
