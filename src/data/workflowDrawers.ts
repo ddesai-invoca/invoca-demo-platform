@@ -820,7 +820,7 @@ const SMS_INFORM: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsC
 };
 
 /**
- * The three paths under All Support Users — ESCALATE nodes, each with its own text.
+ * The four paths under All Support Users — ESCALATE nodes, each with its own text.
  *
  * ⚠️⚠️ **A SEPARATE TABLE FROM `SMS_INFORM`, AND THE SPLIT IS NOT COSMETIC.** They were
  * briefly registered as informs, and when their action changed to Support & Escalate the
@@ -831,10 +831,20 @@ const SMS_INFORM: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsC
  * override and is deep-merged; a new top-level key would be a path whose parent is missing
  * on exactly the demos already set up, which `setByPath` drops silently.
  */
+/* ⚠️⚠️ **FOUR NOW, AND THE FOURTH IS WHY THIS TABLE IS CHECKED BY BUILDING EVERY DRAWER
+   RATHER THAN BY COUNTING IT (10/9/2026).** The support set went to three use cases plus a
+   catch-all; registering only the first three left `path-1-0-3` falling through to the
+   generic `extra__` branch — right for a node an SE added, wrong for one the template ships,
+   and the symptom is a drawer that opens with a placeholder while the agent is told nothing
+   about that case at all. Caught by `audit:ai`, which opens each id in turn.
+   ⚠️ **THE KEYS FOLLOW THE CASE, NOT THE POSITION.** `supportBilling` moved from index 0 to
+   index 2 when the set was reordered; because the stored text is keyed on the NAME, an SE who
+   had edited their billing instruction still finds it on the billing node. */
 const SMS_ESCALATE_PATH: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsCollectKey }> = {
-  "path-1-0-0": { key: "supportBilling", collect: "supportBilling" },
+  "path-1-0-0": { key: "supportIssue", collect: "supportIssue" },
   "path-1-0-1": { key: "supportChange", collect: "supportChange" },
-  "path-1-0-2": { key: "supportHuman", collect: "supportHuman" },
+  "path-1-0-2": { key: "supportBilling", collect: "supportBilling" },
+  "path-1-0-3": { key: "supportOther", collect: "supportOther" },
 };
 
 /** Walk a dot-path (arrays included) into the effective tree. ONE definition, several readers. */
@@ -1123,7 +1133,7 @@ export function smsDrawerFor(
     };
   }
 
-  /* The three support paths, each escalating with its own instruction and collect list. */
+  /* The four support paths, each escalating with its own instruction and collect list. */
   const escPath = SMS_ESCALATE_PATH[nodeId];
   if (escPath && selfKind === "escalate") {
     return {

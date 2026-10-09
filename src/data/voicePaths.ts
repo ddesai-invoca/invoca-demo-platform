@@ -1,6 +1,8 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoicePath } from "../../engine/chat";
 import { collectNames } from "./workflowDrawers";
+import { repairSupportUseCases } from "./voiceUseCases";
+import type { CustomerProfile } from "./schema";
 
 /* =============================================================================
    voicePaths.ts — the workflow diagram, as the voice agent's routing logic
@@ -50,7 +52,30 @@ export const VOICE_WORKFLOW_SCOPE_PATH = "/agent-studio/agent/workflow/voice";
  * result returns `[]` so the prompt falls back to its original hardcoded flow instead of
  * printing an empty CALL FLOW for the model to improvise around.
  */
-export function treeToVoicePaths(tree: WorkflowTreeModel | undefined | null): VoicePath[] {
+/**
+ * ⚠️⚠️ **THE REPAIR BELONGS HERE, NOT ONLY IN THE SCREEN — and putting it only in the screen
+ * fixed the diagram while the AGENT carried on with the retired branches.** `AgentWorkflow`
+ * repairs the tree it RENDERS, in a `useMemo` that is never written back to the store; the
+ * prompt is built from the stored override by `useBrain` and by the sim, neither of which
+ * goes near that component. So the picture changed and the call did not, which is the exact
+ * "the drawer said it applied" shape this repo keeps paying for. Doing it where the tree
+ * becomes PATHS covers every consumer at once.
+ * ⚠️ `profile` is optional so no existing caller breaks; without it the tree passes through
+ * untouched, which is the old behaviour exactly.
+ */
+export function treeToVoicePaths(
+  tree: WorkflowTreeModel | undefined | null,
+  profile?: CustomerProfile,
+): VoicePath[] {
+  if (tree && profile) {
+    const fixed = repairSupportUseCases(tree.branches ?? [], profile);
+    /* Identity when there is nothing to repair, so this costs nothing on a current tree. */
+    if (fixed !== (tree.branches ?? [])) tree = { ...tree, branches: fixed };
+  }
+  return treeToVoicePathsInner(tree);
+}
+
+function treeToVoicePathsInner(tree: WorkflowTreeModel | undefined | null): VoicePath[] {
   const branches = tree?.branches ?? [];
   const paths: VoicePath[] = [];
   /* ⚠️⚠️ **THE PER-NODE DRAWER FIELDS LIVE ON `agent`, FLAT, KEYED BY THE NODE'S OWN ID

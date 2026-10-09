@@ -108,7 +108,55 @@ export function voiceVocab(profile: CustomerProfile) {
     : has("health", "medical", "clinic", "hospital", "dental") ? { title: "Employer or group health", team: "Group Health" }
     : { title: "Large or multi-site enquiry", team: "Key Accounts" };
 
-  return { where, when, ref, bulk };
+  /* ⚠️ WHAT WENT WRONG, named the way the vertical names it. "Service issue" is right for a
+     home service and meaningless for a hotel, where the equivalent is the stay itself. */
+  const issue =
+    has("hotel", "lodging", "resort", "travel", "vacation") ? "Stay Issue or Complaint"
+    : has("home service", "plumb", "hvac", "roof", "restoration", "clean", "pest") ? "Service Issue or Re-Treatment"
+    : has("health", "medical", "clinic", "hospital", "dental") ? "Care Concern or Follow-Up"
+    : has("senior", "care", "living") ? "Care Concern or Follow-Up"
+    : has("insur", "policy") ? "Claim or Coverage Issue"
+    : has("auto", "vehicle", "dealer", "tire") ? "Repair Issue or Warranty"
+    : has("retail", "store", "mattress", "blind", "window", "furnish") ? "Order Problem or Return"
+    : "Service Issue or Complaint";
+
+  /* WHEN IT ALREADY HAPPENED. A support lookup needs the date of the thing being asked about,
+     which is the opposite of `when` (that one is when they WANT something). */
+  const last =
+    has("hotel", "lodging", "resort", "travel", "vacation") ? "Stay Dates"
+    : has("retail", "store", "mattress", "blind", "window", "furnish") ? "Order Date"
+    : has("health", "medical", "clinic", "hospital", "dental") ? "Last Visit Date"
+    : "Last Service Date";
+
+  /* ⚠️⚠️ **WHAT AN EXISTING CUSTOMER HAS OPEN, WHICH IS NOT ALWAYS THE BOOKING TERM.**
+     `bookingTerm` is a SALES word: AutoNation's is "Test Drive", so a support branch built
+     from it read "Test Drive Status or Change" to somebody ringing about a repair. The thing
+     a support caller has a status on is whatever they already bought. */
+  const openItem =
+    has("auto", "vehicle", "dealer", "tire") ? "Service Visit"
+    : has("health", "medical", "clinic", "hospital", "dental") ? "Appointment"
+    : has("retail", "store", "mattress", "blind", "window", "furnish") ? "Order"
+    : has("insur", "policy") ? "Policy"
+    : profile.bookingTerm || "Appointment";
+
+  /* ⚠️ THE SECOND IDENTIFIER, the one that actually finds the account. `where` is built for a
+     SALES call and answers "where do you want it", so it hands back a ZIP for healthcare and
+     automotive, which locates nobody's record. This is what each vertical really asks for. */
+  const verify =
+    has("home service", "plumb", "hvac", "roof", "restoration", "clean", "pest") ? "Service Address"
+    : has("health", "medical", "clinic", "hospital", "dental") ? "Date of Birth"
+    : has("auto", "vehicle", "dealer", "tire") ? "Vehicle or Plate"
+    : has("senior", "care", "living") ? "Care Location"
+    : "Consumer Name";
+
+  /* WHEN THE NEXT ONE IS, for a status check. */
+  const scheduled =
+    has("hotel", "lodging", "resort", "travel", "vacation") ? "Check-In Date"
+    : has("health", "medical", "clinic", "hospital", "dental") ? "Appointment Date"
+    : has("home service", "plumb", "hvac", "roof", "restoration", "clean", "pest") ? "Scheduled Visit Date"
+    : "Scheduled Date";
+
+  return { where, when, ref, bulk, issue, last, scheduled, openItem, verify };
 }
 
 /**
@@ -134,10 +182,13 @@ function queueName(name: string | undefined, fallback: string): string {
  */
 export function deriveUseCases(profile: CustomerProfile): VoiceUseCases {
   const v = voiceVocab(profile);
-  const booking = (profile.bookingTerm || "Reservation").toLowerCase();
   const queues = profile.reports.voiceRoutingDemo?.queues ?? [];
   const newTeam = queueName(queues[0]?.name, `New ${profile.bookingTerm} Team`);
   const supTeam = queueName(queues[1]?.name, `${profile.customerName} Support`);
+  /* ⚠️ A third real queue where the prospect has one, because "it did not work" and "when are
+     you coming" genuinely are different desks; falls back to the support team rather than
+     inventing a department name the prospect does not have. */
+  const retentionTeam = queueName(queues[2]?.name, supTeam);
 
   return {
     sales: [
@@ -159,22 +210,113 @@ export function deriveUseCases(profile: CustomerProfile): VoiceUseCases {
         route: v.bulk.team,
       },
     ],
+    /* ⚠️⚠️ **FOUR BRANCHES, AND "CHANGE" AND "CANCEL" WERE MERGED BECAUSE THEY WERE THE SAME
+       BRANCH.** Reported directly: *"i think change, reschedule and cancel would be the
+       same"*. They were right, and by this file's own rule: a branch earns its place by
+       needing a different reference, a different team or a different action, and those two
+       wanted the identical reference, the identical fields and the identical desk. What
+       replaced them is split on what the agent has to LOOK UP, which is the thing that
+       actually differs: the visit that went wrong, the visit that is coming, the charge.
+       ⚠️ Titles are the heading on the box, so they are written as product configuration
+       rather than as a caller's words, and each one re-skins through `voiceVocab`. */
     support: [
       {
-        title: `Change or reschedule`,
-        collect: [v.ref, "Consumer Name"],
+        /* The defining support call for anything with a guarantee or a result: it did not
+           work. Its own desk, because handled slowly this is a cancellation. */
+        title: v.issue,
+        collect: [v.verify, v.last, v.ref],
+        route: retentionTeam,
+      },
+      {
+        /* "Where is it / when are you coming", plus moving it. Pure deflection: a read and
+           a reschedule, no human needed. */
+        title: `${v.openItem} Status or Change`,
+        collect: [v.verify, v.scheduled, v.ref],
         route: supTeam,
       },
       {
-        title: `Cancel ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking}`,
-        collect: [v.ref, "Consumer Name"],
-        route: supTeam,
-      },
-      {
-        title: `Billing question`,
-        collect: [v.ref, "Consumer Name"],
+        /* ⚠️ NO CARD DIGITS IN THE COLLECT LIST, EVER. The brand rules already forbid asking
+           for payment details over text, and a field on the diagram is an instruction to
+           ask for it. The charge DATE is enough to find the transaction. */
+        title: `Billing and Account`,
+        collect: ["Consumer Name", "Charge Date", v.ref],
         route: "Billing",
+      },
+      {
+        /* ⚠️ THE CATCH-ALL IS A REAL BRANCH, NOT A GAP. Without it every unmatched support
+           caller falls into whichever of the three the model likes best, which is how a
+           billing question ends up in the re-treatment queue. */
+        title: `Other Support Request`,
+        collect: ["Consumer Name", v.ref],
+        route: supTeam,
       },
     ],
   };
+}
+
+/* =============================================================================
+   REPAIRING A TREE THAT FROZE THE OLD SUPPORT SET
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ **A STORED TREE OVERRIDE OUTRANKS THE DERIVED DEFAULT, SO CHANGING
+   `deriveUseCases` DOES NOTHING FOR A DEMO SOMEBODY HAS EDITED.** Applying an edit
+   anywhere on a workflow page persists the WHOLE tree, so every demo an SE has
+   touched carries a snapshot of whatever the support branches were that day. Aptive
+   is one: its record still lists "Change or reschedule / Cancel a service appointment
+   / Billing question" and no change here would ever have reached it.
+
+   ⚠️ **READ-TIME, NOT A MIGRATION**, for the reason this repo already records for
+   `repairSmsSegments` and the marketing-source rename: the override layer syncs to the
+   shared demo record, so a tree written by the old code reaches a colleague's browser
+   where no migration ever ran.
+
+   ⚠️⚠️ **IDENTIFIED BY AN EXACT MATCH ON THE RETIRED TITLES, WHICH IS WHAT MAKES IT
+   SAFE.** Only the old derived default could produce that precise set, so a hand-edited
+   support branch is left alone by construction. Anything else, including a set an SE has
+   renamed or added to, is not touched.
+   ============================================================================= */
+
+/** The titles the retired default produced, as a predicate rather than a list of
+ *  strings, because "Cancel a service appointment" interpolates the booking term. */
+function isRetiredSupportSet(titles: string[]): boolean {
+  if (titles.length !== 3) return false;
+  const [a, b, c] = titles.map((t) => t.toLowerCase().trim());
+  return a === "change or reschedule"
+    && /^cancel (a|an) .+/.test(b)
+    && c === "billing question";
+}
+
+/**
+ * Swap a frozen retired support set for the current derived one.
+ *
+ * ⚠️ Returns the SAME object when there is nothing to repair, so it never costs a
+ * re-render — the identity rule `repairSmsSegments` and the marketing rename both follow.
+ */
+export function repairSupportUseCases<T extends { title?: string; leaves?: unknown[] }>(
+  branches: T[],
+  profile: CustomerProfile,
+): T[] {
+  let changed = false;
+  const support = deriveUseCases(profile).support;
+  const next = branches.map((b) => {
+    const leaves = (b.leaves ?? []) as { paths?: { title?: string }[] }[];
+    const fixedLeaves = leaves.map((leaf) => {
+      const paths = leaf.paths ?? [];
+      if (!isRetiredSupportSet(paths.map((p) => String(p.title ?? "")))) return leaf;
+      changed = true;
+      /* ⚠️ The node's own shape is kept and only the content replaced, so an action,
+         a lock or anything else an SE set on that leaf survives. */
+      const template = paths[0] ?? {};
+      return {
+        ...leaf,
+        paths: support.map((u) => ({
+          ...template,
+          title: u.title,
+          chips: u.collect,
+          route: u.route,
+        })),
+      };
+    });
+    return fixedLeaves.some((l, i) => l !== leaves[i]) ? { ...b, leaves: fixedLeaves } : b;
+  });
+  return changed ? (next as T[]) : branches;
 }

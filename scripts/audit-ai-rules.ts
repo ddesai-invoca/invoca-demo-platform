@@ -18,6 +18,7 @@ import { collectNames } from "../src/data/workflowDrawers.ts";
 import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF } from "../src/data/workflowChrome.ts";
 import { rowLayout } from "../src/data/workflowRows.ts";
 import { smsBranches, smsConfigFor, repairSmsSegments, SMS_TRIGGER } from "../src/data/smsTemplate.ts";
+import { voiceVocab } from "../src/data/voiceUseCases.ts";
 import { smsDrawerFor, drawerFor, SMS_ACTION_LABEL, SMS_ACTION_DESCRIPTION, SMS_ACTION_PROMPT,
   ACTION_DESCRIPTION, ACTION_PROMPT, SMS_ACTION_OPTIONS, SMS_CALLBACK_SIGNAL,
   SMS_DESTINATION_PROMPT, SMS_ROUTE_DESTINATION, SMS_ESCALATE_DESTINATION,
@@ -1234,14 +1235,23 @@ console.log("\nThe built-in SMS workflow template");
     ? ok("the titles are defaults an SE can still rename, not renderer literals")
     : bad("the segment titles stopped being overridable defaults");
 
-  /* ── the support side has three paths (10/6/2026) ─────────────────────── */
+  /* ── the support side: three use cases and a catch-all (10/9/2026) ─────────────────────── */
   (() => {
     const support = tree.branches[1]?.leaves?.[0];
     if (!support) return bad("the Need Support branch has no leaf");
     const kids = support.paths ?? [];
-    kids.length === 3
-      ? ok("All Support Users has three paths")
-      : bad(`All Support Users has ${kids.length} paths, want 3`);
+    /* ✅ **RE-AIMED FROM THREE TO FOUR, ON THE USER'S OWN SPEC: "the top 3 support use cases
+       and 4th as 'other'".** The count alone was never the invariant — what matters is that
+       the set ENDS in a catch-all, because without one a support conversation that is none of
+       the three has nowhere to go and the agent improvises a path the diagram does not draw.
+       So the shape is asserted rather than the number: three specific cases, then a terminal
+       one whose title says it takes everything else. */
+    kids.length === 4
+      ? ok("All Support Users has three use cases and a catch-all")
+      : bad(`All Support Users has ${kids.length} paths, want 4`);
+    /^Other\b/i.test(kids[3]?.title ?? "")
+      ? ok("…and the last one is the catch-all, so no support conversation dead-ends")
+      : bad(`the fourth support path is not a catch-all: ${JSON.stringify(kids[3]?.title)}`);
     /* ⚠️ THE LEAF ITSELF IS STILL LOCKED CHROME. What was added hangs BELOW it; the box
        keeps the name and the action the product gives it, which this repo already pins. */
     support.locked === true && support.action === "Support & Escalate"
@@ -1274,7 +1284,7 @@ console.log("\nThe built-in SMS workflow template");
        by BUILDING each drawer rather than grepping the table, so a registration that no
        longer matches the node's action still fails. */
     (() => {
-      return ["path-1-0-0", "path-1-0-1", "path-1-0-2"].every((id) => {
+      return ["path-1-0-0", "path-1-0-1", "path-1-0-2", "path-1-0-3"].every((id) => {
         const d = smsDrawerFor(p, tree as never, id, cfg) as
           { action?: string; handling?: string } | null;
         return !!d && d.action === "escalate" && !!d.handling && d.handling.length > 40;
@@ -1282,6 +1292,31 @@ console.log("\nThe built-in SMS workflow template");
     })()
       ? ok("each support path's drawer opens as an escalate with its own instruction text")
       : bad("a support path's drawer opens empty or with the wrong action");
+
+    /* ⚠️⚠️ **THE TEXT NAMES WHAT THE NODE NAMES, AND THIS FIRED ON REAL DATA BEFORE IT WAS
+       A CHECK.** AutoNation drew "Service Visit Status or Change" while that node's own
+       drawer read "which TEST DRIVE they mean" — `bookingTerm` is a sales word and the titles
+       are built from `openItem`, so the diagram and the drawer described one node two ways.
+       Asserted on a profile where the two genuinely differ, or the check proves nothing:
+       on most verticals `openItem` IS the booking term and any wiring would pass. */
+    (() => {
+      const auto = (load("src/data/generated", (j: any) => j) as any[])
+        .find((x) => /auto|vehicle|dealer|tire/i.test(x?.industry ?? ""));
+      if (!auto) return ok("(no automotive profile on disk to test the support noun against)");
+      const term = (auto.bookingTerm ?? "").toLowerCase();
+      const open = voiceVocab(auto).openItem.toLowerCase();
+      if (!term || term === open) {
+        return ok("(this profile's booking term and open item agree, nothing to separate)");
+      }
+      const t: any = { triggeredBy: "x", startLabel: "y", branches: smsBranches(auto) };
+      const c = smsConfigFor(auto);
+      const leaked = ["path-1-0-0", "path-1-0-1", "path-1-0-2", "path-1-0-3"]
+        .map((id) => (smsDrawerFor(auto, t as never, id, c) as { handling?: string } | null)?.handling ?? "")
+        .filter((txt) => txt.toLowerCase().includes(term));
+      leaked.length === 0
+        ? ok(`a support instruction names the open item ("${open}"), never the sales booking term ("${term}")`)
+        : bad(`a support instruction still says "${term}" where its node says "${open}": ${JSON.stringify(leaked[0].slice(0, 80))}`);
+    })();
   })();
 
   /* ⚠️⚠️ **`inform` IS DEEP-MERGED, or a demo saved before the support keys existed loses
@@ -2541,19 +2576,20 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
      ⚠️ A REMOVAL FAILS TOO. Silently dropping one loosens the agent with nothing
      recording that it was meant; the list is only worth having while it stays true. */
   const KNOWN_ABSOLUTES = new Set([
-    /* ⚠️ The voice pricing line appears TWICE below — once forbidding and once permitting —
-       because it is now a ternary on `agent.quotesPrices`. Both halves keep the absolute
-       "only qualify and route", which is the routing agent's defining job rather than an
-       opinion about the business, so both are listed rather than flagged. */
+    /* ✅ **SUPERSEDED 10/9/2026 — the pricing ternary no longer carries a routing half.** This
+       used to read: both branches keep the absolute "only qualify and route", which is the
+       routing agent's defining job rather than an opinion about the business. The permitting
+       branch is therefore no longer an absolute at ALL (it forbids nothing) and has left this
+       list; only the forbidding half remains, and it is still keyed off `agent.quotesPrices`.
+       Why the routing half went: see "the support agent resolves" below. */
     "${}Follow these instructions for this route, in order, and do not skip",
     "- Do not invent specific prices; pricing/details are handled at the ${",
     "- FIRST ask for their ZIP code. SERVICE-AREA CHECK: treat \"12345\" as t",
     "- NEVER ask for anything you already have. If the caller already gave ",
-    "- NEVER quote prices, availability, or promotions. NEVER attempt to re",
+    "- NEVER quote prices, availability, or promotions.",
     "- NEVER read out a user-group label such as \"All Sales Inquiry Users\" ",
     "- NEVER use emojis, markdown, or formatting — your words are read alou",
     "- NEVER use emojis.",
-    "- You MAY give a rough preliminary price RANGE or general availability",
     "- the sales team: a new enquiry — buying, booking, pricing, availabili",
     "2. Qualify — ask these questions ONE AT A TIME, IN THIS EXACT ORDER, w",
     "3. COLLECT, ONE QUESTION PER MESSAGE, waiting for each answer before a",
@@ -2571,7 +2607,10 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
     "\\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ",
     "\\n2. THEN FOLLOW THESE STEPS EXACTLY, in order, and do not skip one:",
     "a. Ask for whatever reference they have so the team can find them: the",
-    "c. Do NOT try to solve it. Once you have who they are AND what the iss",
+    /* ✅ RETIRED 10/9/2026 with the routing half above: the hardcoded flow's step c used to
+       read "Do NOT try to solve it", which contradicts SUPPORT LOOKUP outright. It now defers
+       to that block instead. Nothing replaces it in this list, because what took its place
+       forbids nothing — it is an instruction, not an absolute. */
     "}\" Then follow the caller's answer. Never route or book a caller to a ",
     "• ASK NOTHING BEYOND THE FLOW ABOVE. Do not add your own qualifying qu",
     "• NEVER ask for payment details, card numbers, or account numbers.",
@@ -2579,6 +2618,30 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
     "• NEVER say a calendar date (no \"the 20th\", no \"09/20\"). The weekday a",
     "• NEVER transfer, route, or promise a callback from a department.",
     "• the sales team — a new enquiry: buying, booking, pricing, availabili",
+
+    /* ⚠️⚠️ **SUPPORT LOOKUP (10/9/2026) — five absolutes, and every one is a CHANNEL
+       invariant rather than a product opinion, which is what this ledger exists to make
+       somebody argue.** Asked for directly: on a support conversation the agent looks the
+       person up in the brand's systems and closes what it can. None of these is a view about
+       the business, and none is a candidate for an `smsPlaybook` flag:
+         • the stopping condition and the hand-off condition are about the CONVERSATION not
+           dead-ending — both were added after a real call where the agent asked for a third
+           identifier and never looked anything up;
+         • the consistency rule is an honesty guard. The looked-up details are invented
+           (stated, with its cost, at `supportLookupBlock`), so "reuse what the demo already
+           shows" is the only thing keeping them from contradicting another screen;
+         • the two refusals are safety. No business wants its agent collecting card numbers,
+           and acting on the wrong person's record is the one mistake here that reaches a real
+           customer. Neither is something an SE should be able to switch off. */
+    "3. THE MOMENT THEY GIVE YOU ANY ONE IDENTIFIER, STOP ASKING FOR MORE A",
+    /* ⚠️ Step 5's refusals are the other half of the stopping condition, added after a third
+       live call where the agent said "I'm looking that up now" and then asked for another
+       detail: with no real system behind it, it kept gathering its way toward certainty. */
+    "5. Then STATE WHAT THE RECORD SAYS, with specifics: dates, what was do",
+    "7. Only hand off when you genuinely cannot act: the person asks for a ",
+    "• USE WHAT ${} ACTUALLY HAS. If a location, a plan, a product or a per",
+    "• NEVER ask for card numbers, bank details, full account numbers, or a",
+    "• If they cannot give you the details you need, say what you need and ",
   ]);
 
   const chat = readCode("engine/chat.ts");
@@ -2648,7 +2711,21 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
     };
     const FORBID = /NEVER quote prices, availability, or promotions/;
     const ALLOW = /You MAY give a rough preliminary price RANGE/;
-    const ROUTE = /NEVER attempt to resolve a support issue yourself/;
+    /* ✅✅ **RE-AIMED 10/9/2026, AND THE INVARIANT INVERTED RATHER THAN LOOSENED.** This
+       pinned `NEVER attempt to resolve a support issue yourself — only qualify and route` as
+       an absolute in both branches, which was right while the agent only ever triaged. The
+       user has since asked for the opposite on the support side: look the person up in the
+       brand's systems and close what you can. So the old sentence is GONE on purpose — see
+       `supportLookupBlock` — and pinning it would now be pinning the bug.
+       What survives is the half that was never about pricing: the SUPPORT LOOKUP block is
+       what governs resolving now, and it must reach the prompt whatever `quotesPrices` says.
+       A pricing flag that silently took the support behaviour with it is exactly the
+       regression this check existed to catch, so it still catches it — at the new address. */
+    const ROUTE = /SUPPORT LOOKUP — when the person already has something with/;
+    /* ⚠️⚠️ AND THE RETIRED SENTENCE MUST NOT COME BACK, in either branch: it would sit a few
+       lines under a block instructing the agent to resolve the call, and a prompt that
+       forbids and requires the same thing is worse than either rule. */
+    const RETIRED = /NEVER attempt to resolve a support issue yourself/;
     const off = promptFor(undefined), on = promptFor(true), back = promptFor(false);
 
     FORBID.test(off) && !ALLOW.test(off)
@@ -2664,8 +2741,11 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
        agent IS, not an opinion about the business; losing it with the pricing half would
        silently turn a qualify-and-route agent into one that tries to fix problems. */
     ROUTE.test(off) && ROUTE.test(on) && ROUTE.test(back)
-      ? ok("voice: 'only qualify and route' stays absolute in BOTH branches")
-      : bad("voice: the routing rule was lost with the pricing rule");
+      ? ok("voice: the support lookup reaches the prompt in BOTH pricing branches")
+      : bad("voice: the support behaviour was lost with the pricing rule");
+    !RETIRED.test(off) && !RETIRED.test(on) && !RETIRED.test(back)
+      ? ok("voice: and nothing forbids resolving, which would contradict that block")
+      : bad("voice: the retired 'only qualify and route' line is back, fighting SUPPORT LOOKUP");
   })();
 
   /* ⚠️⚠️ **THE SPEC -> BRAIN MAPPING IS CHECKED SEPARATELY, AND IT HAD TO BE: the prompt

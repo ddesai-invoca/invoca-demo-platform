@@ -21,6 +21,7 @@ import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor, extraDrawerFor } from "../data/workflowDrawers";
 import { SMS_TRIGGER, smsBranches, smsConfigFor, repairSmsSegments, effectiveSmsConfig } from "../data/smsTemplate";
+import { repairSupportUseCases } from "../data/voiceUseCases";
 import { smsDrawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
 import { voiceCopy } from "../data/voiceCopy";
@@ -426,11 +427,20 @@ export function AgentWorkflow() {
   const rawTree = usePageData(baseTree);
   /* ⚠️ REPAIRS SEGMENTS WRITTEN BEFORE A NEW ANSWER INHERITED ITS SIBLINGS' ACTION. Read-time,
      identity-preserving, and scoped to the built-in template — see `repairSmsSegments`. */
+  /* ⚠️ AND REPAIRS A TREE THAT FROZE THE RETIRED SUPPORT SET. Applying any edit persists
+     the WHOLE tree, so every demo an SE has touched carries a snapshot of the support
+     branches as they were that day; without this, changing the derived default would reach
+     every untouched prospect and none of the ones actually being demoed. Both channels,
+     because both trees store the same way. See `repairSupportUseCases`. */
   const tree = useMemo(
-    () => (smsTemplated
-      ? { ...rawTree, branches: repairSmsSegments(rawTree.branches ?? []) }
-      : rawTree),
-    [rawTree, smsTemplated],
+    () => {
+      const branches = repairSupportUseCases(
+        smsTemplated ? repairSmsSegments(rawTree.branches ?? []) : (rawTree.branches ?? []),
+        profile,
+      );
+      return branches === rawTree.branches ? rawTree : { ...rawTree, branches };
+    },
+    [rawTree, smsTemplated, profile],
   );
   /* ---- The Preview Workflow drawer's OWN Ask AI + undo (the voice side) -------------
      Asked for directly: "just like how the SMS Agent preview workflow has a Ask AI and undo

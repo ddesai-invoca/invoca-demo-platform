@@ -2,6 +2,7 @@ import type { TreeBranch, TreeLeaf, TreePath } from "../components/WorkflowTree"
 import { withoutReminderPromise } from "./agentDefaults";
 import type { CustomerProfile } from "./schema";
 import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, LEAF_QUALIFY, LEAF_ESCALATE } from "./workflowChrome";
+import { deriveUseCases, voiceVocab } from "./voiceUseCases";
 
 /* =============================================================================
    smsTemplate.ts — the built-in SMS workflow, for every prospect
@@ -76,30 +77,34 @@ export const SEG_SERVICEABLE_NO = "Not Serviceable";
 export const SEG_FOUND_YES = "Record Found";
 export const SEG_FOUND_NO = "No Record Found";
 
-/* ⚠️ The three paths under All Support Users (10/6/2026). The support side used to be a single
-   terminal box, so a prospect saw the agent triage sales and simply stop on support. These
-   are the three things an existing customer texts in about, in the prospect's own vocabulary
-   where there is one. */
-export const SEG_SUPPORT_BILLING = "Billing Question";
-export const SEG_SUPPORT_HUMAN = "Talk to a Person";
+/* ✅ **`SEG_SUPPORT_BILLING` AND `SEG_SUPPORT_HUMAN` ARE DELETED (10/9/2026), NOT LEFT
+   UNUSED.** The support titles come from `deriveUseCases` now, so both were dead exports —
+   and a dead title constant is an invitation to wire the old vocabulary back in beside the
+   derived one, which is how the SMS and voice trees would come to disagree again. */
 
 /**
- * The three paths under All Support Users — every one of them Support & Escalate, like the
- * node they hang from.
+ * The paths under All Support Users — every one of them Support & Escalate, like the node
+ * they hang from.
  *
  * ⚠️ Built in one place from one action so they cannot drift apart: changing the parent's
- * action means changing this `kind`, not three node literals.
+ * action means changing this `kind`, not a node literal each.
  */
 export function supportPaths(p: CustomerProfile): TreePath[] {
-  const mk = (title: string, collect: SmsCollectKey): TreePath => ({
-    title, action: LEAF_ESCALATE, actionIcon: "headsetMic", tone: "orange",
-    actionKind: "escalate", chips: collectFor(p, collect).map((c) => c.name),
-  });
-  return [
-    mk(SEG_SUPPORT_BILLING, "supportBilling"),
-    mk(`Change or Cancel ${p.bookingTerm}`, "supportChange"),
-    mk(SEG_SUPPORT_HUMAN, "supportHuman"),
-  ];
+  /* ⚠️⚠️ **THE SAME FOUR THE VOICE TREE DRAWS, FROM THE SAME FUNCTION (10/9/2026).** Asked
+     for directly: build the support use cases and *"apply it to both sms and voice"*. Two
+     lists would mean a texter and a caller with the same problem being triaged differently
+     by the same business, which is the drift this platform has already paid for twice.
+     ⚠️ **"Change or Cancel" IS GONE BECAUSE IT WAS THE SAME BRANCH AS A RESCHEDULE**, which
+     the user pointed out: identical reference, identical fields, identical desk. What
+     replaced it splits on what has to be LOOKED UP, which is the thing that actually
+     differs. See `deriveUseCases` for the headings and the per-vertical wording.
+     ⚠️ Every path keeps `Support & Escalate` to match its parent, which is the rule a node
+     added by hand already follows: peers under one question do the same kind of thing. */
+  return deriveUseCases(p).support.map((u) => ({
+    title: u.title, action: LEAF_ESCALATE, actionIcon: "headsetMic", tone: "orange",
+    actionKind: "escalate", chips: u.collect,
+    ...(u.route ? { route: u.route } : {}),
+  }));
 }
 
 /** One row of a What To Collect list: the chip, and the italic line under it in the drawer. */
@@ -171,9 +176,16 @@ const ORDER = {
   /* ⚠️ The support paths collect what a human would need to pick the request up: who it is,
      and the reference they have. Drawn from the SAME pool as the sales side, so a prospect's
      own vocabulary carries across and the two halves cannot describe different fields. */
+  /* ⚠️⚠️ **FALLBACKS ONLY, AND THAT IS A CHANGE OF ROLE (10/9/2026).** Each support
+     node now carries its own `chips` from `deriveUseCases`, and `extraFields` prefers a
+     node's chips over anything passed in — so the diagram, the drawer and the prompt read
+     ONE value and these lists are reached only by a node that somehow carries none. Kept
+     rather than deleted because `SmsCollectKey` is typed off this table and the fallback is
+     what stops an empty What To Collect in that case. */
+  supportIssue: ["first", "last", "isExisting", "zip"],
   supportBilling: ["first", "last", "isExisting", "zip"],
   supportChange: ["first", "last", "isExisting", "disposition"],
-  supportHuman: ["first", "last", "isExisting"],
+  supportOther: ["first", "last", "isExisting"],
 } as const;
 
 const listOf = (p: CustomerProfile, keys: readonly string[]): CollectItem[] => {
@@ -230,6 +242,14 @@ export function qualifyCopy(p: CustomerProfile): Record<"root" | "newSide" | "ex
 }
 
 export function informCopy(p: CustomerProfile): SmsConfig["inform"] {
+  /* ⚠️⚠️ **THE SUPPORT TEXTS NAME WHAT THE NODE NAMES, AND `bookingTerm` IS NOT IT.**
+     Caught by opening all four drawers across four verticals: AutoNation's node read
+     "Service Visit Status or Change" while its own instruction read "which test drive they
+     mean" — the diagram and the drawer describing one node two ways, which is the failure
+     this whole feature exists to prevent. `bookingTerm` is a SALES word; `openItem` is what
+     an existing customer actually has open, and it is the same value the titles are built
+     from, so the two cannot drift. */
+  const openItem = voiceVocab(p).openItem.toLowerCase();
   const phone = demoPhone(p);
   return {
     serviceableYes: [
@@ -261,20 +281,35 @@ export function informCopy(p: CustomerProfile): SmsConfig["inform"] {
        customer — the three paths below are what it now triages into. Written in the
        prospect's own vocabulary, and none of them promises an action nothing performs:
        the agent gathers and hands off, exactly as the escalate node above it does. */
+    /* ⚠️⚠️ **REWRITTEN 10/9/2026, AND LEAVING THEM ALONE WOULD HAVE BROKEN THE FEATURE
+       IN THE WORST WAY: these texts reach the PROMPT, and all three told the agent the
+       opposite of what SUPPORT LOOKUP now tells it.** Billing said "never … explain a charge
+       yourself" directly above a block instructing it to explain the charge; the change path
+       said "never confirm a new date yourself" above one instructing it to move the booking.
+       A prompt that forbids and requires the same thing is worse than either rule, which this
+       repo records three times over — and the contradiction would have shown up as the agent
+       inconsistently refusing to finish a job it had just been told to finish.
+       ⚠️ The refusals that SURVIVE are the ones SUPPORT LOOKUP also holds: no card numbers,
+       no guessing whose record it is, and hand off anything needing an authority it lacks. */
+    supportIssue: [
+      `Find out what went wrong and when, in the ${p.customerNoun.toLowerCase()}'s own words, before offering anything.`,
+      `Look their record up, say what you found, and put it right: book the revisit or the follow-up yourself and confirm it back.`,
+      `If they want a refund, a credit, or anything else you do not have the authority to approve, say so plainly and pass them to a ${p.customerName} team member.`,
+    ].join("\n"),
     supportBilling: [
-      `Ask what the ${p.customerNoun.toLowerCase()} is seeing on their bill or statement, and for any invoice or account reference they have.`,
-      `Never quote, adjust, refund or explain a charge yourself — billing is handled by a ${p.customerName} team member.`,
-      `Confirm the best phone number, then let them know billing will follow up shortly.`,
+      `Ask what the ${p.customerNoun.toLowerCase()} is seeing on their statement and when it was charged.`,
+      `Look it up and explain the charge in plain terms: what it was for, which ${openItem} it relates to, and what happens next.`,
+      `Never ask for card numbers, bank details or a full account number. An adjustment or a refund is a ${p.customerName} team member's to approve, so hand those over once you have explained the charge.`,
     ].join("\n"),
     supportChange: [
-      `Find out which ${p.bookingTerm.toLowerCase()} they mean and whether they want to move it or cancel it.`,
-      `Ask for the date and time they currently have, plus any reference number, so the team can find it.`,
-      `Never confirm a new date yourself and never state that something has been cancelled — a ${p.customerName} team member makes the change and confirms it.`,
+      `Find out which ${openItem} they mean and what they want to happen to it.`,
+      `Look it up, tell them the date and time currently on it, then make the change yourself and confirm the new one back to them.`,
+      `If the slot they want is not one you can offer, say what is available instead rather than promising to check and come back.`,
     ].join("\n"),
-    supportHuman: [
-      `Acknowledge the request for a person straight away and do not try to resolve the issue yourself.`,
-      `Ask only for their name and the best number to reach them on, plus one short line on what it is about.`,
-      `Tell them a ${p.customerName} team member will pick it up, then stop asking questions.`,
+    supportOther: [
+      `This is the catch-all: anything that is not the three above. Listen first and do not force it into one of them.`,
+      `Look up whatever record is relevant, answer what you can answer, and do it in the same turn rather than promising to look later.`,
+      `Hand off as soon as it needs a person: they ask for one, they are upset, or it needs an authority you do not have. Say who you are passing them to.`,
     ].join("\n"),
   };
 }
@@ -311,7 +346,11 @@ export interface SmsConfig {
        `setByPath` walks into a missing intermediate and the write vanishes. Every demo with
        an SMS override already has `inform`. `effectiveSmsConfig` deep-merges it so a demo
        saved before these existed still gets their defaults. */
-    supportBilling: string; supportChange: string; supportHuman: string;
+    /* ⚠️ `supportHuman` is RETIRED — its node ("Talk to a Person") is gone, replaced by the
+       catch-all. Consequence, stated: a demo where an SE edited that text keeps the key in
+       its stored override and nothing renders it, because the node it belonged to no longer
+       exists. There is nowhere honest to show it. */
+    supportIssue: string; supportBilling: string; supportChange: string; supportOther: string;
   };
   escalate: string;
   intents: {

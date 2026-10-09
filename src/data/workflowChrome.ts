@@ -32,8 +32,10 @@ import type { ExtraWorkflow } from "./schema";
    capture, and is deliberately left alone: correcting it would reword a screen nobody asked
    about. Raised with the user instead. */
 export const ZERO_TRIGGER = "0 Campaigns, 0 Forms, and 0 Inbound SMS";
-export const INTENT_SALES = "Sales Inquiry";
-export const INTENT_SUPPORT = "Need Support";
+/* ⚠️ **RE-EXPORTED, NOT DECLARED HERE ANY MORE** — see `workflowIntents.ts` for why the
+   engine needs them and cannot import this file. Every existing importer is unchanged. */
+import { INTENT_SALES, INTENT_SUPPORT } from "./workflowIntents";
+export { INTENT_SALES, INTENT_SUPPORT };
 /** The support leaf is "All Support Users", NOT "All Need Support Users". */
 export const SUPPORT_LEAF = "All Support Users";
 

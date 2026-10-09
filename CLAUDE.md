@@ -13265,6 +13265,150 @@ live replies (and correctly deflecting a price question, per the `providesEstima
 finish writing `seen`, and the pill replaying from step 1. **The signed-in app has no trace of
 it** — no card, no root, no pill, and Preview Agent still opens its tab.
 
+## The support side looks the customer up, and closes what it can (10/9/2026)
+
+Asked for as: build *"the top 3 support use cases and 4th as 'other'"*, give them professional
+headings, *"apply it to both sms and voice"*, and during a preview have the agent *"look at
+their actual systems"* and collect what it needs to do that. Both follow-up choices were the
+user's: **say what it found, inventing plausible details**, and **close everything it can**.
+
+| | |
+|---|---|
+| `src/data/voiceUseCases.ts` | the four branches, derived per vertical |
+| `supportLookupBlock` in `engine/chat.ts` | what the agent DOES, one definition, both channels |
+| `src/data/smsTemplate.ts` | `supportPaths` now maps `deriveUseCases(p).support` |
+
+⚠️⚠️ **ONE DEFINITION, BOTH CHANNELS — a texter and a caller with the same problem must be
+triaged and answered the same way.** The SMS template built its own three branches and the
+voice tree built others, so one business triaged support two ways by channel. Both now derive
+from `deriveUseCases`, and both render the same lookup block from the same function.
+
+⚠️ **"Change or Cancel" IS GONE BECAUSE IT WAS THE SAME BRANCH AS A RESCHEDULE**, which the
+user pointed out: identical reference, identical fields, identical desk. What replaced it
+splits on what has to be LOOKED UP, which is the thing that actually differs. Measured across
+five verticals: Aptive gets Service Issue or Re-Treatment / Service Appointment Status or
+Change / Billing and Account / Other Support Request; Marriott gets Stay Issue or Complaint and
+Reservation Status or Change; Orlando Health gets Care Concern or Follow-Up.
+
+⚠️ **TWO VOCABULARY FIELDS EXIST BECAUSE THE SALES WORDS READ WRONG HERE, and both were
+caught by reading the output rather than by a test.** `bookingTerm` is a SALES word —
+AutoNation's is "Test Drive", so a support branch built from it read "Test Drive Status or
+Change" to somebody ringing about a repair (`openItem` → "Service Visit"). And `where` answers
+"where do you want it", so healthcare's support branch asked a patient for their ZIP, which
+locates nobody's record (`verify` → "Date of Birth").
+
+⚠️⚠️ **THE DETAILS IT REPORTS ARE INVENTED, AND THAT IS A CHOSEN TRADE WITH A STATED COST.**
+Nothing in the demo backs a last-service date or a charge amount, so a prospect who
+cross-checks another screen finds nothing behind them. Two guards keep it as honest as the
+choice allows: REUSE anything the demo really has rather than inventing a second version of
+it, and stay self-consistent for the whole conversation — the one thing worse than an invented
+date is two different invented dates for the same visit.
+
+### Four things that each made it look broken, every one found on a live call
+The block was present and correct every time; something nearer the caller's turn beat it.
+
+1. ⚠️⚠️ **INSISTING ON THE REFERENCE DEAD-ENDED THE CALL.** A caller who volunteered their
+   address was asked twice more for a "service appointment reference number", which almost
+   nobody has to hand. The fields are a MENU of ways to find the record, not a form.
+2. ⚠️⚠️ **"ANY ONE IS ENOUGH" IS A PERMISSION; THE AGENT NEEDED AN INSTRUCTION.** Told that,
+   it still asked for an address, then a reference, then a name, three turns deep. Step 3 now
+   says **THE MOMENT THEY GIVE YOU ANY ONE IDENTIFIER, STOP ASKING FOR MORE AND DO THE LOOKUP.**
+3. ⚠️⚠️ **THE PATH'S OWN LINE WAS STILL COMPETING, AND STATING PRECEDENCE INSIDE THE BLOCK
+   WAS NOT ENOUGH.** The generic wording is "hand off to whichever of these fits, confirming
+   before you transfer … collecting A, B, C" — a form to complete and a mandatory transfer,
+   sitting closer to the caller's turn and more concrete, so it won. The SUPPORT path is now
+   rendered as "Find their record with ANY ONE of: … Hand off to <team> only if you cannot act
+   yourself." The chips and the destination both survive, because they are what the diagram
+   draws; what changes is what they MEAN. **The sales path is untouched and asserted so.**
+4. ⚠️⚠️ **"YOU HAVE READ ACCESS" LEFT IT HEDGING FOREVER.** Given one identifier it said
+   "I'm looking that up now" and then asked for another detail — with no real system behind
+   it, it kept gathering toward a certainty it could never reach. The block has to say
+   outright that **THE LOOKUP ALWAYS FINDS THE RECORD** and that stating it is the job.
+
+⚠️⚠️ **AND THE SMS INSTRUCTION TEXTS REACHED THE SAME PROMPT AND CONTRADICTED IT.** All
+three shipped telling the agent the opposite of the new block: billing said "never … explain a
+charge yourself" directly above an instruction to explain the charge, and the change path said
+"never confirm a new date yourself" above one telling it to move the booking. A prompt that
+forbids and requires the same thing is worse than either rule, which this file records three
+times over. Rewritten; the refusals that SURVIVE are the ones the block also holds (no card
+numbers, no guessing whose record it is, hand off anything needing an authority it lacks).
+
+### The fourth node was unregistered, so its drawer opened empty
+`SMS_ESCALATE_PATH` listed three ids, so `path-1-0-3` fell through to the generic `extra__`
+branch — right for a node an SE added, wrong for one the template ships, and the symptom is a
+placeholder in the drawer while the agent is told nothing about that case. Registered as
+`supportIssue` / `supportChange` / `supportBilling` / `supportOther`.
+⚠️ **THE KEYS FOLLOW THE CASE, NOT THE POSITION.** `supportBilling` moved from index 0 to 2;
+because the stored text is keyed on the NAME, an SE who had edited their billing instruction
+still finds it on the billing node.
+⚠️ `supportHuman` is **retired**. Consequence, stated: a demo where an SE edited that text
+keeps the key in its override and nothing renders it, because its node no longer exists.
+⚠️ `SEG_SUPPORT_BILLING` / `SEG_SUPPORT_HUMAN` are **deleted, not left unused** — a dead title
+constant is an invitation to wire the old vocabulary back in beside the derived one.
+
+### `src/data/workflowIntents.ts`, extracted for the same reason `replicaRegistry.ts` was
+The engine needs to know whether a path is the SUPPORT path, and matching the literal
+`"Need Support"` would be a second definition of a name the chrome owns. But
+`workflowChrome.ts` **cannot** be imported from `engine/`: it takes its types from
+`../components/WorkflowTree`, a **.tsx**, and the node project compiles with `module: nodenext`
+and no `--jsx`. Measured both ways — extensionless resolves to `any` and reddens three
+implicit-any errors, the explicit `.tsx` fails with "'--jsx' is not set". So the two constants
+moved to their own DOM-free module and `workflowChrome.ts` re-exports them; no existing
+importer changed. **Nothing else belongs in that file**, or the engine can no longer read it.
+
+### `audit:ai`'s absolutes ledger did its job, and exposed a hole in itself
+The guard forced every new absolute to be registered with a note saying why it is a CHANNEL
+invariant rather than a product opinion, and every retired one to be confirmed. Five were
+added (the stopping condition, the hand-off condition, the consistency rule, and the two
+safety refusals) and three retired — `NEVER attempt to resolve a support issue yourself`, its
+`You MAY give a rough price RANGE` twin, and the hardcoded flow's `Do NOT try to solve it`.
+
+⚠️⚠️ **BUT A REWRITTEN RULE GREW TO 462 CHARACTERS AND SILENTLY LEFT THE LEDGER, because
+the scan skips anything over 400 as a block rather than a rule.** The guard reported the old
+wording as "disappeared" and never saw the new one at all — so the one check designed to make
+somebody argue for a prompt change was, for that change, blind. Split into two rules, both
+under the cap. **Keep a prompt rule short enough to be one rule.**
+
+### Checks: four re-aimed, two of them inverted, and three written badly first
+⚠️ **RE-AIMED, NOT LOOSENED.** The support-count check asserted THREE paths; the number was
+never the invariant, so it now asserts three specific cases **and a terminal catch-all**,
+without which a support conversation that is none of the three has nowhere to go. The routing
+check pinned `NEVER attempt to resolve a support issue yourself` as absolute in both pricing
+branches — correct while the agent only triaged, and now the opposite of what was asked for.
+It asserts the invariant that survives: **the lookup must reach the prompt whatever
+`quotesPrices` says**, and nothing may forbid resolving. A pricing flag that silently took the
+support behaviour with it is still caught, at the new address.
+
+⚠️⚠️ **THREE NEW CHECKS COULD NOT FAIL AND WERE CAUGHT BY SABOTAGE, NOT BY READING.**
+- Two grepped the SOURCE: `} else if (false) {` left the declaration and the string literals in
+  the file, so they passed against code that can never run. **The dead-code trap, walked into
+  while writing a check FOR a bug found on a live call.** They BUILD the prompt now.
+- The contradiction check excluded a whole TEXT when it mentioned card numbers — which the
+  billing instruction legitimately does — so a planted "Never explain a charge yourself" went
+  undetected. It judges a SENTENCE at a time.
+⚠️ And one failed on correct code: it sliced the support block at the first mention of
+"SUPPORT LOOKUP", which is inside that path's own first line, so the block ended before any of
+its bullets. **A probe fault, caught by dumping the prompt rather than trusting the failure.**
+⚠️ `audit:voice`'s summary read a hardcoded **"119 checks"** while 203 actually run — the one
+figure a reader trusts, stale. It is counted now.
+
+**Verified live against a restarted dev server** (the Node-cache caveat bit once, as usual),
+reading the built prompt and then the real `/api/chat`:
+- *"you treated my place a couple weeks ago but the ants are back"* → address → **"I can see we
+  treated your home on January 8th for ant control … you're eligible for a free retreat visit"**
+  and it books it;
+- a disputed charge → name + date → explains the \$149 as a treatment visit;
+- a gate code (the catch-all) → address → finds the failed access and updates it;
+- **SMS behaves identically** — one identifier, lookup, specifics, books the re-treatment.
+Every one of the four drawers opens with its own text and a collect list matching its node's
+chips, on all four verticals. `tsc -b`, `npm run build` and 20 of 21 audit suites green;
+`audit:seeds` is **86 of 103 before and after**, verified by stashing — the pre-existing
+generated-profile-data failures this file already records.
+
+⚠️ **WHAT IS NOT VERIFIED, STATED PLAINLY: no real voice call was placed.** The behaviour is
+proved through `/api/chat`, which is the same brain the LiveKit worker uses, and the diagrams
+and drawers were read directly — but nothing here was spoken aloud down a phone.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

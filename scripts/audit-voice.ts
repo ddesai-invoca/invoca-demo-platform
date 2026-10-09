@@ -28,6 +28,7 @@ import { bookedEvent } from "../src/data/salesforceEvent";
 import { VOICE_OPTIONS, DEFAULT_VOICE_ID, liveKitVoiceModel, isKnownVoice, voiceOption } from "../src/data/voiceOptions";
 import { latestTransferredCall, voiceAiRouting, voiceAiScreenpop } from "../src/data/voiceAiArtifacts";
 import { collectNames } from "../src/data/workflowDrawers";
+import { informCopy } from "../src/data/smsTemplate";
 
 /* ⚠️ THE VOICE TREE'S SHAPE, mirroring `deriveTree` in AgentWorkflow.tsx. The prompt is only
    built when `voicePaths` is non-empty, so passing an empty tree here would skip the entire
@@ -53,7 +54,12 @@ function auditTreePaths(_p: never, spec: VoiceAgentSpec) {
 
 const read = (p: string) => readFileSync(p, "utf8");
 let failures = 0;
+/* ⚠️⚠️ **COUNTED, NOT TYPED INTO THE SUMMARY LINE.** It read a hardcoded "119 checks" for
+   long enough to be wrong: checks were added in this file and the number did not move, so the
+   one figure a reader trusts was quietly stale. A derived count cannot drift. */
+let ran = 0;
 const check = (ok: boolean, label: string, detail = "") => {
+  ran++;
   if (!ok) { failures++; console.log(`FAIL  ${label}${detail ? ` — ${detail}` : ""}`); }
 };
 
@@ -1021,8 +1027,155 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
     "a voice extra registers an agent half, so its opener is configurable");
 }
 
+/* =============================================================================
+   THE SUPPORT USE CASES AND THE SYSTEM LOOKUP (10/9/2026)
+   ============================================================================= */
+{
+  const { deriveUseCases, repairSupportUseCases } = await import("../src/data/voiceUseCases.ts");
+  const prof = JSON.parse(readFileSync("src/data/generated/aptive.json", "utf8"));
+  const sup = deriveUseCases(prof).support;
+
+  check(sup.length === 4, "four support branches, including the catch-all");
+  /* ⚠️ "Change or reschedule" and "Cancel" were ONE branch wearing two names: identical
+     reference, identical fields, identical desk. */
+  check(!sup.some((u: { title: string }) => /^cancel /i.test(u.title) || /change or reschedule/i.test(u.title)),
+    "the retired change/cancel pair is gone, not renamed");
+  check(sup.some((u: { title: string }) => /other support request/i.test(u.title)),
+    "an explicit catch-all exists, so an unmatched caller does not land in the re-treatment queue");
+  /* ⚠️ The reference is the hardest identifier to produce, so it must not be asked first.
+     Measured on a real call: leading with it dead-ended the conversation three turns deep. */
+  check(sup.every((u: { collect: string[] }) => !/reference|policy number|patient id|order number|confirmation number/i.test(u.collect[0])),
+    "no support branch asks for a reference number first");
+  /* ⚠️ A field on the diagram is an instruction to ask for it, and the brand rules forbid
+     asking for payment details. */
+  check(!sup.some((u: { collect: string[] }) => u.collect.some((c) => /card|cvv|bank|routing|password/i.test(c))),
+    "no support branch asks for card or bank details");
+
+  /* ⚠️ The booking term is a SALES word: AutoNation's is "Test Drive", which read as
+     "Test Drive Status or Change" to somebody ringing about a repair. */
+  const auto = JSON.parse(readFileSync("src/data/generated/autonation.json", "utf8"));
+  check(!deriveUseCases(auto).support.some((u: { title: string }) => /test drive/i.test(u.title)),
+    "a support branch never reuses a sales-only booking term");
+
+  /* ⚠️ A stored tree override freezes whatever the branches were that day, so the derived
+     change reaches every untouched prospect and none of the ones being demoed. */
+  const retired = [{ leaves: [{ paths: [
+    { title: "Change or reschedule" }, { title: "Cancel a service appointment" }, { title: "Billing question" },
+  ] }] }];
+  const fixed = repairSupportUseCases(retired as never, prof) as typeof retired;
+  check(fixed[0].leaves[0].paths.length === 4 && /Re-Treatment/i.test(fixed[0].leaves[0].paths[0].title),
+    "a tree that froze the retired set is repaired at read time");
+  const current = repairSupportUseCases(fixed as never, prof);
+  check(current === fixed, "a current tree is returned unchanged, so the repair costs no re-render");
+  const authored = [{ leaves: [{ paths: [{ title: "My own branch" }, { title: "Another" }, { title: "Third" }] }] }];
+  check(repairSupportUseCases(authored as never, prof) === authored,
+    "a hand-edited support set is left alone");
+
+  /* ⚠️ ONE definition for both channels, or a texter and a caller get triaged differently. */
+  const smsT = read("src/data/smsTemplate.ts");
+  check(/deriveUseCases\(p\)\.support\.map/.test(smsT),
+    "the SMS template builds its support paths from the same definition as voice");
+
+  /* ⚠️ The repair has to run where the tree becomes PATHS, not only in the screen: the
+     screen's useMemo is never written back, so the diagram changed and the agent did not. */
+  const vp = read("src/data/voicePaths.ts");
+  check(/repairSupportUseCases\(tree\.branches/.test(vp),
+    "the prompt's paths are repaired too, not just the rendered diagram");
+
+  /* ⚠️ The lookup block, and the precedence line without which the path's own "hand off"
+     instruction beats it. */
+  const chat = read("engine/chat.ts");
+  check(/SUPPORT LOOKUP/.test(chat), "the prompt carries a support lookup block");
+  check(/THIS SECTION WINS for an existing customer/.test(chat),
+    "the lookup states it outranks the transfer instruction above it");
+  check(/STOP ASKING FOR MORE AND DO THE LOOKUP/.test(chat),
+    "the stopping condition is an instruction, not a permission");
+  /* ⚠️ COMMENTS STRIPPED FIRST: the supersession note in `chat.ts` QUOTES the retired
+     sentence to record why it went, so matching raw source made this check redden on its own
+     documentation. A check that fails on a correct file gets deleted as a nuisance, which is
+     why `audit:place` and the vendor scan already strip. */
+  const chatCode = chat.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  check(!/only qualify and route/i.test(chatCode) && !/NEVER attempt to resolve a support issue/i.test(chatCode),
+    "nothing in the prompt still forbids resolving a support issue");
+  check(/supportLookupBlock\(brain\.customerName, true\)/.test(chat)
+    && /supportLookupBlock\(brain\.customerName, false\)/.test(chat),
+    "both channels render the lookup, from one function");
+
+  /* ⚠️⚠️ **THESE TWO WERE EACH FOUND BY A LIVE CALL, NOT BY READING THE DIFF — which is
+     why they are pinned.** The block was correct and present both times, and the agent still
+     asked for a second identifier and never looked anything up.
+     1. THE SUPPORT PATH MUST NOT BE RENDERED AS A HAND-OFF LIST. The generic path wording is
+        "hand off to whichever of these fits, confirming before you transfer … collecting A,
+        B, C" — a form to complete and a mandatory transfer, sitting nearer the caller's turn
+        than the block and more concrete. Stating precedence inside the block was not enough;
+        the competing line had to stop competing.
+     2. THE PROMPT MUST SAY THE LOOKUP SUCCEEDS. "You have read access" left the agent
+        hedging, because there is no real system behind it — it kept gathering toward a
+        certainty it could never reach. */
+  /* ⚠️⚠️ **BUILT, NOT GREPPED — and the first version of these three WAS grepped and could
+     not fail.** Disabling the branch (`} else if (false) {`) left the declaration and the
+     string literals in the file, so every source match still passed against code that can
+     never run. The dead-code trap this repo records three times over, walked into while
+     writing a check FOR a bug found on a live call. Build the prompt and read it. */
+  {
+    const prof = JSON.parse(read("src/data/generated/aptive.json"));
+    const spec = voiceSpecFor(prof);
+    const built = voiceSystemPrompt({
+      customerName: prof.customerName,
+      industry: prof.industry ?? "",
+      voiceRules: spec.rules,
+      voiceSteps: spec.informSteps,
+      voicePaths: auditTreePaths(prof as never, spec),
+    } as never);
+    /* ⚠️ CUT AT THE SECTION HEADING, NOT THE FIRST MENTION. The support path's own first
+       line says "then follow SUPPORT LOOKUP below", so slicing on the bare phrase ended the
+       block before any of its bullets and both checks failed on a correct prompt — a probe
+       fault, caught by dumping the prompt rather than trusting the failure. */
+    const sup = built.slice(built.indexOf("PATH: NEED SUPPORT"));
+    const end = sup.indexOf("\nSUPPORT LOOKUP —");
+    const supBlock = end > 0 ? sup.slice(0, end) : sup;
+    check(/Find their record with ANY ONE of/.test(supBlock),
+      "a support path offers its fields as ways to find the record, not a form to complete");
+    check(!/confirming before you transfer/.test(supBlock),
+      "…and is NOT rendered as the generic hand-off list, which outranks the lookup");
+    check(/only if you cannot act yourself/.test(supBlock),
+      "…and names its team as a fallback rather than a mandatory transfer");
+    /* The SALES path must keep the generic wording — it really does end in a transfer. */
+    const sales = built.slice(built.indexOf("PATH: SALES"), built.indexOf("PATH: NEED SUPPORT"));
+    check(/confirming before you transfer/.test(sales),
+      "the SALES path still hands off, so the change stayed on the support side");
+  }
+  check(/THE LOOKUP ALWAYS FINDS THE RECORD/.test(chat),
+    "the prompt says the lookup succeeds, so the agent stops gathering and answers");
+
+  /* ⚠️⚠️ **AND THE SMS INSTRUCTION TEXTS REACH THE SAME PROMPT, so a refusal written into
+     one of them fights the block.** All three shipped contradicting it — billing said "never
+     … explain a charge yourself" while the block says to explain it. Checked over the real
+     `informCopy`, because these are per-prospect strings rather than literals in the prompt. */
+  {
+    const prof = JSON.parse(read("src/data/generated/aptive.json"));
+    const texts = Object.entries(informCopy(prof))
+      .filter(([k]) => k.startsWith("support"))
+      .map(([, v]) => String(v));
+    check(texts.length === 4, "every support case has its own instruction text", `got ${texts.length}`);
+    /* ⚠️⚠️ **SENTENCE BY SENTENCE, because the per-TEXT version could not fire.** The
+       billing instruction legitimately says "Never ask for card numbers" — which the lookup
+       block says too — so an exclusion applied to the WHOLE text excused every other refusal
+       in it, and a planted "Never explain a charge yourself." went undetected. The two kinds
+       of refusal sit in the same paragraph, so they have to be judged a sentence at a time. */
+    const SAFE = /card numbers|bank details|account number|password|guess at whose/i;
+    const FIGHTS = /\bnever (confirm|explain|state|quote|adjust|refund|try|promise)\b|\bdo not try to (solve|resolve)\b/i;
+    const fights = texts
+      .flatMap((t) => t.split(/(?<=[.!?])\s+|\n/))
+      .filter((sentence) => FIGHTS.test(sentence) && !SAFE.test(sentence));
+    check(fights.length === 0,
+      "no support instruction forbids what SUPPORT LOOKUP requires",
+      fights[0]?.slice(0, 90));
+  }
+}
+
 check(token.length > 2000 && worker.length > 1500 && client.length > 4000,
   "the audited files were actually read");
 
-console.log(failures ? `\n${failures} voice-contract failure(s)` : "ok    voice pipeline  (119 checks + per-profile)");
+console.log(failures ? `\n${failures} voice-contract failure(s)` : `ok    voice pipeline  (${ran} checks)`);
 process.exit(failures ? 1 : 0);

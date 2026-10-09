@@ -53,7 +53,7 @@ const brain: Record<string, unknown> = {
   knowledge: (ac?.knowledgeSources ?? []).map((k: { name: string }) => k.name),
   playbook: ac?.smsPlaybook,
   serviceArea: ac?.serviceArea,
-  voicePaths: treeToVoicePaths(tree),
+  voicePaths: treeToVoicePaths(tree, p),
   serviceZips: spec?.serviceZips,
   outOfAreaScript: spec?.outOfAreaScript,
   voiceGreeting: spec?.greeting,

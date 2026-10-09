@@ -157,7 +157,7 @@ export function useBrain(opts?: BrainOpts) {
     () => specWithConfig(voiceSpecFor(profile), effTree?.agent),
     [profile, effTree?.agent],
   );
-  const voicePaths = useMemo(() => treeToVoicePaths(effTree), [effTree]);
+  const voicePaths = useMemo(() => treeToVoicePaths(effTree, profile), [effTree, profile]);
   /* ⚠️⚠️ **A MINIMAL PREVIEW MUST NOT INHERIT THE CONFIGURED AGENT'S FIELDS.** The prospect's
      spec carries a ZIP allow-list, routing steps, conversation rules and a greeting that asks
      a two-way booking question — all of it correct for the configured workflow and all of it

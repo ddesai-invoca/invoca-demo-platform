@@ -17,6 +17,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { slotTable } from "../src/data/voiceBooking.ts";
 import { servesPatients } from "./careVocab.ts";
+import { INTENT_SUPPORT } from "../src/data/workflowIntents.ts";
 
 const CHAT_MODEL = "claude-haiku-4-5-20251001";
 
@@ -407,6 +408,10 @@ function workflowBlock(brain: ChatBrain): string {
     lines.push(`${i.title}:`);
     for (const n of i.flow) lines.push(...node(n, 0));
   }
+  /* ⚠️ THE SAME LOOKUP THE VOICE AGENT DOES, from the same function. A texter and a caller
+     with the same problem must be told the same thing, and two copies of this behaviour
+     would drift on the first edit. */
+  lines.push(``, ...supportLookupBlock(brain.customerName, false));
   return lines.join("\n");
 }
 
@@ -573,6 +578,72 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     qa ? `\nAPPROVED Q&A (use these as ground truth for common questions):\n${qa}` : ``,
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,
   ].join("\n");
+}
+
+/**
+ * What the agent does when an EXISTING customer gets in touch.
+ *
+ * Asked for 10/9/2026: on a support conversation the goal is to *"look at their actual
+ * systems"* and to collect what is needed to do that lookup, and the agent should close
+ * whatever it can rather than routing everything.
+ *
+ * ⚠️⚠️ **ONE DEFINITION, BOTH CHANNELS.** A caller and a texter with the same problem must
+ * be told the same thing; this platform has already paid for the alternative twice, where
+ * two copies of one behaviour drifted and the symptom was the two previews behaving
+ * differently. Voice adds its own "say it out loud" wording on top, and nothing else.
+ *
+ * ⚠️⚠️ **THE DETAILS IT REPORTS ARE INVENTED, AND THAT IS A DELIBERATE CHOICE WITH A COST.**
+ * Put to the user with the alternatives, and chosen: the agent states specifics (a last
+ * service date, a next visit, what a charge was for) so the lookup lands in the room.
+ * Nothing in the demo backs those numbers, so a prospect who cross-checks another screen
+ * finds nothing behind them. Two guards keep it as honest as that choice allows: it must
+ * REUSE anything the demo really has rather than inventing a second version of it, and it
+ * must stay self-consistent for the whole conversation, because the one thing worse than an
+ * invented date is two different invented dates for the same visit.
+ */
+function supportLookupBlock(brand: string, spoken: boolean): string[] {
+  return [
+    `SUPPORT LOOKUP — when the person already has something with ${brand} (a problem, a status question, a charge, or anything else they already bought):`,
+    /* ⚠️⚠️ **IT HAS TO SAY IT WINS, OR THE PATH LINES ABOVE BEAT IT.** Measured on a real
+       call: the agent opened "let me get a couple of details to get you to the right team"
+       and never looked anything up, because the support path's own line says "hand off to
+       whichever of these fits, confirming before you transfer" and it is both earlier and
+       more specific. Same precedence sentence `overrideBlock` already needs for a
+       hand-written playbook. */
+    `THIS SECTION WINS for an existing customer. The lines above tell you which case it is and`,
+    `what to collect; this tells you what to DO, and it replaces any instruction up there to`,
+    `transfer them.`,
+    `1. Work out which of the support cases above it is, if the flow above lists any. If none of them fits, treat it as a general support request and carry on with the steps below.`,
+    /* ⚠️⚠️ **ANY ONE IDENTIFIER IS ENOUGH, AND INSISTING ON THE REFERENCE DEAD-ENDED THE
+       CALL.** Measured: a caller who volunteered their address was asked twice more for a
+       "service appointment reference number", which almost nobody has to hand. The fields
+       are a menu of ways to find the record, not a form to complete. */
+    `2. Ask for ONE of the details listed for that case, and explain you need it to find their record. Lead with the FIRST one in that list, which is the one a person actually has to hand.`,
+    /* ⚠️⚠️ **THE STOPPING CONDITION HAS TO BE EXPLICIT OR IT COLLECTS FOREVER.** Measured on
+       a real call: told "any one of them is enough", the agent still asked for an address,
+       then a reference number, then a name, three turns deep, and never looked anything up.
+       "Enough" is a permission; this is an instruction. */
+    `3. THE MOMENT THEY GIVE YOU ANY ONE IDENTIFIER, STOP ASKING FOR MORE AND DO THE LOOKUP. One is all you need. Do not ask for a second one, do not ask for a reference number they have already said they do not have, and do not ask for their name unless that is the only thing they have given you.`,
+    /* ⚠️⚠️ **"YOU HAVE READ ACCESS" WAS NOT ENOUGH, AND THE AGENT HEDGED FOREVER.**
+       Measured twice on live calls: given one identifier it said "I'm looking that up now"
+       and then asked for a SECOND one, because nothing told it the lookup actually returns
+       anything — it has no real system, so it kept trying to gather its way to certainty.
+       The block has to say outright that the record is there and that stating it is the job.
+       That is the invented-details trade this function's header already states, made
+       explicit where the model can act on it. */
+    `4. ${spoken ? "Say" : "Write"} that you are checking their account, then look it up. You have read access to ${brand}'s systems and THE LOOKUP ALWAYS FINDS THE RECORD — one identifier is always enough to find it.`,
+    `5. Then STATE WHAT THE RECORD SAYS, with specifics: dates, what was done, what a charge was for, when the next visit is. Say it as fact, in the same reply. Never say you cannot find them, never ask for a second detail to narrow it down, and never promise to look and come back. "Let me check" followed by a vague answer is worse than not checking.`,
+    `6. Then CLOSE IT yourself wherever you can: book the revisit, move the appointment, explain the charge, answer the question. Confirm back what you have done.`,
+    `7. Only hand off when you genuinely cannot act: the person asks for a human, they are upset and want one, or it needs an authority you do not have. Say who you are passing them to.`,
+    ``,
+    `RULES FOR THE LOOKUP:`,
+    `• USE WHAT ${brand.toUpperCase()} ACTUALLY HAS. If a location, a plan, a product or a person's name has already come up in this conversation or is in your knowledge above, use that exact one. Do not invent a second version of something you already know.`,
+    `• BE CONSISTENT. Once you have stated a date, an amount or a reference, every later mention in this conversation uses the same one.`,
+    `• BE PLAUSIBLE. A last visit is in the past, the next one is in the future, and amounts match the plans and prices you know about.`,
+    `• NEVER ask for card numbers, bank details, full account numbers, or a password. You do not need them to look someone up.`,
+    `• If they cannot give you the details you need, say what you need and offer to pass them to a person. Never guess at whose record it is.`,
+    ``,
+  ];
 }
 
 /* VOICE = qualify-and-route (distinct from the SMS sales flow). The agent gathers
@@ -836,6 +907,9 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
         if (r2.phone) out.push(`${indent}Transfer this route to ${r2.phone}.`);
         return out;
       };
+      /* ⚠️ Matched on the intent CONSTANT rather than a literal, so renaming the locked
+         chrome box cannot silently drop the support path back onto the generic wording. */
+      const isSupport = p.intent === INTENT_SUPPORT;
       if (p.routes.length === 1) {
         const r2 = p.routes[0];
         /* ⚠️⚠️ **A SINGLE-ROUTE PATH LOST BOTH ITS COLLECT LIST AND ITS DESTINATION
@@ -854,6 +928,30 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
         const dest = destination(r2.team) || `, then transfer them to the team that handles ${p.intent}`;
         lines.push(`   - Then ${r2.action.toLowerCase()}${own.length ? `, collecting ${own.join(", ")}` : ""}, confirm${dest}.`);
         lines.push(...nodeLines(r2, "   - "));
+      } else if (isSupport) {
+        /* ⚠️⚠️ **THE SUPPORT PATH CANNOT BE RENDERED AS A HAND-OFF LIST ANY MORE, AND
+           LEAVING IT WAS A REAL BUG MEASURED ON A LIVE CALL (10/9/2026).** The generic
+           wording below says "hand off to whichever of these fits, confirming before you
+           transfer" and then "collecting A, B, C" — a form to complete and a mandatory
+           transfer. SUPPORT LOOKUP says the opposite (take ONE identifier, then close it
+           yourself), and the nearer, more concrete instruction won: a caller who gave their
+           address was asked for a date, then a reference number, and nothing was ever looked
+           up. Stating precedence inside the block was not enough; the competing line had to
+           stop competing.
+           ⚠️ The chips and the destination both survive — they are what the diagram draws, and
+           the drawer, the diagram and the prompt must keep reading one value. What changes is
+           what they MEAN: a menu of ways to find the record, and where to hand off only if
+           the agent genuinely cannot act. */
+        lines.push(`   - Work out which of these it is from what they say, then follow SUPPORT LOOKUP below:`);
+        for (const r2 of p.routes) {
+          const c = dedupeCollect(r2.collect ?? []);
+          const find = c.length
+            ? ` Find their record with ANY ONE of: ${c.join(", ")}.`
+            : ` Ask for one detail that will find their record.`;
+          const team = destination(r2.team).replace(/^, then transfer them to /, "");
+          lines.push(`      • ${r2.need ?? r2.team}:${find}${team ? ` Hand off to ${team} only if you cannot act yourself.` : ""}`);
+          lines.push(...nodeLines(r2, "        "));
+        }
       } else {
         lines.push(`   - Then hand off to whichever of these fits what they told you, confirming before you transfer:`);
         /* ⚠️ THE DIAGRAM DOES NOT ENCODE *WHY* A BRANCH SPLITS, so the criterion is not
@@ -911,10 +1009,23 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     /* ⚠️ THE OPERATOR'S OWN ESCALATION INSTRUCTION, when they have set one, right where the
        support path is described. Absent unless edited, so the default flow is unchanged. */
     ...(brain.voiceEscalate ? [`   c. ${brain.voiceEscalate}`]
-      : [`   c. Do NOT try to solve it. Once you have who they are AND what the issue is, offer to connect them to ${r.supportQueue}, confirm, then transfer ("Transferring you now.").`]),
-    `      If it clearly is not a ${r.supportQueue} matter, route to ${r.generalQueue ?? r.supportQueue} instead.`,
+      /* ⚠⚠ **THE DEFAULT USED TO READ "Do NOT try to solve it" AND THAT NOW FIGHTS SUPPORT
+         LOOKUP (10/9/2026).** This branch is the hardcoded flow a prospect with no use cases
+         gets; leaving it alone would have told the agent to resolve nothing a few lines under
+         a block telling it to resolve what it can. An SE's own `voiceEscalate` still wins, so
+         a configured workflow is untouched. */
+      : [`   c. Once you have who they are AND what the issue is, follow SUPPORT LOOKUP below: check their record, say what you found, and close it yourself where you can. Hand off to ${r.supportQueue} only when you genuinely cannot act.`]),
     ``,
   ];
+
+  /* ⚠️⚠️ **THE LOOKUP RENDERS FOR BOTH FLOWS, AND PUTTING IT IN ONLY ONE WAS A REAL BUG —
+     the same trap this file already records for the escalation instruction, mirrored.** It
+     first sat inside the paths branch, so a prospect with NO use cases got the hardcoded flow
+     and no support behaviour at all, while every check that built a prompt from a real tree
+     stayed green. Caught by `audit:ai`, whose fixture has no paths.
+     ⚠️ It goes AFTER the flow because it refers to "the support cases above": in the paths
+     flow those are the use cases, in the hardcoded one it is PATH B. */
+  flow.push(``, ...supportLookupBlock(brain.customerName, true));
 
   /* ⚠️⚠️ **A BRACKETED PLACEHOLDER WOULD BE READ ALOUD.** Asked to offer the nearest showroom,
      the model wrote an out-of-area script containing the literal token `[CLOSEST_LOCATION]` —
@@ -951,20 +1062,36 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
          the silence with qualifying questions, which is exactly what this flow must not do. */
       ? `ASK NOTHING BEYOND THE FLOW ABOVE. This workflow has no actions configured yet, so the ONLY thing you ask is the opening question (plus at most one clarifying question). Do NOT ask for a ZIP code, a name, dates, a reference number, a budget, or which product they want. As soon as you can tell sales from support, say which team and transfer.\n`
       : paths.length
-      ? `ASK NOTHING BEYOND THE FLOW ABOVE. The only things you ask are the opening question and the fields listed under the path the caller chooses. Do NOT ask about budget, pricing, schedules, hours, which services they want, when they want to start, or who the care is for. The moment you have the listed fields, confirm and transfer.\n`
+      /* ⚠️⚠️ **"CONFIRM AND TRANSFER" HAD TO BECOME "CONFIRM, THEN FINISH THE JOB", OR THIS
+         CAP FIGHTS THE SUPPORT LOOKUP.** The cap exists to stop the agent inventing extra
+         qualifying questions and it is still doing that; what it must not also say is that
+         every path ends in a handoff, because the support path now ends in the agent closing
+         it. Found by reading the built prompt, where this sat eight lines under an
+         instruction telling it to resolve the call itself. */
+      /* ⚠️⚠️ **TWO RULES ON TWO LINES, AND THE SPLIT IS NOT COSMETIC: a single line
+         carrying both grew to 462 characters and FELL OUT OF `audit:ai`'s absolutes
+         ledger, whose scan skips anything over 400 as a block rather than a rule.** So the
+         rewrite went unregistered — the guard reported the old wording as "disappeared" and
+         never saw the new one at all. Keep a prompt rule short enough to be one rule. */
+      ? `ASK NOTHING BEYOND THE FLOW ABOVE. The only things you ask are the opening question, the fields listed under the path the caller chooses, and anything SUPPORT LOOKUP tells you to collect. Do NOT ask about budget, pricing, schedules, hours, which services they want, when they want to start, or who the care is for.\n`
+        + `Once you have the listed fields, confirm them. Then transfer if it is a NEW enquiry, or go on and resolve it yourself if they are an existing customer.\n`
       : ``,
     `STYLE & RULES:`,
     `- This is a SPOKEN call: talk naturally and briefly (1–2 sentences), ask ONE question at a time, then stop and wait.`,
     `- NEVER use emojis, markdown, or formatting — your words are read aloud by a text-to-speech voice.`,
     /* ⚠️⚠️ **THE PRICING HALF IS A FLAG; THE ROUTING HALF IS NOT, and the split is the
-       point.** "Never resolve a support issue yourself — only qualify and route" is what
-       this agent IS (a booking agent has its own separate flow), so it stays absolute.
-       Whether the business will quote a price out loud is an opinion about the business,
-       and the SMS agent has let an SE change it since the pricing clamp shipped — one
-       business answering the same question two ways by channel was indefensible. */
+       point.** Whether the business will quote a price out loud is an opinion about the
+       business, and the SMS agent has let an SE change it since the pricing clamp shipped;
+       one business answering the same question two ways by channel was indefensible.
+       ❌ **SUPERSEDED 10/9/2026: this used to end "NEVER attempt to resolve a support issue
+       yourself, only qualify and route", and that is now the opposite of what the support
+       path does.** Asked for directly: on a support conversation the agent looks the caller
+       up in their systems and closes what it can. The line is gone rather than left to
+       contradict the SUPPORT LOOKUP block, because a prompt that forbids and requires the
+       same thing is worse than either rule, which this file records three times over. */
     brain.voiceQuotesPrices
-      ? `- You MAY give a rough preliminary price RANGE or general availability when asked, but say the exact figure is confirmed by the team. NEVER attempt to resolve a support issue yourself — only qualify and route.`
-      : `- NEVER quote prices, availability, or promotions. NEVER attempt to resolve a support issue yourself — only qualify and route.`,
+      ? `- You MAY give a rough preliminary price RANGE or general availability when asked, but say the exact figure is confirmed by the team.`
+      : `- NEVER quote prices, availability, or promotions.`,
     `- Only discuss ${brain.customerName}'s products and services; if the caller goes off-topic, gently steer back.`,
     /* ⚠️ THE BACKSTOP FOR EVERYTHING THE STRUCTURAL DEDUPE ABOVE CANNOT SEE — a caller who
        volunteers their name before being asked, or gives their ZIP while answering a
