@@ -1017,6 +1017,41 @@ console.log("\nActivity tracking\n");
       ? ok("dismiss runs before measuring, not after")
       : bad("the step would measure around state it is about to remove");
 
+    /* ⚠️⚠️ **NO EM DASH IN ANYTHING A PERSON READS. Standing rule, asked for directly:**
+       *"remove all em dash in this tour and also everywhere else moving forward i dont want
+       to see em dashes in anything that is generated."* A dash-joined clause is the single
+       most recognisable tell that copy was written by a model, and this is a sales surface.
+       ⚠️ The ENGINE's output is already swept by `engine/dashSweep.ts`; what that sweep
+       never covered is copy authored in the app itself, which is what this checks.
+       ⚠️ A LONE dash is left alone, here and in the sweep: `—` in a table cell is Invoca's
+       own "no value" placeholder, and rewriting it would break the table. */
+    const prose = (t: string) => /[^\s]\s*\u2014|\u2014\s*[^\s]/.test(t);
+    const dashy = steps.filter((s2) => prose(s2.title) || prose(s2.body) || prose(s2.value ?? ""));
+    dashy.length === 0
+      ? ok("no em dash anywhere in the tour copy")
+      : bad(`tour steps using an em dash: ${dashy.map((d) => d.id).join(", ")}`);
+    autoOpeners(prof).every((l) => !prose(l))
+      ? ok("the scripted conversation has no em dash either")
+      : bad("the agent is made to type an em dash at a prospect");
+
+    /* ⚠️ The other copy a prospect reads on a shared demo. */
+    const faces: Record<string, string> = {
+      "GuidedTour": tour,
+      "WorkflowNodeDrawer": code("src/components/WorkflowNodeDrawer.tsx"),
+      "AgentWorkflowDetails": code("src/screens/AgentWorkflowDetails.tsx"),
+      "ShareApp": code("src/screens/ShareApp.tsx"),
+    };
+    const dirty = Object.entries(faces).filter(([, src]) => src.includes("\u2014")).map(([n]) => n);
+    dirty.length === 0
+      ? ok("no em dash in any copy a prospect sees on a shared demo")
+      : bad(`em dashes in prospect-facing copy: ${dirty.join(", ")}`);
+
+    /* ⚠️ The card keeps clear of the CONTEXT, not just the target: the spotlight was on the
+       compose box and the card sat over the phone above it. */
+    /const \[guard, setGuard\]/.test(tour) && /step\.ensure\?\.when \? document\.querySelector/.test(tour)
+      ? ok("the card avoids the container a step opened, not only its target")
+      : bad("the card can cover the preview the step is describing");
+
     /* ⚠️ Placed CLEAR of the target. A 40px fudge in the "above" branch put the card over
        the bottom of an 85px compose box — the control the step was pointing at. */
     !/hole\.top - CARD_H \+ 40/.test(tour)

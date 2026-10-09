@@ -58,6 +58,13 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
 
   const [i, setI] = useState(0);
   const [box, setBox] = useState<Box | null>(null);
+  /* ⚠️⚠️ **THE CARD AVOIDS THE WHOLE CONTEXT, NOT JUST THE TARGET.** Reported against step
+     11: the spotlight was correctly on the compose box at the bottom of the phone and the
+     card sat squarely over the phone above it — clear of the ring and covering the
+     conversation the step is about. What a prospect is looking at is the PREVIEW, so the
+     thing to keep clear is the container the step had to open, not the 85px input inside
+     it. `ensure.when` already names that container, so nothing new has to be declared. */
+  const [guard, setGuard] = useState<Box | null>(null);
   const [ready, setReady] = useState(false);
   const step = steps[i];
 
@@ -68,6 +75,7 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
     if (!step) return;
     setReady(false);
     setBox(null);
+    setGuard(null);
     /* ⚠️ The script is armed by `ensure` immediately before the click that consumes it —
        see `measure`. Arming here would spend the flag on a step that reopens an already
        open phone, and the earlier per-step reset was a race a real person hit. */
@@ -141,6 +149,15 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
           const top = Math.max(0, r.top);
           const bottom = Math.min(window.innerHeight, r.bottom);
           setBox({ top, left: r.left, width: r.width, height: Math.max(24, bottom - top) });
+          /* The container this step opened, if any, so the card can stay off it. */
+          const ctx = step.ensure?.when ? document.querySelector<HTMLElement>(step.ensure.when) : null;
+          if (ctx) {
+            const cr = ctx.getBoundingClientRect();
+            setGuard({
+              top: Math.max(0, cr.top), left: cr.left, width: cr.width,
+              height: Math.max(24, Math.min(window.innerHeight, cr.bottom) - Math.max(0, cr.top)),
+            });
+          } else setGuard(null);
           setReady(true);
           return;
         }
@@ -209,6 +226,16 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
      highlight was cut on a screen where the whole point is that it is pointing at
      something. */
   const pad = 8;
+  /* The region the card must stay clear of: the spotlight, plus whatever container the
+     step opened. One rectangle so the placement logic below stays a single decision. */
+  const keepClear = box && guard
+    ? {
+        top: Math.min(box.top, guard.top),
+        left: Math.min(box.left, guard.left),
+        width: Math.max(box.left + box.width, guard.left + guard.width) - Math.min(box.left, guard.left),
+        height: Math.max(box.top + box.height, guard.top + guard.height) - Math.min(box.top, guard.top),
+      }
+    : box;
   const hole = box
     ? (() => {
         const top = Math.max(0, box.top - pad);
@@ -223,10 +250,15 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
   const CARD_W = 380;
   const CARD_H = 290;
   let cardStyle: React.CSSProperties = {};
-  if (hole) {
-    const below = window.innerHeight - (hole.top + hole.height);
-    const above = hole.top;
-    const right = window.innerWidth - (hole.left + hole.width);
+  if (hole && keepClear) {
+    const kc = {
+      top: Math.max(0, keepClear.top - pad), left: Math.max(0, keepClear.left - pad),
+      width: Math.min(window.innerWidth, keepClear.left + keepClear.width + pad) - Math.max(0, keepClear.left - pad),
+      height: Math.min(window.innerHeight, keepClear.top + keepClear.height + pad) - Math.max(0, keepClear.top - pad),
+    };
+    const below = window.innerHeight - (kc.top + kc.height);
+    const above = kc.top;
+    const right = window.innerWidth - (kc.left + kc.width);
     /* ⚠️⚠️ **A TALL TARGET GETS THE CARD BESIDE IT, NOT ON TOP OF IT — reported against
        the phone preview, where the card covered the very conversation it was describing.**
        Neither above nor below fits a 560px phone on a 900px screen, so both branches
@@ -237,13 +269,13 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
          380px card beside a 378px phone, so clamping to the edge put 55px of card over the
          spotlight. Take the roomier side and fit the card to it; a 300px floor is the point
          below which the copy stops being readable and overlapping is the lesser evil. */
-      const roomier = right >= hole.left ? "right" : "left";
-      const room = (roomier === "right" ? right : hole.left) - 32;
+      const roomier = right >= kc.left ? "right" : "left";
+      const room = (roomier === "right" ? right : kc.left) - 32;
       const w = Math.min(CARD_W, Math.max(300, room));
       const left = roomier === "right"
-        ? Math.min(hole.left + hole.width + 16, window.innerWidth - w - 16)
-        : Math.max(16, hole.left - w - 16);
-      const top = Math.max(16, Math.min(hole.top, window.innerHeight - CARD_H - 16));
+        ? Math.min(kc.left + kc.width + 16, window.innerWidth - w - 16)
+        : Math.max(16, kc.left - w - 16);
+      const top = Math.max(16, Math.min(kc.top, window.innerHeight - CARD_H - 16));
       cardStyle = { top, left, width: w };
     } else {
       /* ⚠️ **PLACED CLEAR OF THE TARGET, NOT NEARLY CLEAR.** The old "above" placement was
@@ -251,9 +283,9 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
          whatever it was pointing at — measured on the compose box, an 85px target with 40px
          of card on top of it. Below is preferred when it fits; above is exact. */
       const top = below >= CARD_H + 20
-        ? hole.top + hole.height + 14
-        : Math.max(16, hole.top - CARD_H - 14);
-      let left = hole.left + hole.width / 2 - CARD_W / 2;
+        ? kc.top + kc.height + 14
+        : Math.max(16, kc.top - CARD_H - 14);
+      let left = kc.left + kc.width / 2 - CARD_W / 2;
       left = Math.max(16, Math.min(left, window.innerWidth - CARD_W - 16));
       cardStyle = { top, left };
     }

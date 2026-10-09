@@ -80,7 +80,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       body:
         `Every call and text that reaches ${name} can be answered in seconds, around the clock, ` +
         `by an agent that knows your services and books real ${bookingLower}s. This is where those ` +
-        `agents are built, tested and tuned — and it is all running on ${name}'s own data.`,
+        `agents are built, tested and tuned, and all of it runs on ${name}'s own data.`,
       value: "Take two minutes and you will have seen it answer, qualify, route and report.",
     },
     {
@@ -104,7 +104,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       title: "It answers from your material, not from the internet",
       body:
         `These are the pages and documents the agent has learned. It answers from ${name}'s own ` +
-        `services, coverage and policies — so it does not invent an offer you do not run or a ` +
+        `services, coverage and policies, so it never invents an offer you do not run or a ` +
         `location you do not serve.`,
       value: "Update a page here and the next conversation already knows about it.",
     },
@@ -115,7 +115,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       title: "It gets better from real conversations",
       body:
         `The agent reads what callers actually asked and proposes new answers and follow-up ` +
-        `questions. You approve what goes live — nothing changes behind your back.`,
+        `questions. You approve what goes live, so nothing changes behind your back.`,
       value: "The questions you get asked most become the answers you give best.",
     },
 
@@ -127,7 +127,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       title: "The voice agent, with nothing hidden",
       body:
         `This is the whole call: how it greets, what it asks, how it decides who the caller is ` +
-        `and which team they belong to. Not a black box you have to trust — a flow you can read.`,
+        `and which team they belong to. Not a black box you have to trust, but a flow you can read.`,
       value: "When somebody asks why a caller ended up where they did, the answer is on this screen.",
     },
     {
@@ -138,7 +138,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       body:
         `Open any box and you can see the question it asks, the details it captures and the team ` +
         `it hands to. Change a question here and the very next caller hears it.`,
-      value: `No ticket, no release — the people who own the ${nounLower} experience own the agent.`,
+      value: `No ticket and no release. The people who own the ${nounLower} experience own the agent.`,
     },
     {
       id: "voice-call",
@@ -163,7 +163,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       body:
         `Texts from your website forms and your main number land here. The agent sorts a new ` +
         `enquiry from an existing ${nounLower}, asks what it needs, and books.`,
-      value: "Most people would rather text than wait on hold — this is how you let them.",
+      value: "Most people would rather text than wait on hold, and this is how you let them.",
     },
     {
       id: "sms-open",
@@ -175,7 +175,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       title: "Watch a real conversation start",
       body:
         `This is the agent's actual phone preview. We will send the first couple of messages for ` +
-        `you, and the replies are live — ${name}'s agent answering for the first time.`,
+        `you, and the replies are live. This is ${name}'s agent answering for the first time.`,
       value: "Nothing here is a recording.",
     },
     {
@@ -187,7 +187,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       awaitAutoplay: true,
       title: "Seconds, not hours",
       body:
-        `It answered immediately, in ${name}'s voice, and it is already qualifying — the way it ` +
+        `It answered immediately, in ${name}'s voice, and it is already qualifying, the way it ` +
         `would at 9pm on a Sunday when nobody is at a desk.`,
       value: "Speed to lead is the single biggest driver of whether a lead converts.",
     },
@@ -199,7 +199,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       waitMs: 4000,
       title: "Now you try",
       body:
-        `Type anything a real ${nounLower} would say — a question about price, a different service, ` +
+        `Type anything a real ${nounLower} would say. A question about price, a different service, ` +
         `an awkward one. It is a live agent, so push it.`,
       value: `Ask it something it should not answer and watch it stay inside ${name}'s rules.`,
     },
@@ -223,7 +223,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       target: ".ci-calls-list, .ci-calls",
       title: "That is the chat you just had",
       body:
-        `Top of the list. The full thread, who it was with, what the agent captured — the ` +
+        `Top of the list. The full thread, who it was with, what the agent captured. The ` +
         `conversation you ran a minute ago is already a record.`,
       value: "What the agent does and what you can report on are never out of step.",
     },
@@ -234,8 +234,8 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       waitMs: 6000,
       title: "Scored without anybody listening",
       body:
-        `Every conversation is read for the things you care about — intent, the ${bookingLower}, ` +
-        `objections, competitors — and tagged automatically.`,
+        `Every conversation is read for the things you care about: intent, the ${bookingLower}, ` +
+        `objections, competitors, and tagged automatically.`,
       value: "You can finally answer “what are people actually asking us?” from all of it, not a sample.",
     },
     {
@@ -256,7 +256,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
       body:
         `Answering instantly on both channels, staying inside your brand rules, booking real ` +
         `${bookingLower}s and writing up every conversation on its own.`,
-      value: "Anything you would want changed, your team changes — no engineering queue.",
+      value: "Anything you would want changed, your team changes, with no engineering queue.",
     },
   ].map((s) => ({ ...s, title: cap(s.title) }));
 }
@@ -275,7 +275,7 @@ export function autoOpeners(p: CustomerProfile): string[] {
   const booking = (p.bookingTerm || "appointment").toLowerCase();
   const first = p.reports?.agentConfig?.smsPlaybook?.qualifyingQuestions?.[0] ?? "";
   return [
-    `Hi, I think I need a ${booking} — not totally sure what I need though`,
-    first ? "Sure — and roughly what does that usually run?" : "How soon could someone come out?",
+    `Hi, I think I need a ${booking}, not totally sure what I need though`,
+    first ? "Sure, and roughly what does that usually run?" : "How soon could someone come out?",
   ];
 }

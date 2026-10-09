@@ -13160,6 +13160,36 @@ moment..."*
    with a 300px floor rather than overlapping. Verified at 1221px (card beside, 0 overlap) and
    1060px (card narrowed to 309px, 0 overlap).
 
+#### The card stays off the phone, and no em dash anywhere in the tour (10/9/2026)
+Two things reported against step 11.
+
+⚠️⚠️ **THE CARD AVOIDS THE WHOLE CONTEXT, NOT JUST THE TARGET.** The spotlight was correctly
+on the compose box at the bottom of the phone, and the card sat squarely over the phone above
+it: clear of the ring, covering the conversation the step is about. What a prospect is looking
+at is the PREVIEW, so the thing to keep clear is the container the step had to open, not the
+85px input inside it. `ensure.when` already names that container, so nothing new had to be
+declared; placement works off the union of the spotlight and that box while the ring still
+draws on the target alone. Verified across all 16 steps: the card never overlaps `.phone`.
+
+⚠️⚠️ **NO EM DASH IN ANY COPY A PERSON READS. Standing rule, and the memory note is widened
+to match.** Asked for directly: *"remove all em dash in this tour and also everywhere else
+moving forward i dont want to see em dashes in anything that is generated."*
+⚠️ **THE ENGINE WAS ALREADY COVERED AND THE APP WAS NOT.** `engine/dashSweep.ts` sweeps
+generated profiles at the source, which is why this never came up before; what it has never
+covered is copy authored in the app itself, and the guided tour shipped with **15** of them
+because I wrote it. `audit:share` now fails on an em dash in the tour, in the scripted SMS
+conversation, or in any prospect-facing component on a shared demo. Add new user-visible copy
+to that check.
+⚠️ **A LONE DASH IS LEFT ALONE**, here and in the sweep: `—` in a table cell is Invoca's own
+"no value" placeholder and rewriting it breaks the table. `fixProse` already encodes the
+distinction (placeholders and numeric ranges kept, prose connectors replaced); reuse it rather
+than writing a second rule.
+⚠️ **CONSEQUENCE, STATED: 177 em dashes remain elsewhere in `src/`**, the biggest being
+`salesPlaybook.ts` (30), `releaseNotes.ts` (19) and `demoWorkflows.ts` (16). Those are signed
+off screens and a blanket rewrite is its own pass with its own verification, so they are
+recorded here rather than swept quietly. The playbook and the extra workflows are genuinely
+prospect-facing and are the ones worth doing next.
+
 #### ⚠️⚠️ BACK DID NOT RESTORE THE SCREEN, ONLY THE CARD (10/9/2026)
 Reported: *"once i am on step 12, and i click back it doesnt take to step 11 where the phone is
 shown… make sure all the forward and back buttons work and are showing the right screens its

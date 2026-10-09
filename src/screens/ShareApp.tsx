@@ -159,7 +159,7 @@ export default function ShareApp() {
   }
 
   if (phase.k === "locked") {
-    const title = phase.prospect ? `${phase.prospect} — AI Agent demo` : "AI Agent demo";
+    const title = phase.prospect ? `${phase.prospect} AI Agent demo` : "AI Agent demo";
     /* Step one: who are you? The password is emailed rather than passed along by hand. */
     if (step === "email") {
       return (

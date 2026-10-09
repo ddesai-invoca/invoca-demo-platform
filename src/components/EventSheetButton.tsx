@@ -134,7 +134,7 @@ export default function EventSheetButton({
     } catch {
       /* ⚠️ Clipboard access is refused outright in some contexts, so the link below
          is always there as the way through rather than this being the only route. */
-      setErr("Could not copy — use “Open the script” and copy it from there.");
+      setErr("Could not copy. Use “Open the script” and copy it from there.");
     }
   }
 
@@ -172,13 +172,13 @@ export default function EventSheetButton({
           <div className="evs-body">
             <p className="evs-lede">
               Every time somebody submits the demo notes for a prospect in this event, a row is
-              written here — one row per prospect, updated in place when the notes change.
+              written here, one row per prospect, updated in place when the notes change.
             </p>
 
             {/* ⚠️⚠️ **THE WHOLE FLOW IS A PASTED LINK (10/8/2026).** Reported: *"connecting
                 a sheet is too complicated for not technical people… ideally all i want users
                 to do is paste the google sheet URL."* The grant is asked for ONCE, by this
-                admin, and every later event is URL-only — other SEs do nothing, because
+                admin, and every later event is URL-only. Other SEs do nothing, because
                 their marks are written with this grant rather than their own. */}
             {!connected ? (
               <div className="evs-connect">
@@ -233,13 +233,13 @@ export default function EventSheetButton({
                 {state?.sheetOwner && state.sheetOwner !== connectedAs ? (
                   <div className="evs-hint">
                     Rows are written with <strong>{state.sheetOwner}</strong>'s connection, set up
-                    when this event was wired — so that account needs edit access, not yours.
+                    when this event was wired, so that account needs edit access, not yours.
                     Saving a new link here switches it to {connectedAs ?? "your account"}.
                   </div>
                 ) : (
                   <div className="evs-hint">
                     Rows are written with your connection ({connectedAs ?? "your account"}), so
-                    that account needs edit access to this one sheet. Nobody else does — everyone
+                    that account needs edit access to this one sheet. Nobody else does; everyone
                     else's demo notes go through it too.
                   </div>
                 )}
@@ -255,7 +255,7 @@ export default function EventSheetButton({
               <ol className="evs-steps">
                 <li>Open the Google Sheet you want the rows in.</li>
                 <li><strong>Extensions &rsaquo; Apps Script</strong>, then paste in the script.</li>
-                <li><strong>Deploy &rsaquo; New deployment &rsaquo; Web app</strong> — execute as
+                <li><strong>Deploy &rsaquo; New deployment &rsaquo; Web app</strong>, execute as
                   <strong> Me</strong>, access <strong>Anyone</strong>.</li>
                 <li>Paste the <code>/exec</code> address it gives you below.</li>
               </ol>
