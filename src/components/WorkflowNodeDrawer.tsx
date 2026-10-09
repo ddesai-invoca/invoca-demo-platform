@@ -463,8 +463,23 @@ export function WorkflowNodeDrawer({ d, onClose, onApply, locked }: {
                   combobox popup (options 32 tall at `6px 16px`, 16/400, paper radius 3, the MUI
                   shadow) — the open listbox is in NO capture, because all five saved with
                   `aria-expanded=false`. Flagged rather than presented as measured. */}
+              {/* ⚠⚠ **QUALIFY IS NOT OFFERED WHERE ITS ANSWERS COULD NOT GO (10/9/2026).** The
+                  product's rule, taught directly: "only Qualify can add one more layer, so max
+                  is only two back to back Qualify layers." A Qualify's answers ARE the nodes on
+                  the row below, so on the LAST row the diagram draws there is nowhere for them.
+                  Measured before the fix: switching a `sub-` node to Qualify gave it a question
+                  box and no way to add a single answer — a dead-end question, and a third
+                  back-to-back Qualify layer.
+                  ⚠️ **OMITTED RATHER THAN SHOWN-AND-DISABLED**, on this repo's standing rule that
+                  a control which cannot do anything is worse than one that is absent. The node
+                  being on the bottom row is visible on the diagram, so the shorter list is not
+                  mysterious.
+                  ⚠️ A node that IS already a Qualify keeps it listed, or its own current action
+                  would be missing from its own picker. */}
               <Combo id="action" value={copy.label} placeholder="Select action..."
-                options={SMS_ACTION_OPTIONS.map((k) => SMS_ACTION_LABEL[k])}
+                options={SMS_ACTION_OPTIONS
+                  .filter((k) => k !== "qualify" || d.canNest !== false || kind === "qualify")
+                  .map((k) => SMS_ACTION_LABEL[k])}
                 onPick={canPick
                   ? (label) => {
                       const k = SMS_ACTION_OPTIONS.find((x) => SMS_ACTION_LABEL[x] === label);

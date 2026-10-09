@@ -13545,6 +13545,52 @@ an authored extra (Speed to Lead): the only action strings rendered anywhere are
 **zero** nodes read "Route to" on any of them. The reported node now reads
 `Service Issue or Re-Treatment / Support & Escalate` with its three chips intact.
 
+### ⚠⚠ STANDING RULE: ONLY QUALIFY NESTS, AND ONLY TWO LAYERS DEEP (10/9/2026)
+
+Taught directly: *"only Qualify can add one more layer, so max is only two back to back
+Qualify layers."* A Qualify's answers ARE the nodes on the row below it, so with the rows
+being **leaf → path → sub**, a leaf and a path may both be Qualifies — that is the two — and a
+sub never can, because nothing is drawn beneath it.
+
+⚠️ **THE "ONLY QUALIFY NESTS" HALF WAS ALREADY ENFORCED** in `extraTree` and already correct.
+What was missing is the **depth cap**, and the gap was in the Action picker.
+
+⚠⚠ **MEASURED BEFORE THE FIX: the picker offered Qualify on a `sub-` node.** Switching one
+gave it a question box and `can ADD answers: false` — a dead-end question with nowhere for the
+answers to go, and a third back-to-back Qualify layer. `canNestAt(nodeId)` is now the one
+definition of the rule, and the picker drops Qualify where it would apply.
+⚠️ **OMITTED RATHER THAN SHOWN-AND-DISABLED**, on this repo's standing rule that a control
+which cannot do anything is worse than an absent one. A node that IS already a Qualify keeps
+it listed, or its own current action would be missing from its own picker.
+
+⚠️ **NO REAL DATA VIOLATED IT.** Swept 1,311 nodes across every profile, every authored extra
+and every stored override: **0** Qualifies on a last row, **0** three-deep runs, **0**
+Qualifies with nowhere for answers. So this is a guard against creating one, not a repair.
+The shipped templates sit exactly at the limit — the SMS sales side is
+`All Sales Inquiry Users` (Qualify) → `New Homeowner` (Qualify) → `Serviceable=true` (Inform).
+
+⚠⚠ **AND IT EXPOSED A PRE-EXISTING GAP: A VOICE `sub` OPENED NOTHING.** A voice Qualify path
+legitimately offers **Add**, its answers render on the row below, and clicking one returned
+`null` — a node drawn on the diagram that could not be opened. `drawerFor` matched only
+`path-`; the SMS side has always handled both. One branch serves both now, because a sub IS a
+path one row down: same fields, same per-node `extra__<id>__*` homes, and `canNestAt` then
+correctly refuses it a Qualify.
+
+**Four checks, three sabotages fire**: the rule itself, the picker's filter, the built-in
+template's own rows offering it exactly where it is legal, a voice sub opening with no segments
+path, and a 412-node sweep of real data.
+**Verified in the real UI with real clicks** (synthetic ones do not reach this combobox — the
+trap this file already records): a bottom-row node offers **Schedule Callback, Inform, Inform &
+Route, Support & Escalate** and a path node offers **all five**.
+
+⚠⚠ **A HARNESS TRAP THAT COST SIX ROUND TRIPS, worth not repeating: `resize_window` emulation
+and the pane's own hit-testing went out of sync.** With a 1500x1000 emulated viewport, a click
+at frame (282,460) landed at page (650,1060) — past the bottom of the emulated page — so every
+click missed and the drawer "would not open", which read exactly like a regression. It was not:
+the same clicks failed on the committed state too. **Derive the frame→page ratio empirically
+from one probe click** (arm a capture-phase listener, click, read `clientX/Y`) rather than
+computing it from `innerWidth`; after resetting to the desktop preset it was a clean ×1.527.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

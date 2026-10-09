@@ -155,6 +155,20 @@ export interface ActionDrawer {
    */
   actionSlot?: { path: string; index: number; nodes: Record<string, unknown>[] };
   /**
+   * Whether the diagram can draw ANSWERS for this node — i.e. whether it may be a Qualify.
+   *
+   * ⚠⚠ **THE PRODUCT'S DEPTH RULE, TAUGHT 10/9/2026: "only Qualify can add one more layer,
+   * so max is only two back to back Qualify layers."** A Qualify's answers ARE the nodes on
+   * the row below it, so a node on the LAST row the diagram draws can never have any — and
+   * the Action picker was offering Qualify there anyway. Measured: switching a `sub-` node to
+   * Qualify gave it a question box and `can ADD answers: false`, i.e. a question with nowhere
+   * for the answers to go, and a THIRD back-to-back Qualify layer.
+   * ⚠️ Capping at the last drawable row is what enforces the two-layer maximum, because the
+   * geometry is leaf → path → sub: a leaf and a path may both be Qualifies (that is the two),
+   * and a sub may not.
+   */
+  canNest?: boolean;
+  /**
    * The destination is the NODE'S OWN `route`, written through `actionSlot`.
    *
    * ⚠️⚠️ **VOICE ONLY, AND IT IS WHY THE VOICE DESTINATION IS NOT A FLAT `extra__` KEY.** A
@@ -529,6 +543,7 @@ function voiceInformEdits(
     handlingPlaceholder:
       "e.g. 1. Ask for their ZIP code and confirm you serve the area.  2. Ask for their full name.",
     actionSlot: actionSlotFor(tree, nodeId),
+    canNest: canNestAt(nodeId),
     /* ⚠️ THE DESTINATION IS THE CARD'S OWN "Route to ..." — see `destinationOnNode`. */
     destinationPrompt: VOICE_ROUTE_DESTINATION,
     destination: String(node?.route ?? ""),
@@ -674,6 +689,7 @@ export function drawerFor(
           ...voiceExtraEdits(nodeId),
         },
         actionSlot: actionSlotFor(tree, nodeId),
+        canNest: canNestAt(nodeId),
         signal: String(vx(tree, nodeId, "signal") ?? ""),
         signalChoices: signalOptions(profile),
         infoChoices: infoFieldOptions(profile),
@@ -698,6 +714,7 @@ export function drawerFor(
         channel: "voice",
         edits: { handling: "agent.escalateHandling", ...voiceExtraEdits(nodeId) },
         actionSlot: actionSlotFor(tree, nodeId),
+        canNest: canNestAt(nodeId),
         destinationPrompt: VOICE_ROUTE_DESTINATION,
         destination: String((l as unknown as Record<string, unknown>).route ?? ""),
         destinationPlaceholder: "e.g. Tier 2 Support",
@@ -730,9 +747,17 @@ export function drawerFor(
   /* A path node opens its OWN action — Inform & Route only for the ones that carry it.
      ⚠️ IT REUSES THE LEAF BRANCH BELOW rather than repeating the body, so a change to the
      routing steps or the collected fields lands on both. */
-  const pathId = nodeId.match(/^path-(\d+)-(\d+)-(\d+)$/);
+  /* ⚠⚠ **A VOICE `sub` OPENED NOTHING, AND THE DEPTH RULE IS WHAT MAKES THAT REACHABLE.**
+     Found while applying "max two back-to-back Qualify layers" (10/9/2026): a voice Qualify
+     path legitimately offers **Add**, its answers render as `sub-` nodes on the row below, and
+     clicking one returned null — a node drawn on the diagram that cannot be opened. The SMS
+     side has always handled both rows; voice matched only `path-`. Same branch serves both,
+     because a sub IS a path one row down: same fields, same per-node `extra__<id>__*` homes.
+     ⚠️ `canNestAt` then correctly refuses it a Qualify, which is what caps the depth. */
+  const pathId = nodeId.match(/^(?:path|sub)-(\d+)-(\d+)-(\d+)(?:-(\d+))?$/);
   if (pathId) {
-    const pth = tree.branches[Number(pathId[1])]?.leaves[Number(pathId[2])]?.paths?.[Number(pathId[3])];
+    const parent = tree.branches[Number(pathId[1])]?.leaves[Number(pathId[2])]?.paths?.[Number(pathId[3])];
+    const pth = pathId[4] != null ? parent?.paths?.[Number(pathId[4])] : parent;
     if (!pth) return null;
     /* ⚠️⚠️ **THE NODE'S OWN KIND WINS, AND HARDCODING IT HERE WAS THE SMS BUG A THIRD TIME
        (9/21/2026).** Reported against a use case switched to Qualify: the card drew **Qualify**
@@ -764,6 +789,7 @@ export function drawerFor(
           ...voiceExtraEdits(nodeId),
         },
         actionSlot: actionSlotFor(tree, nodeId),
+        canNest: canNestAt(nodeId),
         signal: String(vx(tree, nodeId, "signal") ?? ""),
         signalChoices: signalOptions(profile),
         infoChoices: infoFieldOptions(profile),
@@ -787,6 +813,7 @@ export function drawerFor(
         channel: "voice",
         edits: { handling: `agent.extra__${nodeId}__handling`, ...voiceExtraEdits(nodeId) },
         actionSlot: actionSlotFor(tree, nodeId),
+        canNest: canNestAt(nodeId),
         signal: String(vx(tree, nodeId, "signal") ?? ""),
         signalChoices: signalOptions(profile),
         infoChoices: infoFieldOptions(profile),
@@ -961,6 +988,19 @@ function nodeAt(tree: WorkflowTreeModel, nodeId: string): Record<string, unknown
    the note there; "Refer to Scheduling" is the case that fixes it). */
 function kindOfNode(node: Record<string, unknown> | undefined): ActionKind | undefined {
   return actionKindOf(node as { action?: string; actionKind?: ActionKind } | undefined);
+}
+
+/**
+ * Can the diagram draw a row of answers BELOW this node?
+ *
+ * ⚠⚠ **ONE DEFINITION, because this is the depth rule and three places need it:** the Action
+ * picker (which must not offer Qualify where answers cannot go), `extraTree` (which must not
+ * carry authored children a row that is never drawn), and the audit. The rows are
+ * leaf → path → sub, so only the first two can hold answers — which is exactly the product's
+ * "max two back-to-back Qualify layers".
+ */
+export function canNestAt(nodeId: string): boolean {
+  return /^leaf-\d+-\d+$/.test(nodeId) || /^path-\d+-\d+-\d+$/.test(nodeId);
 }
 
 function actionSlotFor(tree: WorkflowTreeModel, nodeId: string):
@@ -1172,6 +1212,7 @@ export function smsDrawerFor(
         ...extraEdits,
       },
       actionSlot: actionSlotFor(tree, nodeId),
+      canNest: canNestAt(nodeId),
       ...extraFields("qualify", []),
     };
   }
@@ -1184,6 +1225,7 @@ export function smsDrawerFor(
       /* ⚠️ NO `phone`: an SMS inform drawer has no phone row — measured on all four. */
       edits: { handling: `sms.inform.${inf.key}`, ...extraEdits },
       actionSlot: actionSlotFor(tree, nodeId),
+      canNest: canNestAt(nodeId),
       ...extraFields("inform", collectFor(profile, inf.collect)),
     };
   }
@@ -1196,6 +1238,7 @@ export function smsDrawerFor(
       handling: cfg.inform[escPath.key],
       edits: { handling: `sms.inform.${escPath.key}`, ...extraEdits },
       actionSlot: actionSlotFor(tree, nodeId),
+      canNest: canNestAt(nodeId),
       ...extraFields("escalate", collectFor(profile, escPath.collect)),
     };
   }
@@ -1216,6 +1259,7 @@ export function smsDrawerFor(
       handling: cfg.escalate,
       edits: { handling: "sms.escalate", ...extraEdits },
       actionSlot: actionSlotFor(tree, nodeId),
+      canNest: canNestAt(nodeId),
       ...extraFields("escalate", []),
     };
   }
@@ -1276,6 +1320,7 @@ export function smsDrawerFor(
         edits: { question: at("question"), fallback: at("fallback"),
           ...(segPath ? { segments: segPath } : {}), ...extraEdits },
         actionSlot: actionSlotFor(tree, nodeId),
+        canNest: canNestAt(nodeId),
         ...extraFields("qualify", []),
       };
     }
@@ -1283,6 +1328,7 @@ export function smsDrawerFor(
       kind: "action", title: "Action", action: act, channel: ch,
       handling: String(val("handling") ?? ""),
       actionSlot: actionSlotFor(tree, nodeId),
+      canNest: canNestAt(nodeId),
       ...extraFields(act, collectOnSwitch(act)),
       edits: { handling: at("handling"), ...extraEdits },
     };

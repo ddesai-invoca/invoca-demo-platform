@@ -19,6 +19,8 @@ import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPOR
 import { rowLayout } from "../src/data/workflowRows.ts";
 import { smsBranches, smsConfigFor, repairSmsSegments, SMS_TRIGGER } from "../src/data/smsTemplate.ts";
 import { voiceVocab, repairSupportUseCases } from "../src/data/voiceUseCases.ts";
+import { canNestAt } from "../src/data/workflowDrawers.ts";
+import { actionKindOf } from "../src/data/workflowChrome.ts";
 import { smsDrawerFor, drawerFor, SMS_ACTION_LABEL, SMS_ACTION_DESCRIPTION, SMS_ACTION_PROMPT,
   ACTION_DESCRIPTION, ACTION_PROMPT, SMS_ACTION_OPTIONS, SMS_CALLBACK_SIGNAL,
   SMS_DESTINATION_PROMPT, SMS_ROUTE_DESTINATION, SMS_ESCALATE_DESTINATION,
@@ -3150,6 +3152,70 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
       mismatches.length === 0
         ? ok("every node's card shows the same action its drawer does")
         : bad(`a card and its drawer disagree about the action: ${mismatches[0]}`);
+    }
+
+    /* ⚠⚠ **THE DEPTH RULE, TAUGHT 10/9/2026: "only Qualify can add one more layer, so max is
+       only two back to back Qualify layers."** A Qualify's answers ARE the nodes on the row
+       below, so the rows (leaf → path → sub) allow a leaf and a path to be Qualifies — that is
+       the two — and never a sub, which has no row beneath it.
+       ⚠️ **MEASURED BEFORE THE FIX: the Action picker offered Qualify on a `sub-` node**, which
+       produced a question box with `can ADD answers: false` — a dead-end question and a third
+       back-to-back layer. */
+    {
+      (canNestAt("leaf-0-0") && canNestAt("path-0-0-0") && !canNestAt("sub-0-0-0-0"))
+        ? ok("the depth rule: a leaf and a path may nest, a sub may not")
+        : bad("canNestAt no longer caps the diagram at two Qualify layers");
+
+      const drawer = readCode("src/components/WorkflowNodeDrawer.tsx");
+      /\bk !== "qualify" \|\| d\.canNest !== false \|\| kind === "qualify"/.test(drawer)
+        ? ok("the picker drops Qualify where answers cannot go, but keeps a node's own action")
+        : bad("the Action picker offers Qualify on a node that can hold no answers");
+
+      /* The outcome, on the real template rather than on the source. */
+      const prof0: any = everyProfile[0];
+      const sb = smsBranches(prof0 as never);
+      const st: any = { variant: "sms", triggeredBy: "x", startLabel: "y", branches: sb };
+      const c = smsConfigFor(prof0 as never);
+      const offers = (id: string) => {
+        const d: any = smsDrawerFor(prof0 as never, st, id, c);
+        if (d?.kind !== "action") return [];
+        return SMS_ACTION_OPTIONS.filter((k) => k !== "qualify" || d.canNest !== false || d.action === "qualify");
+      };
+      (offers("leaf-0-0").includes("qualify") && offers("path-0-0-0").includes("qualify")
+        && !offers("sub-0-0-0-0").includes("qualify"))
+        ? ok("…and the built-in template's own rows offer it exactly there")
+        : bad("a row of the built-in template offers Qualify where it cannot nest");
+
+      /* ⚠⚠ **AND A VOICE `sub` MUST OPEN AT ALL.** Found applying this rule: a voice Qualify
+         path legitimately offers Add, its answers render on the row below, and clicking one
+         returned null — a node drawn on the diagram that could not be opened. */
+      const vt: any = { variant: "voice", triggeredBy: "x", startLabel: "y", branches: [
+        { title: "Sales Inquiry", leaves: [{ title: "All Sales Inquiry Users", action: "Qualify", actionKind: "qualify",
+          paths: [{ title: "A", action: "Qualify", actionKind: "qualify",
+            paths: [{ title: "A1", action: "Inform", actionKind: "inform" }] }] }] },
+      ] };
+      const vsub: any = drawerFor(prof0 as never, vt, "sub-0-0-0-0");
+      (vsub?.kind === "action" && vsub.canNest === false && !vsub.edits?.segments)
+        ? ok("a voice sub opens its own drawer and cannot add a third layer")
+        : bad(`a voice sub opens ${vsub ? "with a segments path" : "nothing at all"}`);
+
+      /* ⚠⚠ **NO REAL DATA MAY ALREADY VIOLATE IT.** Swept 1,311 nodes when this was written:
+         0 Qualifies on a last row, 0 three-deep runs, 0 Qualifies with nowhere for answers. */
+      let bad3 = 0, orphan = 0, seen = 0;
+      for (const prof of everyProfile) {
+        const trees: any[][] = [smsBranches(prof as never) as any];
+        for (const wf of prof.reports?.extraWorkflows ?? []) trees.push((extraTree(wf as never) as any).branches);
+        for (const branches of trees) for (const b of branches) for (const l of b.leaves ?? []) {
+          for (const pt of l.paths ?? []) for (const x of pt.paths ?? []) {
+            seen++;
+            if (actionKindOf(x) === "qualify") bad3++;
+            if ((x.paths ?? []).length) orphan++;
+          }
+        }
+      }
+      (seen >= 50 && bad3 === 0 && orphan === 0)
+        ? ok(`${seen} last-row nodes checked: none is a Qualify, none has a fourth layer`)
+        : bad(`depth violations in real data: ${bad3} qualify-on-last-row, ${orphan} fourth-layer (of ${seen})`);
     }
 
     /* ⚠️ THE BOOKING LOCATIONS ARE THE PROSPECT'S OWN SITES, not an invented pair. */
