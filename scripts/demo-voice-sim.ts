@@ -21,7 +21,7 @@
    answers with the old prompt and the run looks like a code failure.
    ============================================================================= */
 import { readFileSync, readdirSync } from "node:fs";
-import { voiceSpecFor, specWithConfig } from "../src/data/voiceAgentSpec.ts";
+import { voiceSpecFor, specWithConfig, DEFAULT_SUPPORT_QUALIFY_QUESTION } from "../src/data/voiceAgentSpec.ts";
 import { bookingSlots } from "../src/data/voiceBooking.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { voiceSystemPrompt } from "../engine/chat.ts";
@@ -58,6 +58,7 @@ const brain: Record<string, unknown> = {
   outOfAreaScript: spec?.outOfAreaScript,
   voiceGreeting: spec?.greeting,
   voiceQualify: spec?.qualifyQuestion,
+  voiceSupportQualify: spec?.supportQualifyQuestion ?? DEFAULT_SUPPORT_QUALIFY_QUESTION,
   voiceRules: spec?.rules,
   voiceSteps: spec?.informSteps,
 };

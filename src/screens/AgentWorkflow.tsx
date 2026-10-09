@@ -47,12 +47,21 @@ import { useExtraWorkflows } from "../data/quoteWorkflow";
  * ⚠️ Returns `undefined` rather than `[]` for an empty list, so a leaf with no use cases is
  * byte-identical to one that never had the prop.
  */
-function useCaseNodes(cases: VoiceUseCase[], tone: "green" | "orange"): TreePath[] | undefined {
+/* ⚠️ THE ACTION IS A PARAMETER NOW (10/9/2026), because the two sides end differently: a
+   sales use case routes the caller on (`Inform & Route`), and a support one is where the
+   agent does the work (`Support & Escalate`). One hardcoded action gave every support answer
+   the sales ending. */
+function useCaseNodes(
+  cases: VoiceUseCase[],
+  tone: "green" | "orange",
+  action: string = LEAF_INFORM,
+): TreePath[] | undefined {
   if (!cases?.length) return undefined;
   return cases.map((u) => ({
     title: u.title,
-    action: LEAF_INFORM,
+    action,
     tone,
+    actionKind: action === LEAF_ESCALATE ? ("escalate" as const) : undefined,
     chips: u.collect,
     ...(u.route ? { route: u.route } : {}),
   }));
@@ -268,8 +277,15 @@ function deriveTree(
         title: INTENT_SUPPORT, subtitle: c.supSub, icon: "headset", locked: true,
         leaves: [{
           title: SUPPORT_LEAF,
-          action: LEAF_ESCALATE,
-          tone: "orange",
+          /* ⚠⚠ **A QUALIFY, BECAUSE IT BRANCHES — asked for directly (10/9/2026) and it is
+             also the product's own rule, which this file states one row up: "ONLY A QUALIFY
+             MAY NEST … the other four are terminal, so a child under one would be drawn in a
+             row the agent can never reach." This node had four children and a TERMINAL
+             action, so the diagram contradicted that rule on every prospect. Its answers are
+             the support cases; each of THEM is the terminal `Support & Escalate`. */
+          action: LEAF_QUALIFY,
+          actionIcon: "callSplit",
+          actionKind: "qualify",
           locked: true,
           /* ⚠️ **THE SUPPORT NODE BRANCHES TOO NOW, and this file used to say it must not** —
              "Support & Escalate does not branch; giving it paths would draw a fork the product
@@ -281,7 +297,7 @@ function deriveTree(
 
              ⚠️ A prospect whose spec defines none (Comfort Keepers) still renders NO paths, so
              its diagram is untouched. */
-          paths: useCaseNodes(spec.useCases.support, "orange"),
+          paths: useCaseNodes(spec.useCases.support, "orange", LEAF_ESCALATE),
         }],
       },
     ],
@@ -434,13 +450,21 @@ export function AgentWorkflow() {
      because both trees store the same way. See `repairSupportUseCases`. */
   const tree = useMemo(
     () => {
+      /* ⚠⚠ **`builtIn` GATES THE EMPTY-LEAF REFILL ONLY.** The retired-title repair runs on
+         every tree (an exact match on a set only the old default produced); refilling an EMPTY
+         support leaf must not, because that is the normal signed-off state of every authored
+         extra workflow. See `repairSupportUseCases`. */
+      const builtIn = !extra && !created;
       const branches = repairSupportUseCases(
         smsTemplated ? repairSmsSegments(rawTree.branches ?? []) : (rawTree.branches ?? []),
         profile,
+        /* ⚠️ `withRoute` is voice-only: on SMS the renderer draws the route INSTEAD of the
+           action, so carrying one blanks every support answer's action. */
+        { builtIn, withRoute: !isSms },
       );
       return branches === rawTree.branches ? rawTree : { ...rawTree, branches };
     },
-    [rawTree, smsTemplated, profile],
+    [rawTree, smsTemplated, profile, extra, created],
   );
   /* ---- The Preview Workflow drawer's OWN Ask AI + undo (the voice side) -------------
      Asked for directly: "just like how the SMS Agent preview workflow has a Ask AI and undo

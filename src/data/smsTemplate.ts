@@ -100,10 +100,19 @@ export function supportPaths(p: CustomerProfile): TreePath[] {
      differs. See `deriveUseCases` for the headings and the per-vertical wording.
      ⚠️ Every path keeps `Support & Escalate` to match its parent, which is the rule a node
      added by hand already follows: peers under one question do the same kind of thing. */
+  /* ⚠⚠ **NO `route` ON AN SMS NODE — and carrying one blanked every action, seen in the
+     browser rather than in the diff.** The renderer draws `Route to <team>` INSTEAD OF the
+     action, so these four rendered "Route to General Customer Care" where the drawer and the
+     tint both said Support & Escalate: one node described two ways. This file's own rule
+     already said so for the six demo workflows ("`TreePath.route` exists because the VOICE
+     agent names its destination aloud on transfer; an SMS agent books or hands off, so the
+     action is the meaningful line") and the built-in template was simply not covered by it.
+     ⚠️ The voice tree KEEPS its routes: there the agent says the desk's name out loud, and
+     the prompt reads it. Each node's SMS destination stays editable per node, as every other
+     node on this template already is. */
   return deriveUseCases(p).support.map((u) => ({
     title: u.title, action: LEAF_ESCALATE, actionIcon: "headsetMic", tone: "orange",
     actionKind: "escalate", chips: u.collect,
-    ...(u.route ? { route: u.route } : {}),
   }));
 }
 
@@ -203,7 +212,7 @@ export const collectFor = (p: CustomerProfile, which: SmsCollectKey): CollectIte
 
 export interface SmsQualifyCopy { question: string; segments: string[]; fallback: string }
 
-export function qualifyCopy(p: CustomerProfile): Record<"root" | "newSide" | "existingSide", SmsQualifyCopy> {
+export function qualifyCopy(p: CustomerProfile): Record<SmsQualifyNode, SmsQualifyCopy> {
   const noun = p.customerNoun;
   const lower = noun.toLowerCase();
   return {
@@ -218,6 +227,20 @@ export function qualifyCopy(p: CustomerProfile): Record<"root" | "newSide" | "ex
          rename either. */
       segments: [`New ${noun}`, `Existing ${noun}`],
       fallback: `Sorry, I didn't quite catch that. Are you a new ${lower} or do you already have ${p.customerName} service?`,
+    },
+    /* ⚠⚠ **THE SUPPORT QUALIFY'S OWN QUESTION (10/9/2026).** The support leaf branches, so
+       it is a Qualify and a Qualify ASKS something — and without a home for that question the
+       drawer would render an empty box with nowhere to write, which this repo calls "worse
+       than an absent one". Its answers are the four support cases, so the question has to be
+       the open one that sorts them rather than naming any of them.
+       ⚠️ `segments` READS THE DERIVED CASES rather than restating them. The type requires the
+       field, and a hand-written list here would be a second source for the titles the diagram
+       already draws from `deriveUseCases` — free to drift on the first vertical that words one
+       of them differently. */
+    support: {
+      question: `Happy to help. What can I help you with on your ${p.customerName} service today?`,
+      segments: deriveUseCases(p).support.map((u) => u.title),
+      fallback: `Sorry, I didn't quite catch that. Is it about a problem with a recent visit, an upcoming one, a charge, or something else?`,
     },
     newSide: {
       question: "To check we are in your area, may I get your zip code?",
@@ -382,7 +405,7 @@ export interface SmsConfig {
   [extra: `extra__${string}`]: string | undefined;
 }
 
-export type SmsQualifyNode = "root" | "newSide" | "existingSide";
+export type SmsQualifyNode = "root" | "newSide" | "existingSide" | "support";
 
 /** The template's own defaults for this prospect — the base the override store sits on top of. */
 export function smsConfigFor(p: CustomerProfile): SmsConfig {
@@ -390,7 +413,8 @@ export function smsConfigFor(p: CustomerProfile): SmsConfig {
   const q = qualifyCopy(p);
   const ask = (k: SmsQualifyNode) => ({ question: q[k].question, fallback: q[k].fallback });
   return {
-    qualify: { root: ask("root"), newSide: ask("newSide"), existingSide: ask("existingSide") },
+    qualify: { root: ask("root"), newSide: ask("newSide"), existingSide: ask("existingSide"),
+      support: ask("support") },
     inform: informCopy(p),
     escalate: escalateCopy(p),
     intents: { sales: { looksLike: i.sales.looksLike, rules: [...i.sales.rules] },
@@ -509,8 +533,8 @@ export function smsBranches(p: CustomerProfile): TreeBranch[] {
     {
       title: INTENT_SUPPORT, subtitle: intents.support.looksLike, icon: "headsetMic", locked: true,
       leaves: [{
-        title: SUPPORT_LEAF, action: LEAF_ESCALATE, actionIcon: "headsetMic",
-        tone: "orange", actionKind: "escalate", locked: true,
+        title: SUPPORT_LEAF, action: LEAF_QUALIFY, actionIcon: "callSplit",
+        actionKind: "qualify", locked: true,
         /* ⚠️⚠️ **THREE PATHS UNDER ALL SUPPORT USERS, asked for directly (10/6/2026).** The
            support side was a single terminal box, so the diagram showed the agent triaging
            sales three rows deep and simply stopping on support — the half of the workflow a
@@ -586,6 +610,13 @@ export function effectiveSmsConfig(p: CustomerProfile, sms: object | undefined):
      nothing, on exactly the demos most likely to be set up already. Same reasoning as spreading
      the base under the stored config in the first place, one level further down. */
   cfg.inform = { ...base.inform, ...(cfg.inform ?? {}) };
+  /* ⚠⚠ **AND `qualify` TOO, FOR THE IDENTICAL REASON — measured on a real stored demo.**
+     Aptive's override holds `qualify: { root, newSide, existingSide }`, written before the
+     support Qualify existed, and the top-level spread replaces the whole object: so
+     `qualify.support` came back UNDEFINED on exactly the demos an SE has already touched, the
+     drawer opened with an empty question and the agent was told nothing about the support
+     side. Same bug as the one the note above records, one key along. */
+  cfg.qualify = { ...base.qualify, ...(cfg.qualify ?? {}) };
   const intents = cfg.intents;
   if (!intents) return cfg;
   let touched = false;

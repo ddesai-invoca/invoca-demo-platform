@@ -206,6 +206,14 @@ export interface ChatBrain {
    */
   voiceQualify?: string;
   /**
+   * The SUPPORT Qualify's own question.
+   *
+   * ⚠⚠ **ITS OWN FIELD, OR THE DRAWER THAT EDITS IT IS A DEAD CONTROL.** The support leaf
+   * became a Qualify on 10/9/2026, so its drawer asks for a question — and a field an SE can
+   * type into that reaches nothing is the silent no-op this file records six times.
+   */
+  voiceSupportQualify?: string;
+  /**
    * ⚠️ **THE SPEC'S RULES REPLACE THE BRAND RULES, THEY DO NOT JOIN THEM.** `brandConversationRules`
    * is written for the SMS SALES agent — intro and offer, qualify on services and hours and
    * schedule, estimate then book — and injecting that into a qualify-and-route prompt is what
@@ -942,6 +950,13 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
            the drawer, the diagram and the prompt must keep reading one value. What changes is
            what they MEAN: a menu of ways to find the record, and where to hand off only if
            the agent genuinely cannot act. */
+        /* ⚠⚠ **GUARDED BY "if they have not already said", BECAUSE A SUPPORT CALLER USUALLY
+           HAS.** They have just answered the opening question and most of them lead with the
+           problem ("the ants are back"). Asking it unconditionally is the don't-ask-twice bug
+           this file records for the ZIP and the name, arriving through a new door. */
+        if (brain.voiceSupportQualify?.trim()) {
+          lines.push(`   - If they have not already said what it is about, ask: "${brain.voiceSupportQualify.trim()}"`);
+        }
         lines.push(`   - Work out which of these it is from what they say, then follow SUPPORT LOOKUP below:`);
         for (const r2 of p.routes) {
           const c = dedupeCollect(r2.collect ?? []);

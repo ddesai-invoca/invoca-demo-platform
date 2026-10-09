@@ -13409,6 +13409,101 @@ generated-profile-data failures this file already records.
 proved through `/api/chat`, which is the same brain the LiveKit worker uses, and the diagrams
 and drawers were read directly — but nothing here was spoken aloud down a phone.
 
+### Then: the branches did not DRAW, and the support leaf is a Qualify now (10/9/2026)
+
+Reported with the box selected and nothing under it: *"i dont see the tree branches in the sms
+or voice agent support workflow, create it as a [Qualify] action under the All Support Users
+box, do it for Aptive - Voice and Aptive - SMS."*
+
+⚠⚠ **MEASURED ON THE REAL STORED RECORD FIRST, AND THE TWO CHANNELS WERE BROKEN DIFFERENTLY
+— which is why only half of it looked like a regression.** Applying any edit persists the
+WHOLE tree, so every demo an SE has touched carries a snapshot of the support branches as they
+were that day:
+
+| Aptive's stored override | held | repaired? |
+|---|---|---|
+| `/agent-studio/agent/workflow/voice` | the retired three (`Change or reschedule` …) | **yes** — `isRetiredSupportSet` matched |
+| `/agent-studio/agent/workflow/sms` | `All Support Users` with **ZERO** children | **no** — an empty leaf is not the retired set |
+
+So the same prospect showed four cases on one channel and nothing on the other. An EMPTY
+support leaf is just as much a frozen snapshot — it is the pre-10/6 template — and the repair
+did not recognise it.
+
+⚠⚠ **AND THE DEEPER FAULT IS WHAT THE USER ACTUALLY NAMED: A TERMINAL ACTION WAS NESTING.**
+`All Support Users` carried `Support & Escalate` AND four children, which this file's own rule
+forbids one row up: *"ONLY A QUALIFY MAY NEST … the other four are terminal, so a child under
+one would be drawn in a row the agent can never reach."* The leaf is a **Qualify** on both
+channels now and its four answers are the terminal `Support & Escalate`, which is exactly how
+the sales side has always read. The lock is untouched — the box is chrome, its NAME is still
+refused, and only its action was ever configuration.
+
+### Scope: the gate is load-bearing and was proved by measurement, not by argument
+⚠⚠ **UNGATED, THE EMPTY-LEAF REFILL CHANGED ALL EIGHT AUTHORED EXTRAS ON DISK** — Orlando
+Health's five ER trees, Avi & Co's two, Reyes Law's nurture flow — because `extraTree` builds
+the same locked chrome and an empty support leaf is their normal, signed-off state. Filling it
+would inject four pest-control-shaped branches into a hospital's messaging workflow. Both the
+refill and the Qualify fix are gated on `builtIn`; measured after, **8 checked, 0 changed**.
+⚠️ **CONSEQUENCE, STATED: those eight still draw a terminal action with children**, the same
+contradiction this repair exists to fix. Flagged rather than fixed quietly — the ask was for
+the built-in pair, and it is a one-line change to widen.
+⚠️ The options argument is **named** (`{ builtIn, withRoute }`) rather than two positional
+booleans, because `(branches, profile, true, false)` tells a reader nothing.
+
+### Five things that each had to be fixed for the Qualify to be real rather than cosmetic
+1. ⚠⚠ **`qualify` WAS NOT DEEP-MERGED, so the new question was undefined on exactly the demos
+   already set up.** `effectiveSmsConfig` spreads the stored config over the base, and Aptive's
+   override holds `qualify: { root, newSide, existingSide }` written before `support` existed —
+   the top-level spread replaces the whole object. Same bug the `inform` note records, one key
+   along, and it would have shown as an empty question box on every touched demo.
+2. ⚠⚠ **THE VOICE DRAWER WOULD HAVE SHARED THE SALES QUESTION.** A Qualify leaf lands in
+   `drawerFor`'s qualify branch, which reads `spec.qualifyQuestion` — so the support node would
+   have shown the sales wording and an edit there would have REWRITTEN it. Two leaves, one
+   field: the duplicated-field bug behind all three of the 8/27 voice defects.
+   `agent.supportQualifyQuestion` / `supportQualifyFallback` are its own home.
+3. ⚠⚠ **THE QUESTION REACHED NOTHING, WHICH WOULD HAVE MADE THE DRAWER A DEAD CONTROL.** It
+   is rendered now — and **guarded**: *"If they have not already said what it is about, ask: …"*
+   A support caller usually leads with the problem, so asking unconditionally is the
+   don't-ask-twice bug this file records for the ZIP and the name, through a new door. Verified
+   both ways on a live call: a caller who said "the ants are back" was NOT re-asked, and one who
+   said only "I need some help" was.
+4. ⚠⚠ **THE FOUR VOICE ANSWERS SHOWED THE SALES SERVICE-AREA GATE as their instruction.** They
+   became escalates and fell through to the branch that renders `spec.informSteps` — so a node
+   about a re-treatment or a disputed charge opened describing a new-business ZIP check. They
+   read `informCopy`, the same four strings the SMS drawers show, so a caller and a texter are
+   told the same thing.
+5. ⚠⚠ **THE FOURTH SUPPORT NODE'S DRAWER OPENED EMPTY** — `SMS_ESCALATE_PATH` listed three
+   ids, so `path-1-0-3` fell through to the generic `extra__` branch.
+
+⚠⚠ **AND ONE THING ONLY THE BROWSER CAUGHT: every SMS support answer read "Route to General
+Customer Care" instead of its action.** The renderer draws `Route to <team>` INSTEAD OF the
+action, so carrying a `route` on an SMS node turns its authored action into data nothing draws
+— one node described two ways, with the drawer and the tint both saying Support & Escalate.
+This file already stated the rule for the six demo workflows and the **built-in template was
+simply never covered by the check**. Voice keeps its routes: there the agent says the desk's
+name out loud and the prompt reads the field.
+
+### Checks: seven re-aimed, two of them inverted
+✅ Three were **specimen moves, not loosenings** — `leaf-1-0` was the only escalate leaf, so the
+"escalate drawer asks for a destination", "every drawer matches its node's action" and "the
+destination has somewhere to write" checks all read it. They read `path-1-0-0` now, which IS an
+escalate; the invariants are unchanged.
+✅ Two **inverted**, and pinning them was pinning the bug: "the support leaf keeps its
+`Support & Escalate` action" and "every support path inherits its parent's action". A Qualify
+and its answers are deliberately DIFFERENT kinds — the parent branches, the answers end. What
+survives is asserted instead: the answers are all the same kind **as each other**, and the
+parent is **not** one of them.
+New checks cover both stale shapes against what real records hold (an empty leaf and the
+retired set), the gate not leaking onto authored extras, identity when nothing is stale, the
+Qualify's own question home, and no route on a built-in SMS node. **Five sabotages fire**,
+including one that reproduces the reported bug exactly.
+
+**Verified in the browser on both trees**: SMS draws 16 nodes with the four answers beside
+New/Existing Homeowner; voice draws them with their routes intact. Computed styles match the
+measured palette exactly — the leaf lilac `#d0c1f2` at 8% with a 5px edge and `#440066` ink,
+the answers orange `#ff7045` / `#b33b00`. All five SMS drawers and all four voice ones open
+with their own text and a collect list matching their node's chips. `tsc -b`, `npm run build`
+and 20 of 21 suites green; `audit:seeds` 86 of 103, unchanged.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

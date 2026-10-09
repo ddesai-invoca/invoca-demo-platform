@@ -1,8 +1,9 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
-import { actionKindOf, type ActionKind } from "./workflowChrome";
+import { actionKindOf, SUPPORT_LEAF, type ActionKind } from "./workflowChrome";
 import type { CustomerProfile } from "./schema";
-import { voiceSpecFor, specWithConfig, DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT, type VoiceAgentConfig } from "./voiceAgentSpec";
-import { collectFor, collectPool, type SmsCollectKey, type SmsConfig, type SmsQualifyNode } from "./smsTemplate";
+import { voiceSpecFor, specWithConfig, DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT,
+  DEFAULT_SUPPORT_QUALIFY_QUESTION, DEFAULT_SUPPORT_QUALIFY_FALLBACK, type VoiceAgentConfig } from "./voiceAgentSpec";
+import { collectFor, collectPool, informCopy, type SmsCollectKey, type SmsConfig, type SmsQualifyNode } from "./smsTemplate";
 
 /* =============================================================================
    workflowDrawers.ts — what each node of the flow diagram opens
@@ -643,20 +644,32 @@ export function drawerFor(
          carries Ask AI's edits, which the spec does not. The question and the reprompt still
          come from the spec, because neither is drawn anywhere. */
       const answers = (l.paths ?? []).map((x) => x.title).filter(Boolean);
+      /* ⚠⚠ **THE SUPPORT QUALIFY READS ITS OWN FIELDS (10/9/2026).** That leaf became a
+         Qualify because it branches, which landed it in this branch — and this branch read
+         `spec.qualifyQuestion`, the SALES question. So the support node would have shown the
+         sales wording and an edit here would have rewritten the sales question: two leaves
+         sharing one field, which is the common cause of the three 8/27 voice bugs. */
+      const isSupportLeaf = String(l.title ?? "") === SUPPORT_LEAF;
+      const qKey = isSupportLeaf ? "supportQualifyQuestion" : "qualifyQuestion";
+      const fKey = isSupportLeaf ? "supportQualifyFallback" : "qualifyFallback";
       return {
         kind: "action", title: "Action", action,
-        question: spec.qualifyQuestion,
+        question: isSupportLeaf
+          ? (spec.supportQualifyQuestion ?? DEFAULT_SUPPORT_QUALIFY_QUESTION)
+          : spec.qualifyQuestion,
         segments: answers,
         segmentNodes: (l.paths ?? []) as unknown as Record<string, unknown>[],
-        fallback: spec.qualifyFallback,
+        fallback: isSupportLeaf
+          ? (spec.supportQualifyFallback ?? DEFAULT_SUPPORT_QUALIFY_FALLBACK)
+          : spec.qualifyFallback,
         channel: "voice",
         /* ⚠️⚠️ EACH FIELD TO ITS REAL HOME, and these two already have one: `agent.*` is what
            the page registers beside the tree and what `specWithConfig` merges back into the
            spec, so an edit here reaches the actual CALL — the same path Ask AI has written
            since 8/27. A per-node copy would show in the drawer and change nothing spoken. */
         edits: {
-          question: "agent.qualifyQuestion",
-          fallback: "agent.qualifyFallback",
+          question: `agent.${qKey}`,
+          fallback: `agent.${fKey}`,
           segments: `branches.${leaf[1]}.leaves.${leaf[2]}.paths`,
           ...voiceExtraEdits(nodeId),
         },
@@ -756,6 +769,29 @@ export function drawerFor(
         infoChoices: infoFieldOptions(profile),
       };
     }
+    /* ⚠⚠ **A SUPPORT ANSWER DESCRIBES ITS OWN CASE, FROM THE SAME COPY THE SMS SIDE USES
+       (10/9/2026).** These four became `Support & Escalate` when their parent became a
+       Qualify, and they then fell through to the branch below, which shows
+       `spec.informSteps` — the SALES SERVICE-AREA GATE ("ask for their zip code and check it
+       against our service area"). Measured on the real tree: every support answer's drawer
+       opened describing a new-business check, on nodes about a re-treatment and a disputed
+       charge. `informCopy` is what the SMS drawers already show for these exact four cases,
+       so reading it here is what makes a caller and a texter be told the same thing.
+       ⚠️ The per-node `extra__<id>__handling` home already exists and already works, so an
+       SE edit still lands per node; this only supplies the DEFAULT. */
+    const supportText = SUPPORT_DRAWER_TEXT[pathId.slice(1, 4).join("-")];
+    if (supportText) {
+      return { kind: "action", title: "Action", action,
+        handling: String(vx(tree, nodeId, "handling") ?? supportText(profile)),
+        collect: nodeCollect(profile, pth as unknown as Record<string, unknown>, action),
+        channel: "voice",
+        edits: { handling: `agent.extra__${nodeId}__handling`, ...voiceExtraEdits(nodeId) },
+        actionSlot: actionSlotFor(tree, nodeId),
+        signal: String(vx(tree, nodeId, "signal") ?? ""),
+        signalChoices: signalOptions(profile),
+        infoChoices: infoFieldOptions(profile),
+      };
+    }
     if (spec) {
       return { kind: "action", title: "Action", action,
         handling: spec.informSteps.join("\n"),
@@ -810,6 +846,13 @@ const SMS_QUALIFY: Record<string, { key: SmsQualifyNode; segments: string }> = {
   "leaf-0-0": { key: "root", segments: "branches.0.leaves.0.paths" },
   "path-0-0-0": { key: "newSide", segments: "branches.0.leaves.0.paths.0.paths" },
   "path-0-0-1": { key: "existingSide", segments: "branches.0.leaves.0.paths.1.paths" },
+  /* ⚠⚠ **THE SUPPORT LEAF IS A QUALIFY NOW (10/9/2026), so it is registered here rather
+     than in the escalate branch below.** It branches, and only a Qualify may nest. Without
+     this it falls through to the generic `extra__` branch — right for a node an SE added,
+     wrong for one the template ships — and its question would have nowhere real to live.
+     ⚠️ The `segments` path is what makes **Add** work on it: the answers ARE the nodes on the
+     row below, so a new one is written into the tree exactly as the sales side's are. */
+  "leaf-1-0": { key: "support", segments: "branches.1.leaves.0.paths" },
 };
 /** Which Inform leaf each clickable id is. */
 const SMS_INFORM: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsCollectKey }> = {
@@ -845,6 +888,18 @@ const SMS_ESCALATE_PATH: Record<string, { key: keyof SmsConfig["inform"]; collec
   "path-1-0-1": { key: "supportChange", collect: "supportChange" },
   "path-1-0-2": { key: "supportBilling", collect: "supportBilling" },
   "path-1-0-3": { key: "supportOther", collect: "supportOther" },
+};
+
+/* ⚠⚠ **THE VOICE SUPPORT ANSWERS' DEFAULT TEXT, KEYED BY POSITION AND READ FROM
+   `informCopy` — the SAME four strings the SMS drawers show.** Two copies of this wording
+   would mean a caller and a texter being told different things about the same case, which is
+   exactly what this whole feature was built to stop. Keyed on `branch-leaf-path` rather than
+   the full node id so it cannot accidentally match a `sub-` node a row further down. */
+const SUPPORT_DRAWER_TEXT: Record<string, ((p: CustomerProfile) => string) | undefined> = {
+  "1-0-0": (p) => informCopy(p).supportIssue,
+  "1-0-1": (p) => informCopy(p).supportChange,
+  "1-0-2": (p) => informCopy(p).supportBilling,
+  "1-0-3": (p) => informCopy(p).supportOther,
 };
 
 /** Walk a dot-path (arrays included) into the effective tree. ONE definition, several readers. */
@@ -1146,6 +1201,15 @@ export function smsDrawerFor(
   }
 
   /* The support user group itself. */
+  /* ⚠⚠ **KEPT FOR A LEAF AN SE HAS SWITCHED BACK, and `kindOfNode` is what decides.** The
+     template ships this node as a Qualify now, so the registration above normally wins; this
+     branch is reached only when the node genuinely carries an escalate action, which is still
+     a state the Action dropdown can produce. Deleting it would open that node on the generic
+     `extra__` branch and strand the text stored at `sms.escalate`.
+     ⚠️ **CONSEQUENCE, STATED: on the built-in template `sms.escalate` no longer reaches the
+     prompt.** The leaf asks a question now instead of carrying an escalation instruction, and
+     the four answers below it each carry their own. The field stays in the config because the
+     voice agent's `escalateHandling` and every authored extra still read it. */
   if (nodeId === "leaf-1-0" && selfKind === "escalate") {
     return {
       kind: "action", title: "Action", action: "escalate", channel: ch,

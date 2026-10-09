@@ -7,7 +7,7 @@ import { useAiAssistant } from "./AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "./smsBrain";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "./voicePaths";
 import { emptyWorkflowGreeting } from "./workflowChrome";
-import { voiceSpecFor, specWithConfig, type VoiceAgentConfig , DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT } from "./voiceAgentSpec";
+import { voiceSpecFor, specWithConfig, type VoiceAgentConfig , DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT, DEFAULT_SUPPORT_QUALIFY_QUESTION } from "./voiceAgentSpec";
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoiceConversation, VoiceTurn } from "./schema";
 
@@ -204,6 +204,12 @@ export function useBrain(opts?: BrainOpts) {
       : booking ? (booking.greeting?.trim() || spec?.greeting)
       : spec?.greeting,
     voiceQualify: minimal || booking ? undefined : spec?.qualifyQuestion,
+    /* ⚠️ Dropped for the same two flows as the sales question: a minimal preview has no
+       actions configured and a booking agent has its own self-contained flow, so neither has
+       a support path for this to introduce. */
+    voiceSupportQualify: minimal || booking
+      ? undefined
+      : (spec?.supportQualifyQuestion ?? DEFAULT_SUPPORT_QUALIFY_QUESTION),
     /* ⚠️⚠️ **THE ROUTING WORKFLOW'S RULES ARE DROPPED TOO, AND THAT WAS MEASURED RATHER THAN
        ASSUMED.** They were kept at first on the reasoning that rules are "how the agent
        sounds, not what it does". On the very first real call the agent collected the name and

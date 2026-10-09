@@ -1,4 +1,5 @@
 import type { CustomerProfile } from "./schema";
+import { INTENT_SUPPORT, SUPPORT_LEAF, LEAF_QUALIFY, LEAF_ESCALATE } from "./workflowChrome";
 
 /* =============================================================================
    voiceUseCases.ts — the branches under the two user-group nodes
@@ -294,27 +295,104 @@ function isRetiredSupportSet(titles: string[]): boolean {
 export function repairSupportUseCases<T extends { title?: string; leaves?: unknown[] }>(
   branches: T[],
   profile: CustomerProfile,
+  /**
+   * ⚠️ **NAMED, BECAUSE TWO POSITIONAL BOOLEANS WOULD BE READ WRONG AT A CALL SITE.** Both
+   * flags change what the repair is allowed to do, and `(branches, profile, true, false)`
+   * tells a reader nothing about which is which.
+   */
+  opts: {
+    /**
+     * Whether this is the BUILT-IN template, which is the only tree whose support leaf may be
+     * REFILLED when it is empty.
+     *
+     * ⚠⚠ **WITHOUT THIS THE EMPTY-LEAF REPAIR LEAKS ONTO EVERY AUTHORED WORKFLOW.** Orlando
+     * Health's five ER trees, Avi & Co's, Reyes Law's and every generated quote-request one
+     * build their support leaf from the shared chrome constants with no children — an empty
+     * support leaf is their NORMAL, signed-off state, and filling it would inject four
+     * pest-control-shaped branches into a hospital's messaging workflow. Measured: ungated it
+     * changed all eight on disk. The retired-title repair needs no such gate, because only the
+     * old derived default could produce that exact set.
+     */
+    builtIn?: boolean;
+    /**
+     * Whether a repaired answer may carry its routing destination.
+     *
+     * ⚠⚠ **VOICE ONLY — on SMS the renderer draws `Route to <team>` INSTEAD OF the action.**
+     * Seen in the browser: the four support answers read "Route to General Customer Care"
+     * where their drawer and their tint both said Support & Escalate, one node described two
+     * ways. The voice agent names the desk out loud and its prompt reads the field, so there
+     * it stays.
+     */
+    withRoute?: boolean;
+  } = {},
 ): T[] {
+  const { builtIn = false, withRoute = true } = opts;
   let changed = false;
   const support = deriveUseCases(profile).support;
   const next = branches.map((b) => {
-    const leaves = (b.leaves ?? []) as { paths?: { title?: string }[] }[];
+    const isSupportBranch = String(b.title ?? "") === INTENT_SUPPORT;
+    const leaves = (b.leaves ?? []) as {
+      title?: string; action?: string; actionKind?: string; actionIcon?: string;
+      tone?: string; paths?: { title?: string }[];
+    }[];
     const fixedLeaves = leaves.map((leaf) => {
       const paths = leaf.paths ?? [];
-      if (!isRetiredSupportSet(paths.map((p) => String(p.title ?? "")))) return leaf;
+      const titles = paths.map((p) => String(p.title ?? ""));
+      /* ⚠⚠ **AN EMPTY SUPPORT LEAF IS ALSO A FROZEN SNAPSHOT, and missing that is why the
+         SMS tree drew nothing under it.** Measured on a real stored demo: Aptive's SMS
+         override holds `All Support Users` with ZERO children — the pre-10/6 template, saved
+         the day an SE applied an edit — while its VOICE override holds the retired 3-set and
+         repaired correctly. One shape was recognised and the other was not, so the same
+         prospect showed the four cases on one channel and nothing on the other.
+         ⚠️ Identified by the locked CHROME names rather than by emptiness alone, so the only
+         leaf this can refill is the one the product always draws. */
+      const isChromeSupportLeaf = isSupportBranch && String(leaf.title ?? "") === SUPPORT_LEAF;
+      const stale = isRetiredSupportSet(titles)
+        || (builtIn && isChromeSupportLeaf && paths.length === 0);
+      /* ⚠⚠ **AND A LEAF THAT BRANCHES MUST BE A QUALIFY, which a stored one is not.** Every
+         override written before today carries `Support & Escalate` on a node with children —
+         a TERMINAL action nesting, which the product's own model does not allow and which is
+         why its answers never appeared. Repaired on its own, so a tree whose titles are
+         already current still gets the action fixed. */
+      /* ⚠⚠ **GATED ON `builtIn` TOO — UNGATED IT CHANGED ALL EIGHT AUTHORED EXTRAS, measured
+         rather than reasoned about.** `extraTree` builds the same locked chrome, so Orlando
+         Health's five ER trees, Avi & Co's two and Reyes Law's nurture flow all have a
+         `Need Support` branch whose `All Support Users` leaf carries authored children — and
+         every one of them flipped to a Qualify. They are signed off, and the ask was for the
+         built-in pair, so the blast radius stops here.
+         ⚠️ **CONSEQUENCE, STATED: those eight still draw a terminal action with children**,
+         which is the same contradiction this repair exists to fix. Flagged rather than fixed
+         quietly; it is a one-line change to widen once somebody asks for it. */
+      const needsQualify = builtIn
+        && isChromeSupportLeaf
+        && (paths.length > 0 || stale)
+        && leaf.actionKind !== "qualify";
+      if (!stale && !needsQualify) return leaf;
       changed = true;
-      /* ⚠️ The node's own shape is kept and only the content replaced, so an action,
-         a lock or anything else an SE set on that leaf survives. */
-      const template = paths[0] ?? {};
-      return {
-        ...leaf,
-        paths: support.map((u) => ({
-          ...template,
+      /* ⚠️ The node's own shape is kept and only what is stale replaced, so a lock or
+         anything else an SE set on that leaf survives. */
+      const next: typeof leaf = { ...leaf };
+      if (needsQualify) {
+        next.action = LEAF_QUALIFY;
+        next.actionKind = "qualify";
+        next.actionIcon = "callSplit";
+      }
+      if (stale) {
+        /* ⚠⚠ **THE ANSWERS ARE TERMINAL ESCALATES, NOT COPIES OF THE OLD FIRST CHILD.** The
+           earlier version spread `paths[0]`, which on the voice tree meant every repaired
+           support answer inherited `Inform & Route` — the SALES ending — from a node that was
+           itself stale. A support answer is where the agent does the work. */
+        next.paths = support.map((u) => ({
           title: u.title,
+          action: LEAF_ESCALATE,
+          actionKind: "escalate" as const,
+          actionIcon: "headsetMic" as const,
+          tone: "orange" as const,
           chips: u.collect,
-          route: u.route,
-        })),
-      };
+          ...(withRoute && u.route ? { route: u.route } : {}),
+        })) as typeof leaf.paths;
+      }
+      return next;
     });
     return fixedLeaves.some((l, i) => l !== leaves[i]) ? { ...b, leaves: fixedLeaves } : b;
   });

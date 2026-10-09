@@ -89,6 +89,20 @@ export interface VoiceAgentSpec {
    * five read-only boxes on the one page where the words ARE the prompt. Optional, and both
    * fall back to exactly what was hardcoded, so an untouched agent is byte-identical.
    */
+  /**
+   * The SUPPORT Qualify's own question and reprompt.
+   *
+   * ⚠⚠ **ITS OWN HOME, BECAUSE SHARING `qualifyQuestion` WOULD HAVE BEEN THE
+   * DUPLICATED-FIELD BUG AGAIN.** The support leaf became a Qualify on 10/9/2026 (it
+   * branches, and only a Qualify may nest), so `drawerFor` started answering it from the
+   * `qualify` branch — which reads `spec.qualifyQuestion`, the SALES question. The drawer
+   * would have shown the sales wording on the support node and, worse, an edit there would
+   * have rewritten the sales question: two leaves, one field, which is the common cause of
+   * the three 8/27 voice bugs this file records.
+   * ⚠️ Optional and defaulted, so an agent nobody has edited is byte-identical.
+   */
+  supportQualifyQuestion?: string;
+  supportQualifyFallback?: string;
   supportIntent?: string;
   supportRules?: string[];
   /**
@@ -327,11 +341,20 @@ export interface VoiceAgentConfig {
    * the same wording, so an agent nobody has edited is byte-identical.
    */
   escalateHandling?: string;
+  supportQualifyQuestion?: string;
+  supportQualifyFallback?: string;
   supportIntent?: string;
   supportRules?: string[];
 }
 
 /** The editable slice of a spec, for registering as page data. */
+/* ⚠️ ONE DEFINITION EACH, read by `agentConfigOf` and by the prompt — the same reason
+   `DEFAULT_ESCALATE_HANDLING` is a constant rather than a literal in the drawer. */
+export const DEFAULT_SUPPORT_QUALIFY_QUESTION =
+  "What can I help you with today?";
+export const DEFAULT_SUPPORT_QUALIFY_FALLBACK =
+  "Sorry, I didn't quite catch that. Is it about a problem with a recent visit, an upcoming one, a charge, or something else?";
+
 /** The wording the escalate leaf has always shown. ONE definition, read by the drawer and the
  *  prompt, so the two cannot drift. */
 /** The Need Support intent's description — ONE definition, read by the drawer and the prompt. */
@@ -354,6 +377,8 @@ export function agentConfigOf(spec: VoiceAgentSpec): VoiceAgentConfig {
     ...(spec.outOfAreaScript ? { outOfAreaScript: spec.outOfAreaScript } : {}),
     informSteps: spec.informSteps,
     escalateHandling: spec.escalateHandling ?? DEFAULT_ESCALATE_HANDLING,
+    supportQualifyQuestion: spec.supportQualifyQuestion ?? DEFAULT_SUPPORT_QUALIFY_QUESTION,
+    supportQualifyFallback: spec.supportQualifyFallback ?? DEFAULT_SUPPORT_QUALIFY_FALLBACK,
     supportIntent: spec.supportIntent ?? DEFAULT_SUPPORT_INTENT,
     supportRules: spec.supportRules ?? [],
     /* Omitted when unset, for the same reason as the two above: a key present with an
@@ -458,6 +483,10 @@ export function specWithConfig(spec: VoiceAgentSpec, cfg: VoiceAgentConfig | und
     informSteps: toSteps(cfg.informSteps, spec.informSteps ?? []),
     /* A non-empty string only; an emptied field falls back rather than leaving the agent with
        no escalation instruction at all — the same rule `toSteps` follows for the steps. */
+    supportQualifyQuestion: (typeof cfg.supportQualifyQuestion === "string" && cfg.supportQualifyQuestion.trim())
+      ? cfg.supportQualifyQuestion : spec.supportQualifyQuestion,
+    supportQualifyFallback: (typeof cfg.supportQualifyFallback === "string" && cfg.supportQualifyFallback.trim())
+      ? cfg.supportQualifyFallback : spec.supportQualifyFallback,
     escalateHandling: (typeof cfg.escalateHandling === "string" && cfg.escalateHandling.trim())
       ? cfg.escalateHandling : (spec.escalateHandling ?? DEFAULT_ESCALATE_HANDLING),
     supportIntent: (typeof cfg.supportIntent === "string" && cfg.supportIntent.trim())

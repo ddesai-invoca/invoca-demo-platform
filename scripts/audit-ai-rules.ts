@@ -18,7 +18,7 @@ import { collectNames } from "../src/data/workflowDrawers.ts";
 import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF } from "../src/data/workflowChrome.ts";
 import { rowLayout } from "../src/data/workflowRows.ts";
 import { smsBranches, smsConfigFor, repairSmsSegments, SMS_TRIGGER } from "../src/data/smsTemplate.ts";
-import { voiceVocab } from "../src/data/voiceUseCases.ts";
+import { voiceVocab, repairSupportUseCases } from "../src/data/voiceUseCases.ts";
 import { smsDrawerFor, drawerFor, SMS_ACTION_LABEL, SMS_ACTION_DESCRIPTION, SMS_ACTION_PROMPT,
   ACTION_DESCRIPTION, ACTION_PROMPT, SMS_ACTION_OPTIONS, SMS_CALLBACK_SIGNAL,
   SMS_DESTINATION_PROMPT, SMS_ROUTE_DESTINATION, SMS_ESCALATE_DESTINATION,
@@ -222,9 +222,13 @@ console.log("\nThe SMS workflow template's node names are locked");
   !/action:\s*`Route to \$\{c\.(newQueue|supQueue)\}`/.test(wf)
     ? ok("no leaf action derives from a prospect queue name")
     : bad("a leaf action is `Route to ${c.newQueue|supQueue}` again");
-  voice.includes("action: LEAF_QUALIFY") && voice.includes("action: LEAF_ESCALATE")
-    ? ok("the voice leaves default to Qualify and Support & Escalate")
-    : bad("the voice leaf actions are not the two defaults");
+  /* ✅ **BOTH VOICE LEAVES ARE QUALIFIES NOW, and `LEAF_ESCALATE` moved one row down.** The
+     support leaf branches, and the product's own rule is that only a Qualify may nest; its
+     ANSWERS carry `Support & Escalate`. Both constants must still be used, so a leaf going
+     back to a hand-typed string is still caught. */
+  voice.includes("action: LEAF_QUALIFY") && voice.includes("LEAF_ESCALATE")
+    ? ok("the voice leaves use the shared action constants, not literals")
+    : bad("the voice leaf actions are not the shared constants");
   /\.\(title\|subtitle\|action\)\$/.test(readAny("src/data/editGuard.ts"))
     ? ok("LOCKED_KEYS covers action, so a locked leaf's action is refused too")
     : bad("LOCKED_KEYS does not cover action — a locked leaf's action is still editable");
@@ -1254,9 +1258,16 @@ console.log("\nThe built-in SMS workflow template");
       : bad(`the fourth support path is not a catch-all: ${JSON.stringify(kids[3]?.title)}`);
     /* ⚠️ THE LEAF ITSELF IS STILL LOCKED CHROME. What was added hangs BELOW it; the box
        keeps the name and the action the product gives it, which this repo already pins. */
-    support.locked === true && support.action === "Support & Escalate"
-      ? ok("the All Support Users box is still locked chrome with its own action")
-      : bad("the support leaf lost its lock or its action");
+    /* ✅✅ **RE-AIMED 10/9/2026 AND THE ACTION INVERTED: THE SUPPORT LEAF IS A QUALIFY.**
+       Reported with the box selected and nothing under it — and the cause was that this node
+       carried a TERMINAL action while having children, which the product's own model does not
+       allow ("only a Qualify may nest; the other four are terminal, so a child under one would
+       be drawn in a row the agent can never reach"). So the old assertion was pinning the very
+       thing that made the branches not render. The LOCK is unchanged and still asserted: the
+       box is chrome, its NAME cannot be edited, and only its action is configuration. */
+    support.locked === true && support.action === "Qualify"
+      ? ok("the All Support Users box is a locked Qualify, which is what lets it branch")
+      : bad(`the support leaf lost its lock or is not a Qualify: ${support.action}`);
     /* ⚠️⚠️ **EVERY PATH MATCHES ITS PARENT'S ACTION — re-aimed on the user's own
        correction, and the first version of this check enshrined my mistake.** It asserted
        two Informs and one Escalate, which I had chosen so the tints would differ. That is a
@@ -1264,12 +1275,84 @@ console.log("\nThe built-in SMS workflow template");
        this repo already applies to a node an SE adds: peers under one question do the same
        kind of thing. Asserted against the PARENT rather than against the literal
        "escalate", so changing the parent's action keeps the check meaningful. */
-    kids.every((k) => k.actionKind === support.actionKind)
-      ? ok(`every support path inherits its parent's action (${support.actionKind})`)
-      : bad(`a support path's action differs from its parent: ${kids.map((k) => k.actionKind).join(", ")}`);
-    kids.every((k) => k.action === support.action && k.tone === support.tone)
-      ? ok("…and its action label and tint, so the row reads as one kind of thing")
-      : bad("a support path's label or tint differs from its parent");
+    /* ✅✅ **"INHERITS ITS PARENT'S ACTION" WAS RIGHT WHEN BOTH WERE ESCALATES AND IS NOW
+       BACKWARDS.** A Qualify and its answers are deliberately DIFFERENT kinds: the parent is
+       the one action that branches, the answers are where the conversation ends. The sales
+       side has always read this way — `All Sales Inquiry Users` is a Qualify whose answers are
+       not. What survives, and is what the original check was really protecting, is that the
+       answers are all the SAME kind as each other, so the row reads as one kind of thing. */
+    kids.every((k) => k.actionKind === "escalate")
+      ? ok("every support answer is the terminal Support & Escalate")
+      : bad(`a support answer is not an escalate: ${kids.map((k) => k.actionKind).join(", ")}`);
+    kids.every((k) => k.action === kids[0].action && k.tone === kids[0].tone)
+      ? ok("…and they share one label and tint, so the row reads as one kind of thing")
+      : bad("a support answer's label or tint differs from its siblings");
+    /* ⚠⚠ **AND THE PARENT MUST NOT BE ONE OF THEM**, which is the whole point: a terminal
+       action with children is a row the agent can never reach. */
+    support.actionKind !== kids[0].actionKind
+      ? ok("the branching parent is a different kind from its terminal answers")
+      : bad("the support leaf carries the same terminal action as its own answers again");
+
+    /* ⚠⚠ **THE REPAIR, AGAINST THE TWO SHAPES REAL STORED DEMOS ACTUALLY HOLD — and the
+       second one is why this was reported at all.** Applying any edit persists the WHOLE
+       tree, so every demo an SE has touched carries a snapshot of the support branches as
+       they were that day. Measured on a real record: Aptive's VOICE override held the retired
+       three and repaired; its SMS override held an EMPTY support leaf and did not, so the
+       same prospect showed four cases on one channel and nothing on the other. */
+    {
+      const leafOf = (t: any) => t[1].leaves[0];
+      const chrome = () => ({
+        title: INTENT_SUPPORT,
+        leaves: [{ title: SUPPORT_LEAF, action: "Support & Escalate", actionKind: "escalate", locked: true, paths: [] as any[] }],
+      });
+      /* a) the pre-10/6 shape: a terminal leaf with no children at all */
+      const empty: any[] = [{ title: INTENT_SALES, leaves: [] }, chrome()];
+      const fixedEmpty = leafOf(repairSupportUseCases(empty as never, p, { builtIn: true }) as any);
+      (fixedEmpty.paths?.length === 4 && fixedEmpty.actionKind === "qualify")
+        ? ok("an EMPTY stored support leaf is refilled and becomes a Qualify")
+        : bad(`an empty support leaf was not repaired: ${fixedEmpty.paths?.length} paths, ${fixedEmpty.actionKind}`);
+      /* b) the 10/6 shape: the retired three, still on a terminal action */
+      const retired: any[] = [{ title: INTENT_SALES, leaves: [] }, chrome()];
+      leafOf(retired).paths = [
+        { title: "Change or reschedule" }, { title: "Cancel a service appointment" }, { title: "Billing question" },
+      ];
+      const fixedRetired = leafOf(repairSupportUseCases(retired as never, p, { builtIn: true }) as any);
+      (fixedRetired.paths?.length === 4
+        && fixedRetired.actionKind === "qualify"
+        && fixedRetired.paths.every((x: any) => x.actionKind === "escalate"))
+        ? ok("a stored RETIRED set is replaced, and its answers are terminal escalates")
+        : bad("the retired support set was not fully repaired");
+      /* ⚠⚠ **AND THE REFILL MUST NOT REACH AN AUTHORED WORKFLOW.** Measured when this was
+         written: ungated it changed ALL EIGHT authored extras on disk — Orlando Health's five
+         ER trees, Avi & Co's two, Reyes Law's — because `extraTree` builds the same locked
+         chrome and an empty support leaf is their normal signed-off state. */
+      const offTemplate: any[] = [{ title: INTENT_SALES, leaves: [] }, chrome()];
+      repairSupportUseCases(offTemplate as never, p, { builtIn: false }) === offTemplate
+        ? ok("…and an authored workflow's empty support leaf is left exactly alone")
+        : bad("the empty-leaf refill leaks onto authored extra workflows");
+      /* identity, so a tree that is already current costs no re-render */
+      const current: any[] = JSON.parse(JSON.stringify(tree.branches));
+      repairSupportUseCases(current as never, p, { builtIn: true }) === current
+        ? ok("a tree that is already current is returned unchanged")
+        : bad("the repair rewrites a tree that needed nothing");
+    }
+
+    /* ⚠⚠ **THE QUALIFY ASKS SOMETHING, AND THAT QUESTION MUST REACH THE AGENT.** A Qualify
+       drawer with a question box that writes nowhere, or writes somewhere the prompt never
+       reads, is the dead control this repo forbids. Both channels, from their own homes — the
+       SALES question is a different field, and sharing it would be the duplicated-field bug
+       that caused three separate voice defects on 8/27. */
+    {
+      const d: any = smsDrawerFor(p, tree as never, "leaf-1-0", cfg);
+      (d?.action === "qualify" && d.question?.trim()
+        && d.edits?.question === "sms.qualify.support.question"
+        && d.edits?.segments === "branches.1.leaves.0.paths")
+        ? ok("the support Qualify has its own question and its answers are the tree's own nodes")
+        : bad(`the support Qualify's drawer is wrong: ${JSON.stringify(d?.edits)}`);
+      d?.edits?.question !== "sms.qualify.root.question"
+        ? ok("…and it is NOT the sales question's home")
+        : bad("the support Qualify writes to the sales question");
+    }
     kids.every((k) => (k.chips ?? []).length > 0)
       ? ok("every support path collects something")
       : bad("a support path draws no chips");
@@ -1352,7 +1435,11 @@ console.log("\nThe built-in SMS workflow template");
   const dInt = smsDrawerFor(p, tree, "intent-0", cfg);
   const dQual = smsDrawerFor(p, tree, "leaf-0-0", cfg);
   const dInf = smsDrawerFor(p, tree, "sub-0-0-0-0", cfg);
-  const dEsc = smsDrawerFor(p, tree, "leaf-1-0", cfg);
+  /* ✅ **THE ESCALATE SPECIMEN IS A SUPPORT ANSWER NOW, NOT THE LEAF (10/9/2026).** The
+     support leaf became a Qualify because it branches, so it is no longer an escalate to
+     measure — its ANSWERS are. The invariant (an SMS escalate drawer asks for a destination,
+     not a phone number) is unchanged; only the node it is read from moved. */
+  const dEsc = smsDrawerFor(p, tree, "path-1-0-0", cfg);
   smsDrawerFor(p, tree, "start", cfg) === null
     ? ok("Conversation Start opens nothing, exactly as on the voice page")
     : bad("Conversation Start opens a drawer the real page does not have");
@@ -1687,7 +1774,9 @@ console.log("\nThe built-in SMS workflow template");
     const sibs = added.branches[0].leaves[0].paths!;
     sibs.push({ ...sibs[0], title: "Added", paths: undefined } as never);
     const ids: [string, string][] = [
-      ["leaf-0-0", "qualify"], ["leaf-1-0", "escalate"],
+      /* ✅ `leaf-1-0` IS A QUALIFY NOW (it branches); `path-1-0-0` keeps an escalate in the
+         sweep, so both kinds are still covered. */
+      ["leaf-0-0", "qualify"], ["leaf-1-0", "qualify"], ["path-1-0-0", "escalate"],
       ["path-0-0-0", "qualify"], ["path-0-0-1", "qualify"],
       ["sub-0-0-0-0", "inform"], ["sub-0-0-1-1", "inform"],
       ["path-0-0-2", "qualify"],
@@ -1917,9 +2006,9 @@ console.log("\nThe built-in SMS workflow template");
       ? ok("the invented 'Select a destination...' combobox is gone")
       : bad("the destination is a fabricated combobox again");
 
-    const esc = smsDrawerFor(p, tree, "leaf-1-0", cfg);
+    const esc = smsDrawerFor(p, tree, "path-1-0-0", cfg);
     (esc?.kind === "action" && esc.destinationPlaceholder && esc.edits?.destination
-      && /^sms\.extra__leaf-1-0__destination$/.test(esc.edits.destination))
+      && /^sms\.extra__path-1-0-0__destination$/.test(esc.edits.destination))
       ? ok("the destination has somewhere to write, on a flat key whose parent exists")
       : bad("the destination is editable with nowhere to write, or writes to a nested path");
 
@@ -1929,7 +2018,7 @@ console.log("\nThe built-in SMS workflow template");
       && JSON.stringify(esc.signalChoices) === JSON.stringify(sigs))
       ? ok(`the signal picker offers this prospect's own ${sigs.length} signals`)
       : bad("the signal options are not the prospect's own");
-    (esc?.kind === "action" && esc.edits?.signal === "sms.extra__leaf-1-0__signal")
+    (esc?.kind === "action" && esc.edits?.signal === "sms.extra__path-1-0-0__signal")
       ? ok("the chosen signal has somewhere to write")
       : bad("the signal picker writes nowhere");
     {
@@ -2973,6 +3062,17 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
        .flatMap((w) => [...w.branches, ...w.branches.flatMap((b) => b.paths ?? [])])
        .every((n) => !n.route)
       ? ok("no SMS node carries a route") : bad("an SMS node carries a route — its action would vanish");
+
+    /* ⚠⚠ **AND THE BUILT-IN TEMPLATE IS COVERED BY THAT RULE TOO, which it was not — the
+       check above only ever swept the six demo workflows.** The support branches shipped with
+       a `route` and rendered "Route to General Customer Care" where their drawer and their
+       tint both said Support & Escalate. Seen in the browser; nothing in the suite looked. */
+    smsBranches(everyProfile[0] as never)
+      .flatMap((b: any) => (b.leaves ?? []) as any[])
+      .flatMap((l: any) => [l, ...((l.paths ?? []) as any[])])
+      .every((n: any) => !n.route)
+      ? ok("…and neither does any node of the built-in SMS template")
+      : bad("a built-in SMS node carries a route — its action would vanish");
 
     /* ⚠️ THE BOOKING LOCATIONS ARE THE PROSPECT'S OWN SITES, not an invented pair. */
     const booking = six.find((w) => w.bookingLocations?.length);
