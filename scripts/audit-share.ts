@@ -892,6 +892,102 @@ console.log("\nActivity tracking\n");
   }
 
   /* ==========================================================================
+     THE GUIDED TOUR — first open on a shared demo.
+     ========================================================================== */
+  {
+    const { tourStepsFor, autoOpeners } = await import("../src/data/tourSteps.ts");
+    const { readFileSync } = await import("node:fs");
+    const prof = JSON.parse(readFileSync("src/data/generated/aptive.json", "utf8"));
+    const steps = tourStepsFor(prof);
+
+    steps.length >= 12
+      ? ok(`the tour is ${steps.length} steps, enough to carry agent studio, both agents and the reports`)
+      : bad("the tour is too thin to show the product");
+
+    /* ⚠️ The order the request settled on: agents first, reports LAST, so the conversation
+       they just had is the data they are shown. */
+    const ids = steps.map((s) => s.id);
+    const iVoice = ids.indexOf("voice-tree"), iSms = ids.indexOf("sms-tree"), iRep = ids.indexOf("reports");
+    iVoice > 0 && iSms > iVoice && iRep > iSms
+      ? ok("agent studio, then voice, then SMS, then the reports")
+      : bad("the tour order does not match what was asked for");
+
+    /* ⚠️⚠️ EVERY STEP SELLS. The request says it twice, and a step that only names a
+       control has told a prospect nothing. */
+    const noValue = steps.filter((s) => !s.value || s.value.length < 25).map((s) => s.id);
+    noValue.length === 0
+      ? ok("every step states the value, not just the feature")
+      : bad(`steps with no value line: ${noValue.join(", ")}`);
+
+    /* ⚠️ Re-skinned, like everything else on this platform. */
+    const blob = JSON.stringify(steps);
+    blob.includes(prof.customerName) && blob.toLowerCase().includes(String(prof.bookingTerm).toLowerCase())
+      ? ok("the copy carries the prospect's own name and booking term")
+      : bad("the tour reads as a template");
+    !/\b(Shady Blinds|Marriott|AutoNation|Orlando Health)\b/.test(blob)
+      ? ok("no other prospect's vocabulary leaks into the tour")
+      : bad("the tour names a different company");
+
+    /* ⚠️ The scripted opener is a REAL conversation, so it must be ordinary language a
+       person would type, not a tidy brief that proves nothing. */
+    const op = autoOpeners(prof);
+    op.length >= 2 && op.every((l) => l.length > 10 && l.length < 140)
+      ? ok("the scripted opener is two short, human lines")
+      : bad("the scripted conversation is the wrong shape");
+
+    const tour = code("src/components/GuidedTour.tsx");
+    /* ⚠️⚠️ THE HANG THAT SHIPPED IN TESTING: the budget was checked AFTER the
+       scroll-into-view branch, so a target taller than the viewport scrolled forever and
+       the card never appeared. */
+    /* ⚠️ `indexOf` RETURNS -1 WHEN THE LINE IS GONE, AND `-1 < anything` IS TRUE — so the
+       first version of this passed when the budget check was DELETED, which is the exact
+       regression it exists to catch. Both indexes have to be real. */
+    const iBudget = tour.indexOf("const over = Date.now() - started > budget");
+    const iScroll = tour.indexOf("scrollIntoView");
+    iBudget >= 0 && iScroll >= 0 && iBudget < iScroll
+      ? ok("the wait budget is checked before any scrolling, so a tall target cannot hang it")
+      : bad("a target taller than the viewport would spin forever and never show the card");
+    /const fits = r\.height <= window\.innerHeight/.test(tour)
+      ? ok("it only scrolls when scrolling could actually help")
+      : bad("an oversized target is scrolled at forever");
+    /if \(over\) \{ setBox\(null\); setReady\(true\); return; \}/.test(tour)
+      ? ok("a target that never appears degrades to a centred card rather than stopping the tour")
+      : bad("a missing selector would hang a prospect's first look at the product");
+    /clickedStep\.current !== i/.test(tour)
+      ? ok("a step's click is idempotent, so StrictMode cannot fire it twice")
+      : bad("a re-run would click twice and spend the armed autoplay flag");
+
+    /* ⚠️ The phone's scripted loop must survive its own state updates. */
+    const phone = code("src/screens/PhonePreview.tsx");
+    /mounted\.current = true;\s*return \(\) => \{ mounted\.current = false; \};/.test(phone)
+      ? ok("the script's liveness is reset on remount, not left false by StrictMode")
+      : bad("the scripted conversation would never start");
+    !/let alive = true;[\s\S]{0,400}?return \(\) => \{ alive = false; \};[\s\S]{0,120}?\}, \[autoSend/.test(phone)
+      ? ok("the loop is not torn down by the effect that started it")
+      : bad("sending the first line would kill the loop before the second");
+    /async function sendText\(/.test(phone) && /await sendText\(text\)/.test(phone)
+      ? ok("the script and a human take the same send path")
+      : bad("the tour has its own sender, free to drift from the real one");
+
+    /* ⚠️ Consumed at click time: reading it during render spends it on StrictMode's first pass. */
+    /onClick=\{\(\) => setPhone\(\{ script: takeAutoplay\(\)/.test(code("src/screens/AgentWorkflow.tsx"))
+      ? ok("the autoplay flag is consumed in the click handler, never during render")
+      : bad("a double render would swallow the script");
+
+    /* ⚠️ Mounted by ShareApp, so the signed-in app never constructs it. */
+    const appSrc = code("src/screens/ShareApp.tsx");
+    /<ShareTour \/>/.test(appSrc) && /<BrowserRouter/.test(appSrc)
+      ? ok("the tour is mounted inside the router, so its route steps work")
+      : bad("the tour cannot navigate");
+    !/GuidedTour/.test(code("src/App.tsx"))
+      ? ok("the signed-in app never mounts the tour")
+      : bad("an SE would get the prospect tour");
+    /hasSeenTour\(\)/.test(appSrc) && /tour-replay/.test(appSrc)
+      ? ok("first open only, and always replayable afterwards")
+      : bad("the tour either nags or cannot be shown again");
+  }
+
+  /* ==========================================================================
      A SHARED DEMO IS READ-ONLY — asked for 10/8/2026, reversing an earlier call.
      ========================================================================== */
   {

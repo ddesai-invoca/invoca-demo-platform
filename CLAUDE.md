@@ -13063,6 +13063,78 @@ lines came out as one main row per prospect with its people indented beneath, mo
 ⚠️ **NOT VERIFIED: nothing has been written to a real Google Sheet** — same gap as the rest of
 this feature.
 
+## The guided tour a prospect gets on a shared demo (10/9/2026)
+
+Asked for as a walkthrough on first open: Agent Studio, the voice agent and its example, the
+SMS agent and its example, then the reports — *"the user needs to see the value of our agent
+studio and SMS and voice features"*, and *"always talk about the value of each feature"*.
+Three forks were put to the user and all three took the recommendation: the SMS example
+**auto-plays then hands over**, the voice example is **shown rather than auto-started**, and
+the order is **agents first, reports last**.
+
+⚠️⚠️ **REPORTS LAST IS THE WHOLE NARRATIVE, NOT A RUNNING ORDER.** The SMS capture is live and
+progressive, so by the time the tour reaches the report the conversation they just had is
+sitting at the top of it as their own data. Seeded rows make the same point far more weakly,
+and this is how the product genuinely behaves.
+
+⚠️ **EVERY LINE IS DERIVED** (`src/data/tourSteps.ts`): the prospect's own name, `bookingTerm`,
+`customerNoun` and service area, so a hotel's tour says reservation and guest where a pest
+controller's says service appointment and homeowner. `audit:share` fails on a step with no
+`value` line and on any other prospect's name appearing in the copy.
+
+⚠️⚠️ **THE SCRIPTED SMS CONVERSATION IS REAL, NOT A REPLAYED TRANSCRIPT.** Each line is typed
+into the real input and sent through the real `/api/chat`, so what a prospect watches is their
+own agent answering for the first time — and it TYPES rather than teleporting the text in,
+because a line that simply appears reads as canned. The openers are deliberately vague
+("not totally sure what I need though"), since a scripted lead who states service, postcode and
+budget in one tidy sentence proves nothing and the agent earning its keep is the part worth
+watching.
+
+⚠️ **IN A SHARED DEMO, Preview Agent OPENS IN PAGE RATHER THAN IN A NEW TAB.** Two reasons and
+the second matters more: a `window.open` from a link followed out of an email is what popup
+blockers eat, and the tour cannot drive another tab. The SE keeps the tab they were signed off
+with.
+
+### Four bugs, every one a React lifecycle trap, every one found by watching it rather than reading it
+1. ⚠️⚠️ **A CONSUMING READ DURING RENDER.** `takeAutoplay()` clears the flag, and StrictMode
+   renders twice — the first render took the script and the second got `undefined`, so the
+   conversation never started while the props looked perfect. **A consuming read is an event,
+   not a render**; it happens in the click handler now.
+2. ⚠️⚠️ **AN EFFECT THAT TORE DOWN THE LOOP IT HAD JUST STARTED.** Liveness was a `let alive`
+   cleared by the cleanup of an effect depending on `messages.length` and `busy` — and sending
+   the first line changes both, so the effect re-ran, killed its own loop, and exactly one of
+   two messages went. Liveness belongs on a ref cleared at UNMOUNT.
+3. ⚠️⚠️ **AND THAT REF MUST BE SET BACK TO TRUE IN THE EFFECT BODY.** Cleanup-only, StrictMode's
+   simulated unmount flipped it false and nothing ever flipped it back, so the loop exited at its
+   first liveness check and nothing sent at all.
+4. ⚠️⚠️ **A LOCAL CLICK GUARD IS RE-CREATED ON AN EFFECT RE-RUN.** `let clicked` meant the step
+   pressed Preview Agent twice; the second press consumed an already-spent flag and handed the
+   phone `undefined`. The guard is a ref keyed on the step index.
+
+### ⚠️⚠️ AND ONE REAL HANG: THE BUDGET WAS CHECKED AFTER THE SCROLL BRANCH
+`measure` scrolled a target into view and recursed — returning BEFORE the timeout test. A target
+**taller than the viewport** (a report's call list) can never satisfy "fully on screen", so it
+scrolled forever, `ready` was never set and **the card simply never appeared** on a prospect's
+first look at the product. The budget is checked first now, scrolling only happens when it could
+help, attempts are capped at two, and the spotlight is clamped to the viewport.
+⚠️ **The check for that was ALSO tautological at first**: `indexOf(...) < indexOf(...)` passes
+when the line is DELETED, because `-1 < anything`. Both indexes must be real — verified by
+deleting the budget check and watching it redden.
+
+⚠️ **A MISSING SELECTOR DEGRADES TO A CENTRED CARD, IT DOES NOT STOP.** Selectors are the
+brittle part of any tour; after the budget the step shows anyway with its copy intact, so the
+worst case is a tour that reads slightly less well.
+⚠️ **THE SPOTLIGHT NEVER BLOCKS WHAT IT POINTS AT** — four real shade rectangles with a hole,
+not a scrim with a `pointer-events: none` gap, which fails on a scrolled page.
+⚠️ **FIRST OPEN ONLY, ALWAYS REPLAYABLE.** Once per link per browser, with a "Take the tour"
+pill afterwards: a tour that can only be seen once is one nobody can show a colleague.
+
+**Verified end to end on a real shared link**: all 16 steps reached, every card on screen, every
+spotlight landing on a real element, the scripted conversation running to completion in ~6s with
+live replies (and correctly deflecting a price question, per the `providesEstimate` clamp), the
+finish writing `seen`, and the pill replaying from step 1. **The signed-in app has no trace of
+it** — no card, no root, no pill, and Preview Agent still opens its tab.
+
 ## ⚠️ OPEN ITEMS as of 9/9/2026
 
 **0. THE STAGING SERVICE IS STILL MID-CREATION; `main` HAS SINCE MOVED PAST IT AND IS NOW TWO

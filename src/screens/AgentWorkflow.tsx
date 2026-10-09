@@ -7,6 +7,9 @@ import { useProfile } from "../data/ProfileContext";
 import { AgentStudioLayout } from "./AgentStudioLayout";
 import { SHARE_BASENAME, isShareMode } from "../data/shareMode";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
+import { PhonePreview } from "./PhonePreview";
+import { takeAutoplay, markAutoplayDone } from "../components/GuidedTour";
+import { autoOpeners } from "../data/tourSteps";
 import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCallLive } from "./VoiceCallLive";
 import { useLiveKitReady, preloadVoiceEngine } from "../data/liveKitVoice";
@@ -450,6 +453,13 @@ export function AgentWorkflow() {
   const { openDrawer, undo, canUndo, readOnly, applyEdits } = useAiAssistant();
   /* ⚠️ One read, used by the drawer gate and the Details tab — two reads could disagree. */
   const shared = isShareMode();
+  /* The in-page phone preview, shared demos only — see the Preview Agent button.
+     ⚠️⚠️ **THE SCRIPT IS TAKEN AT CLICK TIME AND HELD IN STATE, NEVER READ DURING
+     RENDER.** `takeAutoplay()` CONSUMES the flag, and StrictMode renders twice in dev —
+     so reading it in the JSX handed the script to the first render and `undefined` to the
+     second, and the conversation silently never started. A consuming read is an event, not
+     a render. */
+  const [phone, setPhone] = useState<null | { script?: string[] }>(null);
   const pageKey = `${profileId}::${pathname}`;
   /* ⚠️ **GATED ON THE REGISTERED DATA'S SHAPE, NOT THE PATHNAME** — the same signal
      `pageHint` keys its empty state off. A CREATED workflow deliberately registers no `agent`
@@ -547,7 +557,20 @@ export function AgentWorkflow() {
               clicking Preview Agent opens `/agent-studio/agent/preview` on the SIGNED-IN app
               — escaping their share entirely. Caught by walking the share as a prospect, not
               by reading the diff. */}
-          {isSms && !created && <button className="wf-preview wf-preview-agent" onClick={() => window.open(
+          {/* ⚠️⚠️ **IN A SHARED DEMO IT OPENS IN PAGE, NOT IN A NEW TAB — two reasons, and
+              the second matters more.** A `window.open` from a link a prospect followed out
+              of an email is exactly what a popup blocker eats, so the most important button
+              on the demo would silently do nothing for some of them. And the guided tour
+              cannot drive another tab: the scripted conversation, the spotlight and the
+              "now you try" step all live in this document. `PhonePreview` already supports
+              `mode="modal"`; the SE keeps the tab they were signed off with. */}
+          {isSms && !created && shared && (
+            <button className="wf-preview wf-preview-agent"
+              onClick={() => setPhone({ script: takeAutoplay() ? autoOpeners(profile) : undefined })}>
+              Preview Agent
+            </button>
+          )}
+          {isSms && !created && !shared && <button className="wf-preview wf-preview-agent" onClick={() => window.open(
             SHARE_BASENAME + (extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
                   : "/agent-studio/agent/preview"),
             "_blank", "noopener")}>Preview Agent</button>}
@@ -788,6 +811,19 @@ export function AgentWorkflow() {
         })()}
 
         {/* The zoom cluster is rendered by WorkflowTree, which owns the scale. */}
+
+        {/* ⚠️ The scripted opener is CONSUMED, not read: `takeAutoplay()` clears the flag,
+            so reopening the phone by hand after the tour gives a blank thread like any
+            other visit rather than replaying the script at them. */}
+        {phone && (
+          <PhonePreview
+            mode="modal"
+            wf={extra?.slug ?? null}
+            onClose={() => setPhone(null)}
+            autoSend={phone.script}
+            onAutoDone={markAutoplayDone}
+          />
+        )}
 
         <div className="wf-minimap">
           <span className="wf-mini-node" style={{ top: 10, left: 40 }} />

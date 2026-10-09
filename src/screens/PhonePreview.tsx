@@ -266,8 +266,19 @@ function useBrain(wfSlug?: string | null) {
    tab (window.close) in page mode. Either way, the chat is captured to the SMS
    Conversation Intelligence report on ANY exit — the close/Done button AND a
    beforeunload guard (so closing the tab directly still saves the transcript). */
-export function PhonePreview({ onClose, mode = "modal", wf }: {
+export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone }: {
   onClose?: () => void; mode?: "modal" | "page"; wf?: string | null;
+  /**
+   * ⚠️⚠️ **THE GUIDED TOUR'S SCRIPTED OPENER, AND IT IS A REAL CONVERSATION — not a
+   * replayed transcript.** Each line is typed into the real input and sent through the
+   * real `/api/chat`, so what the prospect watches is this prospect's own agent answering
+   * for the first time. A canned transcript would be easier and would be the one thing on
+   * this screen that is not what it claims to be.
+   * ⚠️ Opt-in and defaulted absent, so every existing caller is byte-identical.
+   */
+  autoSend?: string[];
+  /** Fires once the script has finished, so the tour can say "your turn". */
+  onAutoDone?: () => void;
 }) {
   const { profile } = useProfile();
   const { upsertCaptured, patchCaptured } = useSmsCapture();
@@ -384,22 +395,82 @@ export function PhonePreview({ onClose, mode = "modal", wf }: {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, busy]);
 
-  async function send() {
-    const text = input.trim();
-    if (!text || busy) return;
-    const next = [...messages, { role: "user" as const, content: text }];
+  /* ⚠️ EXTRACTED SO THE SCRIPT AND THE HUMAN TAKE THE SAME PATH. A second sender for the
+     tour would be free to drift from this one, and the symptom would be a demo that behaves
+     differently from the thing it is demonstrating. */
+  async function sendText(text: string, from = messages) {
+    const next = [...from, { role: "user" as const, content: text }];
     setMessages(next);
-    setInput("");
     setBusy(true);
     setError(null);
     try {
-      setMessages([...next, { role: "assistant", content: await ask(next) }]);
+      const reply = await ask(next);
+      setMessages([...next, { role: "assistant", content: reply }]);
+      return [...next, { role: "assistant" as const, content: reply }];
     } catch (e: any) {
       setError(e?.message || "Couldn't send. Try again.");
+      return next;
     } finally {
       setBusy(false);
     }
   }
+
+  async function send() {
+    const text = input.trim();
+    if (!text || busy) return;
+    setInput("");
+    await sendText(text);
+  }
+
+  /* ⚠️⚠️ **IT TYPES, RATHER THAN TELEPORTING THE TEXT IN.** A line that simply appears
+     reads as a canned transcript; watching it typed reads as somebody using the product,
+     which is the whole point of showing it to a prospect.
+     ⚠️ **ARMED ONLY ONCE AND ONLY AFTER THE GREETING HAS LANDED.** The opener arrives from
+     its own effect, so starting before it would put the prospect's first line above the
+     agent's hello. The ref guard is what stops React's double-mount sending twice. */
+  const autoRan = useRef(false);
+  /* ⚠️⚠️ **LIVENESS IS TIED TO UNMOUNT, NOT TO THE EFFECT'S DEPENDENCIES — and getting
+     that wrong sent exactly one message.** The first version returned
+     `() => { alive = false; }` from an effect that depends on `messages.length` and
+     `busy`; sending the first line changes BOTH, so the effect re-ran, its cleanup killed
+     the loop it had just started, and the second line never went. The symptom read as the
+     script being too short rather than as a torn-down loop. A ref cleared only on unmount
+     is the thing that actually means "this component is gone". */
+  const mounted = useRef(true);
+  /* ⚠️⚠️ **IT MUST BE SET BACK TO TRUE IN THE BODY, AND OMITTING THAT KILLED THE SCRIPT
+     ENTIRELY.** StrictMode mounts, runs effects, tears them down and runs them again on
+     the SAME instance — so a cleanup-only version flipped `mounted` to false on the
+     simulated unmount and nothing ever flipped it back. The loop then exited at its first
+     liveness check and the conversation never started, while `autoSend` sat on the props
+     looking perfectly correct. */
+  useEffect(() => {
+    mounted.current = true;
+    return () => { mounted.current = false; };
+  }, []);
+
+  useEffect(() => {
+    if (!autoSend?.length || autoRan.current) return;
+    if (messages.length !== 1 || busy) return;
+    autoRan.current = true;
+    (async () => {
+      let thread = messages;
+      for (const line of autoSend) {
+        await new Promise((r) => setTimeout(r, 650));
+        for (let i = 1; i <= line.length && mounted.current; i += 1) {
+          setInput(line.slice(0, i));
+          await new Promise((r) => setTimeout(r, 18));
+        }
+        /* ⚠️ A run abandoned because the component went away must RELEASE the latch, or a
+           remount finds `autoRan` already true and the script is lost for good. */
+        if (!mounted.current) { autoRan.current = false; return; }
+        await new Promise((r) => setTimeout(r, 260));
+        setInput("");
+        thread = await sendText(line, thread);
+      }
+      if (mounted.current) onAutoDone?.();
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoSend, messages.length, busy]);
 
   const hasText = input.trim().length > 0;
 

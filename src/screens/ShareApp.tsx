@@ -17,6 +17,7 @@ import { SmsConversationIntelligence } from "./SmsConversationIntelligence";
 import { VoiceConversationIntelligence } from "./VoiceConversationIntelligence";
 import { SmsPreviewPage } from "./SmsPreviewPage";
 import { SHARE_TOKEN, SHARE_BASENAME, SHARE_LANDING, shareAllows } from "../data/shareMode";
+import { GuidedTour, hasSeenTour } from "../components/GuidedTour";
 
 /* =============================================================================
    ShareApp — what a PROSPECT sees, and deliberately nothing else
@@ -227,6 +228,9 @@ export default function ShareApp() {
             `/agent-studio`, so no screen needed changing. */}
         <BrowserRouter basename={SHARE_BASENAME}>
           <ShareRoutes />
+          {/* ⚠️ INSIDE the router: the tour navigates between screens, so it needs
+              `useNavigate`. Outside it, every route step would be a no-op. */}
+          <ShareTour />
         </BrowserRouter>
       </QuoteCaptureProvider>
       </VoiceCaptureProvider>
@@ -245,6 +249,32 @@ export default function ShareApp() {
  * ⚠️ `canEdit: true` keeps the drawers working, which was asked for; the SYNC is blocked
  * inside `AiAssistantContext` for a share, so nothing a prospect does leaves their browser.
  */
+/**
+ * The first-run tour, and the quiet way back into it.
+ *
+ * ⚠️⚠️ **FIRST OPEN ONLY, BUT ALWAYS REPLAYABLE.** Asked for as "the first time" — so it
+ * auto-starts once per link per browser. A tour that can only ever be seen once is one
+ * nobody can show a colleague, and the prospect who skipped it in a hurry has no way back,
+ * so the pill stays in the corner afterwards.
+ * ⚠️ **IT WAITS FOR THE PROFILE TO BE REAL.** Mounting on the loading phase would measure
+ * a target that has not rendered and spend the whole first step's budget degrading to a
+ * centred card.
+ */
+function ShareTour() {
+  const [open, setOpen] = useState(() => !hasSeenTour());
+  return (
+    <>
+      {open && <GuidedTour onClose={() => setOpen(false)} />}
+      {!open && (
+        <button className="tour-replay tour-replay--fixed" onClick={() => setOpen(true)}>
+          <span className="material-icons" aria-hidden="true">play_circle</span>
+          Take the tour
+        </button>
+      )}
+    </>
+  );
+}
+
 function HydrateShared({ demoId, customizations }: { demoId: string; customizations: unknown }) {
   const { hydrateDemo } = useAiAssistant();
   useEffect(() => {
