@@ -12895,6 +12895,60 @@ each other's Activity with their own prospects.
 because somebody's spreadsheet moved, and the event is already on disk — the contract
 `postMarkRow` has, for the same reason.
 
+#### ⚠️⚠️ THE THEME WAS A NO-OP TWICE, AND THE SECOND CAUSE WAS `{ r, g, b }` (10/8/2026)
+Reported with a real sheet open: *"the google sheet is not formatted with invoca theme."* The
+values had landed and not one byte of formatting had. **Two separate defects, and the first
+round of fixing found a real one that was not the one doing the damage** — worth recording,
+because the wrong diagnosis was confidently argued from evidence.
+
+**1. `sheetIdFor` returned NaN for the first tab of every sheet.** Google serialises protobuf
+to JSON and **omits zero-valued integers**, so the first sheet in a spreadsheet — always
+`sheetId: 0`, always our Demo Notes tab — comes back as `{ properties: { title: … } }` with no
+id at all. `Number(undefined)` is NaN, `NaN === null` is false so the caller sailed on,
+`JSON.stringify` turned it into `"sheetId": null`, and Google 400'd the batch. Real, latent,
+and fixed — but it could not explain the ACTIVITY tab, whose id is non-zero.
+
+**2. ⚠️⚠️ EVERY COLOUR USED `{ r, g, b }`. GOOGLE'S `Color` IS `{ red, green, blue, alpha }`.**
+That is the one that cost the feature. The API **refuses an unknown field outright rather than
+ignoring it** (`Unknown name "r" … Cannot find field`), so a single abbreviated key 400s the
+WHOLE batchUpdate — header band, tab colour, hairlines and body ink all died together and the
+sheet came out a plain white grid. One `rgb(0x00b388)` helper builds every colour now, so there
+is one place to get it wrong and it is right.
+
+⚠️⚠️ **IT SURVIVED A CHECK AGAINST GOOGLE'S OWN DISCOVERY DOCUMENT, AND THAT IS THE LESSON.**
+The discovery doc was fetched and `CellFormat`, `Border`, `Borders`, `TextFormat` and `Padding`
+were all confirmed field by field — **the CONTAINERS were validated and the `Color` LEAF inside
+them never was.** Validating the names of the fields you put values in says nothing about the
+shape of the values. The evidence was also sitting in the `sheets_update_borders` tool schema
+loaded in the same session, which spells out `{red, green, blue, alpha}`, and it went unread.
+
+⚠️⚠️ **AND THE AUDIT PASSED THROUGHOUT, BECAUSE A MOCK THAT ALWAYS SAYS YES CANNOT CATCH A
+MALFORMED REQUEST.** The mocked-Google section captured the payload and asserted things about
+its SHAPE while the stub returned 200 to anything, so `{ r, g, b }` sailed through a green
+suite. `colourFaults()` now refuses what Google refuses and **the mock runs it on every call**,
+so a bad payload REJECTS in the audit exactly as it would in production. It is proved to bite
+before it is trusted (an `{r,g,b}` fixture must produce 3 faults and an `{red,green,blue}` one
+zero), and restoring the shipped bug turns **8 checks red** naming the exact field.
+⚠️ **THE REJECTION IS CAUGHT AND REPORTED, NOT LEFT TO THROW.** Unhandled, it killed the whole
+suite with a stack trace instead of printing FAIL — the crash-not-FAIL trap this file already
+records for `audit:replicas`.
+
+⚠️ **A STYLING FAILURE IS NO LONGER SILENT, which is why the second cause was findable at all.**
+`reportStyleFailure` logs and records at alert level `record` (so `sheet-style:<tab>` appears
+with a count on the public `/api/status`, cosmetic and never a 2am page), and
+`POST /api/events/:key/restyle` does the same work in the FOREGROUND — an admin-only button on
+the event's sheet dialog that re-styles a sheet written while this was broken and **shows
+Google's own message verbatim**. That message is what diagnosed this: the earlier version
+caught the error and dropped it, so a sheet that could not be styled looked exactly like one
+that had been.
+
+⚠️ **ANOTHER THING THAT COULD NOT HELP, STATED SO IT IS NOT RETRIED: the `mcp-gsheets`
+connector is a SERVICE ACCOUNT.** It has no access to the user's Drive, no quota to create a
+sheet of its own, and will not name its own address — so "just format the sheet yourself to
+show them" fails on both read and create. The same rule this file already carries one level
+over: an assistant's connectors are not the server's credentials, and they are not the user's
+either.
+
 #### The look: the house palette, not a palette invented for a spreadsheet (10/8/2026)
 ❌ **SUPERSEDED — this first shipped as a NAVY band set in INTER, and both were wrong.**
 Reported as *"make the sheet is invoca design theme"*. Navy-on-white is a reasonable-looking

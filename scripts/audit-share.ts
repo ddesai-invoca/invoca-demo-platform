@@ -696,6 +696,43 @@ console.log("\nActivity tracking\n");
      somebody else's service cannot run on a machine with no credential, which is the rule
      `audit:advanced` already follows for Gong.
      ========================================================================== */
+  /**
+   * ⚠️⚠️ **A MOCK THAT ALWAYS SAYS YES CANNOT CATCH A MALFORMED REQUEST, and that is
+   * exactly how the whole theme shipped as a no-op twice.** The first version of this
+   * section captured the payload and asserted things about its SHAPE while the stub
+   * returned 200 to anything — so `{ r, g, b }` sailed through here and Google rejected
+   * every colour in it: `Unknown name "r" ... Cannot find field`. The real API refuses an
+   * unknown field outright rather than ignoring it, so one abbreviated key 400s the entire
+   * batch and the sheet comes out blank. This validator refuses the same things Google
+   * refuses, and the mock runs it on every call.
+   */
+  function colourFaults(node: unknown, path = "requests"): string[] {
+    const bad: string[] = [];
+    const ALLOWED = new Set(["red", "green", "blue", "alpha"]);
+    const walk = (n: any, at: string) => {
+      if (!n || typeof n !== "object") return;
+      if (Array.isArray(n)) return n.forEach((v, i) => walk(v, `${at}[${i}]`));
+      for (const [k, v] of Object.entries(n)) {
+        if (/color$/i.test(k) && v && typeof v === "object" && !Array.isArray(v)) {
+          for (const key of Object.keys(v)) {
+            if (!ALLOWED.has(key)) bad.push(`${at}.${k}.${key}`);
+          }
+        }
+        walk(v, `${at}.${k}`);
+      }
+    };
+    walk(node, path);
+    return bad;
+  }
+  /* Proved to bite before it is trusted — the tautological-check trap, which this file
+     has already recorded four times and which let the colour bug through once. */
+  colourFaults({ requests: [{ repeatCell: { cell: { userEnteredFormat: { backgroundColor: { r: 1, g: 1, b: 1 } } } } }] }).length === 3
+    ? ok("the colour validator rejects r/g/b — it can actually fail")
+    : bad("the colour validator does not catch the shape that shipped broken");
+  colourFaults({ requests: [{ repeatCell: { cell: { userEnteredFormat: { backgroundColor: { red: 1, green: 1, blue: 1 } } } } }] }).length === 0
+    ? ok("the colour validator accepts Google's own field names")
+    : bad("the colour validator rejects a correct payload");
+
   {
     const { saveSheetsToken } = await import("../engine/sheetsTokens.ts");
     const sheetsApi = await import("../engine/sheetsApi.ts");
@@ -720,7 +757,14 @@ console.log("\nActivity tracking\n");
           { properties: { title: "Activity", sheetId: 1870 } },
         ] });
       }
-      if (u.includes(":batchUpdate")) { sent.push(JSON.parse(String(init?.body ?? "{}"))); return json({}); }
+      if (u.includes(":batchUpdate")) {
+        const payload = JSON.parse(String(init?.body ?? "{}"));
+        const faults = colourFaults(payload);
+        if (faults.length) {
+          return new Response(JSON.stringify({ error: { message: `Invalid JSON payload received. Unknown name at '${faults[0]}': Cannot find field.` } }), { status: 400 });
+        }
+        sent.push(payload); return json({});
+      }
       if (u.includes("/values/")) {
         if (u.includes("Activity!A2:A")) {
           return json({ values: [["Riverbend Sandler Pools"], ["    \u21b3  someone@example.com"]] });
@@ -732,7 +776,15 @@ console.log("\nActivity tracking\n");
 
     try {
       sent.length = 0;
-      await sheetsApi.themeNotes(target);
+      /* ⚠️ CAUGHT AND REPORTED, NOT LEFT TO THROW. The mock refuses a malformed payload the
+         way Google does, so a regression REJECTS here — and an unhandled rejection would
+         kill the whole suite with a stack trace instead of naming the fault, which is the
+         crash-not-FAIL trap this repo has already paid for once. */
+      let refused: string | null = null;
+      await sheetsApi.themeNotes(target).catch((e: Error) => { refused = e?.message ?? "rejected"; });
+      refused === null
+        ? ok("Google accepts the theme payload as built")
+        : bad(`Google would reject the theme payload: ${refused}`);
       const flat = JSON.stringify(sent);
 
       /* ⚠️⚠️ THE REGRESSION THAT SHIPPED: `Number(undefined)` is NaN, `JSON.stringify`
@@ -746,6 +798,9 @@ console.log("\nActivity tracking\n");
         : bad("the first tab's id is not being resolved to 0");
 
       const reqs = sent.flatMap((b: any) => b.requests ?? []);
+      colourFaults({ requests: reqs }).length === 0
+        ? ok("every colour in a real payload uses red/green/blue, as Google names them")
+        : bad(`colour fields Google will reject: ${colourFaults({ requests: reqs }).join(", ")}`);
       reqs.some((r: any) => r.updateSheetProperties?.properties?.tabColor)
         ? ok("the tab itself is coloured, so a themed sheet is obvious at a glance")
         : bad("nothing marks the tab as themed");
@@ -774,7 +829,14 @@ console.log("\nActivity tracking\n");
       if (u.includes("?fields=sheets.properties")) {
         return json({ sheets: [{ properties: { title: "Demo Notes" } }, { properties: { title: "Activity", sheetId: 1870 } }] });
       }
-      if (u.includes(":batchUpdate")) { sent2.push(JSON.parse(String(init?.body ?? "{}"))); return json({}); }
+      if (u.includes(":batchUpdate")) {
+        const payload = JSON.parse(String(init?.body ?? "{}"));
+        const faults = colourFaults(payload);
+        if (faults.length) {
+          return new Response(JSON.stringify({ error: { message: `Invalid JSON payload received. Unknown name at '${faults[0]}': Cannot find field.` } }), { status: 400 });
+        }
+        sent2.push(payload); return json({});
+      }
       if (u.includes("Activity!A2:A")) {
         return json({ values: [["Riverbend Sandler Pools"], [`${sheetsApi.INDENT}someone@example.com`]] });
       }
@@ -782,10 +844,14 @@ console.log("\nActivity tracking\n");
       return json({});
     }) as typeof fetch;
     try {
+      let refused2: string | null = null;
       await sheetsApi.writeActivity(target, [
         { main: true, label: "Riverbend Sandler Pools", opened: 1, sms: 1, voice: 0, firstAt: "a", lastAt: "b" },
         { main: false, label: "someone@example.com", opened: 1, sms: 1, voice: 0, firstAt: "a", lastAt: "b" },
-      ]);
+      ]).catch((e: Error) => { refused2 = e?.message ?? "rejected"; });
+      refused2 === null
+        ? ok("Google accepts the Activity payload as built")
+        : bad(`Google would reject the Activity payload: ${refused2}`);
       const reqs2 = sent2.flatMap((b: any) => b.requests ?? []);
       /* ⚠️⚠️ THE SUBLINE IS RECOVERED FROM THE INDENT, which is the one definition the
          writer also uses. A prospect row gets the wash and the thick green edge; a person
@@ -854,8 +920,9 @@ console.log("\nActivity tracking\n");
      colour the sheet paints must also appear in the sales playbook, which is this repo's
      own signed-off "Invoca white + green" document. */
   const playbook = code("src/artifacts/salesPlaybook.ts").toLowerCase();
-  const hexes = [...sheets.matchAll(/0x([0-9a-f]{2}) \/ 255, g: 0x([0-9a-f]{2}) \/ 255, b: 0x([0-9a-f]{2})/gi)]
-    .map((m) => `#${m[1]}${m[2]}${m[3]}`.toLowerCase());
+  const hexes = [...sheets.matchAll(/rgb\(0x([0-9a-f]{6})\)/gi)]
+    .map((m) => `#${m[1]}`.toLowerCase())
+    .filter((h) => h !== "#ffffff");
   hexes.length >= 6
     ? ok(`the sheet names ${hexes.length} colours as hex, so they can be checked`)
     : bad("the sheet palette could not be read — the check is not measuring anything");

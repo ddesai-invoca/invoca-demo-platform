@@ -298,14 +298,30 @@ export function colLetter(i: number): string {
    exactly as the playbook's own `--g-ink` does. A single green used for both is how a
    count column comes out technically on-brand and practically unreadable.
    ============================================================================ */
-const BRAND = { r: 0x00 / 255, g: 0xb3 / 255, b: 0x88 / 255 }; // #00b388 grounds
-const GREEN_INK = { r: 0x00 / 255, g: 0x62 / 255, b: 0x4d / 255 }; // #00624d green text
-const INK = { r: 0x15 / 255, g: 0x24 / 255, b: 0x3e / 255 }; // #15243e titles
-const BODY = { r: 0x34 / 255, g: 0x3a / 255, b: 0x40 / 255 }; // #343a40 body text
-const MUTED = { r: 0x5b / 255, g: 0x65 / 255, b: 0x77 / 255 }; // #5b6577 secondary
-const WASH = { r: 0xf4 / 255, g: 0xfb / 255, b: 0xf8 / 255 }; // #f4fbf8 pale green
-const RULE = { r: 0xe7 / 255, g: 0xe9 / 255, b: 0xeb / 255 }; // #e7e9eb hairline
-const WHITE = { r: 1, g: 1, b: 1 };
+/* ⚠️⚠️ **`red`/`green`/`blue`, NEVER `r`/`g`/`b` — THIS IS THE BUG THAT MADE THE WHOLE
+   THEME A NO-OP, AND IT WAS EVERY COLOUR, NOT ONE.** Google's `Color` message names its
+   fields in full, and the API rejects an unknown field outright rather than ignoring it:
+   `Unknown name "r" ... Cannot find field`. One abbreviated key therefore 400s the entire
+   batchUpdate, so the header band, the tab colour, the hairlines and the body ink all died
+   together and the sheet came out a plain white grid.
+   ⚠️ It survived a check against Google's own discovery document because that check
+   validated the CONTAINERS — `CellFormat`, `Border`, `TextFormat` — and never opened the
+   `Color` leaf inside them. Validate the shape of the VALUES, not just the names of the
+   fields you put them in. `audit:share` now walks every colour in a real payload. */
+const rgb = (hex: number) => ({
+  red: ((hex >> 16) & 0xff) / 255,
+  green: ((hex >> 8) & 0xff) / 255,
+  blue: (hex & 0xff) / 255,
+});
+
+const BRAND = rgb(0x00b388); // grounds: the header band and the tab
+const GREEN_INK = rgb(0x00624d); // green TEXT, which the brand green is too light for
+const INK = rgb(0x15243e); // titles
+const BODY = rgb(0x343a40); // body text
+const MUTED = rgb(0x5b6577); // secondary
+const WASH = rgb(0xf4fbf8); // the pale green under a prospect row
+const RULE = rgb(0xe7e9eb); // hairline
+const WHITE = rgb(0xffffff);
 
 /** ⚠️ **LATO, NOT INTER.** Lato is the platform's own face — it is what `tokens.css`
  *  bundles, what every replica screen renders in, and what ThoughtSpot's own embed
