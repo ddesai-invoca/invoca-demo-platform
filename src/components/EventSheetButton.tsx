@@ -86,6 +86,13 @@ export default function EventSheetButton({
       const body = await res.json().catch(() => ({}));
       if (!res.ok) { setErr(body?.error || "That could not be saved."); return; }
       onSaved();
+      /* ⚠️ A sheet that connected but could not be FORMATTED must say so and stay open.
+         Closing on success would hide it, and the whole point of styling at connect time
+         is that this is the moment somebody is looking at the sheet. */
+      if (body?.styled === false) {
+        setErr("Connected, but the formatting could not be applied. Try Restyle sheet.");
+        return;
+      }
       setOpen(false);
     } catch {
       setErr("The server could not be reached.");

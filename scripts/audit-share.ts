@@ -891,6 +891,93 @@ console.log("\nActivity tracking\n");
       : bad("a missing tab is styled silently — the failure that shipped");
   }
 
+  /* ==========================================================================
+     COALESCING — the guarantee that one SMS demo is one sheet write, not ten.
+     ========================================================================== */
+  {
+    const { saveDemo } = await import("../engine/demoStore.ts");
+    const { setEventSpreadsheet } = await import("../engine/eventSettings.ts");
+    const { saveSheetsToken } = await import("../engine/sheetsTokens.ts");
+    const { recordActivity } = await import("../engine/activityStore.ts");
+    const act = await import("../engine/sheetActivity.ts");
+
+    saveSheetsToken("owner@invoca.com", "refresh-token-for-the-audit");
+    setEventSpreadsheet("chicago-2026", "SHEET_ID_0123456789", "owner@invoca.com", "T", "owner@invoca.com");
+    saveDemo({
+      id: "coalesce-demo", prospect: "Coalesce Co", event: "chicago-2026",
+      creator: "owner@invoca.com", createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(), profile: { id: "coalesce-demo" },
+    } as any);
+    recordActivity("coalesce-demo", "Coalesce Co", "buyer@example.com", "opened");
+
+    let writes = 0;
+    const realFetch = globalThis.fetch;
+    globalThis.fetch = (async (url: any, init?: any) => {
+      const u = String(url);
+      const json = (b: unknown) => new Response(JSON.stringify(b), { status: 200, headers: { "Content-Type": "application/json" } });
+      if (u.includes("oauth2.googleapis.com")) return json({ access_token: "tok", expires_in: 3600 });
+      if (u.includes("?fields=sheets.properties")) {
+        return json({ sheets: [{ properties: { title: "Demo Notes" } }, { properties: { title: "Activity", sheetId: 1870 } }] });
+      }
+      if (u.includes(":batchUpdate")) {
+        const faults = colourFaults(JSON.parse(String(init?.body ?? "{}")));
+        if (faults.length) return new Response(JSON.stringify({ error: { message: `Unknown name at '${faults[0]}'` } }), { status: 400 });
+        return json({});
+      }
+      if (String(init?.method ?? "GET") !== "GET") writes += 1;
+      if (u.includes("Activity!A2:A")) return json({ values: [["Coalesce Co"]] });
+      if (u.includes("/values/")) return json({ values: [["h"], ["r"]] });
+      return json({});
+    }) as typeof fetch;
+
+    try {
+      /* Ten reports, as one progressive SMS capture produces.
+         ⚠️⚠️ **THE TIMERS ARE LET RUN RATHER THAN FLUSHED, AND THE FIRST VERSION OF THIS
+         CHECK WAS WEAKER FOR FLUSHING THEM.** A flush drained the pending MAP, which holds
+         one entry per demo whether or not the window coalesced — so removing the guard
+         left ten live timers, the flush saw one, and the check passed on code that writes
+         ten times. Waiting out the real window measures the real behaviour. */
+      for (let i = 0; i < 10; i += 1) act.queueActivitySync("coalesce-demo");
+      await new Promise((r) => setTimeout(r, act.COALESCE_MS + 900));
+      writes === 1
+        ? ok("ten rapid activity reports collapse into one tab rewrite")
+        : bad(`a burst produced ${writes} value writes — the window is not coalescing`);
+    } finally {
+      globalThis.fetch = realFetch;
+    }
+  }
+
+  /* ⚠️⚠️ A RESET-ON-EVERY-CALL DEBOUNCE STARVES: a steady stream of events would never
+     sync at all. The window must OPEN on the first call and not move. */
+  const sa = code("engine/sheetActivity.ts");
+  /if \(pending\.has\(demoId\)\) return;/.test(sa) && !/clearTimeout[\s\S]{0,120}?pending\.set/.test(sa)
+    ? ok("the coalescing window is fixed, so a busy demo cannot starve the sync")
+    : bad("the window resets on every event — a steady stream would never write");
+  /if \(inFlight\.has\(demoId\)\) \{ dirty\.add\(demoId\); return; \}/.test(sa)
+    ? ok("a sync in flight is re-queued rather than raced")
+    : bad("two rewrites of the same tab could overlap");
+  /timer\.unref\?\.\(\)/.test(sa)
+    ? ok("a pending sync cannot hold the SIGTERM drain open")
+    : bad("a deploy could wait on a cosmetic sheet write");
+  !/void syncActivitySheet\(/.test(code("engine/shareApi.ts")) && /queueActivitySync\(rec\.demoId\)/.test(code("engine/shareApi.ts"))
+    ? ok("every activity report goes through the coalescer")
+    : bad("an activity report still rewrites the tab directly");
+
+  /* ⚠️ A sheet is styled the moment it is connected, not whenever somebody first marks. */
+  const dapi = code("engine/demoApi.ts");
+  /await prepareSheet\(\{ email: user\.email, spreadsheetId: id \}\)/.test(dapi)
+    ? ok("connecting a sheet seeds and styles it straight away")
+    : bad("a freshly connected sheet stays a default grid until the first mark");
+  /catch \(e\) \{ styled = false; await reportStyleFailure\(TAB_NAME, e\); \}/.test(dapi)
+    ? ok("a formatting problem cannot fail a connect that otherwise worked")
+    : bad("a styling error would be thrown back at a successful connect");
+  /await ensureSheet\(t\);\s*await themeNotes\(t\);/.test(sheets)
+    ? ok("prepareSheet reuses ensureSheet — one definition of claiming the tab")
+    : bad("connect-time seeding could disagree with the upsert about which tab to use");
+  /body\?\.styled === false/.test(code("src/components/EventSheetButton.tsx"))
+    ? ok("a connected-but-unstyled sheet says so instead of closing quietly")
+    : bad("a failed connect-time style would be invisible");
+
   /* ⚠️ Both swallow sites must REPORT. A cosmetic failure that says nothing is how a
      broken theme shipped and stayed broken until somebody opened the file. */
   /reportStyleFailure\(TAB_NAME, e\)/.test(code("engine/sheetHook.ts"))

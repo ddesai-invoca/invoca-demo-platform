@@ -497,6 +497,23 @@ export async function themeNotes(t: SheetTarget): Promise<void> {
 }
 
 /**
+ * Make a freshly connected sheet look like ours, before anything is marked.
+ *
+ * ⚠️⚠️ **THE HEADER ROW IS THE FIRST DATA, SO THIS IS WHAT "STYLED AS SOON AS DATA LANDS"
+ * MEANS FOR A NEW SHEET.** Without it an admin connects a sheet, opens it to check, and
+ * finds an untouched default grid — the formatting only arriving whenever somebody
+ * happened to mark a demo. Connecting is the moment they are looking at it.
+ * ⚠️ **IT REUSES `ensureSheet`, which is the one definition of "claim a tab and seed the
+ * columns".** A second copy here would be free to disagree with the upsert about which tab
+ * to rename or which headers to write, and the symptom would be a sheet whose first mark
+ * silently lands on a different tab from the one that was styled.
+ */
+export async function prepareSheet(t: SheetTarget): Promise<void> {
+  await ensureSheet(t);
+  await themeNotes(t);
+}
+
+/**
  * Re-apply the house style to both tabs on demand.
  *
  * ⚠️⚠️ **THIS EXISTS BECAUSE A BACKGROUND STYLING FAILURE IS INVISIBLE, AND THAT COST A

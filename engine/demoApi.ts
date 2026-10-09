@@ -35,7 +35,7 @@ import { isAdminEmail } from "./admins.ts";
 import { pendingAdminNotice, ackAdminNotice } from "./adminNotices.ts";
 import { MARK_STATUSES, MARK_LABEL, isMarkStatus, listMarks, markDemo, marksFor, unmarkDemo } from "./demoMarks.ts";
 import { listEventSettings, setEventSheet, setEventSpreadsheet, isEventKey, eventSettings } from "./eventSettings.ts";
-import { spreadsheetIdFrom, describeSheet, createSheet, sheetUrlFor, restyleSheets, SheetsReconnectError } from "./sheetsApi.ts";
+import { spreadsheetIdFrom, describeSheet, createSheet, sheetUrlFor, restyleSheets, prepareSheet, reportStyleFailure, TAB_NAME, SheetsReconnectError } from "./sheetsApi.ts";
 import { hasSheetsToken } from "./sheetsTokens.ts";
 import { postMarkRow, attendeeCell } from "./sheetHook.ts";
 import { lookupRep, salesforceConfigured, type RepCandidate } from "./salesforceApi.ts";
@@ -225,7 +225,15 @@ export async function handleDemoApi(
          first mark is the silent-failure shape this repo keeps paying for. */
       const title = await describeSheet(user.email, id);
       const saved = setEventSpreadsheet(key, id, user.email, title, user.email);
-      return ok({ key, wired: true, sheetUrl: sheetUrlFor(id), sheetTitle: title, settings: saved });
+      /* ⚠️ Seeded and styled NOW, so the sheet reads as ours the moment it is connected
+         rather than whenever somebody first marks a demo. ⚠️ It must not fail the connect:
+         the sheet is already proved reachable, the wiring is already saved, and Restyle is
+         there for repair — so a formatting problem is reported, never thrown back at an
+         admin who has just successfully connected a sheet. */
+      let styled = true;
+      try { await prepareSheet({ email: user.email, spreadsheetId: id }); }
+      catch (e) { styled = false; await reportStyleFailure(TAB_NAME, e); }
+      return ok({ key, wired: true, sheetUrl: sheetUrlFor(id), sheetTitle: title, styled, settings: saved });
     } catch (e: unknown) {
       if (e instanceof SheetsReconnectError) return err(409, e.message);
       return err(400, (e as Error)?.message || "That sheet could not be connected.");

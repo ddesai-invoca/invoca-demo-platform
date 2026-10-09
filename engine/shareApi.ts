@@ -26,7 +26,7 @@ import { DEFAULT_SHARE_DAYS } from "../src/data/shareDefaults.ts";
 import { getShare, passwordMatches, shareActive, noteOpen, noteRequest, expiresAt, type ShareRecord } from "./shareStore.ts";
 import { sendMail, sharePasswordEmail } from "./mailer.ts";
 import { recordActivity } from "./activityStore.ts";
-import { syncActivitySheet } from "./sheetActivity.ts";
+import { queueActivitySync } from "./sheetActivity.ts";
 import { sharePassword } from "../src/data/sharePassword.ts";
 import { getDemo } from "./demoStore.ts";
 
@@ -212,7 +212,7 @@ export async function handleShareApi(
        which is why it goes into the cookie rather than being asked for again. */
     const who = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
     recordActivity(rec.demoId, rec.prospect, who, "opened");
-    void syncActivitySheet(rec.demoId);
+    queueActivitySync(rec.demoId);
     return {
       status: 200,
       body: { ok: true, prospect: rec.prospect },
@@ -237,7 +237,7 @@ export async function handleShareApi(
     if (!kind) return { status: 400, body: { error: "kind must be sms or voice." } };
     const id = typeof body?.id === "string" ? body.id.slice(0, 120) : undefined;
     recordActivity(rec.demoId, rec.prospect, unlockedAs(cookies, token), kind, id);
-    void syncActivitySheet(rec.demoId);
+    queueActivitySync(rec.demoId);
     /* ⚠️ 204-shaped: the page is mid-demo and has nothing to do with the answer. */
     return { status: 200, body: { ok: true } };
   }

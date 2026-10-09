@@ -60,6 +60,52 @@ function targetFor(demoId: string): { email: string; spreadsheetId: string } | n
     : null;
 }
 
+/* =============================================================================
+   COALESCING, BECAUSE ONE SMS DEMO CAN BE TEN EVENTS
+   -----------------------------------------------------------------------------
+   ⚠️⚠️ **EVERY ACTIVITY REPORT USED TO REWRITE AND RE-STYLE THE WHOLE TAB, AND THE SMS
+   CLIENT REPORTS LIBERALLY ON PURPOSE.** The capture is progressive — it fires after every
+   turn so nothing is lost when the tab closes — and the SERVER is what dedupes a
+   conversation down to one. That is the right split, and it meant a ten-turn conversation
+   triggered ten full rewrites: measured at roughly **6 reads and 4 writes each**, against
+   Google's quota of **60 writes a minute per user**. One prospect having one conversation
+   could come close to exhausting it, and a 429 there costs the row AND the formatting.
+
+   ⚠️⚠️ **A FIXED WINDOW, NOT A RESET-ON-EVERY-CALL DEBOUNCE.** The obvious shape clears
+   the pending timer and schedules a new one, which STARVES under a steady stream: a demo
+   producing an event every two seconds would never sync at all, and the tab would sit
+   stale for exactly as long as somebody kept using it. The first event opens the window
+   and later ones join it, so the wait is bounded at `COALESCE_MS` however busy it gets.
+
+   ⚠️ **IN-PROCESS STATE, AND THE CONSEQUENCE IS STATED: a pending sync does not survive a
+   restart.** The timer is `unref`'d so it cannot hold the SIGTERM drain open, and the
+   activity itself is already on disk — so the worst case is a tab one event stale until
+   the next event, never lost data. One web instance, so there is nothing to share.
+   ============================================================================= */
+export const COALESCE_MS = 3_000;
+const pending = new Map<string, ReturnType<typeof setTimeout>>();
+const inFlight = new Set<string>();
+const dirty = new Set<string>();
+
+/** Ask for a sync. Bursts collapse; the tab is never more than a few seconds behind. */
+export function queueActivitySync(demoId: string): void {
+  /* ⚠️ A sync already running must not be interrupted or doubled — mark it and re-queue
+     once it lands, or the rewrite races itself and the row order can come out wrong. */
+  if (inFlight.has(demoId)) { dirty.add(demoId); return; }
+  if (pending.has(demoId)) return;
+  const timer = setTimeout(() => { pending.delete(demoId); void drain(demoId); }, COALESCE_MS);
+  timer.unref?.();
+  pending.set(demoId, timer);
+}
+
+async function drain(demoId: string): Promise<void> {
+  inFlight.add(demoId);
+  try { await syncActivitySheet(demoId); } finally {
+    inFlight.delete(demoId);
+    if (dirty.delete(demoId)) queueActivitySync(demoId);
+  }
+}
+
 /**
  * Rewrite the Activity tab of whichever sheet this demo's event is wired to.
  *

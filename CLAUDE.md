@@ -12895,6 +12895,52 @@ each other's Activity with their own prospects.
 because somebody's spreadsheet moved, and the event is already on disk — the contract
 `postMarkRow` has, for the same reason.
 
+#### Styling is automatic for every sheet, and the burst that would have broken it (10/8/2026)
+Asked for once the theme was confirmed working: *"moving forward i want all the sheets to
+automatically get stylled like this as soon as the first new data is added to it."*
+
+⚠️ **MOST OF THAT WAS ALREADY TRUE AND IS WORTH SAYING PLAINLY RATHER THAN RE-BUILDING.**
+`postMarkRow` has always called `themeNotes` after the row and `writeActivity` has always
+called `themeActivity` — so every write styles, including the first, and it **self-heals**: a
+sheet that failed to style is restyled by the next write. What made it look otherwise was the
+`{ r, g, b }` bug above, not a missing trigger. The Restyle button succeeding IS evidence the
+automatic path works, because it calls the same two functions.
+
+**Two real gaps were closed:**
+
+⚠️⚠️ **1. EVERY ACTIVITY REPORT REWROTE AND RE-STYLED THE WHOLE TAB, AND THE SMS CLIENT
+REPORTS LIBERALLY BY DESIGN.** The capture is progressive — it fires after every turn so
+nothing is lost when the tab closes — and the SERVER dedupes a conversation to one. That split
+is right, and it meant a ten-turn conversation triggered **ten full rewrites**: roughly 6 reads
+and 4 writes each, against Google's quota of **60 writes a minute per user**. One prospect
+having one conversation could come close to exhausting it, and a 429 there costs the row AND
+the formatting. `queueActivitySync` coalesces into a 3s window.
+⚠️⚠️ **A FIXED WINDOW, NOT A RESET-ON-EVERY-CALL DEBOUNCE.** The obvious shape clears the
+pending timer and schedules a new one, which **starves** under a steady stream: a demo
+producing an event every two seconds would never sync at all and the tab would sit stale for
+exactly as long as somebody kept using it. The first event opens the window and later ones
+join it, so the wait is bounded however busy it gets. A sync already in flight is marked dirty
+and re-queued rather than raced, and the timer is `unref`'d so it cannot hold the SIGTERM drain
+open. ⚠️ **Consequence, stated: a pending sync does not survive a restart** — the activity is
+already on disk, so the worst case is a tab one event stale, never lost data.
+
+⚠️ **2. A FRESHLY CONNECTED SHEET STAYED A DEFAULT GRID until somebody first marked a demo** —
+an admin connects it, opens it to check, and sees nothing of ours. `prepareSheet` seeds and
+styles at connect time, because that is the moment they are looking at it. It **reuses
+`ensureSheet`**, the one definition of "claim a tab and seed the columns"; a second copy would
+be free to disagree with the upsert about which tab to rename, and the symptom would be a first
+mark landing on a different tab from the one that was styled. A formatting failure there must
+never fail a connect that otherwise worked, so it is reported and the response carries
+`styled: false`, which keeps the dialog open saying so rather than closing quietly.
+
+⚠️⚠️ **AND THE FUNCTIONAL COALESCING CHECK WAS WEAKER THAN IT LOOKED, CAUGHT BY SABOTAGING
+IT.** It queued ten reports, called a `flushActivitySyncs` test seam, and asserted one write —
+but a flush drains the pending MAP, which holds one entry per demo whether or not the window
+coalesced. Removing the guard left ten live timers, the flush saw one, and the check passed on
+code that writes ten times. The seam is deleted and the test now waits out the real window;
+restoring the bug reports **"a burst produced 10 value writes"**. Measuring the bookkeeping
+instead of the behaviour is the same family as the mock that always said yes.
+
 #### ⚠️⚠️ THE THEME WAS A NO-OP TWICE, AND THE SECOND CAUSE WAS `{ r, g, b }` (10/8/2026)
 Reported with a real sheet open: *"the google sheet is not formatted with invoca theme."* The
 values had landed and not one byte of formatting had. **Two separate defects, and the first
