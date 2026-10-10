@@ -5,7 +5,7 @@ import { useDemoLibrary } from "../data/DemoLibraryContext";
 import { useProfile } from "../data/ProfileContext";
 import { generateProfile } from "../data/generateStream";
 import { parseRoster, ROSTER_TEMPLATE, ROSTER_MAX, type ParsedRoster } from "../data/rosterImport";
-import { CustomPrompt, PlanReview, requestPlan } from "./CustomPrompt";
+import { CustomPrompt, PlanProgress, PlanReview, requestPlan, usePlanProgress } from "./CustomPrompt";
 import { SURFACES } from "../data/demoSurfaces";
 import { applyPlan } from "../data/applyPlan";
 import { useAiAssistant } from "../data/AiAssistantContext";
@@ -62,6 +62,7 @@ export default function BulkGenerate() {
   const [plan, setPlan] = useState<DemoPlan | null>(null);
   const [planFor, setPlanFor] = useState("");
   const [planning, setPlanning] = useState(false);
+  const planPct = usePlanProgress(planning);
 
   function downloadTemplate() {
     const blob = new Blob([ROSTER_TEMPLATE], { type: "text/csv;charset=utf-8" });
@@ -260,7 +261,7 @@ export default function BulkGenerate() {
           </>
         ) : (
           <button type="button" className="dmk-submit" disabled={!parsed?.rows.length || planning} onClick={run}>
-            {planning ? "Reading that back…"
+            {planning ? <PlanProgress pct={planPct} />
               : done + failed + skipped > 0 ? "Run again"
               : `Generate ${parsed?.rows.length ?? 0}`}
           </button>

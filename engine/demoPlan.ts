@@ -49,8 +49,13 @@ export interface PlanItem {
 export interface DemoPlan {
   /** The request in our words, one or two sentences. */
   understood: string;
-  /** Appended to the research brief; steers the generation itself. */
+  /** Appended to the research brief; steers the generation itself. Written for the
+   *  MODEL, so it is long and dense; people read `highlights` instead. */
   steer: string;
+  /** The steer as 2 to 5 short bullets, for the person confirming. ⚠️ Added 10/9/2026
+   *  after the read-back was reported as "too wordy": showing the engine-facing paragraph
+   *  verbatim put a 200-word wall of text on the confirm screen. */
+  highlights: string[];
   items: PlanItem[];
   /** Parts of the request this platform cannot do, said plainly. */
   cannot: string[];
@@ -59,10 +64,11 @@ export interface DemoPlan {
 const PLAN_SCHEMA = {
   type: "object",
   additionalProperties: false,
-  required: ["understood", "steer", "items", "cannot"],
+  required: ["understood", "steer", "highlights", "items", "cannot"],
   properties: {
     understood: { type: "string" },
     steer: { type: "string" },
+    highlights: { type: "array", items: { type: "string" } },
     items: {
       type: "array",
       items: {
@@ -117,7 +123,10 @@ function buildSystem(input: PlanInput): string {
     ``,
     `=== WHAT AN ITEM'S "instruction" HAS TO BE ===`,
     `It is sent verbatim to that screen's assistant, which sees that screen's data and nothing else. So write it as a direct instruction to someone looking at that one screen, naming the concrete change. "Open by asking which pest the caller is seeing, then their ZIP" is usable; "make the SMS agent better for pest control" is not.`,
-    `"says" is the same change in one short line for the person confirming it.`,
+    `"says" is the same change for the person confirming it: ONE short line, at most 12 words, plain words, no setup. "Asks if it is an emergency first, then routes to 3 teams" is right.`,
+    ``,
+    `=== "highlights": THE STEER, FOR A PERSON ===`,
+    `The steer is written for the model and can be long. The person confirming reads "highlights" instead: 2 to 5 bullets, each at most 8 words, each one thing they asked for. Not full sentences, no trailing full stop. Examples: "Patient language, never customer", "Focus on ER wait times and urgent care", "Real Miami area locations". Empty array when the steer is empty.`,
     ``,
     `=== WHAT THIS PLATFORM CANNOT DO ===`,
     `Put anything in the request that falls under these into "cannot", in plain language, and do NOT write an item for it:`,
@@ -136,7 +145,7 @@ function buildSystem(input: PlanInput): string {
        as the feature being broken, and it is the exact shape of the silent no-op this
        whole feature exists to remove. The rule is explicit because the model will
        otherwise narrate its intent rather than its output. */
-    `3. "understood" is one or two sentences in plain English, addressed to them, describing what you are about to build. No preamble, no restating these instructions. It must describe ONLY what this plan actually contains: if you write no items, do not say you are going to change specific screens, and if you put something in "cannot" do not describe it as something you will do.`,
+    `3. "understood" is ONE short sentence, at most 20 words, addressed to them. It is a headline, not a summary: the bullets and the screen list carry the detail, so never list them here. It sits under the heading "Here's the plan", so never open with "Here is", "This plan" or "I will"; start with the substance, e.g. "A Baptist Health demo in patient language, with four screen edits." No preamble, no restating these instructions. It must describe ONLY what this plan actually contains: if you write no items, do not say you are going to change specific screens, and if you put something in "cannot" do not describe it as something you will do.`,
     /* ⚠️ The standing rule, and it applies to anything a person reads: a dash joining two
        clauses is the single clearest tell that a machine wrote the sentence. */
     `4. Never use an em dash or an en dash anywhere in your output. Use a comma, a full stop or a colon.`,
@@ -173,6 +182,8 @@ export function sanitizePlan(raw: unknown, surfaces: PlanSurface[]): DemoPlan {
   return {
     understood: str(o.understood, 1200),
     steer: str(o.steer, 2000),
+    highlights: (Array.isArray(o.highlights) ? o.highlights : [])
+      .map((h) => str(h, 90).replace(/\.$/, "")).filter(Boolean).slice(0, 5),
     items,
     cannot: (Array.isArray(o.cannot) ? o.cannot : []).map((c) => str(c, 300)).filter(Boolean).slice(0, 8),
   };

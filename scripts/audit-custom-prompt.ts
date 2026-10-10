@@ -209,6 +209,37 @@ many.items.length <= 10
   ? ok(`the item list is capped (${many.items.length})`)
   : bad(`${many.items.length} items survived — one prompt could run 40 Opus calls`);
 
+/* ⚠️ "too wordy" (10/9/2026): the confirm screen showed the engine-facing steer verbatim.
+   People read `highlights`; the paragraph is only behind a "Full instructions" disclosure. */
+const hl = sanitizePlan({ understood: "u", steer: "s", items: [], cannot: [],
+  highlights: ["One.", "two", "", "three", "four", "five", "six", "x".repeat(400)] }, cat);
+hl.highlights.length === 5 && hl.highlights[0] === "One" && hl.highlights.every((h) => h.length <= 90)
+  ? ok("highlights are capped at five short bullets, with no trailing full stop")
+  : bad(`highlights are not capped or trimmed (${JSON.stringify(hl.highlights)})`);
+Array.isArray(sanitizePlan({}, cat).highlights)
+  ? ok("a plan without highlights still yields an array")
+  : bad("missing highlights is undefined, and the review would throw on .map");
+{
+  const review = code("src/components/CustomPrompt.tsx");
+  const bare = review.replace(/<details[\s\S]*?<\/details>/g, "");
+  !/\{plan\.steer\}/.test(bare) && /\{plan\.steer\}/.test(review) && /plan\.highlights/.test(review)
+    ? ok("the review shows bullets, and the full steer only inside a disclosure")
+    : bad("the engine-facing steer paragraph is printed on the confirm screen again");
+}
+
+/* "i didnt understand what was happening" (10/9/2026): both buttons show a progress ring
+   with a percentage and a label that says what is going on, not "Reading that back…". */
+{
+  const L = code("src/screens/Launch.tsx"), B = code("src/components/BulkGenerate.tsx");
+  !/Reading that back/.test(L + B) && /<PlanProgress pct=\{planPct\}/.test(L) && /<PlanProgress pct=\{planPct\}/.test(B)
+  && /usePlanProgress\(planning\)/.test(L) && /usePlanProgress\(planning\)/.test(B)
+    ? ok("both buttons show a progress ring with a percentage while the prompt is reviewed")
+    : bad("a review button went back to a bare label with no sign of progress");
+  /Math\.min\(95,/.test(code("src/components/CustomPrompt.tsx"))
+    ? ok("the estimated percentage never claims 100 before the plan arrives")
+    : bad("the review percentage can reach 100 while still waiting");
+}
+
 /* The planner must be shown every surface id, or it writes for screens that are not
    offered and `sanitizePlan` silently drops the lot. */
 const planSrc = read("engine/demoPlan.ts");
@@ -304,6 +335,34 @@ await guard("each item lands on its own scope key", async () => {
     ? ok("each item lands on its own surface's scope key")
     : bad(`the pass wrote ${written.length} edits to ${written.map((w) => w.key).join(", ")}`);
 });
+
+await guard("the changes run in parallel", async () => {
+  /* ⚠️ THE FIVE-MINUTE BUDGET (10/9/2026): sequential, five 20 second Opus calls added
+     ~100s after generation. Measured by in-flight count, not by reading the source, so
+     a loop that awaits each call in turn cannot pass. */
+  let inFlight = 0, peak = 0;
+  (globalThis as any).fetch = async () => {
+    inFlight++; peak = Math.max(peak, inFlight);
+    await new Promise((r) => setTimeout(r, 30));
+    inFlight--;
+    return { ok: true, json: async () => ({ result: { kind: "editData", edits: [{ path: "x", value: '"y"' }] } }) } as any;
+  };
+  const { d } = deps();
+  const res = await applyPlan(plan2(["signal", "call-review", "marketing", "sms-workflow"]) as any, profile, "demo-par", d);
+  peak >= 3 && res.items.every((i) => i.state === "done")
+    ? ok(`screen changes run in parallel (${peak} at once)`)
+    : bad(`only ${peak} change(s) ran at a time, so a customized demo can blow the 5 minute budget`);
+});
+{
+  const ap = code("src/data/applyPlan.ts");
+  /ITEM_TIMEOUT_MS\s*=\s*\d/.test(ap) && /setTimeout\(\(\) => ctl\.abort\(\), ITEM_TIMEOUT_MS\)/.test(ap)
+    ? ok("each change is capped, so one hung call cannot hold the demo past the budget")
+    : bad("a single slow screen change can hold the demo open indefinitely");
+  const L = code("src/screens/Launch.tsx");
+  /\(doneWeight \+ applyDone\)/.test(L) && /APPLY_WEIGHT : 0\)/.test(L) && /setApplying\(confirmed\?\.items\.length/.test(L)
+    ? ok("the screen changes are part of the overall %, and known from the start")
+    : bad("the overall % ignores the screen changes, so it hits 99 with work still to do");
+}
 
 await guard("one surface failing does not stop the rest", async () => {
   /* ⚠️⚠️ ONE FAILURE MUST NOT STOP THE WALK. The demo is already published by the time

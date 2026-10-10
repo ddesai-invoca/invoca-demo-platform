@@ -748,13 +748,18 @@ console.log("\nBulk generate\n");
 
   /* ── the wiring ────────────────────────────────────────────────────────── */
   const launch = code("src/screens/Launch.tsx");
-  /<BulkGenerate \/>/.test(launch) && /<details className="launch-bulk">/.test(launch)
-  && /<summary>Bulk Generation<\/summary>/.test(launch)
+  /* Re-aimed 10/9/2026 when the disclosure became an option card: the title now sits
+     inside the summary beside an icon and a description. Sliced, not windowed. */
+  const bulkAt = launch.indexOf(">Bulk Generation<");
+  const bulkSummary = launch.lastIndexOf("<summary>", bulkAt);
+  /<BulkGenerate \/>/.test(launch) && bulkAt > 0 && bulkSummary > 0
+  && launch.indexOf("</summary>", bulkSummary) > bulkAt
+  && /<details className="lopt-card">\s*<summary>/.test(launch.slice(launch.lastIndexOf("<details", bulkSummary)))
     ? ok("the panel is mounted behind a Bulk Generation disclosure, closed by default")
     : bad("bulk generate is not mounted, or its disclosure is missing/renamed");
   /* ⚠️ ABOVE the submit button, asked for directly. Checked by POSITION rather than by
      the markup around it, so reformatting the form cannot quietly flip it back. */
-  launch.indexOf('<details className="launch-bulk">') < launch.indexOf('className="launch-btn" type="submit"')
+  bulkAt > 0 && bulkAt < launch.indexOf('className="launch-btn" type="submit"')
     ? ok("it sits above the Launch demo button")
     : bad("bulk generation dropped below the Launch demo button again");
   !/<AdvancedSettings/.test(launch)

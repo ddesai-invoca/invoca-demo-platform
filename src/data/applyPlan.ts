@@ -30,9 +30,15 @@ import { stripGeneratedDashes } from "./questionImport";
    timed out would be the worst trade in the feature. Every item is caught on its own and
    reported, and the walk continues.
 
-   ⚠️ **SEQUENTIAL, NOT PARALLEL.** Each item is an Opus call with adaptive thinking;
-   firing ten at once is a rate limit landing on one SE at the end of a three-minute
-   wait, and the surfaces are independent so there is nothing to gain but wall clock.
+   ⚠️⚠️ **PARALLEL NOW, 5 AT A TIME, BECAUSE THE BUDGET IS FIVE MINUTES (10/9/2026).**
+   This first shipped sequential to stay clear of a rate limit. Measured, each item is a
+   15 to 25 second Opus call, so five screen edits added ~100 seconds AFTER a ~3 minute
+   generation and a customized demo could run past the five-minute goal. The surfaces
+   are independent (one item per key, and `mutate` is a functional setState), and the
+   generation pool already runs six Opus calls at once against the same key, so five
+   here is well inside what that pool proves is fine. Ten items is two waves, not ten.
+   ⚠️ **EACH ITEM IS CAPPED AT 90 SECONDS** (`ITEM_TIMEOUT_MS`). One hung call must not
+   hold the whole demo past the budget; it is reported as failed and the demo opens.
    ============================================================================= */
 
 export type ItemState = "waiting" | "running" | "done" | "skipped" | "failed";
@@ -129,6 +135,9 @@ function land(key: string, path: string, r: any, deps: ApplyDeps): { applied: nu
   return { applied: 0, note: r.answer ? String(r.answer).slice(0, 160) : "no change was made" };
 }
 
+const CONCURRENCY = 5;
+const ITEM_TIMEOUT_MS = 90_000;
+
 export interface ApplyResult { applied: number; items: ItemProgress[] }
 
 /**
@@ -153,34 +162,51 @@ export async function applyPlan(
   report();
 
   let applied = 0;
-  for (let n = 0; n < plan.items.length; n++) {
-    if (signal?.aborted) break;
+  const runOne = async (n: number) => {
     const item = plan.items[n];
     const surface = surfaceById(item.surface);
     if (!surface || !surface.when(profile)) {
       items[n].state = "skipped";
       items[n].detail = "this prospect does not have that screen";
       report();
-      continue;
+      return;
     }
     items[n].state = "running";
     report();
+    /* Its own controller, so the 90 second cap cancels THIS call only, while the
+       caller's signal still cancels everything. */
+    const ctl = new AbortController();
+    const onAbort = () => ctl.abort();
+    signal?.addEventListener("abort", onAbort);
+    const timer = setTimeout(() => ctl.abort(), ITEM_TIMEOUT_MS);
     try {
       const base = surface.base(profile);
       const key = surfaceKey(demoId, surface.path);
       /* Seed BEFORE asking: `applyEdits` refuses a key with no base, and the answer
          arrives seconds later with nowhere to land. */
       deps.registerBase(key, base);
-      const r = await askOne(profile.customerName, surface.label, base, item.instruction, surface.path, signal);
+      const r = await askOne(profile.customerName, surface.label, base, item.instruction, surface.path, ctl.signal);
       const { applied: got, note } = land(key, surface.path, r, deps);
       applied += got;
       items[n].state = got ? "done" : "skipped";
       items[n].detail = got ? undefined : note;
     } catch (e: any) {
       items[n].state = "failed";
-      items[n].detail = e?.name === "AbortError" ? "cancelled" : (e?.message || "the assistant failed");
+      items[n].detail = e?.name === "AbortError"
+        ? (signal?.aborted ? "cancelled" : "took too long, skipped so the demo could open")
+        : (e?.message || "the assistant failed");
+    } finally {
+      clearTimeout(timer);
+      signal?.removeEventListener("abort", onAbort);
     }
     report();
-  }
+  };
+
+  /* A shared cursor rather than fixed waves, so a slow item never holds a free slot. */
+  let next = 0;
+  const worker = async () => {
+    while (next < plan.items.length && !signal?.aborted) await runOne(next++);
+  };
+  await Promise.all(Array.from({ length: Math.min(CONCURRENCY, plan.items.length) }, worker));
   return { applied, items };
 }

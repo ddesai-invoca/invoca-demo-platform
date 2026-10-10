@@ -12869,6 +12869,52 @@ declined; a row that quietly reads "skipped" with no reason is the failure this 
 ⚠️ **THE DASH SWEEP RUNS ON EVERY STRING THE ASSISTANT WROTE**, because unlike the drawer there
 is no human reading each edit before it lands.
 
+### The screen changes count toward the build %, and run in parallel (10/9/2026)
+Asked for: *"this new piece from custom prompting should also be part of the overall % at the
+top and also goal is to keep it under 5 mins"*.
+- **Part of the bar.** The changes are listed as pending from the moment the build starts and
+  take a fixed `APPLY_WEIGHT = 6` share of the bar (~15% of the 33-weight build), split across
+  items and eased while each runs. Before this the bar reached 99% and then a new section
+  appeared with a minute still to go.
+- ⚠️⚠️ **PARALLEL, 5 AT A TIME (`applyPlan.ts`), BECAUSE SEQUENTIAL BROKE THE BUDGET.** Each
+  item is a 15 to 25 second Opus call; five in a row added ~100s after a ~3 minute generation.
+  Safe because there is one item per scope key and `mutate` is a functional setState, and the
+  generation pool already runs six Opus calls at once. A shared cursor, not waves.
+- ⚠️ **EACH ITEM IS CAPPED AT 90 SECONDS**, reported as "took too long, skipped so the demo
+  could open", so one hung call cannot hold the demo past five minutes. The caller's abort still
+  cancels everything; the cap cancels only that item.
+- `audit:custom-prompt` measures peak in-flight calls with a delayed stub (verified to fail at
+  `CONCURRENCY = 1`), and checks the cap and that the % includes the changes.
+- ⚠️ **NOT MEASURED END TO END**: a full customized build was not timed after this change. The
+  estimate is ~3 minutes of generation plus ~25 seconds of changes.
+
+### "Reviewing your request" with a progress ring (10/9/2026)
+Reported: *"reading that back.. as a user i didnt understand what was happening"*. Both the
+Launch button and Bulk Generation's Generate button now show `PlanProgress`: a spinning ring
+that fills to a percentage, the label "Reviewing your request", and (on Launch) a note that it
+takes 15 to 30 seconds and nothing is generated until you confirm. ⚠️ **THE PERCENTAGE IS
+ESTIMATED**: `/api/demo-plan` returns one JSON body with no progress events, so
+`usePlanProgress` eases toward 95% on a time curve (τ = 7s; a measured run took 15s and read
+~85% at the end) and never shows 100 before the plan arrives.
+
+### The read-back is bullets, not the engine's paragraph (10/9/2026)
+Reported as "too wordy": the confirm screen printed `steer` verbatim, which is written for the
+MODEL and runs to ~200 words. The planner now also returns `highlights` (2 to 5 bullets, max 8
+words each), `understood` is one headline sentence of at most 20 words that never opens with
+"Here is", and each item's `says` is at most 12 words. The full steer is still sent to the engine
+unchanged and is readable behind a "Full instructions" disclosure. `audit:custom-prompt` fails if
+the paragraph is printed outside a disclosure again (sabotage verified).
+
+### The two disclosures are option cards (10/9/2026)
+Reported: *"i dont like how the custom prompt and bulk generation looks"*. Both are `.lopt-card`
+rows in one `.lopt` group: green icon tile, title, a one-line description of what the option
+does, a chevron that turns, and an "Added" chip when a prompt is written. The open card takes a
+faint green edge so its content reads as belonging to it. `.launch-bulk` and `.dcp-details` are
+deleted, not left as dead rules. ⚠️ Green tokens only, per the launch-screen rule.
+⚠️ `audit:events` was re-aimed: it matched the literal `<summary>Bulk Generation</summary>`,
+which the card's richer summary replaces. It now slices the summary that holds the title and
+still checks closed-by-default and the position above the Launch button.
+
 ### Bulk Generation takes one prompt for the whole roster
 Same confirm step, and it matters more there: a misread prompt costs one demo on the launch form
 and an **hour** across twenty rows. A per-row column in the template was the other option and was

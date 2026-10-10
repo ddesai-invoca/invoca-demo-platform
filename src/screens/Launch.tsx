@@ -11,8 +11,8 @@ import { SEED_IDS } from "../data/profiles";
 import { EVENTS, eventGroupOf } from "../data/eventDemos";
 import { generateProfile } from "../data/generateStream";
 import BulkGenerate from "../components/BulkGenerate";
-import { CustomPrompt, PlanReview, requestPlan } from "../components/CustomPrompt";
-import { SURFACES } from "../data/demoSurfaces";
+import { CustomPrompt, PlanProgress, PlanReview, requestPlan, usePlanProgress } from "../components/CustomPrompt";
+import { SURFACES, surfaceById } from "../data/demoSurfaces";
 import { applyPlan, type ItemProgress } from "../data/applyPlan";
 import type { DemoPlan } from "../../engine/demoPlan";
 import EventSheetButton, { type EventSheetState } from "../components/EventSheetButton";
@@ -224,10 +224,12 @@ export function Launch() {
   const [plan, setPlan] = useState<DemoPlan | null>(null);
   const [planFor, setPlanFor] = useState("");
   const [planning, setPlanning] = useState(false);
+  const planPct = usePlanProgress(planning);
   /* Live rows for the apply pass, rendered under the build checklist. */
   const [applying, setApplying] = useState<ItemProgress[] | null>(null);
   const [, setTick] = useState(0);
   const stepStartRef = useRef<Record<string, number>>({});
+  const applyStartRef = useRef<number | null>(null);
 
   // Delete confirmation + which row is mid-open. Each library dropdown owns its
   // own search + open state (see LibraryPicker below).
@@ -414,7 +416,24 @@ export function Launch() {
     }
     return s;
   }, 0);
-  const pct = Math.min(99, Math.round((doneWeight / Math.max(1, TOTAL_WEIGHT - skippedWeight)) * 100));
+  /* ⚠️ THE SCREEN CHANGES COUNT TOWARD THE SAME BAR (10/9/2026, asked for directly: "this
+     new piece from custom prompting should also be part of the overall %"). They run in
+     parallel after generation, so their wall clock is roughly one more pool phase however
+     many there are: a FIXED share of the bar (APPLY_WEIGHT, ~15% of a 33-weight build)
+     split across the items, each easing up while it runs. Known from the moment the build
+     starts, so the bar never reaches 99 and then has another minute to go. */
+  const APPLY_WEIGHT = 6;
+  const applyEach = applying?.length ? APPLY_WEIGHT / applying.length : 0;
+  const applyDone = (applying ?? []).reduce((s, it) => {
+    if (it.state === "waiting") return s;
+    if (it.state === "running") {
+      const elapsed = now - (applyStartRef.current ?? now);
+      return s + applyEach * Math.min(0.92, 1 - Math.exp(-elapsed / 12000));
+    }
+    return s + applyEach;
+  }, 0);
+  const totalWeight = TOTAL_WEIGHT - skippedWeight + (applying?.length ? APPLY_WEIGHT : 0);
+  const pct = Math.min(99, Math.round(((doneWeight + applyDone) / Math.max(1, totalWeight)) * 100));
 
   async function launch(e: React.FormEvent) {
     e.preventDefault();
@@ -461,6 +480,12 @@ export function Launch() {
     setError(null);
     setStatuses({});
     stepStartRef.current = {};
+    applyStartRef.current = null;
+    /* The changes are listed (as pending) from the start, so the bar's denominator and the
+       checklist both know the whole job up front. */
+    setApplying(confirmed?.items.length
+      ? confirmed.items.map((i) => ({ surface: i.surface, label: surfaceById(i.surface)?.label ?? i.surface, says: i.says, state: "waiting" as const }))
+      : null);
     setBusy(true);
 
     try {
@@ -511,6 +536,7 @@ export function Launch() {
          apply onto and the pass is skipped rather than writing a key nobody reads. */
       if (confirmed?.items.length && demo) {
         try {
+          applyStartRef.current = Date.now();
           await applyPlan(confirmed, profile, demo.id, { registerBase, applyEdits, addTile, effectiveData },
             (items) => setApplying(items));
         } catch { /* reported per item; a whole-pass throw must not lose the demo */ }
@@ -589,9 +615,14 @@ export function Launch() {
                 );
               })}
             </ul>
-            <div className="launch-hint">This takes a few minutes, building {BUILD_STEPS.length} pieces of the platform.</div>
-            {/* ⚠️ SHOWN ONLY ONCE THE PASS HAS STARTED. Rendering the rows as "waiting"
-                through the whole generation would read as work that has stalled. */}
+            <div className="launch-hint">
+              Usually under 5 minutes, building {BUILD_STEPS.length} pieces of the platform
+              {applying?.length ? `, then ${applying.length} of your changes` : ""}.
+            </div>
+            {/* ⚠️ LISTED FROM THE START NOW, AS PENDING, like every other row in the
+                checklist (10/9/2026). They used to appear only once the pass began, which
+                meant the bar hit 99% and then gained a section; the job is known up front,
+                so it is shown up front. */}
             {applying && applying.length > 0 && (
               <div className="dcp-apply">
                 <div className="dcp-apply-head">Applying your changes</div>
@@ -652,14 +683,28 @@ export function Launch() {
                 ⚠️ NOT ADMIN-GATED, unlike the checkbox above it. The pain this answers was
                 reported as everyone's ("users tell me the demo generation isn't 100% to
                 their liking"), and nothing here reaches outside the demo being built. */}
-            <details className="launch-bulk dcp-details" open={!!customPrompt}>
-              <summary>Custom prompt</summary>
-              <CustomPrompt value={customPrompt} onChange={(v) => {
-                setCustomPrompt(v);
-                /* ⚠️ EDITING INVALIDATES A CONFIRMED PLAN. Without this, agreeing to a plan
-                   and then changing the text would build the OLD plan under the new words. */
-                if (plan) setPlan(null);
-              }} disabled={planning} />
+            {/* ⚠️ TWO OPTION CARDS, ONE GROUP (10/9/2026, "make it look nicer"). Each is
+                a bordered row naming the option and what it does, so a closed card still
+                says why you would open it. `.lopt-*` is this pair's own prefix. */}
+            <div className="lopt">
+            <details className="lopt-card" open={!!customPrompt}>
+              <summary>
+                <span className="lopt-ic material-icons" aria-hidden="true">auto_awesome</span>
+                <span className="lopt-txt">
+                  <span className="lopt-title">Custom prompt</span>
+                  <span className="lopt-sub">Say what you want built. We read it back before anything runs.</span>
+                </span>
+                {customPrompt.trim() && <span className="lopt-badge">Added</span>}
+                <span className="lopt-chev material-icons" aria-hidden="true">expand_more</span>
+              </summary>
+              <div className="lopt-body">
+                <CustomPrompt value={customPrompt} onChange={(v) => {
+                  setCustomPrompt(v);
+                  /* ⚠️ EDITING INVALIDATES A CONFIRMED PLAN. Without this, agreeing to a plan
+                     and then changing the text would build the OLD plan under the new words. */
+                  if (plan) setPlan(null);
+                }} disabled={planning} />
+              </div>
             </details>
             {/* ⚠️ A DISCLOSURE, CLOSED BY DEFAULT — the launch form is two fields and a
                 button and must stay that way at rest.
@@ -671,14 +716,30 @@ export function Launch() {
                 so also keeps it clear of the old `AdvancedSettings` panel (custom prompt,
                 scope, Gong, Drive), which was removed from this form on request and must
                 not come back by having a drawer called "Advanced" to live in. */}
-            <details className="launch-bulk">
-              <summary>Bulk Generation</summary>
-              <BulkGenerate />
+            <details className="lopt-card">
+              <summary>
+                <span className="lopt-ic material-icons" aria-hidden="true">upload_file</span>
+                <span className="lopt-txt">
+                  <span className="lopt-title">Bulk Generation</span>
+                  <span className="lopt-sub">Build a whole roster from one spreadsheet.</span>
+                </span>
+                <span className="lopt-chev material-icons" aria-hidden="true">expand_more</span>
+              </summary>
+              <div className="lopt-body">
+                <BulkGenerate />
+              </div>
             </details>
+            </div>
             {error && <div className="launch-error">{error}</div>}
             <button className="launch-btn" type="submit" disabled={planning}>
-              {planning ? "Reading that back…" : "Launch demo"}
+              {planning ? <PlanProgress pct={planPct} /> : "Launch demo"}
             </button>
+            {planning && (
+              <p className="dcp-prog-note">
+                Checking what we can build from your prompt. Usually takes 15 to 30 seconds, and
+                nothing is generated until you confirm.
+              </p>
+            )}
           </form>
         )}
 
