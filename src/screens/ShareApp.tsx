@@ -73,6 +73,9 @@ export default function ShareApp() {
   const [step, setStep] = useState<"email" | "password">("email");
   const [sentTo, setSentTo] = useState<string | null>(null);
   const [note, setNote] = useState<string | null>(null);
+  /* Whether the email actually left. "We sent your password" above "We could not send
+     the email" was the two lines contradicting each other off production. */
+  const [mailed, setMailed] = useState(false);
 
   /** Pull the demo once the link is unlocked. */
   async function openDemo(): Promise<boolean> {
@@ -103,6 +106,15 @@ export default function ShareApp() {
   async function requestPassword(e: React.FormEvent) {
     e.preventDefault();
     if (busy) return;
+    /* ⚠️ CHECKED ON SUBMIT, NOT WHILE TYPING (10/9/2026): asked for as "if they put a
+       personal email and click submit then it gives them an error". The button stays live
+       and the click answers. The server runs the same test, which is what actually refuses. */
+    const typedNow = email.trim();
+    const v = /^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(typedNow) ? workEmailVerdict(typedNow) : "bad-shape";
+    if (v !== "ok") {
+      setPhase((p) => (p.k === "locked" ? { ...p, error: v === "bad-shape" ? "Please enter your company email address." : workEmailMessage(v) } : p));
+      return;
+    }
     setBusy(true);
     try {
       const res = await fetch(`/api/share/${SHARE_TOKEN}/request-password`, {
@@ -120,6 +132,7 @@ export default function ShareApp() {
       /* ⚠️ **AN UNSENT EMAIL SAYS SO RATHER THAN SENDING SOMEBODY TO AN EMPTY INBOX.**
          `sendMail` legitimately declines off production and with no mailer configured,
          and the step still advances so a password given by hand is usable. */
+      setMailed(!!body?.sent);
       if (!body?.sent) setNote("We could not send the email. Please ask your Invoca contact for the password.");
     } finally { setBusy(false); }
   }
@@ -161,37 +174,25 @@ export default function ShareApp() {
 
   if (phase.k === "locked") {
     const title = phase.prospect ? `${phase.prospect} AI Agent demo` : "AI Agent demo";
-    /* Null until the address is complete enough to judge — see the note at the field. */
-    const typed = email.trim();
-    const localVerdict = /^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(typed)
-      ? workEmailVerdict(typed) : null;
     /* Step one: who are you? The password is emailed rather than passed along by hand. */
     if (step === "email") {
       return (
         <Shell>
           <h1 className="share-title">{title}</h1>
           <p className="share-muted">
-            Enter your work email and we will send you the password for this demo.
+            Enter your company email and we will send you your password for this demo.
           </p>
           <form onSubmit={requestPassword} className="share-form">
-            <label className="share-label" htmlFor="share-email">Work email</label>
+            <label className="share-label" htmlFor="share-email">Company email</label>
             <input id="share-email" className="share-input" type="email" value={email} autoFocus
               autoComplete="email" inputMode="email" placeholder="you@company.com"
-              onChange={(e) => { setEmail(e.target.value); setNote(null); }} />
-            {/* ⚠⚠ **THE SAME TEST THE SERVER RUNS, FOR THE MESSAGE ONLY.** `workEmail.ts` is
-                shared with `shareApi`, which is what actually refuses the request — this is
-                here so a personal address is named the moment it is typed rather than after a
-                round trip, and so the button does not invite a press that cannot work.
-                ⚠️ IT WAITS FOR AN ADDRESS THAT IS AT LEAST PLAUSIBLE. Judging "g", "ga", "gm"
-                as somebody types gmail.com would flash a refusal at every keystroke of a
-                perfectly good domain, so nothing is said until there is an `@` and a dot
-                after it. */}
-            {phase.error && <p className="share-error">{phase.error}</p>}
-            {!phase.error && localVerdict && localVerdict !== "ok" && (
-              <p className="share-error">{workEmailMessage(localVerdict)}</p>
-            )}
-            <button className="share-btn" type="submit"
-              disabled={busy || !email.trim() || (!!localVerdict && localVerdict !== "ok")}>
+              onChange={(e) => {
+                setEmail(e.target.value); setNote(null);
+                /* A refusal is about the address they submitted; editing it clears it. */
+                setPhase((p) => (p.k === "locked" && p.error ? { ...p, error: undefined } : p));
+              }} />
+            {phase.error && <p className="share-error" role="alert">{phase.error}</p>}
+            <button className="share-btn" type="submit" disabled={busy || !email.trim()}>
               {busy ? "Sending…" : "Email me the password"}
             </button>
             {/* ⚠️ A way through when the mail does not arrive — a spam filter or a mailer
@@ -199,7 +200,10 @@ export default function ShareApp() {
                 somebody who was given the password by hand should not have to ask for a
                 second copy. */}
             <button type="button" className="share-link"
-              onClick={() => { setStep("password"); setNote(null); }}>
+              onClick={() => {
+                setStep("password"); setNote(null);
+                setPhase((p) => (p.k === "locked" ? { ...p, error: undefined } : p));
+              }}>
               I already have the password
             </button>
           </form>
@@ -211,9 +215,9 @@ export default function ShareApp() {
       <Shell>
         <h1 className="share-title">{title}</h1>
         <p className="share-muted">
-          {sentTo
-            ? <>We sent the password to <strong>{sentTo}</strong>. Enter it below.</>
-            : "Enter the password for this demo."}
+          {sentTo && mailed
+            ? <>We sent your 6-digit password to <strong>{sentTo}</strong>. Enter it below.</>
+            : "Enter your 6-digit password for this demo."}
         </p>
         <form onSubmit={unlock} className="share-form">
           <label className="share-label" htmlFor="share-pw">Password</label>

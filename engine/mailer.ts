@@ -486,11 +486,13 @@ export function sharePasswordEmail(
       `Here is the password for the ${prospect} AI Agent demo:\n\n` +
       `    ${password}\n\n` +
       `Open the demo: ${url}\n\n` +
+      `This password is yours. Keep it: it opens this demo any time, and we send the same one if you ask again.\n\n` +
       `If you did not ask for this, you can ignore it.`,
     html:
       `<p>Here is the password for the <strong>${name}</strong> AI Agent demo:</p>` +
       `<p style="font-size:20px;font-weight:700;letter-spacing:.02em">${esc(password)}</p>` +
       `<p><a href="${esc(url)}">Open the demo</a></p>` +
+      `<p>This password is yours. Keep it: it opens this demo any time, and we send the same one if you ask again.</p>` +
       `<p style="color:#868e96;font-size:13px">If you did not ask for this, you can ignore it.</p>`,
   };
 }

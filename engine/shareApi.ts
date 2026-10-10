@@ -27,6 +27,7 @@ import { getShare, passwordMatches, shareActive, noteOpen, noteRequest, expiresA
 import { sendMail, sharePasswordEmail } from "./mailer.ts";
 import { recordActivity } from "./activityStore.ts";
 import { queueActivitySync } from "./sheetActivity.ts";
+import { codeForEmail, emailForCode, isMasterPassword, MASTER_WHO } from "./shareCodes.ts";
 import { sharePassword } from "../src/data/sharePassword.ts";
 import { workEmailVerdict, workEmailMessage } from "../src/data/workEmail.ts";
 import { getDemo } from "./demoStore.ts";
@@ -71,7 +72,10 @@ export function unlockedAs(cookies: Record<string, string>, token: string): stri
   const { who } = splitCookie(cookies[cookieNameFor(token)] ?? "");
   try {
     const email = Buffer.from(who, "base64url").toString("utf8");
-    /* Shape-checked on the way out as well as in — the cookie is user-editable. */
+    /* Shape-checked on the way out as well as in — the cookie is user-editable. The one
+       non-address allowed is the master-password label, so that session's activity is
+       attributed to "Invoca employee" rather than to nobody. */
+    if (email === MASTER_WHO) return email;
     return /^[^\s@]+@[^\s@.]+\.[^\s@]+$/.test(email) && email.length <= 254 ? email : "";
   } catch { return ""; }
 }
@@ -84,7 +88,7 @@ export function unlockedAs(cookies: Record<string, string>, token: string): stri
  * deploy. That is an acceptable trade for a link an SE can revoke instantly, and the
  * cap's real job is stopping a runaway script, not a patient adversary.
  */
-const spend = new Map<string, { day: string; chat: number; voice: number; email: number }>();
+const spend = new Map<string, { day: string; chat: number; voice: number; email: number; unlockFail: number }>();
 
 /* ⚠️⚠️ **`SHARE_FROM` IS A REQUEST, NOT A GUARANTEE.** Gmail only honours a From the
    sending account may send as — itself, or an address verified under "Send mail as".
@@ -98,12 +102,15 @@ const shareFrom = (): string | undefined => process.env.SHARE_FROM?.trim() || un
    demo's own link, nothing the caller can influence — so the worst case is a handful of
    confusing emails rather than a spam relay, and 12 a day per link bounds even that. Every
    request is also recorded on the share, so a burst is visible rather than merely blocked. */
-export const CAPS = { chat: 120, voice: 10, email: 12 };
+/* ⚠️ `unlockFail` (10/9/2026): passwords are now 6-digit codes, so wrong guesses are
+   capped per link per day. Only FAILED attempts count, so somebody who types the right
+   code is never locked out by the people who did not. */
+export const CAPS = { chat: 120, voice: 10, email: 12, unlockFail: 40 };
 
 function budget(token: string) {
   const day = new Date().toISOString().slice(0, 10);
   const cur = spend.get(token);
-  if (!cur || cur.day !== day) { const fresh = { day, chat: 0, voice: 0, email: 0 }; spend.set(token, fresh); return fresh; }
+  if (!cur || cur.day !== day) { const fresh = { day, chat: 0, voice: 0, email: 0, unlockFail: 0 }; spend.set(token, fresh); return fresh; }
   return cur;
 }
 
@@ -173,6 +180,9 @@ export async function handleShareApi(
      worst case. Each request is recorded on the share so a burst is visible afterwards
      rather than only blocked at the time. */
   if (method === "POST" && leaf === "/request-password") {
+    /* ⚠️ A dead link mints and mails nothing. Missing before 10/9/2026; it matters more now
+       that asking creates a code that lives on past the link. */
+    if (!shareActive(rec)) return gone(rec);
     const email = String(body?.email ?? "").trim();
     /* ⚠️ A SHAPE CHECK, NOT A DELIVERABILITY ONE. Rejecting anything that is not plausibly
        an address keeps obvious junk out of the record and out of the mailer; whether it
@@ -197,14 +207,13 @@ export async function handleShareApi(
     if (!takeBudget(token, "email")) {
       return { status: 429, body: { error: "Too many requests for this link today. Please contact your Invoca contact." } };
     }
-    /* ⚠️⚠️ **A CUSTOM PASSWORD CANNOT BE EMAILED, AND SENDING THE DERIVED ONE WOULD BE
-       WORSE THAN SENDING NOTHING** — it would not open the link, and the prospect would
-       have no way to know why. Recorded either way, because who asked is the point. */
+    /* ⚠️⚠️ **EACH ADDRESS HAS ITS OWN 6-DIGIT CODE, AND ASKING AGAIN SENDS THE SAME ONE**
+       (10/9/2026). Asked for directly: a random number tied to the email, the same number
+       every time that email asks. It works on any link a person is sent, whatever password
+       the SE set on the link itself — see `shareCodes.ts`. Recorded first, because who
+       asked is the point even if the send fails. */
     noteRequest(token, email);
-    if (!rec.derivedPassword) {
-      return { status: 200, body: { sent: false, reason: "This link uses a password set by your Invoca contact — please ask them for it." } };
-    }
-    const password = sharePassword(rec.prospect);
+    const password = codeForEmail(email);
     const url = `${baseUrl}/share/${token}`;
     const sent = await sendMail(sharePasswordEmail(email, rec.prospect, password, url, shareFrom()));
     /* ⚠️ **THE OUTCOME IS REPORTED HONESTLY.** `sendMail` legitimately declines off
@@ -218,14 +227,27 @@ export async function handleShareApi(
   if (method === "POST" && leaf === "/unlock") {
     if (!shareActive(rec)) return gone(rec);
     const password = typeof body?.password === "string" ? body.password : "";
-    if (!passwordMatches(rec, password)) {
+    const typedEmail = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
+    if (budget(token).unlockFail >= CAPS.unlockFail) {
+      return { status: 429, body: { error: "Too many wrong passwords on this link today. Please contact your Invoca contact." } };
+    }
+    /* ⚠️⚠️ THREE WAYS IN, AND EACH ONE DECIDES WHO OPENED IT (10/9/2026):
+       1. the master password, for Invoca employees, recorded as "Invoca employee";
+       2. a person's own 6-digit code, recorded as THE ADDRESS THAT CODE BELONGS TO, so a
+          later visit through "I already have the password" is still attributed correctly;
+       3. the link's own stored password, kept so links already sent with the old
+          name-based password keep working. */
+    const codeOwner = emailForCode(password);
+    const who = isMasterPassword(password) ? MASTER_WHO
+      : codeOwner ? codeOwner
+      : passwordMatches(rec, password) ? typedEmail
+      : null;
+    if (who === null) {
+      budget(token).unlockFail += 1;
       /* ⚠️ No hint about length or near-misses, and the password is never echoed. */
       return { status: 401, body: { error: "That password is not right." } };
     }
     noteOpen(token);
-    /* ⚠️ The address is whatever the gate collected; it is not re-sent on later calls,
-       which is why it goes into the cookie rather than being asked for again. */
-    const who = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
     recordActivity(rec.demoId, rec.prospect, who, "opened");
     queueActivitySync(rec.demoId);
     return {

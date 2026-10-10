@@ -469,19 +469,17 @@ console.log("\nEmailed share password\n");
     ? ok("tabs and non-breaking spaces are stripped too, and punctuation is kept")
     : bad(`unusual whitespace survives: ${JSON.stringify(sharePassword("Avi  &\tCo."))}`);
 
-  /* ⚠️ The emailed string and the stored hash must come from ONE function, or the
-     password that arrives is not the one that opens the link. */
+  /* ⚠️ RE-AIMED 10/9/2026: what is EMAILED is now each person's own 6-digit code (see
+     `shareCodes.ts`), not the name. The link's own stored password survives as a fallback,
+     so the create route still derives it from one function. */
   const api = code("engine/shareApi.ts");
-  (api.match(/sharePassword\(/g)?.length ?? 0) >= 2 && !/replace\(\/\\s/.test(api)
-    ? ok("both the create route and the email derive the password from one function")
-    : bad("the password is derived twice — the sent string and the stored hash can disagree");
-
-  /* ⚠️⚠️ A CUSTOM PASSWORD CANNOT BE EMAILED. The store keeps a hash, so one somebody
-     typed cannot be recovered — and sending the DERIVED one instead would be worse than
-     sending nothing, because it would not open the link and nothing would say why. */
-  /if \(!rec\.derivedPassword\)/.test(api) && /password set by your Invoca contact/.test(api)
-    ? ok("a link with a custom password refuses to email one, and says why")
-    : bad("a custom-password link would be emailed a password that does not work");
+  /const password = codeForEmail\(email\)/.test(api)
+  && /sharePasswordEmail\(email, rec\.prospect, password,/.test(api)
+    ? ok("the emailed password is that address's own code")
+    : bad("the email no longer sends the person's own code");
+  !/rec\.derivedPassword\)/.test(api)
+    ? ok("a custom link password no longer blocks emailing a code, since codes open any link")
+    : bad("the request route still refuses to email when the link has a custom password");
   /derivedPassword: !custom/.test(api)
     ? ok("only a derived password is flagged as emailable")
     : bad("the derived flag is not set from whether a password was supplied");
@@ -490,7 +488,7 @@ console.log("\nEmailed share password\n");
   /\[\^\\s@\]\+@/.test(api) && /email\.length > 254/.test(api)
     ? ok("the address is shape-checked and length-bounded")
     : bad("any string is accepted as an email address");
-  /takeBudget\(token, "email"\)/.test(api) && /CAPS = \{ chat: 120, voice: 10, email: 12 \}/.test(api)
+  /takeBudget\(token, "email"\)/.test(api) && /CAPS = \{ chat: 120, voice: 10, email: 12, unlockFail: 40 \}/.test(api)
     ? ok("requests are capped per link per day, so a leaked link is not a mail relay")
     : bad("the request route is uncapped — a share link could push unsolicited mail");
   /noteRequest\(token, email\)/.test(api)
@@ -498,7 +496,7 @@ console.log("\nEmailed share password\n");
     : bad("nobody can see who asked for the password — the point of the change");
   /* ⚠️ RECORDED EVEN WHEN NOTHING IS SENT. Who asked is the fact worth keeping; whether
      the mail left is a separate question. */
-  api.indexOf("noteRequest(token, email)") < api.indexOf("if (!rec.derivedPassword)")
+  api.indexOf("noteRequest(token, email)") < api.indexOf("await sendMail(sharePasswordEmail(")
     ? ok("the request is recorded before the send is attempted")
     : bad("a refused send loses the record of who asked");
 
@@ -1390,7 +1388,7 @@ console.log("\nActivity tracking\n");
       { email: "a@mailinator.com" }, {}))!;
     const work = (await A.handleShareApi("POST", `/api/share/${t.token}/request-password`,
       { email: "buyer@unitedvetcare.com" }, {}))!;
-    (free.status === 400 && /work email/i.test(String((free.body as { error?: string }).error)))
+    (free.status === 400 && /company email/i.test(String((free.body as { error?: string }).error)))
       ? ok("the public request-password route refuses a personal address")
       : bad(`a personal address was not refused: ${free.status} ${JSON.stringify(free.body)}`);
     (temp.status === 400 && /temporary/i.test(String((temp.body as { error?: string }).error)))
@@ -1406,6 +1404,67 @@ console.log("\nActivity tracking\n");
     (addrs.length === 1 && addrs[0] === "buyer@unitedvetcare.com")
       ? ok("…and a refused address is never written to the share record")
       : bad(`a refused address was recorded: ${addrs.join(", ")}`);
+  }
+  /* ⚠️⚠️ THE 6-DIGIT CODES AND THE MASTER PASSWORD (10/9/2026), exercised through the real
+     handler. A code belongs to one address forever, asking again sends the same one, typing
+     it later says who opened the demo, and "invoca2026" opens any live link. */
+  {
+    const C = await import("../engine/shareCodes.ts");
+    const c1 = C.codeForEmail("Buyer@Acme.com"), c2 = C.codeForEmail("buyer@acme.com"), c3 = C.codeForEmail("ops@acme.com");
+    /^[1-9]\d{5}$/.test(c1) && c1 === c2 && c1 !== c3
+      ? ok("each address gets one 6-digit code, the same one every time it asks")
+      : bad(`codes are not stable or not unique: ${c1} ${c2} ${c3}`);
+    C.emailForCode(c1) === "buyer@acme.com" && C.emailForCode(`${c1.slice(0, 3)} ${c1.slice(3)}`) === "buyer@acme.com"
+    && C.emailForCode("000000") === null && C.emailForCode("abc") === null
+      ? ok("a code maps back to its address, spaces ignored, and a wrong one maps to nobody")
+      : bad("emailForCode does not resolve codes correctly");
+
+    const L = S.createShare({ demoId: "code-link", prospect: "Code Co",
+      createdBy: "se@invoca.com", days: 7, password: "CodeCo", derivedPassword: true });
+    const asked = (await A.handleShareApi("POST", `/api/share/${L.token}/request-password`, { email: "buyer@acme.com" }, {}))!;
+    asked.status === 200 && C.codeForEmail("buyer@acme.com") === c1
+      ? ok("requesting a password on a link reuses the address's existing code")
+      : bad(`request-password changed or failed: ${asked.status}`);
+
+    const viaCode = (await A.handleShareApi("POST", `/api/share/${L.token}/unlock`, { password: c1, email: "" }, {}))!;
+    const ck = viaCode.setCookie ? { [viaCode.setCookie.name]: viaCode.setCookie.value } : {};
+    viaCode.status === 200 && A.unlockedAs(ck, L.token) === "buyer@acme.com"
+      ? ok("the code opens the demo and is attributed to its address with no email typed")
+      : bad(`unlocking with a code failed or lost its owner: ${viaCode.status} ${A.unlockedAs(ck, L.token)}`);
+
+    const viaMaster = (await A.handleShareApi("POST", `/api/share/${L.token}/unlock`, { password: "invoca2026" }, {}))!;
+    const mk = viaMaster.setCookie ? { [viaMaster.setCookie.name]: viaMaster.setCookie.value } : {};
+    viaMaster.status === 200 && A.unlockedAs(mk, L.token) === C.MASTER_WHO
+      ? ok("the master password opens a shared demo, recorded as an Invoca employee")
+      : bad(`the master password did not open the demo: ${viaMaster.status}`);
+
+    const viaLegacy = (await A.handleShareApi("POST", `/api/share/${L.token}/unlock`, { password: "CodeCo", email: "x@acme.com" }, {}))!;
+    viaLegacy.status === 200
+      ? ok("a link's own stored password still works, so links already sent keep opening")
+      : bad(`the link's own password stopped working: ${viaLegacy.status}`);
+
+    let last = 0;
+    for (let i = 0; i < A.CAPS.unlockFail + 1; i++) {
+      last = (await A.handleShareApi("POST", `/api/share/${L.token}/unlock`, { password: "123456" === c1 ? "654321" : "123456" }, {}))!.status;
+    }
+    last === 429
+      ? ok(`wrong passwords are capped at ${A.CAPS.unlockFail} a day per link`)
+      : bad(`guessing codes is uncapped: the last attempt returned ${last}`);
+
+    S.revokeShare(L.token);
+    const dead = (await A.handleShareApi("POST", `/api/share/${L.token}/request-password`, { email: "new@acme.com" }, {}))!;
+    dead.status === 410
+      ? ok("a revoked link mints and mails nothing")
+      : bad(`a revoked link still sends passwords: ${dead.status}`);
+  }
+  {
+    const g = code("src/screens/ShareApp.tsx");
+    />Company email</.test(g) && !/>Work email</.test(g)
+      ? ok("the gate's field is labelled Company email")
+      : bad("the gate still says Work email");
+    /disabled=\{busy \|\| !email\.trim\(\)\}/.test(g) && /workEmailVerdict\(typedNow\)/.test(g)
+      ? ok("a personal address can be submitted and the click answers with the error")
+      : bad("the gate disables the button for a personal address instead of answering on submit");
   }
   /from "\.\.\/src\/data\/workEmail\.ts"/.test(api) && /from "\.\.\/data\/workEmail"/.test(gate)
     ? ok("…and the gate imports the SAME test rather than keeping its own copy")

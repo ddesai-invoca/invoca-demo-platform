@@ -110,6 +110,6 @@ export const isWorkEmail = (email: string): boolean => workEmailVerdict(email) =
  */
 export function workEmailMessage(v: WorkEmailVerdict): string {
   return v === "disposable"
-    ? "Please use your work email address — temporary mailboxes are not accepted."
-    : "Please use your work email address rather than a personal one (Gmail, Yahoo, Outlook and the like).";
+    ? "Please use your company email. Temporary mailboxes are not accepted."
+    : "Please use your company email. Personal addresses like Gmail, Yahoo and Outlook are not accepted.";
 }

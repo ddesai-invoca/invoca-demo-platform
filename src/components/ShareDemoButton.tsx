@@ -114,18 +114,17 @@ export function ShareDemoButton({ demoId, name }: { demoId: string; name: string
               <input className="shr-input" type="number" min={1} max={365} value={days}
                 onChange={(e) => setDays(Number(e.target.value))} />
             </label>
-            <label className="shr-label">Password
-              <input className="shr-input" type="text" value={password} placeholder={name}
+            <label className="shr-label">Link password (optional)
+              <input className="shr-input" type="text" value={password} placeholder={sharePassword(name)}
                 onChange={(e) => setPassword(e.target.value)} />
             </label>
-            {/* ⚠️ SHOWS WHAT THE PASSWORD WILL ACTUALLY BE, which is the name with the spaces
-                  taken out — not the name itself. It is also what gets emailed, so a hint
-                  that printed the spaced form would have somebody reading out a password
-                  that does not work. */}
-              <p className="shr-hint">
-                Leave blank to use “{sharePassword(name)}”, which we email to whoever asks for it.
-                Setting one here means they have to get it from you instead.
-              </p>
+            {/* ⚠️ RE-WORDED 10/9/2026: the emailed password is now each prospect's own
+                6-digit code, so this field is a fallback for handing one out by hand. */}
+            <p className="shr-hint">
+              Prospects enter their company email and we send them their own 6-digit password.
+              Invoca employees can open any shared demo with the master password.
+              This field is only a fallback you can give out yourself.
+            </p>
             {err && <p className="shr-err">{err}</p>}
             <button className="shr-btn" type="submit" disabled={busy}>
               {busy ? "Working…" : "Create link"}

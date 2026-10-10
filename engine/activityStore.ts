@@ -104,7 +104,10 @@ export function recordActivity(
   dedupeId?: string,
 ): ActivityRecord | null {
   if (!fileFor(demoId)) return null;
-  const who = (email || "").trim().toLowerCase() || ANONYMOUS;
+  /* The master-password label keeps its capitals; addresses are lower-cased so one person
+     is one line whatever case they typed. */
+  const raw = (email || "").trim();
+  const who = raw === "Invoca employee" ? raw : raw.toLowerCase() || ANONYMOUS;
   const now = new Date().toISOString();
   const rec = read(demoId) ?? { demoId, prospect, users: [] };
   /* The prospect's name can be edited on the demo after a share was made; the latest

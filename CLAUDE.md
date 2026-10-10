@@ -13890,6 +13890,31 @@ here**, and the generation prompt wants the same treatment so prospects are born
 Neither was run: it is a model call per profile plus a PATCH per live demo, which is its own
 operation to authorise.
 
+### Each prospect gets their own 6-digit password, and Invoca has a master one (10/9/2026)
+Asked for: a random 5 or 6 digit password tied to the email, the SAME number every time that
+email asks, the number identifying that person when typed later, and a master password
+"invoca2026" for Invoca employees. `engine/shareCodes.ts`.
+- ⚠️⚠️ **ONE CODE PER ADDRESS, ACROSS EVERY LINK, STORED IN PLAIN TEXT** in
+  `DATA_DIR/share-codes.json`. Plain text because "share that same number" means it must be
+  readable to resend; it is a demo access code on the server disk, and the 32-byte link token
+  still decides which demo opens. Codes are unique, which is what makes a code mean a person.
+- **Unlock accepts three things, in order:** the master password (recorded as "Invoca
+  employee"), a person's code (recorded as THAT code's address, even when they skipped the
+  email step), and the link's own stored password, kept so links already sent with the old
+  name-based password keep working. ⚠️ That third path is the guessable one; drop it once the
+  old links have expired.
+- ⚠️ **`SHARE_MASTER_PASSWORD` overrides the master on the server.** The default is in this
+  repository, so anyone who can read the repo can read it. Rotate it on Render.
+- **Wrong passwords are capped at 40 a day per link** (`CAPS.unlockFail`), since a 6-digit
+  code is guessable without one. Only failures count.
+- **A revoked or expired link now mints and mails nothing**; the request route never checked
+  `shareActive` before.
+- **The gate:** "Company email", the button stays live, and a personal address answers WITH
+  THE ERROR ON SUBMIT rather than disabling the button. The SE's share dialog says prospects
+  get their own code and the link password is only a fallback.
+- `audit:share` exercises all of it through the real handler; two sabotages verified (master
+  disabled, cap removed). Five older checks that pinned the name-based password were re-aimed.
+
 ### A shared demo goes to a company address, not a personal one (10/9/2026)
 
 Asked for directly at the share gate's email field: *"i want the user that i share demos with
