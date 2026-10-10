@@ -7,7 +7,7 @@ import { AgentStudioLayout } from "./AgentStudioLayout";
 import { SHARE_BASENAME, isShareMode } from "../data/shareMode";
 import { VoicePreviewIllustration } from "../components/VoicePreviewIllustration";
 import { PhonePreview } from "./PhonePreview";
-import { takeAutoplay, markAutoplayDone } from "../components/GuidedTour";
+import { takeAutoplay, markAutoplayDone, isTourRunning } from "../components/GuidedTour";
 import { autoOpeners } from "../data/tourSteps";
 import { WorkflowChatPreview } from "../components/WorkflowChatPreview";
 import { VoiceCallLive } from "./VoiceCallLive";
@@ -372,23 +372,24 @@ export function AgentWorkflow() {
               clicking Preview Agent opens `/agent-studio/agent/preview` on the SIGNED-IN app
               — escaping their share entirely. Caught by walking the share as a prospect, not
               by reading the diff. */}
-          {/* ⚠️⚠️ **IN A SHARED DEMO IT OPENS IN PAGE, NOT IN A NEW TAB — two reasons, and
-              the second matters more.** A `window.open` from a link a prospect followed out
-              of an email is exactly what a popup blocker eats, so the most important button
-              on the demo would silently do nothing for some of them. And the guided tour
-              cannot drive another tab: the scripted conversation, the spotlight and the
-              "now you try" step all live in this document. `PhonePreview` already supports
-              `mode="modal"`; the SE keeps the tab they were signed off with. */}
-          {isSms && !created && shared && (
-            <button className="wf-preview wf-preview-agent"
-              onClick={() => setPhone({ script: takeAutoplay() ? autoOpeners(profile) : undefined })}>
-              Preview Agent
-            </button>
-          )}
-          {isSms && !created && !shared && <button className="wf-preview wf-preview-agent" onClick={() => window.open(
-            SHARE_BASENAME + (extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
-                  : "/agent-studio/agent/preview"),
-            "_blank", "noopener")}>Preview Agent</button>}
+          {/* ⚠️⚠️ **A NEW TAB, LIKE THE SIGNED-IN SITE — EXCEPT WHILE THE GUIDED TOUR RUNS**
+              (10/9/2026). Reported on a shared demo: "why is the phone appearing on the same
+              page… it should do the same behavior as the live website". It opened in page
+              for every click because the tour cannot drive another tab: the scripted
+              conversation, the spotlight and the "now you try" step live in this document.
+              So only a click made BY the tour (or while it is open) gets the in-page phone;
+              any other click opens the preview tab. `window.open` straight from a click is
+              a user gesture, which popup blockers allow. */}
+          {isSms && !created && <button className="wf-preview wf-preview-agent" onClick={() => {
+            if (shared && isTourRunning()) {
+              setPhone({ script: takeAutoplay() ? autoOpeners(profile) : undefined });
+              return;
+            }
+            window.open(
+              SHARE_BASENAME + (extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
+                : "/agent-studio/agent/preview"),
+              "_blank", "noopener");
+          }}>Preview Agent</button>}
           {/* ⚠️ **ENABLED, AS MEASURED — and it previews THIS workflow.** It was briefly
               disabled here, because a preview would have run the prospect's CONFIGURED agent
               (ZIP gate, travel dates, six use cases) against a diagram that shows none of it.

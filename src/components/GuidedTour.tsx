@@ -43,6 +43,12 @@ let autoplayArmed = false;
 export const armAutoplay = () => { autoplayArmed = true; };
 export const takeAutoplay = (): boolean => { const v = autoplayArmed; autoplayArmed = false; return v; };
 
+/* ⚠️ Whether the tour is on screen right now. Preview Agent reads it: the tour has to
+   drive the phone, so only then does the phone open in this page; otherwise it opens in
+   its own tab like the signed-in site (asked for 10/9/2026). */
+let tourRunning = false;
+export const isTourRunning = (): boolean => tourRunning;
+
 let autoplayDone = false;
 export const markAutoplayDone = () => { autoplayDone = true; };
 const takeAutoplayDone = (): boolean => autoplayDone;
@@ -87,6 +93,9 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const steps = useRef<TourStep[]>(tourStepsFor(profile)).current;
+  /* Set back to true in the body, not only cleared in the cleanup: StrictMode's simulated
+     unmount runs the cleanup and then the effect again. */
+  useEffect(() => { tourRunning = true; return () => { tourRunning = false; }; }, []);
 
   const [i, setI] = useState(0);
   const [box, setBox] = useState<Box | null>(null);

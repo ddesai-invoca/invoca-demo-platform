@@ -975,8 +975,23 @@ console.log("\nActivity tracking\n");
       ? ok("the script and a human take the same send path")
       : bad("the tour has its own sender, free to drift from the real one");
 
+    /* ⚠️ "it should do the same behavior as the live website" (10/9/2026): outside the
+       tour, a shared demo's Preview Agent opens its own tab. */
+    {
+      const wfSrc = code("src/screens/AgentWorkflow.tsx");
+      const btn = wfSrc.slice(wfSrc.indexOf('className="wf-preview wf-preview-agent" onClick'), wfSrc.indexOf(">Preview Agent</button>"));
+      /if \(shared && isTourRunning\(\)\)/.test(btn) && /window\.open\(\s*SHARE_BASENAME/.test(btn)
+      && (wfSrc.match(/>Preview Agent<\/button>/g)?.length ?? 0) === 1
+        ? ok("Preview Agent opens a new tab on a shared demo, in page only while the tour runs")
+        : bad("a shared demo's Preview Agent opens in page for every click again");
+      /tourRunning = true; return \(\) => \{ tourRunning = false; \}/.test(code("src/components/GuidedTour.tsx"))
+        ? ok("the tour reports when it is running, StrictMode-safe")
+        : bad("nothing tells Preview Agent whether the tour is open");
+    }
     /* ⚠️ Consumed at click time: reading it during render spends it on StrictMode's first pass. */
-    /onClick=\{\(\) => setPhone\(\{ script: takeAutoplay\(\)/.test(code("src/screens/AgentWorkflow.tsx"))
+    /* Re-aimed 10/9/2026: the click handler now branches (tour → in page, otherwise a new
+       tab), so the consume sits inside it rather than on the arrow's first line. */
+    /if \(shared && isTourRunning\(\)\) \{\s*setPhone\(\{ script: takeAutoplay\(\)/.test(code("src/screens/AgentWorkflow.tsx"))
       ? ok("the autoplay flag is consumed in the click handler, never during render")
       : bad("a double render would swallow the script");
 
