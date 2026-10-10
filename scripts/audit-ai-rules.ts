@@ -15,8 +15,10 @@ import { isLockedEdit, isStructuralChange, routeEdits } from "../src/data/editGu
 import { voiceSpecFor, specWithConfig, agentConfigOf } from "../src/data/voiceAgentSpec.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
 import { collectNames } from "../src/data/workflowDrawers.ts";
-import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF } from "../src/data/workflowChrome.ts";
+import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF,
+  LEAF_QUALIFY, LEAF_ESCALATE } from "../src/data/workflowChrome.ts";
 import { rowLayout } from "../src/data/workflowRows.ts";
+import { deriveTree, builtInWorkflowBase } from "../src/data/workflowBase.ts";
 import { smsBranches, smsConfigFor, repairSmsSegments, SMS_TRIGGER } from "../src/data/smsTemplate.ts";
 import { voiceVocab, repairSupportUseCases } from "../src/data/voiceUseCases.ts";
 import { canNestAt } from "../src/data/workflowDrawers.ts";
@@ -205,13 +207,33 @@ console.log("\nThe SMS workflow template's node names are locked");
      to `smsTemplate.ts` (asserted above, by building it), leaving the voice default and the
      three SHAPE overrides in this file. Re-aimed with the move rather than relaxed — the
      invariant is that no tree names its own intents, and both halves are still checked. */
-  const intents = [...wf.matchAll(/title:\s*INTENT_(?:SALES|SUPPORT)[^\n]*/g)].map((m) => m[0]);
-  intents.length >= 6
-    ? ok(`every tree in AgentWorkflow declares both intents from the constants (${intents.length})`)
-    : bad(`only ${intents.length} intent titles use the constants — a tree names its own`);
-  intents.every((l) => l.includes("locked: true"))
-    ? ok("every intent node carrying a constant is also locked")
-    : bad("an intent node uses a constant but is NOT locked — the AI could rename it");
+  /* ⚠️⚠️ **RE-AIMED 10/9/2026 FROM A GREP TO A BUILD, AND THAT IS STRICTLY STRONGER.** This
+     counted `title: INTENT_SALES` occurrences in `AgentWorkflow.tsx`; `deriveTree` and the
+     SHAPE overrides moved to `workflowBase.ts`, so the count went to 0 on correct code. The
+     invariant never was "the constant appears in that file" — it is that NO TREE NAMES ITS OWN
+     INTENTS — and a source grep passes against `if (false)` while building the tree cannot.
+     Both the derived default and the National Van Lines SHAPE override are covered, which is
+     exactly where a stale copy of a template survives. */
+  const treeIntentProfiles = ["aptive", "orlando-health", "national-van-lines"]
+    .map((id) => { try { return CustomerProfile.parse(JSON.parse(readAny(`src/data/generated/${id}.json`))); }
+                   catch { return null; } })
+    .filter(Boolean) as any[];
+  const strayIntent = treeIntentProfiles.flatMap((pr) =>
+    [true, false].flatMap((isSms) =>
+      (deriveTree(pr, isSms, isSms ? "SMS" : "Voice").branches ?? [])
+        .filter((b: any) => b.title !== INTENT_SALES && b.title !== INTENT_SUPPORT)
+        .map((b: any) => `${pr.id}/${isSms ? "sms" : "voice"}: ${b.title}`)));
+  const intentCount = treeIntentProfiles.length * 2;
+  treeIntentProfiles.length >= 2 && !strayIntent.length
+    ? ok(`every built tree names both intents from the constants (${intentCount} trees)`)
+    : bad(`a tree names its own intent: ${strayIntent.slice(0, 3).join(", ") || "no profiles loaded"}`);
+  /* ⚠️ RE-AIMED WITH THE MOVE TOO — it read the grep's match list, which no longer exists.
+     Built, so it is now asserting the rendered flag rather than the source text beside it. */
+  const builtIntents = treeIntentProfiles.flatMap((pr) =>
+    [true, false].flatMap((isSms) => deriveTree(pr, isSms, isSms ? "SMS" : "Voice").branches ?? []));
+  builtIntents.length >= 4 && builtIntents.every((b: any) => b.locked === true)
+    ? ok(`every built intent node is locked (${builtIntents.length})`)
+    : bad("an intent node is not locked — the AI could rename it");
   /* ⚠️ THE LEAF ROW IS CHROME TOO (8/26/2026). The voice tree's leaves read
      `All ${c.newQ} Users` / `Route to ${c.newQueue}` until the user confirmed the real page
      always shows the group named after the intent and one of a fixed set of actions. Only the
@@ -228,8 +250,13 @@ console.log("\nThe SMS workflow template's node names are locked");
      support leaf branches, and the product's own rule is that only a Qualify may nest; its
      ANSWERS carry `Support & Escalate`. Both constants must still be used, so a leaf going
      back to a hand-typed string is still caught. */
-  voice.includes("action: LEAF_QUALIFY") && voice.includes("LEAF_ESCALATE")
-    ? ok("the voice leaves use the shared action constants, not literals")
+  /* ⚠️ RE-AIMED WITH THE MOVE, same reasoning as the intent check above: built, not grepped. */
+  const vTree = treeIntentProfiles[0] ? deriveTree(treeIntentProfiles[0], false, "Voice") : null;
+  const vLeaves = (vTree?.branches ?? []).flatMap((b: any) => b.leaves ?? []);
+  const vAnswers = vLeaves.flatMap((l: any) => l.paths ?? []);
+  vLeaves.length >= 2 && vLeaves.every((l: any) => l.action === LEAF_QUALIFY)
+    && vAnswers.some((p: any) => p.action === LEAF_ESCALATE)
+    ? ok("the built voice tree's leaves are Qualifies and its support answers escalate")
     : bad("the voice leaf actions are not the shared constants");
   /\.\(title\|subtitle\|action\)\$/.test(readAny("src/data/editGuard.ts"))
     ? ok("LOCKED_KEYS covers action, so a locked leaf's action is refused too")
@@ -296,8 +323,11 @@ console.log("\nThe SMS workflow template's node names are locked");
 
   /* The trigger line and Conversation Start are chrome on BOTH channels; `chromeLocked` is
      what makes editGuard refuse them. Without it the AI can rewrite the product's wording. */
-  (wf.match(/chromeLocked: true/g) ?? []).length >= 2
-    ? ok("both the SMS and Voice trees set chromeLocked")
+  /* ⚠️ RE-AIMED WITH THE MOVE: built, not grepped. */
+  treeIntentProfiles[0]
+    && deriveTree(treeIntentProfiles[0], true, "SMS").chromeLocked === true
+    && deriveTree(treeIntentProfiles[0], false, "Voice").chromeLocked === true
+    ? ok("both the built SMS and Voice trees set chromeLocked")
     : bad("a tree does not set chromeLocked — its trigger line is AI-editable");
   /chromeLocked\?: boolean/.test(readAny("src/components/WorkflowTree.tsx"))
     ? ok("WorkflowTreeModel declares chromeLocked")

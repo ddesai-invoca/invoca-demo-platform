@@ -11,6 +11,10 @@ import { SEED_IDS } from "../data/profiles";
 import { EVENTS, eventGroupOf } from "../data/eventDemos";
 import { generateProfile } from "../data/generateStream";
 import BulkGenerate from "../components/BulkGenerate";
+import { CustomPrompt, PlanReview, requestPlan } from "../components/CustomPrompt";
+import { SURFACES } from "../data/demoSurfaces";
+import { applyPlan, type ItemProgress } from "../data/applyPlan";
+import type { DemoPlan } from "../../engine/demoPlan";
 import EventSheetButton, { type EventSheetState } from "../components/EventSheetButton";
 import DemoMarkButton from "../components/DemoMarkButton";
 
@@ -203,7 +207,7 @@ export function Launch() {
       window.history.replaceState({}, "", location.pathname);
     }
   }, []);
-  const { hydrateDemo } = useAiAssistant();
+  const { hydrateDemo, registerBase, applyEdits, addTile, effectiveData } = useAiAssistant();
   const navigate = useNavigate();
 
   const [name, setName] = useState("");
@@ -212,6 +216,16 @@ export function Launch() {
   const [shareOnLaunch, setShareOnLaunch] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [statuses, setStatuses] = useState<Record<string, StepStatus>>({});
+  /* The custom prompt and the plan it was read back as.
+     ⚠️ `planFor` IS WHAT MAKES THE CONFIRMATION MEAN ANYTHING: it records the exact text
+     the plan was built from, so editing one word after confirming invalidates it and the
+     next Launch click re-reads it rather than building something nobody agreed to. */
+  const [customPrompt, setCustomPrompt] = useState("");
+  const [plan, setPlan] = useState<DemoPlan | null>(null);
+  const [planFor, setPlanFor] = useState("");
+  const [planning, setPlanning] = useState(false);
+  /* Live rows for the apply pass, rendered under the build checklist. */
+  const [applying, setApplying] = useState<ItemProgress[] | null>(null);
   const [, setTick] = useState(0);
   const stepStartRef = useRef<Record<string, number>>({});
 
@@ -404,12 +418,46 @@ export function Launch() {
 
   async function launch(e: React.FormEvent) {
     e.preventDefault();
-    if (busy) return;
+    if (busy || planning) return;
     const trimmedName = name.trim();
     let trimmedUrl = url.trim();
     if (!trimmedName || !trimmedUrl) { setError("Enter both a prospect name and a website URL."); return; }
     if (!/^https?:\/\//i.test(trimmedUrl)) trimmedUrl = "https://" + trimmedUrl;
 
+    /* ⚠️⚠️ **THE CONFIRM STEP LIVES HERE, ON THE LAUNCH CLICK, BECAUSE THAT IS WHERE THE
+       THREE MINUTES ARE SPENT.** With a prompt written and no plan agreed for THAT EXACT
+       TEXT, this click reads it back and returns without generating; the Confirm button on
+       the review then calls `build()`. An empty prompt never enters this branch, so the
+       form behaves exactly as it did for anyone not using the feature.
+       ⚠️ The surfaces offered are the ones THIS prospect will actually have, so the planner
+       cannot write an instruction for a screen that renders an empty state. */
+    const wanted = customPrompt.trim();
+    if (wanted && (!plan || planFor !== wanted)) {
+      setError(null);
+      setPlanning(true);
+      try {
+        const got = await requestPlan({
+          prospect: trimmedName, url: trimmedUrl, prompt: wanted,
+          /* No profile exists yet, so the catalogue is every surface a demo can have.
+             `applyPlan` re-checks `when` against the REAL profile before touching one. */
+          surfaces: SURFACES,
+        });
+        setPlan(got);
+        setPlanFor(wanted);
+      } catch (err: any) {
+        setError(err?.message || "Could not read that back.");
+      } finally {
+        setPlanning(false);
+      }
+      return;
+    }
+
+    await build(trimmedName, trimmedUrl, wanted ? plan : null);
+  }
+
+  /* The generation itself. Split out of `launch` so the review's Confirm button can call
+     it directly without re-entering the planning branch. */
+  async function build(trimmedName: string, trimmedUrl: string, confirmed: DemoPlan | null) {
     setError(null);
     setStatuses({});
     stepStartRef.current = {};
@@ -425,6 +473,12 @@ export function Launch() {
       const finalProfile = await generateProfile({
         name: trimmedName,
         url: trimmedUrl,
+        /* ⚠️ THE STEER HALF OF A CONFIRMED PLAN, ON THE PATH THAT ALREADY EXISTED.
+           `/api/generate` has accepted `steer` since 9/10; it rides the research brief
+           into all 20 phases and decides wording and content while the work is done.
+           The plan's OTHER half is structural and cannot go here, which is what the
+           apply pass below is for. */
+        ...(confirmed?.steer ? { steer: confirmed.steer } : {}),
         onPhase: (phase, status) => {
           if (status === "building" && !stepStartRef.current[phase]) stepStartRef.current[phase] = Date.now();
           setStatuses((prev) => ({ ...prev, [phase]: status }));
@@ -447,6 +501,21 @@ export function Launch() {
       /* ⚠️ ADMIN-GATED like the checkbox that sets it, and NOT only because the
          checkbox is hidden: `admin` arrives from the server asynchronously, so the
          flag and the request must read the same answer at the moment it is used. */
+      /* ⚠️⚠️ **THE APPLY PASS RUNS AFTER THE DEMO IS PUBLISHED AND CANNOT FAIL IT.** By
+         here the prospect exists, is in the shared library and is hydrated, so a failed
+         assistant call costs one screen's customization and never the three minutes.
+         Same ordering and the same reasoning as the share link below.
+         ⚠️ It needs `demo.id`: the scope key is `<demoId>::<path>` and that prefix is what
+         `AiAssistantContext`'s debounced PATCH slices on to sync these edits to the shared
+         record. A local-only profile has no record to write to, so there is nothing to
+         apply onto and the pass is skipped rather than writing a key nobody reads. */
+      if (confirmed?.items.length && demo) {
+        try {
+          await applyPlan(confirmed, profile, demo.id, { registerBase, applyEdits, addTile, effectiveData },
+            (items) => setApplying(items));
+        } catch { /* reported per item; a whole-pass throw must not lose the demo */ }
+      }
+
       if (shareOnLaunch && admin && demo) {
         try {
           await fetch(`/api/demos/${encodeURIComponent(demo.id)}/shares`, {
@@ -458,6 +527,7 @@ export function Launch() {
       open(saved.id);
     } catch (err: any) {
       setError(err?.message || "Something went wrong generating this prospect.");
+      setApplying(null);
       setBusy(false);
     }
   }
@@ -472,7 +542,21 @@ export function Launch() {
           Invoca platform pre-loaded with their data.
         </p>
 
-        {busy ? (
+        {/* ⚠️ THREE STATES, AND THE ORDER MATTERS: building beats reviewing, or confirming
+            would leave the review on screen with a progress bar underneath it. */}
+        {!busy && plan && planFor === customPrompt.trim() ? (
+          <PlanReview
+            plan={plan}
+            prompt={planFor}
+            confirmLabel="Confirm and build"
+            onEdit={() => setPlan(null)}
+            onConfirm={() => {
+              let u = url.trim();
+              if (!/^https?:\/\//i.test(u)) u = "https://" + u;
+              void build(name.trim(), u, plan);
+            }}
+          />
+        ) : busy ? (
           <div className="launch-loading">
             <div className="launch-progress-head">
               <span className="launch-progress-title">Building {name.trim() || "the prospect"}'s Invoca platform…</span>
@@ -505,7 +589,31 @@ export function Launch() {
                 );
               })}
             </ul>
-            <div className="launch-hint">This takes a few minutes — building {BUILD_STEPS.length} pieces of the platform.</div>
+            <div className="launch-hint">This takes a few minutes, building {BUILD_STEPS.length} pieces of the platform.</div>
+            {/* ⚠️ SHOWN ONLY ONCE THE PASS HAS STARTED. Rendering the rows as "waiting"
+                through the whole generation would read as work that has stalled. */}
+            {applying && applying.length > 0 && (
+              <div className="dcp-apply">
+                <div className="dcp-apply-head">Applying your changes</div>
+                <ul className="launch-steps">
+                  {applying.map((it) => (
+                    <li key={it.surface} className={"launch-step launch-step-" + (it.state === "running" ? "building" : it.state === "done" ? "done" : it.state === "waiting" ? "pending" : "skipped")}>
+                      <span className="launch-step-ic">
+                        {it.state === "done" ? <span className="material-icons">check_circle</span>
+                          : it.state === "running" ? <span className="launch-step-spin" />
+                          : it.state === "failed" ? <span className="material-icons">error_outline</span>
+                          : it.state === "skipped" ? <span className="material-icons">remove_circle_outline</span>
+                          : <span className="material-icons">radio_button_unchecked</span>}
+                      </span>
+                      <span className="launch-step-label">{it.label}</span>
+                      {/* ⚠️ THE REASON IS SHOWN, NEVER SWALLOWED. A row that quietly reads
+                          "skipped" is the silent no-op this feature exists to remove. */}
+                      {it.detail && <span className="launch-step-skip">{it.detail}</span>}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         ) : (
           <form className="launch-form" onSubmit={launch}>
@@ -538,6 +646,21 @@ export function Launch() {
               />
               <span>Make this demo shareable</span>
             </label>}
+            {/* ⚠️ **DIRECTLY UNDER "Make this demo shareable", WHERE IT WAS ASKED FOR.**
+                Closed by default for the same reason Bulk Generation is: the form is two
+                fields and a button at rest.
+                ⚠️ NOT ADMIN-GATED, unlike the checkbox above it. The pain this answers was
+                reported as everyone's ("users tell me the demo generation isn't 100% to
+                their liking"), and nothing here reaches outside the demo being built. */}
+            <details className="launch-bulk dcp-details" open={!!customPrompt}>
+              <summary>Custom prompt</summary>
+              <CustomPrompt value={customPrompt} onChange={(v) => {
+                setCustomPrompt(v);
+                /* ⚠️ EDITING INVALIDATES A CONFIRMED PLAN. Without this, agreeing to a plan
+                   and then changing the text would build the OLD plan under the new words. */
+                if (plan) setPlan(null);
+              }} disabled={planning} />
+            </details>
             {/* ⚠️ A DISCLOSURE, CLOSED BY DEFAULT — the launch form is two fields and a
                 button and must stay that way at rest.
                 ⚠️ **NAMED FOR WHAT IT IS, AND IT SITS ABOVE THE BUTTON** (asked for
@@ -553,7 +676,9 @@ export function Launch() {
               <BulkGenerate />
             </details>
             {error && <div className="launch-error">{error}</div>}
-            <button className="launch-btn" type="submit">Launch demo</button>
+            <button className="launch-btn" type="submit" disabled={planning}>
+              {planning ? "Reading that back…" : "Launch demo"}
+            </button>
           </form>
         )}
 

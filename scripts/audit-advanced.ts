@@ -186,16 +186,38 @@ const adv = code("src/components/AdvancedSettings.tsx");
    over a name and a url and nothing else, and the shared poster sends exactly those two
    fields — a `steer`, `scope` or `sources` creeping back into either would mean the
    panel was effectively remounted without anybody saying so. */
-/generateProfile\(\{\s*name: trimmedName,\s*url: trimmedUrl,/.test(launch)
-  ? ok("the launch form passes only a name and a url")
-  : bad("the launch form is not sending the default two-field body");
+/* ⚠️⚠️ **RE-AIMED AGAIN 10/9/2026, AND THIS TIME ONE THIRD OF IT GENUINELY INVERTED.**
+   The custom-prompt feature gives `steer` a caller again, deliberately and on request, so
+   "no steer anywhere" stopped being the invariant. What the 9/25 request actually removed
+   was the PANEL: a custom prompt, a scope toggle, Gong and Drive, all on the launch form
+   with no confirmation. Three of those four are still gone and are still asserted gone.
+   The fourth is back behind a confirm step, which is a different thing and was asked for.
+   Pinning the old literal would have meant either deleting a real check or blocking a real
+   feature, and neither is the honest reading. */
+!/<AdvancedSettings/.test(launch)
+  ? ok("the AdvancedSettings panel is still unmounted on the launch form")
+  : bad("AdvancedSettings is mounted again — the 9/25 request is undone");
 (() => {
   const gen = code("src/data/generateStream.ts");
-  return /body: JSON\.stringify\(\{ name, url \}\)/.test(gen)
-    && !/\b(steer|scope|sources)\b/.test(gen);
+  /* `scope` would silently skip 13 phases and `sources` would carry document text; both
+     were part of the removed panel and neither has a caller. Still pinned. */
+  return !/\b(scope|sources)\b/.test(gen);
 })()
-  ? ok("the shared generate poster sends the two fields and nothing else")
-  : bad("the shared generate poster carries advanced settings — the panel is back by the side door");
+  ? ok("the shared generate poster still carries no scope and no document sources")
+  : bad("scope or sources is back in the generate body — that part of the panel returned");
+(() => {
+  const gen = code("src/data/generateStream.ts");
+  /* ⚠️ A STEER ONLY WHEN THERE IS ONE, so a generation with no custom prompt sends the
+     byte-identical two-field body it always did. */
+  return /\{ name, url, \.\.\.\(steer\?\.trim\(\) \? \{ steer: steer\.trim\(\) \} : \{\}\) \}/.test(gen);
+})()
+  ? ok("a steer is sent only when one was written, so the default body is unchanged")
+  : bad("the generate body no longer omits steer when it is empty");
+/* ⚠️ AND IT MAY ONLY COME FROM A CONFIRMED PLAN. A raw textarea wired straight to the
+   generation is the panel coming back by the side door, which is what this check is for. */
+/\.\.\.\(confirmed\?\.steer \? \{ steer: confirmed\.steer \} : \{\}\)/.test(launch)
+  ? ok("the launch form's steer comes from a confirmed plan, never straight from the box")
+  : bad("the launch form sends a steer that was never read back and confirmed");
 !/<AdvancedSettings/.test(launch) && !/\badv\.[a-z]/.test(launch)
   ? ok("the Advanced settings panel is not mounted on the launch form")
   : bad("AdvancedSettings is still rendered or still feeding the request");

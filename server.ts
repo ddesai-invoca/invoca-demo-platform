@@ -33,6 +33,7 @@ import { appEnv, isProduction } from "./engine/appEnv.ts";
 import { synthesizePreview } from "./engine/voicePreview.ts";
 import { livekitEnv, mintVoiceToken } from "./engine/livekitToken.ts";
 import { askAssistant } from "./engine/assistant.ts";
+import { planDemo } from "./engine/demoPlan.ts";
 import { installAuth, authEnabled, currentUser, parseCookies } from "./googleAuth.ts";
 import { handleShareApi, handleShareAdminApi, shareSession, takeBudget } from "./engine/shareApi.ts";
 import { handleDemoApi, isAdmin, canWrite as canWriteDemo } from "./engine/demoApi.ts";
@@ -576,6 +577,34 @@ app.post("/api/chat", async (req, res) => {
   } catch (e: any) {
     routeFailed("chat", e, { level: isOverloaded(e) ? "record" : "page" });
     res.status(isOverloaded(e) ? 503 : 500).json({ error: isOverloaded(e) ? "The AI is briefly overloaded — one moment, please resend." : e?.message || "Chat failed." });
+  }
+});
+
+/* POST /api/demo-plan → read a custom prompt back as a plan before generating.
+
+   ⚠️ THE SURFACE CATALOGUE IS SENT BY THE CLIENT, not read here, and that is deliberate:
+   `src/data/demoSurfaces.ts` owns the list BECAUSE it owns each surface's base data, and a
+   second copy on the server is how the planner comes to name a screen the apply pass cannot
+   reach. `sanitizePlan` then drops any item naming an id that was not in what arrived, so a
+   bad list narrows the plan rather than widening it. */
+app.post("/api/demo-plan", async (req, res) => {
+  try {
+    const b = req.body || {};
+    if (!b?.prompt?.trim()) return res.status(400).json({ error: "Write what you want this demo to do first." });
+    if (!Array.isArray(b?.surfaces) || !b.surfaces.length) return res.status(400).json({ error: "No screens are available to plan against." });
+    if (!apiKey) return res.status(500).json({ error: "ANTHROPIC_API_KEY is not set on the server." });
+    const plan = await planDemo({
+      prospect: String(b.prospect || "this prospect"),
+      url: String(b.url || ""),
+      prompt: String(b.prompt),
+      surfaces: b.surfaces,
+      bulk: !!b.bulk,
+    }, apiKey);
+    res.json({ plan });
+  } catch (e: any) {
+    routeFailed("demo-plan", e, { level: isOverloaded(e) ? "record" : "page" });
+    res.status(isOverloaded(e) ? 503 : 500).json({
+      error: isOverloaded(e) ? "The AI is briefly overloaded, one moment, please resend." : e?.message || "Could not read that back." });
   }
 });
 

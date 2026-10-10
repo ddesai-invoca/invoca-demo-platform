@@ -6,7 +6,7 @@ import { DashAssistant, usePageDataWithLabels } from "../components/GeneratedTil
 import { DonutChart } from "../components/DonutChart";
 import { LineChart } from "../components/LineChart";
 import { StackedBarChart } from "../components/StackedBarChart";
-import { leadFormFacts } from "../data/leadForms";
+import { marketingBase, MARKETING_LABELS } from "../data/marketingBase";
 import type { KpiGroup, Breakdown } from "../data/schema";
 import { fitCells } from "../components/chartFit";
 import { tileId } from "../data/tileId";
@@ -14,11 +14,7 @@ import { tileId } from "../data/tileId";
 /* The one heading on this screen that was a LITERAL. Everything else already
    comes from the dashboard data, so the assistant could rename any other card
    but silently no-op on this one. See usePageDataWithLabels. */
-const LABELS = {
-  breakoutGraph: "Sales Call Breakout Graph",
-  leadFormSummary: "Lead Form Performance Summary",
-  leadFormCount: "Lead Form Count",
-};
+
 
 /* `path` is the card's own data path. Optional, so heads that do not pass one are
    unchanged; passing it pins this card's AI edits to this card. */
@@ -90,45 +86,16 @@ function DonutBreakdown({ bd, total, path }: { bd: Breakdown; total: number; pat
   );
 }
 
-/* The LEAD FORM equivalent of "Call Performance Summary": same shape (a count, two
-   percents, revenue) so the two tiles read as a pair, and every figure anchored in
-   data the engine already produces (see data/leadForms.ts).
 
-   The LABELS come from the call group's own tiles wherever possible — tile 3 is the
-   prospect's conversion term ("Watch Sold (Percent)" for a watch dealer, "Policy
-   Bound (Percent)" for an insurer) and tile 4 its revenue wording. Reading them off
-   the neighbouring card keeps the pair consistent per prospect instead of hardcoding
-   one vertical's vocabulary. */
-function deriveLeadFormGroup(
-  profile: Parameters<typeof leadFormFacts>[0] & { reports: { marketingDashboard: { kpiGroups: KpiGroup[] } } },
-  labels: { leadFormSummary: string; leadFormCount: string },
-): KpiGroup | null {
-  const facts = leadFormFacts(profile);
-  if (!facts) return null;
-  const callTiles = profile.reports.marketingDashboard.kpiGroups?.[0]?.tiles ?? [];
-  const convLabel = callTiles[2]?.label ?? "Converted (Percent)";
-  const revLabel = callTiles[3]?.label ?? "Total Revenue (Sale Amount)";
-  return {
-    title: labels.leadFormSummary,
-    tiles: [
-      { label: labels.leadFormCount, value: facts.count.toLocaleString("en-US") },
-      ...(facts.engagement ? [facts.engagement] : []),
-      { label: convLabel, value: `${Math.round(facts.conversionPct)}%` },
-      { label: revLabel, value: `$${Math.round(facts.revenue).toLocaleString("en-US")}` },
-    ],
-  };
-}
 
 export function MarketingDashboard() {
   const { profile } = useProfile();
   /* The derived group is folded INTO the registered page data, so the assistant can
      edit its values and rename its labels exactly like any built-in tile, and undo
      covers it. */
-  const base = {
-    ...profile.reports.marketingDashboard,
-    leadFormSummary: deriveLeadFormGroup(profile as never, LABELS),
-  };
-  const view = usePageDataWithLabels(base, LABELS);
+  /* ⚠️ ONE DEFINITION — `src/data/marketingBase.ts`. See the note there on why a second
+     copy of this fold would silently blank the Lead Form card. */
+  const view = usePageDataWithLabels(marketingBase(profile as never), MARKETING_LABELS);
   const d = view;
   const L = view.labels;
 

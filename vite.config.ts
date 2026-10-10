@@ -772,6 +772,38 @@ function assistantApi(apiKey: string | undefined): Plugin {
   return {
     name: 'invoca-assistant-api',
     configureServer(server) {
+      /* POST /api/demo-plan — twin of server.ts. See the note there on why the surface
+         catalogue arrives from the client rather than being read here. */
+      server.middlewares.use('/api/demo-plan', async (req, res, next) => {
+        if (req.method !== 'POST') return next()
+        const send = (code: number, body: unknown) => {
+          res.statusCode = code
+          res.setHeader('Content-Type', 'application/json')
+          res.end(JSON.stringify(body))
+        }
+        try {
+          let raw = ''
+          for await (const chunk of req) raw += chunk
+          const b = JSON.parse(raw || '{}')
+          if (!b?.prompt?.trim()) return send(400, { error: 'Write what you want this demo to do first.' })
+          if (!Array.isArray(b?.surfaces) || !b.surfaces.length) return send(400, { error: 'No screens are available to plan against.' })
+          if (!apiKey) return send(500, { error: 'ANTHROPIC_API_KEY is not set. Add it to .env or export it before `npm run dev`.' })
+          const { planDemo } = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/demoPlan.ts')).href
+          )
+          const plan = await planDemo({
+            prospect: String(b.prospect || 'this prospect'),
+            url: String(b.url || ''),
+            prompt: String(b.prompt),
+            surfaces: b.surfaces,
+            bulk: !!b.bulk,
+          }, apiKey)
+          send(200, { plan })
+        } catch (e: any) {
+          send(500, { error: e?.message || 'Could not read that back.' })
+        }
+      })
+
       server.middlewares.use('/api/ai-assistant', async (req, res, next) => {
         if (req.method !== 'POST') return next()
         const send = (code: number, body: unknown) => {

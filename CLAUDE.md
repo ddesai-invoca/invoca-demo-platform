@@ -12776,6 +12776,142 @@ and it had been edited after the server started. **Restart the dev server after 
 under `engine/`.** The create-with-event path was then proved directly against a restarted
 server.
 
+## The custom prompt: say what you want, read it back, then build (10/9/2026)
+
+Asked for directly, under *Make this demo shareable*: *"allow this custom prompt to drop down
+a text box where the user can write exactly what they want the demo to generate once they hit
+Launch Demo. I want you to confirm with them your understanding of what they are asking. Once
+they hit Confirm, then generate, so they're not having to waste their time."* The pain was
+stated too: *"They're having to use the Ask AI button on all the screens to change it."*
+All three forks were put to the user and all three took the recommendation: **both mechanisms**,
+an **itemised plan** per screen, and **one prompt for a whole roster**.
+
+### ⚠️⚠️ TWO MECHANISMS, BECAUSE ONE OF THEM CANNOT REACH MOST OF WHAT WAS ASKED FOR
+Measured before building, and it is the decision everything else follows from. `steer` already
+existed, reached all 20 generation phases, and was never deleted (only its UI was, on 9/25).
+But `genContext.ts` deliberately caps itself at WORDING and CONTENT, with its own note
+recording why: letting a prompt fight the template produces *"a self-contradicting prompt,
+worse than either rule"*. A different dashboard, an extra workflow branch, a reworded report
+is the **override layer** — which is exactly what Ask AI writes into, i.e. literally the
+screen-by-screen work this feature exists to stop.
+
+| half | road | reaches |
+|---|---|---|
+| `steer` | the research brief, into every phase | vocabulary, call reasons, what the agents talk about, products, locations |
+| `items` | `applyEdits` after generation, per surface | anything structural: a branch, a tile, a column, a rewritten report |
+
+⚠️ **ONE MODEL CALL PRODUCES BOTH**, deliberately: they are two views of one request, and
+splitting them across two calls is how they come to disagree about what was asked.
+
+### ⚠️⚠️ `base` MUST BE BYTE-IDENTICAL TO WHAT THE SCREEN REGISTERS. THIS IS THE WHOLE RISK
+`applyEdits` reads `overrides[key] ?? base`, edits it, and stores the **whole result** back as
+the override. So a base that is merely CLOSE does not degrade gracefully, it **REPLACES** the
+page's data with the near-miss and nothing anywhere reports it. **Proved in the browser rather
+than argued**, on the Marketing dashboard:
+
+| override written from | result |
+|---|---|
+| `marketingBase(profile)` (the real base) | edit lands, **17 cards**, Lead Form Performance Summary present |
+| `profile.reports.marketingDashboard` (the obvious near-miss) | edit lands, **16 cards**, the Lead Form card **silently gone** |
+
+Two screens fold derived values into what they register, so both were **EXTRACTED, not
+copied**, the same pattern `workflowChrome.ts` and `workflowIntents.ts` already follow:
+- **`src/data/marketingBase.ts`** — the Lead Form group and the labels (`MarketingDashboard`
+  imports them back).
+- **`src/data/workflowBase.ts`** — `deriveTree`, the `SHAPE` / `SMS_SHAPE` overrides,
+  `useCaseNodes`, and `builtInWorkflowBase` (`AgentWorkflow` imports `deriveTree` back).
+
+⚠️ **ONLY SURFACES WHOSE BASE IS PROVABLY EXACT ARE LISTED** in `src/data/demoSurfaces.ts`
+(17 today). A screen building its scope out of local component state cannot be seeded from the
+profile alone, and guessing is the failure above. Adding one means extracting its base the way
+those two were, never approximating it in the registry.
+⚠️ **`when` GATES A SURFACE ON THE PROSPECT ACTUALLY HAVING IT**, or the planner writes an
+instruction for a screen that renders an empty state.
+
+### The confirm step is on the Launch button, which is what was asked for
+A separate "Review" button beside Launch is a control most people never press, which leaves the
+three-minute mistake exactly where it was. With a prompt written, the **first** Launch click
+reads it back and the **second** builds. An empty prompt never enters that branch, so the form
+is unchanged for anyone not using the feature.
+⚠️ **`planFor` IS WHAT MAKES THE CONFIRMATION MEAN ANYTHING** — it records the exact text the
+plan was built from, so editing one word after confirming invalidates it rather than building
+something nobody agreed to.
+⚠️ **`cannot` IS NOT POLITENESS.** Design, colours, fonts and a built-in tile's chart TYPE are
+not editable by any path here, so a prompt asking for them silently does nothing. Verified live:
+*"make the whole thing dark mode with our brand purple"* came back as a refusal with its reason,
+and no item was written for it.
+
+### ⚠️⚠️ THE FIRST REAL RUN CONTRADICTED ITSELF, AND IT IS FIXED ON BOTH SIDES
+The plan's `understood` promised *"three targeted edits"* and its `items` array was **empty**, so
+the confirm screen described changes and then listed none. That is the silent no-op this whole
+feature exists to remove, arriving inside the feature itself. Two fixes, because either alone
+leaves the screen free to contradict itself: the planner may now **only describe what its plan
+actually contains**, and zero items renders an explicit *"None"* block rather than an absent one.
+Both are pinned by `audit:custom-prompt` and both sabotages fire.
+
+### The apply pass runs in the BROWSER, through the drawer's own machinery
+`src/data/applyPlan.ts`. Doing it server-side would mean a second implementation of the override
+merge, the `editGuard` refusals, the undo stack and the demo PATCH. Running it here inherits
+every one: a structural change or a type flip is dropped exactly as from the drawer, each surface
+gets a real undo step, `readOnly` still refuses somebody else's demo, and the existing debounced
+PATCH syncs the lot with **no new endpoint**.
+⚠️ **`registerBase`, NEVER `registerScope`** — the latter is last-write-wins and sets the ACTIVE
+scope, so registering 17 surfaces in a loop would repoint the top bar's sparkle at whichever ran
+last. And the base is seeded **before** the assistant is asked, or the answer arrives seconds
+later with nowhere to land and `applyEdits` returns 0.
+⚠️ **ONE SURFACE FAILING MUST NOT TAKE THE DEMO WITH IT.** The prospect is published by the time
+this runs; every item is caught on its own and the walk continues. Same ordering and reasoning as
+the share link beside it.
+⚠️ **SEQUENTIAL, NOT PARALLEL** — each item is an Opus call, and the surfaces are independent so
+there is nothing to gain but a rate limit landing on one SE at the end of a three-minute wait.
+⚠️ **A REFUSAL IS REPORTED WITH ITS REASON, never swallowed.** `kind:"answer"` means the model
+declined; a row that quietly reads "skipped" with no reason is the failure this feature removes.
+⚠️ **THE DASH SWEEP RUNS ON EVERY STRING THE ASSISTANT WROTE**, because unlike the drawer there
+is no human reading each edit before it lands.
+
+### Bulk Generation takes one prompt for the whole roster
+Same confirm step, and it matters more there: a misread prompt costs one demo on the launch form
+and an **hour** across twenty rows. A per-row column in the template was the other option and was
+turned down (harder to fill in, and the confirm step would have to cover twenty plans).
+⚠️ The plan is applied **per row, after that row is published**, so it lands on the demo it was
+generated for.
+
+### Two audit checks were re-aimed, and one of them genuinely INVERTED
+`audit:advanced` asserted *"the shared generate poster sends the two fields and nothing else"* —
+its own note saying a `steer` returning *"would mean the panel was effectively remounted without
+anybody saying so"*. Somebody has now said so, but only for **one of that panel's four controls**.
+So: `AdvancedSettings` must still be unmounted (pinned), `scope` and `sources` must still have no
+caller (pinned), and `steer` may ride only a **confirmed plan**, never a raw textarea (pinned).
+Three sabotages fire. Pinning the old literal would have meant deleting a real check or blocking
+a real feature, and neither is the honest reading.
+⚠️ Three `audit:ai` checks also moved from GREPPING `AgentWorkflow.tsx` to **BUILDING** the tree,
+because `deriveTree` left that file. Strictly stronger: a grep passes against `if (false)`.
+
+**`npm run audit:custom-prompt` is 51 checks**, functional wherever possible — `sanitizePlan` and
+`applyPlan` are CALLED against stubs, never grepped. ⚠️ **Nine sabotages were verified to fire**,
+and two of them found real defects in my own work rather than confirming it: a near-miss marketing
+base passed a green suite until every non-trivial base was pinned to its builder's output, and a
+rethrowing pass **crashed the suite with a stack trace instead of printing FAIL** (the trap
+`audit:replicas` already records) until every functional block ran through a `guard`.
+⚠️ **AND ONE CHECK FAILED ON CORRECT CODE FIRST** — the route check knew only `path="..."` and
+reddened on four good surfaces, because the in-shell screens are declared as keys of a nav map
+and the two workflows are reached through a PARAM route. It understands all three now.
+
+**Verified in the browser end to end**: the box sits directly under *Make this demo shareable*;
+a prompt naming two screens produced a two-item plan with no steer (correct for a purely
+per-screen request); Confirm generated, published, and **both edits landed and RENDERED** —
+Signal reading "Pool Visit Booked" and Call Review carrying a green pool recovery story, under
+the keys `riverbend-pools::/signal` and `riverbend-pools::/call-review`. A generation with no
+steer sent the byte-identical `{name, url}` body. Untouched and checked afterwards: Marketing 17
+cards / 10 donuts / Lead Form card, the SMS tree 16 nodes with `.wf-v2`, the voice tree 13 nodes
+with **0** `.wf-v2` and **0** arrowheads.
+⚠️ **The test prospect was deleted afterwards** (88 demos before and after) and its overrides
+cleared from the browser.
+⚠️ **NOT VERIFIED: a full three-minute generation carrying a steer.** `/api/generate` was stubbed
+so the apply pass could be exercised without spending one; the steer's own path is covered by
+`audit:advanced` and by `engine/genContext.ts`'s existing checks, and the body was read to confirm
+the field is omitted when empty. The first real steered generation is still worth watching.
+
 ### The share password is emailed, not passed along (10/8/2026)
 
 Asked for: *"instead of us giving them the password, i want to setup it up so that they have

@@ -22,6 +22,15 @@ export interface GenerateOpts {
   onPhase?: (phase: string, status: PhaseStatus) => void;
   /** Aborts the request — used by the bulk panel's Stop button. */
   signal?: AbortSignal;
+  /* ⚠️ **THE EXISTING `steer` PATH, FINALLY GIVEN A CALLER AGAIN (10/9/2026).**
+     `/api/generate` has accepted this since 9/10 and both twins still parse it
+     (`engine/genContext.ts`); what went away in the "remove the advanced settings"
+     pass was the UI, not the plumbing. It is appended to the research brief BEFORE
+     `generateTerms` runs, so it reaches the phase that picks `bookingTerm` and
+     `customerNoun` and therefore every screen downstream of them.
+     ⚠️ Omitted entirely when absent, so a generation with no custom prompt sends the
+     byte-identical two-field body it always has. */
+  steer?: string;
 }
 
 /**
@@ -31,11 +40,11 @@ export interface GenerateOpts {
  * there would let a caller report success having built nothing — the silent no-op
  * this repo has paid for repeatedly, and the same rule the Ask AI stream follows.
  */
-export async function generateProfile({ name, url, onPhase, signal }: GenerateOpts): Promise<unknown> {
+export async function generateProfile({ name, url, onPhase, signal, steer }: GenerateOpts): Promise<unknown> {
   const res = await fetch("/api/generate", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, url }),
+    body: JSON.stringify({ name, url, ...(steer?.trim() ? { steer: steer.trim() } : {}) }),
     signal,
   });
   if (!res.body) throw new Error("Generation failed: no response stream.");

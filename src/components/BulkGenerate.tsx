@@ -5,6 +5,11 @@ import { useDemoLibrary } from "../data/DemoLibraryContext";
 import { useProfile } from "../data/ProfileContext";
 import { generateProfile } from "../data/generateStream";
 import { parseRoster, ROSTER_TEMPLATE, ROSTER_MAX, type ParsedRoster } from "../data/rosterImport";
+import { CustomPrompt, PlanReview, requestPlan } from "./CustomPrompt";
+import { SURFACES } from "../data/demoSurfaces";
+import { applyPlan } from "../data/applyPlan";
+import { useAiAssistant } from "../data/AiAssistantContext";
+import type { DemoPlan } from "../../engine/demoPlan";
 
 /* =============================================================================
    BulkGenerate — a filled-in template becomes a whole event roster
@@ -39,6 +44,7 @@ interface Progress {
 export default function BulkGenerate() {
   const { createDemo, demos } = useDemoLibrary();
   const { addProfile } = useProfile();
+  const { registerBase, applyEdits, addTile, effectiveData } = useAiAssistant();
   const [parsed, setParsed] = useState<ParsedRoster | null>(null);
   const [fileName, setFileName] = useState("");
   const [event, setEvent] = useState("");
@@ -47,6 +53,15 @@ export default function BulkGenerate() {
   const [err, setErr] = useState<string | null>(null);
   const abortRef = useRef<AbortController | null>(null);
   const fileRef = useRef<HTMLInputElement | null>(null);
+  /* ⚠️ **ONE PROMPT FOR THE WHOLE ROSTER**, which is what was asked for. A per-row column
+     in the template was the other option and was turned down: it makes the template harder
+     to fill in and the confirm step would have to cover twenty different plans.
+     ⚠️ `planFor` pins the plan to the exact text it was built from, so an edit after
+     confirming re-reads rather than running something nobody agreed to. */
+  const [prompt, setPrompt] = useState("");
+  const [plan, setPlan] = useState<DemoPlan | null>(null);
+  const [planFor, setPlanFor] = useState("");
+  const [planning, setPlanning] = useState(false);
 
   function downloadTemplate() {
     const blob = new Blob([ROSTER_TEMPLATE], { type: "text/csv;charset=utf-8" });
@@ -67,8 +82,31 @@ export default function BulkGenerate() {
     if (!p.rows.length) setErr("No usable rows — the file needs a name and a website on each line.");
   }
 
+  /* ⚠️⚠️ **THE SAME CONFIRM STEP AS THE SINGLE LAUNCH, AND IT MATTERS MORE HERE.** A
+     misread prompt costs one demo on the launch form and an HOUR across twenty rows, so
+     Generate reads the prompt back first and only builds on the second press. With no
+     prompt written this branch is never entered and the panel behaves exactly as before. */
   async function run() {
-    if (!parsed?.rows.length || running) return;
+    if (!parsed?.rows.length || running || planning) return;
+    const wanted = prompt.trim();
+    if (wanted && (!plan || planFor !== wanted)) {
+      setErr(null);
+      setPlanning(true);
+      try {
+        const got = await requestPlan({ prospect: "", url: "", prompt: wanted, surfaces: SURFACES, bulk: true });
+        setPlan(got);
+        setPlanFor(wanted);
+      } catch (e: any) {
+        setErr(e?.message || "Could not read that back.");
+      } finally { setPlanning(false); }
+      return;
+    }
+    await build();
+  }
+
+  async function build() {
+    if (!parsed?.rows.length) return;
+    const confirmed = prompt.trim() ? plan : null;
     setRunning(true);
     setErr(null);
     const ctl = new AbortController();
@@ -91,6 +129,8 @@ export default function BulkGenerate() {
           name: row.name,
           url: row.url,
           signal: ctl.signal,
+          /* The steer half, on every row of the roster. */
+          ...(confirmed?.steer ? { steer: confirmed.steer } : {}),
           onPhase: (phase, status) =>
             setRows((r) => r.map((x, j) => (j === i && status === "building" ? { ...x, detail: phase } : x))),
         });
@@ -99,6 +139,16 @@ export default function BulkGenerate() {
         /* Same fallback the single launch takes: a library that is unreachable must not
            lose a prospect somebody just waited three minutes for. */
         addProfile(demo ? { ...profile, id: demo.id } : profile);
+        /* ⚠️ APPLIED PER ROW, AFTER THAT ROW IS PUBLISHED, AND IT CANNOT FAIL THE ROW.
+           Each prospect gets its own scope keys, so the plan lands on the demo it was
+           generated for rather than on whichever one happened to be open. */
+        if (confirmed?.items.length && demo) {
+          setRows((r) => r.map((x, j) => (j === i ? { ...x, detail: "applying your changes…" } : x)));
+          try {
+            await applyPlan(confirmed, profile, demo.id,
+              { registerBase, applyEdits, addTile, effectiveData }, undefined, ctl.signal);
+          } catch { /* reported per item; never loses the prospect */ }
+        }
         setRows((r) => r.map((x, j) => (j === i
           ? { ...x, state: "done", detail: demo ? undefined : "built, but not published" } : x)));
       } catch (e: unknown) {
@@ -148,6 +198,14 @@ export default function BulkGenerate() {
         {EVENTS.map((ev) => <option key={ev.key} value={ev.key}>{ev.label}</option>)}
       </select>
 
+      <div className="dcp-inline">
+        <CustomPrompt bulk value={prompt} disabled={running || planning} onChange={(v) => {
+          setPrompt(v);
+          /* Editing invalidates a confirmed plan — see the note on `planFor`. */
+          if (plan) setPlan(null);
+        }} />
+      </div>
+
       {parsed && (
         <div className="blk-summary">
           <strong>{parsed.rows.length}</strong> prospect{parsed.rows.length === 1 ? "" : "s"} ready
@@ -164,6 +222,16 @@ export default function BulkGenerate() {
       )}
 
       {err && <div className="evs-err">{err}</div>}
+
+      {!running && plan && planFor === prompt.trim() && (
+        <PlanReview
+          plan={plan}
+          prompt={planFor}
+          confirmLabel={`Confirm and build ${parsed?.rows.length ?? 0}`}
+          onEdit={() => setPlan(null)}
+          onConfirm={() => void build()}
+        />
+      )}
 
       {rows.length > 0 && (
         <ol className="blk-rows">
@@ -191,8 +259,10 @@ export default function BulkGenerate() {
             <button type="button" className="evs-unlink" onClick={() => abortRef.current?.abort()}>Stop</button>
           </>
         ) : (
-          <button type="button" className="dmk-submit" disabled={!parsed?.rows.length} onClick={run}>
-            {done + failed + skipped > 0 ? "Run again" : `Generate ${parsed?.rows.length ?? 0}`}
+          <button type="button" className="dmk-submit" disabled={!parsed?.rows.length || planning} onClick={run}>
+            {planning ? "Reading that back…"
+              : done + failed + skipped > 0 ? "Run again"
+              : `Generate ${parsed?.rows.length ?? 0}`}
           </button>
         )}
       </div>
