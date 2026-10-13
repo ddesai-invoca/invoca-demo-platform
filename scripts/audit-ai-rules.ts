@@ -19,7 +19,7 @@ import { emptyWorkflowTree, extraTree, ZERO_TRIGGER, INTENT_SALES, INTENT_SUPPOR
   LEAF_QUALIFY, LEAF_ESCALATE } from "../src/data/workflowChrome.ts";
 import { rowLayout } from "../src/data/workflowRows.ts";
 import { deriveTree, builtInWorkflowBase } from "../src/data/workflowBase.ts";
-import { smsBranches, smsConfigFor, repairSmsSegments, repairSalesShape, salesServiceLines, bookTitle, SMS_TRIGGER } from "../src/data/smsTemplate.ts";
+import { smsBranches, smsConfigFor, repairSmsSegments, repairSalesShape, salesServiceLines, bookTitle, twoPathGreeting, SMS_TRIGGER } from "../src/data/smsTemplate.ts";
 import { voiceVocab, repairSupportUseCases } from "../src/data/voiceUseCases.ts";
 import { canNestAt } from "../src/data/workflowDrawers.ts";
 import { actionKindOf } from "../src/data/workflowChrome.ts";
@@ -38,7 +38,8 @@ import { tollFreeNumber } from "../src/data/smsContactNumber.ts";
 import { interactionLabels } from "../src/data/aiAgentLabels.ts";
 import { withoutReminderPromise, withoutReminderPromises } from "../src/data/agentDefaults.ts";
 import { effectiveSmsConfig } from "../src/data/smsTemplate.ts";
-import { demoWorkflowsFor } from "../src/data/demoWorkflows.ts";
+import { demoWorkflowsFor, buildDemoWorkflows } from "../src/data/demoWorkflows.ts";
+import { builtInCopiesFor } from "../src/data/builtInCopies.ts";
 import { extraDrawerFor, signalOptions } from "../src/data/workflowDrawers.ts";
 
 const SCREENS = "src/screens";
@@ -195,9 +196,9 @@ console.log("\nThe SMS workflow template's node names are locked");
   const seg = smsTree[0]?.leaves?.[0]?.paths ?? [];
   /* Re-aimed 10/13/2026: the sales side is service lines (layer-2 Qualify), each with one
      booking box under it, mirroring what the preview agent does. */
-  seg.length >= 1 && seg.every((s2) => !s2.locked && s2.actionKind === "qualify" && (s2.paths?.length ?? 0) === 1)
-    ? ok("the segments below the chrome are editable Qualify nodes, each with a booking box under it")
-    : bad("the SMS sales branch is not editable service lines that each lead to a booking box");
+  seg.length >= 1 && seg.every((s2) => !s2.locked && s2.actionKind === "inform" && !(s2.paths?.length))
+    ? ok("the segments below the chrome are editable Inform boxes, one per service line")
+    : bad("the SMS sales branch is not editable service lines ending in an Inform box");
 
   /* ⚠️ THE VOICE TREE IS LOCKED TOO NOW (8/26/2026), which OVERTURNS the note that used to
      sit in CLAUDE.md saying the voice intents were measured off Invoca's own Voice workflow
@@ -777,7 +778,8 @@ console.log("\nAsk AI configures an SMS extra workflow, not just its diagram");
      MESSAGE row still showed the authored one. That is defect 3 of the 9/3 report coming back
      through a new door, and it matters because the drawer hands the model that same text as
      "the current opening message". */
-  /greetingFallback: wfAgent\?\.greeting \?\? wf\?\.openingMessage/.test(phone)
+  /* Widened 10/13/2026: a built-in copy's own opener sits first in the same chain. */
+  /greetingFallback: copyGreeting \?\? wfAgent\?\.greeting \?\? wf\?\.openingMessage/.test(phone)
     ? ok("and the drawer's greeting row shows the EFFECTIVE opener, not the authored one")
     : bad("the drawer can show an opening message the agent no longer sends");
   /* ⚠️ **COMMENTS STRIPPED FIRST, AND THE FIRST VERSION OF THIS CHECK FAILED WITHOUT IT.**
@@ -1241,20 +1243,19 @@ console.log("\nThe built-in SMS workflow template");
      agent holds, so these assert the new shape and that it is READ FROM THE PLAYBOOK. */
   const qs = p.reports.agentConfig?.smsPlaybook?.qualifyingQuestions ?? [];
   const lines = salesServiceLines(p);
+  /* Revised the same day: ONE Qualify layer, then an Inform box per service line. */
   (sales.actionKind === "qualify" && sales.paths?.length === lines.length
-    && sales.paths.every((x, i) => x.title === lines[i] && x.actionKind === "qualify" && x.paths?.length === 1))
-    ? ok(`two Qualify layers: the user group, then ${lines.length} service lines`)
-    : bad("the sales side is not the user group Qualify over one Qualify per service line");
-  const leaves = sales.paths?.flatMap((x) => x.paths ?? []) ?? [];
-  leaves.length === lines.length && leaves.every((l) => l.action === "Inform" && l.title === bookTitle(p) && !l.paths?.length)
-    ? ok(`an Inform box that schedules under every service line (${bookTitle(p)})`)
-    : bad(`the bottom row is not one terminal "${bookTitle(p)}" Inform per service line`);
+    && sales.paths.every((x, i) => x.title === lines[i] && x.action === "Inform" && x.actionKind === "inform" && !x.paths?.length))
+    ? ok(`one Qualify layer, then ${lines.length} Inform boxes, one per service line`)
+    : bad("the sales side is not one Qualify over one terminal Inform box per service line");
+  const leaves = sales.paths ?? [];
   leaves.every((l) => (l.chips ?? []).length > 0)
-    ? ok("the booking box shows what it collects")
-    : bad("a booking box draws no chips, so the diagram hides what the agent gathers");
-  (cfg.qualify.root.question === qs[0] && qs.slice(1).every((q) => cfg.qualify.details.question.includes(q)))
-    ? ok("layer 1 asks the playbook's first question and layer 2 asks the rest, verbatim")
-    : bad("the workflow's questions are not the preview agent's own playbook questions");
+    ? ok("each Inform box shows what it collects")
+    : bad("an Inform box draws no chips, so the diagram hides what the agent gathers");
+  (cfg.qualify.root.question === qs[0] && qs.slice(1).every((q) => cfg.inform.book.includes(q))
+    && /offer two specific days and times/.test(cfg.inform.book))
+    ? ok("the Qualify asks the playbook's first question; each Inform box asks the rest, verbatim, then books")
+    : bad("the workflow's questions are not the preview agent's own playbook questions, or the box does not book");
   /* The stored-tree repair: a demo saved with the retired shape must come back as the new one. */
   (() => {
     const old = JSON.parse(JSON.stringify(tree.branches));
@@ -1264,7 +1265,13 @@ console.log("\nThe built-in SMS workflow template");
     ];
     const fixed = repairSalesShape(old, p);
     const clean = repairSalesShape(tree.branches, p);
-    return fixed[0].leaves[0].paths?.[0]?.title === lines[0] && fixed[1] === old[1] && clean === tree.branches;
+    /* …and the two-Qualify-layer shape that was live for part of 10/13/2026. */
+    const twoLayer = JSON.parse(JSON.stringify(tree.branches));
+    twoLayer[0].leaves[0].paths = lines.map((t) => ({ title: t, action: "Qualify", actionKind: "qualify",
+      paths: [{ title: bookTitle(p), action: "Inform", actionKind: "inform" }] }));
+    const fixed2 = repairSalesShape(twoLayer, p);
+    return fixed[0].leaves[0].paths?.[0]?.title === lines[0] && fixed[1] === old[1] && clean === tree.branches
+      && fixed2[0].leaves[0].paths?.every((x) => x.actionKind === "inform" && !x.paths?.length) === true;
   })()
     ? ok("a stored tree with the retired sales shape is replaced, support untouched, and a current tree is left as is")
     : bad("repairSalesShape does not replace the retired shape, or it touches a current tree");
@@ -1492,7 +1499,7 @@ console.log("\nThe built-in SMS workflow template");
   const dTrig = smsDrawerFor(p, tree, "trigger", cfg);
   const dInt = smsDrawerFor(p, tree, "intent-0", cfg);
   const dQual = smsDrawerFor(p, tree, "leaf-0-0", cfg);
-  const dInf = smsDrawerFor(p, tree, "sub-0-0-0-0", cfg);
+  const dInf = smsDrawerFor(p, tree, "path-0-0-0", cfg);
   /* ✅ **THE ESCALATE SPECIMEN IS A SUPPORT ANSWER NOW, NOT THE LEAF (10/9/2026).** The
      support leaf became a Qualify because it branches, so it is no longer an escalate to
      measure — its ANSWERS are. The invariant (an SMS escalate drawer asks for a destination,
@@ -1830,15 +1837,16 @@ console.log("\nThe built-in SMS workflow template");
     /* An added answer, exactly as Apply writes one: inherits its siblings' Qualify. */
     const added = JSON.parse(JSON.stringify(tree)) as typeof tree;
     const sibs = added.branches[0].leaves[0].paths!;
-    sibs.push({ ...sibs[0], title: "Added", paths: undefined } as never);
+    /* An SE-added Qualify answer (10/13/2026: the template's own lines are Inform now, so the
+       added one is made a Qualify explicitly to keep the Add/flat-key checks meaningful). */
+    sibs.push({ ...sibs[0], title: "Added", action: "Qualify", actionKind: "qualify", actionIcon: "callSplit", paths: undefined } as never);
     const ids: [string, string][] = [
       /* ✅ `leaf-1-0` IS A QUALIFY NOW (it branches); `path-1-0-0` keeps an escalate in the
          sweep, so both kinds are still covered. */
       ["leaf-0-0", "qualify"], ["leaf-1-0", "qualify"], ["path-1-0-0", "escalate"],
-      /* Re-aimed 10/13/2026: service lines are Qualify, each with one booking Inform; the
-         ADDED answer sits after the prospect's own lines. */
-      ["path-0-0-0", "qualify"], ["path-0-0-1", "qualify"],
-      ["sub-0-0-0-0", "inform"], ["sub-0-0-1-0", "inform"],
+      /* Re-aimed 10/13/2026: service lines are Inform boxes; the ADDED answer (a copy of
+         the first, so an Inform) sits after the prospect's own lines. */
+      ["path-0-0-0", "inform"], ["path-0-0-1", "inform"],
       [`path-0-0-${salesServiceLines(p).length}`, "qualify"],
     ];
     const wrong = ids.filter(([id, want]) => {
@@ -1917,9 +1925,9 @@ console.log("\nThe built-in SMS workflow template");
        Built by putting each kind on a real node and asking for its drawer. */
     const shaped = (k: ActionKind) => {
       const t = JSON.parse(JSON.stringify(tree)) as typeof tree;
-      const node = t.branches[0].leaves[0].paths![0].paths![0] as Record<string, unknown>;
+      const node = t.branches[0].leaves[0].paths![0] as Record<string, unknown>;
       Object.assign(node, nodeActionFields(k));
-      const d = smsDrawerFor(p, t, "sub-0-0-0-0", cfg);
+      const d = smsDrawerFor(p, t, "path-0-0-0", cfg);
       return d?.kind === "action" ? d : null;
     };
     const callback = shaped("callback");
@@ -1988,9 +1996,9 @@ console.log("\nThe built-in SMS workflow template");
     /* and the wording fallback must not let "Inform & Route" fall into plain inform */
     {
       const t = JSON.parse(JSON.stringify(tree)) as typeof tree;
-      const n = t.branches[0].leaves[0].paths![0].paths![0] as Record<string, unknown>;
+      const n = t.branches[0].leaves[0].paths![0] as Record<string, unknown>;
       n.action = "Inform & Route"; delete n.actionKind;
-      const d = smsDrawerFor(p, t, "sub-0-0-0-0", cfg);
+      const d = smsDrawerFor(p, t, "path-0-0-0", cfg);
       (d?.kind === "action" && d.action === "informRoute")
         ? ok("a node whose wording says Inform & Route is not read as plain Inform")
         : bad("the wording fallback swallows Inform & Route into inform");
@@ -2011,7 +2019,7 @@ console.log("\nThe built-in SMS workflow template");
       && isLockedEdit(tree, "branches.1.leaves.0.subtitle"))
       ? ok("a locked leaf's NAME is still refused, which is what the lock was always about")
       : bad("the chrome boxes can be renamed again");
-    (inform?.actionSlot?.path === "branches.0.leaves.0.paths.0.paths"
+    (inform?.actionSlot?.path === "branches.0.leaves.0.paths"
       && inform?.actionSlot?.index === 0)
       ? ok("a configurable node's slot points at its own containing array")
       : bad("the action slot does not resolve to the node's own position");
@@ -2102,7 +2110,7 @@ console.log("\nThe built-in SMS workflow template");
       ? ok("no dead guard pattern left behind for the retired collect key")
       : bad("the guard still carries a pattern for a key nothing writes");
     /* the chips the template configures still reach the drawer, with their help text */
-    const inf = smsDrawerFor(p, tree, "sub-0-0-0-0", cfg);
+    const inf = smsDrawerFor(p, tree, "path-0-0-0", cfg);
     (inf?.kind === "action" && (inf.collect?.length ?? 0) >= 4
       && inf.collect!.every((f) => !!f.help))
       ? ok("a template node's configured collect fields still render with their help text")
@@ -2153,9 +2161,8 @@ console.log("\nThe built-in SMS workflow template");
       ? ok("the derived flow carries the node's configured question and its action")
       : bad("the derived flow has drifted from the node's own config");
     const kid = root.answers?.[0];
-    (kid?.answers?.[0]?.instruction === cfg.inform.book
-      && (kid?.answers?.[0]?.collect?.length ?? 0) > 0)
-      ? ok("and the inform instruction and collect list three rows down")
+    (kid?.instruction === cfg.inform.book && (kid?.collect?.length ?? 0) > 0)
+      ? ok("and each service line's Inform instruction and collect list")
       : bad("the deeper rows' instructions or collect lists are missing from the flow");
     (flow!.intents[0].looksLike === cfg.intents.sales.looksLike)
       ? ok("both intents' classification copy reaches the flow")
@@ -2169,7 +2176,7 @@ console.log("\nThe built-in SMS workflow template");
       const f2 = smsWorkflowFlow(p, tree as never, edited)!;
       const r2 = f2.intents[0].flow[0];
       (r2.question === "Probe: termites?"
-        && r2.answers![0].answers![0].instruction === "Probe: a tech calls within the hour.")
+        && r2.answers![0].instruction === "Probe: a tech calls within the hour.")
         ? ok("editing a node's question or instruction moves what the agent is told")
         : bad("an edited node does not change the agent's flow");
     }
@@ -2731,6 +2738,18 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
      ⚠️ A REMOVAL FAILS TOO. Silently dropping one loosens the agent with nothing
      recording that it was meant; the list is only worth having while it stays true. */
   const KNOWN_ABSOLUTES = new Set([
+    /* ✅ ADDED 10/13/2026, AND ONLY EVER EMITTED FOR THE BUILT-IN COPIES ("SMS Test"), behind
+       `brain.workflowLeads`. Asked for: make the preview do what the diagram says. They are
+       channel invariants of "the diagram is the conversation", not product opinions: without
+       them the agent re-asked a Qualify question five times and ignored the booking box. */
+    "CONVERSATION: follow it exactly, and do not use any other list of ques",
+    "of its answers, take it and move straight into that answer's step, eve",
+    "Only if nothing fits, ask its question once. Never ask a Qualify's que",
+    "- Never ask for something they have already told you.",
+    "3. When a step says to book, OFFER the specific day and time options i",
+    "1. Your greeting has already been sent as your first message. Pick up ",
+    /* ✅ ADDED 10/13/2026, copies only: "always give them the options". */
+    "- EVERY question you ask offers the choices: name 2 to 4 specific opti",
     /* ✅ **SUPERSEDED 10/9/2026 — the pricing ternary no longer carries a routing half.** This
        used to read: both branches keep the absolute "only qualify and route", which is the
        routing agent's defining job rather than an opinion about the business. The permitting
@@ -2962,16 +2981,72 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
 
   const everyProfile = [...load("src/data/generated", (j: any) => j),
                         ...load(".data/demos", (j: any) => j?.profile)] as CustomerProfile[];
-  const gated = everyProfile.find((p) => demoWorkflowsFor(p).length > 0);
-  const other = everyProfile.find((p) => demoWorkflowsFor(p).length === 0);
+  /* ⚠️ RE-AIMED 10/13/2026: the six are switched off for everyone ("for aptive remove all the
+     other sms and voice just the top 2"), so the gate must match NOBODY, and the content is
+     exercised ungated through `buildDemoWorkflows` so it cannot rot while hidden. */
+  const aptive = everyProfile.find((p) => /^aptive$/i.test(p.customerName.trim()));
+  aptive && demoWorkflowsFor(aptive).length === 0
+    ? ok("Aptive shows only its built-in Voice and SMS workflows")
+    : bad("Aptive still gets the extra derived workflows");
+  everyProfile.every((p) => demoWorkflowsFor(p).length === 0)
+    ? ok("no prospect gets the six while they are switched off")
+    : bad("a prospect still gets the derived workflows");
+  const gated = aptive ?? everyProfile[0];
 
-  gated ? ok(`the six are derived for ${gated.customerName}`)
-        : bad("no profile on disk gets the derived workflows — the gate matches nobody");
-  other ? ok("an off-gate prospect gets none of them")
-        : bad("every profile gets them — the gate is not gating");
+  /* "Voice Test" / "SMS Test" (10/13/2026): copies of the BUILT-IN pair, not extra workflows. */
+  {
+    const copies = aptive ? builtInCopiesFor(aptive) : [];
+    copies.map((c) => c.slug).join(",") === "voice-test,sms-test"
+    && everyProfile.filter((p) => !/^aptive$/i.test(p.customerName.trim())).every((p) => builtInCopiesFor(p).length === 0)
+      ? ok("Aptive gets Voice Test and SMS Test, and nobody else does")
+      : bad("the built-in copies are missing for Aptive or leak to other prospects");
+    const page = readCode("src/screens/AgentWorkflow.tsx");
+    /copy \? copy\.channel === "SMS"/.test(page) && /readScope\(`\$\{profileId\}::\$\{workflowPath\(copy\.source\)\}`\)/.test(page)
+      ? ok("a copy picks its channel from itself (voice-test is not SMS) and starts from the original's saved state")
+      : bad("a copy is mis-channelled or does not start from the original");
+    /\(extra \|\| copy\) && !isSms/.test(page)
+      ? ok("Voice Test's call reads its own diagram, not the original's")
+      : bad("Voice Test's call would run the original voice agent");
+    /* "reflect what's happening in the workflow" (10/13/2026): on the copies the diagram IS the
+       conversation; the originals keep the generic sales script beside it. Built, not grepped. */
+    {
+      const ap = aptive!;
+      const t = { variant: "sms" as const, triggeredBy: "x", startLabel: "x", branches: smsBranches(ap) };
+      const f = smsWorkflowFlow(ap, t as never, smsConfigFor(ap));
+      const lead = smsSystemPromptForAudit(buildSmsBrain(ap, ap.reports.agentConfig!, undefined, null, f, { workflowLeads: true }) as never);
+      const plain = smsSystemPromptForAudit(buildSmsBrain(ap, ap.reports.agentConfig!, undefined, null, f) as never);
+      /THIS IS THE\s+CONVERSATION/.test(lead) && !/\n\s+1\) /.test(lead) && /the CONFIGURED WORKFLOW wins/.test(lead)
+        ? ok("with the copy flag, the workflow is the conversation and the generic numbered script is gone")
+        : bad("the copy's agent still follows the generic script beside the workflow");
+      /* The copy opens with its own two-path greeting; the original keeps its stored one. */
+      const leadBrain = buildSmsBrain(ap, ap.reports.agentConfig!, undefined, null, f, { workflowLeads: true, greeting: twoPathGreeting(ap) }) as { openingMessage?: string };
+      const plainBrain = buildSmsBrain(ap, ap.reports.agentConfig!, undefined, null, f) as { openingMessage?: string };
+      leadBrain.openingMessage === twoPathGreeting(ap) && plainBrain.openingMessage !== twoPathGreeting(ap)
+        && /book a .+, or do you need help with one you already have\?$/.test(twoPathGreeting(ap))
+        ? ok("SMS Test opens with a greeting offering both paths; the original keeps its own")
+        : bad("the copy's two-path greeting is missing, or it leaked onto the original");
+            /EVERY question you ask offers the choices/.test(lead) && !/EVERY question you ask offers the choices/.test(plain)
+        ? ok("SMS Test always offers options; the original agent's prompt is unchanged")
+        : bad("the always-offer-options rule is missing from the copy or leaked onto the original");
+            !/THIS IS THE\s+CONVERSATION/.test(plain) && /\n\s+1\) /.test(plain)
+        ? ok("without it (the originals), the prompt keeps the generic sales script")
+        : bad("the workflow-leads change leaked onto the original SMS agent");
+      const vt = builtInWorkflowBase(ap, false) as never;
+      const withDefaults = treeToVoicePaths(vt, ap, { boxDefaults: true });
+      const without = treeToVoicePaths(vt, ap);
+      const sup = (vp: any[]) => vp.find((x) => /support/i.test(x.intent))?.routes ?? [];
+      sup(withDefaults).every((r: any) => !!r.instruction) && sup(without).every((r: any) => !r.instruction)
+        ? ok("Voice Test's support boxes carry their drawer text into the call; the original's do not")
+        : bad("the voice support box text reaches the wrong agent, or none");
+    }
+    const phone = readCode("src/screens/PhonePreview.tsx"), chat = readCode("src/components/WorkflowChatPreview.tsx");
+    /isCopySlug\(wfSlug\)/.test(phone) && /\$\{builtInPath\}/.test(phone) && /isCopySlug\(wfSlug\)/.test(chat)
+      ? ok("both SMS previews read SMS Test's own tree when opened from it")
+      : bad("an SMS preview opened from SMS Test reads the original workflow");
+  }
 
   if (gated) {
-    const six = demoWorkflowsFor(gated);
+    const six = buildDemoWorkflows(gated);
     six.length === 6 ? ok("exactly six") : bad(`expected 6 workflows, got ${six.length}`);
     new Set(six.map((w) => w.slug)).size === six.length
       ? ok("slugs are unique") : bad("two derived workflows share a slug");
@@ -3270,16 +3345,22 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
         const trees: any[][] = [smsBranches(prof as never) as any];
         for (const wf of prof.reports?.extraWorkflows ?? []) trees.push((extraTree(wf as never) as any).branches);
         for (const branches of trees) for (const b of branches) for (const l of b.leaves ?? []) {
-          for (const pt of l.paths ?? []) for (const x of pt.paths ?? []) {
+          /* Re-aimed 10/13/2026: the SMS sales side has no bottom row any more (one Qualify,
+             then Inform boxes), so the middle row is swept too: a Qualify there must have answers. */
+          for (const pt of l.paths ?? []) {
             seen++;
-            if (actionKindOf(x) === "qualify") bad3++;
-            if ((x.paths ?? []).length) orphan++;
+            if (actionKindOf(pt) === "qualify" && !(pt.paths ?? []).length) orphan++;
+            for (const x of pt.paths ?? []) {
+              seen++;
+              if (actionKindOf(x) === "qualify") bad3++;
+              if ((x.paths ?? []).length) orphan++;
+            }
           }
         }
       }
       (seen >= 50 && bad3 === 0 && orphan === 0)
-        ? ok(`${seen} last-row nodes checked: none is a Qualify, none has a fourth layer`)
-        : bad(`depth violations in real data: ${bad3} qualify-on-last-row, ${orphan} fourth-layer (of ${seen})`);
+        ? ok(`${seen} lower-row nodes checked: no Qualify on the last row, none without answers, no fourth layer`)
+        : bad(`depth violations in real data: ${bad3} qualify-on-last-row, ${orphan} orphan or fourth-layer (of ${seen})`);
     }
 
     /* ⚠️ THE BOOKING LOCATIONS ARE THE PROSPECT'S OWN SITES, not an invented pair. */

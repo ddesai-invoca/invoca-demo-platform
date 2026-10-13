@@ -1,6 +1,8 @@
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoicePath } from "../../engine/chat";
 import { collectNames } from "./workflowDrawers";
+import { informCopy } from "./smsTemplate";
+import { INTENT_SUPPORT } from "./workflowChrome";
 import { repairSupportUseCases } from "./voiceUseCases";
 import type { CustomerProfile } from "./schema";
 
@@ -66,16 +68,27 @@ export const VOICE_WORKFLOW_SCOPE_PATH = "/agent-studio/agent/workflow/voice";
 export function treeToVoicePaths(
   tree: WorkflowTreeModel | undefined | null,
   profile?: CustomerProfile,
+  /**
+   * `boxDefaults`: a support box's DEFAULT instruction (the text its drawer shows) reaches the
+   * call even when nobody has edited it. Set for the built-in copies ("Voice Test"), 10/13/2026:
+   * measured, without it a gate-code change was handed to a person on one run and done on the
+   * next, because the call never saw the box's "update simple account details yourself".
+   */
+  opts: { boxDefaults?: boolean } = {},
 ): VoicePath[] {
   if (tree && profile) {
     const fixed = repairSupportUseCases(tree.branches ?? [], profile);
     /* Identity when there is nothing to repair, so this costs nothing on a current tree. */
     if (fixed !== (tree.branches ?? [])) tree = { ...tree, branches: fixed };
   }
-  return treeToVoicePathsInner(tree);
+  const defaults = opts.boxDefaults && profile ? (() => {
+    const c = informCopy(profile);
+    return [c.supportIssue, c.supportChange, c.supportBilling, c.supportOther];
+  })() : undefined;
+  return treeToVoicePathsInner(tree, defaults);
 }
 
-function treeToVoicePathsInner(tree: WorkflowTreeModel | undefined | null): VoicePath[] {
+function treeToVoicePathsInner(tree: WorkflowTreeModel | undefined | null, supportDefaults?: string[]): VoicePath[] {
   const branches = tree?.branches ?? [];
   const paths: VoicePath[] = [];
   /* ⚠️⚠️ **THE PER-NODE DRAWER FIELDS LIVE ON `agent`, FLAT, KEYED BY THE NODE'S OWN ID
@@ -115,7 +128,8 @@ function treeToVoicePathsInner(tree: WorkflowTreeModel | undefined | null): Voic
             need: (pth?.title ?? "").trim(),
             action: (pth?.action ?? "").trim() || "route them",
             collect: (pth?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),
-            instruction: extra(`path-${bi}-${li}-${pi}`, "handling"),
+            instruction: extra(`path-${bi}-${li}-${pi}`, "handling")
+              ?? (intent === INTENT_SUPPORT ? supportDefaults?.[pi] : undefined),
             phone: extra(`path-${bi}-${li}-${pi}`, "phone"),
           }))
         : [{

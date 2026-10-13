@@ -15,11 +15,12 @@ import { useLiveKitReady, preloadVoiceEngine } from "../data/liveKitVoice";
 import { WorkflowTree } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
 import { useAiAssistant } from "../data/AiAssistantContext";
+import { builtInCopiesFor, workflowPath } from "../data/builtInCopies";
 import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor, extraDrawerFor } from "../data/workflowDrawers";
-import { smsConfigFor, repairSmsSegments, repairSalesShape, effectiveSmsConfig } from "../data/smsTemplate";
+import { smsConfigFor, repairSmsSegments, repairSalesShape, effectiveSmsConfig, twoPathGreeting } from "../data/smsTemplate";
 import { repairSupportUseCases } from "../data/voiceUseCases";
 import { smsDrawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
@@ -112,15 +113,19 @@ export function AgentWorkflow() {
      own (e.g. "sms-nurture"). Resolve those first so they don't fall through to
      the built-in SMS tree. */
   const extra = extraWfs.find((w) => w.slug === channel);
+  /* "Voice Test" / "SMS Test" (10/13/2026): copies of the BUILT-IN pair, not extra workflows.
+     They render the built-in template under their own pathname; see `builtInCopies.ts`. */
+  const copy = extra ? undefined : builtInCopiesFor(profile).find((c) => c.slug === channel);
   /* A workflow the SE created with the Create Workflow modal. `/workflow/new/:id` is its
      own route, so `id` is set only here and every other path behaves exactly as before. */
   const { byId } = useAgentWorkflows(profile.id);
   const created = id ? byId(id) : undefined;
   const isSms = created ? created.channel === "SMS"
-    : extra ? extra.channel === "SMS" : (channel ?? "sms") !== "voice";
+    : extra ? extra.channel === "SMS" : copy ? copy.channel === "SMS" : (channel ?? "sms") !== "voice";
   const channelLabel = created ? created.channel : extra ? extra.channel : isSms ? "SMS" : "Voice";
   const workflowName = created ? created.name
-    : extra ? extra.label : `${profile.customerName} - ${channelLabel}`;
+    : extra ? extra.label : copy ? `${profile.customerName} - ${copy.suffix}`
+    : `${profile.customerName} - ${channelLabel}`;
 
   /* The diagram is this page's DATA. Registering it as the AI scope is what lets
      the drawer rename a node, add a branch or remove one; the renderer recomputes
@@ -216,7 +221,22 @@ export function AgentWorkflow() {
      captured drawer. One flag, read by the node-click gate, the drawer builder and Apply, so
      those three can never disagree about which diagram is on screen. */
   const smsTemplated = isSms && !extra && !created;
-  const rawTree = usePageData(baseTree);
+  /* A copy starts as the ORIGINAL's current state: its base is the original's effective data
+     when the original has any, and the same template otherwise. */
+  const { effectiveData: readScope } = useAiAssistant();
+  const copySource = copy ? readScope(`${profileId}::${workflowPath(copy.source)}`) : undefined;
+  const pageBase = useMemo(
+    () => {
+      const b = (copySource ? { ...(copySource as object), title: `${workflowName} workflow` } : baseTree) as Record<string, unknown>;
+      /* The SMS copy's OWN opener lives on its `sms.greeting` (10/13/2026), present in the base so
+         the first edit is string -> string rather than a type flip `editGuard` refuses. */
+      if (!copy || !isSms) return b;
+      const sms = (b.sms ?? {}) as Record<string, unknown>;
+      return sms.greeting ? b : { ...b, sms: { ...sms, greeting: twoPathGreeting(profile) } };
+    },
+    [copySource, baseTree, workflowName, copy, isSms, profile],
+  );
+  const rawTree = usePageData(pageBase as typeof baseTree);
   /* ⚠️ REPAIRS SEGMENTS WRITTEN BEFORE A NEW ANSWER INHERITED ITS SIBLINGS' ACTION. Read-time,
      identity-preserving, and scoped to the built-in template — see `repairSmsSegments`. */
   /* ⚠️ AND REPAIRS A TREE THAT FROZE THE RETIRED SUPPORT SET. Applying any edit persists
@@ -319,7 +339,7 @@ export function AgentWorkflow() {
           slots: bookingSlots(profile.id),
         },
       }
-    : extra && !isSms
+    : (extra || copy) && !isSms
     ? { scopePath: pathname }
     : undefined;
 
@@ -386,7 +406,7 @@ export function AgentWorkflow() {
               return;
             }
             window.open(
-              SHARE_BASENAME + (extra ? `/agent-studio/agent/preview?wf=${encodeURIComponent(extra.slug)}`
+              SHARE_BASENAME + (extra || copy ? `/agent-studio/agent/preview?wf=${encodeURIComponent((extra?.slug ?? copy?.slug)!)}`
                 : "/agent-studio/agent/preview"),
               "_blank", "noopener");
           }}>Preview Agent</button>}
@@ -415,7 +435,7 @@ export function AgentWorkflow() {
       {isSms && smsPreview && (
         <WorkflowChatPreview
           workflowName={workflowName}
-          wfSlug={extra?.slug}
+          wfSlug={extra?.slug ?? copy?.slug}
           /* ⚠️ HANDED DOWN FROM THE EFFECTIVE TREE, not re-read from the raw workflow. This
              drawer must never call `usePageData` (a second registration would repoint this
              page's sparkle from the diagram to the agent), and the page has already resolved
@@ -634,7 +654,7 @@ export function AgentWorkflow() {
         {phone && (
           <PhonePreview
             mode="modal"
-            wf={extra?.slug ?? null}
+            wf={extra?.slug ?? copy?.slug ?? null}
             onClose={() => setPhone(null)}
             autoSend={phone.script}
             onAutoDone={markAutoplayDone}

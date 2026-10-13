@@ -5,6 +5,7 @@ import { apiPath } from "./shareMode";
 import { useProfile } from "./ProfileContext";
 import { useAiAssistant } from "./AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH } from "./smsBrain";
+import { isCopySlug } from "./builtInCopies";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "./voicePaths";
 import { emptyWorkflowGreeting } from "./workflowChrome";
 import { voiceSpecFor, specWithConfig, type VoiceAgentConfig , DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT, DEFAULT_SUPPORT_QUALIFY_QUESTION } from "./voiceAgentSpec";
@@ -157,7 +158,9 @@ export function useBrain(opts?: BrainOpts) {
     () => specWithConfig(voiceSpecFor(profile), effTree?.agent),
     [profile, effTree?.agent],
   );
-  const voicePaths = useMemo(() => treeToVoicePaths(effTree, profile), [effTree, profile]);
+  /* A built-in COPY ("Voice Test") follows its diagram fully, box text included (10/13/2026). */
+  const isCopy = isCopySlug(opts?.scopePath?.split("/").pop());
+  const voicePaths = useMemo(() => treeToVoicePaths(effTree, profile, { boxDefaults: isCopy }), [effTree, profile, isCopy]);
   /* ⚠️⚠️ **A MINIMAL PREVIEW MUST NOT INHERIT THE CONFIGURED AGENT'S FIELDS.** The prospect's
      spec carries a ZIP allow-list, routing steps, conversation rules and a greeting that asks
      a two-way booking question — all of it correct for the configured workflow and all of it
@@ -178,6 +181,7 @@ export function useBrain(opts?: BrainOpts) {
     playbook: ac?.smsPlaybook,
     serviceArea: ac?.serviceArea,
     voicePaths,
+    ...(isCopy ? { voiceWorkflowLeads: true } : {}),
     /* ⚠️ THE SPEC REACHES THE LIVE CALL, which is the whole point of it. Without these three
        the diagram and the drawers would show this prospect's configuration while the agent on
        the phone used the generic derived flow — the two-surfaces-disagreeing failure this

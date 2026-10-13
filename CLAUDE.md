@@ -1985,6 +1985,14 @@ each render their own measured fields. **Untouched and checked: the voice tree**
 "What phone number should unresolved callers be transferred to?".
 
 ### Six more agentic workflows, DERIVED per prospect and gated to one (10/8/2026)
+⚠️⚠️ **SWITCHED OFF FOR EVERYONE ON 10/13/2026, CODE KEPT.** Asked for: *"for aptive remove all
+the other sms and voice just the top 2 voice and sms workflow"*. Aptive was the only name in
+`SHOW_FOR`, which is now `[]`, so every prospect lists only its built-in Voice and SMS pair.
+`buildDemoWorkflows` builds the six ungated and is what `audit:ai` exercises, so the content
+cannot rot while hidden; bring them back by adding a name to `SHOW_FOR`.
+⚠️ Not covered by this: an "SMS - Quote Request" workflow created by a Google LSA or replica
+submission lives in that browser's localStorage (7-day TTL) and still lists there.
+
 
 Asked for after ranking the use cases that apply across Invoca's customer base: *"build all 6
 that you recommended, leave the exisitng onces alone, build addtional 6, and also make sure all
@@ -10806,7 +10814,98 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
-### The SMS sales side mirrors the Preview Agent: two Qualify layers, then a booking box (10/13/2026)
+### Every follow-up question offers its choices, in the test copies (10/13/2026)
+Asked for: *"in the follow up messages always give them the options dont leave it open ended"*.
+`OPTIONS_RULE` + `OPTIONS_CHECK` in `engine/chat.ts`, emitted only behind `workflowLeads` (SMS
+Test) and `voiceWorkflowLeads` (Voice Test); the originals' prompts are unchanged (audited).
+- Personal details (name, address, ZIP, email, phone, a code) are the stated exception.
+- ⚠️ **THE RULE ALONE WAS HALF-FOLLOWED, MEASURED.** The agent kept repeating the workflow's own
+  open wording ("How soon would you like your first visit?") and closing with "anything else?".
+  Two structural fixes: each workflow ASK line in leads mode says "as a question that names 2 to
+  4 choices", and `OPTIONS_CHECK` is the LAST line of the prompt, with worked rewrites of exactly
+  those two cases. After both, across all 14 simulated paths nearly every question names its
+  choices; the occasional closing "Is there anything else I can help you with today?" still
+  slips through (2 of 14 runs). Yes/no confirmations remain, which are a choice by nature.
+- ⚠️ `OPTIONS_CHECK` is over 400 characters, so the absolutes ledger does not count it as a rule;
+  do not add it to `KNOWN_ABSOLUTES` (it would read as "disappeared").
+
+### SMS Test opens with a greeting that offers both paths (10/13/2026)
+Asked for: *"the greeting message needs to be something that allows them to go down both sales
+inquiry and need support path"*. ⚠️ **Standing rule from the same message: until told otherwise,
+work ONLY in Voice Test and SMS Test** (saved in user memory).
+- `twoPathGreeting(p)`: "Hi, this is <name>'s AI assistant. Are you looking to book a
+  <bookingTerm>, or do you need help with one you already have?" — the same wording Voice Test
+  already opens with, so the two copies match. Voice Test needed no change.
+- ⚠️ **STORED ON THE COPY'S OWN `sms.greeting`, NOT ON `smsPlaybook.greeting`.** The Preview Agent
+  scope is shared by every SMS preview, so writing there would have changed the original's opener.
+  The copy's page base carries it, so its first edit is string -> string (no `editGuard` flip).
+  Both previews pass it as `buildSmsBrain(..., { workflowLeads, greeting })`, where it outranks
+  the shared greeting; the drawer row shows it (`greetingFallback` + `greetingWins`).
+- ⚠️ A brand rule that scripts an intro made the agent introduce itself a SECOND time; on the copy
+  the flow's step 1 now says the greeting has already been sent.
+- `--sim` in `test-copy-paths.ts` now has the simulated customer answer the GREETING itself, so the
+  opener is what steers them. All 7 SMS paths and the voice spot checks complete; the original
+  Aptive SMS preview still opens "I can help you build a personalized plan…".
+
+### The test copies' previews follow their diagram, and all 14 paths were walked (10/13/2026)
+Asked for: *"reflect what happening with the preview agent and preview workflow, with whats
+happening in the workflow, for Voice test and sms test, and test all 7 of the paths"*.
+- ⚠️⚠️ **MEASURED FIRST: the SMS agent followed its own generic numbered script and treated the
+  diagram as an add-on** ("It does not replace the conversation flow above"). On Recurring Plans
+  it asked "which pests are you seeing?" five times; on Biting & Stinging it offered one time
+  where the booking box says two. Voice already built its call from the diagram.
+- **SMS (`brain.workflowLeads`, copies only):** the CONFIGURED WORKFLOW becomes the
+  conversation, the numbered generic script is dropped, a Qualify takes the answer the moment
+  the customer's words fit it, and brand rules are kept for terms/offers/numbers with the
+  diagram winning on order. Passed by both previews when opened from a copy.
+- **Voice (`voiceWorkflowLeads` + `treeToVoicePaths(..., { boxDefaults })`, copies only):** a
+  support box's DEFAULT drawer text reaches the call (it only did when edited, so a gate-code
+  change was handed off on one run and done on the next), and every field a sales box collects
+  is asked in order (a box's Consumer Email was being skipped).
+- **Template change for EVERY prospect:** the Other Support Request text now says to update
+  simple account details (access instructions, a gate code, a phone number, an email) itself.
+- ⚠️ **A preview tab opened on its own fell back to nothing for an unedited copy** — a copy's
+  starting state is its page's BASE, which exists only while that page is open. Both previews
+  now fall back copy → original → template, the way the page does.
+- **`scripts/test-copy-paths.ts sms|voice [--sim] [--only=N]`** builds the brain exactly as the
+  previews do and walks every path against `/api/chat`; `--sim` uses a SIMULATED CUSTOMER (a
+  second `/api/chat` call with a persona) because fixed scripts started answering the wrong
+  question the moment the agent followed the boxes more closely. Result: **14 of 14 paths
+  complete** — sales book with two offered times (SMS) or collect every field and transfer to
+  the box's team (voice); support finds the record and resolves it, handing off only a dispute.
+- ⚠️ A browser probe trap that cost a wrong conclusion: the phone's textarea has no `<form>`,
+  so `requestSubmit()` sends nothing and every field reads empty. Send with an Enter keydown and
+  assert the request was actually captured.
+
+### "Voice Test" and "SMS Test": copies of the built-in pair, for Aptive (10/13/2026)
+Asked for: *"duplicate the voice and SMS call the Voice Test and SMS Test"*. `src/data/builtInCopies.ts`,
+routes `/agent-studio/agent/workflow/voice-test` and `/sms-test`, gated to Aptive by name.
+- ⚠️⚠️ **COPIES OF THE BUILT-IN TEMPLATE, NOT EXTRA WORKFLOWS.** An `ExtraWorkflow` renders
+  through `extraTree` with its own drawers and prompt, so "duplicating" into one would be a
+  different workflow that looks similar. These render exactly what the originals render under
+  their own pathname, which gives them their OWN scope key: separate edits, undo and saved state.
+- ⚠️ **EACH STARTS AS THE ORIGINAL'S CURRENT STATE**: the page's base is the original's effective
+  data. Consequence, stated: until the copy is edited, a later change to the original shows in it
+  too; the first edit to the copy stores its own full tree and they are independent from then on.
+- ⚠️ `isSms` had to take the copy's own channel: the old fallback `(channel ?? "sms") !== "voice"`
+  reads "voice-test" as SMS.
+- Both SMS previews take the copy's slug through the existing `?wf=` / `wfSlug` and read the
+  copy's tree (`isCopySlug`), and Voice Test's call gets `scopePath: pathname`.
+- Verified: an edit on SMS Test landed only on its own key, its Preview Agent sent the edited
+  question while the original's sent the playbook one, and both copies match their originals node
+  for node.
+
+### The SMS sales side mirrors the Preview Agent: one Qualify, then Inform boxes (10/13/2026)
+⚠️ **REVISED THE SAME DAY.** It shipped first as TWO Qualify layers with a "Schedule
+<bookingTerm>" box under each service line, and was then asked to be one: *"instead of the double
+qualify just do one layer of qualify and then the Inform boxes"*. Now: All Sales Inquiry Users
+(Qualify) asks the playbook's first question, and each service line is an **Inform** box whose
+`sms.inform.book` text asks the rest of the playbook in order and then books. `qualify.details`
+is gone. `repairSalesShape` recognises BOTH retired shapes (the captured one, and the two-layer
+one that was live for part of the day). The notes below describe the two-layer version and are
+kept for the reasoning; the shape is what this paragraph says.
+
+#### The first version: two Qualify layers, then a booking box
 Asked for directly: *"the user essentially gets qualified by a couple of questions, and then it
 books an appointment… make sure the workflow for the sales inquiry side reflects that… Have two
 layers Qualifying and then an inform box that schedules the appointment."* The captured Greenix

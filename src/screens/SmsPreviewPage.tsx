@@ -6,6 +6,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { AiAssistantDrawer } from "../components/AiAssistantDrawer";
 import { PhonePreview } from "./PhonePreview";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
+import { builtInCopiesFor } from "../data/builtInCopies";
 
 /* Standalone browser-tab version of the "Preview Agent" SMS chat. The Agent
    Workflow's Preview Agent button opens this route in a new tab (window.open)
@@ -37,7 +38,8 @@ export function SmsPreviewPage() {
      so the tab previews THAT playbook rather than the default sales one. */
   const [params] = useSearchParams();
   const wf = params.get("wf");
-  const label = extraWfs.find((w) => w.slug === wf)?.label;
+  const copy = builtInCopiesFor(profile).find((c) => c.slug === wf);
+  const label = copy ? `${profile.customerName} - ${copy.suffix}` : extraWfs.find((w) => w.slug === wf)?.label;
 
   /* The same key the rest of the app uses, so this page has its own edits and its
      own undo stack and can never touch another screen. */

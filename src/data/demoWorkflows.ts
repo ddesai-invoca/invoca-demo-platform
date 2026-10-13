@@ -38,8 +38,13 @@ import { areaCodeOf, demoPhone, signalOptions } from "./workflowDrawers";
    Qualify whose answers are both terminal is the common shape.
    ============================================================================= */
 
-/** Widen by deleting this line and the `isProspect` call below. */
-const SHOW_FOR = "aptive";
+/* ⚠️⚠️ **SWITCHED OFF FOR EVERYONE (10/13/2026), CODE KEPT.** Asked for directly: *"for aptive
+   remove all the other sms and voice just the top 2 voice and sms workflow"*. Aptive was the
+   only prospect on this list, so removing them for Aptive leaves it empty. The workflows are
+   kept (they were "until we finalize which flows i want to keep") and come back by adding a
+   name here. `buildDemoWorkflows` builds them ungated, which is what the audit exercises so
+   the content cannot rot while nobody sees it. */
+const SHOW_FOR: string[] = [];
 
 /* ---- the prospect's own vocabulary ----------------------------------------- */
 type V = {
@@ -515,7 +520,12 @@ function voiceAfterHours(v: V): ExtraWorkflow {
  * spread and widening this later touches one line.
  */
 export function demoWorkflowsFor(p: CustomerProfile): ExtraWorkflow[] {
-  if (!isProspect(p, SHOW_FOR)) return [];
+  if (!SHOW_FOR.some((name) => isProspect(p, name))) return [];
+  return buildDemoWorkflows(p);
+}
+
+/** The six, built for any prospect regardless of the gate. */
+export function buildDemoWorkflows(p: CustomerProfile): ExtraWorkflow[] {
   const v = vocab(p);
   return [
     smsSpeedToLead(v),

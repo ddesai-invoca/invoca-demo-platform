@@ -3,7 +3,9 @@ import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
-import { effectiveSmsConfig, repairSalesShape } from "../data/smsTemplate";
+import { effectiveSmsConfig, repairSalesShape, twoPathGreeting } from "../data/smsTemplate";
+import { isCopySlug, workflowPath } from "../data/builtInCopies";
+import { builtInWorkflowBase } from "../data/workflowBase";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { AgentConfigView } from "../data/schema";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
@@ -115,7 +117,9 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
     return (edited ?? profile.reports.agentConfig) as AgentConfigView | undefined;
   }, [effectiveData, agentKey, profile.reports.agentConfig]);
 
-  const wf = wfSlug
+  /* A built-in COPY reads its own tree, like the original; it is not an extra workflow. */
+  const copyPath = isCopySlug(wfSlug) ? workflowPath(wfSlug) : null;
+  const wf = wfSlug && !copyPath
     ? extraWfs.find((w) => w.slug === wfSlug)
     : undefined;
   /* ⚠️ **A MINIMAL PREVIEW MUST NOT INHERIT THE CONFIGURED AGENT.** Same reasoning as
@@ -127,8 +131,13 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
    * "Preview Workflow" obeys the diagram beside it. Same read as the Preview Agent tab does
    * cross-page, through the one shared key, rather than a prop threaded down for one field.
    */
-  const wfTree = !wfSlug
-    ? (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) as
+  /* ⚠️ A COPY FALLS BACK THE WAY ITS PAGE DOES (10/13/2026): its own saved tree, else the
+     original's, else the template. Its starting state is the page's BASE, which only exists
+     while that page is open, so a Preview Agent tab opened on its own found nothing and the
+     agent got no workflow at all. */
+  const wfTree = !wf
+    ? ((effectiveData(`${profileId}::${(copyPath ?? SMS_WORKFLOW_SCOPE_PATH)}`)
+        ?? (copyPath ? (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) ?? builtInWorkflowBase(profile, true)) : undefined)) as
         { branches?: unknown[]; sms?: unknown } | undefined)
     : undefined;
   const flow = useMemo(() => {
@@ -148,7 +157,10 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
          nothing of, which is the exact mismatch this branch exists to prevent. */
       ? { ...buildSmsBrain(profile, agentConfig, wf, wfAgent), voiceMinimal: true, openingMessage: undefined,
           customSystem: undefined, playbook: undefined, steps: undefined, workflow: undefined }
-      : buildSmsBrain(profile, agentConfig, wf, wfAgent, flow)),
+      : buildSmsBrain(profile, agentConfig, wf, wfAgent, flow, {
+          workflowLeads: !!copyPath,
+          greeting: copyPath ? (String((wfTree?.sms as { greeting?: string } | undefined)?.greeting ?? "").trim() || twoPathGreeting(profile)) : undefined,
+        })),
     [minimal, profile, agentConfig, wf, wfAgent, flow],
   );
 

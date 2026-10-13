@@ -3,6 +3,7 @@ import { useProfile } from "../data/ProfileContext";
 import { useAgentWorkflows, createdWorkflowPath, type CreatedWorkflow } from "../data/agentWorkflows";
 import { WorkflowRowMenu } from "../components/WorkflowRowMenu";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
+import { builtInCopiesFor, workflowPath } from "../data/builtInCopies";
 import { isShareMode } from "../data/shareMode";
 import { TourCallout } from "../components/GuidedTour";
 
@@ -42,6 +43,10 @@ export function AgentStudio() {
   const workflows = [
     { label: `Workflow: ${name} - Voice`, to: "/agent-studio/agent/workflow/voice", status: "Live", channel: "Voice", type: "Network", triggeredBy: "1 Campaign", updated, live: updated },
     { label: `Workflow: ${name} - SMS`, to: "/agent-studio/agent/workflow/sms", status: "Live", channel: "SMS", type: "Network", triggeredBy: "1 Campaign", updated, live: updated },
+    ...builtInCopiesFor(profile).map((c) => ({
+      label: `Workflow: ${name} - ${c.suffix}`, to: workflowPath(c.slug), status: "Live", channel: c.channel,
+      type: "Network", triggeredBy: "1 Campaign", updated, live: updated,
+    })),
     ...extraWfs.map((w) => ({
       label: `Workflow: ${w.label}`,
       to: `/agent-studio/agent/workflow/${w.slug}`,

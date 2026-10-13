@@ -5,6 +5,7 @@ import { CreateWorkflowModal } from "../components/CreateWorkflowModal";
 import { useAgentWorkflows, createdWorkflowPath } from "../data/agentWorkflows";
 import { WorkflowRowMenu } from "../components/WorkflowRowMenu";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
+import { builtInCopiesFor, workflowPath } from "../data/builtInCopies";
 
 /* Shared chrome for the Agent Studio editor sub-pages (Agent Settings,
    Knowledge Sources, …): header + left sub-nav + sticky footer. The active
@@ -35,6 +36,11 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
   const workflows = [
     { name: `${name} - Voice`, to: "/agent-studio/agent/workflow/voice", icon: "call", status: "Live", warn: false, id: "" },
     { name: `${name} - SMS`, to: "/agent-studio/agent/workflow/sms", icon: "chat", status: "Live", warn: false, id: "" },
+    /* The built-in copies ("Voice Test" / "SMS Test"), right under the pair they copy. */
+    ...builtInCopiesFor(profile).map((c) => ({
+      name: `${name} - ${c.suffix}`, to: workflowPath(c.slug), icon: c.channel === "SMS" ? "chat" : "call",
+      status: "Live", warn: false, id: "",
+    })),
     // per-prospect extras (Reyes Law's SMS nurture agent) — keep their own label
     ...extraWfs.map((w) => ({
       name: w.label,

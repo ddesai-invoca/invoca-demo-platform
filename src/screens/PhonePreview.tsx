@@ -9,7 +9,9 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { tollFreeNumber } from "../data/smsContactNumber";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
-import { effectiveSmsConfig, repairSalesShape } from "../data/smsTemplate";
+import { effectiveSmsConfig, repairSalesShape, twoPathGreeting } from "../data/smsTemplate";
+import { isCopySlug, workflowPath } from "../data/builtInCopies";
+import { builtInWorkflowBase } from "../data/workflowBase";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 import { useAutoGrow } from "../data/useAutoGrow";
@@ -167,8 +169,18 @@ function useBrain(wfSlug?: string | null) {
   /* Opt in to the drawer's question tools. This is the page whose whole purpose is
      what the agent asks, so it is the one place the paste / import / use-case
      controls belong. */
-  const wf = wfSlug
+  /* A built-in COPY ("SMS Test") is the built-in template under its own path, so it is NOT an
+     extra workflow: it reads its own tree exactly as the original does. */
+  const copyPath = isCopySlug(wfSlug) ? workflowPath(wfSlug) : null;
+  const wf = wfSlug && !copyPath
     ? extraWfs.find((w) => w.slug === wfSlug)
+    : undefined;
+  const builtInPath = copyPath ?? SMS_WORKFLOW_SCOPE_PATH;
+  /* A copy's own opener (its `sms.greeting`), else the two-path default. Read before the scope
+     registration below so the drawer's OPENING MESSAGE row shows what the phone sends. */
+  const copyGreeting = copyPath
+    ? (String(((effectiveData(`${profileId}::${copyPath}`) as { sms?: { greeting?: string } } | undefined)?.sms?.greeting) ?? "").trim()
+        || twoPathGreeting(profile))
     : undefined;
   /* ⚠️⚠️ **THE WORKFLOW PAGE'S OWN `agent` HALF, READ BACK ACROSS A TAB BOUNDARY (9/8/2026).**
      Ask AI on an SMS extra workflow page now configures that workflow's opener and its ordered
@@ -215,11 +227,11 @@ function useBrain(wfSlug?: string | null) {
      * where the diagram is on screen while you do it.
      * ⚠️ Built-in workflow only: an extra workflow has no `sms` config of its own.
      */
-    ...(!wf ? { linkKey: `${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`, linkAs: "workflow" } : {}),
-    greetingFallback: wfAgent?.greeting ?? wf?.openingMessage,
+    ...(!wf ? { linkKey: `${profileId}::${builtInPath}`, linkAs: "workflow" } : {}),
+    greetingFallback: copyGreeting ?? wfAgent?.greeting ?? wf?.openingMessage,
     /* ⚠️ An LSA quote workflow's opener beats a stored greeting on the phone, so it has to
        beat it in the drawer's row too — see `Scope.greetingWins`. */
-    greetingWins: !!wf?.openingMessageWins,
+    greetingWins: !!wf?.openingMessageWins || !!copyGreeting,
   });
   /* Shape comes from data/smsBrain.ts, shared with the SMS workflow page's
      "Preview Workflow" chat drawer. Both are previews of ONE agent, so they must
@@ -241,8 +253,13 @@ function useBrain(wfSlug?: string | null) {
    * ⚠️ ONLY FOR THE BUILT-IN WORKFLOW (`!wf`): an extra workflow states its own flow in
    * `systemPrompt`/`playbookSteps`, and sending both would be two flows for one conversation.
    */
+  /* ⚠️ A COPY FALLS BACK THE WAY ITS PAGE DOES (10/13/2026): its own saved tree, else the
+     original's, else the template. Its starting state is the page's BASE, which only exists
+     while that page is open, so a Preview Agent tab opened on its own found nothing and the
+     agent got no workflow at all. */
   const wfTree = !wf
-    ? (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) as
+    ? ((effectiveData(`${profileId}::${builtInPath}`)
+        ?? (copyPath ? (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) ?? builtInWorkflowBase(profile, true)) : undefined)) as
         { branches?: unknown[]; sms?: unknown } | undefined)
     : undefined;
   const flow = useMemo(() => {
@@ -259,7 +276,8 @@ function useBrain(wfSlug?: string | null) {
     }
   }, [profile, wfTree]);
 
-  return buildSmsBrain(profile, ac, wf, wfAgent, flow);
+  /* A built-in COPY ("SMS Test") follows its diagram as the conversation (10/13/2026). */
+  return buildSmsBrain(profile, ac, wf, wfAgent, flow, { workflowLeads: !!copyPath, greeting: copyGreeting });
 }
 
 /* mode "modal" = the in-app overlay (legacy); mode "page" = a standalone browser

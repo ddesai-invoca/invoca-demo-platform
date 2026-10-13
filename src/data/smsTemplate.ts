@@ -222,7 +222,9 @@ export interface SmsQualifyCopy { question: string; segments: string[]; fallback
    conversation from the one the phone holds.
    ⚠️ **EVERY QUESTION IS READ FROM THE SAME PLAYBOOK THE AGENT USES** —
    `smsPlaybook.qualifyingQuestions` — so the diagram cannot describe questions the agent does not
-   ask. Layer 1 asks the first one; layer 2 asks the rest; the bottom box books.
+   ask. The Qualify asks the first one; each service line's Inform box asks the rest and books.
+   ⚠️ REVISED THE SAME DAY: this first shipped as TWO Qualify layers and was asked to be one
+   ("instead of the double qualify just do one layer of qualify and then the Inform boxes").
    ⚠️ **LAYER 1'S ANSWERS ARE THE PROSPECT'S OWN SERVICE LINES** (the Product Category rows the
    dashboards already show), because the first playbook question is almost always "what do you
    need" — pests for Aptive, care type for Orlando Health, vehicle type for AutoNation. Three, so
@@ -240,29 +242,26 @@ export function salesServiceLines(p: CustomerProfile): string[] {
 /** The retired root question, so a stored copy of it can be recognised and replaced. */
 const RETIRED_ROOT = /^Are you a new or existing .+\?$/;
 
+/**
+ * The greeting for a workflow whose conversation branches into BOTH intents (10/13/2026).
+ * Asked for on SMS Test: *"the greeting message needs to be something that allows them to go
+ * down both sales inquiry and need support path"*. Same wording as the voice opener, so the two
+ * test copies open the same way. Stored on the copy's own `sms.greeting`, so editing it never
+ * touches the original's (shared) Preview Agent greeting.
+ */
+export const twoPathGreeting = (p: CustomerProfile): string =>
+  `Hi, this is ${p.customerName}'s AI assistant. Are you looking to book a ${p.bookingTerm.toLowerCase()}, or do you need help with one you already have?`;
+
 /** The booking box's title, one definition for the tree and the repair. */
 export const bookTitle = (p: CustomerProfile): string => `Schedule ${p.bookingTerm}`;
 
 export function qualifyCopy(p: CustomerProfile): Record<SmsQualifyNode, SmsQualifyCopy> {
   const qs = salesQuestions(p);
-  const term = p.bookingTerm.toLowerCase();
   return {
     root: {
       question: qs[0] ?? `What can ${p.customerName} help you with today?`,
       segments: salesServiceLines(p),
       fallback: `Sorry, I didn't quite catch that. ${qs[0] ?? `What can ${p.customerName} help you with today?`}`,
-    },
-    /* Layer 2: the rest of the playbook, asked one at a time, then on to booking. One home for
-       all three service lines, because the agent asks the same follow-ups whichever it is.
-       ⚠️ CONSEQUENCE, STATED: editing it on one service line changes it on all three. */
-    details: {
-      question: qs.length > 1
-        /* A space, not a newline: the drawer's question box is one line, and a newline
-           renders as "lot?Would you" there. */
-        ? qs.slice(1).join(" ")
-        : `A couple of quick questions so we can set up your ${term}.`,
-      segments: [bookTitle(p)],
-      fallback: `Ask the next question again in simpler words. Once you have the answers, move on to scheduling the ${term}.`,
     },
     /* ⚠⚠ **THE SUPPORT QUALIFY'S OWN QUESTION (10/9/2026).** The support leaf branches, so
        it is a Qualify and a Qualify ASKS something — and without a home for that question the
@@ -311,8 +310,14 @@ export function informCopy(p: CustomerProfile): SmsConfig["inform"] {
   const openItem = voiceVocab(p).openItem.toLowerCase();
   const phone = demoPhone(p);
   return {
-    /* The bottom box on every service line: book it, in this conversation. */
+    /* The Inform box on every service line (10/13/2026): the rest of the playbook, then book it,
+       in this conversation. One home for all of them, because the agent asks the same
+       follow-ups whichever line it is. Consequence, stated: editing it on one line changes
+       all of them. */
     book: [
+      ...(salesQuestions(p).length > 1
+        ? [`Ask these one at a time, in this order, skipping any they have already answered: ${salesQuestions(p).slice(1).join(" ")}`]
+        : []),
       `Once the qualifying answers are in, offer two specific days and times for the ${p.bookingTerm.toLowerCase()} and let them pick.`,
       `Ask for their full name once if you do not already have it, and split it into first and last yourself.`,
       `Confirm the day, time and what the ${p.bookingTerm.toLowerCase()} is for back to them in one message.`,
@@ -375,6 +380,9 @@ export function informCopy(p: CustomerProfile): SmsConfig["inform"] {
     supportOther: [
       `This is the catch-all: anything that is not the three above. Listen first and do not force it into one of them.`,
       `Look up whatever record is relevant, answer what you can answer, and do it in the same turn rather than promising to look later.`,
+      /* 10/13/2026: measured on a real path, a gate-code change was handed to a person "for
+         security reasons" nobody configured. Simple account details are the agent's to do. */
+      `Update simple account details yourself, such as access instructions, a gate code, a phone number or an email, and confirm the change back.`,
       `Hand off as soon as it needs a person: they ask for one, they are upset, or it needs an authority you do not have. Say who you are passing them to.`,
     ].join("\n"),
   };
@@ -453,7 +461,7 @@ export interface SmsConfig {
 
 /* `newSide` / `existingSide` belong to the retired captured shape and no template node uses
    them since 10/13/2026; kept in the type because stored overrides still carry them. */
-export type SmsQualifyNode = "root" | "details" | "newSide" | "existingSide" | "support";
+export type SmsQualifyNode = "root" | "newSide" | "existingSide" | "support";
 
 /** The template's own defaults for this prospect — the base the override store sits on top of. */
 export function smsConfigFor(p: CustomerProfile): SmsConfig {
@@ -461,7 +469,7 @@ export function smsConfigFor(p: CustomerProfile): SmsConfig {
   const q = qualifyCopy(p);
   const ask = (k: SmsQualifyNode) => ({ question: q[k].question, fallback: q[k].fallback });
   return {
-    qualify: { root: ask("root"), details: ask("details"),
+    qualify: { root: ask("root"),
       newSide: { question: "To check we are in your area, may I get your zip code?", fallback: "" },
       existingSide: { question: "What's the phone number tied to your account?", fallback: "" },
       support: ask("support") },
@@ -516,19 +524,16 @@ export const escalateCopy = (p: CustomerProfile): string => [
    that hand off to it, and the capture reads exactly this. */
 export const SMS_TRIGGER = "0 Campaigns, 2 Forms, and 1 Inbound SMS";
 
-/** The sales user group with its two Qualify layers and the booking box under each. */
+/** The sales user group: one Qualify, with an Inform box per service line that books. */
 export function salesLeaf(p: CustomerProfile): TreeLeaf {
   const q = qualifyCopy(p);
-  const book: TreePath = {
-    title: bookTitle(p), action: ACT_INFORM, actionIcon: "info", tone: "blue", actionKind: "inform",
-    chips: collectFor(p, "book").map((c) => c.name),
-  };
+  const chips = collectFor(p, "book").map((c) => c.name);
   return {
     title: SMS_SALES_LEAF, action: LEAF_QUALIFY, actionIcon: "callSplit", locked: true,
     tone: "blue", actionKind: "qualify",
     paths: q.root.segments.map((title) => ({
-      title, action: LEAF_QUALIFY, actionIcon: "callSplit", tone: "blue" as const,
-      actionKind: "qualify" as const, paths: [book],
+      title, action: ACT_INFORM, actionIcon: "info", tone: "blue" as const,
+      actionKind: "inform" as const, chips,
     })),
   };
 }
@@ -548,7 +553,10 @@ export function repairSalesShape(branches: TreeBranch[], p: CustomerProfile): Tr
     if (b.title !== INTENT_SALES) return b;
     const leaves = b.leaves.map((l) => {
       if (l.title !== SMS_SALES_LEAF) return l;
-      const old = (l.paths ?? []).some((path) => (path.paths ?? []).some((k) => RETIRED_SALES_KIDS.test(String(k.title ?? "").trim())));
+      /* Two retired shapes: the captured one, and the two-Qualify-layer one that was live for
+         part of 10/13/2026 (a service line with a single "Schedule <bookingTerm>" under it). */
+      const old = (l.paths ?? []).some((path) => (path.paths ?? []).some((k) =>
+        RETIRED_SALES_KIDS.test(String(k.title ?? "").trim()) || String(k.title ?? "").trim() === bookTitle(p)));
       if (!old) return l;
       touched = true;
       return salesLeaf(p);
@@ -567,9 +575,8 @@ export function repairSalesShape(branches: TreeBranch[], p: CustomerProfile): Tr
  * renderer ignores. The segments BELOW them are configuration and stay editable.
  */
 export function smsBranches(p: CustomerProfile): TreeBranch[] {
-  /* ⚠️ TWO QUALIFY LAYERS, THEN A BOOKING BOX (10/13/2026) — see `salesQuestions`. Each
-     service line is a layer-2 Qualify asking the rest of the playbook, and its one answer is the
-     Inform that schedules. Three rows exactly, which is the deepest a Qualify may nest. */
+  /* ⚠️ ONE QUALIFY, THEN AN INFORM BOX PER SERVICE LINE THAT BOOKS (10/13/2026, revised the
+     same day from two Qualify layers on request) — see `salesQuestions`. */
   const sales = salesLeaf(p);
 
   /* ⚠️⚠️ **THE INTENT NODES CARRY THEIR DESCRIPTION, AND IT IS THE SAME STRING THE DRAWER

@@ -887,19 +887,13 @@ const SMS_INFORM: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsC
 };
 
 /**
- * The template's own service lines (layer-2 Qualify, sharing `qualify.details`) and the booking
- * box under each (sharing `inform.book`), 10/13/2026.
+ * The template's own service lines: Inform boxes sharing `inform.book`, 10/13/2026.
  *
  * ⚠️ ONLY AS MANY AS THE PROSPECT HAS. A service line an SE ADDS sits past them and falls through
  * to the generic `extra__` branch with its own text, rather than silently sharing the template's.
  */
-function salesQualifyFor(profile: CustomerProfile, nodeId: string): { key: SmsQualifyNode; segments: string } | undefined {
-  const m = /^path-0-0-(\d+)$/.exec(nodeId);
-  if (!m || Number(m[1]) >= salesServiceLines(profile).length) return undefined;
-  return { key: "details", segments: `branches.0.leaves.0.paths.${m[1]}.paths` };
-}
 function salesBookFor(profile: CustomerProfile, nodeId: string): { key: keyof SmsConfig["inform"]; collect: SmsCollectKey } | undefined {
-  const m = /^sub-0-0-(\d+)-0$/.exec(nodeId);
+  const m = /^path-0-0-(\d+)$/.exec(nodeId);
   if (!m || Number(m[1]) >= salesServiceLines(profile).length) return undefined;
   return { key: "book", collect: "book" };
 }
@@ -1203,7 +1197,7 @@ export function smsDrawerFor(
     };
   };
 
-  const q = SMS_QUALIFY[nodeId] ?? salesQualifyFor(profile, nodeId);
+  const q = SMS_QUALIFY[nodeId];
   if (q && selfKind === "qualify") {
     /* ⚠️ THE ANSWERS COME FROM THE TREE, ALWAYS — the same rule `drawerFor` settled on 8/27.
        The tree handed in here is the page's EFFECTIVE object, so it already carries anything

@@ -131,6 +131,19 @@ export interface ChatBrain {
     intents: { title: string; looksLike: string; rules: string[]; flow: SmsFlowNode[] }[];
   };
   /**
+   * The workflow IS the conversation, not an addition to the generic sales flow (10/13/2026).
+   *
+   * ⚠️ Set only for the built-in COPIES ("SMS Test"). Asked for: make Preview Agent and Preview
+   * Workflow do what the diagram says. Measured first on all seven paths: with the generic
+   * numbered question list beside the workflow, the agent re-asked "which pests are you seeing?"
+   * five times to a customer who had asked for a recurring plan, and offered one time where the
+   * booking box says two. The originals keep the old behaviour until this is signed off.
+   */
+  workflowLeads?: boolean;
+  /** The voice counterpart for the "Voice Test" copy: every field a sales box collects is
+   *  asked, in order (measured: a box's Consumer Email was skipped). 10/13/2026. */
+  voiceWorkflowLeads?: boolean;
+  /**
    * The extra workflow's ORDERED FLOW (`reports.extraWorkflows[].playbookSteps`, or whatever
    * the workflow page's Ask AI has edited it to).
    *
@@ -372,6 +385,22 @@ function stepsBlock(brain: ChatBrain): string {
  * ⚠️ NESTED AND EXPLICITLY CONDITIONAL ("If they answer …"), because a flat list of every node
  * loses the one thing the diagram encodes: which question follows which answer.
  */
+/**
+ * Every question offers its choices (10/13/2026), for the built-in COPIES only.
+ * Asked for: *"in the follow up messages always give them the options dont leave it open ended"*.
+ * ⚠️ PERSONAL DETAILS ARE THE EXCEPTION, AND IT HAS TO BE SAID: a name, an address, a ZIP code, an
+ * email, a phone number or a code has no options to offer, and inventing some would be absurd.
+ */
+/** The last thing in the prompt, because a rule read last is the one the model applies. Measured:
+ *  with only the rule above, the agent still repeated the workflow's open wording ("How soon
+ *  would you like your first visit?") and closed with "Is there anything else I can help with?". */
+const OPTIONS_CHECK = `FINAL CHECK before you send ANY message that asks something: does every question in it name 2 to 4 choices? If not, rewrite it so it does. This includes the workflow's own questions (turn "How soon would you like your first visit?" into "Would you like your first visit this week, next week, or later this month?", and a size question into ranges) and your closing question (not "anything else?" but, for example, "Would you like to book another visit, update your account, or are you all set?"). Personal details (name, address, ZIP code, email, phone number, a code) are the only exception.`;
+
+const OPTIONS_RULE = [
+  `- EVERY question you ask offers the choices: name 2 to 4 specific options in the question itself, for example "Would you like this week, next week, or later this month?" or "Is it about a recent visit, an upcoming one, a charge, or something else?". Use the answers a workflow step lists when it has them; otherwise offer sensible options for this business. Do not ask an open-ended question.`,
+  `- The one exception is a personal detail with nothing to choose from (their name, address, ZIP code, email, phone number, or a code): ask for that plainly.`,
+];
+
 function workflowBlock(brain: ChatBrain): string {
   const wf = brain.workflow;
   if (!wf?.intents?.length) return "";
@@ -380,7 +409,9 @@ function workflowBlock(brain: ChatBrain): string {
     const out: string[] = [];
     const head = `${pad}${n.title} — action: ${n.action}`;
     out.push(head);
-    if (n.question) out.push(`${pad}  ASK, in your own words but to this effect: "${n.question}"`);
+    if (n.question) out.push(brain.workflowLeads
+      ? `${pad}  ASK, as a question that names 2 to 4 choices, to this effect: "${n.question}"`
+      : `${pad}  ASK, in your own words but to this effect: "${n.question}"`);
     if (n.fallback) out.push(`${pad}  If you cannot tell from their answer: ${n.fallback}`);
     if (n.instruction) out.push(`${pad}  DO THIS: ${n.instruction}`);
     if (n.collect?.length) out.push(`${pad}  Gather while you are here: ${n.collect.join(", ")}.`);
@@ -398,7 +429,19 @@ function workflowBlock(brain: ChatBrain): string {
      self-contradicting prompt this file already records twice. And replacing the sales arc
      outright would turn every prospect's SMS demo into a routing conversation, losing the
      qualify-quote-book beat that is the whole point of the channel. */
-  const lines: string[] = [
+  const lines: string[] = brain.workflowLeads ? [
+    `CONFIGURED WORKFLOW — an operator built this in Agent Studio for THIS agent. THIS IS THE`,
+    `CONVERSATION: follow it exactly, and do not use any other list of questions.`,
+    `- A "Qualify" step only decides WHICH ANSWER below it applies. The moment their words fit one`,
+    `  of its answers, take it and move straight into that answer's step, even if they never`,
+    `  literally answered the question (someone asking for a recurring plan has picked a plan).`,
+    `  Only if nothing fits, ask its question once. Never ask a Qualify's question a second time.`,
+    `- An "Inform" or "Support & Escalate" step: do what its DO THIS says, in order.`,
+    `- Never ask for something they have already told you.`,
+    ...OPTIONS_RULE,
+    ``,
+    `First, decide which intent the consumer has:`,
+  ] : [
     `CONFIGURED WORKFLOW — an operator built this in Agent Studio for THIS agent, so it is what`,
     `they want you to do. Use it for classification and routing, and follow the questions and`,
     `instructions on the path you land in. It does not replace the conversation flow above:`,
@@ -543,6 +586,14 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
       : `You are the SMS sales assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
     `You are texting a prospective customer. Your goal: ${goal}.`,
     ``,
+    ...(brain.workflowLeads && brain.workflow ? [
+      `CONVERSATION FLOW — the CONFIGURED WORKFLOW below is the whole conversation:`,
+      /* The copy's greeting is sent as the first message, and a brand rule scripting an intro
+         made the agent introduce itself a SECOND time (measured, 10/13/2026). */
+      `1. Your greeting has already been sent as your first message. Pick up from their reply; do not introduce yourself or repeat the greeting.${offer ? ` You may mention this offer once, where it fits: "${offer}".` : ""}`,
+      `2. Work out the intent, then walk that intent's flow in the CONFIGURED WORKFLOW one step at a time, exactly as it says.`,
+      `3. When a step says to book, OFFER the specific day and time options it describes yourself and let them pick. Do NOT ask them to pick a time from scratch.`,
+    ] : [
     `CONVERSATION FLOW — follow this path start to finish. Adapt your WORDING to what the customer says, never the order of the steps or the set of questions below:`,
     `1. Open: briefly introduce yourself as ${brain.customerName}'s AI agent.${offer ? ` Mention this offer: "${offer}".` : ""} Ask if they'd like to get started.`,
     `2. Qualify — ask these questions ONE AT A TIME, IN THIS EXACT ORDER, waiting for each answer before asking the next. Do not skip any, do not reorder them, do not combine two into one message, and do not add questions of your own. If the customer already answered one, acknowledge it and move to the next in the list:`,
@@ -551,6 +602,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
       ? `3. Estimate: confirm you can help/serve their area, then give a PRELIMINARY price estimate as a RANGE based on what they shared. Say the exact price is confirmed at the ${bookingType}, and offer to schedule one.`
       : `3. Recap: briefly recap what they're looking for, then recommend scheduling a ${bookingType} to move forward and offer to set it up.`,
     `4. Schedule: proactively OFFER a specific available day and time yourself for the ${bookingType} (e.g. "I have availability this Friday at 12:00 PM") and ask if they'd like you to lock it in. Do NOT ask the customer to pick a time from scratch — suggest one.`,
+    ]),
     /* ⚠️ NO REMINDER-TEXT PROMISE (9/29/2026), asked for directly. Nothing in this
        platform sends one, so the agent was committing the business to a follow-up it
        does not make. ⚠️ Silencing it HERE is only half the fix — every prospect's own
@@ -582,9 +634,16 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     /* ⚠️ AFTER the flow and STYLE, BEFORE the brand rules — it is configuration for this agent,
        so it belongs with the other operator-set sections rather than buried under them. */
     workflowBlock(brain) ? `\n${workflowBlock(brain)}` : ``,
-    rules ? `\nBRAND CONVERSATION RULES (follow these; they carry brand-specific offers, terms, and numbers):\n${rules}` : ``,
+    /* ⚠️ When the workflow leads, a brand rule that scripts the conversation ("ask which pests,
+       then size…, then share a price range") is a SECOND flow — measured: it made the agent
+       re-ask the pests question five times on a path whose answer was a plan type. The rules
+       still carry the brand's terms, offers and numbers; the diagram decides the order. */
+    rules ? (brain.workflowLeads && brain.workflow
+      ? `\nBRAND CONVERSATION RULES (use them for brand terms, offers and numbers; where one describes which questions to ask or in what order, the CONFIGURED WORKFLOW wins):\n${rules}`
+      : `\nBRAND CONVERSATION RULES (follow these; they carry brand-specific offers, terms, and numbers):\n${rules}`) : ``,
     qa ? `\nAPPROVED Q&A (use these as ground truth for common questions):\n${qa}` : ``,
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,
+    brain.workflowLeads && brain.workflow ? `\n${OPTIONS_CHECK}` : ``,
   ].join("\n");
 }
 
@@ -975,7 +1034,9 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
         for (const r2 of p.routes) {
           if (r2.need) {
             const c = dedupeCollect(r2.collect ?? []);
-            lines.push(`      • If they say ${r2.need}: ${r2.action.toLowerCase()}${c.length ? `, collecting ${c.join(", ")}` : ""}${destination(r2.team)}.`);
+            lines.push(`      • If they say ${r2.need}: ${r2.action.toLowerCase()}${c.length
+              ? `, collecting ${c.join(", ")}${brain.voiceWorkflowLeads ? " (ask for every one of these, in this order, and do not skip any)" : ""}`
+              : ""}${destination(r2.team)}.`);
           } else {
             lines.push(`      • ${r2.team} — ${r2.action}`);
           }
@@ -1114,11 +1175,14 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
        duplicates; this covers the rest, the same instruct-then-enforce pairing the dash rule
        and the placeholder rule already use elsewhere in this file. */
     `- NEVER ask for anything you already have. If the caller already gave you their name, ZIP code, or anything else earlier in this call, whether you asked for it or they volunteered it, use what you have and move on. Track what you have gathered so far as the call progresses.`,
+    /* Voice Test only (10/13/2026): every question offers its choices — see `OPTIONS_RULE`. */
+    ...(brain.voiceWorkflowLeads ? OPTIONS_RULE : []),
     /* The workflow's own rules when it has them, the brand rules only as a fallback. */
     brain.voiceRules?.length
       ? `\nCONVERSATION RULES configured on this workflow:\n${brain.voiceRules.map((r) => `- ${r}`).join("\n")}`
       : rules ? `\nBRAND CONTEXT (brand-specific terms, teams, and numbers):\n${rules}` : ``,
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,
+    brain.voiceWorkflowLeads ? `\n${OPTIONS_CHECK}` : ``,
   ].join("\n");
 }
 

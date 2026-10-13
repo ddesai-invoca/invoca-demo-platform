@@ -83,6 +83,9 @@ export interface SmsBrain {
   overrides?: { questions?: string[]; rules?: string[] };
   /** The built-in workflow's configured flow — see the argument note on `buildSmsBrain`. */
   workflow?: SmsWorkflowFlowShape;
+  /** The workflow IS the conversation rather than an addition to the generic sales flow.
+   *  Set for the built-in copies ("SMS Test"), 10/13/2026; see `engine/chat.ts`. */
+  workflowLeads?: boolean;
   /**
    * The extra workflow's ORDERED FLOW, appended to its own playbook.
    *
@@ -242,9 +245,13 @@ export function buildSmsBrain(
    * — two flows for one conversation is the contradiction this file keeps recording.
    */
   workflow?: SmsWorkflowFlowShape | null,
+  /** `workflowLeads`: the diagram governs the conversation (the built-in copies only).
+   *  `greeting`: that copy's OWN opener, which wins over the shared Preview Agent greeting. */
+  opts: { workflowLeads?: boolean; greeting?: string } = {},
 ): SmsBrain {
   return {
     ...(workflow && !wf ? { workflow } : {}),
+    ...(workflow && !wf && opts.workflowLeads ? { workflowLeads: true } : {}),
     customSystem: wf?.systemPrompt,
     /* Precedence: an extra workflow's scripted line wins (it is the whole point of
        that workflow), then whatever the SE or the AI set, then the derived default.
@@ -279,7 +286,9 @@ export function buildSmsBrain(
        those three — a silent no-op of the kind this file already records five times.
        ⚠️ An edit made ON that workflow still wins over its generated opener: `wfAgent.greeting`
        is checked first, so Ask AI and the Details tab keep working as they do everywhere. */
-    openingMessage: (wf?.openingMessageWins
+    /* A built-in COPY opens with its own greeting (10/13/2026), which offers both paths. */
+    openingMessage: (opts.workflowLeads && opts.greeting?.trim() ? opts.greeting.trim() : undefined)
+      || (wf?.openingMessageWins
       ? (wfAgent?.greeting?.trim() || wf?.openingMessage)
       : undefined)
       || ac?.smsPlaybook?.greeting?.trim()

@@ -1021,7 +1021,8 @@ for (const [file, src] of [["server.ts", read("server.ts")], ["vite.config.ts", 
 
 {
   const wf = read("src/screens/AgentWorkflow.tsx");
-  check(/: extra && !isSms\s*\?\s*\{ scopePath: pathname \}/.test(wf),
+  /* Widened 10/13/2026: Voice Test (a built-in copy) takes the same branch. */
+  check(/: \(extra \|\| copy\) && !isSms\s*\?\s*\{ scopePath: pathname \}/.test(wf),
     "a voice extra points the call at its OWN diagram, not the built-in workflow");
   check(/extra && !isSms \? \{ agent: \{ greeting: extra\.openingMessage/.test(wf),
     "a voice extra registers an agent half, so its opener is configurable");
