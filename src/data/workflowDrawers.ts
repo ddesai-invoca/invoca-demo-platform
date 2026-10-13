@@ -3,7 +3,7 @@ import { actionKindOf, SUPPORT_LEAF, type ActionKind } from "./workflowChrome";
 import type { CustomerProfile } from "./schema";
 import { voiceSpecFor, specWithConfig, DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT,
   DEFAULT_SUPPORT_QUALIFY_QUESTION, DEFAULT_SUPPORT_QUALIFY_FALLBACK, type VoiceAgentConfig } from "./voiceAgentSpec";
-import { collectFor, collectPool, informCopy, type SmsCollectKey, type SmsConfig, type SmsQualifyNode } from "./smsTemplate";
+import { collectFor, collectPool, informCopy, salesServiceLines, type SmsCollectKey, type SmsConfig, type SmsQualifyNode } from "./smsTemplate";
 
 /* =============================================================================
    workflowDrawers.ts — what each node of the flow diagram opens
@@ -871,8 +871,8 @@ export function drawerFor(
 /** Which Qualify node each clickable id is, and where its answers live in the tree. */
 const SMS_QUALIFY: Record<string, { key: SmsQualifyNode; segments: string }> = {
   "leaf-0-0": { key: "root", segments: "branches.0.leaves.0.paths" },
-  "path-0-0-0": { key: "newSide", segments: "branches.0.leaves.0.paths.0.paths" },
-  "path-0-0-1": { key: "existingSide", segments: "branches.0.leaves.0.paths.1.paths" },
+  /* The service lines and their booking boxes are positional per PROSPECT, so they are
+     resolved by `salesNodeFor` below rather than listed here. */
   /* ⚠⚠ **THE SUPPORT LEAF IS A QUALIFY NOW (10/9/2026), so it is registered here rather
      than in the escalate branch below.** It branches, and only a Qualify may nest. Without
      this it falls through to the generic `extra__` branch — right for a node an SE added,
@@ -883,11 +883,26 @@ const SMS_QUALIFY: Record<string, { key: SmsQualifyNode; segments: string }> = {
 };
 /** Which Inform leaf each clickable id is. */
 const SMS_INFORM: Record<string, { key: keyof SmsConfig["inform"]; collect: SmsCollectKey }> = {
-  "sub-0-0-0-0": { key: "serviceableYes", collect: "serviceableYes" },
-  "sub-0-0-0-1": { key: "serviceableNo", collect: "serviceableNo" },
-  "sub-0-0-1-0": { key: "foundYes", collect: "foundYes" },
-  "sub-0-0-1-1": { key: "foundNo", collect: "foundNo" },
+
 };
+
+/**
+ * The template's own service lines (layer-2 Qualify, sharing `qualify.details`) and the booking
+ * box under each (sharing `inform.book`), 10/13/2026.
+ *
+ * ⚠️ ONLY AS MANY AS THE PROSPECT HAS. A service line an SE ADDS sits past them and falls through
+ * to the generic `extra__` branch with its own text, rather than silently sharing the template's.
+ */
+function salesQualifyFor(profile: CustomerProfile, nodeId: string): { key: SmsQualifyNode; segments: string } | undefined {
+  const m = /^path-0-0-(\d+)$/.exec(nodeId);
+  if (!m || Number(m[1]) >= salesServiceLines(profile).length) return undefined;
+  return { key: "details", segments: `branches.0.leaves.0.paths.${m[1]}.paths` };
+}
+function salesBookFor(profile: CustomerProfile, nodeId: string): { key: keyof SmsConfig["inform"]; collect: SmsCollectKey } | undefined {
+  const m = /^sub-0-0-(\d+)-0$/.exec(nodeId);
+  if (!m || Number(m[1]) >= salesServiceLines(profile).length) return undefined;
+  return { key: "book", collect: "book" };
+}
 
 /**
  * The four paths under All Support Users — ESCALATE nodes, each with its own text.
@@ -1188,7 +1203,7 @@ export function smsDrawerFor(
     };
   };
 
-  const q = SMS_QUALIFY[nodeId];
+  const q = SMS_QUALIFY[nodeId] ?? salesQualifyFor(profile, nodeId);
   if (q && selfKind === "qualify") {
     /* ⚠️ THE ANSWERS COME FROM THE TREE, ALWAYS — the same rule `drawerFor` settled on 8/27.
        The tree handed in here is the page's EFFECTIVE object, so it already carries anything
@@ -1217,7 +1232,7 @@ export function smsDrawerFor(
     };
   }
 
-  const inf = SMS_INFORM[nodeId];
+  const inf = SMS_INFORM[nodeId] ?? salesBookFor(profile, nodeId);
   if (inf && selfKind === "inform") {
     return {
       kind: "action", title: "Action", action: "inform", channel: ch,

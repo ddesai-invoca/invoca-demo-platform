@@ -9,7 +9,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { tollFreeNumber } from "../data/smsContactNumber";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
-import { effectiveSmsConfig } from "../data/smsTemplate";
+import { effectiveSmsConfig, repairSalesShape } from "../data/smsTemplate";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
 import { useAutoGrow } from "../data/useAutoGrow";
@@ -249,7 +249,8 @@ function useBrain(wfSlug?: string | null) {
     if (!wfTree?.branches?.length) return null;
     const cfg = effectiveSmsConfig(profile, wfTree.sms as object | undefined);
     try {
-      return smsWorkflowFlow(profile, wfTree as never, cfg);
+      const branches = repairSalesShape(wfTree.branches as never, profile);
+      return smsWorkflowFlow(profile, { ...wfTree, branches } as never, cfg);
     } catch {
       /* ⚠️ A STORED TREE FROM AN OLDER SHAPE MUST NOT TAKE THE PHONE DOWN. The agent falling
          back to its generated flow is a degraded demo; a thrown error inside `useBrain` is a

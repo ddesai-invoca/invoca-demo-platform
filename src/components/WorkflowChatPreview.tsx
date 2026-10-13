@@ -3,7 +3,7 @@ import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
-import { effectiveSmsConfig } from "../data/smsTemplate";
+import { effectiveSmsConfig, repairSalesShape } from "../data/smsTemplate";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { AgentConfigView } from "../data/schema";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
@@ -134,7 +134,10 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
   const flow = useMemo(() => {
     if (!wfTree?.branches?.length) return null;
     const cfg = effectiveSmsConfig(profile, wfTree.sms as object | undefined);
-    try { return smsWorkflowFlow(profile, wfTree as never, cfg); } catch { return null; }
+    try {
+      const branches = repairSalesShape(wfTree.branches as never, profile);
+      return smsWorkflowFlow(profile, { ...wfTree, branches } as never, cfg);
+    } catch { return null; }
   }, [profile, wfTree]);
 
   const brain = useMemo(

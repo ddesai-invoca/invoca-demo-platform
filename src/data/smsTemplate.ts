@@ -181,6 +181,9 @@ const ORDER = {
   serviceableNo: ["first", "last", "zip", "category", "isNew", "isExisting", "disposition"],
   foundYes: ["first", "last", "zip", "isExisting", "isNew", "category", "score", "disposition"],
   foundNo: [] as string[],
+  /* The booking box at the bottom of the sales side (10/13/2026): who it is, what they want,
+     and where, which is what a booking needs. */
+  book: ["first", "last", "category", "zip"],
   /* ⚠️ The support paths collect what a human would need to pick the request up: who it is,
      and the reference they have. Drawn from the SAME pool as the sales side, so a prospect's
      own vocabulary carries across and the two halves cannot describe different fields. */
@@ -211,21 +214,55 @@ export const collectFor = (p: CustomerProfile, which: SmsCollectKey): CollectIte
 
 export interface SmsQualifyCopy { question: string; segments: string[]; fallback: string }
 
+/* ⚠️⚠️ **THE SALES SIDE MIRRORS WHAT THE PREVIEW AGENT ACTUALLY DOES (10/13/2026).** Asked for
+   directly: *"the user essentially gets qualified by a couple of questions, and then it books an
+   appointment… make sure the workflow for the sales inquiry side reflects that… Have two layers
+   Qualifying and then an inform box that schedules the appointment."* The captured Greenix shape
+   (new or existing → ZIP or phone lookup → Serviceable / Record Found) described a different
+   conversation from the one the phone holds.
+   ⚠️ **EVERY QUESTION IS READ FROM THE SAME PLAYBOOK THE AGENT USES** —
+   `smsPlaybook.qualifyingQuestions` — so the diagram cannot describe questions the agent does not
+   ask. Layer 1 asks the first one; layer 2 asks the rest; the bottom box books.
+   ⚠️ **LAYER 1'S ANSWERS ARE THE PROSPECT'S OWN SERVICE LINES** (the Product Category rows the
+   dashboards already show), because the first playbook question is almost always "what do you
+   need" — pests for Aptive, care type for Orlando Health, vehicle type for AutoNation. Three, so
+   the row stays readable beside the four support cases. */
+const salesQuestions = (p: CustomerProfile): string[] =>
+  (p.reports.agentConfig?.smsPlaybook?.qualifyingQuestions ?? []).map((q) => q.trim()).filter(Boolean);
+
+export function salesServiceLines(p: CustomerProfile): string[] {
+  const rows = p.reports.marketingDashboard?.breakdowns
+    ?.find((b) => /product category/i.test(b.title ?? ""))?.rows?.map((r) => r.name.trim()).filter(Boolean) ?? [];
+  const lines = rows.slice(0, 3);
+  return lines.length ? lines : [`New ${p.customerNoun}`];
+}
+
+/** The retired root question, so a stored copy of it can be recognised and replaced. */
+const RETIRED_ROOT = /^Are you a new or existing .+\?$/;
+
+/** The booking box's title, one definition for the tree and the repair. */
+export const bookTitle = (p: CustomerProfile): string => `Schedule ${p.bookingTerm}`;
+
 export function qualifyCopy(p: CustomerProfile): Record<SmsQualifyNode, SmsQualifyCopy> {
-  const noun = p.customerNoun;
-  const lower = noun.toLowerCase();
+  const qs = salesQuestions(p);
+  const term = p.bookingTerm.toLowerCase();
   return {
     root: {
-      question: `Are you a new or existing ${p.customerName} ${lower}?`,
-      /* ⚠️ SIMPLE TITLES, asked for alongside the condition labels below (10/6/2026).
-         The capture reads `New Customer, No` / `Existing Customer, Yes` — the trailing
-         Yes/No is the SE's own shorthand for which way the match went, and on a diagram
-         shown to a prospect it reads as a contradiction ("New Patient, No"). These are
-         the answers to the question directly above them, so the answers are what they
-         should say. Still DEFAULTS: `q.root.segments` overrides them and the drawer can
-         rename either. */
-      segments: [`New ${noun}`, `Existing ${noun}`],
-      fallback: `Sorry, I didn't quite catch that. Are you a new ${lower} or do you already have ${p.customerName} service?`,
+      question: qs[0] ?? `What can ${p.customerName} help you with today?`,
+      segments: salesServiceLines(p),
+      fallback: `Sorry, I didn't quite catch that. ${qs[0] ?? `What can ${p.customerName} help you with today?`}`,
+    },
+    /* Layer 2: the rest of the playbook, asked one at a time, then on to booking. One home for
+       all three service lines, because the agent asks the same follow-ups whichever it is.
+       ⚠️ CONSEQUENCE, STATED: editing it on one service line changes it on all three. */
+    details: {
+      question: qs.length > 1
+        /* A space, not a newline: the drawer's question box is one line, and a newline
+           renders as "lot?Would you" there. */
+        ? qs.slice(1).join(" ")
+        : `A couple of quick questions so we can set up your ${term}.`,
+      segments: [bookTitle(p)],
+      fallback: `Ask the next question again in simpler words. Once you have the answers, move on to scheduling the ${term}.`,
     },
     /* ⚠⚠ **THE SUPPORT QUALIFY'S OWN QUESTION (10/9/2026).** The support leaf branches, so
        it is a Qualify and a Qualify ASKS something — and without a home for that question the
@@ -274,6 +311,13 @@ export function informCopy(p: CustomerProfile): SmsConfig["inform"] {
   const openItem = voiceVocab(p).openItem.toLowerCase();
   const phone = demoPhone(p);
   return {
+    /* The bottom box on every service line: book it, in this conversation. */
+    book: [
+      `Once the qualifying answers are in, offer two specific days and times for the ${p.bookingTerm.toLowerCase()} and let them pick.`,
+      `Ask for their full name once if you do not already have it, and split it into first and last yourself.`,
+      `Confirm the day, time and what the ${p.bookingTerm.toLowerCase()} is for back to them in one message.`,
+      `Close warmly, thank them for choosing ${p.customerName}, and let them know they will get a confirmation.`,
+    ].join("\n"),
     serviceableYes: [
       `Ask for the consumer's full name once and split it into first and last yourself. Only ask a follow-up if they gave a single name.`,
       `Ask for the consumer's best phone number so a ${p.customerName} team member can follow up with details.`,
@@ -363,6 +407,9 @@ export interface SmsConfig {
   qualify: Record<SmsQualifyNode, { question: string; fallback: string }>;
   inform: {
     serviceableYes: string; serviceableNo: string; foundYes: string; foundNo: string;
+    /* The sales side's booking box (10/13/2026). The four above are the retired captured shape,
+       kept so a demo that switched a node back still finds its text. */
+    book: string;
     /* ⚠️ ADDED INSIDE `inform` RATHER THAN AS A NEW TOP-LEVEL KEY, on this file's own rule:
        a new field must sit at a path whose PARENTS already exist in stored overrides, or
        `setByPath` walks into a missing intermediate and the write vanishes. Every demo with
@@ -404,7 +451,9 @@ export interface SmsConfig {
   [extra: `extra__${string}`]: string | undefined;
 }
 
-export type SmsQualifyNode = "root" | "newSide" | "existingSide" | "support";
+/* `newSide` / `existingSide` belong to the retired captured shape and no template node uses
+   them since 10/13/2026; kept in the type because stored overrides still carry them. */
+export type SmsQualifyNode = "root" | "details" | "newSide" | "existingSide" | "support";
 
 /** The template's own defaults for this prospect — the base the override store sits on top of. */
 export function smsConfigFor(p: CustomerProfile): SmsConfig {
@@ -412,7 +461,9 @@ export function smsConfigFor(p: CustomerProfile): SmsConfig {
   const q = qualifyCopy(p);
   const ask = (k: SmsQualifyNode) => ({ question: q[k].question, fallback: q[k].fallback });
   return {
-    qualify: { root: ask("root"), newSide: ask("newSide"), existingSide: ask("existingSide"),
+    qualify: { root: ask("root"), details: ask("details"),
+      newSide: { question: "To check we are in your area, may I get your zip code?", fallback: "" },
+      existingSide: { question: "What's the phone number tied to your account?", fallback: "" },
       support: ask("support") },
     inform: informCopy(p),
     escalate: escalateCopy(p),
@@ -465,6 +516,48 @@ export const escalateCopy = (p: CustomerProfile): string => [
    that hand off to it, and the capture reads exactly this. */
 export const SMS_TRIGGER = "0 Campaigns, 2 Forms, and 1 Inbound SMS";
 
+/** The sales user group with its two Qualify layers and the booking box under each. */
+export function salesLeaf(p: CustomerProfile): TreeLeaf {
+  const q = qualifyCopy(p);
+  const book: TreePath = {
+    title: bookTitle(p), action: ACT_INFORM, actionIcon: "info", tone: "blue", actionKind: "inform",
+    chips: collectFor(p, "book").map((c) => c.name),
+  };
+  return {
+    title: SMS_SALES_LEAF, action: LEAF_QUALIFY, actionIcon: "callSplit", locked: true,
+    tone: "blue", actionKind: "qualify",
+    paths: q.root.segments.map((title) => ({
+      title, action: LEAF_QUALIFY, actionIcon: "callSplit", tone: "blue" as const,
+      actionKind: "qualify" as const, paths: [book],
+    })),
+  };
+}
+
+/**
+ * ⚠️⚠️ **A STORED TREE KEEPS THE RETIRED SALES SHAPE, SO IT IS REPLACED AT READ TIME.** Applying
+ * any edit persists the WHOLE tree, so every demo somebody touched still draws new-or-existing →
+ * Serviceable / Record Found. Recognised by the retired children's titles, which only the old
+ * template produced, and replaced with the current `salesLeaf`.
+ * ⚠️ CONSEQUENCE, STATED: an answer an SE ADDED under the old sales side goes with it.
+ * Returns the same array when nothing needs repairing.
+ */
+const RETIRED_SALES_KIDS = /^(serviceable|not serviceable|record found|no record found|serviceable\s*=\s*(true|false)|found\s*=\s*(true|false))$/i;
+export function repairSalesShape(branches: TreeBranch[], p: CustomerProfile): TreeBranch[] {
+  let touched = false;
+  const next = branches.map((b) => {
+    if (b.title !== INTENT_SALES) return b;
+    const leaves = b.leaves.map((l) => {
+      if (l.title !== SMS_SALES_LEAF) return l;
+      const old = (l.paths ?? []).some((path) => (path.paths ?? []).some((k) => RETIRED_SALES_KIDS.test(String(k.title ?? "").trim())));
+      if (!old) return l;
+      touched = true;
+      return salesLeaf(p);
+    });
+    return leaves.every((l, i) => l === b.leaves[i]) ? b : { ...b, leaves };
+  });
+  return touched ? next : branches;
+}
+
 /**
  * The built-in SMS workflow's branches, for any prospect.
  *
@@ -474,49 +567,10 @@ export const SMS_TRIGGER = "0 Campaigns, 2 Forms, and 1 Inbound SMS";
  * renderer ignores. The segments BELOW them are configuration and stay editable.
  */
 export function smsBranches(p: CustomerProfile): TreeBranch[] {
-  const q = qualifyCopy(p);
-  const chips = (which: keyof typeof ORDER) => collectFor(p, which).map((c) => c.name);
-
-  /* ⚠️ A SEGMENT LIST OF ANY LENGTH DRAWS, which is the whole point of `Add`. The captured tree
-     has exactly two answers on each of its three Qualify nodes, and hardcoding that pair would
-     make a third segment a stored value nobody renders. The two leading answers keep their own
-     forks (that is the captured shape); anything an SE adds beyond them draws as a terminal,
-     because there is nothing configured under it yet. */
-  const informLeaf = (title: string, which: keyof typeof ORDER): TreePath => ({
-    title, action: ACT_INFORM, actionIcon: "info", tone: "blue", actionKind: "inform",
-    ...(ORDER[which].length ? { chips: chips(which) } : {}),
-  });
-  const extra = (titles: string[], from: number): TreePath[] =>
-    titles.slice(from).map((t) => ({ title: t, action: ACT_INFORM, actionIcon: "info",
-      tone: "blue" as const, actionKind: "inform" as const }));
-
-  const forked = (title: string, kids: TreePath[]): TreePath => ({
-    title, action: LEAF_QUALIFY, actionIcon: "callSplit", tone: "blue", actionKind: "qualify", paths: kids,
-  });
-
-  const newSide = [
-    informLeaf(q.newSide.segments[0] ?? SEG_SERVICEABLE_YES, "serviceableYes"),
-    informLeaf(q.newSide.segments[1] ?? SEG_SERVICEABLE_NO, "serviceableNo"),
-    ...extra(q.newSide.segments, 2),
-  ];
-  /* ⚠️ NO CHIPS ON `found = false`, AS MEASURED — its drawer carries no What To Collect list at
-     all, so the node draws none. An invented list would be the diagram advertising a collection
-     the drawer does not describe, which is the exact disagreement this file exists to prevent. */
-  const existingSide = [
-    informLeaf(q.existingSide.segments[0] ?? SEG_FOUND_YES, "foundYes"),
-    informLeaf(q.existingSide.segments[1] ?? SEG_FOUND_NO, "foundNo"),
-    ...extra(q.existingSide.segments, 2),
-  ];
-
-  const sales: TreeLeaf = {
-    title: SMS_SALES_LEAF, action: LEAF_QUALIFY, actionIcon: "callSplit", locked: true,
-    tone: "blue", actionKind: "qualify",
-    paths: [
-      forked(q.root.segments[0] ?? "New, No", newSide),
-      forked(q.root.segments[1] ?? "Existing, Yes", existingSide),
-      ...extra(q.root.segments, 2),
-    ],
-  };
+  /* ⚠️ TWO QUALIFY LAYERS, THEN A BOOKING BOX (10/13/2026) — see `salesQuestions`. Each
+     service line is a layer-2 Qualify asking the rest of the playbook, and its one answer is the
+     Inform that schedules. Three rows exactly, which is the deepest a Qualify may nest. */
+  const sales = salesLeaf(p);
 
   /* ⚠️⚠️ **THE INTENT NODES CARRY THEIR DESCRIPTION, AND IT IS THE SAME STRING THE DRAWER
      SHOWS.** Reported as missing: "the Sales Inquiry and Need Support are missing their
@@ -616,6 +670,10 @@ export function effectiveSmsConfig(p: CustomerProfile, sms: object | undefined):
      drawer opened with an empty question and the agent was told nothing about the support
      side. Same bug as the one the note above records, one key along. */
   cfg.qualify = { ...base.qualify, ...(cfg.qualify ?? {}) };
+  /* ⚠️ A STORED COPY OF THE RETIRED ROOT QUESTION ("Are you a new or existing …?") is the old
+     template's default, not an SE's choice, so it gives way to the playbook's first question
+     (10/13/2026). Anything else an SE wrote is kept. */
+  if (RETIRED_ROOT.test(cfg.qualify.root?.question ?? "")) cfg.qualify = { ...cfg.qualify, root: base.qualify.root };
   const intents = cfg.intents;
   if (!intents) return cfg;
   let touched = false;

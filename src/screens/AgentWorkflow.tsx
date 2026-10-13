@@ -19,7 +19,7 @@ import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor, extraDrawerFor } from "../data/workflowDrawers";
-import { smsConfigFor, repairSmsSegments, effectiveSmsConfig } from "../data/smsTemplate";
+import { smsConfigFor, repairSmsSegments, repairSalesShape, effectiveSmsConfig } from "../data/smsTemplate";
 import { repairSupportUseCases } from "../data/voiceUseCases";
 import { smsDrawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
@@ -232,7 +232,7 @@ export function AgentWorkflow() {
          extra workflow. See `repairSupportUseCases`. */
       const builtIn = !extra && !created;
       const branches = repairSupportUseCases(
-        smsTemplated ? repairSmsSegments(rawTree.branches ?? []) : (rawTree.branches ?? []),
+        smsTemplated ? repairSalesShape(repairSmsSegments(rawTree.branches ?? []), profile) : (rawTree.branches ?? []),
         profile,
         /* ⚠️ `withRoute` is voice-only: on SMS the renderer draws the route INSTEAD of the
            action, so carrying one blanks every support answer's action. */

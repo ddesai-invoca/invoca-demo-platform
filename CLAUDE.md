@@ -10806,6 +10806,32 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### The SMS sales side mirrors the Preview Agent: two Qualify layers, then a booking box (10/13/2026)
+Asked for directly: *"the user essentially gets qualified by a couple of questions, and then it
+books an appointment… make sure the workflow for the sales inquiry side reflects that… Have two
+layers Qualifying and then an inform box that schedules the appointment."* The captured Greenix
+shape (new or existing → ZIP or phone lookup → Serviceable / Record Found) described a different
+conversation from the one the phone holds.
+- **Layer 1, All Sales Inquiry Users (Qualify):** asks the playbook's FIRST question; its
+  answers are the prospect's top three Product Category rows (`salesServiceLines`), because that
+  first question is almost always "what do you need".
+- **Layer 2, each service line (Qualify):** asks the REST of the playbook, sharing one home,
+  `sms.qualify.details`. ⚠️ Consequence, stated: editing it on one line changes all three.
+- **Bottom row, "Schedule <bookingTerm>" (Inform):** `sms.inform.book`, offer two times, confirm.
+- ⚠️⚠️ **EVERY QUESTION IS READ FROM `smsPlaybook.qualifyingQuestions`**, the same list the
+  agent asks, so the diagram cannot describe questions the agent does not ask.
+- ⚠️⚠️ **A STORED TREE IS REPAIRED AT READ TIME (`repairSalesShape`)**, recognised by the
+  retired children's titles, in all THREE readers (the page, Preview Agent, Preview Workflow).
+  Aptive's saved tree was the test. Consequence: an answer an SE added under the old sales side
+  goes with it. A stored copy of the retired root question gives way to the playbook's first
+  question; an SE's own wording is kept.
+- ⚠️ **The service-line and booking drawers resolve per prospect** (`salesQualifyFor`,
+  `salesBookFor`), only for as many lines as the prospect has, so an ADDED answer still gets its
+  own flat `extra__` text instead of silently sharing the template's.
+- ⚠️ The follow-up questions are joined with SPACES: the question box is one line, and a newline
+  rendered as "lot?Would you".
+- `audit:ai`: 11 checks re-aimed from the captured shape, 6 added; the repair sabotage fires.
+
 ### The FIVE action colours, measured at last, and they now reach VOICE too (10/8/2026)
 Asked for with a capture built for the purpose — *"I've created a workflow in a live website
 that has all of the colors and the design… I want you to match it exactly: the right color, the
