@@ -35,12 +35,22 @@ export interface PageDataOptions {
      the model's context. Opt-in; see the note on `Scope.linkKey`. */
   linkKey?: string;
   linkAs?: string;
+  /* ⚠️⚠️ THE SCOPE'S OWN PATH WHEN IT IS NOT THE ROUTE (10/14/2026). The key is normally the
+     current pathname, which is wrong for a component rendered INSIDE another page: the Preview
+     Agent phone opened in-page on the SMS workflow (a shared demo's guided tour) registered the
+     agent config under the WORKFLOW page's key, replacing the diagram's base, and the tree threw
+     "Cannot read properties of undefined (reading 'nodeW')". Opt-in; omitted everywhere else. */
+  scopePath?: string;
+  /* Register the base only, without becoming the ACTIVE scope, so a component living inside
+     another page does not repoint that page's Ask AI at itself. Opt-in. */
+  passive?: boolean;
 }
 export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { pathname } = useLocation();
   const { profileId, profile } = useProfile();
-  const { registerScope, effectiveData } = useAiAssistant();
-  const key = `${profileId}::${pathname}`;
+  const { registerScope, registerBase, effectiveData } = useAiAssistant();
+  const key = `${profileId}::${opts?.scopePath ?? pathname}`;
+  const passive = !!opts?.passive;
   const questionPath = opts?.questionPath;
   const greetingFallback = opts?.greetingFallback;
   const greetingWins = opts?.greetingWins;
@@ -48,8 +58,9 @@ export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const linkAs = opts?.linkAs;
   useEffect(() => {
     if (base == null) return;
+    if (passive) { registerBase(key, base); return; }
     registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback, greetingWins, linkKey, linkAs });
-  }, [key, base, profile.customerName, registerScope, questionPath, greetingFallback, greetingWins, linkKey, linkAs]);
+  }, [key, base, passive, profile.customerName, registerScope, registerBase, questionPath, greetingFallback, greetingWins, linkKey, linkAs]);
   const eff = effectiveData(key);
   return (eff ?? base) as T;
 }

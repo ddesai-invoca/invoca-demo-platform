@@ -5,6 +5,7 @@ import { apiPath } from "../data/shareMode";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
+import { PREVIEW_PATH } from "../data/agentWorkflowSync";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { buildSmsBrain, previewAgentBase, resolveGreeting, smsWorkflowScopePath, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { tollFreeNumber } from "../data/smsContactNumber";
@@ -157,7 +158,7 @@ function BatteryIcon() {
    registers itself as the AI scope, so "ask for the ZIP code first" actually
    changes what the phone asks on the next message rather than being a note in a
    drawer. `title` gives the drawer a real scope label (agentConfig has none). */
-function useBrain(wfSlug?: string | null) {
+function useBrain(wfSlug?: string | null, inPage = false) {
   const { profile, profileId } = useProfile();
   /* Includes any workflow created by an LSA quote request submitted during this demo,
      newest first — one definition, so a slug that lists here also resolves elsewhere. */
@@ -211,6 +212,12 @@ function useBrain(wfSlug?: string | null) {
      is what the row has to show. */
   const ac = usePageData(base, {
     questionPath: QUESTIONS_PATH,
+    /* ⚠️⚠️ ALWAYS THE PREVIEW AGENT'S OWN KEY. Rendered in-page (a shared demo's tour opens the
+       phone on the SMS workflow page), the route is the WORKFLOW's, and keying by it replaced
+       the diagram's base with this agent config: the tree crashed. In-page it also registers
+       passively, so the workflow page's own Ask AI keeps pointing at the diagram. */
+    scopePath: PREVIEW_PATH,
+    passive: inPage,
     /**
      * ⚠️⚠️ **ASK AI HERE CAN EDIT THE WORKFLOW ITSELF (9/17/2026), which is the other half of
      * "make the config bi directional".** Its edits land on the workflow's OWN scope, so they
@@ -340,7 +347,7 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
 }) {
   const { profile } = useProfile();
   const { upsertCaptured, patchCaptured } = useSmsCapture();
-  const brain = useBrain(wf);
+  const brain = useBrain(wf, mode === "modal");
   /* An LSA quote workflow's thread opens with the payload Google posted to the business —
      see `lsaLeadMessage`. Undefined for every other workflow and for the built-in agent, so
      nothing else's capture changes shape.

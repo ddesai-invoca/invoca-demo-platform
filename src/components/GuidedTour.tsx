@@ -21,8 +21,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
-import { tourStepsFor, type TourStep } from "../data/tourSteps";
-import { SHARE_TOKEN, SHARE_LANDING } from "../data/shareMode";
+import { tourStepsFor, TOUR_CHAPTERS, type TourStep } from "../data/tourSteps";
+import { SHARE_TOKEN, SHARE_LANDING, SHARE_BASENAME } from "../data/shareMode";
 
 /** ⚠️ Per link AND per browser: a second prospect opening the same link gets the
  *  tour, and the same person reopening it does not. */
@@ -87,6 +87,37 @@ export function TourCallout() {
 }
 
 interface Box { top: number; left: number; width: number; height: number }
+/** Where the next step's link is, and how to describe finding it. */
+interface Beacon extends Box { via: boolean; where: string }
+
+/** The route the prospect is on, without the share prefix. Read live rather than from a
+ *  render, because the handoff poll has to see a click land the moment it does. */
+const here = () => window.location.pathname.slice(SHARE_BASENAME.length) || "/";
+
+/**
+ * ⚠️⚠️ **THE LINK IS FOUND BY WHERE IT GOES, NOT BY A SELECTOR PER STEP.** Every screen in a
+ * share renders real links with the share prefix, so "the anchor whose href is this route" is
+ * the one definition that cannot go stale when a menu is restyled. A link in the page content
+ * beats the left rail when both exist: it is closer to where they are reading.
+ */
+function linkTo(route: string): HTMLElement | null {
+  const want = SHARE_BASENAME + route;
+  const vis = [...document.querySelectorAll<HTMLAnchorElement>("a[href]")].filter((a) => {
+    if (a.getAttribute("href") !== want || a.closest(".tour-root")) return false;
+    const r = a.getBoundingClientRect();
+    return r.width > 0 && r.height > 0;
+  });
+  return vis.find((a) => !a.classList.contains("nav-item")) ?? vis[0] ?? null;
+}
+
+function whereIs(el: HTMLElement, s: TourStep): string {
+  if (s.handoff) return "It is the button at the top of the workflow.";
+  if (el.classList.contains("nav-item")) return "It is in the menu on the left.";
+  if (el.closest(".ag-nav-item, .ag-wf")) return "It is in the Agent Studio menu.";
+  if (el.classList.contains("rp-link")) return "It is in your list of reports.";
+  if (el.classList.contains("as-link")) return "It is the first row in the Agent Studio list.";
+  return "It is highlighted on the page.";
+}
 
 export function GuidedTour({ onClose }: { onClose: () => void }) {
   const { profile } = useProfile();
@@ -107,6 +138,15 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
      it. `ensure.when` already names that container, so nothing new has to be declared. */
   const [guard, setGuard] = useState<Box | null>(null);
   const [ready, setReady] = useState(false);
+  /* ⚠️⚠️ **WAITING FOR THE PROSPECT TO CLICK THROUGH TO THE NEXT SCREEN (10/15/2026).** Asked
+     for: highlight the button that takes them to the next feature with a pulsating indicator,
+     and once they click it the guide carries on. `pending` is the step they are heading to;
+     the tour itself does not navigate there. That is the whole point: by the end they know
+     where everything is, because they clicked their own way round it. */
+  const [pending, setPending] = useState<number | null>(null);
+  const [beacon, setBeacon] = useState<Beacon | null>(null);
+  /* The control the beacon is on, so a click anywhere in the glow can press it. */
+  const beaconEl = useRef<HTMLElement | null>(null);
   const step = steps[i];
 
   /**
@@ -259,15 +299,147 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
     return () => clearInterval(t);
   }, [i, step?.awaitAutoplay]);
 
+  /** The control that gets them to `s`, if it is on screen. */
+  const handoffEl = (s: TourStep): { el: HTMLElement; via: boolean } | null => {
+    if (s.handoff) {
+      const el = document.querySelector<HTMLElement>(s.handoff.click);
+      return el ? { el, via: false } : null;
+    }
+    if (!s.route) return null;
+    const direct = linkTo(s.route);
+    if (direct) return { el: direct, via: false };
+    if (s.via && here() !== s.via) {
+      const hop = linkTo(s.via);
+      if (hop) return { el: hop, via: true };
+    }
+    return null;
+  };
+  const arrived = (s: TourStep) => (s.handoff ? !!document.querySelector(s.handoff.until) : !s.route || here() === s.route);
+
+  /**
+   * Next. ⚠️ Only FORWARD hands off: Back is for re-reading, and making somebody find their
+   * way back to a screen they have already seen is a chore, not a lesson. And a step with no
+   * link on screen falls back to the old behaviour (the tour goes there itself), so a
+   * restyled menu degrades to a tour that drives, never to one that waits forever.
+   */
+  const advance = () => {
+    if (i === steps.length - 1) { finish(true); return; }
+    const n = steps[i + 1];
+    if (n.navLabel && !arrived(n) && handoffEl(n)) {
+      /* Armed before THEIR click, because the click handler consumes it. */
+      if (n.autoplay) { resetAutoplayDone(); armAutoplay(); }
+      setPending(i + 1);
+    } else setI(i + 1);
+  };
+  const cancelHandoff = () => { takeAutoplay(); setPending(null); setBeacon(null); };
+  /* The escape hatch for anybody who cannot find it: the tour does the click for them. */
+  const takeMeThere = () => {
+    if (pending == null) return;
+    const s = steps[pending];
+    if (s.handoff) document.querySelector<HTMLElement>(s.handoff.click)?.click();
+    else if (s.route) navigate(s.route);
+  };
+
+  useEffect(() => {
+    if (pending == null) { setBeacon(null); return; }
+    const s = steps[pending];
+    let misses = 0;
+    let closes = 0;
+    const tick = () => {
+      if (arrived(s)) { setBeacon(null); setPending(null); setI(pending); return; }
+      const t = handoffEl(s);
+      if (!t) {
+        /* The link went away (they wandered, or a menu re-rendered). After ~2s, take them
+           there rather than leave a prompt pointing at nothing. */
+        if (++misses > 10) { setBeacon(null); setPending(null); setI(pending); if (s.route) navigate(s.route); }
+        return;
+      }
+      misses = 0;
+      beaconEl.current = t.el;
+      let r = t.el.getBoundingClientRect();
+      if (r.top < 0 || r.bottom > window.innerHeight) { t.el.scrollIntoView({ block: "center" }); r = t.el.getBoundingClientRect(); }
+      /* ⚠️ Something sitting on top of the link would eat their click: the phone preview's
+         own overlay covers the left menu, and clicking it just closes the phone. Close it
+         first so the click they make is the one we asked for. */
+      const hit = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+      if (hit && !t.el.contains(hit) && closes < 2) {
+        const closer = document.querySelector<HTMLElement>(".phone-close");
+        if (closer) { closes += 1; closer.click(); }
+      }
+      const where = t.via ? `Open ${s.viaLabel ?? "it"} first, then choose ${s.navLabel}.` : whereIs(t.el, s);
+      setBeacon((b) => (b && b.top === r.top && b.left === r.left && b.width === r.width && b.height === r.height && b.via === t.via
+        ? b : { top: r.top, left: r.left, width: r.width, height: r.height, via: t.via, where }));
+    };
+    tick();
+    const iv = setInterval(tick, 200);
+    return () => clearInterval(iv);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pending]);
+
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
-      if (e.key === "Escape") finish();
-      if (e.key === "ArrowRight" && ready) setI((n) => (n + 1 < steps.length ? n + 1 : n));
-      if (e.key === "ArrowLeft") setI((n) => Math.max(0, n - 1));
+      if (e.key === "Escape") { if (pending != null) cancelHandoff(); else finish(); }
+      if (e.key === "ArrowRight" && ready && pending == null) advance();
+      if (e.key === "ArrowLeft") { if (pending != null) cancelHandoff(); else setI((n) => Math.max(0, n - 1)); }
     };
     window.addEventListener("keydown", k);
     return () => window.removeEventListener("keydown", k);
-  }, [finish, ready, steps.length]);
+  });
+
+  if (pending != null) {
+    if (!beacon) return null;
+    const s = steps[pending];
+    const pad = 6;
+    const hole = {
+      top: Math.max(0, beacon.top - pad), left: Math.max(0, beacon.left - pad),
+      width: Math.min(window.innerWidth, beacon.left + beacon.width + pad) - Math.max(0, beacon.left - pad),
+      height: Math.min(window.innerHeight, beacon.top + beacon.height + pad) - Math.max(0, beacon.top - pad),
+    };
+    /* Beside the target, pointing at it: right first (the menus are on the left), then below,
+       then above, then left. The arrow is on the side facing the target. */
+    const W = 300, H = 170, gap = 18;
+    let side: "left" | "top" | "bottom" | "right";
+    let pos: React.CSSProperties;
+    const cy = hole.top + hole.height / 2;
+    if (window.innerWidth - (hole.left + hole.width) >= W + gap + 16) {
+      side = "left"; pos = { left: hole.left + hole.width + gap, top: Math.max(16, Math.min(cy - 44, window.innerHeight - H - 16)) };
+    } else if (window.innerHeight - (hole.top + hole.height) >= H + gap + 16) {
+      side = "top"; pos = { top: hole.top + hole.height + gap, left: Math.max(16, Math.min(hole.left + hole.width / 2 - W / 2, window.innerWidth - W - 16)) };
+    } else if (hole.top >= H + gap + 16) {
+      side = "bottom"; pos = { top: hole.top - H - gap, left: Math.max(16, Math.min(hole.left + hole.width / 2 - W / 2, window.innerWidth - W - 16)) };
+    } else {
+      side = "right"; pos = { left: Math.max(16, hole.left - W - gap), top: Math.max(16, Math.min(cy - 44, window.innerHeight - H - 16)) };
+    }
+    const label = beacon.via ? s.viaLabel : s.navLabel;
+    return (
+      <div className="tour-root" role="dialog" aria-modal="false" aria-label={`Click ${label}`}>
+        <div className="tour-shade" style={{ top: 0, left: 0, right: 0, height: hole.top }} />
+        <div className="tour-shade" style={{ top: hole.top + hole.height, left: 0, right: 0, bottom: 0 }} />
+        <div className="tour-shade" style={{ top: hole.top, left: 0, width: hole.left, height: hole.height }} />
+        <div className="tour-shade" style={{ top: hole.top, left: hole.left + hole.width, right: 0, height: hole.height }} />
+        <div className="tour-ring tour-ring--beacon" style={hole} />
+        {/* ⚠️ THE WHOLE GLOW IS THE BUTTON. Measured: a real click 3px off a 37px-tall
+            "Preview Agent" still landed inside the ring and did nothing, which reads as the
+            tour being broken. Anywhere inside the highlight presses the real control, so its
+            own handler runs (the router's Link, or the button that consumes the script). */}
+        <button className="tour-hit" style={hole} aria-label={`Click ${beacon.via ? s.viaLabel : s.navLabel}`}
+          onClick={() => beaconEl.current?.click()} />
+        <div className="tour-ripple" style={hole} aria-hidden="true" />
+        <div className={`tour-card tour-hand tour-hand--${side}`} style={pos} key={`hand-${pending}-${beacon.via}`}>
+          <div className="tour-step">Next up · {s.chapter}</div>
+          <h2 className="tour-title tour-hand-title">
+            <span className="material-icons" aria-hidden="true">ads_click</span>
+            Click {label}
+          </h2>
+          <p className="tour-body">{beacon.where}</p>
+          <div className="tour-foot">
+            <button className="tour-btn tour-btn--ghost" onClick={cancelHandoff}>Back</button>
+            <button className="tour-skip" onClick={takeMeThere}>Take me there</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!step || !ready) return null;
 
@@ -356,13 +528,15 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
         <div className="tour-shade tour-shade--all" />
       )}
 
-      <div className={"tour-card" + (hole ? "" : " tour-card--center")} style={cardStyle}>
-        <div className="tour-step">Step {i + 1} of {steps.length}</div>
+      <div className={"tour-card" + (hole ? "" : " tour-card--center")} style={cardStyle} key={i}>
+        <TourProgress steps={steps} i={i} />
+        <div className="tour-step">{step.chapter} · Step {i + 1} of {steps.length}</div>
         <h2 className="tour-title">{step.title}</h2>
         <p className="tour-body">{step.body}</p>
         {step.value && (
           <p className="tour-value"><span className="material-icons" aria-hidden="true">check_circle</span>{step.value}</p>
         )}
+        {last && <TourRecap name={profile.customerName} />}
         {scriptLive && (
           <p className="tour-live"><span className="tour-live-dot" aria-hidden="true" />The agent is replying, live</p>
         )}
@@ -373,12 +547,52 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
             {/* ⚠️ `finish(true)` on the LAST step only: finishing hands them back to the
                 landing page, where a prospect can start poking at things themselves.
                 Skip calls `finish()` and leaves them exactly where they are. */}
-            <button className="tour-btn tour-btn--go" onClick={() => (last ? finish(true) : setI(i + 1))}>
+            <button className="tour-btn tour-btn--go" onClick={advance}>
               {last ? "Start exploring" : "Next"}
             </button>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+/**
+ * The four chapters as a segmented bar, so a prospect can see how far through they are and
+ * what is still to come. "Step 7 of 16" says how long; this says what it is about.
+ */
+function TourProgress({ steps, i }: { steps: TourStep[]; i: number }) {
+  return (
+    <div className="tour-prog" aria-hidden="true">
+      {TOUR_CHAPTERS.map((c) => {
+        const idx = steps.map((s, k) => (s.chapter === c ? k : -1)).filter((k) => k >= 0);
+        const first = idx[0] ?? 0;
+        const pct = !idx.length || i < first ? 0 : Math.min(100, ((i - first + 1) / idx.length) * 100);
+        const cur = idx.includes(i);
+        return (
+          <div key={c} className={"tour-prog-seg" + (cur ? " is-cur" : pct >= 100 ? " is-done" : "")}>
+            <span className="tour-prog-bar"><i style={{ width: `${pct}%` }} /></span>
+            <span className="tour-prog-lbl">{c}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+/** What they just saw, ticked off, on the closing card. */
+function TourRecap({ name }: { name: string }) {
+  const rows: [string, string][] = [
+    ["Agent Studio", `Built and tuned on ${name}'s own material`],
+    ["Voice agent", "Answers, qualifies and routes every call"],
+    ["SMS agent", "Replies in seconds and books by text"],
+    ["Reports", "Every conversation captured and scored"],
+  ];
+  return (
+    <ul className="tour-recap">
+      {rows.map(([t, d]) => (
+        <li key={t}><span className="material-icons" aria-hidden="true">check_circle</span><b>{t}</b><span>{d}</span></li>
+      ))}
+    </ul>
   );
 }

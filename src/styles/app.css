@@ -6985,6 +6985,71 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 @media (max-width: 640px) {
   .tour-card, .tour-card--center { width: calc(100vw - 32px); left: 16px !important; transform: none; }
 }
+/* ---- Click-through handoff (10/15/2026): pulse the real link to the next screen ----
+   ⚠️ The ring and ripple are pointer-events: none, so the click lands on the link under
+   them. Reduced motion keeps a strong static ring and drops the pulse. */
+.tour-ring--beacon {
+  box-shadow: 0 0 0 3px #00b388, 0 0 0 8px rgba(0, 179, 136, .30);
+  animation: tour-beacon 1.6s ease-in-out infinite;
+}
+@keyframes tour-beacon {
+  0%, 100% { box-shadow: 0 0 0 3px #00b388, 0 0 0 7px rgba(0, 179, 136, .30); }
+  50%      { box-shadow: 0 0 0 3px #00b388, 0 0 0 12px rgba(0, 179, 136, .12); }
+}
+.tour-ripple {
+  position: fixed; border-radius: 8px; pointer-events: none;
+  border: 2px solid #00b388; animation: tour-ripple 1.6s ease-out infinite;
+}
+@keyframes tour-ripple {
+  0%   { opacity: .9; transform: scale(1); }
+  100% { opacity: 0;  transform: scale(1.35); }
+}
+.tour-hit { position: fixed; pointer-events: auto; background: transparent; border: 0; padding: 0; border-radius: 8px; cursor: pointer; }
+.tour-hit:focus-visible { outline: 2px solid #15243e; outline-offset: 3px; }
+.tour-hand { width: 300px; padding: 16px 18px 14px; }
+.tour-hand-title { display: flex; align-items: center; gap: 8px; font-size: 18px; margin: 4px 0 6px; }
+.tour-hand-title .material-icons { font-size: 22px; color: #00b388; flex: none; }
+.tour-hand .tour-body { margin-bottom: 14px; }
+/* The arrow sits on the side of the card that faces the link. */
+.tour-hand::before {
+  content: ""; position: absolute; width: 14px; height: 14px; background: #fff;
+  transform: rotate(45deg); box-shadow: -2px 2px 4px rgba(12, 0, 51, .08);
+}
+.tour-hand--left::before   { left: -7px; top: 34px; }
+.tour-hand--right::before  { right: -7px; top: 34px; }
+.tour-hand--top::before    { top: -7px; left: calc(50% - 7px); }
+.tour-hand--bottom::before { bottom: -7px; left: calc(50% - 7px); }
+
+/* ---- Chapter progress: what the tour is about, not just how long ---- */
+.tour-prog { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 0 0 14px; }
+.tour-prog-seg { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.tour-prog-bar { height: 4px; border-radius: 4px; background: #e7e9eb; overflow: hidden; }
+.tour-prog-bar i { display: block; height: 100%; background: #00b388; border-radius: 4px; transition: width .35s ease; }
+.tour-prog-lbl {
+  font-size: 10.5px; font-weight: 700; color: #a1a7b2; letter-spacing: .02em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.tour-prog-seg.is-cur .tour-prog-lbl { color: #00624d; }
+.tour-prog-seg.is-done .tour-prog-lbl { color: #5b6577; }
+
+/* ---- The recap on the closing card ---- */
+.tour-recap { list-style: none; margin: 0 0 16px; padding: 0; display: grid; gap: 8px; }
+.tour-recap li { display: grid; grid-template-columns: 20px auto 1fr; align-items: baseline; gap: 4px 8px; font-size: 13.5px; color: #343a40; }
+.tour-recap li .material-icons { font-size: 17px; color: #00b388; align-self: center; }
+.tour-recap li b { color: #15243e; white-space: nowrap; }
+.tour-recap li span:last-child { color: #5b6577; }
+
+/* A soft entrance per step. `translate` rather than `transform`, so the centred card's own
+   translate(-50%, -50%) is untouched. */
+.tour-card { animation: tour-in .24s ease-out; }
+@keyframes tour-in { from { opacity: 0; translate: 0 6px; } to { opacity: 1; translate: 0 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .tour-card, .tour-ring--beacon, .tour-ripple { animation: none; }
+  .tour-ripple { display: none; }
+}
+/* "Take the guided tour" while the tour is already open reads as a second, competing
+   tour. Hidden, not removed, so nothing on the page moves under the spotlight. */
+body:has(.tour-root) .tour-cta { visibility: hidden; }
 /* The replay pill sits bottom-right, out of the way of the platform chrome. */
 .tour-replay--fixed { position: fixed; right: 20px; bottom: 20px; z-index: 3500; box-shadow: 0 2px 10px rgba(12,0,51,.18); }
 /* The scripted conversation is a HINT, never a gate — see GuidedTour. */

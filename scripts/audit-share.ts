@@ -988,6 +988,39 @@ console.log("\nActivity tracking\n");
         ? ok("the tour reports when it is running, StrictMode-safe")
         : bad("nothing tells Preview Agent whether the tour is open");
     }
+    /* ⚠️⚠️ CLICK-THROUGH HANDOFFS (10/15/2026): the prospect clicks their own way to the
+     next screen while the real link pulses. Every forward step onto a NEW screen has to
+     name what to click, or the tour silently goes back to driving there itself.
+     ⚠️ NO BARE `{ }` BLOCK HERE: one at this spot makes tsx's import scanner report a
+     parse error at 1:1 and the whole audit dies before printing a check. */
+    const untaught = steps.filter((st, k) => k > 0 && st.route && st.route !== steps[k - 1].route && !st.navLabel).map((st) => st.id);
+    untaught.length === 0
+      ? ok("every step on a new screen names the link the prospect clicks to get there")
+      : bad(`steps that change screen with nothing to click: ${untaught.join(", ")}`);
+    steps.every((st) => !!st.chapter)
+      ? ok("every step belongs to a chapter, so the progress bar is complete")
+      : bad("a step has no chapter and drops off the progress bar");
+    steps.find((st) => st.id === "sms-open")?.handoff?.until === ".phone"
+      ? ok("the Preview Agent handoff waits for the phone to actually open")
+      : bad("the Preview Agent handoff does not wait for the phone");
+    /const want = SHARE_BASENAME \+ route;/.test(tour) && /getAttribute\("href"\) !== want/.test(tour)
+      ? ok("the link to pulse is found by where it goes, not by a per-step selector")
+      : bad("the handoff link is matched some other way and can go stale");
+    /className="tour-hit"[\s\S]{0,200}?beaconEl\.current\?\.click\(\)/.test(tour)
+      ? ok("a click anywhere in the glow presses the real control")
+      : bad("a near-miss inside the highlight does nothing");
+    /if \(n\.autoplay\) \{ resetAutoplayDone\(\); armAutoplay\(\); \}\s*\n\s*setPending\(i \+ 1\);/.test(tour)
+      ? ok("the scripted chat is armed before the prospect's own Preview Agent click")
+      : bad("clicking Preview Agent in the handoff would open an empty phone");
+    /phone-close/.test(tour.slice(tour.indexOf("const tick = () =>")))
+      ? ok("the phone overlay is closed before pointing at a link it covers")
+      : bad("the Reports link would sit under the phone overlay and the click would close the phone instead");
+    /prefers-reduced-motion: reduce\)[\s\S]{0,160}?\.tour-ring--beacon/.test(code("src/styles/app.css"))
+      ? ok("the pulse stops for anybody who has asked for reduced motion")
+      : bad("the beacon pulses regardless of reduced motion");
+    /\ban enrollment\b/i.test(autoOpeners({ ...prof, bookingTerm: "Enrollment Appointment" })[0])
+      ? ok("the scripted opener picks a or an to fit the booking term")
+      : bad("the scripted opener reads \"a enrollment\"");
     /* ⚠️ Consumed at click time: reading it during render spends it on StrictMode's first pass. */
     /* Re-aimed 10/9/2026: the click handler now branches (tour → in page, otherwise a new
        tab), so the consume sits inside it rather than on the arrow's first line. */
@@ -1101,7 +1134,8 @@ console.log("\nActivity tracking\n");
     /* ⚠️⚠️ FINISHING GOES HOME, SKIPPING DOES NOT. Two different intents, and a bare
        `onClick={finish}` would hand the MouseEvent in as `home` — truthy, so Skip would
        navigate too. `tsc` caught that one; this keeps it caught. */
-    /last \? finish\(true\) : setI\(i \+ 1\)/.test(tour)
+    /* Re-aimed 10/15/2026: Next now goes through `advance()`, which hands off to a click. */
+    /if \(i === steps\.length - 1\) \{ finish\(true\); return; \}/.test(tour) && /onClick=\{advance\}/.test(tour)
       ? ok("finishing the tour returns to the landing page")
       : bad("Start exploring leaves a prospect on the last report");
     /onClick=\{\(\) => finish\(\)\}>Skip the tour/.test(tour)

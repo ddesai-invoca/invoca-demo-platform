@@ -58,11 +58,37 @@ export interface TourStep {
   autoplay?: boolean;
   /** Hold here until the scripted conversation has finished. */
   awaitAutoplay?: boolean;
+  /** Which chapter of the tour this step belongs to, for the progress bar. */
+  chapter: TourChapter;
+  /**
+   * ⚠️⚠️ **THE PROSPECT CLICKS THEIR OWN WAY TO THE NEXT SCREEN (10/15/2026).** Asked for:
+   * *"first highlight that button that takes them to the next step… a pulsating indicator so
+   * they know that they need to click there."* When this step lives on another screen, the
+   * tour pulses the real link to it and waits; `navLabel` is what the prompt calls it. The
+   * link is FOUND by its href, so no selector per step can go stale.
+   */
+  navLabel?: string;
+  /** A screen to pass through when the current one has no direct link (e.g. My Reports). */
+  via?: string;
+  viaLabel?: string;
+  /** A control on the SAME screen the prospect has to press, and the proof it worked. */
+  handoff?: { click: string; until: string };
 }
+
+export type TourChapter = "Welcome" | "Agent Studio" | "Voice agent" | "SMS agent" | "Reports" | "Wrap-up";
+/** The four chapters drawn on the progress bar; Welcome and Wrap-up sit either side. */
+export const TOUR_CHAPTERS: TourChapter[] = ["Agent Studio", "Voice agent", "SMS agent", "Reports"];
 
 const cap = (s: string) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 
 export function tourStepsFor(p: CustomerProfile): TourStep[] {
+  const chapter: Record<string, TourChapter> = {
+    welcome: "Welcome", agents: "Agent Studio", knowledge: "Agent Studio", recommendations: "Agent Studio",
+    "voice-tree": "Voice agent", "voice-node": "Voice agent", "voice-call": "Voice agent",
+    "sms-tree": "SMS agent", "sms-open": "SMS agent", "sms-watch": "SMS agent", "sms-try": "SMS agent",
+    reports: "Reports", "report-sms": "Reports", "report-signals": "Reports", "report-voice": "Reports",
+    end: "Wrap-up",
+  };
   const name = p.customerName;
   const booking = p.bookingTerm || "Appointment";
   const bookingLower = booking.toLowerCase();
@@ -99,6 +125,10 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "knowledge",
+      navLabel: "Knowledge Sources",
+      /* The Agent Studio list has no sub-menu; the agent row opens the screen that does. */
+      via: "/agent-studio/agent",
+      viaLabel: `Agent: ${name}`,
       route: "/agent-studio/agent/knowledge",
       target: "table",
       title: "It answers from your material, not from the internet",
@@ -110,6 +140,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "recommendations",
+      navLabel: "AI Recommendations",
       route: "/agent-studio/agent/recommendations",
       target: ".air-card, .air-grid, table",
       title: "It gets better from real conversations",
@@ -122,6 +153,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     /* ---------- VOICE ---------- */
     {
       id: "voice-tree",
+      navLabel: `${name} - Voice`,
       route: "/agent-studio/agent/workflow/voice",
       target: ".wf-canvas, .wf-scroll",
       title: "The voice agent, with nothing hidden",
@@ -154,6 +186,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     /* ---------- SMS ---------- */
     {
       id: "sms-tree",
+      navLabel: `${name} - SMS`,
       route: "/agent-studio/agent/workflow/sms",
       /* ⚠️ Reached backwards from the phone steps, which share this route — so the modal
          has to be sent away or it covers the diagram this step is about. */
@@ -167,6 +200,8 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "sms-open",
+      navLabel: "Preview Agent",
+      handoff: { click: ".wf-preview-agent", until: ".phone" },
       route: "/agent-studio/agent/workflow/sms",
       ensure: { open: ".wf-preview-agent", when: ".phone" },
       target: ".phone-screen",
@@ -207,6 +242,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     /* ---------- REPORTS ---------- */
     {
       id: "reports",
+      navLabel: "Reports",
       waitMs: 5000,
       route: "/reports",
       target: "table",
@@ -218,6 +254,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "report-sms",
+      navLabel: "AI SMS Conversation Intelligence",
       waitMs: 6000,
       route: "/reports/sms-conversation-intelligence",
       target: ".ci-calls-list, .ci-calls",
@@ -240,6 +277,9 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
     },
     {
       id: "report-voice",
+      navLabel: "AI Voice Conversation Intelligence",
+      via: "/reports",
+      viaLabel: "My Reports",
       waitMs: 6000,
       route: "/reports/voice-conversation-intelligence",
       target: ".ci-calls-list, .ci-calls",
@@ -258,7 +298,7 @@ export function tourStepsFor(p: CustomerProfile): TourStep[] {
         `${bookingLower}s and writing up every conversation on its own.`,
       value: "Anything you would want changed, your team changes, with no engineering queue.",
     },
-  ].map((s) => ({ ...s, title: cap(s.title) }));
+  ].map((s) => ({ ...s, chapter: chapter[s.id] ?? "Welcome", title: cap(s.title) }));
 }
 
 /**
@@ -275,7 +315,7 @@ export function autoOpeners(p: CustomerProfile): string[] {
   const booking = (p.bookingTerm || "appointment").toLowerCase();
   const first = p.reports?.agentConfig?.smsPlaybook?.qualifyingQuestions?.[0] ?? "";
   return [
-    `Hi, I think I need a ${booking}, not totally sure what I need though`,
+    `Hi, I think I need ${/^[aeiou]/.test(booking) ? "an" : "a"} ${booking}, not totally sure what I need though`,
     first ? "Sure, and roughly what does that usually run?" : "How soon could someone come out?",
   ];
 }
