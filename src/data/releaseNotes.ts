@@ -66,6 +66,16 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-10-15",
+    title: "A Custom CRM the SMS agent books into, live",
+    changes: [
+      n("Integrations has a new Custom CRM. It is a scheduling calendar for the prospect: open it beside the Preview Agent and, as the SMS agent books an appointment, the calendar fills in live. It shows the service area confirmed, the openings offered, the slot the customer picks and the booking arriving, with a New Lead panel of everything the agent collected."),
+      n("While the Custom CRM is connected, the SMS agent offers only the openings on that calendar, so every time it suggests is one the calendar can show. The switch is the pill at the top of the CRM; opening it the first time connects it."),
+      i("The guided tour on a shared demo now teaches the way round: when the next step is on another screen, the real menu item pulses and the tour waits for the prospect to click it. It also has a chapter progress bar and a closing recap."),
+      f("The guided tour on a shared demo no longer breaks when it opens the phone preview on the SMS workflow."),
+    ],
+  },
+  {
     date: "2026-10-08",
     title: "Workflow boxes take their action\u2019s colour, and extra workflows are editable",
     changes: [

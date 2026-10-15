@@ -79,6 +79,8 @@ const BADGE: Record<State, string> = {
    the live INTEGRATED list is ordered. */
 const INTEGRATED: Card[] = [
   { name: "ChatGPT Ads", state: "integrated", icon: "chatgpt-ads.png", to: "/integrations/chatgpt" },
+  /* The scheduling calendar the SMS agent books into, live (10/15/2026). */
+  { name: "Custom CRM", state: "integrated", material: "event_available", to: "/integrations/custom-crm" },
   { name: "Custom Webhooks", state: "integrated", icon: "custom-webhooks.svg" },
   { name: "Google Ads", state: "integrated", icon: "google-ads.png", to: "/integrations/google-ads" },
   { name: "Invoca APIs", state: "integrated", icon: "invoca-apis.svg" },

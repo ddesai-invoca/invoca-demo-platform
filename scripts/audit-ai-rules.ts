@@ -2738,6 +2738,13 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
      ⚠️ A REMOVAL FAILS TOO. Silently dropping one loosens the agent with nothing
      recording that it was meant; the list is only worth having while it stays true. */
   const KNOWN_ABSOLUTES = new Set([
+    /* ✅ ADDED 10/15/2026: the Custom CRM's live calendar. Emitted ONLY while that prospect's
+       CRM is connected (`brain.crmCalendar`, see src/data/customCrm.ts), and the calendar
+       screen reads the conversation against the same table — a time the agent invents is a
+       booking the CRM cannot draw. A data invariant of the integration, not a product opinion. */
+    "1. If you do not have their ZIP code yet, ask for it and confirm you s",
+    "4. Once they pick a time, collect what you do not already have, one qu",
+    "For dates and times this calendar wins over anything above: do not off",
     /* ✅ ADDED 10/14/2026: a business that does not sell (care, senior care, legal, education,
        funeral; `prospectIntent.ts`) gets an agent that says so. An industry invariant, not a
        product opinion: a hospital's or a funeral home's agent is never selling. */

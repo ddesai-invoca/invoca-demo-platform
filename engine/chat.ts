@@ -159,6 +159,12 @@ export interface ChatBrain {
    * booking box says two. The originals keep the old behaviour until this is signed off.
    */
   workflowLeads?: boolean;
+  /**
+   * The Custom CRM's live calendar (10/15/2026), set only while that prospect's CRM is
+   * connected. The CRM screen draws the SAME table, so every time the agent offers is a block
+   * it can show. See src/data/customCrm.ts.
+   */
+  crmCalendar?: { today: string; booking: string; days: { label: string; open: string[]; closed: boolean }[] };
   /** The voice counterpart for the "Voice Test" copy: every field a sales box collects is
    *  asked, in order (measured: a box's Consumer Email was skipped). 10/13/2026. */
   voiceWorkflowLeads?: boolean;
@@ -522,6 +528,30 @@ function dedupeQuestions(brain: ChatBrain, questions: string[]): string[] {
   });
 }
 
+/**
+ * The Custom CRM's calendar, as the agent sees it (10/15/2026).
+ *
+ * ⚠️ Placed LAST among the content blocks: it governs dates and times, and a sales flow above it
+ * that says "confirm a day and time" would otherwise let the model pick one of its own. The CRM
+ * screen reads this conversation against the same table, so a time that is not listed is a time
+ * the calendar cannot draw.
+ */
+function crmBlock(cal: NonNullable<ChatBrain["crmCalendar"]>): string {
+  const rows = cal.days.map((d, i) =>
+    `   ${d.label}: ${d.closed ? "closed" : i === 0 ? "no openings left today" : d.open.length ? d.open.join(", ") : "fully booked"}`);
+  return [
+    `LIVE CALENDAR (from the scheduling system; today is ${cal.today}). These are the only openings for a ${cal.booking} in the next seven days:`,
+    ...rows,
+    `When they are ready to book:`,
+    `1. If you do not have their ZIP code yet, ask for it and confirm you serve their area.`,
+    `2. Ask what day in the next seven days works best.`,
+    `3. Look that day up above. If it has openings, offer exactly those, naming the weekday, the date and both times, e.g. "I have ${cal.days.find((d) => d.open.length)?.label ?? "Thursday, October 15"} open at ${cal.days.find((d) => d.open.length)?.open.join(" or ") ?? "12:00 PM or 3:00 PM"}. Would either work?" If it is fully booked or closed, say so and offer the nearest day that has openings, the same way.`,
+    `4. Once they pick a time, collect what you do not already have, one question at a time: their full name, the best phone number, the street address for the visit, and an email for the confirmation.`,
+    `5. Then confirm in one message: "You're all set for <weekday>, <month> <day> at <time>."`,
+    `For dates and times this calendar wins over anything above: do not offer, suggest or confirm a time that is not listed.`,
+  ].join("\n");
+}
+
 function buildSystem(brain: ChatBrain, voice: boolean): string {
   /* A workflow-supplied playbook wins over the generated persona, with our
      channel format rules appended so the phone UI stays renderable. */
@@ -681,6 +711,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
       : `\nBRAND CONVERSATION RULES (follow these; they carry brand-specific offers, terms, and numbers):\n${rules}`) : ``,
     qa ? `\nAPPROVED Q&A (use these as ground truth for common questions):\n${qa}` : ``,
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,
+    brain.crmCalendar ? `\n${crmBlock(brain.crmCalendar)}` : ``,
     brain.workflowLeads && brain.workflow ? `\n${OPTIONS_CHECK}` : ``,
   ].join("\n");
 }

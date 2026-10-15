@@ -48,6 +48,7 @@ import { SmsPreviewPage } from "./screens/SmsPreviewPage";
 import { ChatGptAd } from "./screens/ChatGptAd";
 import { Integrations } from "./screens/Integrations";
 import { SalesforceHome } from "./screens/SalesforceHome";
+import { CustomCrm } from "./screens/CustomCrm";
 import { SalesforceCalendar } from "./screens/SalesforceCalendar";
 import { SalesforceLeads } from "./screens/SalesforceLeads";
 import { SalesforceCallLog } from "./screens/SalesforceCallLog";
@@ -173,6 +174,9 @@ export default function App() {
               Google Ads page: where the call starts, before Invoca sees it.
               Profile-driven, so it re-skins per prospect like the app screens. */}
           <Route path="/integrations/chatgpt" element={<ChatGptAd />} />
+          {/* The Custom CRM: a scheduling calendar the SMS agent books into, live. Standalone
+              like Salesforce, because it is the customer's system rather than Invoca's. */}
+          <Route path="/integrations/custom-crm" element={<CustomCrm />} />
 
           {/* Google results page, opened from the "Network" chip in the top bar.
               The other half of the same story: the prospect holds the top

@@ -27,6 +27,7 @@
        agent.
    ============================================================================= */
 
+import { crmConnected, crmPromptCalendar, type CrmPromptCalendar } from "./customCrm";
 import type { CustomerProfile, AgentConfigView } from "./schema";
 /* ⚠️ A prospect on a shared link must call the share-scoped twin: the signed-in
    route is behind the Google gate, and only the share path applies the daily caps. */
@@ -53,6 +54,8 @@ type AgentConfig = Partial<AgentConfigView> | undefined | null;
 type ExtraWorkflow = NonNullable<Profile["reports"]["extraWorkflows"]>[number];
 
 export interface SmsBrain {
+  /** The Custom CRM's calendar, only while it is connected. See src/data/customCrm.ts. */
+  crmCalendar?: CrmPromptCalendar;
   customSystem?: string;
   openingMessage?: string;
   agentLabel?: string;
@@ -253,6 +256,8 @@ export function buildSmsBrain(
   opts: { workflowLeads?: boolean; greeting?: string; extraBranches?: unknown } = {},
 ): SmsBrain {
   return {
+    /* ⚠️ The built-in agent and its copies only: an extra workflow states its own flow. */
+    ...(!wf && crmConnected(profile.id) ? { crmCalendar: crmPromptCalendar(profile) } : {}),
     ...(wf && opts.extraBranches ? { extraFlow: extraWorkflowFlowText(opts.extraBranches) } : {}),
     ...(workflow && !wf ? { workflow } : {}),
     ...(workflow && !wf && opts.workflowLeads ? { workflowLeads: true } : {}),

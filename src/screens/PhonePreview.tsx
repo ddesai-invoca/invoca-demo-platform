@@ -331,8 +331,12 @@ function useClock(): Date {
   return now;
 }
 
-export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone }: {
+export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone, onConversation }: {
   onClose?: () => void; mode?: "modal" | "page"; wf?: string | null;
+  /** The id of the conversation this phone is capturing, or null before the first message and
+   *  after a restart. Lets the side-by-side Custom CRM follow THIS chat rather than the newest
+   *  one in the store. Opt-in. */
+  onConversation?: (id: string | null) => void;
   /**
    * ⚠️⚠️ **THE GUIDED TOUR'S SCRIPTED OPENER, AND IT IS A REAL CONVERSATION — not a
    * replayed transcript.** Each line is typed into the real input and sent through the
@@ -427,6 +431,7 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
     /* A NEW conversation identity, so the chat that already happened stays in the
        SMS report as its own record instead of being overwritten by the restart. */
     baseRef.current = null;
+    onConversation?.(null);
     analyzedForCount.current = 0;
     started.current = false;
     setMessages([]);
@@ -562,6 +567,7 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
     if (!baseRef.current) baseRef.current = newConvBase();
     const conv = buildConversation(messages, baseRef.current, leadIn);
     upsertCaptured(profile.id, conv);
+    onConversation?.(conv.id);
 
     if (analyzeTimer.current) clearTimeout(analyzeTimer.current);
     analyzeTimer.current = setTimeout(() => {

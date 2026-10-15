@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { isShareMode } from "../data/shareMode";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
@@ -7,6 +7,8 @@ import { AiAssistantDrawer } from "../components/AiAssistantDrawer";
 import { PhonePreview } from "./PhonePreview";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
 import { builtInCopiesFor } from "../data/builtInCopies";
+import { CustomCrm } from "./CustomCrm";
+import { crmConnection, setCrmConnected } from "../data/customCrm";
 
 /* Standalone browser-tab version of the "Preview Agent" SMS chat. The Agent
    Workflow's Preview Agent button opens this route in a new tab (window.open)
@@ -46,6 +48,25 @@ export function SmsPreviewPage() {
   const scopeKey = `${profileId}::${pathname}`;
   const undoable = canUndo(scopeKey) && !readOnly;
 
+  /* ⚠️⚠️ SIDE BY SIDE WITH THE CUSTOM CRM (10/15/2026). Asked for: a hidden button beside Ask
+     AI that shows the phone and the Custom CRM together, so every live update is visible while
+     the conversation happens. Same tab, same capture store, so the CRM updates on the very
+     render that adds a message — no cross-tab sync involved.
+     ⚠️ Only for the built-in agent and its copies: an extra workflow is never handed the CRM's
+     calendar, so the CRM would have nothing true to show. */
+  const crmAble = !wf || !!copy;
+  const splitKey = `invoca-demo:pp-split::${profileId}`;
+  const [convId, setConvId] = useState<string | null>(null);
+  const [split, setSplit] = useState(() => { try { return crmAble && sessionStorage.getItem(splitKey) === "1"; } catch { return false; } });
+  const toggleSplit = () => {
+    const on = !split;
+    /* Connect on first use, so the agent offers the calendar's own openings. Never re-connect
+       a CRM somebody switched off. */
+    if (on && crmConnection(profile.id) === null) setCrmConnected(profile.id, true);
+    setSplit(on);
+    try { sessionStorage.setItem(splitKey, on ? "1" : "0"); } catch { /* private window */ }
+  };
+
   useEffect(() => {
     const prev = document.title;
     document.title = `Preview Agent — ${label ?? profile.customerName}`;
@@ -76,10 +97,24 @@ export function SmsPreviewPage() {
           >
             <span className="material-icons">undo</span>
           </button>
+          {crmAble && (
+            <button
+              className={"tb-ai-btn pp-split-btn" + (split ? " on" : "")}
+              onClick={toggleSplit}
+              aria-pressed={split}
+              title={split ? "Hide the Custom CRM" : "Show the Custom CRM beside the phone"}
+              aria-label={split ? "Hide the Custom CRM" : "Show the Custom CRM beside the phone"}
+            >
+              <span className="material-icons">vertical_split</span>
+            </button>
+          )}
         </span>
       )}
 
-      <PhonePreview mode="page" wf={wf} />
+      <div className={split ? "pp-split" : undefined}>
+        <PhonePreview mode="page" wf={wf} onConversation={setConvId} />
+        {split && <div className="pp-crm"><CustomCrm embedded convId={convId} /></div>}
+      </div>
       {!isShareMode() && <AiAssistantDrawer />}
     </>
   );
