@@ -11564,6 +11564,68 @@ planting/removing a real token file, not by a live Google round trip.
   `JSON.stringify(id)` writes `"autonation"` with quotes, no profile matches, and the app
   silently falls back to Shady Blinds, so the test "passes" against the wrong prospect.
 
+## ⚠️⚠️ STANDING RULE: EVERY SCREEN WORKS ON A PHONE AND A TABLET — "Mobile" (10/15/2026)
+
+Asked for: *"optimize the whole platform, every screen, every feature, every single thing … for
+mobile. all of the existing stuff and anything that is created in the future as well."* Answers
+when asked: everything at once; **adapt, keep the look** (hamburger menu, stacked cards, tables
+that scroll sideways, drawers full width); include the saved HTML pages; one push at the end.
+
+**`src/styles/mobile.css` is the whole layer**, imported LAST in `src/main.tsx`.
+⚠️⚠️ **EVERY RULE IN IT SITS INSIDE A MAX-WIDTH (≤1024px) OR `hover: none` QUERY, AND THAT IS
+WHAT KEEPS THE MEASURED DESKTOP REPLICAS PIXEL-IDENTICAL.** The one top-level rule hides the
+phone menu's own controls on desktop. `audit:mobile` walks the file by brace depth and fails on
+anything else.
+
+| breakpoint | what changes |
+|---|---|
+| **1024px** | layout: grids stack, tables scroll inside their card, drawers go full width, the top bar drops search and icons |
+| **768px** | phone: the left rail becomes a slide-in menu (`body.nav-open`, hamburger in `TopBar`, scrim in `AppShell`, closed on route change). A tablet keeps the 86px rail |
+| **600px** | the Preview Agent phone drops its frame (a phone drawn inside a phone is just a smaller phone); launch padding tightens |
+| **640px** | the centred tour card docks to the bottom |
+
+⚠️ **1024 IS MEASURED, NOT CHOSEN.** The desktop layout already scrolled sideways below ~1200px
+(Marketing overflowed by 542px at 1024, QM by 508), so nothing between 769 and 1200 worked
+before this. The first build used 768 and every iPad (820px) got the overflowing desktop page.
+
+#### A NEW SCREEN MUST BE CHECKED ON A PHONE BEFORE IT SHIPS
+1. Set the Browser pane to `mobile` (375x812) and then a tablet (820x1180).
+2. Paste **`scripts/mobile-probe.js`** and run `__walk(["/your/route"])`. Two probes, because each
+   catches what the other cannot: `__probe()` finds anything past the right edge that is not in
+   its own scroll box; `__cramp()` finds text squeezed into a sliver (40+ characters under 130px
+   wide). ⚠️ **A CRAMPED COLUMN DOES NOT OVERFLOW**, so the overflow probe alone reported the
+   Insights call page, the Digital Journey title, the Signal type cards, Verify Labels and the
+   SMS report's signal names as clean while each was one word a line.
+3. Add rules to `mobile.css` under the screen's own heading, or add the screen's prefix to
+   `CHECKED_AS_IS` in `scripts/audit-mobile.ts` with the reason it needs none.
+   **`audit:mobile` fails on any `.xyz-page` wrapper that has neither**, which is what makes "and
+   anything created in the future" enforced rather than hoped for. It also fails on any
+   fixed-position panel wider than 380px that `mobile.css` does not size.
+⚠️ Inline `gridTemplateColumns` (several dashboards set it from data) needs `!important` to override.
+
+#### Traps paid for while building it
+- ⚠️⚠️ **THE GUIDED TOUR ONLY SCROLLED TARGETS INTO VIEW VERTICALLY.** On a phone the Agent Studio
+  sub-nav is a sideways chip row, so the Recommendations handoff pointed at x=1420. Both the
+  spotlight and the handoff beacon now scroll `inline: "nearest"` (a no-op on desktop).
+- ⚠️⚠️ **A HANDOFF TO A MENU ITEM POINTED INTO THE CLOSED DRAWER.** The link finder accepted the
+  sidebar's Reports item because it has a size, but it sits off screen to the left. The tour now
+  opens `nav-open` when its target is in `.sidebar` and off screen, and closes it on cleanup.
+- ⚠️ **THE TOUR CARD PLACEMENT ASSUMES 290px**; at phone width the copy wraps to ~370px and ran off
+  the bottom. A layout effect re-checks against the card's real height (no-op on desktop).
+  Verified both widths: all 16 steps and 8 handoffs pass, and the menu is never touched on desktop.
+- **Create Workflow led nowhere**: last in a sideways chip row at x=1458. `order: -1` puts the
+  workflow chips, and Create first among them, at the start on small screens.
+- **Desktop-only third-party consoles are NOT restyled.** The Google Ads copy (`unresponsive`,
+  fixed 768px+) and the two agent-desktop artifacts (screen-pops, routing demo) render at
+  `width=1024` on a phone — zoomed out, pinch to read — which is what a real desktop-only site
+  does. The Ads copy also had `user-scalable=0`, so on a phone it could not even be zoomed, and a
+  hovercard frozen in the capture at x=1417 dragged it to 1500px (hidden on `hover: none`).
+- **Replicas and the Invoca Exchange copy use their own sites' responsive CSS** and need nothing.
+- ⚠️ **Harness traps:** `resize_window` emulation can desync clicks from the page (derive the ratio
+  from one probe click); the pane will not navigate to a `blob:` URL (render to the git-ignored
+  `public/__m/` instead); a screenshot right after a click can catch a drawer mid-slide and read
+  as "it did not close" — check `getBoundingClientRect` or wait.
+
 ## Conventions & decisions
 - **Data-driven**: never hard-code screen data in components; put it in the profile/schema.
 - **Re-skin EVERY data point to the prospect's vertical.** No industry-specific wording is

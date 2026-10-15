@@ -18,7 +18,7 @@
    on somebody's first look at the product.
    ============================================================================= */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { tourStepsFor, TOUR_CHAPTERS, type TourStep } from "../data/tourSteps";
@@ -147,6 +147,20 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
   const [beacon, setBeacon] = useState<Beacon | null>(null);
   /* The control the beacon is on, so a click anywhere in the glow can press it. */
   const beaconEl = useRef<HTMLElement | null>(null);
+  /* ⚠️ THE PLACEMENT BELOW ASSUMES A 290px CARD, and at phone width the same copy wraps to
+     ~370px, so "below the target" ran 40px off the bottom of the screen (measured on the
+     voice workflow's step). Re-checked against the card's REAL height after layout: flip
+     above the target when it fits there, else pull it up to the bottom edge. A no-op
+     whenever the card already fits, which is every step on a desktop screen. */
+  const cardRef = useRef<HTMLDivElement | null>(null);
+  useLayoutEffect(() => {
+    const c = cardRef.current;
+    if (!c || c.classList.contains("tour-card--center")) return;
+    const r = c.getBoundingClientRect();
+    if (r.bottom <= window.innerHeight - 8) return;
+    const above = box ? box.top - r.height - 14 : -1;
+    c.style.top = `${above >= 16 ? above : Math.max(12, window.innerHeight - r.height - 12)}px`;
+  });
   const step = steps[i];
 
   /**
@@ -228,10 +242,15 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
              ⚠️ Only when scrolling could actually help: an element taller than the viewport
              will never fit, and two attempts is plenty for one that would. */
           const fits = r.height <= window.innerHeight - 32;
-          const offScreen = r.top < 8 || r.bottom > window.innerHeight - 8;
+          /* ⚠️ SIDEWAYS TOO. On a phone the Agent Studio menu and the workflow toolbar are
+             rows that scroll horizontally, so a target can be on screen vertically and 1,000px
+             off to the right. `inline: "nearest"` scrolls that row and is a no-op on desktop,
+             where every target already fits across. */
+          const offScreen = r.top < 8 || r.bottom > window.innerHeight - 8
+            || (r.width <= window.innerWidth - 16 && (r.left < 0 || r.right > window.innerWidth));
           if (!over && fits && offScreen && scrolls < 2) {
             scrolls += 1;
-            el.scrollIntoView({ block: "center" });
+            el.scrollIntoView({ block: "center", inline: "nearest" });
             setTimeout(measure, 220);
             return;
           }
@@ -343,6 +362,8 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
   useEffect(() => {
     if (pending == null) { setBeacon(null); return; }
     const s = steps[pending];
+    /* A handoff that opened the phone menu must not leave it open if they back out. */
+    const closeMenu = () => document.body.classList.remove("nav-open");
     let misses = 0;
     let closes = 0;
     const tick = () => {
@@ -357,7 +378,18 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
       misses = 0;
       beaconEl.current = t.el;
       let r = t.el.getBoundingClientRect();
-      if (r.top < 0 || r.bottom > window.innerHeight) { t.el.scrollIntoView({ block: "center" }); r = t.el.getBoundingClientRect(); }
+      /* ⚠️ On a phone the left menu is a slide-in drawer, closed by default, so its links
+         still have a size but sit off screen to the left: the beacon would point at nothing
+         a prospect can see or tap. Open the drawer and measure again on the next tick, once
+         it has slid in. Navigating closes it again (AppShell). */
+      if (r.right <= 0 && t.el.closest(".sidebar")) {
+        document.body.classList.add("nav-open");
+        return;
+      }
+      if (r.top < 0 || r.bottom > window.innerHeight || r.left < 0 || r.right > window.innerWidth) {
+        t.el.scrollIntoView({ block: "center", inline: "nearest" });
+        r = t.el.getBoundingClientRect();
+      }
       /* ⚠️ Something sitting on top of the link would eat their click: the phone preview's
          own overlay covers the left menu, and clicking it just closes the phone. Close it
          first so the click they make is the one we asked for. */
@@ -372,7 +404,7 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
     };
     tick();
     const iv = setInterval(tick, 200);
-    return () => clearInterval(iv);
+    return () => { clearInterval(iv); closeMenu(); };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pending]);
 
@@ -528,7 +560,7 @@ export function GuidedTour({ onClose }: { onClose: () => void }) {
         <div className="tour-shade tour-shade--all" />
       )}
 
-      <div className={"tour-card" + (hole ? "" : " tour-card--center")} style={cardStyle} key={i}>
+      <div ref={cardRef} className={"tour-card" + (hole ? "" : " tour-card--center")} style={cardStyle} key={i}>
         <TourProgress steps={steps} i={i} />
         <div className="tour-step">{step.chapter} · Step {i + 1} of {steps.length}</div>
         <h2 className="tour-title">{step.title}</h2>

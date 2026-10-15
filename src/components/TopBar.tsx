@@ -29,6 +29,11 @@ export function TopBar() {
 
   return (
     <header className="topbar">
+      {/* ⚠️ PHONE ONLY (mobile.css hides it above 768px). Opens the left nav as a slide-in
+          menu; the nav itself is unchanged, so desktop is byte-identical. */}
+      <button className="tb-burger" aria-label="Open menu" onClick={() => document.body.classList.toggle("nav-open")}>
+        <span className="material-icons">menu</span>
+      </button>
       <Link to="/launch" aria-label="Launch a prospect">
         <img className="logo" src="/logo.png" alt="Invoca" />
       </Link>

@@ -1,0 +1,544 @@
+/* =============================================================================
+   mobile.css — phone and small-tablet layout for the whole platform (10/15/2026)
+   -----------------------------------------------------------------------------
+   Asked for: optimize every screen and feature for mobile, now and in future.
+   Decisions (asked and answered): ADAPT the layouts but keep the Invoca look —
+   hamburger menu, stacked cards, tables that scroll sideways, drawers that go
+   full width — rather than shrinking the desktop page or inventing an app.
+
+   ⚠️⚠️ **EVERY RULE HERE SITS INSIDE A MAX-WIDTH MEDIA QUERY, AND THAT IS WHAT
+   KEEPS DESKTOP PIXEL-IDENTICAL.** The desktop screens are measured replicas; a
+   phone rule that leaked above 1024px would restyle signed-off work. Loaded LAST
+   (main.tsx) so it wins ties without raising specificity.
+
+   Breakpoints, measured rather than chosen: the desktop layout itself already
+   scrolls sideways below ~1200px (Marketing overflowed by 542px at 1024), so
+   1024px covers every iPad and a narrow laptop window.
+     1024px  layout: stacked grids, scrolling tables, full-width drawers, top bar
+      768px  phone: the left rail becomes a slide-in menu (a tablet keeps the rail)
+      600px  phone only: the preview phone drops its frame, launch padding tightens
+      640px  the centred tour card docks to the bottom (matches the older rule)
+   A NEW SCREEN: run the mobile check (see CLAUDE.md, "Mobile") and add its
+   rules here, under its own heading, before shipping it.
+   ============================================================================= */
+
+/* Hidden on desktop: the phone menu's own controls. */
+.tb-burger, .nav-scrim { display: none; }
+
+@media (max-width: 1024px) {
+  html, body { overflow-x: hidden; }
+
+  /* ---- Shell: top bar ---------------------------------------------------- */
+  .topbar { padding: 0 10px; gap: 8px; }
+  .demo-badge, .search-wrap, .topbar-icons .icon-badge, .topbar-icons > .material-icons, .topbar-icons .avatar { display: none; }
+  .topbar .logo { height: 20px; }
+  .net-wrap { margin-left: 4px; min-width: 0; flex: 1; gap: 6px; }
+  .net-label { font-size: 11px; padding: 3px 6px; flex: none; }
+  /* The prospect switcher keeps its name readable: it takes the room the search box left. */
+  .net-select { min-width: 0; width: 100%; flex: 1; padding: 7px 26px 7px 10px; font-size: 14px; text-overflow: ellipsis; }
+  .topbar-icons { gap: 10px; }
+}
+
+/* ---- Shell: on a PHONE the left nav becomes a slide-in menu ----------------
+   A tablet keeps the 86px icon rail: it fits, and it is the platform's look. */
+@media (max-width: 768px) {
+  .tb-burger {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; margin-left: -6px; border: 0; background: none; border-radius: 6px;
+    color: #343a40; cursor: pointer; flex: none;
+  }
+  .tb-burger .material-icons { font-size: 24px; }
+  .sidebar {
+    position: fixed; top: 0; bottom: 0; left: 0; z-index: 2000;
+    width: 240px; padding-top: 12px;
+    transform: translateX(-100%); transition: transform .22s ease;
+    box-shadow: 0 0 24px rgba(12, 0, 51, .18);
+  }
+  body.nav-open .sidebar { transform: none; }
+  .nav-scrim {
+    display: block; position: fixed; inset: 0; z-index: 1999; background: rgba(13, 26, 38, .45);
+    opacity: 0; pointer-events: none; transition: opacity .22s ease;
+  }
+  body.nav-open .nav-scrim { opacity: 1; pointer-events: auto; }
+  /* The rail's icon-over-label tiles become ordinary menu rows. */
+  .sidebar .nav-item { flex-direction: row; justify-content: flex-start; gap: 14px; height: 48px; padding: 0 18px; font-size: 14px; text-align: left; }
+
+  /* ---- Ask AI and the hover-revealed controls ------------------------------
+     A phone has no hover, so a control that only appears on hover can never be
+     reached. Visible (quietly) on touch devices instead. */
+}
+@media (hover: none) and (max-width: 1024px) {
+  .tb-ai-btn, .pp-ai .tb-ai-btn { opacity: .75; }
+  .tb-ai-btn-off, .pp-ai .tb-ai-btn-off { opacity: .3; }
+}
+
+/* ---- Page frame and the shared title row (every in-shell screen) ---------- */
+@media (max-width: 1024px) {
+  .title-row { flex-wrap: wrap; gap: 8px 12px; }
+  .title { font-size: 22px; line-height: 1.3; min-width: 0; overflow-wrap: anywhere; }
+  /* A long title must take the row, not share it with the action icons and
+     wrap to one word a line (the Digital Journey report did). */
+  .title-row > .title { flex: 1 1 100%; }
+  .title-actions { flex-wrap: wrap; gap: 12px; padding-top: 2px; }
+  /* A row of filter pills scrolls sideways rather than wrapping into a wall. */
+  .toolbar { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
+  .toolbar::-webkit-scrollbar { display: none; }
+  .toolbar > * { flex: none; white-space: nowrap; }
+}
+
+/* ---- Dashboards (the six platform dashboards + Location / AI Conversion) ---- */
+@media (max-width: 1024px) {
+  .dash-page { padding: 12px 12px 32px; }
+  .dash-page .title { font-size: 22px; }
+  .dash-card-title { font-size: 19px; line-height: 1.3; min-width: 0; }
+  .ops-page .dash-card-title { font-size: 16px; }
+  .dash-card-head { padding: 12px 12px 10px; gap: 8px; }
+  /* Touch has no hover: the per-tile Ask AI sparkle shows quietly. */
+  .dash-ai-tile { opacity: .7; }
+
+  /* Every side-by-side row stacks. Several set their columns INLINE (one per tile), so
+     these need !important to win over a style attribute. */
+  .split-row, .breakdown-row, .breakdown-prodcat, .aim-row, .qm-row, .qm-row-13, .qm-row-21,
+  .aac-conv-grid { grid-template-columns: minmax(0, 1fr) !important; }
+  .split-row > .dash-card, .breakdown-row > .dash-card, .aim-row > .dash-card, .qm-row > .dash-card,
+  .aac-conv-grid > .dash-card { height: auto; }
+
+  /* KPI tiles: two across, never one long squeezed row. */
+  .kpi-row { grid-auto-flow: row; grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .kpi-row .kpi-tile + .kpi-tile::before, .kpi-grid .kpi-tile:nth-child(even)::before { display: none; }
+  .kpi-row .kpi-tile:nth-child(even), .kpi-grid .kpi-tile:nth-child(even) { border-left: 4px solid #f5f6fa; }
+  .kpi-tile { padding: 16px 10px 18px; min-width: 0; }
+  .kpi-label { font-size: 13px; margin-bottom: 8px; }
+  .kpi-value { font-size: 26px; overflow-wrap: anywhere; }
+
+  /* Tables scroll inside their card instead of pushing the page sideways. */
+  .dash-table-scroll, .breakdown-prodcat .dash-table-scroll { overflow-x: auto; padding: 0 12px 10px; }
+  .breakdown-prodcat .dash-table, .ops-page .dash-table { table-layout: auto; }
+  .breakdown-prodcat .dash-table th, .breakdown-prodcat .dash-table td { overflow: visible; text-overflow: clip; }
+  .ops-page .dash-table th, .ops-page .dash-table td { white-space: nowrap; }
+  table.dash-table thead th, table.dash-table tbody td { padding: 10px 10px; font-size: 13px; }
+
+  /* Horizontal bar charts: a narrower label column. */
+  .hbar { --hbar-lw: 78px; --hbar-gap: 8px; padding: 6px 10px 12px 2px; }
+  .hbar-label { font-size: 12px; }
+  .donut-wrap { padding: 4px 8px 16px; }
+}
+
+/* ---- Charts: readable on a phone ------------------------------------------
+   The SVG charts scale their whole picture to the container, so a 1000-unit chart on a
+   350px screen draws 4px labels. On a phone they keep a readable minimum width and scroll
+   sideways inside their own card instead. */
+@media (max-width: 1024px) {
+  .chart-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .chart-wrap > .line-svg { min-width: 620px; }
+}
+
+/* ---- List pages (Manage Dashboards, Insights list, My Reports, Agent Studio) ---
+   A list table keeps its columns and swipes sideways inside the page. `display: block`
+   on the table is what lets it scroll without a wrapper element in the markup. */
+@media (max-width: 1024px) {
+  .md-page { padding: 12px 12px 32px; }
+  .ops-split { grid-template-columns: minmax(0, 1fr) !important; }
+  .ops-split > .dash-card { height: auto; }
+  table.md-table, table.as-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+  .md-table thead th, .md-table tbody td { padding: 12px 12px; }
+  .ia-table th:not(.md-col-name), .ia-table td:not(.md-col-name) { width: auto; min-width: 140px; }
+}
+
+/* ---- Conversation Intelligence (call log, AI SMS, AI Voice, Silver/Gold) ----
+   Three columns side by side become one: the conversation list (a short scrolling
+   strip), then the transcript, then the analysis tabs, in reading order. */
+@media (max-width: 1024px) {
+  .ci-page { height: auto; padding: 12px 12px 0; }
+  .ci-header { flex-wrap: wrap; gap: 8px 12px; }
+  .ci-header-left { min-width: 0; flex-basis: 100%; }
+  .ci-title { font-size: 22px; line-height: 1.3; }
+  .ci-header-actions { flex-wrap: wrap; gap: 12px; }
+  .ci-body { flex-direction: column; min-height: auto; }
+  .ci-calls { width: auto; border-right: 0; border-bottom: 1px solid #e7eaee; }
+  .ci-calls-list { max-height: 230px; }
+  .ci-center { padding: 14px 4px; overflow: visible; }
+  .ci-analysis { width: auto; padding: 12px 0 24px; border-top: 1px solid #e7eaee; }
+  .sci-page .ci-analysis { min-width: 0; flex: none; }
+  .sci-page .ci-center { flex: none; }
+  .ci-analysis-body { overflow: visible; padding: 14px 12px 20px; }
+  .ci-legend { justify-content: flex-start; flex-wrap: wrap; gap: 12px; }
+  .ci-tabs { overflow-x: auto; scrollbar-width: none; }
+  .ci-tabs::-webkit-scrollbar { display: none; }
+  .sci-info-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .ci-signal { flex-wrap: wrap; row-gap: 4px; }
+  /* The name used to shrink so its badges kept the same line, leaving ~90px for
+     "Caller Type: Uncertain About Service". It takes the line; badges wrap under. */
+  .ci-signal .ci-sig-name { flex: 1 1 calc(100% - 40px); }
+  .ci-sig-name { min-width: 0; flex: 1; overflow-wrap: anywhere; }
+  .sci-info-card { padding: 14px; }
+}
+
+/* ---- Call Review ---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .cr-page { flex-direction: column; gap: 14px; padding: 12px 12px 0; }
+  /* The sticky, full-height filter column becomes a short scrolling panel above the list. */
+  .cr-left { width: auto; position: static; height: auto; }
+  .cr-title { font-size: 22px; }
+  .cr-filters { max-height: 300px; }
+  .cr-toolbar { flex-wrap: wrap; gap: 8px; }
+  .cr-toolbar-right { margin-left: 0; flex-wrap: wrap; gap: 12px; width: 100%; }
+  .cr-card { flex-wrap: wrap; gap: 12px; padding: 14px; }
+  .cr-score-col { width: auto; }
+  .cr-score-val { font-size: 32px; }
+  .cr-summary-col { flex-basis: 100%; order: 2; }
+  .cr-meta-col { width: auto; order: 1; margin-left: auto; text-align: right; }
+}
+
+/* ---- Call Detail ---------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .cd-head { flex-wrap: wrap; gap: 10px; padding: 14px 12px 10px; }
+  .cd-title { font-size: 20px; }
+  .cd-head-actions { flex-wrap: wrap; }
+  .cd-body { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 4px 12px 20px; }
+  .cd-turn { grid-template-columns: 56px minmax(0, 1fr); gap: 10px; }
+  .cd-audio-controls { padding: 10px 12px; gap: 10px; }
+  .cd-audio-center { gap: 12px; }
+}
+
+/* ---- Agent Studio editor (settings, knowledge, recommendations, workflows) ----
+   The 344px sub-menu becomes one swipeable row of chips above the content, and the
+   page scrolls as a whole instead of in two independent columns. */
+@media (max-width: 1024px) {
+  .ag-page { height: auto; min-height: 100%; }
+  .ag-header { flex-wrap: wrap; gap: 8px; padding: 12px 12px 10px; }
+  .ag-title { font-size: 22px; }
+  .ag-header-right { width: 100%; justify-content: space-between; gap: 10px; }
+  .ag-lastsaved { font-size: 12px; padding-top: 0; white-space: normal; }
+  .ag-golive { padding: 8px 16px; font-size: 14px; }
+  .ag-body { flex-direction: column; overflow: visible; }
+  .ag-subnav {
+    width: auto; display: flex; align-items: center; gap: 6px; padding: 8px 12px;
+    overflow-x: auto; overflow-y: hidden; border-right: 0; border-bottom: 1px solid #e7eaee;
+    scrollbar-width: none;
+  }
+  .ag-subnav::-webkit-scrollbar { display: none; }
+  .ag-subnav > *, .ag-wf-list > * { flex: none; }
+  .ag-nav-item { width: auto; white-space: nowrap; padding: 8px 12px; font-size: 14px; }
+  .ag-nav-workflows { display: none; }
+  .ag-wf-list { display: flex; align-items: center; gap: 6px; padding-left: 0; margin-top: 0; }
+  /* Last in the list on desktop; at the end of a sideways-scrolling row on a
+     phone nobody finds it, so it leads the workflow chips instead. */
+  .ag-create-wf { order: -1; }
+  .ag-wf-list { order: -1; }
+  .ag-wf { white-space: nowrap; border: 1px solid #e7eaee; border-radius: 8px; padding: 6px 10px; }
+  .ag-wf.active { border-color: #2666f9; }
+  .ag-wf-name { flex: none; }
+  .ag-create-wf { white-space: nowrap; padding: 8px; }
+  .ag-content { overflow: visible; padding: 14px 12px 20px; }
+  .ag-section-title { font-size: 19px; margin-bottom: 16px; }
+  .ks-toolbar { flex-wrap: wrap; gap: 8px; }
+  .ks-search { flex-basis: 100%; }
+  .ks-btn { flex: 1; justify-content: center; padding: 9px 10px; }
+}
+
+/* ---- Workflow diagrams ------------------------------------------------------
+   The diagram keeps its fit-to-box scale (with its 0.5 legibility floor). On a phone the
+   canvas gets a real height, and on touch it scrolls natively under a finger: the desktop
+   drag-to-pan deliberately ignores touch (see WorkflowTree), so without this a phone could
+   not move the diagram at all. */
+@media (max-width: 1024px) {
+  .wf-top { flex-wrap: wrap; gap: 10px; }
+  .wf-title { flex-basis: 100%; font-size: 19px; }
+  .wf-top-actions { flex-wrap: wrap; gap: 8px; }
+  .wf-preview { padding: 8px 14px; }
+  .wf-tabs { gap: 20px; }
+  .wf-toolbar { justify-content: flex-start; }
+  .wf-canvas { min-height: 62vh; flex: none; }
+  .wf-minimap { display: none; }
+}
+@media (hover: none) {
+  .wf-scroll { overflow: auto; -webkit-overflow-scrolling: touch; }
+}
+
+/* ---- Drawers and modals -----------------------------------------------------
+   Side drawers take the whole width of a phone; centred modals keep a 12px margin. The
+   desktop widths are measured off the real product (500/800px drawers), and on a 375px
+   screen they would hang off the edge or leave a sliver of page that looks clickable. */
+@media (max-width: 1024px) {
+  .aiad-panel, .vp-drawer, .wcp-drawer, .iad, .idr-panel, .itc, .sdr-panel, .dcd-paper, .wnd-paper, .icta, .cg-fly {
+    width: 100% !important; max-width: 100vw !important;
+  }
+  /* The Ask AI drawer that opens on the LEFT beside a preview also goes full width on a
+     phone: there is no room for both, and the preview is one tap away when it closes. */
+  .aiad--left .aiad-panel { width: 100% !important; }
+  .fb-modal, .adm-modal, .ndm-paper, .cwm-paper, .wrm-paper, .sig-modal, .qa-modal, .itc-pop {
+    width: calc(100vw - 24px) !important; max-width: calc(100vw - 24px) !important;
+  }
+  .ndm-paper, .cwm-paper { height: auto !important; max-height: calc(100vh - 24px); }
+  .tour-card { width: calc(100vw - 24px) !important; }
+}
+
+/* ---- Form fields never outgrow their container ---- */
+@media (max-width: 1024px) {
+  input, select, textarea { max-width: 100%; }
+  img, video { max-width: 100%; }
+}
+
+/* ---- Insights & Analytics (Summary Dashboard, Connect AI, Details Report, tiles) ---- */
+@media (max-width: 1024px) {
+  .ind-head { flex-wrap: wrap; gap: 10px; padding-left: 12px !important; padding-right: 12px !important; }
+  .ind-actions { flex-wrap: wrap; gap: 8px; }
+  .ind-title { font-size: 22px; }
+  .ind-filters { padding: 8px 12px 12px; overflow-x: auto; }
+  .ind-grid { grid-template-columns: minmax(0, 1fr); padding: 10px 12px 0; }
+  .ind-card { margin: 10px 12px 0; padding: 14px 12px 16px; min-width: 0; }
+  .ind-summary, .ind-split, .ica-split, .ica-split-even { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+  .ica-phase-row { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .ica-kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ica-heat { overflow-x: auto; }
+  .ica-heat-grid { min-width: 560px; }
+}
+
+/* ---- Signal (Manage Signals, rule editor, type select, library, activate, AI Studio) ---- */
+@media (max-width: 1024px) {
+  .sg-page { padding: 12px 12px 32px; }
+  .sg-title { font-size: 22px; }
+  .sg-heroes { grid-template-columns: minmax(0, 1fr); gap: 12px; margin-bottom: 18px; }
+  .sg-hero { gap: 12px; }
+  .sg-cardicon { width: 72px; height: 66px; }
+  .sg-toolbar { flex-wrap: wrap; gap: 10px; }
+  .sg-search { width: 100%; }
+  .sg-toolbar-right { margin-left: 0; flex-wrap: wrap; }
+
+  .ers-head { padding: 12px; }
+  .ers-title { font-size: 20px; line-height: 1.3; }
+  .ers-body { padding: 12px 12px 0; }
+  .ers-builder { grid-template-columns: minmax(0, 1fr); }
+  .ers-terminals { max-height: 220px; overflow-y: auto; }
+  .ers-canvas-wrap { padding: 14px 12px; }
+  .ers-expr { flex-wrap: wrap; }
+  .ers-foot { flex-wrap: wrap; gap: 10px; padding: 12px; }
+
+  /* The vertical tab rail becomes a swipeable row of tabs above the form. */
+  .ssa-body { flex-direction: column; }
+  .ssa-rail { width: auto; flex: none; flex-direction: row; overflow-x: auto; position: sticky; top: 0; z-index: 2; background: #fff; padding: 0; border-bottom: 1px solid #e7e9eb; }
+  .ssa-tab { flex: none; white-space: nowrap; min-height: 44px; }
+  .ssa-tab-on::after { top: auto; left: 0; right: 0; bottom: 0; width: auto; height: 2px; }
+  .ssa-form { padding: 14px 12px 0; width: 100%; box-sizing: border-box; }
+  .ssa-textarea, .ssa-money, .ssa-input { width: 100%; }
+  .ssa-check { flex-wrap: wrap; }
+  .ssa-select-wide { width: 100%; }
+  .ssa-foot { padding: 12px; flex-wrap: wrap; gap: 8px; }
+
+  .sas-page { padding: 14px 12px 32px; }
+  .sas-head, .sas-toolbar { flex-wrap: wrap; gap: 10px; }
+}
+
+/* ---- Salesforce replicas (Seller Home, Calendar, Leads, Call Log, records) ----
+   Salesforce's own mobile experience is a separate app, so these adapt the desktop
+   Lightning pages the same way as the rest: one column, swipeable tab and toolbar rows,
+   wide grids that scroll inside their card. */
+@media (max-width: 1024px) {
+  .sfh-globalicons > :not(:last-child) { display: none; }
+  .sfh-search { min-width: 0; flex: 1; }
+  .sfh-app { margin-right: 10px; font-size: 17px; }
+  .sfh-tabs { overflow-x: auto !important; scrollbar-width: none; }
+  .sfh-tabs::-webkit-scrollbar { display: none; }
+  .sfh-page { padding: 10px 12px; }
+  .sfh-banner { flex-wrap: wrap; gap: 4px 10px; }
+  .sfh-h1 { font-size: 24px; line-height: 1.4; }
+  .sfh-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 12px; }
+  .sfh-card, .sfh-card--tall, .sfh-card--sb { height: auto; min-height: 260px; }
+  .sfh-sb-img { width: 100%; height: auto; }
+
+  /* Calendar: the week grid keeps seven readable columns and scrolls sideways; the mini
+     calendar rail moves out of the way. */
+  .sfc-head { flex-wrap: wrap; gap: 8px; }
+  .sfc-rail { display: none; }
+  .sfc-grid { overflow-x: auto; }
+  .sfc-dayheads-wrap, .sfc-body { min-width: 640px; }
+
+  /* Leads and Call Log list views. */
+  .sfl-page, .scl-page { height: auto; }
+  .scl-page { padding: 10px; }
+  .sfl-head, .scl-headrow { flex-wrap: wrap; height: auto; flex-basis: auto; gap: 10px; }
+  .sfl-headactions, .scl-actions { margin-top: 0; overflow-x: auto; max-width: 100%; }
+  .sfl-filters { justify-content: flex-start; overflow-x: auto; padding: 0 12px; }
+  .sfl-kpis { overflow-x: auto; flex-basis: auto; }
+  .sfl-kpi { flex: none; }
+  .sfl-actions { overflow-x: auto; max-width: 100%; }
+  .scl-tools { flex-wrap: wrap; }
+  .sfl-scroll, .scl-scroll { overflow-x: auto; max-height: 60vh; }
+  .scl-table { min-width: 560px; }
+
+  /* Lead record and Invoca Call Log record. */
+  .sld-headrow, .clr-head { flex-wrap: wrap; height: auto; gap: 10px; padding: 12px; }
+  .sld-headbtns, .clr-headbtns { margin-left: 0; overflow-x: auto; max-width: 100%; }
+  .sld-highlights { flex-wrap: wrap; gap: 12px 20px; margin-top: 16px; }
+  .sld-path { overflow-x: auto; }
+  .sld-stage { flex: none; }
+  .sld-cols, .clr-cols { flex-direction: column; gap: 12px; padding: 12px 10px 0; }
+  .sld-left, .clr-left { flex: none; width: 100%; padding: 0 6px; }
+  .sld-right { padding: 0 6px; width: 100%; }
+  .sld-tabs, .clr-tabs { gap: 20px; overflow-x: auto; }
+  .sld-grid, .clr-grid { grid-template-columns: minmax(0, 1fr); }
+  .sld-links { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ---------- ChatGPT sponsored answer ---------- */
+@media (max-width: 1024px) {
+  /* Two place cards side by side leave ~115px each on a phone, so the name
+     truncates to two letters. A swipeable row keeps each card readable. */
+  .cg-places { overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .cg-places::-webkit-scrollbar { display: none; }
+  .cg-place { flex: 0 0 82%; scroll-snap-align: start; }
+}
+
+/* ---------- Google Search results (dark SERP) ---------- */
+@media (max-width: 1024px) {
+  /* Google's own phone layout: logo, then a full-width search pill, then
+     tabs that scroll sideways, results edge to edge with a 16px gutter. */
+  .gs-page { --gs-col: 100%; }
+  .gs-head-row { flex-wrap: wrap; gap: 12px; padding: 14px 16px 0; }
+  .gs-head-icons { order: 1; }
+  .gs-logo { order: 0; }
+  .gs-pill { order: 2; width: 100%; height: 46px; }
+  .gs-pill-btn.gs-lens, .gs-pill-div { display: none; }
+  .gs-tabs { padding: 0 16px; gap: 22px; overflow-x: auto; scrollbar-width: none; }
+  .gs-tabs::-webkit-scrollbar { display: none; }
+  .gs-tab { flex: none; }
+  .gs-tools { margin-right: 0; }
+  .gs-body { padding: 0 16px 32px; }
+  .gs-loc { flex-wrap: wrap; height: auto; padding: 10px 0; row-gap: 8px; }
+  .gs-sitelinks { width: 100%; }
+
+  /* Local Services ads: the actions drop under the business. */
+  .gs-lsa-head-row { flex-wrap: wrap; gap: 8px; height: auto; }
+  .gs-lsa-title { max-width: 100%; }
+  .gs-lsa-row { flex-wrap: wrap; row-gap: 10px; padding-right: 0; }
+  .gs-lsa-thumb { width: 72px; height: 72px; }
+  .gs-lsa-main { flex: 1 1 0; }
+  .gs-lsa-acts { width: 100%; justify-content: flex-start; padding-top: 0; }
+  .gs-lsa-more-pill { width: 100%; max-width: 372px; }
+
+  /* Local pack: map on top, list below, like the phone SERP. */
+  .gs-pack { width: 100%; flex-direction: column; gap: 0; }
+  .gs-pack-list { width: 100%; order: 2; }
+  .gs-map { order: 1; min-height: 220px; flex: none; }
+  .gs-place { flex-wrap: wrap; row-gap: 8px; }
+  .gs-pasf { grid-template-columns: minmax(0, 1fr); }
+  .gs-foot-in { padding: 20px 16px 24px; }
+  .gs-foot-mid { flex-wrap: wrap; }
+
+  /* Quote dialog: full screen, both halves full width. */
+  .gs-q-scrim { align-items: stretch; }
+  .gs-q { max-width: 100vw; max-height: 100dvh; border-radius: 0; width: 100%; }
+  .gs-q-body { padding: 8px 16px 0; }
+  .gs-q-foot { padding: 0 16px; }
+  .gs-q-half { width: 100%; }
+}
+
+/* ---------- Custom CRM ---------- */
+@media (max-width: 1024px) {
+  /* The panels already stack (the screen's own 760px query). Seven day
+     columns at phone width leave ~45px each and every booking truncates to
+     "9:..." — so the week keeps a readable width and scrolls sideways
+     inside the calendar, the way the Salesforce week view does. */
+  .ccr-days, .ccr-body { min-width: 640px; }
+  .ccr-hours { position: sticky; left: 0; z-index: 2; background: var(--ccr-panel); }
+}
+
+/* ---------- Preview Agent (the iPhone mockup) ---------- */
+@media (max-width: 600px) {
+  /* A phone drawn inside a phone is just a smaller phone. On a small screen
+     the frame drops away and the conversation IS the screen, with a 56px
+     strip on top for the Ask AI / split / full-screen / close controls. */
+  .phone-page { padding: 56px 0 0; align-items: stretch; justify-content: stretch; }
+  .phone-wrap { width: 100%; gap: 0; }
+  .phone { width: 100%; max-height: none; border-radius: 0; padding: 0; box-shadow: none; background: #000; }
+  .phone::before, .phone-island, .phone-btn { display: none; }
+  .phone-screen { border-radius: 0; margin: 0; height: calc(100dvh - 56px); }
+  .phone-caption { display: none; }
+  .phone-close { top: 8px; right: 10px; }
+
+  /* Split view (phone + Custom CRM): stacked, conversation on top. */
+  .pp-split .phone-page { width: auto; right: 0; bottom: 48%; }
+  .pp-split .phone-screen { height: calc(52dvh - 56px); }
+  .pp-crm { left: 0; top: 52%; overflow: auto; }
+  .pp-crm .ccr { height: auto; min-height: 100%; }
+}
+
+/* ---------- Launch screen ---------- */
+@media (max-width: 600px) {
+  /* 24px page gutter + 40px card padding left a 245px column, so every
+     library row wrapped to four lines beside its action buttons. */
+  .launch-page { padding: 64px 12px 32px; }
+  .launch-card { padding: 28px 18px 24px; }
+}
+
+/* ---------- Insights call page (/insights/call) ---------- */
+@media (max-width: 1024px) {
+  /* Two half-width columns left the transcript one word wide. Stacked, the
+     page scrolls as a whole and the transcript keeps a bounded box of its own. */
+  .icd-page { height: auto; overflow: visible; }
+  .icd-head { padding: 14px 14px 0; }
+  .icd-head-row { flex-wrap: wrap; }
+  .icd-title { font-size: 22px; }
+  .icd-body { grid-template-columns: minmax(0, 1fr); flex: none; }
+  .icd-left { border-right: 0; border-bottom: 1px solid #e7e9eb; padding: 8px 14px 12px; }
+  .icd-transcript { flex: none; max-height: 52vh; }
+  .icd-right { padding: 12px 14px 24px; overflow: visible; }
+  .icd-tabs { overflow-x: auto; }
+  .icd-tab { flex: none; }
+}
+
+/* ---------- Signal: New signal type cards ---------- */
+@media (max-width: 1024px) {
+  /* The 128px illustration beside the copy left the description 112px wide. */
+  .sts-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .sts-type { flex-direction: column; }
+  .sts-type .sts-icon { align-self: center; margin-top: 12px; }
+  .sts-type-content { padding: 16px; }
+}
+
+/* ---------- Salesforce Leads list header ---------- */
+@media (max-width: 1024px) {
+  /* The status line shared its bar with the five-button group and wrapped
+     to one word a line; it takes its own row above the buttons now. */
+  .sfl-listhead { flex-wrap: wrap; flex-basis: auto; row-gap: 8px; padding: 8px 12px; }
+  .sfl-count { flex: 1 1 100%; }
+}
+
+/* ---------- Guided tour on a shared demo ---------- */
+@media (max-width: 1024px) {
+  /* The older 640px rule drops the centring transform but keeps top: 50%, so
+     a tall card (the recap is ~570px at phone width) started mid-screen and
+     ran off the bottom. A centred card docks to the bottom instead, and every
+     card scrolls inside itself rather than overflowing the screen. */
+  .tour-card { max-height: calc(100dvh - 24px); overflow-y: auto; }
+}
+@media (max-width: 640px) {
+  .tour-card--center { top: auto !important; bottom: 12px; left: 12px !important; transform: none; }
+}
+
+/* ---------- Signal AI Studio: Verify Labels ---------- */
+@media (max-width: 1024px) {
+  /* 60/40 columns left the transcript and the label card ~70px wide each on a
+     phone. One column, and the True / False card first: it is what the
+     reviewer acts on; the transcript is the evidence under it. */
+  .vl-page { padding: 14px 14px 0; }
+  .vl-head { flex-direction: column; gap: 12px; }
+  .vl-head-right { flex-wrap: wrap; flex: 1 1 auto; }
+  .vl-verified { width: 120px; }
+  .vl-sub { flex-wrap: wrap; }
+  .vl-body { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .vl-side { order: -1; }
+  .vl-card { padding: 16px; }
+  .vl-turn { grid-template-columns: 52px 2px 1fr; gap: 0 10px; }
+}
+
+/* ---------- Insights: a newly created (empty) dashboard ---------- */
+@media (max-width: 1024px) {
+  /* The template cards are three measured 320px columns (1074px of panel);
+     below that the real product lets the third card overflow its panel. On a
+     tablet or phone they stack, each the panel's width. */
+  .ied-panel { width: 100%; box-sizing: border-box; }
+  .ied-cards { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 0 14px 14px; }
+  .ied-card { width: auto; box-sizing: border-box; }
+}

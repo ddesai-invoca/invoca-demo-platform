@@ -45,7 +45,8 @@ export function renderVoiceRoutingDemo(d: VoiceRoutingDemo): string {
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- An agent desktop is a fixed multi-column app with no scrolling body, so on a phone it renders at desktop width (zoomed out, pinch to read) rather than clipping half the app. Desktop browsers ignore this tag. -->
+<meta name="viewport" content="width=1024">
 <title>${esc(d.brandName)} — Live Call Routing Demo</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');

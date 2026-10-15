@@ -67,8 +67,11 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 export const RELEASES: Release[] = [
   {
     date: "2026-10-15",
-    title: "A Custom CRM the SMS agent books into, live",
+    title: "The platform works on a phone and a tablet, and a live Custom CRM",
     changes: [
+      n("Every screen now works on a phone and a tablet. The left menu becomes a menu button on a phone, cards stack, wide tables scroll sideways inside their card, and drawers and dialogs fill the screen. The look is unchanged, and so is every screen on a laptop or desktop."),
+      i("A shared demo works on a phone too, including the guided tour: every step and every highlighted button stays on screen, and when the next step is in the menu the menu slides open so the prospect can tap it."),
+      i("On a phone, the Preview Agent fills the screen instead of showing a phone inside a phone, and the side-by-side view with the Custom CRM stacks one above the other."),
       n("Integrations has a new Custom CRM. It is a scheduling calendar for the prospect: open it beside the Preview Agent and, as the SMS agent books an appointment, the calendar fills in live. It shows the service area confirmed, the openings offered, the slot the customer picks and the booking arriving, with a New Lead panel of everything the agent collected."),
       n("While the Custom CRM is connected, the SMS agent offers only the openings on that calendar, so every time it suggests is one the calendar can show. The switch is the pill at the top of the CRM; opening it the first time connects it."),
       i("The guided tour on a shared demo now teaches the way round: when the next step is on another screen, the real menu item pulses and the tour waits for the prospect to click it. It also has a chapter progress bar and a closing recap."),

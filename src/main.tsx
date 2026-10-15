@@ -8,6 +8,8 @@ import './tokens/thoughtspot.css'
 import './styles/app.css'
 import './styles/ts.css'
 import './styles/standalone.css'
+/* Loaded last: phone layout overrides, every rule inside a max-width media query. */
+import './styles/mobile.css'
 import App from './App.tsx'
 import ShareApp from './screens/ShareApp.tsx'
 import { isShareMode } from './data/shareMode.ts'
