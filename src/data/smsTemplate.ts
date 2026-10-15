@@ -1,4 +1,6 @@
 import type { TreeBranch, TreeLeaf, TreePath } from "../components/WorkflowTree";
+import { intentCopyFor } from "./prospectIntent";
+import { smsIntentText, RETIRED_SMS_SALES, RETIRED_SMS_SUPPORT } from "./intentText";
 import { withoutReminderPromise } from "./agentDefaults";
 import type { CustomerProfile } from "./schema";
 import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, LEAF_QUALIFY, LEAF_ESCALATE } from "./workflowChrome";
@@ -273,7 +275,7 @@ export function qualifyCopy(p: CustomerProfile): Record<SmsQualifyNode, SmsQuali
        already draws from `deriveUseCases` — free to drift on the first vertical that words one
        of them differently. */
     support: {
-      question: `Happy to help. What can I help you with on your ${p.customerName} service today?`,
+      question: intentCopyFor(p).supportQuestion,
       segments: deriveUseCases(p).support.map((u) => u.title),
       fallback: `Sorry, I didn't quite catch that. Is it about a problem with a recent visit, an upcoming one, a charge, or something else?`,
     },
@@ -382,7 +384,7 @@ export function informCopy(p: CustomerProfile): SmsConfig["inform"] {
       `Look up whatever record is relevant, answer what you can answer, and do it in the same turn rather than promising to look later.`,
       /* 10/13/2026: measured on a real path, a gate-code change was handed to a person "for
          security reasons" nobody configured. Simple account details are the agent's to do. */
-      `Update simple account details yourself, such as access instructions, a gate code, a phone number or an email, and confirm the change back.`,
+      `Update simple account details yourself, such as ${intentCopyFor(p).simpleDetails}, and confirm the change back.`,
       `Hand off as soon as it needs a person: they ask for one, they are upset, or it needs an authority you do not have. Say who you are passing them to.`,
     ].join("\n"),
   };
@@ -482,25 +484,21 @@ export function smsConfigFor(p: CustomerProfile): SmsConfig {
 
 /** The two intents' own descriptions and rules, for the Intent Details drawer. */
 export function intentCopy(p: CustomerProfile) {
-  const noun = p.customerNoun.toLowerCase();
   const rules = p.reports.agentConfig?.brandConversationRules ?? [];
+  /* ⚠️⚠️ **IN THE PROSPECT'S INDUSTRY WORDS (10/14/2026).** This was one subscription-sales
+     template for every business ("interested in starting <X> service, or … add or upgrade"),
+     which on a hospital read as selling. `smsIntentText` reads `prospectIntent.ts`. */
+  const t = smsIntentText(p);
   return {
     sales: {
-      looksLike: `The consumer is a prospective ${noun} interested in starting ${p.customerName} service, `
-        + `or an existing ${noun} who wants to add or upgrade what they already have.\n\n`
-        + `They are NOT: existing ${noun}s with billing questions, scheduling issues, complaints about current `
-        + `service, status requests, cancellation requests or account management needs — those consumers belong in ${INTENT_SUPPORT}.`,
+      looksLike: t.sales,
       /* ⚠️ THE RULES ARE THE PROSPECT'S OWN `brandConversationRules`, not a second list. That
-         is the SMS sales playbook the Preview Agent screen edits and `buildSmsBrain` sends to
-         the model, so this drawer and the agent cannot describe different rules. */
+         is the SMS playbook the Preview Agent screen edits and `buildSmsBrain` sends to the
+         model, so this drawer and the agent cannot describe different rules. */
       rules,
     },
     support: {
-      looksLike: `The consumer is an existing ${p.customerName} ${noun} reaching out about their current account `
-        + `or service. They may need to reschedule, ask about billing or payments, report a concern, change or `
-        + `cancel their plan, or check on status. They may be messaging from a recognised or unrecognised number.\n\n`
-        + `They are NOT: prospective ${noun}s who want to start new ${p.customerName} service, or existing `
-        + `${noun}s looking to add or upgrade — those consumers belong in ${INTENT_SALES}.`,
+      looksLike: t.support,
       /* ⚠️ THE SUPPORT INTENT SHIPS WITH NO RULES, rather than inventing support policy nobody
          configured. The drawer renders the product's own empty state for that. */
       rules: [] as string[],
@@ -512,8 +510,8 @@ export function intentCopy(p: CustomerProfile) {
 export const escalateCopy = (p: CustomerProfile): string => [
   `Attempt to resolve the consumer's issue using available knowledge and account information.`,
   `Escalate immediately if the consumer expresses frustration or dissatisfaction, asks to speak with a person `
-  + `or supervisor, raises a billing dispute, requests a cancellation or refund, reports a problem that recurred `
-  + `after recent service, or has an issue that cannot be resolved in this conversation.`,
+  + `or supervisor, ${intentCopyFor(p).escalateTriggers}, `
+  + `or has an issue that cannot be resolved in this conversation.`,
   `When escalating, let the consumer know you are handing them to a ${p.customerName} support specialist and `
   + `direct them to call ${demoPhone(p)}.`,
 ].join("\n");
@@ -684,11 +682,18 @@ export function effectiveSmsConfig(p: CustomerProfile, sms: object | undefined):
   const intents = cfg.intents;
   if (!intents) return cfg;
   let touched = false;
+  const retired = { sales: RETIRED_SMS_SALES, support: RETIRED_SMS_SUPPORT };
   const fix = (side: "sales" | "support") => {
-    const it = intents[side];
+    let it = intents[side];
+    /* ⚠️ A stored copy of the retired one-size description gives way to the industry wording
+       (10/14/2026); an SE's own text is kept. */
+    if (it && retired[side].test(it.looksLike ?? "")) {
+      it = { ...it, looksLike: base.intents[side].looksLike };
+      touched = true;
+    }
     if (!it?.rules?.length) return it;
     const next = it.rules.map((r) => withoutReminderPromise(r ?? "")).filter((r) => r.trim().length > 0);
-    if (next.length === it.rules.length && next.every((r, i) => r === it.rules[i])) return it;
+    if (next.length === it.rules.length && next.every((r, i) => r === it!.rules[i])) return it;
     touched = true;
     return { ...it, rules: next };
   };

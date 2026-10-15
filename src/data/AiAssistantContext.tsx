@@ -1,3 +1,4 @@
+import { syncAgentWorkflow, workflowShapeOk } from "./agentWorkflowSync";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { isShareMode } from "./shareMode";
 import { getByPath, isLockedEdit, isStructuralChange } from "./editGuard";
@@ -114,6 +115,10 @@ export interface AssistantFocus {
   preview?: string;   // short text preview of the tile
   key?: string;       // scope "agent": the scope key its data lives under
   questionPath?: string; // scope "agent": where the question list sits in it
+  /* scope "agent": another scope this drawer may also edit, under `linkAs.` (10/14/2026) —
+     the workflow a preview chat is previewing, so its Ask AI can change the diagram too. */
+  linkKey?: string;
+  linkAs?: string;
   /* The focused tile's OWN data path, e.g. "breakdowns.4". Optional: a tile that
      does not declare one behaves exactly as before, with the model locating the
      path itself. Supplying it removes the guess, because the model reasons about
@@ -349,9 +354,22 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
      UI from showing changes that would never be saved. */
   const readOnly = !!activeDemo && !activeDemo.canEdit;
 
+  /* ⚠️⚠️ **THE LATEST OVERRIDES, READ SYNCHRONOUSLY (10/14/2026).** One Ask AI answer can
+     write two scopes back to back (the agent's, then the linked workflow's), and the sync adds
+     more. Each `applyEdits` read `store` from its render, so the second write started from the
+     state BEFORE the first: measured, a new branch was saved over the question list the sync
+     had just written. Every write updates this ref at once, and every read goes through it. */
+  const liveOverrides = useRef(store.overrides);
+  liveOverrides.current = store.overrides;
+
   // Push the current (override, tiles) as one undo step, then apply `mutate`.
   const mutate = useCallback((key: string, next: { override?: unknown | undefined; tiles?: GeneratedTile[]; hidden?: string[] }) => {
     if (readOnly) return;
+    if ("override" in next) {
+      const o = { ...liveOverrides.current };
+      if (next.override === undefined) delete o[key]; else o[key] = next.override;
+      liveOverrides.current = o;
+    }
     setStore((prev) => {
       const snap: Snapshot = {
         override: key in prev.overrides ? prev.overrides[key] : undefined,
@@ -399,7 +417,8 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
      model does not listen. Same instruct-then-enforce pairing the dash rule
      needed. See editGuard.ts. */
   const applyEdits = useCallback((key: string, edits: AssistantEdit[]): number => {
-    const base = key in store.overrides ? store.overrides[key] : baseRef.current[key];
+    const live = liveOverrides.current;
+    const base = key in live ? live[key] : baseRef.current[key];
     if (base == null || readOnly) return 0;
     let nextData: unknown = base;
     let applied = 0, blocked = 0;
@@ -423,7 +442,22 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
       if (after !== nextData) { nextData = after; applied++; }
     }
     if (blocked && !applied) console.warn(`[ai] all ${blocked} edit(s) were structural; nothing changed.`);
-    if (applied) mutate(key, { override: nextData });
+    if (!applied) return applied;
+    /* A workflow edit that would build a tree the diagram cannot draw is refused whole. */
+    if (/::\/agent-studio\/agent\/workflow\//.test(key) && workflowShapeOk(base) && !workflowShapeOk(nextData)) {
+      console.warn(`[ai] refused: only a Qualify may have answers, and only two Qualify layers deep (see agentWorkflowSync.ts)`);
+      return 0;
+    }
+    /* ⚠️⚠️ **THE WORKFLOW ALWAYS MATCHES WHAT THE AGENT DOES (10/14/2026).** A fact with two
+       homes (the SMS questions on the Preview Agent and in the workflow; the voice greeting and
+       its Qualify question) is rewritten in BOTH in this same step, whichever side was edited
+       and whoever edited it: every Ask AI button and every drawer's Apply comes through here.
+       See `agentWorkflowSync.ts`. */
+    const read = (k: string) => (k in liveOverrides.current ? liveOverrides.current[k] : baseRef.current[k]);
+    const follow = syncAgentWorkflow(key, base, nextData, read);
+    const self = follow.find((f) => f.key === key);
+    mutate(key, { override: self ? self.data : nextData });
+    for (const f of follow) if (f.key !== key) mutate(f.key, { override: f.data });
     return applied;
   }, [store.overrides, mutate, readOnly]);
 

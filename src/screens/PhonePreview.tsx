@@ -6,11 +6,12 @@ import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
 import { useAiAssistant } from "../data/AiAssistantContext";
-import { buildSmsBrain, resolveGreeting, smsWorkflowScopePath, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
+import { buildSmsBrain, previewAgentBase, resolveGreeting, smsWorkflowScopePath, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
 import { tollFreeNumber } from "../data/smsContactNumber";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
 import { effectiveSmsConfig, repairSalesShape, twoPathGreeting } from "../data/smsTemplate";
-import { isCopySlug, workflowPath } from "../data/builtInCopies";
+import { builtInCopiesFor, copyPageBase, isCopySlug, workflowPath } from "../data/builtInCopies";
+import { extraTree } from "../data/workflowChrome";
 import { builtInWorkflowBase } from "../data/workflowBase";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { SmsConversation, SmsTurn } from "../data/schema";
@@ -161,11 +162,8 @@ function useBrain(wfSlug?: string | null) {
   /* Includes any workflow created by an LSA quote request submitted during this demo,
      newest first — one definition, so a slug that lists here also resolves elsewhere. */
   const extraWfs = useExtraWorkflows(profile);
-  const { effectiveData } = useAiAssistant();
-  const base = useMemo(() => ({
-    title: `Preview Agent — what the ${profile.customerName} SMS agent asks`,
-    ...(profile.reports.agentConfig ?? {}),
-  }), [profile.reports.agentConfig, profile.customerName]);
+  const { effectiveData, registerBase } = useAiAssistant();
+  const base = useMemo(() => previewAgentBase(profile), [profile]);
   /* Opt in to the drawer's question tools. This is the page whose whole purpose is
      what the agent asks, so it is the one place the paste / import / use-case
      controls belong. */
@@ -257,10 +255,30 @@ function useBrain(wfSlug?: string | null) {
      original's, else the template. Its starting state is the page's BASE, which only exists
      while that page is open, so a Preview Agent tab opened on its own found nothing and the
      agent got no workflow at all. */
+  /* ⚠️⚠️ **THE WORKFLOW'S BASE, REGISTERED HERE TOO (10/14/2026).** Preview Agent is its own
+     tab, so the workflow page's base does not exist in it; the original then fell back to
+     NOTHING (no workflow block on the phone, while Preview Workflow on the workflow page had
+     one: two previews of one agent behaving differently), and Ask AI's `workflow.` edits hit
+     a key with no base and were dropped. Built by the SAME functions the workflow page uses
+     (`builtInWorkflowBase`, `copyPageBase`), because a near-miss base becomes the stored
+     workflow the moment anything is written to it. */
+  const wfBase = useMemo(() => {
+    if (wf) return undefined;
+    const original = builtInWorkflowBase(profile, true);
+    if (!copyPath) return original;
+    const copy = builtInCopiesFor(profile).find((c) => workflowPath(c.slug) === copyPath);
+    const src = (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) as object | undefined) ?? original;
+    return copyPageBase(src, profile, `${profile.customerName} - ${copy?.suffix ?? "SMS Test"} workflow`, true);
+  }, [wf, copyPath, profile, profileId, effectiveData]);
+  /* ⚠️⚠️ ONLY ONCE THE PROFILE IS THE ONE THE KEY NAMES. While a fetched profile is still
+     loading, `profile` is the seed default while `profileId` already names the real one, and
+     `registerBase` is fill-only: measured, Cleveland Clinic's workflow key was seeded with
+     Shady Blinds' blinds-and-shutters tree, and the first edit stored it. */
+  useEffect(() => {
+    if (wfBase && profile.id === profileId) registerBase(`${profileId}::${builtInPath}`, wfBase);
+  }, [wfBase, builtInPath, profileId, profile.id, registerBase]);
   const wfTree = !wf
-    ? ((effectiveData(`${profileId}::${builtInPath}`)
-        ?? (copyPath ? (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) ?? builtInWorkflowBase(profile, true)) : undefined)) as
-        { branches?: unknown[]; sms?: unknown } | undefined)
+    ? ((effectiveData(`${profileId}::${builtInPath}`) ?? wfBase) as { branches?: unknown[]; sms?: unknown } | undefined)
     : undefined;
   const flow = useMemo(() => {
     if (!wfTree?.branches?.length) return null;
@@ -277,7 +295,12 @@ function useBrain(wfSlug?: string | null) {
   }, [profile, wfTree]);
 
   /* A built-in COPY ("SMS Test") follows its diagram as the conversation (10/13/2026). */
-  return buildSmsBrain(profile, ac, wf, wfAgent, flow, { workflowLeads: !!copyPath, greeting: copyGreeting });
+  /* An extra workflow's diagram, from its page when edited, else as authored. */
+  const extraBranches = wf
+    ? ((effectiveData(`${profileId}::${smsWorkflowScopePath(wf.slug)}`) as { branches?: unknown } | undefined)?.branches
+        ?? extraTree(wf).branches)
+    : undefined;
+  return buildSmsBrain(profile, ac, wf, wfAgent, flow, { workflowLeads: !!copyPath, greeting: copyGreeting, extraBranches });
 }
 
 /* mode "modal" = the in-app overlay (legacy); mode "page" = a standalone browser
@@ -285,6 +308,22 @@ function useBrain(wfSlug?: string | null) {
    tab (window.close) in page mode. Either way, the chat is captured to the SMS
    Conversation Intelligence report on ANY exit — the close/Done button AND a
    beforeunload guard (so closing the tab directly still saves the transcript). */
+/** The local time as a phone shows it: "2:07" in the status bar, "2:07 PM" in the thread. */
+function clockText(d: Date, withPeriod = false): string {
+  const t = d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+  return withPeriod ? t : t.replace(/\s?[AP]M$/i, "");
+}
+
+/** The current time, re-read every 15 seconds so the status bar never lags a minute. */
+function useClock(): Date {
+  const [now, setNow] = useState(() => new Date());
+  useEffect(() => {
+    const id = setInterval(() => setNow(new Date()), 15000);
+    return () => clearInterval(id);
+  }, []);
+  return now;
+}
+
 export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone }: {
   onClose?: () => void; mode?: "modal" | "page"; wf?: string | null;
   /**
@@ -327,6 +366,11 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
      Deliberately OUTSIDE the phone frame: the screen itself has to stay a
      believable iMessage mockup. */
   const [restarted, setRestarted] = useState(false);
+  /* ⚠️ THE PHONE SHOWS THE COMPUTER'S REAL TIME (10/14/2026), not a frozen "9:41": asked for
+     directly, so the mockup reads as a live phone in the room. The status bar ticks; the thread's
+     "Today" stamp is when THIS conversation started, which is what a real Messages thread shows. */
+  const now = useClock();
+  const [threadStart, setThreadStart] = useState(() => new Date());
 
   async function ask(history: Msg[]): Promise<string> {
     // Retry transient failures (server 5xx / rate-limit / "overloaded") with a
@@ -363,6 +407,8 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
      `bookingType`, none of which exist at the top level. Every one read as
      undefined, so the signature was constant and the restart never fired. */
   const brainSig = useMemo(() => JSON.stringify(brain), [brain]);
+  const hadChat = useRef(false);
+  hadChat.current = messages.some((m) => m.role === "user");
   const lastSig = useRef<string | null>(null);
 
   useEffect(() => {
@@ -379,6 +425,11 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
     setMessages([]);
     setInput("");
     setError(null);
+    setThreadStart(new Date());
+    /* ⚠️ The notice only when there WAS a conversation to restart. The brain also changes while
+       a fetched profile finishes loading, and announcing "conversation restarted" on a phone
+       nobody has typed into reads as a glitch (seen once the caption below the phone went). */
+    if (!hadChat.current) return;
     setRestarted(true);
     const t = setTimeout(() => setRestarted(false), 3200);
     return () => clearTimeout(t);
@@ -542,7 +593,7 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
           <div className="phone-screen">
             <div className="phone-island" />
             <div className="phone-statusbar">
-              <span className="phone-time">9:41</span>
+              <span className="phone-time">{clockText(now)}</span>
               <span className="phone-status-icons"><CellularIcon /><WifiIcon /><BatteryIcon /></span>
             </div>
 
@@ -556,11 +607,11 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
             </div>
 
             <div className="sms-thread" ref={scrollRef}>
-              <div className="sms-timestamp"><b>Today</b> 9:41 AM</div>
+              <div className="sms-timestamp"><b>Today</b> {clockText(threadStart, true)}</div>
               {messages.map((m, i) => (
                 <div key={i} className={"sms-bubble " + (m.role === "user" ? "out" : "in")}>{m.content}</div>
               ))}
-              {busy && <div className="sms-bubble in sms-typing"><span></span><span></span><span></span></div>}
+              {/* No typing dots: that indicator is an iMessage feature, and this is SMS. */}
               {error && <div className="sms-error">{error}</div>}
             </div>
 
@@ -592,17 +643,16 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
             <div className="phone-home" />
           </div>
         </div>
-        {/* Name the workflow being previewed, not just the customer — with two
-            SMS agents "Reyes Law SMS agent" is ambiguous. */}
-        <div className="phone-caption">
-          {restarted && (
+        {/* The "Live preview — …" caption was removed on request (10/14/2026); the restart
+            notice still appears below the phone, only for the moment it is true. */}
+        {restarted && (
+          <div className="phone-caption">
             <span className="phone-restart" role="status">
               <span className="material-icons">autorenew</span>
               Agent updated, conversation restarted
             </span>
-          )}
-          Live preview — {brain.agentLabel ?? `${profile.customerName} SMS agent`}
-        </div>
+          </div>
+        )}
     </>
   );
 

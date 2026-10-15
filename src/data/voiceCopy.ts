@@ -1,4 +1,5 @@
 import type { CustomerProfile } from "./schema";
+import { voiceIntentSubs } from "./intentText";
 
 /* =============================================================================
    voiceCopy.ts — the voice workflow's per-prospect vocabulary
@@ -40,8 +41,9 @@ export function voiceCopy(p: CustomerProfile) {
   const booking = p.bookingTerm.toLowerCase();
   return {
     newQ, supQ, who,
-    newSub: `Caller wants to book ${/^[aeiou]/i.test(booking) ? "an" : "a"} ${booking} and is not an existing ${who}`,
-    supSub: `Caller is an existing ${who} and needs help with something already in progress`,
+    /* ⚠️ The industry's own wording (10/14/2026); see `prospectIntent.ts`. */
+    newSub: voiceIntentSubs(p).sales,
+    supSub: voiceIntentSubs(p).support,
     newChips: [hero ?? p.industry, p.bookingTerm, "Timeline"],
     supChips: [`Existing ${who[0].toUpperCase()}${who.slice(1)}`, "Issue Type"],
     bookingLower: booking,

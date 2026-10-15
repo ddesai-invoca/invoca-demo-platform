@@ -14,6 +14,7 @@
    ============================================================================= */
 
 import { z } from "zod";
+import { INTENT_KINDS } from "./prospectIntent.ts";
 
 /* ---- Shared primitives ---------------------------------------------------- */
 export const ChartPoint = z.object({
@@ -884,6 +885,12 @@ export const CustomerProfile = z.object({
   /* The industry-appropriate word for a customer — Title-Case singular:
      "Customer" | "Patient" | "Member" | "Client" | "Guest". */
   customerNoun: z.string(),
+  /* WHAT A CONTACT IS TRYING TO DO HERE (10/14/2026) — classified by the engine from the
+     prospect's own website research, and what tailors the workflows and both agents to the
+     industry (`prospectIntent.ts`). OPTIONAL because every profile before that date lacks it;
+     those are classified from `industry` instead. Safe as `.optional()` because
+     `CustomerProfile` is never a generation schema (the engine's `TermsOutput` requires it). */
+  intentKind: z.enum(INTENT_KINDS).optional(),
 
   /* WHAT THIS DEMO WAS GENERATED WITH — the Advanced Settings the SE chose, so a
      demo that reads oddly can be traced to the prompt that steered it instead of

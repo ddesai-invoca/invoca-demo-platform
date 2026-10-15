@@ -17,6 +17,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { z } from "zod";
 import { qmLabels, type QmLabels } from "./careVocab.ts";
+import { INTENT_KINDS, intentCopyFor } from "../src/data/prospectIntent.ts";
 import { CustomerProfile, DigitalInsightsReport, InteractionRow, DashboardView, KpiGroup, Breakdown, MultiSeriesChart, CallReviewView, CallDetailView, OpsDashboardView, AiAgentConversionView, AiMessagingImpactView, ConversationIntelligenceView, SmsConversationIntelligenceView, SmsConversation, VoiceConversationIntelligenceView, VoiceConversation, AgentConfigView, SmsPlaybook, VoiceScreenpop, SmsScreenpop, VoiceRoutingDemo, QualityManagementView, QmInstantInsightsView, SignalManagerView } from "../src/data/schema.ts";
 import { contextBlock, contextProvenance, type GenerationContext, type GenerationScope } from "./genContext.ts";
 import { sweepValue } from "./dashSweep.ts";
@@ -34,6 +35,9 @@ const TermsOutput = z.object({
   industry: z.string(),
   bookingTerm: z.string(),
   customerNoun: z.string(),
+  /* What a caller or texter is trying to do here, from the website research. It tailors the
+     voice and SMS workflows and both agents to the industry (`src/data/prospectIntent.ts`). */
+  intentKind: z.enum(INTENT_KINDS),
   qualifiedCallTerm: z.string(),
   conversionTerm: z.string(),
   monthlyCalls: z.number(),      // enterprise-scale inbound calls for ONE month
@@ -384,6 +388,8 @@ export function generateTerms(client: Anthropic, name: string, brief: string) {
       `- industry: short phrase.\n` +
       `- bookingTerm: the industry-appropriate word for what THIS business schedules with a new customer — a short, Title-Case, SINGULAR noun. Pick what truly fits: e.g. "Consultation", "Appointment", "Estimate", "Tour", "Test Drive", "Service Appointment", "Demo". This term is reused across the whole platform.\n` +
       `- customerNoun: the Title-Case SINGULAR word THIS business uses for a customer ("Customer", "Patient", "Member", "Client", "Guest", "Rider", …). Reused across the platform.\n` +
+      `- intentKind: what people who call or text ${name} are actually trying to do, read from the website and the brief (its booking flows, who it serves, whether it sells anything). Pick ONE: ` +
+      `"care" (patients getting medical, dental, vision, hearing, behavioral or veterinary care), "seniorCare" (senior living, in-home senior care, home health, hospice), "insurance", "autoSales" (buying vehicles, often also service), "autoService" (repair, maintenance, tires), "homeService" (pest, plumbing, HVAC, pools, garage doors, restoration and other work at a property), "security", "telecom", "financial" (banking, lending, advisory), "hospitality" (hotels, resorts), "moving", "retail", "legal", "education", "funeral", "b2b" (the customer is another business, e.g. agencies, software, outsourcing, or selling to doctors), or "general" if none fits. Decide by who the CUSTOMER is: a dental support organization that sells to dentists is "b2b", a dental practice that treats patients is "care".\n` +
       `- qualifiedCallTerm: what THIS business calls a sales-QUALIFIED inbound call in its dashboards — the "Sales Call" equivalent (e.g. "Sales Call", "Residency Inquiry", "New Patient Call", "Sales Inquiry"). Title-Case. Reused VERBATIM across every dashboard so terminology stays consistent.\n` +
       `- conversionTerm: the Title-Case noun for a WON, revenue-generating conversion for THIS business — the "Purchase / Job Complete" equivalent (the closed sale/outcome), e.g. "Purchase", "Reservation Booked", "Membership Sold", "New Patient", "Move-In", "Job Won". This is DISTINCT from the bookingTerm (which is only the scheduled visit). Reused VERBATIM across every dashboard.\n` +
       `- monthlyCalls: inbound marketing-driven calls in ONE month for an ENTERPRISE-scale version of this business (Invoca sells to large brands, so the demo should look like one). Default to the 25,000–90,000 range. It MUST NOT be a round number — real call volume is never exactly 48,000 or 60,000, and a round total is the fastest way for a prospect to tell the data is invented. Derive the figure from THIS business's actual scale (store/branch/location count, market coverage, category demand) and give it an irregular tail down to the last digit. Do NOT reuse any number written in these instructions — a figure copied from the prompt is not sized to this business. Go LOWER only if that volume is genuinely not credible for this vertical — a business with a small buyer pool or a very high ticket (private aviation, enterprise B2B, luxury real estate) should get a believable number instead of a big one; credibility beats size.\n` +
@@ -1094,7 +1100,19 @@ const AGENT_CONFIG_GEN = AgentConfigView.extend({
   smsPlaybook: SmsPlaybook.omit({ promisesReminder: true }).optional(),
 });
 
-function generateAgentConfig(client: Anthropic, name: string, _brandDomain: string, brief: string, bookingTerm: string) {
+function generateAgentConfig(client: Anthropic, name: string, _brandDomain: string, brief: string, bookingTerm: string, intentKind = "general") {
+  /* ⚠️⚠️ **A BUSINESS THAT DOES NOT SELL GETS A CONVERSATION THAT DOES NOT SELL (10/14/2026).**
+     The three rules below were one quote-then-book sales arc for every prospect, so a hospital
+     or a funeral home was asked for "a personalized quote" and "a price RANGE". For a kind that
+     does not sell (`prospectIntent.ts`) the arc becomes help, gather, book, with no pricing. */
+  const sells = intentCopyFor({ customerName: name, intentKind }).sells;
+  const arc = sells
+    ? `  1) Intro + offer: introduce yourself as ${name}'s AI agent helping with a personalized quote, mention a plausible current offer/incentive if one fits, and ask if they'd like to get started.\n` +
+      `  2) Qualify one question at a time: list the 4–5 key qualifying questions for THIS business (quantity, sizes/measurements, material/type/model, timeline, and ZIP code to confirm service availability).\n` +
+      `  3) Estimate then book: confirm you service their ZIP, give a preliminary price RANGE based on what they shared, recommend a consultation with a specialist for an exact quote, and propose a specific day/time. Do NOT promise a reminder text, a confirmation text, or a callback number — nothing sends one.\n`
+    : `  1) Intro: introduce yourself as ${name}'s AI assistant, say what you can help with (booking the ${bookingTerm.toLowerCase()} or finding the right service), and ask how you can help. Never sell, never mention a quote or a discount.\n` +
+      `  2) Gather one question at a time: list the 4–5 questions THIS organization needs to book the right ${bookingTerm.toLowerCase()} (what they need, who it is for, how soon, location), and nothing personal beyond that.\n` +
+      `  3) Book and reassure: confirm the right location, explain that cost depends on their situation and the team will go through it, and propose a specific day/time. Never quote a price. Do NOT promise a reminder text, a confirmation text, or a callback number — nothing sends one.\n`;
   return structured<z.infer<typeof AgentConfigView>>(
     client,
     AGENT_CONFIG_GEN,
@@ -1102,9 +1120,7 @@ function generateAgentConfig(client: Anthropic, name: string, _brandDomain: stri
       `BRIEF:\n${brief}\n\n` +
       `${reskin(name)}\n\n` +
       `- brandConversationRules: exactly 3 rules, each ONE string of 1–2 sentences, each starting with a short label + colon. They describe how the AI SMS agent runs a qualify-then-book conversation (NO emojis). Make them specific to THIS business:\n` +
-      `  1) Intro + offer: introduce yourself as ${name}'s AI agent helping with a personalized quote, mention a plausible current offer/incentive if one fits, and ask if they'd like to get started.\n` +
-      `  2) Qualify one question at a time: list the 4–5 key qualifying questions for THIS business (quantity, sizes/measurements, material/type/model, timeline, and ZIP code to confirm service availability).\n` +
-      `  3) Estimate then book: confirm you service their ZIP, give a preliminary price RANGE based on what they shared, recommend a consultation with a specialist for an exact quote, and propose a specific day/time. Do NOT promise a reminder text, a confirmation text, or a callback number — nothing sends one.\n` +
+      arc +
       `- knowledgeSources: exactly 5 items the agent "learned" the business from:\n` +
       `  • 1 Document named "${name.replace(/[^A-Za-z0-9]+/g, "_")}_Sales_Playbook.pdf", type "Document", lastUpdated "03/11/2026 10:21 AM".\n` +
       `  • 4 Web Links to THIS business's MAIN pages, type "Web Link", lastUpdated "03/11/2026 10:02 AM". Each "name" MUST be a SHORT human-readable page label (e.g. "Homepage", "Services & Specialties", "Locations", "Find a Provider", "Book an Appointment") specific to ${name} — NOT a raw URL.\n` +
@@ -1245,7 +1261,7 @@ export async function generateProfile(
     () => phase("dashboardSegments", () => generateDashboardSegments(client, name, brief, bookingTerm, conversionTerm, scale)),
     maybe("opsDashboard", () => generateOpsDashboard(client, name, brief, bookingTerm, customerNoun, scale)),
     maybe("callReview", () => generateCallReview(client, name, brief, bookingTerm, scale)),
-    () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm)),
+    () => phase("agentConfig", () => generateAgentConfig(client, name, brandDomain, brief, bookingTerm, terms.intentKind)),
     maybe("signalManager", () => generateSignalManager(client, name, brief, bookingTerm)),
     () => phase("dashboard", () => generateDashboardCore(client, name, brief, bookingTerm, qualifiedCallTerm, conversionTerm, scale, terms.industry, customerNoun)),
     () => phase("digitalInsights", async () => stripAppOwnedFields(await generateDigitalInsights(client, name, brandDomain, brief, bookingTerm, scale))),
@@ -1283,6 +1299,7 @@ export async function generateProfile(
     industry: terms.industry,
     bookingTerm,
     customerNoun,
+    intentKind: terms.intentKind,
     generation: contextProvenance(opts.context, scope),
     reports: { digitalInsights, marketingDashboard: dashboard, callReview, callDetail, opsDashboard, aiAgentConversion, aiMessagingImpact, qualityManagement, qmInstantInsights, conversationIntelligence, smsConversationIntelligence, voiceConversationIntelligence, agentConfig, voiceScreenpop: screenpops?.voiceScreenpop, smsScreenpop: screenpops?.smsScreenpop, voiceRoutingDemo, signalManager, gumloopArtifacts },
   };

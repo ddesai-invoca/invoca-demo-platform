@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
-import { buildSmsBrain, askSmsAgent, resolveGreeting, SMS_AGENT_SCOPE_PATH, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
+import { buildSmsBrain, askSmsAgent, resolveGreeting, previewAgentBase, smsWorkflowScopePath, SMS_AGENT_SCOPE_PATH, SMS_WORKFLOW_SCOPE_PATH, type SmsWorkflowAgent } from "../data/smsBrain";
+import { extraTree } from "../data/workflowChrome";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
 import { effectiveSmsConfig, repairSalesShape, twoPathGreeting } from "../data/smsTemplate";
 import { isCopySlug, workflowPath } from "../data/builtInCopies";
@@ -108,8 +109,9 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
      visiting the Preview Agent tab would make edits that silently did nothing.
      registerBase fills that gap WITHOUT making it the active scope, which a second
      registerScope would do, repointing this page's sparkle away from the diagram. */
-  useEffect(() => { registerBase(agentKey, profile.reports.agentConfig); },
-    [agentKey, profile.reports.agentConfig, registerBase]);
+  /* Only once the profile is the one the key names (see the note in PhonePreview). */
+  useEffect(() => { if (profile.id === profileId) registerBase(agentKey, previewAgentBase(profile)); },
+    [agentKey, profile, profileId, registerBase]);
 
   const agentConfig = useMemo(() => {
     const edited = effectiveData(agentKey) as
@@ -160,8 +162,13 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
       : buildSmsBrain(profile, agentConfig, wf, wfAgent, flow, {
           workflowLeads: !!copyPath,
           greeting: copyPath ? (String((wfTree?.sms as { greeting?: string } | undefined)?.greeting ?? "").trim() || twoPathGreeting(profile)) : undefined,
+          /* An extra workflow's diagram reaches its agent, the same expression Preview Agent uses. */
+          extraBranches: wf
+            ? ((effectiveData(`${profileId}::${smsWorkflowScopePath(wf.slug)}`) as { branches?: unknown } | undefined)?.branches
+                ?? extraTree(wf).branches)
+            : undefined,
         })),
-    [minimal, profile, agentConfig, wf, wfAgent, flow],
+    [minimal, profile, agentConfig, wf, wfAgent, flow, effectiveData, profileId],
   );
 
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -257,6 +264,9 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
         <button
           className="wcp-icon wcp-icon-ai wcp-icon-hover"
           onClick={() => openDrawer({ scope: "agent", key: agentKey, questionPath: QUESTIONS_PATH,
+                                      /* The workflow this chat previews, so "add a branch" or
+                                         "switch that box to Inform & Route" lands on the diagram. */
+                                      ...(!wf ? { linkKey: `${profileId}::${copyPath ?? SMS_WORKFLOW_SCOPE_PATH}`, linkAs: "workflow" } : {}),
                                       label: `${profile.customerName} SMS agent`, side: "left" })}
           title="Ask AI - change what this agent says"
           aria-label="Ask AI to change what this agent says"

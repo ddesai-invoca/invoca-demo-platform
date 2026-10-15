@@ -1,5 +1,6 @@
 import type { CustomerProfile } from "./schema";
 import { isProspect } from "./prospect";
+import { twoPathGreeting } from "./smsTemplate";
 
 /* =============================================================================
    builtInCopies — "Voice Test" and "SMS Test": copies of the BUILT-IN pair
@@ -47,3 +48,16 @@ export const isCopySlug = (slug: string | null | undefined): slug is BuiltInCopy
 
 /** The page each copy (or original) lives on, which is also its scope path. */
 export const workflowPath = (segment: string): string => `/agent-studio/agent/workflow/${segment}`;
+
+/**
+ * A copy page's base: the original's current state (or the template) under the copy's title,
+ * with the SMS copy's own opener on `sms.greeting`. ONE definition, read by the copy's page and
+ * by the Preview Agent tab that edits it from elsewhere (10/14/2026), because a near-miss base
+ * becomes the stored workflow the moment anything is written to it.
+ */
+export function copyPageBase(source: object, profile: CustomerProfile, title: string, isSms: boolean): Record<string, unknown> {
+  const b = { ...(source as Record<string, unknown>), title } as Record<string, unknown>;
+  if (!isSms) return b;
+  const sms = (b.sms ?? {}) as Record<string, unknown>;
+  return sms.greeting ? b : { ...b, sms: { ...sms, greeting: twoPathGreeting(profile) } };
+}

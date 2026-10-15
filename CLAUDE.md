@@ -13083,6 +13083,118 @@ so the apply pass could be exercised without spending one; the steer's own path 
 `audit:advanced` and by `engine/genContext.ts`'s existing checks, and the body was read to confirm
 the field is omitted when empty. The first real steered generation is still worth watching.
 
+### The workflow ALWAYS matches what the agent does, whoever edits it (10/14/2026)
+Asked for: *"if any user uses the Ask AI button to make changes to the SMS or voice workflow…
+100% make sure that the workflow always matches what the agent is doing… for now and the
+future"* (branches, action and context drawers, pills, collected fields). A subagent mapped 16
+drift paths first; the fixes are structural, not prompt-only.
+- **`src/data/agentWorkflowSync.ts`, run inside `applyEdits`**, so every writer gets it (each
+  Ask AI button, every drawer Apply, the Details tab). Facts with two homes are rewritten in
+  both in the same step: the SMS question list (Preview Agent `smsPlaybook.qualifyingQuestions`
+  <-> workflow `sms.qualify.root` + the Inform box's "Ask these…" line), the brand rules (<->
+  `sms.intents.sales.rules`), and the voice greeting <-> its Qualify question, reprompt and the
+  greeting's copy in the rules (and in the intent drawer via `specWithConfig`).
+- **Agent surfaces can now change the DIAGRAM.** The Preview Agent tab and the SMS Preview
+  Workflow chat sparkle are linked to the workflow (`linkKey`/`linkAs: "workflow"`), the Preview
+  Agent tab registers the workflow's exact base (`builtInWorkflowBase` / `copyPageBase`), and
+  `engine/assistant.ts`'s `workflowBrief` tells the model the diagram IS the agent and how to
+  add a branch or change an action. `workflowShapeOk` refuses a tree the diagram cannot draw
+  (answers under a terminal action, a third Qualify layer).
+- **The voice agent follows everything the diagram draws**: a use case switched to Qualify (its
+  `agent.extra__path-B-L-P__question` and its answers) becomes routes; node `instruction`/
+  `phone` on authored extras; support box text on every built-in voice workflow (was copies
+  only); edited reprompts and the sales intent text. An SMS EXTRA workflow's use cases reach
+  its agent too (`extraWorkflowFlowText`).
+- ⚠️⚠️ **TWO REAL BUGS FOUND BY TESTING IN THE BROWSER, NOT BY THE AUDIT:**
+  1. `registerBase` is fill-only, and while a fetched profile loads `profile` is the SEED
+     default while `profileId` names the real one — Cleveland Clinic's workflow key was seeded
+     with Shady Blinds' blinds-and-shutters tree and the first edit stored it. Every
+     registerBase now waits for `profile.id === profileId`.
+  2. Two writes in one Ask AI answer (the agent, then the linked workflow) each read `store`
+     from their render, so the second overwrote the first's sync. `liveOverrides` is a ref every
+     write updates at once.
+- `npm run audit:sync` (in `npm run audit`): 27 checks; sabotages fire.
+- **Verified with real Ask AI edits and real calls:** on Cleveland Clinic's Preview Agent, one
+  instruction added question 2 and a "Second Opinion" branch, and the workflow's Qualify, the
+  service-line boxes' question line and the diagram all showed both. On the voice workflow, Ask
+  AI made "New appointment" a nested Qualify and changed the greeting; `npm run call:test --
+  cleveland-clinic --overrides=<file>` then placed real calls down BOTH new branches, and the
+  agent asked the new question and collected exactly each branch's fields.
+- `call:test` gained `--overrides=<file>` (test an unsaved edit) and now sends the same team
+  list the app does (`voiceRouting`).
+
+### Real voice calls can be tested now: `npm run call:test` (10/14/2026)
+Asked for: *"i really need to find a way for you to test voice call"*. The browser pane has no
+microphone and `/api/chat` only tests the brain. `agent/test-call.ts` places a REAL call.
+```
+npm run call:test -- <profile-or-demo-id> "caller line" "caller line"
+npm run call:test -- <id> --sim "You are Maria, a new patient who needs a cardiologist..."
+npm run call:test -- <id> --sim-file personas.txt     (one persona per line, one call each)
+npm run call:test -- <id> --prompt                    (print the worker's instructions, no call)
+```
+- Same `/api/livekit-token` as Preview Workflow (needs `npm run dev`), same dispatch, the
+  DEPLOYED worker. The caller SPEAKS through LiveKit's gateway TTS (`--voice=arcas`) and the
+  agent is HEARD through LiveKit's gateway STT, so it covers the token, dispatch, the worker's
+  STT of a human voice, the LLM, its TTS and turn-taking, and prints seconds-to-answer per turn.
+- "AGENT" is the worker's own transcript (`lk.transcription`); a `heard:` line appears only
+  when STT of the audio disagrees with it, which points at the audio rather than the words.
+- Runs from `agent/` so `@livekit/rtc-node` and `@livekit/agents` resolve with NO new
+  dependency. Reads a library demo's override layer (`.data/demos/<id>.json`) when there is
+  one, else the bundled profile.
+- ⚠️ It bills LiveKit minutes and uses the production agent name, like local Preview Workflow.
+  The room is torn down at the end (`lk room list` was empty after a run).
+- ⚠️ **ITS FIRST FINDING:** a library demo's OWN configured greeting wins, which is correct and
+  looked like a bug: Baptist Health's demo opens "Before anything else, is this a medical
+  emergency?" because an SE configured it. `--prompt` is how to tell config from code.
+- ⚠️ **ITS SECOND, A REAL BUG:** INDUSTRY RULES placed at the top of the voice prompt can pull
+  the model off its scripted opener, so they now sit beside the other rules and are deduped on
+  their opening words (a stored, reworded copy no longer renders twice).
+- Measured: ~1.8s median from the caller finishing to the agent's first audio.
+
+### The voice and SMS workflows fit the prospect's INDUSTRY, not one sales template (10/14/2026)
+Asked for: a healthcare prospect's workflows must be health-related, not sales, and every top
+category (health, auto, home services, hotels, insurance…) tailored to what its callers want,
+in the workflow, the drawers, the Preview Agent and Preview Workflow. On the follow-up: KEEP the
+locked "Sales Inquiry" / "All Sales Inquiry Users" chrome, and include Aptive's originals.
+- ⚠️⚠️ **MEASURED FIRST: ONE TEMPLATE FOR EVERYONE.** A hospital's Sales Inquiry drawer read
+  "interested in starting <X> service, or … add or upgrade", its voice branches were "Ready to
+  book now / Comparing options", and a care concern routed to "Insurance Verification and
+  Billing" (positional routing).
+- **`src/data/prospectIntent.ts` is the one definition**: 17 kinds (care, seniorCare,
+  insurance, autoSales, autoService, homeService, security, telecom, financial, hospitality,
+  moving, retail, legal, education, funeral, b2b, general), each with its new/support needs,
+  three new-caller branches, routing keywords, the support question, the agent's ROLE, a
+  pricing rule and industry rules (care: no medical advice, emergencies to 911). DOM-free and
+  import-free so `engine/` reads it too. `intentText.ts` holds the two intent descriptions.
+- ⚠️ **NEW PROSPECTS ARE CLASSIFIED BY THE ENGINE** (`intentKind` in `TermsOutput`, from the
+  website research; stored on the profile, optional in the schema). Older ones are classified
+  from industry + noun + booking term; measured across all 97 profiles on disk. Traps the
+  ordering handles: "hospital" is a prefix of "hospitality", a reverse-mortgage lender says
+  "retirement", a DSO selling to DOCTORS is b2b, a car maker that retails is auto.
+- **Routes are matched by what a queue is FOR**, alternatives tried in order (so "urgent"
+  beats "schedul"); a support case never lands on a billing or new-business desk, and falls
+  back to `<Name> <Noun> Support` rather than the wrong desk.
+- **Agents**: the SMS identity line uses the industry role ("reservations assistant", "intake
+  assistant"); a non-selling kind is told "You are never selling"; INDUSTRY RULES reach both
+  prompts (deduped against the workflow's own voice rules). `generateAgentConfig` uses a
+  help-gather-book arc with no quote for a non-selling kind.
+- ⚠️ **STORED DEMOS ARE REPAIRED AT READ TIME** (`repairSupportUseCases`, `effectiveSmsConfig`):
+  the retired subtitle/description templates and the exact retired voice funnel are swapped;
+  an SE's own text is untouched (same object back).
+- `npm run audit:intent` (in `npm run audit`): 22 checks; three sabotages fire.
+- ⚠️⚠️ **EMPATHY IS SITUATIONAL (10/14/2026).** Asked for: empathy for healthcare, senior living
+  and the like, *"only specific situations where an empathetic tone or verbiage is required… not
+  for everything"*. `empathyRule()` names each vertical's moments (a frightening diagnosis, a
+  parent's fall, a flooded basement, an accident, fraud) and says to stay matter-of-fact for
+  routine requests; it rides `agentRules`, so it reaches the voice drawer and both prompts.
+  Funeral keeps its standing "may be grieving" rule instead. Measured on real calls: a routine
+  physical got no sympathy line; a lung-mass caller and a daughter whose father fell each got
+  one sincere sentence, then the agent carried on booking. Same on SMS.
+
+- Verified on /api/chat: Baptist sends chest pain to 911 and explains cost by insurance;
+  AutoNation handles a trade-in; Roto-Rooter checks safety on a flood; Baptist's SMS books a
+  mammogram as a scheduling assistant.
+
 ### A shared demo keeps EVERY conversation in its two reports (10/14/2026)
 Asked for: a shared prospect's AI SMS and AI Voice Conversation Intelligence reports keep
 every conversation, however many. (A first reading widened the share to ALL CI reports; the

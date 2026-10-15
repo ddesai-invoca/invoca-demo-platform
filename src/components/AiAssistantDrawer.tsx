@@ -185,7 +185,8 @@ export function AiAssistantDrawer() {
   const agentFocus = focus?.scope === "agent" && focus.key ? focus : null;
   const active = agentFocus
     ? { key: agentFocus.key!, customerName: profile.customerName,
-        baseTitle: agentFocus.label ?? "SMS agent", questionPath: agentFocus.questionPath }
+        baseTitle: agentFocus.label ?? "SMS agent", questionPath: agentFocus.questionPath,
+        linkKey: agentFocus.linkKey, linkAs: agentFocus.linkAs }
     : (registered && registered.key === pageKey ? registered : null);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");

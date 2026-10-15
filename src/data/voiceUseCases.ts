@@ -1,5 +1,10 @@
 import type { CustomerProfile } from "./schema";
-import { INTENT_SUPPORT, SUPPORT_LEAF, LEAF_QUALIFY, LEAF_ESCALATE } from "./workflowChrome";
+import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, LEAF_QUALIFY, LEAF_ESCALATE } from "./workflowChrome";
+import { intentCopyFor, type IntentCopy } from "./prospectIntent";
+import { smsIntentText, voiceIntentSubs, RETIRED_SMS_SALES, RETIRED_SMS_SUPPORT, RETIRED_VOICE_SALES, RETIRED_VOICE_SUPPORT } from "./intentText";
+
+/** This prospect's industry intent, one definition for every workflow reader. */
+export const intentOf = (p: CustomerProfile): IntentCopy => intentCopyFor(p);
 
 /* =============================================================================
    voiceUseCases.ts — the branches under the two user-group nodes
@@ -97,6 +102,8 @@ export function voiceVocab(profile: CustomerProfile) {
     has("hotel", "lodging", "resort", "travel", "vacation") ? "Confirmation Number"
     : has("insur", "policy") ? "Policy Number"
     : has("health", "medical", "clinic", "hospital", "dental") ? "Patient ID"
+    /* An auto retailer is "retail" too, and its support caller quotes a repair order. */
+    : has("auto", "vehicle", "dealer", "tire") ? "Repair Order Number"
     : has("retail", "store", "mattress", "blind", "window", "furnish") ? "Order Number"
     : `${profile.bookingTerm} Reference`;
 
@@ -125,8 +132,10 @@ export function voiceVocab(profile: CustomerProfile) {
      which is the opposite of `when` (that one is when they WANT something). */
   const last =
     has("hotel", "lodging", "resort", "travel", "vacation") ? "Stay Dates"
+    : has("auto", "vehicle", "dealer", "tire") ? "Service Date"
     : has("retail", "store", "mattress", "blind", "window", "furnish") ? "Order Date"
     : has("health", "medical", "clinic", "hospital", "dental") ? "Last Visit Date"
+    : has("insur", "policy") ? "Claim Date"
     : "Last Service Date";
 
   /* ⚠️⚠️ **WHAT AN EXISTING CUSTOMER HAS OPEN, WHICH IS NOT ALWAYS THE BOOKING TERM.**
@@ -155,6 +164,7 @@ export function voiceVocab(profile: CustomerProfile) {
     has("hotel", "lodging", "resort", "travel", "vacation") ? "Check-In Date"
     : has("health", "medical", "clinic", "hospital", "dental") ? "Appointment Date"
     : has("home service", "plumb", "hvac", "roof", "restoration", "clean", "pest") ? "Scheduled Visit Date"
+    : has("insur", "policy") ? "Renewal Date"
     : "Scheduled Date";
 
   return { where, when, ref, bulk, issue, last, scheduled, openItem, verify };
@@ -183,34 +193,51 @@ function queueName(name: string | undefined, fallback: string): string {
  */
 export function deriveUseCases(profile: CustomerProfile): VoiceUseCases {
   const v = voiceVocab(profile);
-  const queues = profile.reports.voiceRoutingDemo?.queues ?? [];
-  const newTeam = queueName(queues[0]?.name, `New ${profile.bookingTerm} Team`);
-  const supTeam = queueName(queues[1]?.name, `${profile.customerName} Support`);
-  /* ⚠️ A third real queue where the prospect has one, because "it did not work" and "when are
-     you coming" genuinely are different desks; falls back to the support team rather than
-     inventing a department name the prospect does not have. */
-  const retentionTeam = queueName(queues[2]?.name, supTeam);
+  const intent = intentOf(profile);
+  const queues = (profile.reports.voiceRoutingDemo?.queues ?? []).map((q) => queueName(q.name, "")).filter(Boolean);
+  const newTeam = queues[0] || `New ${profile.bookingTerm} Team`;
+  /* ⚠️⚠️ **ROUTES ARE MATCHED BY WHAT THE QUEUE IS FOR, NOT BY ITS POSITION (10/14/2026).**
+     Positional routing sent a hospital's "Care Concern" to "Insurance Verification and
+     Billing" and AutoNation's "Repair Issue" to "General Sales Support". Each case names the
+     words its desk would carry; the first of the prospect's OWN queues that matches wins, and
+     only when none does is the positional default used. Nothing is ever invented. */
+  /* Alternatives are tried IN ORDER, so "urgent" beats the "schedul" it is listed before:
+     a single regex over the queues in queue order sent same-day care to the scheduling desk. */
+  const pick = (re: RegExp, fallback: string, avoid?: RegExp) => {
+    for (const alt of re.source.split("|")) {
+      const a = new RegExp(alt, "i");
+      const hit = queues.find((q) => a.test(q) && !(avoid && avoid.test(q)));
+      if (hit) return hit;
+    }
+    return fallback;
+  };
+  const NOT_BILLING = /billing|insurance verification|payment/i;
+  /* ⚠️ A SUPPORT CASE NEVER FALLS BACK ONTO A BILLING DESK. Positionally the second queue is
+     often billing ("Insurance Verification and Billing"), and a care concern landed there. */
+  /* ⚠️ AND NEVER ONTO A NEW-BUSINESS DESK: "Service Appointment, New Project" is where a new
+     job goes, not where a complaint about the last one does. */
+  const NOT_SUPPORT = /billing|insurance verification|payment|sales|new booking|new project|new patient|new mattress|new bundle|new client/i;
+  const supportDesk = queues.find((q) => /support|existing|help|customer care|guest|patient services/i.test(q) && !NOT_SUPPORT.test(q) && q !== newTeam)
+    ?? `${profile.customerName} ${profile.customerNoun} Support`;
+  const fill = (f: string) => (f === "{where}" ? v.where : f === "{when}" ? v.when : f);
+
+  /* ⚠️⚠️ **THE NEW-SIDE BRANCHES ARE THE INDUSTRY'S, NOT A SHOPPING FUNNEL (10/14/2026).**
+     "Ready to book now / Comparing options" read as a sales pipeline on a hospital, which is
+     exactly what was reported. Each vertical names what a new caller actually wants
+     (`prospectIntent.ts`); only an unrecognised business keeps the generic pair plus its
+     larger-than-one-caller branch. */
+  const sales: VoiceUseCase[] = intent.useCases.map((u) => ({
+    title: u.title,
+    collect: u.collect.map(fill),
+    route: pick(u.route, newTeam, NOT_BILLING),
+  }));
+  if (intent.kind === "general") {
+    sales.push({ title: v.bulk.title, collect: ["Consumer Name", "Group Size", v.when], route: v.bulk.team });
+  }
+  const sr = intent.supportRoute;
 
   return {
-    sales: [
-      {
-        title: `Ready to book now`,
-        collect: ["Consumer Name", v.where, v.when],
-        route: newTeam,
-      },
-      {
-        title: `Comparing options`,
-        /* A researcher will not commit to a date, so asking for one stalls the call. An email
-           is the thing worth capturing from someone who is not ready yet. */
-        collect: ["Consumer Name", "Consumer Email", v.where],
-        route: newTeam,
-      },
-      {
-        title: v.bulk.title,
-        collect: ["Consumer Name", "Group Size", v.when],
-        route: v.bulk.team,
-      },
-    ],
+    sales,
     /* ⚠️⚠️ **FOUR BRANCHES, AND "CHANGE" AND "CANCEL" WERE MERGED BECAUSE THEY WERE THE SAME
        BRANCH.** Reported directly: *"i think change, reschedule and cancel would be the
        same"*. They were right, and by this file's own rule: a branch earns its place by
@@ -226,14 +253,14 @@ export function deriveUseCases(profile: CustomerProfile): VoiceUseCases {
            work. Its own desk, because handled slowly this is a cancellation. */
         title: v.issue,
         collect: [v.verify, v.last, v.ref],
-        route: retentionTeam,
+        route: pick(sr.issue, supportDesk, NOT_SUPPORT),
       },
       {
         /* "Where is it / when are you coming", plus moving it. Pure deflection: a read and
            a reschedule, no human needed. */
         title: `${v.openItem} Status or Change`,
         collect: [v.verify, v.scheduled, v.ref],
-        route: supTeam,
+        route: pick(sr.status, supportDesk, NOT_SUPPORT),
       },
       {
         /* ⚠️ NO CARD DIGITS IN THE COLLECT LIST, EVER. The brand rules already forbid asking
@@ -241,7 +268,7 @@ export function deriveUseCases(profile: CustomerProfile): VoiceUseCases {
            ask for it. The charge DATE is enough to find the transaction. */
         title: `Billing and Account`,
         collect: ["Consumer Name", "Charge Date", v.ref],
-        route: "Billing",
+        route: pick(sr.billing, "Billing"),
       },
       {
         /* ⚠️ THE CATCH-ALL IS A REAL BRANCH, NOT A GAP. Without it every unmatched support
@@ -249,7 +276,7 @@ export function deriveUseCases(profile: CustomerProfile): VoiceUseCases {
            billing question ends up in the re-treatment queue. */
         title: `Other Support Request`,
         collect: ["Consumer Name", v.ref],
-        route: supTeam,
+        route: pick(sr.other, supportDesk, NOT_SUPPORT),
       },
     ],
   };
@@ -328,9 +355,40 @@ export function repairSupportUseCases<T extends { title?: string; leaves?: unkno
 ): T[] {
   const { builtIn = false, withRoute = true } = opts;
   let changed = false;
-  const support = deriveUseCases(profile).support;
-  const next = branches.map((b) => {
+  const derived = deriveUseCases(profile);
+  const support = derived.support;
+  const kind = intentOf(profile).kind;
+  const smsText = smsIntentText(profile);
+  const voiceText = voiceIntentSubs(profile);
+  const next = branches.map((b0) => {
+    let b = b0;
     const isSupportBranch = String(b.title ?? "") === INTENT_SUPPORT;
+    const isSalesBranch = String(b.title ?? "") === INTENT_SALES;
+    /* ⚠️⚠️ **A STORED INTENT SUBTITLE FROZE THE ONE-SIZE SALES TEMPLATE (10/14/2026).** Every
+       demo an SE touched saved "interested in starting <X> service, or … add or upgrade" on
+       its Sales Inquiry box, so changing the template reached none of them. Recognised by the
+       retired template's exact shape and swapped for the industry wording; anything an SE
+       wrote is left alone. */
+    const sub = String((b as { subtitle?: string }).subtitle ?? "");
+    const fixedSub = isSalesBranch
+      ? (RETIRED_SMS_SALES.test(sub) ? smsText.sales : RETIRED_VOICE_SALES.test(sub) ? voiceText.sales : sub)
+      : isSupportBranch
+        ? (RETIRED_SMS_SUPPORT.test(sub) ? smsText.support : RETIRED_VOICE_SUPPORT.test(sub) ? voiceText.support : sub)
+        : sub;
+    if (fixedSub !== sub) { b = { ...b, subtitle: fixedSub }; changed = true; }
+    if (isSalesBranch && withRoute && kind !== "general") {
+      /* ⚠️ The retired voice funnel ("Ready to book now / Comparing options / <bulk>") is swapped
+         for the industry's own new-side branches. Voice only: the SMS sales side is the
+         prospect's service lines and was never this set. */
+      const sl = (b.leaves ?? []) as { title?: string; paths?: { title?: string }[] }[];
+      const fixedSl = sl.map((leaf) => {
+        const t = (leaf.paths ?? []).map((x) => String(x.title ?? ""));
+        if (!(t.length === 3 && t[0] === "Ready to book now" && t[1] === "Comparing options")) return leaf;
+        const proto = (leaf.paths ?? [])[0] ?? {};
+        return { ...leaf, paths: derived.sales.map((u) => ({ ...proto, title: u.title, chips: u.collect, ...(u.route ? { route: u.route } : {}) })) };
+      });
+      if (fixedSl.some((l, i) => l !== sl[i])) { b = { ...b, leaves: fixedSl }; changed = true; }
+    }
     const leaves = (b.leaves ?? []) as {
       title?: string; action?: string; actionKind?: string; actionIcon?: string;
       tone?: string; paths?: { title?: string }[];

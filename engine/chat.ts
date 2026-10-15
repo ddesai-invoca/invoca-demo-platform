@@ -17,6 +17,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import { slotTable } from "../src/data/voiceBooking.ts";
 import { servesPatients } from "./careVocab.ts";
+import { intentCopyFor } from "../src/data/prospectIntent.ts";
 import { INTENT_SUPPORT } from "../src/data/workflowIntents.ts";
 
 const CHAT_MODEL = "claude-haiku-4-5-20251001";
@@ -86,11 +87,29 @@ export interface SmsFlowNode {
   answers?: SmsFlowNode[];
 }
 
+/** Is `rule` already in `list`, judged on its first few words so a reworded stored copy
+ *  still counts? */
+function sameRule(rule: string, list: string[]): boolean {
+  const key = (t: string) => t.toLowerCase().replace(/[^a-z ]/g, "").split(/\s+/).slice(0, 4).join(" ");
+  const k = key(rule);
+  return list.some((r) => key(r) === k || (/911/.test(rule) && /911/.test(r)));
+}
+
+/** The industry's own behaviour rules, as a prompt section (empty when there are none). */
+function industryRules(rules: string[]): string[] {
+  return rules.length ? [``, `INDUSTRY RULES (how this kind of business behaves; always follow these):`, ...rules.map((r) => `- ${r}`)] : [];
+}
+
 export interface ChatBrain {
   customerName: string;
   industry?: string;
   /** The prospect's own word for a customer ("Patient"), so the agent introduces itself right. */
   customerNoun?: string;
+  /** The industry intent the engine classified from the prospect's own website, when it has
+   *  one (see `src/data/prospectIntent.ts`). Older profiles are classified from `industry`. */
+  intentKind?: string;
+  /** An EXTRA SMS workflow's use cases, as its diagram draws them (10/14/2026). */
+  extraFlow?: string;
   rules?: string[];
   qaPairs?: { question: string; answer: string }[];
   knowledge?: string[];
@@ -266,6 +285,10 @@ export interface ChatBrain {
    * agent's prompt byte-identical.
    */
   voiceSupportIntent?: string;
+  /** The Qualify reprompts and the sales intent text, when their drawers were edited. */
+  voiceQualifyFallback?: string;
+  voiceSupportQualifyFallback?: string;
+  voiceSalesIntent?: string;
   voiceSupportRules?: string[];
   /* Per-prospect VOICE routing, from reports.voiceRoutingDemo.queues plus the
      prospect's booking term and product categories. Without it the voice prompt
@@ -510,7 +533,10 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     /* ⚠️ ORDER MATTERS: playbook, then its own flow, then the operator's later changes, then
        the channel's format rules. `overrideBlock` says it wins, so it has to come AFTER the
        steps it may be overriding. */
-    return [brain.customSystem, stepsBlock(brain), overrideBlock(brain), SMS_FORMAT_RULES]
+    const flowBlock = brain.extraFlow
+      ? `THE WORKFLOW'S USE CASES (this is the diagram the business configured; for a matching case, follow its action, collect its fields and use its instruction):\n${brain.extraFlow}`
+      : "";
+    return [brain.customSystem, stepsBlock(brain), flowBlock, overrideBlock(brain), SMS_FORMAT_RULES]
       .filter(Boolean).join("\n\n");
   }
   const rules = (brain.rules ?? []).map((r) => `- ${r}`).join("\n");
@@ -569,6 +595,8 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
      a menu, and the agent skipped straight to the second question. Numbering them
      and forbidding reordering is what makes "exactly these, in this order" true. */
   const qList = questions.map((q, i) => `   ${i + 1}) ${q}`).join("\n");
+  const ind = intentCopyFor({ customerName: brain.customerName, industry: brain.industry, customerNoun: brain.customerNoun, intentKind: brain.intentKind });
+  const noun = (brain.customerNoun ?? "customer").toLowerCase();
 
   return [
     NO_DASH_RULE,
@@ -581,10 +609,18 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
        simply assembled from the prospect's own `customerNoun`, which already says "Patient".
        ⚠️ A non-care prospect is byte-identical — `servesPatients` is false and the original
        sentence is returned unchanged. */
+    /* ⚠️⚠️ **THE ROLE IS THE INDUSTRY'S, NOT ALWAYS "sales" (10/14/2026).** A hotel's agent is a
+       reservations assistant, a law firm's an intake assistant, a funeral home's a family care
+       assistant; only a business that genuinely sells keeps the sales wording. Care keeps the
+       exact sentence it already had. */
     servesPatients(brain.industry ?? "", brain.customerNoun ?? "")
       ? `You are the SMS scheduling assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} organization` : ""}.`
-      : `You are the SMS sales assistant for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
-    `You are texting a prospective customer. Your goal: ${goal}.`,
+      : !ind.sells
+        ? `You are the SMS ${ind.role} for ${brain.customerName}${brain.industry ? `, a ${brain.industry} organization` : ""}.`
+        : `You are the SMS ${ind.role} for ${brain.customerName}${brain.industry ? `, a ${brain.industry} business` : ""}.`,
+    ind.sells
+      ? `You are texting a prospective ${noun}. Your goal: ${goal}.`
+      : `You are texting a ${noun}. Your goal: ${goal}. You are never selling: help them get what they came for.`,
     ``,
     ...(brain.workflowLeads && brain.workflow ? [
       `CONVERSATION FLOW — the CONFIGURED WORKFLOW below is the whole conversation:`,
@@ -631,6 +667,8 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
       : `- Do not invent specific prices; pricing/details are handled at the ${bookingType}.`,
     `- Refer to what you're scheduling as a "${bookingType}".`,
     `- Only discuss ${brain.customerName}'s products and services. If asked something off-topic, gently steer back.`,
+    /* The industry's own behaviour, placed with the other rules rather than at the top. */
+    ...industryRules(ind.agentRules),
     /* ⚠️ AFTER the flow and STYLE, BEFORE the brand rules — it is configuration for this agent,
        so it belongs with the other operator-set sections rather than buried under them. */
     workflowBlock(brain) ? `\n${workflowBlock(brain)}` : ``,
@@ -905,6 +943,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
           ? ` Then ask exactly this, word for word: "${brain.voiceQualify.trim()}"`
           : ``)
         + ` Then wait for their answer and work out which of these they need:`
+        + (brain.voiceQualifyFallback?.trim() ? ` If their answer does not tell you, ask: "${brain.voiceQualifyFallback.trim()}"` : ``)
       : `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant, then work out which of these the caller needs:`,
     ...paths.map((p) => `   • ${p.intent}${p.recognise ? ` — ${p.recognise}` : ""}`),
     /* ⚠️ TWO GATES, AND WHICH ONE APPLIES IS THE PROSPECT'S OWN CONFIGURATION. An allow-list
@@ -1015,6 +1054,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
            this file records for the ZIP and the name, arriving through a new door. */
         if (brain.voiceSupportQualify?.trim()) {
           lines.push(`   - If they have not already said what it is about, ask: "${brain.voiceSupportQualify.trim()}"`);
+          if (brain.voiceSupportQualifyFallback?.trim()) lines.push(`   - If their answer is still unclear, ask: "${brain.voiceSupportQualifyFallback.trim()}"`);
         }
         lines.push(`   - Work out which of these it is from what they say, then follow SUPPORT LOOKUP below:`);
         for (const r2 of p.routes) {
@@ -1056,6 +1096,9 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     /* ⚠️ THE SUPPORT INTENT'S OWN WORDS, when an SE has typed any — how to recognise it and
        the rules that govern it. Rendered next to the escalation instruction because that is
        the same path of the call. */
+    ...(brain.voiceSalesIntent
+      ? [`RECOGNISING A NEW CALLER: ${brain.voiceSalesIntent.split("\n\n")[0]}`, ``]
+      : []),
     ...(brain.voiceSupportIntent
       ? [`RECOGNISING A SUPPORT CALLER: ${brain.voiceSupportIntent}`, ``]
       : []),
@@ -1113,6 +1156,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
   const placeholders = [...new Set(
     flow.join("\n").match(/\[[A-Z][A-Z0-9_ ]{2,}\]/g) ?? [],
   )];
+  const vInd = intentCopyFor({ customerName: brain.customerName, industry: brain.industry, customerNoun: brain.customerNoun, intentKind: brain.intentKind });
   const placeholderRule = placeholders.length
     ? `PLACEHOLDERS: the lines above contain ${placeholders.join(", ")}. These are fill-ins, NOT words to say. Replace each one with the real value for THIS caller — the nearest location by name, their own details, whatever the token stands for — working it out from the service area and steps above. Never read a square bracket or its contents aloud.`
     : ``;
@@ -1125,7 +1169,10 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
        The JOB is identical in both — qualify and route — only the wording moves. */
     servesPatients(brain.industry ?? "", brain.customerNoun ?? "")
       ? `You are on a LIVE PHONE CALL. Your ONLY job is to understand what the caller needs and ROUTE them to the right team — you do NOT give clinical advice, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`
-      : `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
+      : !vInd.sells
+        ? `You are on a LIVE PHONE CALL as ${brain.customerName}'s ${vInd.role}. Your ONLY job is to understand what the caller needs and ROUTE them to the right team. You are never selling, and you do NOT quote prices or resolve issues yourself. You gather a couple of details, then hand the caller off.`
+        : `You are on a LIVE PHONE CALL. Your ONLY job is to QUALIFY the caller and ROUTE them to the right team — you do NOT sell, quote prices, or resolve issues yourself. You gather a couple of details, then hand the caller off.`,
+
     ``,
     ...flow,
     placeholderRule,
@@ -1177,6 +1224,12 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `- NEVER ask for anything you already have. If the caller already gave you their name, ZIP code, or anything else earlier in this call, whether you asked for it or they volunteered it, use what you have and move on. Track what you have gathered so far as the call progresses.`,
     /* Voice Test only (10/13/2026): every question offers its choices — see `OPTIONS_RULE`. */
     ...(brain.voiceWorkflowLeads ? OPTIONS_RULE : []),
+    /* ⚠️ The industry's own behaviour (911 for an emergency, no medical or legal advice…),
+       unless the workflow's configured rules already carry it. Placed LOW, beside the other
+       rules: at the top, measured on a real call, the model opened every call by asking
+       "is this a medical emergency?" instead of saying its greeting. Deduped on the rule's
+       opening words, so a stored copy with older wording does not render it twice. */
+    ...industryRules(vInd.agentRules.filter((r) => !sameRule(r, brain.voiceRules ?? []))),
     /* The workflow's own rules when it has them, the brand rules only as a fallback. */
     brain.voiceRules?.length
       ? `\nCONVERSATION RULES configured on this workflow:\n${brain.voiceRules.map((r) => `- ${r}`).join("\n")}`

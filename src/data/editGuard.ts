@@ -193,6 +193,10 @@ const CREATABLE_WHEN_ABSENT = [
   /* ⚠️ THE SUPPORT INTENT'S OWN COPY, which no prospect carries: it was hardcoded in
      `workflowDrawers.ts` until its drawer became editable, so the first edit creates it. */
   /^agent\.(supportIntent|supportRules)$/i,
+  /* The sales Intent drawer's own text (10/14/2026): its Apply wrote `agent.intent`, which no
+     agent carries until somebody edits it, so the guard refused it and the drawer reported
+     nothing. It now reaches the call. */
+  /^agent\.(intent|supportQualifyFallback)$/i,
   /* ⚠️ **THE REPLICA'S "AFTER SUBMIT" PAGE.** It shares one stored object with the booking
      link, and a demo that saved a booking link BEFORE this field existed has an override of
      `{ bookingUrl }` alone — so the first thank-you write on exactly those demos is an

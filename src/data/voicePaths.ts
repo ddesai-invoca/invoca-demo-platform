@@ -102,6 +102,10 @@ function treeToVoicePathsInner(tree: WorkflowTreeModel | undefined | null, suppo
      because that is what the drawer writes under. A mismatch here is silent: the drawer saves,
      the agent never hears it. */
   const ag = (tree as { agent?: Record<string, unknown> } | null | undefined)?.agent;
+  const nodeText = (n: unknown, f: string): string | undefined => {
+    const v = (n as Record<string, unknown> | undefined)?.[f];
+    return typeof v === "string" && v.trim() ? v.trim() : undefined;
+  };
   const extra = (nodeId: string, f: string): string | undefined => {
     const v = ag?.[`extra__${nodeId}__${f}`];
     return typeof v === "string" && v.trim() ? v.trim() : undefined;
@@ -114,9 +118,29 @@ function treeToVoicePathsInner(tree: WorkflowTreeModel | undefined | null, suppo
        have left an SE editing a path, watching the diagram redraw, and hearing the agent
        behave exactly as before — the precise silent no-op deriving the prompt from the tree
        was built to close, reappearing one row further down. */
+    /* ⚠️⚠️ **A QUALIFY ANSWER WITH ANSWERS OF ITS OWN IS FOLLOWED, NOT SKIPPED (10/14/2026).**
+       Asked for: *"maybe they're adding another qualify branch… the workflow always matches
+       what the agent is doing"*. A use case switched to Qualify draws its own question and
+       answers on the diagram, and this used to read only its title, so the agent ignored the
+       second layer the prospect could see. Each sub-answer becomes its own route, carrying the
+       question the caller is asked to reach it. */
+    const nested = (l: NonNullable<typeof b.leaves>[number], li: number, pth: NonNullable<NonNullable<typeof b.leaves>[number]["paths"]>[number], pi: number) => {
+      const subs = (pth as { paths?: typeof l.paths }).paths ?? [];
+      if (!subs.length) return null;
+      const id = `path-${bi}-${li}-${pi}`;
+      const q = extra(id, "question");
+      return subs.map((sub, si) => ({
+        team: ((sub?.route ?? "").trim() || (pth?.route ?? "").trim() || (l.title ?? "").trim()),
+        need: `${(pth?.title ?? "").trim()}${q ? `, and when you then ask "${q}" they answer` : ", and then"} ${(sub?.title ?? "").trim()}`,
+        action: (sub?.action ?? "").trim() || "route them",
+        collect: (sub?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),
+        instruction: extra(`sub-${bi}-${li}-${pi}-${si}`, "handling") ?? nodeText(sub, "instruction"),
+        phone: extra(`sub-${bi}-${li}-${pi}-${si}`, "phone") ?? nodeText(sub, "phone"),
+      }));
+    };
     const routes = (b.leaves ?? [])
       .flatMap((l, li) => (l?.paths?.length
-        ? l.paths.map((pth, pi) => ({
+        ? l.paths.flatMap((pth, pi) => nested(l, li, pth, pi) ?? [{
             /* ⚠️ **THE PATH'S OWN DESTINATION IS THE TEAM (8/27/2026), falling back to the
                leaf's group.** The leaf title became locked chrome ("All Sales Inquiry Users"),
                and this file's own note recorded the consequence: the tree stopped carrying a
@@ -129,9 +153,11 @@ function treeToVoicePathsInner(tree: WorkflowTreeModel | undefined | null, suppo
             action: (pth?.action ?? "").trim() || "route them",
             collect: (pth?.chips ?? []).map((c) => (c ?? "").trim()).filter(Boolean),
             instruction: extra(`path-${bi}-${li}-${pi}`, "handling")
+              /* An authored workflow keeps a node's text ON the node, not under `agent`. */
+              ?? nodeText(pth, "instruction")
               ?? (intent === INTENT_SUPPORT ? supportDefaults?.[pi] : undefined),
-            phone: extra(`path-${bi}-${li}-${pi}`, "phone"),
-          }))
+            phone: extra(`path-${bi}-${li}-${pi}`, "phone") ?? nodeText(pth, "phone"),
+          }])
         : [{
             team: (l?.title ?? "").trim(),
             action: (l?.action ?? "").trim() || "route them",
@@ -144,8 +170,8 @@ function treeToVoicePathsInner(tree: WorkflowTreeModel | undefined | null, suppo
             collect: (l?.chips?.length
               ? l.chips
               : collectNames(actionKindOf(l?.action ?? ""))).map((c) => (c ?? "").trim()).filter(Boolean),
-            instruction: extra(`leaf-${bi}-${li}`, "handling"),
-            phone: extra(`leaf-${bi}-${li}`, "phone"),
+            instruction: extra(`leaf-${bi}-${li}`, "handling") ?? nodeText(l, "instruction"),
+            phone: extra(`leaf-${bi}-${li}`, "phone") ?? nodeText(l, "phone"),
           }]))
       .filter((r) => r.team);
     if (!routes.length) continue;   // a branch that routes nowhere is not a path

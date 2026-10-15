@@ -4,7 +4,7 @@ import { useEffect, useMemo } from "react";
 import { apiPath } from "./shareMode";
 import { useProfile } from "./ProfileContext";
 import { useAiAssistant } from "./AiAssistantContext";
-import { SMS_AGENT_SCOPE_PATH } from "./smsBrain";
+import { SMS_AGENT_SCOPE_PATH, previewAgentBase } from "./smsBrain";
 import { isCopySlug } from "./builtInCopies";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "./voicePaths";
 import { emptyWorkflowGreeting } from "./workflowChrome";
@@ -124,8 +124,10 @@ export function useBrain(opts?: BrainOpts) {
   /* `applyEdits` refuses a key with no base, so an SE who starts a call without ever opening
      the Preview Agent tab would make edits that did nothing. This fills the base WITHOUT
      making it the active scope. */
-  useEffect(() => { registerBase(agentKey, profile.reports.agentConfig); },
-    [agentKey, profile.reports.agentConfig, registerBase]);
+  /* ⚠️ The shared base, and only once the profile is the one the key names: a still-loading
+     profile is the seed default (see the note in PhonePreview). */
+  useEffect(() => { if (profile.id === profileId) registerBase(agentKey, previewAgentBase(profile)); },
+    [agentKey, profile, profileId, registerBase]);
 
   const ac = useMemo(
     () => (effectiveData(agentKey) as typeof profile.reports.agentConfig | undefined)
@@ -154,13 +156,18 @@ export function useBrain(opts?: BrainOpts) {
      `specWithConfig` lays the page's config over the base rather than replacing it, so a
      partial override cannot drop the routing steps and quietly stop the agent asking for a
      name. */
+  const baseSpec = useMemo(() => voiceSpecFor(profile), [profile]);
   const spec = useMemo(
-    () => specWithConfig(voiceSpecFor(profile), effTree?.agent),
-    [profile, effTree?.agent],
+    () => specWithConfig(baseSpec, effTree?.agent),
+    [baseSpec, effTree?.agent],
   );
   /* A built-in COPY ("Voice Test") follows its diagram fully, box text included (10/13/2026). */
   const isCopy = isCopySlug(opts?.scopePath?.split("/").pop());
-  const voicePaths = useMemo(() => treeToVoicePaths(effTree, profile, { boxDefaults: isCopy }), [effTree, profile, isCopy]);
+  /* ⚠️ Every BUILT-IN voice workflow's support boxes give the agent the text their drawers
+     show (10/14/2026); this was copies-only, so the original's drawers described instructions
+     its agent never got. Authored extras keep their own node text. */
+  const builtInVoice = !opts?.scopePath || /\/workflow\/(voice|voice-test)$/.test(opts.scopePath);
+  const voicePaths = useMemo(() => treeToVoicePaths(effTree, profile, { boxDefaults: builtInVoice }), [effTree, profile, builtInVoice]);
   /* ⚠️⚠️ **A MINIMAL PREVIEW MUST NOT INHERIT THE CONFIGURED AGENT'S FIELDS.** The prospect's
      spec carries a ZIP allow-list, routing steps, conversation rules and a greeting that asks
      a two-way booking question — all of it correct for the configured workflow and all of it
@@ -175,6 +182,7 @@ export function useBrain(opts?: BrainOpts) {
     customerName: profile.customerName,
     industry: profile.industry,
     customerNoun: profile.customerNoun,
+    intentKind: profile.intentKind,
     rules: ac?.brandConversationRules ?? [],
     qaPairs: ac?.aiRecommendations?.find((r) => r.qaPairs?.length)?.qaPairs ?? [],
     knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
@@ -235,6 +243,16 @@ export function useBrain(opts?: BrainOpts) {
     /* ⚠️ THE SUPPORT INTENT, ON THE SAME RULE AS THE ESCALATION ABOVE: sent only when it
        DIFFERS from what the drawer used to hardcode, so an agent nobody has edited emits the
        exact prompt it did before these two fields existed. */
+    /* ⚠️ THE REPROMPTS AND THE SALES INTENT REACH THE CALL (10/14/2026). Their drawers have
+       always been editable and nothing read them, so an edit changed the drawer and not the
+       agent. Sent only when they differ from the derived default, so an untouched agent's
+       prompt is unchanged. */
+    voiceQualifyFallback: minimal || booking || !spec?.qualifyFallback
+      || spec.qualifyFallback === baseSpec?.qualifyFallback ? undefined : spec.qualifyFallback,
+    voiceSupportQualifyFallback: minimal || booking || !spec?.supportQualifyFallback
+      || spec.supportQualifyFallback === baseSpec?.supportQualifyFallback ? undefined : spec.supportQualifyFallback,
+    voiceSalesIntent: minimal || booking || !spec?.intent
+      || spec.intent === baseSpec?.intent ? undefined : spec.intent,
     voiceSupportIntent: minimal || booking || !spec?.supportIntent
       || spec.supportIntent === DEFAULT_SUPPORT_INTENT ? undefined : spec.supportIntent,
     voiceSupportRules: minimal || booking || !spec?.supportRules?.length

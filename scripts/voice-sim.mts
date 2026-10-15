@@ -38,7 +38,7 @@ const paths = treeToVoicePaths({
 } as never);
 
 const brain = {
-  customerName: p.customerName, industry: p.industry ?? "",
+  customerName: p.customerName, industry: p.industry ?? "", customerNoun: p.customerNoun, intentKind: p.intentKind,
   serviceArea: p.reports.agentConfig?.serviceArea,
   serviceZips: spec.serviceZips, outOfAreaScript: spec.outOfAreaScript,
   voiceGreeting: spec.greeting, voiceQualify: spec.qualifyQuestion, voiceRules: spec.rules, voiceSteps: spec.informSteps,

@@ -69,6 +69,32 @@ function isVoiceAgentPage(dataContext: string): boolean {
   return /"agent"\s*:/.test(dataContext);
 }
 
+/** Does this drawer's DATA carry an SMS workflow diagram — on its own page, or linked in
+ *  under "workflow" from a preview? */
+function hasSmsWorkflow(dataContext: string): boolean {
+  return /"sms"\s*:\s*\{/.test(dataContext) && /"branches"\s*:/.test(dataContext);
+}
+
+/* ⚠️⚠️ **THE WORKFLOW AND THE AGENT ARE ONE THING (10/14/2026).** Asked for directly: *"100%
+   make sure that the workflow always matches what the agent is doing"*. What the agent does
+   and what the diagram shows have to change TOGETHER, so the model is told where every kind
+   of change lives. The facts with two homes (the question list, the brand rules, the voice
+   greeting and its question) are kept in step in code (`src/data/agentWorkflowSync.ts`); the
+   model only has to put each change in its home. */
+function workflowBrief(linked: boolean): string[] {
+  const w = linked ? "workflow." : "";
+  return [
+    `THE WORKFLOW DIAGRAM IS WHAT THE AGENT DOES. ${linked ? `The DATA carries it under "workflow"; every "workflow." path you edit redraws the diagram the prospect sees.` : `The DATA below IS that diagram.`} Any change to what the agent asks, decides, collects or how it routes MUST be made in the diagram, so the two never disagree:`,
+    `   - "${w}branches[0]" is the Sales Inquiry side, "${w}branches[1]" Need Support. Each has one locked "leaves[0]" box (its title cannot change; its "action" can) whose "paths" are its answers, and a path's own "paths" are the answers under it.`,
+    `   - A node is { "title", "action", "actionKind", "chips" }. The five actions: "Qualify" (actionKind "qualify", asks a question and branches), "Inform" ("inform"), "Inform & Route" ("informRoute", hands off; add "route" naming the team), "Support & Escalate" ("escalate"), "Schedule Callback" ("callback"). Change an action by setting BOTH "action" and "actionKind".`,
+    `   - ONLY a Qualify may have answers, and at most two Qualify layers deep (the locked box and its answers); answers under a terminal action, or a fourth row, are refused. To add a branch, append a node to the right "paths" array, copying the shape of its siblings.`,
+    `   - "chips" are the fields that node COLLECTS and the pills drawn on it. "also get their email" = append "Consumer Email" to that node's chips.`,
+    `   - "${w}sms.qualify.root.question" / ".fallback" — the first question the agent asks on the Sales side; "${w}sms.qualify.support" the support side's. "${w}sms.inform.book" — what the service-line boxes tell the agent to do (its first line lists the follow-up questions). "${w}sms.inform.supportIssue / supportChange / supportBilling / supportOther" — each support box's instruction. "${w}sms.intents.sales.looksLike" / ".support.looksLike" — what each intent looks like; ".rules" — its conversation rules. A node you ADD keeps its text in "${w}sms.extra__<nodeId>__question" / "__handling".`,
+    `   - If "${w}sms.greeting" exists, it is THIS workflow's own opening message and the one the customer receives: edit it there instead of "smsPlaybook.greeting".`,
+    `   - The question list and the brand rules are kept in step with these automatically: change ONE home and the other follows. Do not write the same change twice.`,
+  ];
+}
+
 /** What the endpoint streams to the drawer so a slow answer shows real progress. */
 export interface AssistantProgress {
   /** A short label for what is happening now. */
@@ -272,6 +298,12 @@ function buildSystem(input: AssistantInput): string {
       `WHAT THE DIAGRAM OWNS (the routing, and what gets collected):`,
       `   - "branches[i].leaves[j].paths" — the use cases. ADD or REMOVE a path to add or remove an outcome the agent can reach. Each has "title" (how a caller in that situation sounds), "action", optional "route" (the team it hands off to, spoken aloud), and "chips".`,
       `   - "…paths[k].chips" — WHAT THE AGENT COLLECTS on that path, and the pills drawn on the node. "also get their email" = append "Consumer Email" here, NOT a new step.`,
+      /* ⚠️ 10/14/2026: asked to make "New appointment" a Qualify, the model flattened it into two
+         sibling paths and put the question in the steps — the diagram then drew neither the
+         question nor the branching. The voice agent follows a nested Qualify now, so it is
+         named here as the way to express one. */
+      `   - A use case can itself be a QUALIFY that asks a question and branches: set its "action" to "Qualify" and "actionKind" to "qualify", give it "paths" (its answers, each with title, action "Inform & Route", actionKind "informRoute", route and chips), and put its question at "agent.extra__path-B-L-P__question" (B, L, P = its branch, leaf and path index, e.g. "agent.extra__path-0-0-0__question"). That is how to add a follow-up question with different outcomes — NEVER by writing the question into informSteps, which the diagram cannot draw. Only a Qualify may have answers, and its answers may not have answers of their own.`,
+      `   - Every action is one of five: "Qualify" (qualify), "Inform" (inform), "Inform & Route" (informRoute), "Support & Escalate" (escalate), "Schedule Callback" (callback). Change one by setting BOTH "action" and "actionKind".`,
       ``,
       `WHAT "agent" OWNS (how it talks, what it checks, how it sounds):`,
       `   - "agent.greeting" — the exact opening line, spoken word for word. "answer the phone with X" edits this.`,
@@ -344,6 +376,7 @@ function buildSystem(input: AssistantInput): string {
     `- Base every number on the DATA below or on a coherent scenario the user requested. Keep values realistic and internally consistent (percentages that should sum ~100 do; totals match their parts).`,
     `- For chart series/bars, strip %/$ to plain numbers; kpi values may keep formatting.`,
     `- For a "story" / scenario change, edit the KEY HEADLINE numbers that carry the story (the KPI tile values and the primary chart series) so it stays consistent — you do NOT need to touch every single value. Prefer ~5–15 focused edits over exhaustively rewriting every leaf.`,
+    ...(hasSmsWorkflow(input.dataContext) ? [...workflowBrief(/"workflow"\s*:\s*\{/.test(input.dataContext)), ``] : []),
     ...(input.questionPath ? [
       `- THE AGENT'S QUESTION LIST. "${input.questionPath}" in the DATA below is the ordered list of questions this SMS agent asks, one per message. Changing it is the main thing this page is for, so treat these as normal data edits and do NOT decline them.`,
       `  Return kind:"editData" with ONE edit whose path is exactly "${input.questionPath}" and whose value is the COMPLETE new list as a JSON array of strings. Never edit a single element by index (no "${input.questionPath}.2") — always send the whole list.`,

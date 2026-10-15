@@ -15,16 +15,16 @@ import { useLiveKitReady, preloadVoiceEngine } from "../data/liveKitVoice";
 import { WorkflowTree } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
 import { useAiAssistant } from "../data/AiAssistantContext";
-import { builtInCopiesFor, workflowPath } from "../data/builtInCopies";
+import { builtInCopiesFor, copyPageBase, workflowPath } from "../data/builtInCopies";
 import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
 import { drawerFor, extraDrawerFor } from "../data/workflowDrawers";
-import { smsConfigFor, repairSmsSegments, repairSalesShape, effectiveSmsConfig, twoPathGreeting } from "../data/smsTemplate";
+import { smsConfigFor, repairSmsSegments, repairSalesShape, effectiveSmsConfig} from "../data/smsTemplate";
 import { repairSupportUseCases } from "../data/voiceUseCases";
 import { smsDrawerFor } from "../data/workflowDrawers";
 import { voiceSpecFor, agentConfigOf } from "../data/voiceAgentSpec";
-import { smsWorkflowAgentOf } from "../data/smsBrain";
+import { smsWorkflowAgentOf, previewAgentBase, SMS_AGENT_SCOPE_PATH } from "../data/smsBrain";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
 import { deriveTree } from "../data/workflowBase";
 
@@ -223,16 +223,22 @@ export function AgentWorkflow() {
   const smsTemplated = isSms && !extra && !created;
   /* A copy starts as the ORIGINAL's current state: its base is the original's effective data
      when the original has any, and the same template otherwise. */
-  const { effectiveData: readScope } = useAiAssistant();
+  const { effectiveData: readScope, registerBase: registerOtherBase } = useAiAssistant();
+  /* ⚠️ THE SMS AGENT'S OWN SCOPE NEEDS A BASE ON THIS PAGE TOO (10/14/2026): editing a
+     question here rewrites the Preview Agent's question list in the same step (see
+     `agentWorkflowSync.ts`), and a write to a key with no base is dropped. */
+  useEffect(() => {
+    if (isSms && !extra && !created && profile.id === profileId) registerOtherBase(`${profileId}::${SMS_AGENT_SCOPE_PATH}`, previewAgentBase(profile));
+  }, [isSms, extra, created, profileId, profile, registerOtherBase]);
   const copySource = copy ? readScope(`${profileId}::${workflowPath(copy.source)}`) : undefined;
   const pageBase = useMemo(
     () => {
-      const b = (copySource ? { ...(copySource as object), title: `${workflowName} workflow` } : baseTree) as Record<string, unknown>;
       /* The SMS copy's OWN opener lives on its `sms.greeting` (10/13/2026), present in the base so
          the first edit is string -> string rather than a type flip `editGuard` refuses. */
-      if (!copy || !isSms) return b;
-      const sms = (b.sms ?? {}) as Record<string, unknown>;
-      return sms.greeting ? b : { ...b, sms: { ...sms, greeting: twoPathGreeting(profile) } };
+      if (!copy) return baseTree as Record<string, unknown>;
+      return copySource
+        ? copyPageBase(copySource as object, profile, `${workflowName} workflow`, isSms)
+        : copyPageBase(baseTree as object, profile, (baseTree as { title?: string }).title ?? `${workflowName} workflow`, isSms);
     },
     [copySource, baseTree, workflowName, copy, isSms, profile],
   );

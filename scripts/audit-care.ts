@@ -10,6 +10,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { servesPatients, qmLabels } from "../engine/careVocab.ts";
+import { intentCopyFor } from "../src/data/prospectIntent.ts";
 import { smsSystemPromptForAudit, __buildVoiceSystemForTest } from "../engine/chat.ts";
 import { buildSmsBrain } from "../src/data/smsBrain.ts";
 import { voiceSpecFor } from "../src/data/voiceAgentSpec.ts";
@@ -122,13 +123,16 @@ console.log("\nThe agents\n");
     const sms = smsSystemPromptForAudit(buildSmsBrain(p, p.reports.agentConfig!));
     const id = sms.split("\n").find((l) => /^You are the SMS/.test(l)) ?? "";
     if (isCare) { if (SALES.test(id)) { careLeaks++; if (names.length < 3) names.push(p.customerName); } }
-    else if (!/SMS sales assistant/.test(id)) { changedOthers++; if (names.length < 3) names.push(p.customerName); }
+    /* ⚠️ RE-AIMED 10/14/2026: every other prospect now introduces itself in its OWN industry's
+       role (a hotel's reservations assistant, a law firm's intake assistant), so the invariant
+       is "the line names that prospect's role", not "every other line says sales". */
+    else if (!id.includes(`SMS ${intentCopyFor(p).role} for`)) { changedOthers++; if (names.length < 3) names.push(p.customerName); }
   }
   careLeaks === 0
     ? ok("no care prospect's agent calls itself a sales assistant")
     : bad(`${careLeaks} care prospect(s) still say "sales assistant": ${names.join(", ")}`);
   changedOthers === 0
-    ? ok("every other prospect's identity line is unchanged")
+    ? ok("every other prospect's identity line names its own industry role")
     : bad(`${changedOthers} non-care prospect(s) changed: ${names.join(", ")}`);
 })();
 

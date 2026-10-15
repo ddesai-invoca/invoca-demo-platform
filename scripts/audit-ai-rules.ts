@@ -2738,6 +2738,11 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
      ⚠️ A REMOVAL FAILS TOO. Silently dropping one loosens the agent with nothing
      recording that it was meant; the list is only worth having while it stays true. */
   const KNOWN_ABSOLUTES = new Set([
+    /* ✅ ADDED 10/14/2026: a business that does not sell (care, senior care, legal, education,
+       funeral; `prospectIntent.ts`) gets an agent that says so. An industry invariant, not a
+       product opinion: a hospital's or a funeral home's agent is never selling. */
+    "You are texting a ${}. Your goal: ${}. You are never selling: help the",
+    "You are on a LIVE PHONE CALL as ${}'s ${}. Your ONLY job is to underst",
     /* ✅ ADDED 10/13/2026, AND ONLY EVER EMITTED FOR THE BUILT-IN COPIES ("SMS Test"), behind
        `brain.workflowLeads`. Asked for: make the preview do what the diagram says. They are
        channel invariants of "the diagram is the conversation", not product opinions: without

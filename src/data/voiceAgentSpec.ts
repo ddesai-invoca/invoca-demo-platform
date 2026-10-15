@@ -1,7 +1,7 @@
 import { isProspect } from "./prospect";
 import { isKnownVoice } from "./voiceOptions";
 import { voiceCopy } from "./voiceCopy";
-import { deriveUseCases, type VoiceUseCases } from "./voiceUseCases";
+import { deriveUseCases, intentOf, type VoiceUseCases } from "./voiceUseCases";
 import type { CustomerProfile } from "./schema";
 
 /* =============================================================================
@@ -224,6 +224,8 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
      rules, which was wrong on that screen too. */
 
   const cases = deriveUseCases(profile);
+  /* ⚠️ The industry's own behaviour and wording (10/14/2026); see `prospectIntent.ts`. */
+  const ind = intentOf(profile);
   const booking = (profile.bookingTerm || "Reservation").toLowerCase();
   const an = /^[aeiou]/i.test(booking) ? "an" : "a";
   /* ⚠️⚠️ **THE OPENING QUESTION SPLITS ON INTENT, NOT ON USE CASE — and reading the branches
@@ -250,7 +252,7 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
     /* Line 1 is the diagram's subtitle. Everything after it is drawer and prompt detail. */
     intent:
       `${c.newSub}\n\n`
-      + `Treat them as a prospective ${c.who} and find out what they need before routing.\n\n`
+      + `Find out what they need (${ind.newNeeds}) before routing.\n\n`
       + greetingRule,
     greeting,
     qualifyQuestion:
@@ -264,7 +266,8 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
         ? [`When asking for the caller's zip code, explain that it is used to connect them with their local ${name} office.`]
         : [`When asking for the caller's zip code, explain that it is used to connect them with their nearest ${name} location.`]),
       `As soon as this intent is recognized, find out what the caller needs so the conversation can proceed down the correct path.`,
-      `If asked about cost or pricing, do not provide specific numbers. Acknowledge that pricing varies and let the caller know the local team will cover exact pricing.`,
+      ind.pricingRule,
+      ...ind.agentRules,
       greetingRule,
     ],
     /* Never invented. See the note above. */
@@ -286,7 +289,7 @@ export function deriveVoiceSpec(profile: CustomerProfile): VoiceAgentSpec {
        not already say, and an extra instruction is one more thing to contradict. */
     informSteps: area
       ? [
-          `1. Before routing anyone who wants new service, ask for their zip code and capture it.`,
+          `1. Before routing anyone who wants ${ind.newWord}, ask for their zip code and capture it.`,
           `2. Check it against our service area: ${area}.`,
           `3. If the caller is outside that service area, politely inform them and end the call without routing.`,
           `4. If they are inside it, briefly confirm we serve their area and continue with the questions for their path.`,
@@ -343,6 +346,8 @@ export interface VoiceAgentConfig {
   escalateHandling?: string;
   supportQualifyQuestion?: string;
   supportQualifyFallback?: string;
+  /** The Sales Inquiry intent's "what does this look like" text, from its drawer (10/14/2026). */
+  intent?: string;
   supportIntent?: string;
   supportRules?: string[];
 }
@@ -474,6 +479,7 @@ export function specWithConfig(spec: VoiceAgentSpec, cfg: VoiceAgentConfig | und
     greeting: typeof cfg.greeting === "string" && cfg.greeting.trim() ? cfg.greeting : spec.greeting,
     qualifyQuestion: typeof cfg.qualifyQuestion === "string" && cfg.qualifyQuestion.trim() ? cfg.qualifyQuestion : spec.qualifyQuestion,
     qualifyFallback: typeof cfg.qualifyFallback === "string" && cfg.qualifyFallback.trim() ? cfg.qualifyFallback : spec.qualifyFallback,
+    intent: typeof cfg.intent === "string" && cfg.intent.trim() ? cfg.intent : spec.intent,
     rules: Array.isArray(cfg.rules) ? cfg.rules.filter((r) => typeof r === "string" && r.trim()) : spec.rules,
     serviceZips: Array.isArray(cfg.serviceZips)
       ? cfg.serviceZips.map((z) => String(z).trim()).filter(Boolean)
@@ -525,6 +531,9 @@ export function specWithConfig(spec: VoiceAgentSpec, cfg: VoiceAgentConfig | und
   if (merged.greeting !== spec.greeting) {
     merged.rules = merged.rules.map((r) =>
       r.startsWith(GREETING_RULE_PREFIX) ? `${GREETING_RULE_PREFIX}${merged.greeting}` : r);
+    /* The Sales Inquiry drawer's description carries the same copy (10/14/2026), so it
+       follows too; otherwise the drawer quotes a greeting the caller no longer hears. */
+    merged.intent = merged.intent.split(`${GREETING_RULE_PREFIX}${spec.greeting}`).join(`${GREETING_RULE_PREFIX}${merged.greeting}`);
   }
 
   const zipsAdded = (merged.serviceZips?.length ?? 0) > 0 && !(spec.serviceZips?.length ?? 0);

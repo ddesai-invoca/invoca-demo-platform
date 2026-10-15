@@ -60,6 +60,9 @@ export interface SmsBrain {
   industry: string;
   /** The prospect's own word for a customer, so the agent can introduce itself correctly. */
   customerNoun?: string;
+  intentKind?: string;
+  /** An extra workflow's use cases, as the diagram draws them. */
+  extraFlow?: string;
   rules: string[];
   qaPairs: { question: string; answer: string }[];
   knowledge: string[];
@@ -247,9 +250,10 @@ export function buildSmsBrain(
   workflow?: SmsWorkflowFlowShape | null,
   /** `workflowLeads`: the diagram governs the conversation (the built-in copies only).
    *  `greeting`: that copy's OWN opener, which wins over the shared Preview Agent greeting. */
-  opts: { workflowLeads?: boolean; greeting?: string } = {},
+  opts: { workflowLeads?: boolean; greeting?: string; extraBranches?: unknown } = {},
 ): SmsBrain {
   return {
+    ...(wf && opts.extraBranches ? { extraFlow: extraWorkflowFlowText(opts.extraBranches) } : {}),
     ...(workflow && !wf ? { workflow } : {}),
     ...(workflow && !wf && opts.workflowLeads ? { workflowLeads: true } : {}),
     customSystem: wf?.systemPrompt,
@@ -299,6 +303,7 @@ export function buildSmsBrain(
     customerName: profile.customerName,
     industry: profile.industry,
     customerNoun: profile.customerNoun,
+    intentKind: profile.intentKind,
     rules: ac?.brandConversationRules ?? [],
     qaPairs: ac?.aiRecommendations?.find((r) => r.qaPairs?.length)?.qaPairs ?? [],
     knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
@@ -318,7 +323,42 @@ export function buildSmsBrain(
 
 /** The scope key whose AI edits define the SMS agent's questions. Both previews
  *  point at the Preview Agent page, so an edit made there governs both. */
+/**
+ * An EXTRA SMS workflow's diagram, as text the agent follows (10/14/2026).
+ *
+ * ⚠️⚠️ An authored extra states its flow in its own playbook, and its diagram's nodes (their
+ * actions, the fields they collect, the instruction in each drawer) never reached the agent:
+ * an Ask AI edit or a drawer Apply redrew the box and changed nothing on the phone. The
+ * use cases are now handed to the agent beside the playbook, in the same words the drawers show.
+ */
+export function extraWorkflowFlowText(branches: unknown): string | undefined {
+  if (!Array.isArray(branches)) return undefined;
+  type N = { title?: string; action?: string; chips?: string[]; instruction?: string; fallback?: string; destination?: string; paths?: N[] };
+  const lines: string[] = [];
+  const walk = (n: N, depth: number) => {
+    const pad = "  ".repeat(depth + 1);
+    const bits = [
+      n.chips?.length ? `collect ${n.chips.join(", ")}` : "",
+      n.instruction?.trim() ? `how: ${n.instruction.trim()}` : "",
+      n.destination?.trim() ? `hand off to ${n.destination.trim()}` : "",
+    ].filter(Boolean).join("; ");
+    lines.push(`${pad}- ${String(n.title ?? "").trim()} [${String(n.action ?? "").trim()}]${bits ? `: ${bits}` : ""}`);
+    for (const k of n.paths ?? []) walk(k, depth + 1);
+  };
+  for (const b of branches as { title?: string; leaves?: N[] }[]) {
+    lines.push(`- ${String(b.title ?? "").trim()}`);
+    for (const l of b.leaves ?? []) walk(l, 0);
+  }
+  return lines.length ? lines.join("\n") : undefined;
+}
+
 export const SMS_AGENT_SCOPE_PATH = "/agent-studio/agent/preview";
+/** The Preview Agent scope's base: ONE definition, registered by the Preview Agent tab and by
+ *  every page that edits the SMS agent from elsewhere (10/14/2026). */
+export const previewAgentBase = (profile: CustomerProfile): Record<string, unknown> => ({
+  title: `Preview Agent — what the ${profile.customerName} SMS agent asks`,
+  ...(profile.reports.agentConfig ?? {}),
+});
 /**
  * The BUILT-IN SMS workflow page's scope, whose tree and `sms` config now drive the agent.
  *
