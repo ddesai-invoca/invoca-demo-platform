@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { reportShareActivity } from "./shareActivity";
+import { isShareMode } from "./shareMode";
 import type { SmsConversation } from "./schema";
 
 /* Holds SMS conversations captured live from the Preview Agent, keyed by prospect
@@ -13,7 +14,14 @@ import type { SmsConversation } from "./schema";
 
 const LS_KEY = "invoca-demo:sms-captures";
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
-const MAX_PER_PROFILE = 25;
+/* ⚠️⚠️ **A SHARED DEMO KEEPS EVERY CONVERSATION (10/14/2026).** Asked for directly: a prospect's
+   own SMS conversations stay in their report however many there are. The 7-day TTL and the 25
+   cap are for an SE's rehearsal captures; on a share they would quietly drop a prospect's
+   eighth-day return visit or their 26th conversation, which reads as the report losing data.
+   The share link's own expiry is what ends the demo. Signed-in behaviour is unchanged.
+   ⚠️ Still per BROWSER: a prospect on a second device starts with an empty list. */
+const KEEP_ALL = isShareMode();
+const MAX_PER_PROFILE = KEEP_ALL ? Number.POSITIVE_INFINITY : 25;
 
 interface Entry { savedAt: number; conv: SmsConversation }
 type Store = Record<string, Entry[]>;
@@ -26,7 +34,7 @@ function load(): Store {
     const now = Date.now();
     const pruned: Store = {};
     for (const [pid, arr] of Object.entries(data)) {
-      const fresh = (arr ?? []).filter((e) => e && typeof e.savedAt === "number" && now - e.savedAt < WEEK_MS);
+      const fresh = (arr ?? []).filter((e) => e && typeof e.savedAt === "number" && (KEEP_ALL || now - e.savedAt < WEEK_MS));
       if (fresh.length) pruned[pid] = fresh;
     }
     return pruned;

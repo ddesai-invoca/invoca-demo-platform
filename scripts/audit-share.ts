@@ -1498,5 +1498,22 @@ console.log("\nActivity tracking\n");
 }
 
 fs.rmSync(process.env.DATA_DIR!, { recursive: true, force: true });
+/* ⚠️⚠️ A shared demo keeps EVERY conversation in its AI SMS and AI Voice reports (10/14/2026):
+   no 7-day expiry and no 25 cap on a share, while the signed-in limits stay as they were. */
+console.log("\nEvery conversation is kept on a share\n");
+for (const f of ["src/data/SmsCaptureContext.tsx", "src/data/VoiceCaptureContext.tsx"]) {
+  const src = fs.readFileSync(f, "utf8").replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, "");
+  const name = path.basename(f);
+  /const KEEP_ALL = isShareMode\(\);/.test(src)
+    ? ok(`${name}: decides "keep everything" from share mode`)
+    : bad(`${name}: no share-mode keep-all flag`);
+  /MAX_PER_PROFILE = KEEP_ALL \? Number\.POSITIVE_INFINITY : 25;/.test(src)
+    ? ok(`${name}: no cap on a share, 25 when signed in`)
+    : bad(`${name}: a share's conversations are still capped`);
+  /\(KEEP_ALL \|\| now - e\.savedAt < WEEK_MS\)/.test(src)
+    ? ok(`${name}: no 7-day expiry on a share`)
+    : bad(`${name}: a share's conversations still expire after 7 days`);
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll share checks passed\n");
 process.exit(fail ? 1 : 0);

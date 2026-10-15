@@ -13083,6 +13083,18 @@ so the apply pass could be exercised without spending one; the steer's own path 
 `audit:advanced` and by `engine/genContext.ts`'s existing checks, and the body was read to confirm
 the field is omitted when empty. The first real steered generation is still worth watching.
 
+### A shared demo keeps EVERY conversation in its two reports (10/14/2026)
+Asked for: a shared prospect's AI SMS and AI Voice Conversation Intelligence reports keep
+every conversation, however many. (A first reading widened the share to ALL CI reports; the
+user corrected it: a share still carries ONLY those two reports.)
+- In `SmsCaptureContext` / `VoiceCaptureContext`, `KEEP_ALL = isShareMode()` turns off the
+  7-day TTL and the 25-per-prospect cap. Signed-in behaviour is unchanged; the share link's
+  own expiry is what ends a demo.
+- ⚠️ **STILL PER BROWSER.** Captures are localStorage, so a prospect on a second device starts
+  empty, and a full quota (~1,000 conversations) silently stops saving. Server-side storage
+  per share is the fix if either ever matters.
+- Verified: 30 captures dated 20 days ago all listed on a share; none on the signed-in report.
+
 ### The share password is emailed, not passed along (10/8/2026)
 
 Asked for: *"instead of us giving them the password, i want to setup it up so that they have
