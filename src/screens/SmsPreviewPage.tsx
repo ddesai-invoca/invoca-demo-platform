@@ -67,6 +67,20 @@ export function SmsPreviewPage() {
     try { sessionStorage.setItem(splitKey, on ? "1" : "0"); } catch { /* private window */ }
   };
 
+  /* Full screen (10/15/2026): hides the browser's tabs and address bar so the phone (and the
+     CRM beside it) is all that is on screen. Escape leaves it, as the browser always allows. */
+  const [full, setFull] = useState(() => typeof document !== "undefined" && !!document.fullscreenElement);
+  useEffect(() => {
+    const on = () => setFull(!!document.fullscreenElement);
+    document.addEventListener("fullscreenchange", on);
+    return () => document.removeEventListener("fullscreenchange", on);
+  }, []);
+  const canFull = typeof document !== "undefined" && !!document.documentElement.requestFullscreen;
+  const toggleFull = () => {
+    if (document.fullscreenElement) void document.exitFullscreen().catch(() => {});
+    else void document.documentElement.requestFullscreen().catch(() => {});
+  };
+
   useEffect(() => {
     const prev = document.title;
     document.title = `Preview Agent — ${label ?? profile.customerName}`;
@@ -106,6 +120,17 @@ export function SmsPreviewPage() {
               aria-label={split ? "Hide the Custom CRM" : "Show the Custom CRM beside the phone"}
             >
               <span className="material-icons">vertical_split</span>
+            </button>
+          )}
+          {canFull && (
+            <button
+              className={"tb-ai-btn pp-split-btn" + (full ? " on" : "")}
+              onClick={toggleFull}
+              aria-pressed={full}
+              title={full ? "Exit full screen" : "Full screen"}
+              aria-label={full ? "Exit full screen" : "Full screen"}
+            >
+              <span className="material-icons">{full ? "fullscreen_exit" : "fullscreen"}</span>
             </button>
           )}
         </span>
