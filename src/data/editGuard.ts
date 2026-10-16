@@ -212,30 +212,40 @@ const CREATABLE_WHEN_ABSENT = [
  * than its content — which rule 2 forbids. `path` is optional; when given, a
  * list whose length is content (see above) may change length.
  */
-export function isStructuralChange(before: unknown, after: unknown, path?: string): boolean {
+export function isStructuralChange(before: unknown, after: unknown, _path?: string): boolean {
   const kb = kindOf(before), ka = kindOf(after);
-  /* CREATING an exempt list is allowed. `cells` is optional on a row and absent
-     until the first column edit, so the very first write is undefined -> array.
-     Without this the guard blocked EVERY row's cells while letting the header
-     change through, which added a correctly-placed column with all 21 values
-     silently dropped — a table that looked half-built for no visible reason. The
-     unit tests missed it because columnEdits() and isStructuralChange() were each
-     tested alone; the bug only exists in their COMPOSITION, on a row that has no
-     `cells` key yet. */
-  if (kb === "undefined" && ka === "array" && path && LENGTH_IS_CONTENT.some((re) => re.test(path))) return false;
-  /* Creating an optional field that simply does not exist yet (see above). */
-  if (kb === "undefined" && ka !== "undefined" && path && CREATABLE_WHEN_ABSENT.some((re) => re.test(path))) return false;
+  /* ⚠️⚠️ STANDING RULE (10/16/2026): ASK AI MAY CHANGE ANY DATA ON ANY PAGE, AND THAT INCLUDES
+     ADDING AND REMOVING ITEMS. Asked for directly after it refused to add or remove a signal on
+     the Conversation Intelligence Silver page: *"users [must] be able to make changes and edits
+     to any of the data on any of the pages … the transcript, the signals … anything anywhere."*
+
+     So an array may change LENGTH anywhere. `LENGTH_IS_CONTENT` above used to be an allow-list
+     of the only lists that could, and everything else (signals, transcripts, call lists, Q&A
+     pairs, knowledge sources) was refused as "structural". It is kept as the record of which
+     lists were hardened first; it no longer gates anything.
+
+     What stays refused, and why each is not "data":
+       • a TYPE FLIP (a number becoming a list, a string becoming an object) — the component
+         renders one shape, so this crashes the screen rather than changing what it says;
+       • `undefined -> value` outside CREATABLE_WHEN_ABSENT, EXCEPT a new array or a new item
+         appended to a list — inventing an unknown key is how an edit lands somewhere nothing
+         reads, the silent no-op this file records repeatedly;
+       • product chrome (`isLockedEdit`) and the workflow diagram's shape rules, which are
+         rules of the product being replicated, not data.
+     The safety net for a renderer that does not survive an odd length is the screen's error
+     boundary, whose fallback offers Undo — so a bad edit is one click from gone. */
+  if (kb === "undefined" && ka === "array") return false;
+  if (kb === "undefined" && ka !== "undefined" && _path && /\.\d+$/.test(_path)) return false;
+  if (kb === "undefined" && ka !== "undefined" && _path && CREATABLE_WHEN_ABSENT.some((re) => re.test(_path))) return false;
   // A type flip is structural: the component renders one shape, not the other.
   // null <-> a value is allowed, since "no value" is a legitimate data state.
   if (kb !== ka && kb !== "null" && ka !== "null") return true;
-  // Same-length array edits are the whole point ("make Q4 trend up"); a different
-  // length adds or removes a row, series, column or tile.
-  if (kb === "array" && ka === "array") {
-    if (path && LENGTH_IS_CONTENT.some((re) => re.test(path))) return false;
-    return (before as unknown[]).length !== (after as unknown[]).length;
-  }
   return false;
 }
+
+/** Kept for the record (see the standing rule in isStructuralChange): the lists that were
+    length-editable before every list was. */
+export const HARDENED_FIRST = LENGTH_IS_CONTENT;
 
 /* =============================================================================
    NODES THE PRODUCT ITSELF DOES NOT LET A USER RENAME.

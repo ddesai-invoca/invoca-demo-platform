@@ -17,9 +17,9 @@
      • kind:"editTile"  — a replacement spec for the focused AI-generated tile.
 
    HARD RULE (enforced structurally, not just asked for): the assistant edits DATA ONLY —
-   values, labels, titles, series numbers. There is no route from an edit to layout, CSS,
-   colors, keys, or the shape/length of arrays the dashboard depends on — `editGuard`
-   refuses those regardless of what the model returns. Key is server-side only (called from
+   values, labels, titles, list items (any list may grow or shrink, 10/16/2026). There is no
+   route from an edit to layout, CSS, colors or invented keys, and `editGuard` refuses a type
+   flip regardless of what the model returns. Key is server-side only (called from
    the Vite dev endpoint / never in the browser).
    ============================================================================= */
 
@@ -364,7 +364,15 @@ function buildSystem(input: AssistantInput): string {
        prohibition and refused outright, so "add a Total Calls column" came back as a plain
        answer. This says what IS wired up, once, and trusts the guard for the rest. */
     `- ONLY data reaches the page: values, percentages, labels, titles, chart series, pie slices, axis points and table columns. That is the whole surface — there is no route from an edit to CSS, fonts, colours, spacing, layout, or WHICH KIND of chart a built-in tile is (a line stays a line, a pie stays a pie), so spend your effort on what the data should say rather than guarding its presentation.`,
-    `- Add and remove COLUMNS, TILES, chart SERIES, pie SLICES and axis POINTS freely, and change any number, percentage, label or title. "Show a massive dip on Jan 5th" means editing that series' value at that index. Each edit path points at a scalar leaf (a value, a label, a title) or an array of numbers; keep the SHAPE consistent when you add or remove one — one value per axis point, one cell per column. Never add or remove JSON keys and never replace an object with something of a different type.`,
+    /* ⚠️⚠️ STANDING RULE (10/16/2026): ANY DATA ON ANY PAGE. Asked for after this drawer refused
+       to add or remove a signal on the CI Silver page: *"they should have the ability to change
+       any single piece of data that they want to using Ask AI."* `editGuard` lets every list
+       change length now, so the prompt must not still describe a narrower surface, or the model
+       reads the old limit and refuses an edit the code would accept. */
+    `- EVERYTHING in the DATA below is editable, and you should never refuse an edit to something that is in it. That includes adding and removing items in ANY list: signals, transcript turns, calls, comments, rows, Q&A pairs, knowledge sources, questions, columns, tiles, chart series, pie slices and axis points — as well as changing any number, percentage, label, title or sentence. "Show a massive dip on Jan 5th" means editing that series' value at that index.`,
+    `- To ADD or REMOVE list items, send ONE edit whose path is the LIST itself and whose value is the WHOLE new list, with every item you were not asked to touch carried across VERBATIM. A new item copies the keys and value types of its siblings (a new signal looks like the other signals, a new transcript turn has the same speaker/time/text fields). To change one value inside an item, edit that leaf by its index path. Never replace an object or a list with something of a different type, and never invent a key the siblings do not have — a key nothing renders is an edit nobody sees.`,
+    `- When items are linked, keep them consistent: a transcript turn you add or reword should match the signals and comments that quote it, counts and totals should match the lists they summarise, and percentages that sum to 100 still do.`,
+    `- ASK WHEN IT IS GENUINELY UNCLEAR, OTHERWISE JUST DO IT. If you cannot tell which item, tile or value the user means, or the request has two reasonable readings that change different things, return kind "answer" with ONE short question that offers the likely options (e.g. "Do you want it added to the met or the unmet signals?"). Do not ask about anything a sensible reading settles, and never ask permission to do something they already asked for.`,
     `- If asked for something genuinely outside this (restyle, recolour, resize, change a chart's kind), say plainly in "answer" that this edits data only and offer what you can do instead — that is a fact about the surface, not a policy to defend.`,
     `- TABLE COLUMNS — you CAN add, remove, rename or move a table's columns. Two shapes qualify: the Digital Journey report ("dimensionColumns" + "rows" of interactions) and a dashboard breakdown table ("metricColumns" + "rows" with "metrics"). Return kind:"editColumn" and fill "column" ONLY; leave "edits" empty. When the user is focused on ONE table, the column op applies to THAT table.`,
     `  DO NOT copy the other columns' values. You supply only the operation; the app splices it into the existing rows and every other value is preserved automatically.`,
@@ -372,7 +380,7 @@ function buildSystem(input: AssistantInput): string {
     `    remove — index = the column to drop. header = "", values = [], toIndex = -1.`,
     `    rename — index = the column, header = its new name. values = [], toIndex = -1.`,
     `    move   — index = the column's current position, toIndex = where it should end up. header = "", values = [].`,
-    `  Values for an inserted column must fit THIS business and that specific row (a Location column on a retailer gets real cities or regions it serves, never "N/A" or a placeholder). Never touch "signalColumns" or a row's "signals": those render as check/cancel icons, not text. On a page with NEITHER "dimensionColumns" nor "metricColumns", a column change is not possible — say so in "answer" and return kind "answer".`,
+    `  Values for an inserted column must fit THIS business and that specific row (a Location column on a retailer gets real cities or regions it serves, never "N/A" or a placeholder). A row's "signals" render as check/cancel icons aligned to "signalColumns": edit them as true/false, never as text, and add or remove a signal by changing "signalColumns" and every row's "signals" together. On a page with NEITHER "dimensionColumns" nor "metricColumns", a column change is not possible — say so in "answer" and return kind "answer".`,
     `- Base every number on the DATA below or on a coherent scenario the user requested. Keep values realistic and internally consistent (percentages that should sum ~100 do; totals match their parts).`,
     `- For chart series/bars, strip %/$ to plain numbers; kpi values may keep formatting.`,
     `- For a "story" / scenario change, edit the KEY HEADLINE numbers that carry the story (the KPI tile values and the primary chart series) so it stays consistent — you do NOT need to touch every single value. Prefer ~5–15 focused edits over exhaustively rewriting every leaf.`,
@@ -380,7 +388,7 @@ function buildSystem(input: AssistantInput): string {
     ...(input.questionPath ? [
       `- THE AGENT'S QUESTION LIST. "${input.questionPath}" in the DATA below is the ordered list of questions this SMS agent asks, one per message. Changing it is the main thing this page is for, so treat these as normal data edits and do NOT decline them.`,
       `  Return kind:"editData" with ONE edit whose path is exactly "${input.questionPath}" and whose value is the COMPLETE new list as a JSON array of strings. Never edit a single element by index (no "${input.questionPath}.2") — always send the whole list.`,
-      `  This list MAY change length: adding, removing and reordering questions are all allowed here, unlike every other array on every other page.`,
+      `  This list MAY change length: adding, removing and reordering questions are all allowed.`,
       `  Carry every question the user did not ask you to touch across VERBATIM, character for character. If they say "change question 3", questions 1, 2, 4… come back exactly as they are in the DATA. Rewording an untouched question is a bug, not an improvement.`,
       `  Asked to rewrite the list for a USE CASE, replace ALL of them with 4-6 questions that serve that goal, specific to THIS business's products and vocabulary, ordered so the easy ones come first. Never return generic questions that would fit any company. The user's message describes the use case; follow that description rather than your own reading of the label.`,
       `  NURTURE means RE-ENGAGING someone who went quiet, NOT a cold first contact and NOT a no-booking newsletter. They were interested before and stopped replying, or a rep could not reach them. Those questions must assume prior contact, check whether they are still interested, surface what stalled it, and still drive toward booking. Never open a nurture flow as if you had never spoken.`,

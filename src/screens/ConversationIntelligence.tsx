@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { Pill } from "../components/Pill";
 import type { CITranscriptTurn } from "../data/schema";
 import { usePageData, DashAssistant } from "../components/GeneratedTiles";
-import { tierView, type SignalTier, type TierSignal, type TierView } from "../data/signalTiers";
+import { tierView, type SignalTier, type TierSignal, type TierView, type TierComment } from "../data/signalTiers";
 
 /* Bold + underline the signal-keyword phrases inside a transcript turn. */
 function Highlighted({ turn }: { turn: CITranscriptTurn }) {
@@ -57,6 +57,17 @@ function TierRow({ s }: { s: TierSignal }) {
   );
 }
 
+/* The tier rows as edited. A stored override written before the rail was registered holds the
+   base report's signals (no `met`), so those fall back to the derived rows rather than drawing
+   every signal as unmet. */
+function effectiveTier(view: TierView, d: { signals?: unknown; comments?: unknown }): TierView {
+  const rows = Array.isArray(d.signals) && d.signals.every((x) => x && typeof (x as TierSignal).met === "boolean")
+    ? (d.signals as TierSignal[]).map((x) => ({ ...x, badges: Array.isArray(x.badges) ? x.badges : [], count: Number(x.count) || 0 }))
+    : view.signals;
+  const comments = Array.isArray(d.comments) ? (d.comments as TierComment[]) : view.comments;
+  return { tier: view.tier, signals: rows, comments };
+}
+
 const metOf = (v: TierView) => v.signals.filter((s) => s.met);
 const unmetOf = (v: TierView) => v.signals.filter((s) => !s.met);
 
@@ -95,9 +106,23 @@ export function ConversationIntelligence({ tier }: { tier?: SignalTier } = {}) {
   const { profile } = useProfile();
   /* Registers this page as the AI scope and returns the slice with any
      edits made ON THIS PAGE overlaid (see usePageData). */
-  const d = usePageData(profile.reports.conversationIntelligence);
+  /* ⚠️⚠️ ON SILVER AND GOLD THE RAIL AND THE COMMENTS ARE PART OF THE REGISTERED DATA (10/16/2026).
+     They are derived per prospect (`tierView`), and they used to be drawn straight from that
+     derivation — so Ask AI was shown the base report's `signals`, which this route does not
+     render, and nothing it wrote to the rail could ever appear. Reported as "I asked Ask AI to
+     add or remove signals and it didn't let me." The derived rows are now folded into the base
+     AS `signals` (the name the model will reach for) plus `comments`, and the page draws from
+     the effective value. The untiered report's base is unchanged. Memoised on the profile,
+     because a fresh base every render would re-register the scope every render. */
+  const ci = profile.reports.conversationIntelligence;
+  const view = useMemo(() => (tier ? tierView(profile, tier) : null), [profile, tier]);
+  const base = useMemo(
+    () => (ci && view ? { ...ci, signals: view.signals, comments: view.comments } : ci) as typeof ci,
+    [ci, view],
+  );
+  const d = usePageData(base);
   const [tab, setTab] = useState("Analysis");
-  const t = tier ? tierView(profile, tier) : null;
+  const t: TierView | null = view && d ? effectiveTier(view, d as unknown as { signals?: unknown; comments?: unknown }) : null;
   const tabs = tabsFor(tier);
 
   /* A tier route on a prospect that does not have these reports: refuse rather than render a

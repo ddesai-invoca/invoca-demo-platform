@@ -740,9 +740,13 @@ console.log("\nAsk AI configures an SMS extra workflow, not just its diagram");
      the standing AI-button rules, so the check failed on correct code. The thing to prove is
      that the new exemption is SCOPED: a BARE `steps` (some other screen's array) is still
      refused, while `agent.steps` is not. */
-  isStructuralChange(["a", "b", "c"], ["a", "b"], "steps") === true
-    ? ok("while a bare steps array elsewhere is still blocked, so the exemption stayed scoped")
-    : bad("the agent.steps exemption widened rule 2 to every steps array in the app");
+  /* ⚠️ INVERTED 10/16/2026, on the standing rule that Ask AI may change ANY data: this used to
+     assert a bare `steps` elsewhere was still refused. Every list may change length now; what
+     must still be refused is a TYPE FLIP, which crashes the renderer rather than editing it. */
+  isStructuralChange(["a", "b", "c"], ["a", "b"], "steps") === false
+    && isStructuralChange(["a", "b"], "a, b", "steps") === true
+    ? ok("any list may change length now, while a type flip is still refused")
+    : bad("a list length change is refused, or a type flip got through");
 
   /* ---- the write key and the read key must be the SAME key ---------------- */
   /* ⚠️ THE WORKFLOW PAGE WRITES IT AND A DIFFERENT TAB READS IT BACK. The Preview Agent
@@ -3421,6 +3425,45 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
   /\.\.\.demoWorkflowsFor\(profile\)/.test(readCode("src/data/quoteWorkflow.ts"))
     ? ok("extraWorkflowsFor spreads the derived six")
     : bad("the six are never merged — they would exist and list nowhere");
+}
+
+console.log("\nAsk AI may change ANY data on ANY page (10/16/2026)\n");
+{
+  const g = isStructuralChange;
+  const sig = (n: string) => ({ name: n, badges: ["AI"], count: 1, met: true });
+  g([sig("a"), sig("b")], [sig("a"), sig("b"), sig("c")], "signals") === false
+    && g([sig("a"), sig("b")], [sig("a")], "signals") === false
+    ? ok("a signal can be added or removed")
+    : bad("adding or removing a signal is refused — the reported bug");
+  g([{ speaker: "Agent" }, { speaker: "Caller" }], [{ speaker: "Agent" }], "transcript") === false
+    && g(undefined, { speaker: "Agent", time: "0:40", text: "x" }, "transcript.12") === false
+    ? ok("a transcript turn can be removed, or appended by index")
+    : bad("transcript turns cannot be added or removed");
+  g(undefined, ["x"], "calls.0.tags") === false
+    ? ok("a new list can be created") : bad("creating a list is refused");
+  g(42, [42], "callCount") === true && g("Silver", { t: 1 }, "title") === true
+    ? ok("a type flip is still refused (it crashes the screen rather than editing it)")
+    : bad("a type flip got through the guard");
+  g(undefined, "made up", "inventedKey") === true
+    ? ok("an invented key is still refused (nothing would render it)")
+    : bad("an invented key got through — an edit that lands where nothing reads it");
+
+  const ci = fs.readFileSync("src/screens/ConversationIntelligence.tsx", "utf8");
+  /\{ \.\.\.ci, signals: view\.signals, comments: view\.comments \}/.test(ci) && /usePageData\(base\)/.test(ci)
+    ? ok("Silver/Gold register their signal rail and comments as page data")
+    : bad("the tier rail is not in the registered data — Ask AI cannot see or change it");
+  /effectiveTier\(view, d /.test(ci) && !/const t = tier \? tierView\(profile, tier\)/.test(ci)
+    ? ok("the rail and comments are drawn from the EDITED data, not re-derived from the profile")
+    : bad("the tier rail is still drawn from the raw profile, so an edit can never appear");
+
+  const asst = fs.readFileSync("engine/assistant.ts", "utf8");
+  asst.includes("EVERYTHING in the DATA below is editable") && asst.includes("ASK WHEN IT IS GENUINELY UNCLEAR")
+    ? ok("the prompt says every piece of data is editable, and to ask only when genuinely unclear")
+    : bad("the prompt does not grant the any-data surface or the clarify-when-unclear rule");
+  !/unlike every other array on every other page/.test(asst)
+    && !/Never touch "signalColumns" or a row's "signals"/.test(asst)
+    ? ok("no prompt line still forbids changing other lists or signals")
+    : bad("an old prompt line still forbids it — the model reads the limit and refuses");
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");

@@ -40,7 +40,10 @@ export function KnowledgeSources() {
      edits made ON THIS PAGE overlaid. */
   const ac = usePageData(profile.reports.agentConfig);
   const configured = ac?.knowledgeSources ?? [];
-  const all = configured.length ? configured : defaultSources(profile);
+  /* ⚠️ THE DEFAULTS FILL ONLY A PROSPECT THAT NEVER HAD A LIST (10/16/2026). Keyed on the
+     length alone, emptying the list with Ask AI brought the defaults straight back, so a
+     list could never be cleared. An edited list is shown exactly as edited. */
+  const all = configured.length || profile.reports.agentConfig?.knowledgeSources?.length ? configured : defaultSources(profile);
   /* ⚠️⚠️ **RESOLVED FROM THE SITE'S OWN NAVIGATION, ASYNCHRONOUSLY, AND THE
      HOMEPAGE IS THE STATE UNTIL IT LANDS.** Reported: *"all the links are still
      going to the same home page"* — they were, because nothing in a profile

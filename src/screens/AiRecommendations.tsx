@@ -156,12 +156,19 @@ export function AiRecommendations() {
      edits made ON THIS PAGE overlaid. */
   const ac = usePageData(profile.reports.agentConfig);
   const configured = ac?.aiRecommendations ?? [];
-  const initial = configured.length ? configured : defaultRecommendations(profile);
-  const [items, setItems] = useState(initial);
+  /* ⚠️ THE DEFAULTS FILL ONLY A PROSPECT THAT NEVER HAD A LIST (10/16/2026). Keyed on the
+     length alone, emptying the list with Ask AI brought the defaults straight back, so a
+     list could never be cleared. An edited list is shown exactly as edited. */
+  const initial = configured.length || profile.reports.agentConfig?.aiRecommendations?.length ? configured : defaultRecommendations(profile);
+  /* ⚠️ THE TOGGLES ARE AN OVERLAY ON THE DATA, NOT A COPY OF IT. `useState(initial)` snapshotted
+     the list at mount, so an Ask AI edit (a reworded card, an added Q&A pair) did not render
+     until the page was reopened. The on/off switches are local, keyed by position. */
+  const [toggled, setToggled] = useState<Record<number, boolean>>({});
+  const items = initial.map((r, i) => (i in toggled ? { ...r, enabled: toggled[i] } : r));
   const [modalPairs, setModalPairs] = useState<QaPair[] | null>(null);
 
   function toggle(i: number) {
-    setItems((prev) => prev.map((r, j) => (j === i ? { ...r, enabled: !r.enabled } : r)));
+    setToggled((prev) => ({ ...prev, [i]: !items[i].enabled }));
   }
 
   return (

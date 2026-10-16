@@ -1209,6 +1209,33 @@ immediately re-save. On someone else's demo `readOnly` is true: `mutate`/`applyE
 `undo` no-op, and the Ask AI drawer shows a "view only" banner and declines any
 create/editData/editTile result.
 
+### ⚠️⚠️ STANDING RULE: ASK AI MAY CHANGE ANY DATA ON ANY PAGE (10/16/2026)
+Asked for after Ask AI refused to add or remove a signal on the CI Silver page: *"I want users to
+be able to make changes and edits to any of the data on any of the pages … the transcript, the
+signals … anything anywhere. Be smart enough to understand what they're looking for or ask
+questions for confirmation."* This SUPERSEDES the length allow-list described in rule 2 below.
+- **`editGuard.isStructuralChange` lets every list grow or shrink.** `LENGTH_IS_CONTENT` is kept
+  only as the record of which lists were hardened first (`HARDENED_FIRST`). Still refused: a TYPE
+  FLIP (crashes the renderer), inventing an unknown key (lands where nothing reads it), locked
+  workflow chrome and the workflow shape rules (product rules, not data). The net for a renderer
+  that does not survive an odd length is the screen's error boundary, whose fallback offers Undo.
+- **The prompt says everything in the DATA is editable**, lists are edited by sending the whole
+  list, new items copy their siblings' keys, linked data stays consistent (a transcript line and
+  the comment quoting it), and it ASKS ONE QUESTION only when a request is genuinely ambiguous.
+  Verified live: "add a signal called Warranty Question" came back "met or unmet?".
+- ⚠️⚠️ **AN EDIT CAN ONLY APPEAR WHERE THE SCREEN DRAWS FROM THE REGISTERED VALUE.** The CI
+  Silver/Gold rail was derived from the raw profile (`tierView`), so Ask AI saw the base report's
+  `signals`, which that route does not even render. The derived rows are now folded into the base
+  (`signals` + `comments`) and drawn from `usePageData`'s result. **Any new screen must do the
+  same: derive, fold into the registered base, render from the effective value.** A screen that
+  renders from `profile` directly is a screen Ask AI cannot change.
+- Fixed in the same pass: AI Recommendations snapshotted its list in `useState` (edits showed only
+  after a reload), and three Agent Studio lists refilled with defaults when emptied.
+- ⚠️ **NOT YET COVERED** (helper sweep, 10/16): the six Salesforce screens, Google Search, ChatGPT,
+  Custom CRM, the Insights Details Report and Connect AI grids, captured SMS/voice conversations,
+  the SMS report's Marketing Data card, Insights call detail's derived fields, Verify Labels'
+  calls, My Reports and the Agent Studio list register nothing or render derived data.
+
 ### Ask AI + Undo on EVERY page (top bar, hover-revealed)
 `TopBar.tsx` carries a sparkle (`auto_awesome`) and an undo, immediately left of
 the star. They **always occupy their layout space and only fade opacity**, which

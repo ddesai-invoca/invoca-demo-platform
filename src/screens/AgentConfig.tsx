@@ -23,7 +23,10 @@ export function AgentConfig() {
      edits made ON THIS PAGE overlaid. */
   const ac = usePageData(profile.reports.agentConfig);
   const configured = ac?.brandConversationRules ?? [];
-  const rules = configured.length ? configured : defaultRules(name);
+  /* ⚠️ THE DEFAULTS FILL ONLY A PROSPECT THAT NEVER HAD A LIST (10/16/2026). Keyed on the
+     length alone, emptying the list with Ask AI brought the defaults straight back, so a
+     list could never be cleared. An edited list is shown exactly as edited. */
+  const rules = configured.length || profile.reports.agentConfig?.brandConversationRules?.length ? configured : defaultRules(name);
 
   return (
     <AgentStudioLayout>
