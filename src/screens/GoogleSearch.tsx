@@ -1,6 +1,6 @@
 import { withArticle } from "../data/smsTemplate";
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useLocationOverride } from "../data/locationOverride";
 import { useQuoteCaptures } from "../data/QuoteCaptureContext";
@@ -332,12 +332,14 @@ function AdBlock({ ad }: { ad: Ad }) {
             <span className="gs-rcs-chat-name">Chat with {ad.chat.name}</span>
             <span className="gs-rcs-chat-sub">On Messages</span>
           </span>
-          <a className="gs-rcs-msg" href={ad.chat.href} target="_blank" rel="noopener noreferrer">
+          {/* Same tab, straight into the conversation (asked 10/15/2026); `from=google` is what
+              lets the preview's close button come back here instead of closing a tab. */}
+          <Link className="gs-rcs-msg" to={ad.chat.href}>
             <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
               <path fill="#8ab4f8" d="M12 3C6.48 3 2 6.92 2 11.75c0 2.47 1.18 4.7 3.08 6.29L4.4 21.3a.5.5 0 0 0 .72.55l3.9-2.02c.95.24 1.95.37 2.98.37 5.52 0 10-3.92 10-8.75S17.52 3 12 3z" />
             </svg>
             Message
-          </a>
+          </Link>
         </div>
       )}
 
@@ -1582,7 +1584,7 @@ export function GoogleSearch() {
       sitelinks: [d.hero, d.others[0] ?? `Book a ${profile.bookingTerm}`,
         `${profile.bookingTerm} Availability in ${d.shortCity}`],
       /* Opens the RCS Preview Agent (`?wf=rcs`), which works for every prospect. */
-      chat: { name: profile.customerName, href: "/agent-studio/agent/preview?wf=rcs" },
+      chat: { name: profile.customerName, href: "/agent-studio/agent/preview?wf=rcs&from=google" },
     }),
     {
       brand: rivals[0].name, domain: rivalDomain(rivals[0].name),

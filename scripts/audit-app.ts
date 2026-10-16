@@ -767,5 +767,35 @@ console.log("\nAudience language\n");
 }
 
 
+/* ── the onrender.com address redirects to the real domain (10/15/2026) ────── */
+console.log("\nOld address -> new domain\n");
+{
+  const { canonicalRedirect: cr } = await import("../engine/canonicalHost.ts");
+  const OLD = "invoca-demo-platform.onrender.com", NEW = "https://env-invoca.net";
+  const t = (cond: boolean, msg: string) => (cond ? ok(msg) : bad(msg));
+  t(cr(OLD, "GET", "/dashboards/marketing?x=1", NEW) === "https://env-invoca.net/dashboards/marketing?x=1",
+    "a page on the onrender address goes to the same page and query on the new domain");
+  t(cr(OLD, "GET", "/share/AbCdEfGhIjKlMnOp/agent-studio", NEW) === "https://env-invoca.net/share/AbCdEfGhIjKlMnOp/agent-studio",
+    "a share link already sent follows to the new domain");
+  t(cr(OLD, "GET", "/api/canary", NEW) === null && cr(OLD, "GET", "/api/status", NEW) === null,
+    "/api stays put: the two morning routines read /api/canary on the onrender address");
+  t(cr(OLD, "POST", "/dashboards", NEW) === null && cr(OLD, "POST", "/api/chat", NEW) === null,
+    "nothing but GET/HEAD redirects (a redirected POST arrives as a GET and breaks)");
+  t(cr(OLD, "GET", "/auth/callback?code=x", NEW) === null && cr(OLD, "GET", "/healthz", NEW) === null,
+    "a sign-in in progress and Render's health check are never redirected");
+  t(cr("env-invoca.net", "GET", "/", NEW) === null && cr("www.env-invoca.net", "GET", "/", NEW) === null,
+    "the new domain itself is served, never redirected (no loop)");
+  t(cr(OLD, "GET", "/", undefined) === null && cr(OLD, "GET", "/", "https://invoca-demo-platform.onrender.com") === null,
+    "with no BASE_URL, or BASE_URL still on onrender, nothing redirects (staging, before the switch)");
+  t(cr("localhost:5173", "GET", "/", NEW) === null, "a laptop never redirects");
+  t(cr(OLD, "GET", "/", NEW, true) === null, "CANONICAL_REDIRECT=off turns it off");
+  // ⚠️ RAW source, not `code()`: server.ts's express.raw takes a star-slash-star MIME type, and a
+  // comment stripper reads its slash-star as a comment opener and swallows everything after it.
+  const srv = read("server.ts");
+  const at = srv.indexOf("canonicalRedirect(req.headers.host");
+  t(at > 0 && at < srv.indexOf("app.use(express.json(") && /res\.redirect\(302, to\)/.test(srv),
+    "server.ts redirects with a 302 before anything else runs");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);

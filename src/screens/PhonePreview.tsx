@@ -12,7 +12,7 @@ import { tollFreeNumber } from "../data/smsContactNumber";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
 import { effectiveSmsConfig, repairSalesShape, twoPathGreeting } from "../data/smsTemplate";
 import { builtInCopiesFor, copyPageBase, isCopySlug, isRcsSlug, workflowPath } from "../data/builtInCopies";
-import { parseRcs, rcsPlainText, cardReply, brandInitials, type RcsCard } from "../data/rcs";
+import { parseRcs, rcsPlainText, cardReply, brandInitials, RCS_KICKOFF, type RcsCard } from "../data/rcs";
 import { extraTree } from "../data/workflowChrome";
 import { builtInWorkflowBase } from "../data/workflowBase";
 import { QUESTIONS_PATH } from "../data/questionImport";
@@ -455,6 +455,9 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
   useEffect(() => {
     if (started.current) return;
     started.current = true;
+    /* RCS waits for the customer: their compose box is pre-filled and nothing is sent until
+       they hit send (see `RCS_KICKOFF`). Re-armed after a restart, which clears the input. */
+    if (rcs) { setInput(RCS_KICKOFF); return; }
     (async () => {
       /* An extra workflow can specify its opening text. Use it verbatim rather
          than asking the model to invent one: a nurture agent's first message is
@@ -490,6 +493,16 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
     setMessages(next);
     setBusy(true);
     setError(null);
+    /* RCS: the customer's kickoff is answered with the agent's own scripted welcome, after a
+       moment of typing dots, exactly as the recording shows. A fixed opener never goes through
+       the model, so the reply cannot drift from what the workflow says it opens with. */
+    if (rcs && from.length === 0 && brain.openingMessage) {
+      await new Promise((r) => setTimeout(r, 1100));
+      const greeting = resolveGreeting(brain.openingMessage, profile);
+      setMessages([...next, { role: "assistant", content: greeting }]);
+      setBusy(false);
+      return [...next, { role: "assistant" as const, content: greeting }] as Msg[];
+    }
     try {
       const reply = await ask(next);
       setMessages([...next, { role: "assistant", content: reply }]);

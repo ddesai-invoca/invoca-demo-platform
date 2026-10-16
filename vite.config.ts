@@ -513,11 +513,14 @@ function clientErrorApi(): Plugin {
           const route = str(b.route, 120) || 'unknown'
           const name = str(b.name, 80) || 'Error'
           const { alert } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/alerts.ts')).href)
+          const { describeUser } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/reporter.ts')).href)
           void alert({
             key: `client:${route}:${name}`,
             title: `Client error on ${route}`,
             detail: `${name}: ${str(b.message, 300)}`,
             context: {
+              /* Same as the production twin: who, from the signed cookies only. */
+              user: describeUser(req.headers.cookie, route),
               route,
               caught: str(b.where, 40) || 'window',
               prospect: str(b.prospect, 60) || undefined,

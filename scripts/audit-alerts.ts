@@ -298,6 +298,50 @@ console.log("\nNo route can fail silently");
     "a canary tick that throws reports immediately rather than waiting a day for stale");
 }
 
+console.log("\nWho was using it (10/15/2026)");
+{
+  /* Asked for against a "Client error on /launch" alert that named nobody. Real modules:
+     an alert raised inside a request carries that request's user, from SIGNED cookies only. */
+  process.env.SESSION_SECRET = "audit-session-secret";
+  const { runWithUser } = await import("../engine/requestUser.ts");
+  const { describeUser } = await import("../engine/reporter.ts");
+  const crypto = await import("node:crypto");
+  const cookieFor = (email: string, secret = "audit-session-secret") => {
+    const body = Buffer.from(JSON.stringify({ email, name: "A", exp: Date.now() + 3_600_000 })).toString("base64url");
+    const mac = crypto.createHmac("sha256", secret).update(body).digest("base64url");
+    return `invoca_demo_session=${body}.${mac}`;
+  };
+
+  fresh();
+  await runWithUser("seller@invoca.com", () => alert({ key: "who-1", title: "Thing broke", detail: "d", context: { route: "/launch" } }));
+  const lines = lastPost().split("\n");
+  check(lines.some((l) => l === "user: seller@invoca.com"), "an alert raised inside a request names the signed-in user");
+  /* ⚠️ Both indexes must be REAL: with no user line, -1 < anything passed this on broken code. */
+  const ui = lines.findIndex((l) => l.startsWith("user:")), ri = lines.findIndex((l) => l.startsWith("route:"));
+  check(ui >= 0 && ri >= 0 && ui < ri,
+    "and the user is the FIRST context line, right under the error");
+  fresh();
+  await runWithUser("seller@invoca.com", () => alert({ key: "who-2", title: "x", context: { user: "explicit@invoca.com" } }));
+  check(/user: explicit@invoca\.com/.test(lastPost()) && !/seller@invoca/.test(lastPost()), "a user the caller passed wins over the request's");
+  fresh();
+  await alert({ key: "who-3", title: "x", detail: "d" });
+  check(!/user:/.test(lastPost()), "an alert outside any request (a crash, the canary) invents nobody");
+
+  check(describeUser(cookieFor("ddesai@invoca.com"), "/launch") === "ddesai@invoca.com", "a valid signed session cookie names its email");
+  check(describeUser(cookieFor("ceo@invoca.com", "forged-secret"), "/launch") !== "ceo@invoca.com",
+    "a FORGED session cookie names nobody: the email comes from signed cookies, never the request");
+  check(describeUser(undefined, "/share/AbCdEfGhIjKlMnOpQrStUv/agent-studio") === "prospect on a shared demo (no email given)",
+    "a shared-demo page with no unlock cookie says so rather than guessing");
+  check(!JSON.stringify(alertSummary()).includes("seller@invoca.com"),
+    "the PUBLIC /api/status summary never carries a user's email");
+
+  const srv = fs.readFileSync("server.ts", "utf8");
+  const mw = srv.indexOf("runWithUser(describeUser(req.headers.cookie, req.path), next)");
+  check(mw > 0 && mw < srv.indexOf("installAuth(app)"), "every request runs as its user, registered before the auth gate");
+  check(/user: describeUser\(req\.headers\.cookie, route\)/.test(srv), "a browser report is attributed by the PAGE's route (a share token lives there)");
+  check(/user: describeUser\(req\.headers\.cookie, route\)/.test(fs.readFileSync("vite.config.ts", "utf8")), "and the dev twin does the same");
+}
+
 server.close();
 try { fs.rmSync(TMP, { recursive: true, force: true }); } catch { /* temp dir */ }
 

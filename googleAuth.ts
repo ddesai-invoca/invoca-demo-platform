@@ -56,6 +56,11 @@ function verify(token?: string): { email: string; name?: string; exp: number } |
     return typeof p.exp === "number" && p.exp > Date.now() ? p : null;
   } catch { return null; }
 }
+/** The signed-in Invoca email from a request's cookies, or null. Unlike `currentUser` it has no
+ *  dev fallback, so an alert can say "not signed in" rather than naming a made-up user. */
+export function sessionEmail(cookieHeader?: string): string | null {
+  return verify(parseCookies(cookieHeader)[COOKIE])?.email ?? null;
+}
 export function parseCookies(header?: string): Record<string, string> {
   const out: Record<string, string> = {};
   (header || "").split(";").forEach((p) => { const i = p.indexOf("="); if (i > 0) out[p.slice(0, i).trim()] = decodeURIComponent(p.slice(i + 1).trim()); });

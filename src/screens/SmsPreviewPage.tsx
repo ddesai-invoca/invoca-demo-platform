@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { isShareMode } from "../data/shareMode";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { AiAssistantDrawer } from "../components/AiAssistantDrawer";
@@ -39,6 +39,7 @@ export function SmsPreviewPage() {
   /* ?wf=<slug> selects an extra workflow's agent (e.g. Reyes Law's SMS nurture)
      so the tab previews THAT playbook rather than the default sales one. */
   const [params] = useSearchParams();
+  const navigate = useNavigate();
   const wf = params.get("wf");
   const copy = builtInCopiesFor(profile).find((c) => c.slug === wf);
   /* The Google Search ad's Message button opens `?wf=rcs` for EVERY prospect, while the
@@ -141,7 +142,10 @@ export function SmsPreviewPage() {
       )}
 
       <div className={split ? "pp-split" : undefined}>
-        <PhonePreview mode="page" wf={wf} onConversation={setConvId} />
+        <PhonePreview mode="page" wf={wf} onConversation={setConvId}
+          /* Opened in this tab from the Google ad's Message button: close goes back to the
+             results. Opened from Agent Studio it is its own tab, which close shuts as before. */
+          onClose={params.get("from") === "google" ? () => navigate(-1) : undefined} />
         {split && <div className="pp-crm"><CustomCrm embedded convId={convId} /></div>}
       </div>
       {!isShareMode() && <AiAssistantDrawer />}

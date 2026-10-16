@@ -44,6 +44,22 @@ the `demoLibraryApi()` plugin in `vite.config.ts` (dev) — keep them in sync.
 Routes: `GET /api/me`, `GET|POST /api/demos`, `GET|PATCH|DELETE /api/demos/:id`,
 `POST /api/demos/:id/duplicate`.
 
+### The real domain is env-invoca.net; the onrender.com address redirects to it (10/15/2026)
+Bought with IT's OK, on Render as a custom domain (root + www, Cloudflare DNS set to "DNS only":
+a proxied record breaks Render's verification and certificate renewals, and Cloudflare's 100s
+proxy timeout would cut off a 2-3 minute generation stream).
+- **`BASE_URL=https://env-invoca.net`** (no trailing slash) on Render: it is the Google sign-in
+  callback base and the link in share/feedback emails. Set it only AFTER the domain answers and
+  `https://env-invoca.net/auth/callback` is an authorized redirect URI in Google Cloud, or every
+  sign-in breaks.
+- **`engine/canonicalHost.ts`** 302s page loads on `*.onrender.com` to the same path on BASE_URL's
+  host, registered first in server.ts. It switches ITSELF on from BASE_URL (staging and laptops
+  never redirect; `CANONICAL_REDIRECT=off` disables it). ⚠️ `/api/*`, `/auth/*`, `/healthz` and
+  every non-GET stay put: the two morning routines read `/api/canary` on the onrender address, an
+  open tab POSTs there, and a redirected POST arrives as a GET. ⚠️ 302 not 301, because browsers
+  cache a 301 forever and a wrong BASE_URL would then outlive its fix.
+- Verified against the production entry point with a spoofed Host header; `audit:app` has 10 checks.
+
 ### Checking the live deploy from outside the gate: `GET /api/status`
 `curl -s https://invoca-demo-platform.onrender.com/api/status | python3 -m json.tool`
 
@@ -233,6 +249,30 @@ did the shell's own TopBar and Sidebar. A throw in any of those blanked the whol
 `ScreenBoundary` wraps the entire route tree; nesting is deliberate, since React uses the NEAREST
 boundary, so an in-shell screen still gets the Undo fallback and this one only handles what that
 cannot reach.
+
+#### Every alert names WHO was using the platform (10/15/2026)
+Asked for against a "Client error on /launch" alert that named nobody: *"start capturing the
+user: what email is logged in while they're trying to do something and getting the error."*
+- ⚠️⚠️ **ASYNC-LOCAL, NOT A PARAMETER.** `server.ts` runs every request inside `runWithUser`
+  (`engine/requestUser.ts`, registered right after the JSON parser, before the auth gate), and
+  `alert()` reads `requestUser()` at the call. So all 20 `routeFailed` sites, the Express error
+  handler and anything added later carry the user with nothing threaded through them. A caller's
+  own `context.user` wins; an alert outside a request (a crash, the canary) names nobody.
+- ⚠️⚠️ **FROM SIGNED COOKIES ONLY** (`engine/reporter.ts` `describeUser`). `/api/client-error` is
+  public, so an email in the body would be whatever anybody typed. The Invoca session is
+  HMAC-signed (`sessionEmail` in googleAuth.ts); a shared-demo prospect is named from the share
+  unlock cookie (signed proof + the address they entered, labelled "prospect on a shared demo",
+  since that address is self-declared). Browser reports are attributed by the PAGE's route, which
+  is where a share token lives. Otherwise: "not signed in".
+- It is the FIRST context line, not part of the dedupe key (one fault hitting three people is one
+  fault). Never on the PUBLIC `/api/status` summary, which `audit:alerts` asserts.
+- Locally the funnel now logs the would-be BODY under the subject, so the user line is visible
+  when testing (`local@dev (sign-in is off)` on the dev server).
+- ⚠️ A bare **"Script error."** with no stack is the browser hiding an error thrown by a script
+  from another origin (or a Safari extension). There is nothing more to capture from it; knowing
+  who hit it is now how you follow one up.
+`audit:alerts` gained 10 checks; removing the injection reddens 2, and one of those passed on
+broken code at first (`-1 < n`) until both indexes had to be real.
 
 #### The two automatic health signals
 - **The canary's own verdict now raises an alert**, read back out of `toPublic()` rather than
@@ -11588,6 +11628,11 @@ RCS business thread on iPhone (Optimum, 10/15/2026; measured in points off the 1
 ⚠️ `picked` is stripped before `/api/chat` (`history.map(({ role, content }) => ...)`), so the
 request shape is unchanged. The Preview Workflow DRAWER is the Invoca web chat widget, not an
 iPhone, so it keeps its own pill buttons.
+⚠️ **THE CUSTOMER SENDS FIRST**, as in the recording: the compose box opens pre-filled with
+`RCS_KICKOFF` ("Hit send to start a conversation 👉") and the thread is empty until they send it;
+then "Delivered", typing dots, and the agent's scripted welcome (never through the model). The
+Google ad's Message button opens this in the SAME TAB (`&from=google`), and the preview's close
+button then goes back to the results; opened from Agent Studio it is its own tab and close shuts it.
 
 ⚠️⚠️ **THE AGENT WRITES CHIPS AND CARDS AS MARKER LINES, AND `src/data/rcs.ts` IS THE ONE
 PARSER.** `brain.rcs` adds `rcsRules` (engine/chat.ts) LAST in the SMS prompt, asking for

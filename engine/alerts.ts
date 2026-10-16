@@ -49,6 +49,7 @@ import { DATA_DIR } from "./demoStore.ts";
 import { appEnv, isProduction } from "./appEnv.ts";
 import { adminEmails } from "./admins.ts";
 import { sendMail, mailConfigured } from "./mailer.ts";
+import { requestUser } from "./requestUser.ts";
 
 /** How long one signature stays quiet after being reported. */
 const COOLDOWN_MS = 30 * 60_000;
@@ -257,6 +258,12 @@ function render(a: AlertInput, occurrences: number): { subject: string; body: st
  * moment a message interpolates an id or a timestamp, which is most of them.
  */
 export async function alert(input: AlertInput): Promise<AlertResult> {
+  /* ⚠️ WHO WAS USING IT (10/15/2026). Read synchronously, at the call, while the request's
+     async context is certain to be live; the caller's own `user` wins. It LEADS the context
+     so it is the first line under the error. Not part of the dedupe key: one fault hitting
+     three people is one fault, and the repeat notice already counts it. */
+  const user = requestUser();
+  if (user && !input.context?.user) input = { ...input, context: { user, ...(input.context ?? {}) } };
   try {
     return await run(input);
   } catch (e: any) {
@@ -323,7 +330,9 @@ async function run(input: AlertInput): Promise<AlertResult> {
 
 async function deliver(msg: { subject: string; body: string }): Promise<{ sent: boolean; reason?: string }> {
   if (!isProduction() && process.env.ALLOW_ALERTS !== "1") {
-    console.log(`[alert] ${appEnv()}: not sending — "${msg.subject}"`);
+    /* The body too, indented: locally this log IS the alert, so what it would have said
+       (who was using it, the route, the stack) should be readable here. */
+    console.log(`[alert] ${appEnv()}: not sending — "${msg.subject}"\n${msg.body.replace(/^/gm, "    ")}`);
     return { sent: false, reason: `${appEnv()} does not send alerts` };
   }
   const url = slackUrl();

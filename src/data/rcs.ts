@@ -81,3 +81,10 @@ export function withRcsOpener<B extends { openingMessage?: string }>(brain: B, p
   const term = (profile.bookingTerm || "appointment").toLowerCase();
   return { ...brain, openingMessage: `${open}\n[chips: Book ${withArticle(term)} | Help with an existing one]` };
 }
+
+/**
+ * What an RCS business thread opens with on iPhone (matched to a recording, 10/15/2026): the
+ * business's message link pre-fills the CUSTOMER's compose box with this line, and nothing
+ * arrives until they hit send. Only then does the agent's welcome come back.
+ */
+export const RCS_KICKOFF = "Hit send to start a conversation 👉";

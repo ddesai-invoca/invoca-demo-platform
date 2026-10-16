@@ -42,6 +42,9 @@ import { mailConfigured } from "./engine/mailer.ts";
 import { DATA_DIR, isPersistent, getDemo } from "./engine/demoStore.ts";
 import { readGeneratedProfiles } from "./engine/generatedProfiles.ts";
 import { alert, alertSummary, type AlertLevel } from "./engine/alerts.ts";
+import { runWithUser } from "./engine/requestUser.ts";
+import { describeUser } from "./engine/reporter.ts";
+import { canonicalRedirect } from "./engine/canonicalHost.ts";
 import { deployStatus } from "./engine/status.ts";
 import { parseGenerationRequest } from "./engine/genContext.ts";
 import { extractDocText } from "./engine/docText.ts";
@@ -101,6 +104,14 @@ function routeFailed(key: string, e: unknown, opts?: {
 // TTS provider resolution — mirrors vite.config.ts.
 
 const app = express();
+/* ⚠️ THE OLD onrender.com ADDRESS SENDS PAGE LOADS TO THE REAL DOMAIN (10/15/2026). First, so
+   nothing else runs for a request that is about to be redirected; /api, /auth and /healthz are
+   exempt — see engine/canonicalHost.ts for why each one must keep working where it is. */
+app.use((req, res, next) => {
+  const to = canonicalRedirect(req.headers.host, req.method, req.originalUrl, process.env.BASE_URL,
+    process.env.CANONICAL_REDIRECT === "off");
+  return to ? res.redirect(302, to) : next();
+});
 /* Attachment uploads are RAW BYTES, so their parser is registered before the JSON
    one: express.json would otherwise reject a PNG as malformed JSON. Scoped to the
    upload path only, and capped, so nothing else changes. */
@@ -109,6 +120,11 @@ app.use("/api/feedback/:id/files", express.raw({ type: "*/*", limit: "12mb" }));
    express.json would reject it as malformed JSON. Scoped to this one path. */
 app.use("/api/generate/doc", express.raw({ type: "*/*", limit: "10mb" }));
 app.use(express.json({ limit: "2mb" }));
+/* ⚠️ EVERY REQUEST RUNS AS ITS USER (10/15/2026), so any alert raised while serving it names
+   who was using the platform — see engine/requestUser.ts. Read from the SIGNED cookies only,
+   and registered before every route, the auth gate included, so a request that fails on the
+   way in is still attributed. A cheap HMAC check; no I/O. */
+app.use((req, _res, next) => runWithUser(describeUser(req.headers.cookie, req.path), next));
 
 /* Health check for the host (Render etc.) — exempt from auth.
    503 once we are DRAINING, so the host stops routing new requests at us while the
@@ -175,6 +191,8 @@ app.post("/api/client-error", (req, res) => {
       title: `Client error on ${route}`,
       detail: `${name}: ${message}`,
       context: {
+        /* The PAGE's route, not this endpoint's path: a shared demo's token is in the page. */
+        user: describeUser(req.headers.cookie, route),
         route, caught: where,
         prospect: str(b.prospect, 60) || undefined,
         stack: str(b.stack, 600) || undefined,
