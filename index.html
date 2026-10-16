@@ -2,9 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Invoca's OWN icon files, copied byte for byte from the real platform's login page
+         (app.invoca.net/login links these three, from its CDN). Not traced: three tracing
+         attempts each got the shape wrong. Served BEFORE the sign-in gate (googleAuth.ts),
+         or the tab gets a 302 to the login page instead of an icon and shows the host's.
+         ⚠️ Chrome keeps a tab icon by URL: bump ?v= when these files change. -->
+    <link rel="icon" href="/favicon.ico?v=5" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg?v=5" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=5" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>invoca-demo-platform</title>
+    <title>Invoca</title>
   </head>
   <body>
     <div id="root"></div>

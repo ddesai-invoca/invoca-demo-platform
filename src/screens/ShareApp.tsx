@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { PageTitle } from "../components/PageTitle";
 import { CustomerProfile } from "../data/schema";
 import { workEmailVerdict, workEmailMessage } from "../data/workEmail";
 import { ProfileProvider } from "../data/ProfileContext";
@@ -249,6 +250,7 @@ export default function ShareApp() {
             `/agent-studio`, so no screen needed changing. */}
         <BrowserRouter basename={SHARE_BASENAME}>
           <ShareRoutes />
+          <PageTitle />
           {/* ⚠️ INSIDE the router: the tour navigates between screens, so it needs
               `useNavigate`. Outside it, every route step would be a no-op. */}
           <ShareTour />

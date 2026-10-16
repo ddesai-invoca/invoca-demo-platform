@@ -76,6 +76,7 @@ export const RELEASES: Release[] = [
       n("While the Custom CRM is connected, the SMS agent offers only the openings on that calendar, so every time it suggests is one the calendar can show. The switch is the pill at the top of the CRM; opening it the first time connects it."),
       i("The guided tour on a shared demo now teaches the way round: when the next step is on another screen, the real menu item pulses and the tour waits for the prospect to click it. It also has a chapter progress bar and a closing recap."),
       f("The guided tour on a shared demo no longer breaks when it opens the phone preview on the SMS workflow."),
+      i("Every browser tab now shows the Invoca icon and the name of the screen it is on, so a row of open demo tabs can be told apart."),
     ],
   },
   {

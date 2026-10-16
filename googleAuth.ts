@@ -36,6 +36,8 @@ const SESSION_SECRET = process.env.SESSION_SECRET || CLIENT_SECRET || "insecure-
 const BASE_URL = process.env.BASE_URL || "";
 const COOKIE = "invoca_demo_session";
 const MAX_AGE_MS = 12 * 60 * 60 * 1000; // 12 hours
+/** Exact paths, never a prefix: anything else under public/ stays behind the gate. */
+export const TAB_ICONS = new Set(["/favicon.svg", "/favicon.ico", "/apple-touch-icon.png"]);
 
 export const authEnabled = !!(CLIENT_ID && CLIENT_SECRET);
 
@@ -418,6 +420,11 @@ export function installAuth(app: Express) {
   // Gate everything else: pages redirect to login, /api returns 401.
   app.use((req: Request, res: Response, next: NextFunction) => {
     if (req.path.startsWith("/auth/") || req.path === "/healthz") return next();
+    // ⚠️ THE TAB ICONS ARE PUBLIC. Gated, a browser's icon request got a 302 to the login
+    // page, so the tab fell back to the host's default icon (the Render logo) — on the
+    // login page itself and on every shared demo a prospect opens. They are static brand
+    // marks and carry nothing worth protecting.
+    if (TAB_ICONS.has(req.path)) return next();
     if (verify(parseCookies(req.headers.cookie)[COOKIE])) return next();
     if (req.path.startsWith("/api/")) return res.status(401).json({ error: "Sign in required." });
     return res.redirect("/auth/login");

@@ -797,5 +797,62 @@ console.log("\nOld address -> new domain\n");
     "server.ts redirects with a 302 before anything else runs");
 }
 
+console.log("\nThe browser tab: the Invoca icon, and a title per screen (10/15/2026)\n");
+{
+  const t = (cond: boolean, msg: string) => (cond ? ok(msg) : bad(msg));
+  const { TAB_ICONS } = await import("../googleAuth.ts");
+  const html = read("index.html");
+  const linked = [...html.matchAll(/<link[^>]+rel="(?:icon|apple-touch-icon)"[^>]*href="([^"]+)"/g)].map((m) => m[1].split("?")[0]);
+  const wanted = [...new Set([...linked, "/favicon.ico"])];
+  t(linked.length >= 3, `index.html links the icon set (${linked.join(", ")})`);
+  const ungated = wanted.filter((h) => !TAB_ICONS.has(h));
+  t(ungated.length === 0, ungated.length ? `icons still behind the sign-in gate: ${ungated.join(", ")}` : "every tab icon is exempt from the sign-in gate");
+  const missing = wanted.filter((h) => !existsSync(`public${h}`));
+  t(missing.length === 0, missing.length ? `icon files missing from public/: ${missing.join(", ")}` : "every icon the page names exists in public/");
+  t([...TAB_ICONS].every((p) => /^\/[a-z0-9-]+\.(svg|ico|png)$/.test(p) && /icon/.test(p)),
+    "the exemption is exact icon files only, never a prefix that would open public/ to everyone");
+  // RAW source: the order of two lines is the invariant, and the gate's own comment mentions both.
+  const auth = read("googleAuth.ts");
+  const gate = auth.indexOf("// Gate everything else");
+  const ex = auth.indexOf("if (TAB_ICONS.has(req.path)) return next();", gate);
+  const cookie = auth.indexOf("if (verify(parseCookies(req.headers.cookie)[COOKIE])) return next();", gate);
+  t(gate > 0 && ex > gate && cookie > ex, "the icon exemption sits inside the gate, ahead of the session check");
+  const svg = read("public/favicon.svg");
+  t(/#00B388/i.test(svg) && !/#863bff/i.test(svg), "favicon.svg is the Invoca bubble in brand green, not Vite's default bolt");
+  // Invoca's own file, copied from app.invoca.net/login. Its viewBox and the first point of its
+  // one path are the fingerprint: a traced replacement has neither (three of those were wrong).
+  t(/viewBox="0 0 276 263"/.test(svg) && svg.includes("M2.71346 262.978"),
+    "favicon.svg is Invoca's own icon file, not a traced copy");
+  t(!/<title>invoca-demo-platform<\/title>/.test(html), "the page no longer names the repo before the app sets a title");
+
+  const { pageTitle, SETS_OWN } = await import("../src/data/pageTitle.ts");
+  const app = code("src/App.tsx");
+  const routes = [...app.matchAll(/<Route\s+path="([^"]+)"/g)].map((m) => m[1])
+    .map((p) => p.replace(/:[a-zA-Z]+/g, "x"));
+  const navPaths = [...read("src/components/nav.tsx").matchAll(/path:\s*"([^"]+)"/g)].map((m) => m[1]);
+  const all = [...new Set([...routes, ...navPaths])];
+  const generic = all.filter((p) => !SETS_OWN.has(p) && pageTitle(p) === "Invoca");
+  t(all.length > 40 && generic.length === 0,
+    generic.length ? `routes with only the generic tab title: ${generic.join(", ")}` : `all ${all.length} routes get a title naming their screen`);
+  t(SETS_OWN.size === 3 && [...SETS_OWN].every((p) => pageTitle(p) === null),
+    "the Preview Agent and the two static copies keep the titles they set themselves");
+  const dashed = all.map((p) => pageTitle(p) ?? "").filter((x) => /—/.test(x));
+  t(dashed.length === 0 && !/—/.test(code("src/screens/SmsPreviewPage.tsx").match(/document\.title = [^;]+/)?.[0] ?? ""),
+    "no tab title carries an em dash");
+  const fake = { reports: { marketingDashboard: { title: "Guest Booking Performance" } } } as never;
+  t(pageTitle("/dashboards/marketing", fake) === "Guest Booking Performance | Invoca",
+    "a dashboard's tab reads its own on-screen title, re-skinned per prospect");
+  const pro = { customerName: "Aptive", reports: { marketingDashboard: { title: "Marketing Performance Dashboard (Aptive)" } } } as never;
+  t(pageTitle("/agent-studio", pro) === "Agent Studio | Aptive" && pageTitle("/dashboards/marketing", pro) === "Marketing Performance Dashboard | Aptive",
+    "a demo's tabs name the prospect, not Invoca, and a heading's own (Aptive) is not repeated");
+  t(pageTitle("/launch", pro) === "Launch a Demo | Invoca" && pageTitle("/agent-studio") === "Agent Studio | Invoca",
+    "our own tool pages, and a page before any profile has loaded, still say Invoca");
+  t(pageTitle("/salesforce/leads") === "Leads | Salesforce" && pageTitle("/google-search") === "Google Search",
+    "a third-party replica names that product, not Invoca");
+  t(pageTitle("/insights/dashboard/Q3%20Review") === "Q3 Review | Invoca", "a saved Insights dashboard's tab is its own name");
+  t(/<PageTitle \/>/.test(app) && /<PageTitle \/>/.test(code("src/screens/ShareApp.tsx")),
+    "the title follows the route in the signed-in app AND on a shared demo");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);

@@ -58,6 +58,7 @@ import { ReplicaPageScreen } from "./screens/ReplicaPage";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { EnvBadge } from "./components/EnvBadge";
+import { PageTitle } from "./components/PageTitle";
 import { AdminNoticeModal } from "./components/AdminNoticeModal";
 import { LaunchMenu } from "./components/LaunchMenu";
 import { FeedbackBoard } from "./screens/FeedbackBoard";
@@ -120,6 +121,9 @@ export default function App() {
             phone preview, Google Search and the Salesforce pages all render outside the
             shell, so a TopBar chip would miss them as well. */}
         <EnvBadge />
+        {/* The browser tab's title, per screen. Same placement rule as the badge: inside
+            the router so it can read the path, outside `<Routes>` so no screen has to. */}
+        <PageTitle />
         {/* ⚠️ SAME REASONING AS `EnvBadge` DIRECTLY ABOVE: inside the router but
             outside `<Routes>`, so it can render whichever route someone lands on
             right after signing in — including the standalone ones a route-scoped

@@ -88,7 +88,7 @@ export function SmsPreviewPage() {
 
   useEffect(() => {
     const prev = document.title;
-    document.title = `Preview Agent — ${label ?? profile.customerName}`;
+    document.title = `Preview Agent | ${label ?? profile.customerName}`;
     return () => { document.title = prev; };
   }, [profile.customerName, label]);
 

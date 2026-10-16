@@ -60,6 +60,28 @@ proxy timeout would cut off a 2-3 minute generation stream).
   cache a 301 forever and a wrong BASE_URL would then outlive its fix.
 - Verified against the production entry point with a spoofed Host header; `audit:app` has 10 checks.
 
+### The browser tab: Invoca icon, a title per screen (10/15/2026)
+Asked for: *"change the render logo to the Invoca logo in chrome tab heading, and also change the
+tab heading name based on what page they are in"*.
+- ⚠️⚠️ **THE "RENDER LOGO" WAS THE SIGN-IN GATE, NOT A MISSING FILE.** `public/favicon.svg` was
+  Vite's default bolt, and it did not matter: the gate in `googleAuth.ts` 302'd every icon request
+  to the login page, so the tab fell back to the host's default. `TAB_ICONS` (exact paths only,
+  never a prefix) is exempted inside the gate, ahead of the session check. Verified against the
+  production entry point with the gate ON: the four icons 200, `/logo.png` and pages still 302.
+- ⚠️⚠️ **THE ICON FILES ARE INVOCA'S OWN, COPIED, NOT TRACED.** `favicon.svg`, `favicon.ico`
+  and `apple-touch-icon.png` are byte-for-byte the three files `app.invoca.net/login` links from
+  its CDN (`d2jek438uk892n.cloudfront.net/assets/invoca/`). Three traced versions each got the
+  shape wrong (a white middle, then a near-square from the wordmark's bubble, then a near-miss
+  off a screenshot). If the real icon ever changes, re-copy from that page's `<link rel=icon>`.
+- ⚠️ **Chrome keeps a tab icon by URL**, so a changed icon needs a new `?v=N` on the links in
+  `index.html` or an open tab keeps the old one (it showed Vite's bolt after the fix landed).
+- **`src/data/pageTitle.ts` is the one map** (pure, so `audit:app` calls it for all 68 routes),
+  mounted once per router by `PageTitle` (signed-in app AND `ShareApp`), outside `<Routes>`.
+  `<Page> | Invoca`; third-party replicas name their own product ("Leads | Salesforce",
+  "Google Search"); a dashboard's tab is its own on-screen title from the profile. `SETS_OWN`
+  pages return null and title themselves (Preview Agent, the two static copies).
+- A NEW ROUTE NEEDS AN ENTRY, or `audit:app` fails naming it.
+
 ### Checking the live deploy from outside the gate: `GET /api/status`
 `curl -s https://invoca-demo-platform.onrender.com/api/status | python3 -m json.tool`
 
