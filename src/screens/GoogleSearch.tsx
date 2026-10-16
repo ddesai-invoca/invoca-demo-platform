@@ -1,3 +1,4 @@
+import { withArticle } from "../data/smsTemplate";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
@@ -260,6 +261,9 @@ interface Ad {
   brand: string; domain: string; url: string; title: string; body: string;
   prospect: boolean; sitelinks?: string[]; chips?: string[];
   visits?: string; rating?: string; phone?: string; href?: string;
+  /** Google's RCS chat row ("Chat with <brand> · On Messages" + a Message button), 10/15/2026.
+   *  The prospect's top ad only: a rival is an invented business with nobody to chat with. */
+  chat?: { name: string; href: string };
 }
 
 function Favicon({ ad }: { ad: Ad }) {
@@ -314,6 +318,26 @@ function AdBlock({ ad }: { ad: Ad }) {
       {ad.phone && (
         <div className="gs-ad-call">
           <Icon d={P.phone} size={14} /> Call {ad.phone}
+        </div>
+      )}
+
+      {/* ⚠️ The RCS chat row, asked for 10/15/2026 from a real Google result ("Chat with
+          Optimum · On Messages" + Message). On a phone that button opens an RCS conversation in
+          Messages; here it opens the RCS Preview Agent, which is that conversation. Placed
+          directly under the call line, as asked, and drawn as the first row of the hairline list
+          the sitelinks continue. */}
+      {ad.chat && (
+        <div className="gs-rcs-chat">
+          <span className="gs-rcs-chat-txt">
+            <span className="gs-rcs-chat-name">Chat with {ad.chat.name}</span>
+            <span className="gs-rcs-chat-sub">On Messages</span>
+          </span>
+          <a className="gs-rcs-msg" href={ad.chat.href} target="_blank" rel="noopener noreferrer">
+            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill="#8ab4f8" d="M12 3C6.48 3 2 6.92 2 11.75c0 2.47 1.18 4.7 3.08 6.29L4.4 21.3a.5.5 0 0 0 .72.55l3.9-2.02c.95.24 1.95.37 2.98.37 5.52 0 10-3.92 10-8.75S17.52 3 12 3z" />
+            </svg>
+            Message
+          </a>
         </div>
       )}
 
@@ -1548,7 +1572,7 @@ export function GoogleSearch() {
     brand: d.domain, domain: d.domain, url: `https://www.${d.domain}`,
     title: adTitle,
     body: `Local ${d.seg.toLowerCase()} covering ${d.others.slice(0, 2).join(" and ")}. `
-      + `Talk to a specialist and book a ${d.booking} at a time that suits you. `
+      + `Talk to a specialist and book ${withArticle(d.booking)} at a time that suits you. `
       + `Serving ${d.city}.`,
     prospect: true, phone, href, ...extra,
   });
@@ -1557,6 +1581,8 @@ export function GoogleSearch() {
     prospectAd({
       sitelinks: [d.hero, d.others[0] ?? `Book a ${profile.bookingTerm}`,
         `${profile.bookingTerm} Availability in ${d.shortCity}`],
+      /* Opens the RCS Preview Agent (`?wf=rcs`), which works for every prospect. */
+      chat: { name: profile.customerName, href: "/agent-studio/agent/preview?wf=rcs" },
     }),
     {
       brand: rivals[0].name, domain: rivalDomain(rivals[0].name),

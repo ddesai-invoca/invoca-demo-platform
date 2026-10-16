@@ -252,6 +252,15 @@ const RETIRED_ROOT = /^Are you a new or existing .+\?$/;
  * touches the original's (shared) Preview Agent greeting.
  */
 export const twoPathGreeting = (p: CustomerProfile): string =>
+  `Hi, this is ${p.customerName}'s AI assistant. Are you looking to book ${withArticle(p.bookingTerm.toLowerCase())}, or do you need help with one you already have?`;
+
+/** "an appointment", "a service appointment". The greeting read "book a appointment" for every
+ *  prospect whose booking term starts with a vowel (found 10/15/2026 on Orlando Health). */
+export const withArticle = (term: string): string => `${/^[aeiou]/i.test(term.trim()) ? "an" : "a"} ${term}`;
+
+/** The greeting as it was written before the article fix, so a copy that STORED it is still
+ *  recognised as the default (see `withRcsOpener`). */
+export const legacyTwoPathGreeting = (p: CustomerProfile): string =>
   `Hi, this is ${p.customerName}'s AI assistant. Are you looking to book a ${p.bookingTerm.toLowerCase()}, or do you need help with one you already have?`;
 
 /** The booking box's title, one definition for the tree and the repair. */

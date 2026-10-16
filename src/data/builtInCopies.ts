@@ -27,8 +27,11 @@ import { twoPathGreeting } from "./smsTemplate";
 const SHOW_FOR = ["aptive"];
 
 export interface BuiltInCopy {
-  slug: "voice-test" | "sms-test";
-  channel: "Voice" | "SMS";
+  slug: "voice-test" | "sms-test" | "rcs";
+  /** "RCS" is the SMS workflow delivered over RCS Business Messaging (10/15/2026): the same
+   *  template and agent as "SMS Test", with a Preview Agent that shows a verified brand header,
+   *  tappable suggested replies and appointment cards. See src/data/rcs.ts. */
+  channel: "Voice" | "SMS" | "RCS";
   /** The original's route segment, whose saved state the copy starts from. */
   source: "voice" | "sms";
   suffix: string;
@@ -37,7 +40,15 @@ export interface BuiltInCopy {
 const COPIES: BuiltInCopy[] = [
   { slug: "voice-test", channel: "Voice", source: "voice", suffix: "Voice Test" },
   { slug: "sms-test", channel: "SMS", source: "sms", suffix: "SMS Test" },
+  { slug: "rcs", channel: "RCS", source: "sms", suffix: "RCS" },
 ];
+
+/** A text channel (SMS or RCS) rather than voice. RCS IS the SMS workflow, so everything that
+ *  asks "is this the SMS template?" must say yes for it. */
+export const isTextCopy = (c: BuiltInCopy | undefined): boolean => !!c && c.channel !== "Voice";
+
+/** The RCS copy's slug, the one place the Preview Agent and Preview Workflow test for it. */
+export const isRcsSlug = (slug: string | null | undefined): boolean => slug === "rcs";
 
 export function builtInCopiesFor(p: CustomerProfile): BuiltInCopy[] {
   return SHOW_FOR.some((name) => isProspect(p, name)) ? COPIES : [];

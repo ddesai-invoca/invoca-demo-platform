@@ -32,6 +32,7 @@ import type { CustomerProfile, AgentConfigView } from "./schema";
 /* ⚠️ A prospect on a shared link must call the share-scoped twin: the signed-in
    route is behind the Google gate, and only the share path applies the daily caps. */
 import { apiPath } from "./shareMode";
+import { withRcsOpener } from "./rcs";
 
 /** Mirrors `SmsWorkflowFlow` in `workflowDrawers.ts`, declared here so the brain type is local. */
 export interface SmsFlowNodeShape {
@@ -92,6 +93,8 @@ export interface SmsBrain {
   /** The workflow IS the conversation rather than an addition to the generic sales flow.
    *  Set for the built-in copies ("SMS Test"), 10/13/2026; see `engine/chat.ts`. */
   workflowLeads?: boolean;
+  /** RCS Business Messaging presentation (the "RCS" copy only); see engine/chat.ts `rcsRules`. */
+  rcs?: boolean;
   /**
    * The extra workflow's ORDERED FLOW, appended to its own playbook.
    *
@@ -253,14 +256,15 @@ export function buildSmsBrain(
   workflow?: SmsWorkflowFlowShape | null,
   /** `workflowLeads`: the diagram governs the conversation (the built-in copies only).
    *  `greeting`: that copy's OWN opener, which wins over the shared Preview Agent greeting. */
-  opts: { workflowLeads?: boolean; greeting?: string; extraBranches?: unknown } = {},
+  opts: { workflowLeads?: boolean; greeting?: string; extraBranches?: unknown; rcs?: boolean } = {},
 ): SmsBrain {
-  return {
+  const brain: SmsBrain = {
     /* ⚠️ The built-in agent and its copies only: an extra workflow states its own flow. */
     ...(!wf && crmConnected(profile.id) ? { crmCalendar: crmPromptCalendar(profile) } : {}),
     ...(wf && opts.extraBranches ? { extraFlow: extraWorkflowFlowText(opts.extraBranches) } : {}),
     ...(workflow && !wf ? { workflow } : {}),
     ...(workflow && !wf && opts.workflowLeads ? { workflowLeads: true } : {}),
+    ...(!wf && opts.rcs ? { rcs: true } : {}),
     customSystem: wf?.systemPrompt,
     /* Precedence: an extra workflow's scripted line wins (it is the whole point of
        that workflow), then whatever the SE or the AI set, then the derived default.
@@ -324,6 +328,7 @@ export function buildSmsBrain(
       return steps?.length ? { steps: steps.map(String) } : {};
     })(),
   };
+  return opts.rcs ? withRcsOpener(brain, profile) : brain;
 }
 
 /** The scope key whose AI edits define the SMS agent's questions. Both previews

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useMemo } from "react";
+import { Fragment, useEffect, useRef, useState, useMemo } from "react";
 /* ⚠️ A prospect on a shared link must call the share-scoped twin: the signed-in
    route is behind the Google gate, and only the share path applies the daily caps. */
 import { apiPath } from "../data/shareMode";
@@ -11,7 +11,8 @@ import { buildSmsBrain, previewAgentBase, resolveGreeting, smsWorkflowScopePath,
 import { tollFreeNumber } from "../data/smsContactNumber";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
 import { effectiveSmsConfig, repairSalesShape, twoPathGreeting } from "../data/smsTemplate";
-import { builtInCopiesFor, copyPageBase, isCopySlug, workflowPath } from "../data/builtInCopies";
+import { builtInCopiesFor, copyPageBase, isCopySlug, isRcsSlug, workflowPath } from "../data/builtInCopies";
+import { parseRcs, rcsPlainText, cardReply, brandInitials, type RcsCard } from "../data/rcs";
 import { extraTree } from "../data/workflowChrome";
 import { builtInWorkflowBase } from "../data/workflowBase";
 import { QUESTIONS_PATH } from "../data/questionImport";
@@ -28,7 +29,9 @@ import { useQuoteCaptures } from "../data/QuoteCaptureContext";
    On close, the just-had chat is captured and prepended (via SmsCaptureContext)
    to the AI SMS Conversation Intelligence report — the demo's headline move. */
 
-interface Msg { role: "user" | "assistant"; content: string; }
+/** `picked`: an RCS reply the customer TAPPED rather than typed. iPhone draws those as a grey
+ *  "Selected Option" bubble, not a green one (measured off a recording, 10/15/2026). */
+interface Msg { role: "user" | "assistant"; content: string; picked?: boolean; }
 
 
 
@@ -275,7 +278,7 @@ function useBrain(wfSlug?: string | null, inPage = false) {
     if (!copyPath) return original;
     const copy = builtInCopiesFor(profile).find((c) => workflowPath(c.slug) === copyPath);
     const src = (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) as object | undefined) ?? original;
-    return copyPageBase(src, profile, `${profile.customerName} - ${copy?.suffix ?? "SMS Test"} workflow`, true);
+    return copyPageBase(src, profile, `${profile.customerName} - ${copy?.suffix ?? (isRcsSlug(wfSlug) ? "RCS" : "SMS Test")} workflow`, true);
   }, [wf, copyPath, profile, profileId, effectiveData]);
   /* ⚠️⚠️ ONLY ONCE THE PROFILE IS THE ONE THE KEY NAMES. While a fetched profile is still
      loading, `profile` is the seed default while `profileId` already names the real one, and
@@ -307,7 +310,7 @@ function useBrain(wfSlug?: string | null, inPage = false) {
     ? ((effectiveData(`${profileId}::${smsWorkflowScopePath(wf.slug)}`) as { branches?: unknown } | undefined)?.branches
         ?? extraTree(wf).branches)
     : undefined;
-  return buildSmsBrain(profile, ac, wf, wfAgent, flow, { workflowLeads: !!copyPath, greeting: copyGreeting, extraBranches });
+  return buildSmsBrain(profile, ac, wf, wfAgent, flow, { workflowLeads: !!copyPath, greeting: copyGreeting, extraBranches, rcs: isRcsSlug(wfSlug) });
 }
 
 /* mode "modal" = the in-app overlay (legacy); mode "page" = a standalone browser
@@ -352,6 +355,8 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
   const { profile } = useProfile();
   const { upsertCaptured, patchCaptured } = useSmsCapture();
   const brain = useBrain(wf, mode === "modal");
+  /* "Aptive - RCS" (10/15/2026): the same agent, shown as RCS Business Messaging. */
+  const rcs = isRcsSlug(wf);
   /* An LSA quote workflow's thread opens with the payload Google posted to the business —
      see `lsaLeadMessage`. Undefined for every other workflow and for the built-in agent, so
      nothing else's capture changes shape.
@@ -393,7 +398,7 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
         const res = await fetch(apiPath("/api/chat"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ brain, messages: history }),
+          body: JSON.stringify({ brain, messages: history.map(({ role, content }) => ({ role, content })) }),
         });
         const data = await res.json().catch(() => ({} as any));
         if (res.ok) return String(data.reply ?? "").replace(/\*\*|__|`/g, "") || "…";
@@ -480,15 +485,15 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
   /* ⚠️ EXTRACTED SO THE SCRIPT AND THE HUMAN TAKE THE SAME PATH. A second sender for the
      tour would be free to drift from this one, and the symptom would be a demo that behaves
      differently from the thing it is demonstrating. */
-  async function sendText(text: string, from = messages) {
-    const next = [...from, { role: "user" as const, content: text }];
+  async function sendText(text: string, from = messages, picked = false) {
+    const next: Msg[] = [...from, { role: "user" as const, content: text, ...(picked ? { picked: true } : {}) }];
     setMessages(next);
     setBusy(true);
     setError(null);
     try {
       const reply = await ask(next);
       setMessages([...next, { role: "assistant", content: reply }]);
-      return [...next, { role: "assistant" as const, content: reply }];
+      return [...next, { role: "assistant" as const, content: reply }] as Msg[];
     } catch (e: any) {
       setError(e?.message || "Couldn't send. Try again.");
       return next;
@@ -555,6 +560,7 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
   }, [autoSend, messages.length, busy]);
 
   const hasText = input.trim().length > 0;
+  const lastUser = messages.map((m) => m.role).lastIndexOf("user");
 
   /* Progressive capture: as soon as the SE has sent a message, upsert the
      conversation to the SMS report on EVERY turn (transcript appears live in the
@@ -565,7 +571,10 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
   useEffect(() => {
     if (!messages.some((m) => m.role === "user")) return;
     if (!baseRef.current) baseRef.current = newConvBase();
-    const conv = buildConversation(messages, baseRef.current, leadIn);
+    /* An RCS reply carries marker lines for its chips and cards; the report stores what the
+       customer READ, so a capture never shows "[chips: ...]". */
+    const readable = rcs ? messages.map((m) => (m.role === "assistant" ? { ...m, content: rcsPlainText(m.content) } : m)) : messages;
+    const conv = buildConversation(readable, baseRef.current, leadIn);
     upsertCaptured(profile.id, conv);
     onConversation?.(conv.id);
 
@@ -612,19 +621,77 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
 
             <div className="sms-header">
               <button className="sms-navbtn sms-back" aria-label="Back"><span className="material-icons">arrow_back_ios_new</span></button>
-              <div className="sms-contact">
-                <div className="sms-avatar"><span className="material-icons">person</span></div>
-                <div className="sms-namepill">{tollFreeNumber(profile.id)}<span className="material-icons">chevron_right</span></div>
-              </div>
+              {rcs ? (
+                /* RCS Business Messaging: a VERIFIED SENDER, so the thread shows the brand's name,
+                   logo and badge where SMS shows a bare number. No logo is stored on a profile, so
+                   the mark is the brand's initials in the platform green. */
+                <div className="sms-contact">
+                  <div className="rcs-avatar">{brandInitials(profile.customerName)}</div>
+                  <div className="sms-namepill rcs-namepill">{profile.customerName}<span className="material-icons">chevron_right</span></div>
+                </div>
+              ) : (
+                <div className="sms-contact">
+                  <div className="sms-avatar"><span className="material-icons">person</span></div>
+                  <div className="sms-namepill">{tollFreeNumber(profile.id)}<span className="material-icons">chevron_right</span></div>
+                </div>
+              )}
               <span className="sms-navspacer" aria-hidden="true" />
             </div>
 
             <div className="sms-thread" ref={scrollRef}>
-              <div className="sms-timestamp"><b>Today</b> {clockText(threadStart, true)}</div>
-              {messages.map((m, i) => (
-                <div key={i} className={"sms-bubble " + (m.role === "user" ? "out" : "in")}>{m.content}</div>
-              ))}
-              {/* No typing dots: that indicator is an iMessage feature, and this is SMS. */}
+              {rcs ? (
+                /* The recording's own label: the channel on one line, the time under it. */
+                <div className="sms-timestamp rcs-stamp">Text Message • RCS<br />Today {clockText(threadStart, true)}</div>
+              ) : (
+                <div className="sms-timestamp"><b>Today</b> {clockText(threadStart, true)}</div>
+              )}
+              {messages.map((m, i) => {
+                /* RCS shows "Delivered" under the latest message the customer sent. */
+                const delivered = rcs && m.role === "user" && i === lastUser
+                  ? <div className="rcs-delivered">Delivered</div> : null;
+                if (m.role === "user" && rcs && m.picked) {
+                  return (
+                    <Fragment key={i}>
+                      <div className="sms-bubble in rcs-picked"><b>{m.content}</b><span>Selected Option</span></div>
+                      {delivered}
+                    </Fragment>
+                  );
+                }
+                if (!rcs || m.role === "user") {
+                  return (
+                    <Fragment key={i}>
+                      <div className={"sms-bubble " + (m.role === "user" ? "out" : "in")}>{m.content}</div>
+                      {delivered}
+                    </Fragment>
+                  );
+                }
+                /* ⚠️⚠️ THE CHOICES ARE ONE PANEL UNDER THE MESSAGE, NOT PILLS (10/15/2026), matched
+                   to a screen recording of a real RCS business thread on iPhone: a grey panel the
+                   bubble's own colour, rows ~42pt with blue text and inset hairlines, the bubble's
+                   tail moved down onto the panel. It exists only while it is the latest message:
+                   once the customer answers, the panel goes and their pick appears as a grey
+                   "Selected Option" bubble. Offered times are rows in the same panel. */
+                const r = parseRcs(m.content);
+                const rows: { label: string; reply: string }[] = [
+                  ...r.chips.map((c) => ({ label: c, reply: c })),
+                  ...r.cards.map((c: RcsCard) => ({ label: c.subtitle ? `${c.title} · ${c.subtitle}` : c.title, reply: cardReply(c) })),
+                ];
+                const open = i === messages.length - 1 && rows.length > 0;
+                return (
+                  <div key={i} className="rcs-turn">
+                    {r.text && <div className={"sms-bubble in" + (open ? " rcs-notail" : "")}>{r.text}</div>}
+                    {open && (
+                      <div className="rcs-list" role="group" aria-label="Choose a reply">
+                        {rows.map((o) => (
+                          <button key={o.label} className="rcs-list-row" disabled={busy} onClick={() => sendText(o.reply, messages, true)}>{o.label}</button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
+              {/* No typing dots on SMS: that indicator is an iMessage feature. RCS has one. */}
+              {rcs && busy && <div className="sms-bubble in rcs-typing" aria-label="Typing"><i /><i /><i /></div>}
               {error && <div className="sms-error">{error}</div>}
             </div>
 
@@ -634,7 +701,7 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
                 <textarea
                   ref={inputRef}
                   className="sms-input"
-                  placeholder="Text Message · SMS"
+                  placeholder={rcs ? "Text Message • RCS" : "Text Message · SMS"}
                   value={input}
                   rows={1}
                   autoFocus

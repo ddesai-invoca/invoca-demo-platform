@@ -6,7 +6,7 @@ import { useAiAssistant } from "../data/AiAssistantContext";
 import { AiAssistantDrawer } from "../components/AiAssistantDrawer";
 import { PhonePreview } from "./PhonePreview";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
-import { builtInCopiesFor } from "../data/builtInCopies";
+import { builtInCopiesFor, isRcsSlug } from "../data/builtInCopies";
 import { CustomCrm } from "./CustomCrm";
 import { crmConnection, setCrmConnected } from "../data/customCrm";
 
@@ -41,7 +41,11 @@ export function SmsPreviewPage() {
   const [params] = useSearchParams();
   const wf = params.get("wf");
   const copy = builtInCopiesFor(profile).find((c) => c.slug === wf);
-  const label = copy ? `${profile.customerName} - ${copy.suffix}` : extraWfs.find((w) => w.slug === wf)?.label;
+  /* The Google Search ad's Message button opens `?wf=rcs` for EVERY prospect, while the
+     "<name> - RCS" workflow row is listed for Aptive only, so the title cannot rely on the copy. */
+  const label = copy ? `${profile.customerName} - ${copy.suffix}`
+    : isRcsSlug(wf) ? `${profile.customerName} - RCS`
+    : extraWfs.find((w) => w.slug === wf)?.label;
 
   /* The same key the rest of the app uses, so this page has its own edits and its
      own undo stack and can never touch another screen. */

@@ -546,6 +546,25 @@
   font: 400 18px/26px "Google Sans", Roboto, Arial, sans-serif; cursor: pointer;
 }
 .gs-sitelink svg { color: var(--gs-mut); flex: none; }
+/* Google's RCS chat row ("Chat with <brand> · On Messages" + Message), from a real result
+   screenshot (10/15/2026), not a capture: sized as one of the stacked sitelink rows it sits
+   above, so the two read as one hairline list. The button is the pill outline every other
+   action on this page uses. */
+.gs-rcs-chat {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  width: 600px; margin-top: 18px; padding: 10px 0; box-sizing: border-box;
+  border-top: 1px solid var(--gs-line); border-bottom: 1px solid var(--gs-line);
+}
+.gs-rcs-chat + .gs-sitelinks { margin-top: 0; border-top: 0; }
+.gs-rcs-chat-txt { display: flex; flex-direction: column; min-width: 0; }
+.gs-rcs-chat-name { font: 400 18px/26px "Google Sans", Roboto, Arial, sans-serif; color: var(--gs-fg); }
+.gs-rcs-chat-sub { font-size: 14px; line-height: 20px; color: var(--gs-2); }
+.gs-page a.gs-rcs-msg, .gs-page a.gs-rcs-msg:hover {
+  display: inline-flex; align-items: center; gap: 8px; flex: none; height: 40px; padding: 0 18px;
+  border: 1px solid var(--gs-line); border-radius: 9999px; color: var(--gs-act);
+  font: 500 16px/1 "Google Sans", Roboto, Arial, sans-serif; text-decoration: none;
+}
+.gs-page a.gs-rcs-msg:hover { background: var(--gs-pill); }
 /* Inline chips, the lower block's format. The capture prefixes each with a
    left-to-right mark, which is why they sit slightly apart. */
 .gs-chips { display: flex; flex-wrap: wrap; gap: 4px 10px; margin-top: 8px; }

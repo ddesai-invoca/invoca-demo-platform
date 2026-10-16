@@ -160,6 +160,12 @@ export interface ChatBrain {
    */
   workflowLeads?: boolean;
   /**
+   * RCS Business Messaging (10/15/2026), set only for the "RCS" copy of the SMS workflow. The
+   * reply stays plain text and ends with marker lines that the phone turns into tappable
+   * suggested replies and appointment cards; see `rcsRules` and src/data/rcs.ts.
+   */
+  rcs?: boolean;
+  /**
    * The Custom CRM's live calendar (10/15/2026), set only while that prospect's CRM is
    * connected. The CRM screen draws the SAME table, so every time the agent offers is a block
    * it can show. See src/data/customCrm.ts.
@@ -322,6 +328,24 @@ const NO_DASH_RULE =
   "NEVER use em dashes, en dashes, or a hyphen joining two clauses. " +
   "Use a comma, a full stop, or a new sentence instead. This matters: " +
   "dashes make the message read as machine-written.";
+
+/**
+ * RCS Business Messaging: the same conversation as SMS, delivered with suggested replies and
+ * rich cards. ⚠️ Worded without absolutes on purpose: the absolutes ledger in `audit:ai` asks
+ * every "never" in a prompt to be argued for, and these are formatting, not policy. Placed LAST
+ * in the prompt (after the options check), because the marker lines are the final thing the
+ * model writes and the last instruction is the one it follows most reliably.
+ */
+const rcsRules = (brand: string): string => [
+  `CHANNEL: RCS Business Messaging. The customer sees ${brand}'s verified name and logo, and can TAP a suggested reply instead of typing. Write the message text exactly as you would for SMS (plain text, 1-3 short sentences), then:`,
+  `- When the message asks the customer to choose, add ONE final line in exactly this form, naming the same choices your question names (2 to 4 chips, each 1 to 4 words, written as the customer's reply):`,
+  `  [chips: First choice | Second choice | Third choice]`,
+  `- When you offer appointment times, put each time on its own final line as a card instead of chips (up to 3 cards):`,
+  `  [card: Thursday, Oct 16 | 10:00 AM | Book this time]`,
+  `- A yes/no confirmation gets two chips, for example [chips: Yes, book it | Pick another time].`,
+  `- Questions for personal details (name, address, ZIP code, email, phone number, a code) get no chips: the customer types those.`,
+  `- Square brackets are reserved for these marker lines, and the marker lines come after all of the message text.`,
+].join("\n");
 
 const SMS_FORMAT_RULES = [
   "FORMAT (always): plain text only, no markdown, asterisks, bullets or headings.",
@@ -713,6 +737,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,
     brain.crmCalendar ? `\n${crmBlock(brain.crmCalendar)}` : ``,
     brain.workflowLeads && brain.workflow ? `\n${OPTIONS_CHECK}` : ``,
+    brain.rcs ? `\n${rcsRules(brain.customerName)}` : ``,
   ].join("\n");
 }
 

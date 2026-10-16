@@ -15,7 +15,7 @@ import { useLiveKitReady, preloadVoiceEngine } from "../data/liveKitVoice";
 import { WorkflowTree } from "../components/WorkflowTree";
 import { usePageData } from "../components/GeneratedTiles";
 import { useAiAssistant } from "../data/AiAssistantContext";
-import { builtInCopiesFor, copyPageBase, workflowPath } from "../data/builtInCopies";
+import { builtInCopiesFor, copyPageBase, isTextCopy, workflowPath } from "../data/builtInCopies";
 import { AgentWorkflowDetails } from "./AgentWorkflowDetails";
 import { bookingSlots } from "../data/voiceBooking";
 import { WorkflowNodeDrawer } from "../components/WorkflowNodeDrawer";
@@ -121,7 +121,7 @@ export function AgentWorkflow() {
   const { byId } = useAgentWorkflows(profile.id);
   const created = id ? byId(id) : undefined;
   const isSms = created ? created.channel === "SMS"
-    : extra ? extra.channel === "SMS" : copy ? copy.channel === "SMS" : (channel ?? "sms") !== "voice";
+    : extra ? extra.channel === "SMS" : copy ? isTextCopy(copy) : (channel ?? "sms") !== "voice";
   const channelLabel = created ? created.channel : extra ? extra.channel : isSms ? "SMS" : "Voice";
   const workflowName = created ? created.name
     : extra ? extra.label : copy ? `${profile.customerName} - ${copy.suffix}`

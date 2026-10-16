@@ -11564,6 +11564,60 @@ planting/removing a real token file, not by a live Google round trip.
   `JSON.stringify(id)` writes `"autonation"` with quotes, no profile matches, and the app
   silently falls back to Shady Blinds, so the test "passes" against the wrong prospect.
 
+## "Aptive - RCS": the SMS agent delivered as RCS Business Messaging (10/15/2026)
+
+Asked for: *"build an RCS version of the preview agent and in the workflow, Call it Aptive - RCS"*.
+A third built-in COPY beside Voice Test / SMS Test (`builtInCopies.ts`: slug `rcs`, channel
+`"RCS"`, source `sms`), so it is the SMS template with its own saved state, its own scope key
+and the copies' workflow-leads behaviour. `isTextCopy` is the one test for "SMS template":
+RCS must answer yes everywhere SMS does (`AgentWorkflow`'s `isSms`, `SMS_WORKFLOW_PATHS`).
+
+**What RCS adds, and only on that slug (`isRcsSlug`), MATCHED TO A SCREEN RECORDING of a real
+RCS business thread on iPhone (Optimum, 10/15/2026; measured in points off the 1206px frames):**
+- a rounded-square brand mark and a bold name pill instead of the 1-800 number (no badge: the
+  recording shows none), and "Text Message • RCS" over "Today <time>" as the thread stamp;
+- ⚠️⚠️ **choices are ONE grey PANEL attached under the agent's message, not pills**: the
+  incoming bubble's colour, ~40px rows of blue text, hairlines inset 14px, and the bubble's tail
+  moved down onto the panel. It exists only while that message is the latest. Offered TIMES are
+  rows in the same panel ("Saturday, Oct 17 · 9:00 AM"), not cards, because that is how the
+  recording presents every choice;
+- a TAPPED choice becomes a **grey right-hand bubble**, the choice in bold over "Selected
+  Option" (`Msg.picked`); a TYPED reply stays green. "Delivered" sits under the latest outgoing
+  message, and a three-dot typing bubble shows while the agent replies;
+- "Text Message • RCS" in the field.
+⚠️ `picked` is stripped before `/api/chat` (`history.map(({ role, content }) => ...)`), so the
+request shape is unchanged. The Preview Workflow DRAWER is the Invoca web chat widget, not an
+iPhone, so it keeps its own pill buttons.
+
+⚠️⚠️ **THE AGENT WRITES CHIPS AND CARDS AS MARKER LINES, AND `src/data/rcs.ts` IS THE ONE
+PARSER.** `brain.rcs` adds `rcsRules` (engine/chat.ts) LAST in the SMS prompt, asking for
+`[chips: A | B | C]` and `[card: day | time | Book this time]` after the message text. That keeps
+RCS on the same `/api/chat` path as SMS (no change to either server twin). The phone, the Preview
+Workflow drawer and the capture all go through `parseRcs` / `rcsPlainText`, so the conversation
+report never shows a raw marker. A reply with no markers is just text.
+⚠️ `rcsRules` avoids "never/do not" on purpose: they are formatting, not policy, and the absolutes
+ledger in `audit:ai` would otherwise ask each one to be argued for.
+⚠️ **The opener is a FIXED line that never reaches the model**, so `withRcsOpener` adds its two
+chips ("Book a <term>" / "Help with an existing one"), and ONLY to the default two-path greeting:
+a rewritten opener may ask something else, and chips answering a question it no longer asks
+would be worse than none.
+⚠️ The dev server caches `engine/chat.ts`; restart it after editing `rcsRules`.
+
+Verified on the live model, end to end: chips at every choice (pest type, home size), none on
+ZIP/name/phone/address/email, the two openings as cards, a tapped card booking the slot, a
+clean capture, the drawer showing the same chips, and the SMS / SMS Test previews unchanged.
+`audit:ai` has 5 RCS checks (two verified to fire).
+
+**The Google Search ad's "Chat with <prospect> · On Messages" row** (10/15/2026, from a real
+Google result) sits under the call line of the prospect's TOP ad only and its Message button opens
+`/agent-studio/agent/preview?wf=rcs` in a new tab. ⚠️ **SO `?wf=rcs` WORKS FOR EVERY PROSPECT**
+while the "<name> - RCS" workflow row is still listed for Aptive only: the Preview Agent derives
+its RCS title and base from the slug (`isRcsSlug`), not from the copy existing. Widening the
+listing is one entry in `SHOW_FOR`.
+⚠️ It found a pre-existing grammar bug: `twoPathGreeting` and the ad body said "book a
+appointment" for every vowel-initial booking term. `withArticle` fixes both; `legacyTwoPathGreeting`
+keeps a copy that STORED the old wording recognised as the default.
+
 ## ⚠️⚠️ STANDING RULE: EVERY SCREEN WORKS ON A PHONE AND A TABLET — "Mobile" (10/15/2026)
 
 Asked for: *"optimize the whole platform, every screen, every feature, every single thing … for

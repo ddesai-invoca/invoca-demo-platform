@@ -38,7 +38,7 @@ export function AgentStudioLayout({ children }: { children: ReactNode }) {
     { name: `${name} - SMS`, to: "/agent-studio/agent/workflow/sms", icon: "chat", status: "Live", warn: false, id: "" },
     /* The built-in copies ("Voice Test" / "SMS Test"), right under the pair they copy. */
     ...builtInCopiesFor(profile).map((c) => ({
-      name: `${name} - ${c.suffix}`, to: workflowPath(c.slug), icon: c.channel === "SMS" ? "chat" : "call",
+      name: `${name} - ${c.suffix}`, to: workflowPath(c.slug), icon: c.channel === "Voice" ? "call" : c.channel === "RCS" ? "forum" : "chat",
       status: "Live", warn: false, id: "",
     })),
     // per-prospect extras (Reyes Law's SMS nurture agent) — keep their own label

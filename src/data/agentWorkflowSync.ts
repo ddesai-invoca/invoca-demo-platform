@@ -23,7 +23,7 @@
    ============================================================================= */
 
 export const PREVIEW_PATH = "/agent-studio/agent/preview";
-export const SMS_WORKFLOW_PATHS = ["/agent-studio/agent/workflow/sms", "/agent-studio/agent/workflow/sms-test"];
+export const SMS_WORKFLOW_PATHS = ["/agent-studio/agent/workflow/sms", "/agent-studio/agent/workflow/sms-test", "/agent-studio/agent/workflow/rcs"];
 export const VOICE_WORKFLOW_PATHS = ["/agent-studio/agent/workflow/voice", "/agent-studio/agent/workflow/voice-test"];
 
 import { GREETING_RULE_PREFIX } from "./voiceAgentSpec";

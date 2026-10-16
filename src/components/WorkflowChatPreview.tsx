@@ -5,7 +5,8 @@ import { buildSmsBrain, askSmsAgent, resolveGreeting, previewAgentBase, smsWorkf
 import { extraTree } from "../data/workflowChrome";
 import { smsWorkflowFlow } from "../data/workflowDrawers";
 import { effectiveSmsConfig, repairSalesShape, twoPathGreeting } from "../data/smsTemplate";
-import { isCopySlug, workflowPath } from "../data/builtInCopies";
+import { isCopySlug, isRcsSlug, workflowPath } from "../data/builtInCopies";
+import { parseRcs, cardReply } from "../data/rcs";
 import { builtInWorkflowBase } from "../data/workflowBase";
 import { QUESTIONS_PATH } from "../data/questionImport";
 import type { AgentConfigView } from "../data/schema";
@@ -161,6 +162,7 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
           customSystem: undefined, playbook: undefined, steps: undefined, workflow: undefined }
       : buildSmsBrain(profile, agentConfig, wf, wfAgent, flow, {
           workflowLeads: !!copyPath,
+          rcs: isRcsSlug(wfSlug),
           greeting: copyPath ? (String((wfTree?.sms as { greeting?: string } | undefined)?.greeting ?? "").trim() || twoPathGreeting(profile)) : undefined,
           /* An extra workflow's diagram reaches its agent, the same expression Preview Agent uses. */
           extraBranches: wf
@@ -168,7 +170,7 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
                 ?? extraTree(wf).branches)
             : undefined,
         })),
-    [minimal, profile, agentConfig, wf, wfAgent, flow, effectiveData, profileId],
+    [minimal, profile, agentConfig, wf, wfAgent, flow, effectiveData, profileId, wfSlug],
   );
 
   const [messages, setMessages] = useState<Msg[]>([]);
@@ -229,10 +231,13 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages, busy]);
 
-  async function send() {
-    const text = input.trim();
+  /* "Aptive - RCS": the drawer previews the same RCS conversation as the phone, so its replies
+     carry the same suggested replies and cards, drawn in this widget's own style. */
+  const rcs = isRcsSlug(wfSlug);
+  async function send(typed?: string) {
+    const text = (typed ?? input).trim();
     if (!text || busy) return;
-    setInput("");
+    if (typed === undefined) setInput("");
     setError(null);
     const next: Msg[] = [...messages, { role: "user", content: text }];
     setMessages(next);
@@ -293,12 +298,33 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
       </div>
 
       <div className="wcp-view" ref={scrollRef}>
-        {messages.map((m, i) => m.role === "assistant" ? (
-          <div className="wcp-row wcp-row-host" key={i}>
-            <BotAvatar />
-            <span className="wcp-bubble wcp-host">{m.content}</span>
-          </div>
-        ) : (
+        {messages.map((m, i) => m.role === "assistant" ? (() => {
+          const r = rcs ? parseRcs(m.content) : null;
+          const latest = i === messages.length - 1;
+          return (
+            <div key={i}>
+              <div className="wcp-row wcp-row-host">
+                <BotAvatar />
+                <span className="wcp-bubble wcp-host">{r ? r.text : m.content}</span>
+              </div>
+              {r && r.cards.length > 0 && (
+                <div className="wcp-rcs-cards">
+                  {r.cards.map((c, j) => (
+                    <div key={j} className="wcp-rcs-card">
+                      <b>{c.title}</b>{c.subtitle && <span>{c.subtitle}</span>}
+                      <button disabled={!latest || busy} onClick={() => void send(cardReply(c))}>{c.action}</button>
+                    </div>
+                  ))}
+                </div>
+              )}
+              {r && latest && r.chips.length > 0 && (
+                <div className="wcp-rcs-chips">
+                  {r.chips.map((c) => <button key={c} disabled={busy} onClick={() => void send(c)}>{c}</button>)}
+                </div>
+              )}
+            </div>
+          );
+        })() : (
           <div className="wcp-row wcp-row-guest" key={i}>
             <span className="wcp-bubble wcp-guest">{m.content}</span>
           </div>

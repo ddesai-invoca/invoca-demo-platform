@@ -39,7 +39,8 @@ import { interactionLabels } from "../src/data/aiAgentLabels.ts";
 import { withoutReminderPromise, withoutReminderPromises } from "../src/data/agentDefaults.ts";
 import { effectiveSmsConfig } from "../src/data/smsTemplate.ts";
 import { demoWorkflowsFor, buildDemoWorkflows } from "../src/data/demoWorkflows.ts";
-import { builtInCopiesFor } from "../src/data/builtInCopies.ts";
+import { builtInCopiesFor, isTextCopy } from "../src/data/builtInCopies.ts";
+import { parseRcs, withRcsOpener } from "../src/data/rcs.ts";
 import { extraDrawerFor, signalOptions } from "../src/data/workflowDrawers.ts";
 
 const SCREENS = "src/screens";
@@ -3008,14 +3009,41 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
   /* "Voice Test" / "SMS Test" (10/13/2026): copies of the BUILT-IN pair, not extra workflows. */
   {
     const copies = aptive ? builtInCopiesFor(aptive) : [];
-    copies.map((c) => c.slug).join(",") === "voice-test,sms-test"
+    copies.map((c) => c.slug).join(",") === "voice-test,sms-test,rcs"
     && everyProfile.filter((p) => !/^aptive$/i.test(p.customerName.trim())).every((p) => builtInCopiesFor(p).length === 0)
-      ? ok("Aptive gets Voice Test and SMS Test, and nobody else does")
+      ? ok("Aptive gets Voice Test, SMS Test and RCS, and nobody else does")
       : bad("the built-in copies are missing for Aptive or leak to other prospects");
     const page = readCode("src/screens/AgentWorkflow.tsx");
-    /copy \? copy\.channel === "SMS"/.test(page) && /readScope\(`\$\{profileId\}::\$\{workflowPath\(copy\.source\)\}`\)/.test(page)
+    /* Re-aimed 10/15/2026: RCS is the SMS template too, so the test is "not voice". */
+    /copy \? isTextCopy\(copy\)/.test(page) && isTextCopy(copies.find((c) => c.slug === "rcs")) && !isTextCopy(copies.find((c) => c.slug === "voice-test")) && /readScope\(`\$\{profileId\}::\$\{workflowPath\(copy\.source\)\}`\)/.test(page)
       ? ok("a copy picks its channel from itself (voice-test is not SMS) and starts from the original's saved state")
       : bad("a copy is mis-channelled or does not start from the original");
+    /* "Aptive - RCS" (10/15/2026): the same agent, delivered as RCS. Built, not grepped. */
+    {
+      const ap = aptive!;
+      const ac = ap.reports.agentConfig!;
+      const rcsBrain = buildSmsBrain(ap, ac, undefined, null, null, { workflowLeads: true, greeting: twoPathGreeting(ap), rcs: true }) as { rcs?: boolean; openingMessage?: string };
+      const smsBrain = buildSmsBrain(ap, ac, undefined, null, null, { workflowLeads: true, greeting: twoPathGreeting(ap) }) as { rcs?: boolean; openingMessage?: string };
+      const rcsPrompt = smsSystemPromptForAudit(rcsBrain as never);
+      const smsPrompt = smsSystemPromptForAudit(smsBrain as never);
+      /\[chips:/.test(rcsPrompt) && /\[card:/.test(rcsPrompt) && !/\[chips:|RCS Business Messaging/.test(smsPrompt)
+        ? ok("the RCS brain tells the agent to send chips and cards, and the SMS brain is untouched")
+        : bad("RCS formatting is missing from the RCS prompt or leaking into SMS");
+      const p1 = parseRcs("Which suits you?\n[chips: Plan A | Plan B | Something else]");
+      const p2 = parseRcs("Two openings. [card: Thu, Oct 16 | 10:00 AM | Book this time]\n[card: Fri, Oct 17 | 1:00 PM]");
+      p1.text === "Which suits you?" && p1.chips.length === 3 && p2.cards.length === 2 && p2.cards[1].action === "Book this time"
+        && !/\[/.test(p2.text) && parseRcs("plain text").chips.length === 0
+        ? ok("the RCS parser strips every marker, keeps the text and reads chips and cards")
+        : bad("parseRcs leaves a marker in the text or misreads chips/cards");
+      /\[chips:/.test(rcsBrain.openingMessage ?? "") && !/\[chips:/.test(smsBrain.openingMessage ?? "")
+        && !/\[chips:/.test((withRcsOpener({ openingMessage: "Hi, how can we help?" }, ap).openingMessage) ?? "")
+        ? ok("the RCS default opener offers both paths as chips; a rewritten opener gets none")
+        : bad("the RCS opener's chips are missing, leak to SMS, or answer a question a rewritten opener no longer asks");
+      const phone = readCode("src/screens/PhonePreview.tsx");
+      /rcsPlainText\(m\.content\)/.test(phone)
+        ? ok("an RCS conversation is captured to the report as readable text, without marker lines")
+        : bad("the RCS capture would store raw [chips:] markers in the conversation report");
+    }
     /\(extra \|\| copy\) && !isSms/.test(page)
       ? ok("Voice Test's call reads its own diagram, not the original's")
       : bad("Voice Test's call would run the original voice agent");
