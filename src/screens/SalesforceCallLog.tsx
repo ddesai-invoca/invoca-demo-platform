@@ -1,5 +1,8 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 import { salesforceCallLog } from "../data/salesforceCallLog";
@@ -46,10 +49,14 @@ function IconBtn({ icon, caret, grey, first, last }:
 
 export function SalesforceCallLog() {
   const { profile } = useProfile();
-  const view = salesforceCallLog(profile);
+  /* Registered as page data (10/16/2026) so Ask AI can change anything on this screen; the
+     derivation is the default and an edit overlays it. */
+  const derived = useMemo(() => salesforceCallLog(profile), [profile]);
+  const view = usePageData(derived);
 
   return (
     <div className="sfh-root">
+      <StandaloneAi />
       <SfGlobalHeader />
       <SfContextBar active="Invoca Call Log" />
 

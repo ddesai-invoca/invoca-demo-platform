@@ -25,6 +25,7 @@
    ============================================================================= */
 
 import type { CustomerProfile, SmsConversation } from "./schema";
+import { resolvePlace, neutralStreet } from "./voiceAiArtifacts";
 
 /** One day of the calendar, in the viewer's local time. */
 export interface CrmDay {
@@ -286,6 +287,20 @@ export function crmStateFrom(conv: Pick<SmsConversation, "id" | "transcript"> | 
       if (name.length >= 2) st.lead.name = titleCase(name);
     }
     if (ask === "address" && /\d/.test(text) && !email) st.lead.address = titleCase(text.replace(/[.\s]+$/, ""));
+    /* VOLUNTEERED DETAILS (10/19/2026). The rules above only read an answer to the question just
+       asked, so "Hi, this is Sarah Mitchell" or a phone number mid-sentence never reached the
+       lead, and the Pre-Call Intelligence rows could not confirm against it. A name is taken only
+       from an explicit introduction in Capitalised words, so "I'm looking for…" is not a name. */
+    if (!st.lead.phone) {
+      const ph = text.match(/(?:\+?1[\s.-]?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\b/);
+      if (ph) { const d = ph[0].replace(/\D/g, "").slice(-10); st.lead.phone = `(${d.slice(0, 3)}) ${d.slice(3, 6)}-${d.slice(6)}`; }
+    }
+    if (!st.lead.name) {
+      const intro = text.match(/\b(?:my name is|this is|i'?m|it'?s)\s+([A-Z][a-z'-]+(?:\s+[A-Z][a-z'-]+){0,2})/i);
+      const lead = text.match(/^([A-Z][a-z'-]+\s+[A-Z][a-z'-]+)\s*,/);
+      const nm = (intro && /^[A-Z]/.test(intro[1]) ? intro[1] : null) ?? (lead && st.lead.phone ? lead[1] : null);
+      if (nm && !/^(Aptive|The|A|An)\b/.test(nm)) st.lead.name = titleCase(nm);
+    }
     if (st.zip) st.lead.zip = st.zip;
 
     /* Picking one of the openings just offered. */
@@ -381,3 +396,94 @@ export function crmDetails(customerText: string, signalNames: string[], categori
   if (/\b(kids|children|toddlers?|baby)\b/i.test(text)) add("Kids at home");
   return out.slice(0, max);
 }
+
+/* =============================================================================
+   PRE-CALL INTELLIGENCE — what Invoca already knows before the first text (10/19/2026)
+   -----------------------------------------------------------------------------
+   Asked for: *"add fictitious presence or pre-call intelligence information on that column …
+   Before they even get here, we already have presence information about this customer, and then
+   we're going to enhance it even further as they're having this SMS conversation."*
+
+   ⚠️ IT IS THE SAME CUSTOMER THE REST OF THE DEMO ALREADY KNOWS, not a third invented one. The
+   Preview Agent greets by `voiceScreenpop.callerName` (resolveGreeting), the Voice/SMS Screen Pop
+   artifacts print that person's search, pages and products, and the Salesforce lead carries their
+   attribution; this reads all of it from those same slices, so the CRM, the screen pop and the
+   lead agree. Only the visit count and the carrier are hashed (deterministic per prospect).
+   ============================================================================= */
+export interface CrmPreCall {
+  name: string; phone: string; email: string; street: string; zip: string; location: string;
+  search: string; landingPage: string; journey: string; interest: string;
+  source: string; campaign: string; value: string; intent: string; visits: string; line: string;
+}
+
+export function crmPreCall(profile: CustomerProfile, attribution?: { marketingSource?: string; marketingMedium?: string; marketingCampaign?: string }, serviceCity?: string): CrmPreCall | null {
+  const seeded = profile.reports.voiceScreenpop ?? profile.reports.smsScreenpop;
+  if (!seeded?.callerName) return null;
+  /* ⚠️ THE CUSTOMER LIVES WHERE THE CRM SERVES. The CRM's header names its service area (the
+     prospect's own location), and a pre-call address in another city would read as out of area
+     beside "Service area: Dallas". Re-skinned with the same table and street rule the Screen Pop
+     artifacts use; an unknown city leaves the seeded address alone rather than half-moving it. */
+  const place = serviceCity && seeded.city?.trim().toLowerCase() !== serviceCity.trim().toLowerCase() ? resolvePlace(serviceCity) : null;
+  const vs = place ? {
+    ...seeded, city: place.city, state: place.state, zip: place.zip,
+    street: neutralStreet(seeded.street ?? "", place.zip),
+    callerPhone: (seeded.callerPhone ?? "").replace(/\(\d{3}\)/, `(${place.area})`),
+  } : seeded;
+  /* The seeded search, campaign and pages can name the old city ("…near Denver Colorado"), so
+     they move with it, state name and all. */
+  const moveCity = (t: string) => {
+    if (!place || !seeded.city || !t) return t;
+    const oldState = STATE_NAMES[(seeded.state ?? "").toUpperCase()] ?? "";
+    const newState = STATE_NAMES[place.state.toUpperCase()] ?? place.state;
+    let out = t.replace(new RegExp(`\\b${seeded.city}(,?\\s+${oldState || "$^"})?\\b`, "gi"),
+      (_m, st) => (st ? `${place.city}${st.startsWith(",") ? "," : ""} ${newState}` : place.city));
+    if (oldState) out = out.replace(new RegExp(`\\b${oldState}\\b`, "g"), newState);
+    return out;
+  };
+  const h = hash(`crm-precall:${profile.id}`);
+  const visits = 2 + (h % 4);
+  const carrier = ["Verizon", "AT&T", "T-Mobile"][h % 3];
+  const src = [attribution?.marketingSource, attribution?.marketingMedium].filter(Boolean).join(" · ");
+  return {
+    name: vs.callerName.trim(),
+    phone: vs.callerPhone ?? "",
+    email: vs.email ?? "",
+    street: [vs.street, vs.city].filter(Boolean).join(", "),
+    zip: vs.zip ?? "",
+    location: [vs.city, [vs.state, vs.zip].filter(Boolean).join(" ")].filter(Boolean).join(", "),
+    search: moveCity(vs.googleSearch ?? ""),
+    landingPage: vs.callingWebpage ?? "",
+    journey: moveCity((vs.digitalJourney ?? "").replace(/\s*›\s*/g, " › ")),
+    interest: vs.products ?? "",
+    source: src,
+    campaign: moveCity(attribution?.marketingCampaign || vs.campaign || ""),
+    value: vs.estimatedValue ?? "",
+    intent: vs.tagBlue ?? "",
+    visits: `${visits} site visits in the last 7 days`,
+    line: `Mobile · ${carrier}`,
+  };
+}
+
+/** How a detail the customer gave in the chat relates to what was known before it. */
+export function precallMatch(field: "name" | "phone" | "email" | "address" | "zip", pre: string, chat: string): "confirmed" | "updated" {
+  const norm = (s: string) => s.toLowerCase().replace(/[^a-z0-9@.]/g, "");
+  if (field === "phone") return pre.replace(/\D/g, "").slice(-10) === chat.replace(/\D/g, "").slice(-10) ? "confirmed" : "updated";
+  if (field === "name") {
+    const first = (s: string) => norm(s.split(/\s+/)[0] ?? "");
+    return first(pre) && first(pre) === first(chat) ? "confirmed" : "updated";
+  }
+  if (field === "address") return norm(pre).startsWith(norm(chat).slice(0, 8)) || norm(chat).startsWith(norm(pre).slice(0, 8)) ? "confirmed" : "updated";
+  if (field === "zip") return (pre.match(/\d{5}/)?.[0] ?? "") === (chat.match(/\d{5}/)?.[0] ?? "-") ? "confirmed" : "updated";
+  return norm(pre) === norm(chat) ? "confirmed" : "updated";
+}
+
+const STATE_NAMES: Record<string, string> = {
+  AL: "Alabama", AK: "Alaska", AZ: "Arizona", AR: "Arkansas", CA: "California", CO: "Colorado", CT: "Connecticut",
+  DE: "Delaware", DC: "Washington DC", FL: "Florida", GA: "Georgia", HI: "Hawaii", ID: "Idaho", IL: "Illinois",
+  IN: "Indiana", IA: "Iowa", KS: "Kansas", KY: "Kentucky", LA: "Louisiana", ME: "Maine", MD: "Maryland",
+  MA: "Massachusetts", MI: "Michigan", MN: "Minnesota", MS: "Mississippi", MO: "Missouri", MT: "Montana",
+  NE: "Nebraska", NV: "Nevada", NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York",
+  NC: "North Carolina", ND: "North Dakota", OH: "Ohio", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania",
+  RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota", TN: "Tennessee", TX: "Texas", UT: "Utah",
+  VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming",
+};

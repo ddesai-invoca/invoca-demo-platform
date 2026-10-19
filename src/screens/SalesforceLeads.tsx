@@ -1,5 +1,8 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
@@ -79,10 +82,15 @@ export function SalesforceLeads() {
   /* ⚠️ AND A QUOTE REQUEST SUBMITTED FROM THE GOOGLE LSA UNIT DOES THE SAME. Both live
      sources are threaded in, or the list resolves without the row the SE just created. */
   const quotes = useQuoteCaptures().capturedFor(profileId);
-  const view = salesforceLeads(profile, voiceCalls, quotes);
+  /* Registered as page data (10/16/2026) so Ask AI can change anything on this screen; the
+     derivation is the default and an edit overlays it. */
+  const derived = useMemo(() => salesforceLeads(profile, voiceCalls, quotes), [profile, voiceCalls, quotes]);
+  /* `live`: a booked call or a quote adds the top row AFTER an edit too (see liveMerge.ts). */
+  const view = usePageData(derived, { live: true });
 
   return (
     <div className="sfh-root">
+      <StandaloneAi />
       <SfGlobalHeader />
       <SfContextBar active="Leads" />
 

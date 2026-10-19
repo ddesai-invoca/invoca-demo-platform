@@ -66,6 +66,14 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-10-19",
+    title: "Pre-call intelligence in the Custom CRM, and Ask AI that edits anything",
+    changes: [
+      n("The Custom CRM's New Lead panel opens with Pre-Call Intelligence: who the customer is, where they are, what they searched, the pages they viewed and the campaign they came from, all before the first text. As they text, each detail is marked Confirmed or Updated."),
+      i("Ask AI can now add and remove items anywhere it edits, such as signals, transcript lines, leads and recommendations, and asks one short question when a request could mean two things. It now also works on the Salesforce screens and Google Search, and a lead or conversation captured after an edit still appears."),
+    ],
+  },
+  {
     date: "2026-10-15",
     title: "The platform works on a phone and a tablet, and a live Custom CRM",
     changes: [

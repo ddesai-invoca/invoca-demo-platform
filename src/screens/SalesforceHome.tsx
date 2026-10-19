@@ -1,4 +1,7 @@
+import { useMemo } from "react";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 import { newestCallLogName } from "../data/salesforceCallLog";
@@ -46,6 +49,7 @@ import { newestCallLogName } from "../data/salesforceCallLog";
    ============================================================================= */
 
 type Tone = "open" | "won" | "lost" | "none";
+type Seg = { tone: Tone; n: number };
 
 /* One ring. A single tone draws the real page's `<circle r=72>` with a 6px stroke; two or
    more draw filled arcs (outer r=75, inner r=69), which is exactly how Plan My Accounts is
@@ -162,16 +166,42 @@ export function SalesforceHome() {
      that object's numbering, and the row is genuinely the newest record in the list
      the Invoca Call Log tab shows. */
   const callLogName = newestCallLogName(profile);
-  const recents = [
+  const recentsBase = [
     { kind: "lead" as const, file: "lead", label: caller },
     { kind: "lead" as const, file: "lead", label: second },
     { kind: "call" as const, file: "invoca-call-log", label: callLogName },
     { kind: "account" as const, file: "account", label: `${profile.customerName} ${profile.bookingTerm}` },
     { kind: "contact" as const, file: "contact", label: caller },
   ];
+  /* ⚠️ EVERYTHING THIS PAGE SHOWS IS REGISTERED DATA (10/16/2026), the standing rule that Ask AI
+     may change any data on any page. The org is empty in the capture ($0 pipeline, 0 contacts),
+     and those values stay the defaults; an SE who wants a fuller pipeline asks for one. */
+  const base = useMemo(() => ({
+    title: "Seller Home",
+    greeting: "Good evening, Bill. Let\u2019s get selling!",
+    cards: [
+      { title: "Close Deals", subtitle: "Opportunities owned by me and closing this quarter", action: "View Opportunities",
+        value: "$0", label: "Total Pipeline", segments: [] as Seg[],
+        legend: [{ tone: "open" as Tone, text: "$0 Open" }, { tone: "won" as Tone, text: "$0 Won" }, { tone: "lost" as Tone, text: "$0 Lost" }] },
+      { title: "Plan My Accounts", subtitle: "Accounts owned by me", action: "View Accounts",
+        value: "4", label: "Accounts", segments: [{ tone: "won" as Tone, n: 1 }, { tone: "lost" as Tone, n: 3 }],
+        legend: [{ tone: "open" as Tone, text: "0 Upcoming Activity" }, { tone: "won" as Tone, text: "1 Past Activity" }, { tone: "lost" as Tone, text: "3 No Activity" }] },
+      { title: "Grow Relationships", subtitle: "Contacts owned by me and created in the last 90 days", action: "View Contacts",
+        value: "0", label: "Contacts", segments: [] as Seg[],
+        legend: [{ tone: "open" as Tone, text: "0 Upcoming Activity" }, { tone: "won" as Tone, text: "0 Past Activity" }, { tone: "lost" as Tone, text: "0 No Activity" }] },
+      { title: "Build Pipeline", subtitle: "Leads owned by me and created in the last 30 days", action: "View Leads",
+        value: "5", label: "Leads", segments: [{ tone: "lost" as Tone, n: 5 }],
+        legend: [{ tone: "open" as Tone, text: "0 Upcoming Activity" }, { tone: "won" as Tone, text: "0 Past Activity" }, { tone: "lost" as Tone, text: "5 No Activity" }] },
+    ],
+    recents: recentsBase,
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }), [caller, second, callLogName, profile.customerName, profile.bookingTerm]);
+  const d = usePageData(base);
+  const recents = d.recents;
 
   return (
     <div className="sfh-root">
+      <StandaloneAi />
       <SfGlobalHeader />
 
       <SfContextBar active="Home" />
@@ -181,56 +211,18 @@ export function SalesforceHome() {
           <h1 className="sfh-h1">Seller Home</h1>
           {/* The greeting is a 13px span sharing the h1's own 56px line box, so it sits on
               the title's baseline rather than in a band of its own. */}
-          <p className="sfh-greet">Good evening, Bill. Let&rsquo;s get selling!</p>
+          <p className="sfh-greet">{d.greeting}</p>
         </div>
 
         <div className="sfh-grid">
-          <Card title="Close Deals" subtitle="Opportunities owned by me and closing this quarter"
-            action={<Btn>View Opportunities</Btn>}>
-            <Ring value="$0" label="Total Pipeline" />
-            <Legend rows={[
-              { tone: "open", text: "$0 Open" },
-              { tone: "won", text: "$0 Won" },
-              { tone: "lost", text: "$0 Lost" },
-            ]} />
-          </Card>
-
-          {/* ⚠️ THE ONLY SEGMENTED RING ON THE PAGE: 4 accounts, 1 with past activity and 3
-              with none, drawn as a quarter of #0D9DDA and three quarters of #FE5C4C. */}
-          <Card title="Plan My Accounts" subtitle="Accounts owned by me"
-            action={<Btn>View Accounts</Btn>}>
-            <Ring value="4" label="Accounts"
-              segments={[{ tone: "won", n: 1 }, { tone: "lost", n: 3 }]} />
-            <Legend rows={[
-              { tone: "open", text: "0 Upcoming Activity" },
-              { tone: "won", text: "1 Past Activity" },
-              { tone: "lost", text: "3 No Activity" },
-            ]} />
-          </Card>
-
-          <Card title="Grow Relationships"
-            subtitle="Contacts owned by me and created in the last 90 days"
-            action={<Btn>View Contacts</Btn>}>
-            <Ring value="0" label="Contacts" />
-            <Legend rows={[
-              { tone: "open", text: "0 Upcoming Activity" },
-              { tone: "won", text: "0 Past Activity" },
-              { tone: "lost", text: "0 No Activity" },
-            ]} />
-          </Card>
-
-          {/* ⚠️ A FULL CORAL RING AND A THREE-ROW LEGEND. The older capture showed a lone grey
-              dot beside a warning glyph here; this org has 5 leads, all with no activity, so
-              the ring is entirely #FE5C4C — measured as a single `<circle>`, not arcs. */}
-          <Card title="Build Pipeline" subtitle="Leads owned by me and created in the last 30 days"
-            action={<Btn>View Leads</Btn>}>
-            <Ring value="5" label="Leads" segments={[{ tone: "lost", n: 5 }]} />
-            <Legend rows={[
-              { tone: "open", text: "0 Upcoming Activity" },
-              { tone: "won", text: "0 Past Activity" },
-              { tone: "lost", text: "5 No Activity" },
-            ]} />
-          </Card>
+          {/* The four ring cards are DATA now (10/16/2026), so Ask AI can change any figure,
+              label or legend row. The capture's values are the defaults, in its order. */}
+          {d.cards.map((c) => (
+            <Card key={c.title} title={c.title} subtitle={c.subtitle} action={<Btn>{c.action}</Btn>}>
+              <Ring value={c.value} label={c.label} segments={c.segments?.length ? c.segments : undefined} />
+              <Legend rows={c.legend} />
+            </Card>
+          ))}
 
           {/* ⚠️ THE FOUR GOAL CIRCLES ARE ONE ILLUSTRATION, 127 x 126, not four DOM circles.
               The first two passes hand-built them out of spans, which is why their size,

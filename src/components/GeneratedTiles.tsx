@@ -44,6 +44,9 @@ export interface PageDataOptions {
   /* Register the base only, without becoming the ACTIVE scope, so a component living inside
      another page does not repoint that page's Ask AI at itself. Opt-in. */
   passive?: boolean;
+  /* The base is fed by live captures (a lead from the call just made). Edits are then merged
+     over the current base instead of freezing it; see src/data/liveMerge.ts. */
+  live?: boolean;
 }
 export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { pathname } = useLocation();
@@ -56,13 +59,19 @@ export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const greetingWins = opts?.greetingWins;
   const linkKey = opts?.linkKey;
   const linkAs = opts?.linkAs;
+  const live = !!opts?.live;
   useEffect(() => {
     if (base == null) return;
-    if (passive) { registerBase(key, base); return; }
-    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback, greetingWins, linkKey, linkAs });
-  }, [key, base, passive, profile.customerName, registerScope, registerBase, questionPath, greetingFallback, greetingWins, linkKey, linkAs]);
+    if (passive) { registerBase(key, base, live); return; }
+    registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback, greetingWins, linkKey, linkAs, live });
+  }, [key, base, passive, live, profile.customerName, registerScope, registerBase, questionPath, greetingFallback, greetingWins, linkKey, linkAs]);
   const eff = effectiveData(key);
-  return (eff ?? base) as T;
+  /* ⚠️ FILL FROM THIS PAGE'S OWN BASE. Another writer can register a smaller base under the same
+     key first (the Book online link registers `{ bookingUrl, thankYouUrl }` under the Google
+     Search key), and until this page's own registration lands the store holds only that, so the
+     page drew `undefined` lists and crashed. A field the effective value lacks comes from here. */
+  const isObj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === "object" && !Array.isArray(v);
+  return (isObj(eff) && isObj(base) ? { ...base, ...eff } : eff ?? base) as T;
 }
 
 /* usePageData is the SAME hook under an honest name. Nothing in it is

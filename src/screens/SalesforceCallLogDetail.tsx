@@ -1,5 +1,8 @@
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
 import { salesforceCallLogRecord, type SfField, type SfSignalRow } from "../data/salesforceCallLogRecord";
@@ -104,12 +107,16 @@ function SignalRow({ s }: { s: SfSignalRow }) {
 export function SalesforceCallLogDetail() {
   const { profile } = useProfile();
   const { name = "" } = useParams();
-  const d = salesforceCallLogRecord(profile, name);
+  /* Registered as page data (10/16/2026) so Ask AI can change anything on this screen; the
+     derivation is the default and an edit overlays it. */
+  const derived = useMemo(() => salesforceCallLogRecord(profile, name), [profile, name]);
+  const d = usePageData(derived);
 
   /* Fails closed on a record this prospect's org has no row for. */
   if (!d) {
     return (
       <div className="sfh-root">
+        <StandaloneAi />
         <SfGlobalHeader />
         <SfContextBar active="Invoca Call Log" />
         <div className="clr-page">
@@ -128,6 +135,7 @@ export function SalesforceCallLogDetail() {
 
   return (
     <div className="sfh-root">
+      <StandaloneAi />
       <SfGlobalHeader />
       <SfContextBar active="Invoca Call Log" />
 

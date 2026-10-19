@@ -1,5 +1,8 @@
+import { useMemo } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
 import { SfGlobalHeader, SfContextBar, SfTodoBar } from "../components/SalesforceChrome";
@@ -65,7 +68,10 @@ export function SalesforceLeadDetail() {
   /* The quotes too: without them this resolves the slug against a list that does not contain
      the quote-request lead, and the row the SE just clicked opens "Lead not found". */
   const quotes = useQuoteCaptures().capturedFor(profileId);
-  const d = salesforceLeadDetail(profile, slug, voiceCalls, quotes);
+  /* Registered as page data (10/16/2026) so Ask AI can change anything on this screen; the
+     derivation is the default and an edit overlays it. */
+  const derived = useMemo(() => salesforceLeadDetail(profile, slug, voiceCalls, quotes), [profile, slug, voiceCalls, quotes]);
+  const d = usePageData(derived, { live: true });
 
   /* ⚠️ FAILS CLOSED on a slug this prospect has no lead for — the same rule the
      created-workflow route documents. A plausible page for a lead that does not
@@ -73,6 +79,7 @@ export function SalesforceLeadDetail() {
   if (!d) {
     return (
       <div className="sfh-root">
+        <StandaloneAi />
         <SfGlobalHeader />
         <SfContextBar active="Leads" />
         <div className="sld-page">
@@ -91,6 +98,7 @@ export function SalesforceLeadDetail() {
 
   return (
     <div className="sfh-root">
+      <StandaloneAi />
       <SfGlobalHeader />
       <SfContextBar active="Leads" />
 

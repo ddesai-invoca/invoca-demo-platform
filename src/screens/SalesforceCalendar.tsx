@@ -1,6 +1,8 @@
 import { useMemo, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
 import { SldsIcon } from "../components/SldsIcon";
@@ -81,8 +83,11 @@ export function SalesforceCalendar() {
      this navigates to is by construction one that resolves. */
   const live = liveBookedLead(profile, voiceCalls);
   const leadHref = live ? `/salesforce/leads/${live.lead.slug}` : null;
-  const ev = useMemo(() => bookedEvent(profile, captured, voiceCalls),
+  const evBase = useMemo(() => ({ title: "Calendar", event: bookedEvent(profile, captured, voiceCalls) }),
     [profile, captured, voiceCalls]);
+  /* Registered as page data (10/16/2026) so Ask AI can change the appointment on this screen.
+     `live`: a new booking still moves it after an edit (see liveMerge.ts). */
+  const ev = usePageData(evBase, { live: true }).event;
 
   /* ⚠️ THE WEEK IS DERIVED FROM THE DEMO'S OWN CLOCK, and the appointment is placed INSIDE
      it — the capture shows Aug 2-8 because that SE had navigated back, which is that
@@ -129,6 +134,7 @@ export function SalesforceCalendar() {
 
   return (
     <div className="sfh-root sfc-root">
+      <StandaloneAi />
       <SfGlobalHeader />
       {/* ⚠️ "More", not "Calendar": this org's nav bar has no Calendar tab (measured on the
           8/27 capture), so Calendar sits in the overflow menu and that is the item that

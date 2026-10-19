@@ -1,7 +1,9 @@
 import { withArticle } from "../data/smsTemplate";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 import { useLocationOverride } from "../data/locationOverride";
 import { useQuoteCaptures } from "../data/QuoteCaptureContext";
 import { bookingPath } from "../data/bookingPath";
@@ -1759,14 +1761,31 @@ export function GoogleSearch() {
     `${base} reviews`,
   ];
 
+  /* ⚠️ EVERY RESULT ON THE PAGE IS REGISTERED DATA (10/16/2026), the standing rule that Ask AI
+     may change any data on any page. The page's scope key is the SAME key the Book online link
+     already writes to (`bookingScopeKey`), so the two fields it owns are carried in the base and
+     keep working. `live`, because typing a new query, the async listing photo and a re-pointed
+     ZIP all change the base after an edit (see liveMerge.ts). Keyed on its JSON so a base that
+     is rebuilt every render is only re-registered when it actually changes. */
+  const pageJson = JSON.stringify({
+    title: "Google Search", location: locLabel, lsaRows, topAds, places, organicTop, lowerAds, organicLower,
+    peopleAlsoSearch: pasf, bookingUrl: "", thankYouUrl: "",
+  });
+  const pageBase = useMemo(() => JSON.parse(pageJson) as {
+    title: string; location: string; lsaRows: typeof lsaRows; topAds: Ad[]; places: Place[];
+    organicTop: Organic[]; lowerAds: Ad[]; organicLower: Organic[]; peopleAlsoSearch: string[];
+  }, [pageJson]);
+  const pg = usePageData(pageBase, { live: true });
+
   return (
     <div className="gs-page">
+      <StandaloneAi tone="dark" />
       <Header query={query} onQuery={setQuery} />
 
       <div className="gs-body">
         <div className="gs-loc">
           <Icon d={P.pin} size={16} />
-          <b>{locLabel}</b>
+          <b>{pg.location}</b>
           <LocationPill loc={loc} />
           <span className="gs-kebab"><Icon d={P.kebab} size={16} /></span>
         </div>
@@ -1776,34 +1795,34 @@ export function GoogleSearch() {
             "the service you need" is exactly what `Conversions by Product Category`
             already holds for every prospect, so this re-skins for free and can never
             offer a service the business does not sell. */}
-        <LsaUnit rows={lsaRows} noun={lsaNoun} city={d.shortCity}
+        <LsaUnit rows={pg.lsaRows} noun={lsaNoun} city={d.shortCity}
           services={[d.hero, ...d.others].filter(Boolean)} onSend={recordQuote}
           bookDefault={bookDefault} bookHref={book.url ?? bookDefault} book={book} />
 
         <h2 className="gs-spons-head">Sponsored Results</h2>
-        {topAds.map((a) => <AdBlock key={a.brand + a.title} ad={a} />)}
+        {pg.topAds.map((a) => <AdBlock key={a.brand + a.title} ad={a} />)}
         <div className="gs-hide"><span>Hide sponsored results <Icon d={P.chevUp} size={16} /></span></div>
 
         <h2 className="gs-places-head">Places</h2>
         <div className="gs-pack">
           <div className="gs-pack-list">
-            {places.map((pl, i) => <PlaceRow key={pl.name + i} pl={pl} />)}
+            {pg.places.map((pl, i) => <PlaceRow key={pl.name + i} pl={pl} />)}
             <div className="gs-more">More places <Icon d={P.chevRight} size={16} /></div>
           </div>
-          <PackMap d={d} places={places} />
+          <PackMap d={d} places={pg.places} />
         </div>
 
-        {organicTop.map((r) => <OrganicResult key={r.title} r={r} />)}
+        {pg.organicTop.map((r) => <OrganicResult key={r.title} r={r} />)}
 
         <h2 className="gs-spons-head">Sponsored Results</h2>
-        {lowerAds.map((a) => <AdBlock key={a.brand + a.title} ad={a} />)}
+        {pg.lowerAds.map((a) => <AdBlock key={a.brand + a.title} ad={a} />)}
         <div className="gs-hide"><span>Hide sponsored results <Icon d={P.chevUp} size={16} /></span></div>
 
-        {organicLower.map((r) => <OrganicResult key={r.title} r={r} />)}
+        {pg.organicLower.map((r) => <OrganicResult key={r.title} r={r} />)}
 
         <h2 className="gs-pasf-head">People also search for</h2>
         <div className="gs-pasf">
-          {pasf.map((t) => (
+          {pg.peopleAlsoSearch.map((t) => (
             <span className="gs-pasf-item" key={t}>
               <span>{t}</span><Icon d={P.search} size={16} />
             </span>
@@ -1823,7 +1842,7 @@ export function GoogleSearch() {
         <div className="gs-foot-in">
           <div className="gs-foot-top">Results are not personalized</div>
           <div className="gs-foot-mid">
-            <Icon d={P.pin} size={14} /> <b>{locLabel}</b>
+            <Icon d={P.pin} size={14} /> <b>{pg.location}</b>
             <span className="gs-dot">·</span>From your IP address
             <span className="gs-dot">·</span><a>Update location</a>
           </div>

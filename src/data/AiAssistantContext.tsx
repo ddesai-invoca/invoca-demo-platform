@@ -2,6 +2,7 @@ import { syncAgentWorkflow, workflowShapeOk } from "./agentWorkflowSync";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { isShareMode } from "./shareMode";
 import { getByPath, isLockedEdit, isStructuralChange } from "./editGuard";
+import { LIVE_BASE, liveValue } from "./liveMerge";
 
 /* Global state for the "Ask AI" dashboard assistant. Holds:
    • the drawer open state + its FOCUS (whole dashboard, or one tile);
@@ -188,12 +189,12 @@ interface AiAssistantCtx {
   openDrawer: (focus?: AssistantFocus) => void;
   closeDrawer: () => void;
   active: Scope | null;
-  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string; greetingWins?: boolean; linkKey?: string; linkAs?: string }) => void;
+  registerScope: (scope: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string; greetingWins?: boolean; linkKey?: string; linkAs?: string; live?: boolean }) => void;
   /* Make a key EDITABLE without making it the active scope. applyEdits refuses a
      key with no base, so a page editing another page's data must ensure that base
      exists first; a second registerScope would do it but is last-write-wins and
      would silently repoint this page's sparkle. Never overwrites an existing base. */
-  registerBase: (key: string, data: unknown) => void;
+  registerBase: (key: string, data: unknown, live?: boolean) => void;
   effectiveData: (key: string) => unknown;
   tilesFor: (key: string) => GeneratedTile[];
   applyEdits: (key: string, edits: AssistantEdit[]) => number;
@@ -267,6 +268,8 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const [active, setActive] = useState<Scope | null>(null);
   const [store, setStore] = useState<Persisted>(() => load());
   const baseRef = useRef<Record<string, unknown>>({}); // base data per key (not persisted; re-registered on mount)
+  /* Pages whose base is fed by live captures (see liveMerge.ts). */
+  const liveKeys = useRef<Set<string>>(new Set());
   const [activeDemo, setActiveDemo] = useState<ActiveDemo | null>(null);
   const lastSyncedRef = useRef<string>("");   // guards against saving what we just loaded
 
@@ -320,8 +323,9 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   const openDrawer = useCallback((f?: AssistantFocus) => { setFocus(f ?? null); setOpen(true); }, []);
   const closeDrawer = useCallback(() => setOpen(false), []);
 
-  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string; greetingWins?: boolean; linkKey?: string; linkAs?: string }) => {
+  const registerScope = useCallback((s: { key: string; customerName: string; baseTitle: string; baseData: unknown; questionPath?: string; greetingFallback?: string; greetingWins?: boolean; linkKey?: string; linkAs?: string; live?: boolean }) => {
     baseRef.current[s.key] = s.baseData;
+    if (s.live) liveKeys.current.add(s.key);
     /* ⚠️ EVERY FIELD HAS TO APPEAR TWICE HERE — in the equality test AND in the object — and
        forgetting the second half type-checks perfectly while silently dropping the field, which
        is how `linkKey` first arrived at the drawer as `undefined`. Caught by reading this body
@@ -337,14 +341,18 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
     ));
   }, []);
 
-  const registerBase = useCallback((key: string, data: unknown) => {
+  const registerBase = useCallback((key: string, data: unknown, live?: boolean) => {
+    /* A LIVE base (fed by captures) is re-registered as it changes, so it is never fill-only. */
+    if (live) { if (data != null) { baseRef.current[key] = data; liveKeys.current.add(key); } return; }
     /* Fill only. The owning page registers a richer object (it carries a title for
        the drawer heading); clobbering that here, just because the user reached the
        workflow page second, would quietly drop it. */
     if (data != null && !(key in baseRef.current)) baseRef.current[key] = data;
   }, []);
 
-  const effectiveData = useCallback((key: string) => (key in store.overrides ? store.overrides[key] : baseRef.current[key]), [store.overrides]);
+  /* A live page's override carries the base it was made from, and is merged over today's
+     base so new captures still appear after an edit (see liveMerge.ts). */
+  const effectiveData = useCallback((key: string) => (key in store.overrides ? liveValue(store.overrides[key], baseRef.current[key]) : baseRef.current[key]), [store.overrides]);
   const tilesFor = useCallback((key: string) => store.tiles[key] ?? [], [store.tiles]);
   const canUndo = useCallback((key: string) => (store.undo[key]?.length ?? 0) > 0, [store.undo]);
   const undoDepth = useCallback((key: string) => store.undo[key]?.length ?? 0, [store.undo]);
@@ -418,7 +426,7 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
      needed. See editGuard.ts. */
   const applyEdits = useCallback((key: string, edits: AssistantEdit[]): number => {
     const live = liveOverrides.current;
-    const base = key in live ? live[key] : baseRef.current[key];
+    const base = key in live ? liveValue(live[key], baseRef.current[key]) : baseRef.current[key];
     if (base == null || readOnly) return 0;
     let nextData: unknown = base;
     let applied = 0, blocked = 0;
@@ -453,10 +461,15 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
        its Qualify question) is rewritten in BOTH in this same step, whichever side was edited
        and whoever edited it: every Ask AI button and every drawer's Apply comes through here.
        See `agentWorkflowSync.ts`. */
-    const read = (k: string) => (k in liveOverrides.current ? liveOverrides.current[k] : baseRef.current[k]);
+    const read = (k: string) => (k in liveOverrides.current ? liveValue(liveOverrides.current[k], baseRef.current[k]) : baseRef.current[k]);
     const follow = syncAgentWorkflow(key, base, nextData, read);
     const self = follow.find((f) => f.key === key);
-    mutate(key, { override: self ? self.data : nextData });
+    const result = self ? self.data : nextData;
+    /* A live page stores the base this edit was made from beside the edit. */
+    const stored = liveKeys.current.has(key) && result && typeof result === "object" && !Array.isArray(result)
+      ? { ...(result as Record<string, unknown>), [LIVE_BASE]: baseRef.current[key] }
+      : result;
+    mutate(key, { override: stored });
     for (const f of follow) if (f.key !== key) mutate(f.key, { override: f.data });
     return applied;
   }, [store.overrides, mutate, readOnly]);

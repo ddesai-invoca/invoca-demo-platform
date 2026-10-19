@@ -24,8 +24,9 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { derive } from "../data/prospectPlace";
+import { smsInfoAttribution } from "../data/salesforceLeadDetail";
 import {
-  crmCalendar, crmStateFrom, crmConnection, setCrmConnected, crmDetails, hourLabel, ymd,
+  crmCalendar, crmStateFrom, crmConnection, setCrmConnected, crmDetails, hourLabel, ymd, crmPreCall, precallMatch,
   CRM_START_HOUR, CRM_END_HOUR, type CrmDay,
 } from "../data/customCrm";
 
@@ -124,6 +125,32 @@ export function CustomCrm({ embedded = false, convId }: {
         ? <span key={value} className={"ccr-v" + (painted.current ? " ccr-flash" : "")}>{value}</span>
         : <span className="ccr-v ccr-wait">{wait}</span>}</>
   );
+  /* PRE-CALL INTELLIGENCE (10/19/2026): what Invoca knew before the first text, then enriched as
+     the customer texts. A Customer row starts from the known value (marked Pre-call) and flips to
+     Confirmed when the chat agrees, or Updated when the customer gives something different. */
+  const pre = useMemo(() => {
+    const vs = profile.reports.voiceScreenpop ?? profile.reports.smsScreenpop;
+    let attr;
+    try { attr = vs?.callerName ? smsInfoAttribution(profile, vs.callerName) : undefined; } catch { attr = undefined; }
+    return crmPreCall(profile, attr, place || undefined);
+  }, [profile, place]);
+  const known = (field: "name" | "phone" | "email" | "address" | "zip", label: string, chat: string | null | undefined, precall: string | undefined) => {
+    if (chat) {
+      const m = precall ? precallMatch(field, precall, chat) : null;
+      return (
+        <><span className="ccr-k">{label}</span>
+          <span key={chat} className={"ccr-v" + (painted.current ? " ccr-flash" : "")}>{chat}
+            {m && <span className={"ccr-src " + (m === "confirmed" ? "ok" : "upd")}>{m === "confirmed" ? "✓ Confirmed in chat" : "Updated in chat"}</span>}</span></>
+      );
+    }
+    if (precall) {
+      return (<><span className="ccr-k">{label}</span><span className="ccr-v ccr-pre-v">{precall}<span className="ccr-src">Pre-call</span></span></>);
+    }
+    return kv(label, null);
+  };
+  const confirmedCount = pre ? [
+    st.lead.name, st.lead.phone, st.lead.address, st.zip, st.lead.email,
+  ].filter(Boolean).length : 0;
   const step = (done: boolean, label: string, sub?: string) => (
     <li className={done ? "ccr-ok" : ""}><i aria-hidden="true" /><span>{label}{done && sub ? <small>{sub}</small> : null}</span></li>
   );
@@ -134,8 +161,8 @@ export function CustomCrm({ embedded = false, convId }: {
     : st.offers.length ? `Offered: ${st.offers.filter((o) => o.date === focusDate).map((o) => o.time).join(", ")}` : null;
   const contactDone = !!(st.lead.name && st.lead.phone && (st.lead.address || st.lead.email));
   const followUp = [
-    ...(!st.lead.email ? ["Email address for the confirmation"] : []),
-    ...(!st.lead.address ? ["Street address for the visit"] : []),
+    ...(!st.lead.email ? [pre?.email ? `Confirm the email on file (${pre.email})` : "Email address for the confirmation"] : []),
+    ...(!st.lead.address ? [pre?.street ? `Confirm the address on file (${pre.street})` : "Street address for the visit"] : []),
     `Anything to prepare before the ${booking.toLowerCase()}`,
   ];
   const nowMin = now.getHours() * 60 + now.getMinutes();
@@ -207,14 +234,34 @@ export function CustomCrm({ embedded = false, convId }: {
 
         <aside className="ccr-side">
           <div className="ccr-sh"><h3>New Lead</h3><span className={"ccr-chip " + status}>{STATUS[status]}</span></div>
+          {pre && (
+            <div className="ccr-sec ccr-pre">
+              <h4>Pre-Call Intelligence <span className="ccr-pre-badge">Invoca</span></h4>
+              <p className="ccr-pre-sub">
+                Known before the first text{st.conversation.length > 0 ? ` · ${confirmedCount} of 5 details confirmed in chat` : " · enriched live as the customer texts"}
+              </p>
+              <div className="ccr-kv">
+                {kv("Customer", pre.name)}
+                {kv("Mobile", pre.line)}
+                {kv("Location", pre.location)}
+                {pre.search && kv("Searched", `“${pre.search}”`)}
+                {pre.source && kv("Came from", pre.campaign ? `${pre.source} (${pre.campaign})` : pre.source)}
+                {pre.journey && kv("Pages viewed", pre.journey)}
+                {pre.interest && kv("Interested in", pre.interest)}
+                {kv("Activity", pre.visits)}
+                {pre.value && kv("Est. value", pre.value)}
+                {pre.intent && kv("Intent", pre.intent)}
+              </div>
+            </div>
+          )}
           <div className="ccr-sec">
             <h4>Customer</h4>
             <div className="ccr-kv">
-              {kv("Name", st.lead.name)}
-              {kv("Phone", st.lead.phone)}
-              {kv("Address", st.lead.address)}
-              {kv("ZIP", st.zip ? `${st.zip}  ✓ in service area` : null)}
-              {kv("Email", st.lead.email)}
+              {known("name", "Name", st.lead.name, pre?.name)}
+              {known("phone", "Phone", st.lead.phone, pre?.phone)}
+              {known("address", "Address", st.lead.address, pre?.street)}
+              {known("zip", "ZIP", st.zip ? `${st.zip} · in service area` : null, pre?.zip)}
+              {known("email", "Email", st.lead.email, pre?.email)}
             </div>
           </div>
           <div className="ccr-sec">
@@ -240,6 +287,7 @@ export function CustomCrm({ embedded = false, convId }: {
           <div className="ccr-sec">
             <h4>What the AI Agent did</h4>
             <ul className="ccr-steps">
+              {pre && step(true, "Matched the texter to pre-call intelligence", `${pre.name} · ${pre.visits.replace(/ in the last.*/, "")}`)}
               {step(!!request, "Understood the request", tags.slice(0, 2).join(" · "))}
               {step(!!st.zip, "Confirmed service area", `ZIP ${st.zip ?? ""}${place ? " · " + place.toUpperCase() : ""}`)}
               {step(st.offers.length > 0 || !!st.booking, "Checked live availability",

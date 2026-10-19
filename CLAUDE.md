@@ -1209,6 +1209,24 @@ immediately re-save. On someone else's demo `readOnly` is true: `mutate`/`applyE
 `undo` no-op, and the Ask AI drawer shows a "view only" banner and declines any
 create/editData/editTile result.
 
+### Custom CRM: Pre-Call Intelligence, then confirmed in the chat (10/19/2026)
+Asked for: *"add fictitious presence or pre-call intelligence information on that column … Before they
+even get here, we already have presence information about this customer, and then we're going to
+enhance it even further as they're having this SMS conversation."* One component, so it shows both
+beside the Preview Agent and on Integrations > Custom CRM. `crmPreCall` / `precallMatch` in
+`src/data/customCrm.ts`, `.ccr-pre` / `.ccr-src`.
+- ⚠️ **THE SAME CUSTOMER THE DEMO ALREADY KNOWS**: `voiceScreenpop` (the name the Preview Agent greets
+  by, and the Screen Pop artifacts' person), with attribution from `smsInfoAttribution` (the Salesforce
+  lead's). Only the visit count and carrier are hashed.
+- ⚠️ **MOVED INTO THE CRM'S SERVICE AREA.** Aptive's caller lives in Denver while the CRM serves
+  Dallas, so the address read as out of area. `resolvePlace` + `neutralStreet` (the Screen Pop rules)
+  move city, ZIP, area code, street and the city named inside the search phrase; an unknown city
+  leaves the seeded address alone.
+- Each Customer row starts from the pre-call value (chip "Pre-call") and flips to "Confirmed in chat"
+  or "Updated in chat". `crmStateFrom` now also reads a name or phone the customer VOLUNTEERS (it only
+  read answers to the question just asked); a name needs an explicit introduction in Capitalised
+  words, so "I'm looking for…" is not one.
+
 ### ⚠️⚠️ STANDING RULE: ASK AI MAY CHANGE ANY DATA ON ANY PAGE (10/16/2026)
 Asked for after Ask AI refused to add or remove a signal on the CI Silver page: *"I want users to
 be able to make changes and edits to any of the data on any of the pages … the transcript, the

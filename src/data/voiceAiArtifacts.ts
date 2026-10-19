@@ -227,7 +227,7 @@ const ZIP_PLACE: Record<string, { city: string; state: string; area: string }> =
  * the same address twice.
  */
 const NEUTRAL_STREETS = ["Oakwood Drive", "Maple Avenue", "Cedar Lane", "Ridgeview Court", "Brookside Road", "Highland Terrace"];
-function neutralStreet(seeded: string, zip: string): string {
+export function neutralStreet(seeded: string, zip: string): string {
   const num = (seeded.match(/^\d+/) ?? ["1240"])[0];
   const pick = [...zip].reduce((n, ch) => n + ch.charCodeAt(0), 0) % NEUTRAL_STREETS.length;
   return `${num} ${NEUTRAL_STREETS[pick]}`;

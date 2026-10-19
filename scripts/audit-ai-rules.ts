@@ -3466,5 +3466,33 @@ console.log("\nAsk AI may change ANY data on ANY page (10/16/2026)\n");
     : bad("an old prompt line still forbids it — the model reads the limit and refuses");
 }
 
+console.log("\nA live page keeps its edits AND its new captures (liveMerge, 10/16/2026)\n");
+{
+  const { merge3, liveValue, LIVE_BASE } = await import("../src/data/liveMerge.ts");
+  const L = (...n: string[]) => n.map((id) => ({ id, name: id.toUpperCase() }));
+  const snap = { leads: L("a", "b", "c") }, edit = { leads: L("a", "c") }, cur = { leads: L("new", "a", "b", "c") };
+  const out = merge3(snap, edit, cur) as { leads: { id: string }[] };
+  out.leads.map((x) => x.id).join() === "new,a,c"
+    ? ok("a lead removed by an edit stays removed, and a lead captured after it still appears (at the top)")
+    : bad(`the live merge lost an edit or a capture: ${out.leads.map((x) => x.id).join()}`);
+  const renamed = merge3(snap, { leads: [{ id: "a", name: "Renamed" }, ...L("b", "c")] }, { leads: [{ id: "a", name: "A2" }, ...L("b", "c")] }) as { leads: { name: string }[] };
+  renamed.leads[0].name === "Renamed" ? ok("an edited field keeps the edit over a later change to the base") : bad("a later base change overwrote an edit");
+  (merge3({ x: 1, y: 1 }, { x: 1, y: 2 }, { x: 5, y: 1 }) as { x: number }).x === 5
+    ? ok("a field nobody edited follows the live base") : bad("an untouched field was frozen at edit time");
+  const filled = liveValue({ bookingUrl: "/r" }, { bookingUrl: "", topAds: [1] }) as { topAds?: unknown[]; bookingUrl: string };
+  filled.topAds?.length === 1 && filled.bookingUrl === "/r"
+    ? ok("a stored override never hides a field it does not have (the Google Search booking-link key)")
+    : bad("an older, smaller override hid the rest of the page");
+  (liveValue({ a: 1, [LIVE_BASE]: { a: 1 } }, { a: 9 }) as { a: number }).a === 9
+    ? ok("the snapshot itself never reaches the page") : bad("the live snapshot leaked into the page");
+  const ctx = fs.readFileSync("src/data/AiAssistantContext.tsx", "utf8");
+  /liveValue\(store\.overrides\[key\]/.test(ctx) && /\[LIVE_BASE\]: baseRef\.current\[key\]/.test(ctx)
+    ? ok("the edit store merges live pages on read and snapshots the base on write")
+    : bad("the edit store does not use the live merge — an edit would freeze a live page");
+  const live = ["SalesforceLeads.tsx", "SalesforceLeadDetail.tsx", "SalesforceCalendar.tsx", "GoogleSearch.tsx"]
+    .filter((f) => !/live: true/.test(fs.readFileSync(`src/screens/${f}`, "utf8")));
+  live.length === 0 ? ok("every capture-fed screen registers as live") : bad(`capture-fed screens not registered live: ${live.join(", ")}`);
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");
 process.exit(fail ? 1 : 0);

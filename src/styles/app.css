@@ -74,6 +74,19 @@
 /* Side by side with the Custom CRM (10/15/2026): the phone keeps a fixed left pane and the
    CRM takes the rest. The button stays faintly visible while the split is on, so the way back
    is never hidden. */
+/* StandaloneAi: the same hover-revealed pair for screens outside the app shell (Salesforce,
+   Google, ChatGPT, Custom CRM). Bottom-right, a corner none of those replicas uses for chrome. */
+.sa-ai {
+  position: fixed; right: 18px; bottom: 18px; z-index: 950;
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 6px 8px; border-radius: 20px;
+}
+.sa-ai .tb-ai-btn .material-icons { font-size: 22px; color: #5b6577; }
+.sa-ai .tb-ai-spark .material-icons { color: #2666f9; }
+.sa-ai--dark .tb-ai-btn .material-icons { color: #fff; }
+.sa-ai--dark .tb-ai-spark .material-icons { color: #8ab4f8; }
+.sa-ai:hover .tb-ai-btn, .sa-ai .tb-ai-btn:focus-visible { opacity: 1; }
+.sa-ai:hover .tb-ai-btn-off { opacity: .38; }
 .pp-ai .pp-split-btn .material-icons { color: #fff; }
 .pp-ai .pp-split-btn.on { opacity: .55; }
 .pp-ai .pp-split-btn.on .material-icons { color: #8ab4f8; }
@@ -7366,6 +7379,17 @@ body:has(.tour-root) .tour-cta { visibility: hidden; }
 .ccr-chip.booked { background: var(--ccr-accent); color: #fff; }
 .ccr-sec { padding: 12px 16px; border-bottom: 1px solid var(--ccr-line2); }
 .ccr-sec:last-child { border-bottom: none; }
+/* Pre-Call Intelligence (10/19/2026): what Invoca knew before the first text. Tinted so it reads
+   as a separate source from what the customer types; the chips say where each value came from. */
+.ccr-pre { background: var(--ccr-primary-soft); }
+.ccr-pre h4 { display: flex; align-items: center; gap: 6px; color: var(--ccr-primary); }
+.ccr-pre-badge { font-size: 9px; letter-spacing: .06em; background: var(--ccr-primary); color: #fff; border-radius: 999px; padding: 2px 6px; }
+.ccr-pre-sub { margin: -4px 0 8px; font-size: 12px; color: var(--ccr-muted); }
+.ccr-pre .ccr-v { font-weight: 600; }
+.ccr-v.ccr-pre-v { font-weight: 500; color: var(--ccr-muted); }
+.ccr-src { display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 700; letter-spacing: .03em; border-radius: 999px; padding: 1px 6px; vertical-align: 1px; background: var(--ccr-line2); color: var(--ccr-muted); white-space: nowrap; }
+.ccr-src.ok { background: #e3f6ea; color: #0d6b34; }
+.ccr-src.upd { background: #fff3dc; color: #8a5300; }
 .ccr-sec h4 { margin: 0 0 8px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--ccr-muted); font-weight: 700; }
 .ccr-kv { display: grid; grid-template-columns: minmax(70px, auto) 1fr; gap: 6px 12px; font-size: 13px; }
 .ccr-k { color: var(--ccr-muted); }

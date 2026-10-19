@@ -854,5 +854,31 @@ console.log("\nThe browser tab: the Invoca icon, and a title per screen (10/15/2
     "the title follows the route in the signed-in app AND on a shared demo");
 }
 
+console.log("\nCustom CRM: pre-call intelligence, then confirmed in the chat (10/19/2026)\n");
+{
+  const t = (cond: boolean, msg: string) => (cond ? ok(msg) : bad(msg));
+  const { crmPreCall, precallMatch, crmStateFrom } = await import("../src/data/customCrm.ts");
+  const prof = JSON.parse(read("src/data/generated/aptive.json"));
+  const pre = crmPreCall(prof, undefined, "Dallas");
+  t(!!pre && pre.name === prof.reports.voiceScreenpop.callerName,
+    "the pre-call customer is the one the Preview Agent greets (voiceScreenpop), not a new invention");
+  t(!!pre && /Dallas, TX/.test(pre.location) && /^\(214\)/.test(pre.phone) && !/Denver/.test(pre.search + pre.street + pre.location),
+    "the pre-call address, area code and search move into the CRM's service area");
+  t(JSON.stringify(crmPreCall(prof, undefined, "Atlantis")?.location) === JSON.stringify(crmPreCall(prof)?.location),
+    "an unknown service city leaves the seeded address alone rather than half-moving it");
+  t(precallMatch("name", "Sarah Mitchell", "sarah") === "confirmed" && precallMatch("phone", "(214) 555-0847", "214-555-0847") === "confirmed"
+    && precallMatch("zip", "75201", "75202 · in service area") === "updated",
+    "a chat detail reads Confirmed when it agrees with pre-call and Updated when it differs");
+  const mk = (m: string[]) => ({ id: "x", transcript: m.map((text, i) => ({ speaker: i % 2 ? "Consumer" : "AI Agent", text, time: "0:00" })) });
+  t(crmStateFrom(mk(["Hi", "Hi, this is Sarah Mitchell, ZIP is 75201"]) as never, []).lead.name === "Sarah Mitchell"
+    && crmStateFrom(mk(["Hi", "call me at (214) 555-0847 please"]) as never, []).lead.phone === "(214) 555-0847",
+    "a name or phone the customer volunteers unprompted reaches the lead");
+  t(!crmStateFrom(mk(["Hi", "I'm looking for pest control"]) as never, []).lead.name,
+    "\"I'm looking for…\" is not read as a name");
+  const ui = code("src/screens/CustomCrm.tsx");
+  t(/ccr-pre/.test(ui) && /Confirmed in chat/.test(ui) && /Pre-call/.test(ui),
+    "the panel shows the Pre-Call Intelligence section and marks each detail Pre-call / Confirmed / Updated");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);
