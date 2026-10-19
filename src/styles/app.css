@@ -97,6 +97,43 @@
 .pp-split .phone-page { right: auto; width: var(--pp-x); }
 .pp-crm { position: fixed; top: 0; bottom: 0; left: var(--pp-x, 480px); right: 0; z-index: 1; }
 .pp-crm .ccr { height: 100%; }
+/* Beside the phone the CRM ADAPTS to the room the divider gives it (10/19/2026). Asked for:
+   "make the whole screen slide … include the pre-interaction part too", then "still looks
+   really good and is still readable … even if things need to change a bit". Two rejected
+   attempts, recorded so they are not retried: a proportional panel width wrapped its text
+   mid-word, and zooming the whole CRM took the type down to ~8px. So type stays full size and
+   the LAYOUT changes, measured against the CRM's own width (a container query, so the
+   Integrations page, which is not inside .pp-crm, never changes):
+     ≥1200px  the lead panel grows a little with the room
+     1040+    the resting layout, unchanged
+     820-1039 a slimmer panel and a tighter calendar
+     <820     the lead panel moves UNDER the calendar, its sections in two columns
+   Guarded to wider than 600px: below that the phone and CRM stack (mobile.css). */
+.pp-crm { container: crm / inline-size; }
+@media (min-width: 601px) {
+  @container crm (min-width: 1200px) { .pp-crm .ccr-side { width: clamp(320px, 27cqw, 400px); } }
+  @container crm (max-width: 1039px) {
+    .pp-crm .ccr-wrap { gap: 10px; padding: 10px; }
+    .pp-crm .ccr-side { width: 272px; }
+    .pp-crm .ccr-sec { padding: 11px 14px; }
+    .pp-crm .ccr-kv { grid-template-columns: minmax(62px, auto) 1fr; gap: 5px 10px; }
+    .pp-crm .ccr-days, .pp-crm .ccr-body { grid-template-columns: 44px repeat(7, minmax(0, 1fr)); }
+    .pp-crm .ccr-ev { padding: 3px 5px; }
+    .pp-crm .ccr-tool { padding: 10px 12px; gap: 8px; }
+    .pp-crm .ccr-tool h2 { font-size: 16px; }
+    .pp-crm .ccr-legend { padding: 7px 12px; }
+    .pp-crm .ccr-app { display: none; }
+  }
+  @container crm (max-width: 819px) {
+    .pp-crm .ccr-wrap { flex-direction: column; }
+    .pp-crm .ccr-cal { flex: 1 1 0; min-height: 280px; }
+    .pp-crm .ccr-side { width: auto; flex: 0 1 auto; max-height: 46%; display: grid; grid-template-columns: 1fr 1fr; align-content: start; }
+    .pp-crm .ccr-side .ccr-sh { grid-column: 1 / -1; padding: 10px 14px; }
+    .pp-crm .ccr-side .ccr-pre { grid-row: span 3; border-right: 1px solid var(--ccr-line2); }
+    .pp-crm .ccr-side .ccr-sec { border-bottom: 1px solid var(--ccr-line2); }
+    .pp-crm .ccr-today { display: none; }
+  }
+}
 @media (max-width: 1100px) { .pp-split { --pp-x: clamp(400px, var(--pp-w, 400px), calc(100vw - 560px)); } }
 .pp-divider { position: fixed; top: 0; bottom: 0; left: var(--pp-x); width: 12px; transform: translateX(-50%); z-index: 3; cursor: col-resize; touch-action: none; display: flex; align-items: center; justify-content: center; }
 .pp-divider::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); background: transparent; transition: background .15s; }

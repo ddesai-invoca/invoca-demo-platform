@@ -889,6 +889,9 @@ console.log("\nCustom CRM: pre-call intelligence, then confirmed in the chat (10
   t(/className="pp-divider" role="separator"/.test(sp) && /onDoubleClick=\{\(\) => keepW\(null\)\}/.test(sp)
     && /--pp-x: clamp\(430px, var\(--pp-w, 480px\), calc\(100vw - 560px\)\)/.test(css),
     "the phone/CRM divider drags, resets on double-click, and is clamped so both stay usable");
+  t(/\.pp-crm \{ container: crm \/ inline-size; \}/.test(css) && /@container crm \(max-width: 819px\)/.test(css)
+    && /@container crm \(max-width: 1039px\) \{\s*\.pp-crm \.ccr-wrap/.test(css) && !/zoom: var\(--crm-zoom/.test(css) && !/crm-zoom/.test(sp),
+    "dragging re-lays-out the WHOLE CRM at full type size (slimmer panel, then the panel under the calendar), never zooms it");
 }
 
 console.log("\nThe Custom CRM preview runs beside every SMS preview: regular, LSA and RCS (10/19/2026)\n");

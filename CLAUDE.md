@@ -1250,6 +1250,18 @@ Annotated feedback on a Miracle-Ear screenshot; each item and what it became:
   kept per browser (`invoca-demo:pp-phone-width`), arrow keys move it, double-click resets, and
   the CSS clamps it (`--pp-x: clamp(430px, …, 100vw - 560px)`) so the whole 380px phone and a
   usable calendar always fit, even after a resize. Hidden on a phone, where the two stack.
+- ⚠️⚠️ **THE WHOLE CRM ADAPTS TO THE DIVIDER, AT FULL TYPE SIZE** (follow-ups: "make the whole
+  screen slide … include the pre-interaction part too", then "still looks really good and is
+  still readable … even if things need to change a bit"). Two attempts were REJECTED and must not
+  come back: a proportional panel width (`cqw`) wrapped the email mid-word, and `zoom` on the
+  whole CRM took the type to ~8px at its floor. Now `.pp-crm` is a size container (`crm`) and
+  the layout changes with the CRM's own width: ≥1200 the panel grows a little, 1040+ unchanged,
+  820-1039 a 272px panel and a tighter calendar, <820 the lead panel moves UNDER the calendar
+  with its sections in two columns (Pre-Interaction left, the rest right). Every rule is
+  `.pp-crm …` so it outranks the base CRM rules that come later in app.css, and the
+  Integrations page (not in a `crm` container) never changes. Guarded to >600px viewports,
+  where the phone and CRM stack anyway. Measured at 7 widths: smallest type unchanged (10px
+  section labels), no overflow, the email never wraps.
 - Verified: real drags to 800px and to the 430px floor, reset, and the Integrations placement.
 
 ### The CRM's request tags: fast, sticky, and the heading fits the prospect (10/19/2026)
