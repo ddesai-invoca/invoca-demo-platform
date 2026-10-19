@@ -1,7 +1,7 @@
 import { syncAgentWorkflow, workflowShapeOk } from "./agentWorkflowSync";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import { isShareMode } from "./shareMode";
-import { getByPath, isLockedEdit, isStructuralChange } from "./editGuard";
+import { applyListOp, getByPath, isLockedEdit, isStructuralChange } from "./editGuard";
 import { LIVE_BASE, liveValue } from "./liveMerge";
 
 /* Global state for the "Ask AI" dashboard assistant. Holds:
@@ -434,6 +434,12 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
       let val: unknown;
       try { val = JSON.parse(e.value); } catch { val = e.value; }
       const before = getByPath(nextData, e.path);
+      /* A named list change ({ "$op": "remove", … }) becomes the whole new list here. */
+      if (val && typeof val === "object" && !Array.isArray(val) && "$op" in (val as object)) {
+        const next = applyListOp(before, val);
+        if (!next) { blocked++; console.warn(`[ai] a list operation did not fit "${e.path}"`); continue; }
+        val = next;
+      }
       /* A label the product itself does not let a user rename (see editGuard). Counted with
          the structural blocks so the drawer reports a refusal rather than a clean success. */
       if (isLockedEdit(nextData, e.path)) {
