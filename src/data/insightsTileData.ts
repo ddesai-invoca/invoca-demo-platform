@@ -1124,7 +1124,7 @@ function cellFor(
     const path = ["/", "/contact", "/services", "/locations", "/quote"][seed % 5];
     return `${profile.brandDomain || "example.com"}${path}`;
   }
-  if (/email/.test(c)) return `caller${row + 1}@example.com`;
+  if (/email/.test(c)) return `caller${row + 1}@gmail.com`;
   if (/zip|postal/.test(c)) return String(10000 + (seed % 89999));
   if (/duration|time|monolog|silence|overtalk|hold/.test(c)) {
     const s = 20 + (seed % 400);

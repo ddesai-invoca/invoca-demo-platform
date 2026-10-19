@@ -876,8 +876,19 @@ console.log("\nCustom CRM: pre-call intelligence, then confirmed in the chat (10
   t(!crmStateFrom(mk(["Hi", "I'm looking for pest control"]) as never, []).lead.name,
     "\"I'm looking for…\" is not read as a name");
   const ui = code("src/screens/CustomCrm.tsx");
-  t(/ccr-pre/.test(ui) && /Confirmed in chat/.test(ui) && /Pre-call/.test(ui),
-    "the panel shows the Pre-Call Intelligence section and marks each detail Pre-call / Confirmed / Updated");
+  // Re-aimed 10/19/2026 (feedback): "Pre-Interaction", no "Pre-call" chip, no subtitle, no
+  // Activity row, no reasoning checklist or follow-up list. Confirmed / Updated stay.
+  t(/Pre-Interaction Intelligence/.test(ui) && !/Pre-Call Intelligence/.test(ui) && /Confirmed in chat/.test(ui)
+    && !/>Pre-call</.test(ui) && !/ccr-pre-sub/.test(ui) && !/kv\("Activity"/.test(ui),
+    "the panel is Pre-Interaction Intelligence, with no Pre-call chips, subtitle or Activity row");
+  t(!/What the AI Agent did/.test(ui) && !/Confirm on the follow-up call/.test(ui) && /kv\("Serviceable"/.test(ui),
+    "the reasoning checklist and follow-up list are gone; what the agent established is a field (Serviceable)");
+  t(/email: realEmail\(vs\.email/.test(code("src/data/customCrm.ts")) && crmPreCall(prof, undefined, "Dallas")?.email?.endsWith("@gmail.com") === true,
+    "a placeholder email domain reads as a real mailbox (gmail) on the CRM");
+  const sp = code("src/screens/SmsPreviewPage.tsx"), css = read("src/styles/app.css");
+  t(/className="pp-divider" role="separator"/.test(sp) && /onDoubleClick=\{\(\) => keepW\(null\)\}/.test(sp)
+    && /--pp-x: clamp\(430px, var\(--pp-w, 480px\), calc\(100vw - 560px\)\)/.test(css),
+    "the phone/CRM divider drags, resets on double-click, and is clamped so both stay usable");
 }
 
 console.log("\nThe Custom CRM preview runs beside every SMS preview: regular, LSA and RCS (10/19/2026)\n");
@@ -933,6 +944,27 @@ console.log("\nThe CRM's request tags arrive fast, never vanish, and the heading
   const { requestHeading } = await import("../src/data/prospectIntent.ts");
   t(requestHeading("care") === "Care needs" && requestHeading("hospitality") === "Stay details" && requestHeading("autoSales") === "Vehicle interest",
     "a hospital, a hotel and a dealership each get their own heading");
+}
+
+console.log("\nEmails are real mailboxes everywhere, not placeholder domains (10/19/2026)\n");
+{
+  const t = (cond: boolean, msg: string) => (cond ? ok(msg) : bad(msg));
+  const { realEmail, withRealEmails } = await import("../src/data/realEmail.ts");
+  t(realEmail("a@email.com b@emailprovider.com c@example.com") === "a@gmail.com b@gmail.com c@gmail.com",
+    "placeholder domains (email.com, emailprovider.com, example.com) become gmail.com");
+  t(realEmail("x@outlook.com y@acme-logistics.com z@invoca.com") === "x@outlook.com y@acme-logistics.com z@invoca.com",
+    "real providers, business domains and Invoca's own are left alone");
+  const re = /@(emailprovider|email|example)\.com\b/;
+  let left = 0;
+  for (const f of readdirSync("src/data/generated").filter((x) => x.endsWith(".json"))) {
+    if (re.test(JSON.stringify(withRealEmails(JSON.parse(read(`src/data/generated/${f}`)))))) left++;
+  }
+  t(left === 0, "no bundled profile shows a placeholder email once loaded");
+  const clean = { id: "x", reports: { a: ["no email here"] } };
+  t(withRealEmails(clean as never) === (clean as never), "a profile with nothing to change is returned as the same object");
+  t(/withRealEmails\(/.test(code("src/data/ProfileContext.tsx").match(/const normalize[\s\S]{0,200}/)?.[0] ?? ""),
+    "every profile is normalized as it enters the store, so every screen gets it");
+  t(/at gmail\.com, a real consumer mailbox/.test(read("engine/core.ts")), "new prospects are generated with a real mailbox");
 }
 
 console.log("\nThe RCS sender avatar is the prospect's own logo (10/19/2026)\n");

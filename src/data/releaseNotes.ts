@@ -69,6 +69,9 @@ export const RELEASES: Release[] = [
     date: "2026-10-19",
     title: "Pre-call intelligence in the Custom CRM, and Ask AI that edits anything",
     changes: [
+      i("The Custom CRM's lead panel reads like a real CRM record: the top section is Pre-Interaction Intelligence, the Pre-call labels, the activity line and the agent checklist and follow-up list are gone, the service area the agent confirmed shows as its own field, and emails use a real mail provider."),
+      i("Customer emails across the platform, on screen pops, Salesforce leads, reports and the Custom CRM, now use real mailboxes such as gmail.com instead of placeholder domains like email.com."),
+      n("Beside the Preview Agent, the divider between the phone and the Custom CRM drags to change how much room each gets. Double-click it to reset."),
       f("In the Custom CRM, the tags for what the customer asked for now appear within a few seconds, stay on screen as the conversation continues, and new ones are added as they come up. The heading is named for the prospect's business, such as Care needs, Stay details or Vehicle interest, instead of Project. For RCS and Google LSA conversations the pre-call section no longer lists pages viewed or site visits, and says how the customer arrived from the ad instead."),
       n("The RCS Preview Agent shows the prospect's own logo as the sender, taken from their website's app icon. A site with no sharp icon keeps the brand's initials."),
       n("The Custom CRM can sit beside every SMS preview now: the regular agent, RCS and Google LSA quote requests. The agent offers the calendar's own openings in all of them, and for an LSA request the pre-call section is the quote the customer sent."),

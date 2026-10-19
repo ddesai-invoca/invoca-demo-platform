@@ -172,40 +172,28 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
       );
     }
     if (precall) {
-      return (<><span className="ccr-k">{label}</span><span className="ccr-v ccr-pre-v">{precall}<span className="ccr-src">Pre-call</span></span></>);
+      return (<><span className="ccr-k">{label}</span><span className="ccr-v ccr-pre-v">{precall}</span></>);
     }
     return kv(label, null);
   };
-  const confirmedCount = pre ? [
-    st.lead.name, st.lead.phone, st.lead.address, st.zip, st.lead.email,
-  ].filter(Boolean).length : 0;
-  const step = (done: boolean, label: string, sub?: string) => (
-    <li className={done ? "ccr-ok" : ""}><i aria-hidden="true" /><span>{label}{done && sub ? <small>{sub}</small> : null}</span></li>
-  );
 
   const apptDate = st.booking ? focusDay?.label : focusDay?.label;
   const apptTime = st.booking ? st.booking.time
     : st.selected ? st.selected.time
     : st.offers.length ? `Offered: ${st.offers.filter((o) => o.date === focusDate).map((o) => o.time).join(", ")}` : null;
-  const contactDone = !!(st.lead.name && st.lead.phone && (st.lead.address || st.lead.email));
-  const followUp = [
-    ...(!st.lead.email ? [pre?.email ? `Confirm the email on file (${pre.email})` : "Email address for the confirmation"] : []),
-    ...(!st.lead.address ? [pre?.street ? `Confirm the address on file (${pre.street})` : "Street address for the visit"] : []),
-    `Anything to prepare before the ${booking.toLowerCase()}`,
-  ];
   const nowMin = now.getHours() * 60 + now.getMinutes();
 
   /* ⚠️ REGISTERED AS PAGE DATA (10/19/2026), the standing rule that Ask AI may change any data on
-     any page: the header, service area, pre-call fields, the lead, the follow-up list and each
-     day's booked slots. `live`, because the lead and the follow-up list come from the
+     any page: the header, service area, pre-call fields, the lead and each
+     day's booked slots. `live`, because the lead comes from the
      conversation as it happens (see liveMerge.ts). ONE key for both placements; beside the phone
      it registers PASSIVELY, so the Preview Agent's own Ask AI keeps editing the agent. */
   const crmJson = JSON.stringify({
-    title: `${cap(booking)} Scheduling`, requestHeading: requestHeading(intentKindOf(profile)), serviceArea: place, preCall: pre, lead: st.lead, followUp,
+    title: `${cap(booking)} Scheduling`, requestHeading: requestHeading(intentKindOf(profile)), serviceArea: place, preCall: pre, lead: st.lead,
     days: days.map((d) => ({ date: d.date, busy: d.busy, closed: d.closed })),
   });
   const crmBase = useMemo(() => JSON.parse(crmJson) as {
-    title: string; requestHeading: string; serviceArea: string; preCall: typeof pre; lead: typeof st.lead; followUp: string[];
+    title: string; requestHeading: string; serviceArea: string; preCall: typeof pre; lead: typeof st.lead;
     days: { date: string; busy: string[]; closed: boolean }[];
   }, [crmJson]);
   const crm = usePageData(crmBase, { live: true, passive: embedded, scopePath: "/integrations/custom-crm" });
@@ -289,10 +277,10 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
           <div className="ccr-sh"><h3>New Lead</h3><span className={"ccr-chip " + status}>{STATUS[status]}</span></div>
           {preEff && (
             <div className="ccr-sec ccr-pre">
-              <h4>Pre-Call Intelligence <span className="ccr-pre-badge">Invoca</span></h4>
-              <p className="ccr-pre-sub">
-                {leadIn ? `From the ${/local services/i.test(leadIn.via) ? "Google LSA quote request" : "website lead form"}` : "Known before the first text"}{st.conversation.length > 0 ? ` · ${confirmedCount} of 5 details confirmed in chat` : " · enriched live as the customer texts"}
-              </p>
+              {/* "Pre-Interaction", not "Pre-Call": this sits beside a TEXT conversation (10/19/2026
+                  feedback). The old "Known before the first text · enriched live…" subtitle was
+                  talk track, so it is gone from the screen. */}
+              <h4>Pre-Interaction Intelligence <span className="ccr-pre-badge">Invoca</span></h4>
               <div className="ccr-kv">
                 {kv("Customer", preEff.name)}
                 {preEff.line && kv("Mobile", preEff.line)}
@@ -301,7 +289,6 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
                 {preEff.source && kv("Came from", preEff.campaign ? `${preEff.source} (${preEff.campaign})` : preEff.source)}
                 {preEff.journey && !noPages && kv("Pages viewed", preEff.journey)}
                 {preEff.interest && kv("Interested in", preEff.interest)}
-                {preEff.visits && kv("Activity", preEff.visits)}
                 {preEff.value && kv("Est. value", preEff.value)}
                 {preEff.intent && kv("Intent", preEff.intent)}
               </div>
@@ -313,7 +300,10 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
               {known("name", "Name", lead.name, preEff?.name)}
               {known("phone", "Phone", lead.phone, preEff?.phone)}
               {known("address", "Address", lead.address, preEff?.street)}
-              {known("zip", "ZIP", st.zip ? `${st.zip} · in service area` : null, preEff?.zip)}
+              {known("zip", "ZIP", st.zip, preEff?.zip)}
+              {/* What the agent established lands in the record itself (10/19/2026 feedback: the
+                  "What the AI Agent did" checklist was replaced by the data it produced). */}
+              {st.zip && kv("Serviceable", area ? `Yes · ${area} service area` : "Yes")}
               {known("email", "Email", lead.email, preEff?.email)}
             </div>
           </div>
@@ -338,22 +328,6 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
                 : channel === "LSA" || leadIn ? `AI Messaging Agent (SMS · ${/local services/i.test(leadIn?.via ?? "Google Local Services") ? "Google LSA" : "web lead form"})`
                 : "AI Messaging Agent (SMS)")}
             </div>
-          </div>
-          <div className="ccr-sec">
-            <h4>What the AI Agent did</h4>
-            <ul className="ccr-steps">
-              {preEff && step(true, "Matched the texter to pre-call intelligence", `${preEff.name} · ${preEff.visits.replace(/ in the last.*/, "")}`)}
-              {step(!!request, "Understood the request", tags.slice(0, 2).join(" · "))}
-              {step(!!st.zip, "Confirmed service area", `ZIP ${st.zip ?? ""}${area ? " · " + area.toUpperCase() : ""}`)}
-              {step(st.offers.length > 0 || !!st.booking, "Checked live availability",
-                `${st.checked.length ? "Checked " + st.checked.map((c) => days.find((d) => d.date === c.date)?.weekday.slice(0, 3)).join(", ") + " · " : ""}${st.offers.length} openings found`)}
-              {step(contactDone, "Collected contact details", ["name", "phone", lead.address ? "address" : "", lead.email ? "email" : ""].filter(Boolean).join(", "))}
-              {step(!!st.booking, "Booked the appointment", st.booking ? `#${st.booking.id} · submitted` : "")}
-            </ul>
-          </div>
-          <div className="ccr-sec">
-            <h4>Confirm on the follow-up call</h4>
-            <ul className="ccr-list">{(crm.followUp ?? followUp).map((f) => <li key={f}>{f}</li>)}</ul>
           </div>
         </aside>
       </div>

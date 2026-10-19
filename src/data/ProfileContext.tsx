@@ -3,6 +3,7 @@ import { CustomerProfile } from "./schema";
 import { PROFILE_LIST, DEFAULT_PROFILE_ID, fetchGeneratedProfiles } from "./profiles";
 import { renameMarketingSources } from "./marketingSources";
 import { withoutDefaultPricing, withoutReminderPromises } from "./agentDefaults";
+import { withRealEmails } from "./realEmail";
 
 interface ProfileCtx {
   profile: CustomerProfile;
@@ -78,7 +79,7 @@ function loadCached(): CustomerProfile[] {
    same requirement. Both are idempotent, so the cached copy being written normalized is
    harmless. */
 const normalize = (p: CustomerProfile): CustomerProfile =>
-  withoutReminderPromises(withoutDefaultPricing(renameMarketingSources(p)));
+  withRealEmails(withoutReminderPromises(withoutDefaultPricing(renameMarketingSources(p))));
 
 /**
  * ⚠️⚠️ **`only` IS WHAT MAKES A SHARED DEMO AIRTIGHT, and it is a whole separate

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type CSSProperties, type KeyboardEvent, type PointerEvent } from "react";
 import { isShareMode } from "../data/shareMode";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
@@ -10,6 +10,11 @@ import { useQuoteCaptures } from "../data/QuoteCaptureContext";
 import { builtInCopiesFor, isRcsSlug } from "../data/builtInCopies";
 import { CustomCrm } from "./CustomCrm";
 import { crmConnection, setCrmConnected } from "../data/customCrm";
+
+/* The phone frame is 380px plus the page's padding, so below this it would be cropped; the CRM
+   keeps room for its lead panel and a readable week. Mirrored in app.css's clamp. */
+const PHONE_MIN_W = 430;
+const CRM_MIN_W = 560;
 
 /* Standalone browser-tab version of the "Preview Agent" SMS chat. The Agent
    Workflow's Preview Agent button opens this route in a new tab (window.open)
@@ -83,6 +88,40 @@ export function SmsPreviewPage() {
     try { sessionStorage.setItem(splitKey, on ? "1" : "0"); } catch { /* private window */ }
   };
 
+  /* The divider between the phone and the CRM drags (10/19/2026 feedback: "a slider to adjust
+     the size of calendar vs phone"). The width is the phone column in px, kept per browser; the
+     CSS clamps it so the whole phone and a usable calendar always fit, including after the
+     window is resized. Double-click puts it back. */
+  const widthKey = "invoca-demo:pp-phone-width";
+  const [phoneW, setPhoneW] = useState<number | null>(() => {
+    try { const n = Number(localStorage.getItem(widthKey)); return n > 0 ? n : null; } catch { return null; }
+  });
+  const keepW = (w: number | null) => {
+    setPhoneW(w);
+    try { if (w) localStorage.setItem(widthKey, String(Math.round(w))); else localStorage.removeItem(widthKey); } catch { /* private window */ }
+  };
+  const fitW = (x: number) => Math.max(PHONE_MIN_W, Math.min(x, window.innerWidth - CRM_MIN_W));
+  const dragStart = (e: PointerEvent<HTMLDivElement>) => {
+    if (e.button !== 0) return;
+    e.preventDefault();
+    const el = e.currentTarget;
+    try { el.setPointerCapture(e.pointerId); } catch { /* pointer already gone */ }
+    document.body.classList.add("pp-resizing");
+    const move = (ev: globalThis.PointerEvent) => setPhoneW(fitW(ev.clientX));
+    const up = (ev: globalThis.PointerEvent) => {
+      el.removeEventListener("pointermove", move); el.removeEventListener("pointerup", up); el.removeEventListener("pointercancel", up);
+      document.body.classList.remove("pp-resizing");
+      keepW(fitW(ev.clientX));
+    };
+    el.addEventListener("pointermove", move); el.addEventListener("pointerup", up); el.addEventListener("pointercancel", up);
+  };
+  const dragKey = (e: KeyboardEvent<HTMLDivElement>) => {
+    if (e.key !== "ArrowLeft" && e.key !== "ArrowRight") return;
+    e.preventDefault();
+    const cur = phoneW ?? (e.currentTarget.getBoundingClientRect().left + e.currentTarget.offsetWidth / 2);
+    keepW(fitW(cur + (e.key === "ArrowLeft" ? -40 : 40)));
+  };
+
   /* Full screen (10/15/2026): hides the browser's tabs and address bar so the phone (and the
      CRM beside it) is all that is on screen. Escape leaves it, as the browser always allows. */
   const [full, setFull] = useState(() => typeof document !== "undefined" && !!document.fullscreenElement);
@@ -152,11 +191,16 @@ export function SmsPreviewPage() {
         </span>
       )}
 
-      <div className={split ? "pp-split" : undefined}>
+      <div className={split ? "pp-split" : undefined}
+        style={split && phoneW ? ({ "--pp-w": `${phoneW}px` } as CSSProperties) : undefined}>
         <PhonePreview mode="page" wf={wf} onConversation={setConvId}
           /* Opened in this tab from the Google ad's Message button: close goes back to the
              results. Opened from Agent Studio it is its own tab, which close shuts as before. */
           onClose={params.get("from") === "google" ? () => navigate(-1) : undefined} />
+        {split && <div className="pp-divider" role="separator" aria-orientation="vertical" tabIndex={0}
+          aria-label="Resize the phone and the CRM (drag, or use the arrow keys; double-click to reset)"
+          title="Drag to resize · double-click to reset"
+          onPointerDown={dragStart} onKeyDown={dragKey} onDoubleClick={() => keepW(null)}><span /></div>}
         {split && <div className="pp-crm"><CustomCrm embedded convId={convId} channel={crmChannel} leadIn={crmLeadIn} leadContact={quote?.contact} /></div>}
       </div>
       {!isShareMode() && <AiAssistantDrawer />}

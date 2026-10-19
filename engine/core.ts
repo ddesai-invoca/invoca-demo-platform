@@ -844,7 +844,7 @@ function generateScreenpops(client: Anthropic, name: string, brief: string, book
       `- callingWebpage: a plausible path on this business's site (e.g. "/<product-or-service>").\n` +
       `- products: 2 real product/service names this business offers, comma-separated.\n` +
       `- cartId: like "XX-4827K" (2–3 letters from the brand + dash + 4 alnum).\n` +
-      `- serviceable "Yes". email (from the caller name). street, city, state (2-letter), zip (matching the city).\n` +
+      `- serviceable "Yes". email (firstname.lastname at gmail.com, a real consumer mailbox, never a placeholder domain like email.com or emailprovider.com). street, city, state (2-letter), zip (matching the city).\n` +
       `- digitalJourney: a "/home › /a › /b › /a" style path of 3–4 pages on this site.\n` +
       `- intent: one line — the caller's specific need for THIS business.\n` +
       `- coverage: "ZIP <zip> confirmed - <city> serviceable".\n` +

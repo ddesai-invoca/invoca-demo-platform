@@ -26,6 +26,7 @@
 
 import type { CustomerProfile, SmsConversation } from "./schema";
 import { resolvePlace, neutralStreet } from "./voiceAiArtifacts";
+import { realEmail } from "./realEmail";
 
 /** One day of the calendar, in the viewer's local time. */
 export interface CrmDay {
@@ -472,7 +473,9 @@ export function crmPreCall(profile: CustomerProfile, attribution?: { marketingSo
   return {
     name: vs.callerName.trim(),
     phone: vs.callerPhone ?? "",
-    email: vs.email ?? "",
+    /* A generated placeholder domain ("@emailprovider.com") reads as fake on a CRM record
+       (10/19/2026 feedback); a real consumer mailbox is what a lead actually gives. */
+    email: realEmail(vs.email ?? ""),
     street: [vs.street, vs.city].filter(Boolean).join(", "),
     zip: vs.zip ?? "",
     location: [vs.city, [vs.state, vs.zip].filter(Boolean).join(" ")].filter(Boolean).join(", "),

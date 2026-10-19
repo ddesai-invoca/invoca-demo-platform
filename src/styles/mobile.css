@@ -462,6 +462,7 @@
   .pp-split .phone-screen { height: calc(52dvh - 56px); }
   .pp-crm { left: 0; top: 52%; overflow: auto; }
   .pp-crm .ccr { height: auto; min-height: 100%; }
+  .pp-divider { display: none; }   /* stacked, so there is nothing to drag between */
 }
 
 /* ---------- Launch screen ---------- */

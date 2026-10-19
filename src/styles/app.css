@@ -90,10 +90,21 @@
 .pp-ai .pp-split-btn .material-icons { color: #fff; }
 .pp-ai .pp-split-btn.on { opacity: .55; }
 .pp-ai .pp-split-btn.on .material-icons { color: #8ab4f8; }
-.pp-split .phone-page { right: auto; width: 480px; }
-.pp-crm { position: fixed; top: 0; bottom: 0; left: 480px; right: 0; z-index: 1; }
+/* --pp-w is the dragged phone width (SmsPreviewPage). Clamped here, not only when dragged, so
+   a width saved on a big screen still fits a smaller one. 430 / 560 mirror PHONE_MIN_W /
+   CRM_MIN_W in the component. */
+.pp-split { --pp-x: clamp(430px, var(--pp-w, 480px), calc(100vw - 560px)); }
+.pp-split .phone-page { right: auto; width: var(--pp-x); }
+.pp-crm { position: fixed; top: 0; bottom: 0; left: var(--pp-x, 480px); right: 0; z-index: 1; }
 .pp-crm .ccr { height: 100%; }
-@media (max-width: 1100px) { .pp-split .phone-page { width: 400px; } .pp-crm { left: 400px; } }
+@media (max-width: 1100px) { .pp-split { --pp-x: clamp(400px, var(--pp-w, 400px), calc(100vw - 560px)); } }
+.pp-divider { position: fixed; top: 0; bottom: 0; left: var(--pp-x); width: 12px; transform: translateX(-50%); z-index: 3; cursor: col-resize; touch-action: none; display: flex; align-items: center; justify-content: center; }
+.pp-divider::before { content: ""; position: absolute; top: 0; bottom: 0; left: 50%; width: 2px; transform: translateX(-50%); background: transparent; transition: background .15s; }
+.pp-divider span { width: 6px; height: 44px; border-radius: 3px; background: rgba(255,255,255,.28); box-shadow: 0 0 0 1px rgba(0,0,0,.25); position: relative; transition: background .15s, height .15s; }
+.pp-divider:hover::before, .pp-divider:focus-visible::before, body.pp-resizing .pp-divider::before { background: #8ab4f8; }
+.pp-divider:hover span, .pp-divider:focus-visible span, body.pp-resizing .pp-divider span { background: #8ab4f8; height: 56px; }
+.pp-divider:focus-visible { outline: none; }
+body.pp-resizing { cursor: col-resize; user-select: none; }
 
 .icon-badge { position: relative; display: inline-flex; align-items: center; }
 .icon-badge .count {
@@ -7388,7 +7399,6 @@ body:has(.tour-root) .tour-cta { visibility: hidden; }
 .ccr-pre { background: var(--ccr-primary-soft); }
 .ccr-pre h4 { display: flex; align-items: center; gap: 6px; color: var(--ccr-primary); }
 .ccr-pre-badge { font-size: 9px; letter-spacing: .06em; background: var(--ccr-primary); color: #fff; border-radius: 999px; padding: 2px 6px; }
-.ccr-pre-sub { margin: -4px 0 8px; font-size: 12px; color: var(--ccr-muted); }
 .ccr-pre .ccr-v { font-weight: 600; }
 .ccr-v.ccr-pre-v { font-weight: 500; color: var(--ccr-muted); }
 .ccr-src { display: inline-block; margin-left: 6px; font-size: 10px; font-weight: 700; letter-spacing: .03em; border-radius: 999px; padding: 1px 6px; vertical-align: 1px; background: var(--ccr-line2); color: var(--ccr-muted); white-space: nowrap; }
@@ -7404,14 +7414,5 @@ body:has(.tour-root) .tour-cta { visibility: hidden; }
 .ccr-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .ccr-tag { background: var(--ccr-primary-soft); color: var(--ccr-primary); border-radius: 999px; padding: 3px 9px; font-size: 12px; font-weight: 700; }
 .ccr-quote { font-size: 12px; color: var(--ccr-muted); margin-top: 8px; font-style: italic; }
-.ccr-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
-.ccr-steps li { display: flex; gap: 8px; align-items: flex-start; font-size: 12.5px; color: var(--ccr-faint); }
-.ccr-steps li i { flex: none; width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--ccr-line); margin-top: 1px; position: relative; }
-.ccr-steps li.ccr-ok { color: var(--ccr-ink); }
-.ccr-steps li.ccr-ok i { border-color: var(--ccr-success); background: var(--ccr-success); }
-.ccr-steps li.ccr-ok i::after { content: ""; position: absolute; left: 4px; top: 1px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
-.ccr-steps li small { display: block; color: var(--ccr-muted); }
-.ccr-list { margin: 0; padding-left: 16px; font-size: 12.5px; line-height: 1.45; }
-.ccr-list li { margin-bottom: 4px; }
 .ccr-empty { color: var(--ccr-faint); font-style: italic; font-size: 12px; }
 @media (prefers-reduced-motion: reduce) { .ccr *, .ccr *::after { animation: none !important; transition: none !important; } }

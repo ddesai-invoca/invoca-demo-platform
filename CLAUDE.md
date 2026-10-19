@@ -1227,6 +1227,31 @@ beside the Preview Agent and on Integrations > Custom CRM. `crmPreCall` / `preca
   read answers to the question just asked); a name needs an explicit introduction in Capitalised
   words, so "I'm looking for…" is not one.
 
+### The CRM lead panel reads like a CRM, not a demo (10/19/2026 feedback)
+Annotated feedback on a Miracle-Ear screenshot; each item and what it became:
+- "Pre-Call" -> **Pre-Interaction Intelligence** (it sits beside a TEXT conversation). The
+  "Known before the first text · enriched live…" subtitle was talk track: removed.
+- **Activity row removed** ("we can capture it but not natively without integrations; adds
+  noise"). The RCS/LSA visits wording from earlier the same day is now never rendered.
+- **"Pre-call" chips removed** (the talk track is that this comes from anywhere: CRM, form,
+  ECP). "✓ Confirmed in chat" / "Updated in chat" stay, because they show the agent's work.
+- **"What the AI Agent did" removed** ("a reasoning layer takes away from the realism of data in
+  a CRM") and replaced with what the agent PRODUCED as fields: ZIP is the bare ZIP and a
+  **Serviceable** row shows the confirmed service area. **"Confirm on the follow-up call"
+  removed** (it implied the agent is not autonomous); `followUp` left the registered base too.
+- **Placeholder emails** (`@emailprovider.com`, `@email.com`, `@example.com`) read as
+  **@gmail.com EVERYWHERE**: `src/data/realEmail.ts` runs inside `ProfileContext.normalize`, so
+  every profile entering the store (registry, cache, library, shared demo) is fixed at load and
+  every screen gets it. Measured 324 placeholders across 184 profiles -> 0; real providers,
+  business domains and @invoca.com are untouched, and a clean profile comes back as the same
+  object. The generator now asks for gmail, and Insights' minted `callerN@example.com` is gmail.
+  ⚠️ Load-time, not a migration: the files on disk still hold the old domains.
+- **The phone/CRM divider drags** (`.pp-divider` in SmsPreviewPage): the phone column width is
+  kept per browser (`invoca-demo:pp-phone-width`), arrow keys move it, double-click resets, and
+  the CSS clamps it (`--pp-x: clamp(430px, …, 100vw - 560px)`) so the whole 380px phone and a
+  usable calendar always fit, even after a resize. Hidden on a phone, where the two stack.
+- Verified: real drags to 800px and to the 430px floor, reset, and the Integrations placement.
+
 ### The CRM's request tags: fast, sticky, and the heading fits the prospect (10/19/2026)
 Reported: tags took a long time, all vanished on every new message, and the heading said
 "Project" for everyone.
