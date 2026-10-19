@@ -869,6 +869,17 @@ app.get("/api/replicas/dyn/:file", async (req, res) => {
   fs.createReadStream(full).pipe(res);
 });
 
+/* The prospect's own icon for the RCS sender avatar (10/19/2026). Behind the sign-in gate like
+   og-image: it makes the server fetch a public site, so it is not offered to the world. */
+app.get("/api/brand-logo", async (req, res) => {
+  try {
+    const { fetchBrandLogo } = await import("./engine/brandLogo.ts");
+    res.json({ url: await fetchBrandLogo(String(req.query.domain ?? "")) });
+  } catch {
+    res.json({ url: null });
+  }
+});
+
 app.get("/api/og-image", async (req, res) => {
   try {
     const { fetchOgImage } = await import("./engine/ogImage.ts");

@@ -472,3 +472,16 @@ function intentCopyBase(f: IntentFields & { customerName: string }): IntentCopy 
     };
   }
 }
+
+/* The heading over what the customer asked for in the Custom CRM's lead panel (10/19/2026).
+   Asked for: *"Make sure it doesn't say 'project' for all the prospects."* A patient has care
+   needs, a guest has stay details and a driver has a vehicle, and "Project" fits none of them. */
+const REQUEST_HEADING: Record<IntentKind, string> = {
+  care: "Care needs", seniorCare: "Care needs", insurance: "Coverage needs",
+  autoSales: "Vehicle interest", autoService: "Vehicle & service", homeService: "Service needs",
+  security: "System needs", telecom: "Service needs", financial: "Financial needs",
+  hospitality: "Stay details", moving: "Move details", retail: "Shopping interest",
+  legal: "Case details", education: "Program interest", funeral: "Arrangement needs",
+  b2b: "Business needs", general: "Request details",
+};
+export const requestHeading = (kind: IntentKind): string => REQUEST_HEADING[kind];

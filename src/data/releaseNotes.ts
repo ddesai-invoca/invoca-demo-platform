@@ -69,6 +69,9 @@ export const RELEASES: Release[] = [
     date: "2026-10-19",
     title: "Pre-call intelligence in the Custom CRM, and Ask AI that edits anything",
     changes: [
+      f("In the Custom CRM, the tags for what the customer asked for now appear within a few seconds, stay on screen as the conversation continues, and new ones are added as they come up. The heading is named for the prospect's business, such as Care needs, Stay details or Vehicle interest, instead of Project. For RCS and Google LSA conversations the pre-call section no longer lists pages viewed or site visits, and says how the customer arrived from the ad instead."),
+      n("The RCS Preview Agent shows the prospect's own logo as the sender, taken from their website's app icon. A site with no sharp icon keeps the brand's initials."),
+      n("The Custom CRM can sit beside every SMS preview now: the regular agent, RCS and Google LSA quote requests. The agent offers the calendar's own openings in all of them, and for an LSA request the pre-call section is the quote the customer sent."),
       n("The Custom CRM's New Lead panel opens with Pre-Call Intelligence: who the customer is, where they are, what they searched, the pages they viewed and the campaign they came from, all before the first text. As they text, each detail is marked Confirmed or Updated."),
       i("Ask AI can now change any data on any screen, including adding and removing items such as signals, transcript lines, leads and recommendations, and it asks one short question when a request could mean two things. That now covers Salesforce, Google Search, ChatGPT, the Custom CRM, the Insights reports, captured SMS and voice conversations, My Reports, Agent Studio and the Signal pages, and a lead or conversation captured after an edit still appears."),
     ],

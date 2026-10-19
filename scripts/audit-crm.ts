@@ -91,8 +91,11 @@ check(!/LIVE CALENDAR/.test(smsSystemPromptForAudit({ customerName: "Aptive", in
 
 console.log("\nWiring\n");
 const brainSrc = readFileSync("src/data/smsBrain.ts", "utf8");
-check(/!wf && crmConnected\(profile\.id\) \? \{ crmCalendar: crmPromptCalendar\(profile\) \}/.test(brainSrc),
-  "the built-in agent gets the calendar only while the CRM is connected", "the calendar is not gated on the connect switch");
+// Re-aimed 10/19/2026: the calendar now reaches EVERY SMS agent (copies, RCS, LSA), so `!wf` is
+// gone on purpose. The invariant that survives is the connect switch.
+check(/crmConnected\(profile\.id\) \? \{ crmCalendar: crmPromptCalendar\(profile\) \}/.test(brainSrc)
+    && !/crmCalendar: crmPromptCalendar\(profile\)(?![\s\S]{0,4}\})/.test(brainSrc.replace(/crmConnected\(profile\.id\) \? \{ crmCalendar: crmPromptCalendar\(profile\) \}/g, "")),
+  "an SMS agent gets the calendar only while the CRM is connected", "the calendar is not gated on the connect switch");
 const screen = readFileSync("src/screens/CustomCrm.tsx", "utf8");
 check(/c\.date === longDate\(now\)/.test(screen), "only today's conversation is shown", "an old conversation could land on today's calendar");
 check(/crmCalendar\(profile\.id/.test(screen) && /crmStateFrom\(conv, days\)/.test(screen), "the screen draws the same calendar it reads the conversation against", "the screen builds its own calendar");

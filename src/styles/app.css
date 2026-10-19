@@ -1445,6 +1445,10 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
   display: flex; align-items: center; justify-content: center;
   font: 700 20px/1 -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif; letter-spacing: .02em;
 }
+/* The prospect's own logo (10/19/2026): on white, like an app icon, so a transparent logo still
+   reads; `contain` so a wordmark is never cropped. */
+.rcs-avatar--logo { background: #fff; overflow: hidden; }
+.rcs-avatar--logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .rcs-namepill { font-weight: 600; }
 .rcs-stamp { line-height: 1.35; }
 .rcs-turn { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 3px; }

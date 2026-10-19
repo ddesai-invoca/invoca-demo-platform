@@ -334,6 +334,10 @@ export const bookingId = (convId: string): string => String(100000 + (hash(`book
    ------------------------------------------------------------------------------------------ */
 const ALREADY_SHOWN = /\b(zip|service area|area confirmed|appointment|booked|booking|scheduled|schedul|contact|name|phone|email|address|opt.?in|engaged|greeting|close)\b/i;
 const GENERIC_VALUE = /^(yes|no|none|n\/a|declined|confirmed|requested|interested|true|false|captured|provided|discussed|met)$/i;
+/* A conversation's state, not a fact about the customer ("Conversation Status: In Progress"). */
+const STATUS_VALUE = /^(in progress|pending|ongoing|open|unknown|not yet|tbd|awaiting\b.*|started|active|incomplete)$/i;
+/* Who they are to the business: "New Homeowner" and "New Customer" are one fact said twice. */
+const CUSTOMER_TYPE = /^(new|existing|returning|current|first[- ]time)\s+\w+$/i;
 const NEGATED = /\b(no|not|don'?t|without|never|nope)\b[^.?!,]{0,24}$/i;
 
 const stem = (w: string) => w.replace(/ies$/, "y").replace(/(?<=o)es$/, "").replace(/s$/, "");
@@ -342,7 +346,7 @@ const stems = (s: string) => s.toLowerCase().replace(/[^a-z ]/g, " ").split(/\s+
 /** Tags for the Project section, most concrete first, no duplicates, at most `max`. */
 export function crmDetails(customerText: string, signalNames: string[], categories: string[], max = 8): string[] {
   const out: string[] = [];
-  const norm = (s: string) => s.toLowerCase().replace(/(\d),(?=\d{3})/g, "$1").replace(/\s+and\s+/g, " + ").replace(/\s+/g, " ").trim();
+  const norm = (s: string) => s.toLowerCase().replace(/(\d),(?=\d{3})/g, "$1").replace(/-/g, " ").replace(/\s+and\s+/g, " + ").replace(/\s+/g, " ").trim();
   const add = (t: string | null | undefined, opts: { overlap?: boolean } = {}) => {
     const s = (t ?? "").replace(/\s+/g, " ").trim();
     if (!s || s.length > 40) return;
@@ -381,7 +385,8 @@ export function crmDetails(customerText: string, signalNames: string[], categori
     if (ALREADY_SHOWN.test(clean)) continue;
     const [label, ...rest] = clean.split(":");
     const value = rest.join(":").trim();
-    if (!value) continue;
+    if (!value || STATUS_VALUE.test(value)) continue;
+    if (CUSTOMER_TYPE.test(value) && out.some((o) => CUSTOMER_TYPE.test(o))) continue;
     add(GENERIC_VALUE.test(value) ? `${label.trim()}: ${value.toLowerCase()}` : value, { overlap: true });
   }
 
@@ -394,6 +399,26 @@ export function crmDetails(customerText: string, signalNames: string[], categori
   const pets = text.match(/\b(\d+|one|two|three|four|a|an)\s+(dogs?|cats?|pets?)\b/i);
   if (pets) add(`${/^an?$/i.test(pets[1]) ? "1" : pets[1]} ${pets[2].toLowerCase()}`);
   if (/\b(kids|children|toddlers?|baby)\b/i.test(text)) add("Kids at home");
+  return out.slice(0, max);
+}
+
+/** Tags already on screen stay where they are and new ones join after them (10/19/2026).
+    Reported: *"all the tags disappear, and then … come back again"*. Each analysis is a fresh
+    model read, so its list can come back reworded, reordered or shorter; rendering it raw makes
+    the row flicker on every message. Earlier tags keep their place, a new fact is appended, and
+    a reworded repeat ("Mosquito" beside "Mosquitoes") is not added twice. */
+export function mergeDetails(prev: string[], next: string[], max = 12): string[] {
+  /* "Dogs Present" and "Two dogs" are one fact; the signal's filler word is not part of it. */
+  const norm = (s: string) => s.toLowerCase().replace(/-/g, " ").replace(/[^a-z0-9+ ]/g, "")
+    .replace(/\b(present|identified|mentioned|noted|detected|confirmed|reported)\b/g, "").replace(/\s+/g, " ").trim();
+  const isType = (t: string) => CUSTOMER_TYPE.test(t);
+  const out = [...prev];
+  for (const t of next) {
+    const k = norm(t);
+    if (!k || out.some((o) => { const n = norm(o); return n === k || n.includes(k) || k.includes(n); })) continue;
+    if (isType(t) && out.some(isType)) continue;
+    out.push(t);
+  }
   return out.slice(0, max);
 }
 
@@ -487,3 +512,36 @@ const STATE_NAMES: Record<string, string> = {
   RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota", TN: "Tennessee", TX: "Texas", UT: "Utah",
   VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West Virginia", WI: "Wisconsin", WY: "Wyoming",
 };
+
+/* =============================================================================
+   AN LSA (OR WEB-FORM) LEAD ARRIVES WITH ITS OWN PRE-CALL INTELLIGENCE (10/19/2026)
+   -----------------------------------------------------------------------------
+   The Custom CRM preview now runs beside every SMS preview, LSA quote requests included. There the
+   first inbound message is Google's lead payload (`lsaLeadMessage`), which IS what is known before
+   the conversation: the customer's name, where they are, the service and what they wrote. So for
+   that conversation the pre-call section is the form, not the voice screen-pop's customer, and
+   the customer's request is the form's own message rather than the payload around it.
+   ============================================================================= */
+export interface CrmLeadIn { via: string; name: string; location: string; service: string; message: string }
+
+export function parseLeadIn(text: string | undefined): CrmLeadIn | null {
+  const m = /^You have received a new message from a customer via (.+?)\. Customer Name: (.*?), Location: (.*?), Service: (.*?), Message: ([\s\S]*?)(?:\s*\[Notes from [^\]]*\]\.?)?\s*$/.exec((text ?? "").trim());
+  if (!m) return null;
+  return { via: m[1].trim(), name: m[2].trim(), location: m[3].trim(), service: m[4].trim(), message: m[5].trim() };
+}
+
+export function crmPreCallFromLeadIn(lead: CrmLeadIn, base: CrmPreCall | null, contact?: string): CrmPreCall {
+  const lsa = /local services/i.test(lead.via);
+  /* The form's contact line, which the lead message itself does not carry: a phone or an email. */
+  const c = (contact ?? "").trim();
+  const phone = c.replace(/\D/g, "").length >= 10 ? c : "";
+  return {
+    name: lead.name, phone, email: /@/.test(c) ? c : "", street: "", zip: "", location: lead.location,
+    search: "", landingPage: "", journey: "", interest: lead.service,
+    source: lsa ? "Google · Local Services Ads" : "Website lead form",
+    campaign: lsa ? "Quote request" : "",
+    value: base?.value ?? "", intent: lsa ? "Requested a quote on Google" : "Submitted the lead form",
+    visits: lsa ? "Quote request sent from the Google Local Services ad" : "Lead form submitted on the website",
+    line: "",
+  };
+}

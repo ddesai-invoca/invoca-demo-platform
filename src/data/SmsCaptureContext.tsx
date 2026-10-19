@@ -87,7 +87,14 @@ export function SmsCaptureProvider({ children }: { children: ReactNode }) {
     return mutate((prev) => {
       const arr = prev[profileId] ?? [];
       const idx = arr.findIndex((e) => e.conv.id === conv.id);
-      if (idx >= 0) { const next = arr.slice(); next[idx] = { ...arr[idx], conv }; return { ...prev, [profileId]: next }; }
+      /* ⚠️ A re-capture of the SAME conversation keeps the signals already found (10/19/2026).
+         The Preview Agent rebuilds the conversation on every turn with `signals: []`, so a
+         plain replace wiped the Analysis rail and the Custom CRM's tags until the next
+         `/api/analyze` came back, which is the "all the tags disappear" report. */
+      if (idx >= 0) {
+        const keep = !conv.signals?.length && arr[idx].conv.signals?.length ? { signals: arr[idx].conv.signals } : {};
+        const next = arr.slice(); next[idx] = { ...arr[idx], conv: { ...conv, ...keep } }; return { ...prev, [profileId]: next };
+      }
       return { ...prev, [profileId]: [{ savedAt: Date.now(), conv }, ...arr].slice(0, MAX_PER_PROFILE) };
     });
   };

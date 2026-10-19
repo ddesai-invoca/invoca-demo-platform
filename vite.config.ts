@@ -468,6 +468,28 @@ function placeApi(): Plugin {
   }
 }
 
+/* Dev twin of GET /api/brand-logo (the RCS avatar's real logo, 10/19/2026). */
+function brandLogoApi(): Plugin {
+  return {
+    name: 'invoca-brand-logo-api',
+    configureServer(server) {
+      server.middlewares.use(async (req, res, next) => {
+        if (!(req.url || '').startsWith('/api/brand-logo')) return next()
+        try {
+          const domain = new URL(req.url!, 'http://x').searchParams.get('domain') || ''
+          const { fetchBrandLogo } = await import(
+            pathToFileURL(path.resolve(process.cwd(), 'engine/brandLogo.ts')).href)
+          res.setHeader('content-type', 'application/json')
+          res.end(JSON.stringify({ url: await fetchBrandLogo(domain) }))
+        } catch {
+          res.setHeader('content-type', 'application/json')
+          res.end(JSON.stringify({ url: null }))
+        }
+      })
+    },
+  }
+}
+
 function ogImageApi(): Plugin {
   return {
     name: 'invoca-og-image-api',
@@ -1038,6 +1060,7 @@ export default defineConfig(({ mode }) => {
       replicateApi(),
       placeApi(),
       ogImageApi(),
+      brandLogoApi(),
       shareApi(),
       demoLibraryApi(),
     feedbackApi(),

@@ -880,5 +880,86 @@ console.log("\nCustom CRM: pre-call intelligence, then confirmed in the chat (10
     "the panel shows the Pre-Call Intelligence section and marks each detail Pre-call / Confirmed / Updated");
 }
 
+console.log("\nThe Custom CRM preview runs beside every SMS preview: regular, LSA and RCS (10/19/2026)\n");
+{
+  const t = (cond: boolean, msg: string) => (cond ? ok(msg) : bad(msg));
+  const page = code("src/screens/SmsPreviewPage.tsx");
+  t(/const crmAble = true;/.test(page), "the split-view button is offered on every SMS preview, not only the built-in agent");
+  t(/channel=\{crmChannel\}/.test(page) && /isRcsSlug\(wf\) \? "RCS"/.test(page) && /isQuoteWorkflow\(wf\) \? "LSA"/.test(page),
+    "the CRM is told which channel it sits beside (SMS, RCS or LSA)");
+  const brain = code("src/data/smsBrain.ts");
+  t(/\.\.\.\(crmConnected\(profile\.id\) \? \{ crmCalendar/.test(brain),
+    "every SMS agent (copies, RCS, LSA workflows) is handed the CRM's openings while it is connected");
+  const chat = code("engine/chat.ts");
+  t(/brain\.crmCalendar \? crmBlock\(brain\.crmCalendar\) : "", SMS_FORMAT_RULES/.test(chat),
+    "a custom playbook (an LSA quote workflow) gets the CRM's openings too");
+  const { parseLeadIn, crmPreCallFromLeadIn } = await import("../src/data/customCrm.ts");
+  const { lsaLeadMessage } = await import("../src/data/quoteWorkflow.ts");
+  const msg = lsaLeadMessage({ id: "q", name: "Dana Whitfield", location: "Dallas", service: "Wasp Removal", message: "Wasps under the deck", contact: "(214) 555-0193", at: Date.now() } as never);
+  const li = parseLeadIn(msg);
+  t(!!li && li.name === "Dana Whitfield" && li.location === "Dallas" && li.service === "Wasp Removal" && li.message === "Wasps under the deck",
+    "the CRM reads Google's LSA lead message exactly as the platform writes it");
+  const pc = li ? crmPreCallFromLeadIn(li, null, "(214) 555-0193") : null;
+  t(!!pc && pc.name === "Dana Whitfield" && pc.phone === "(214) 555-0193" && /Local Services/.test(pc.source),
+    "an LSA conversation's pre-call intelligence is the quote request, not the regular SMS customer");
+  const gt = code("src/components/GeneratedTiles.tsx");
+  t(/const ov = overrideFor\(key\);/.test(gt) && /liveValue\(ov, base\)/.test(gt),
+    "a page draws its own CURRENT base plus its stored edit, never the store's stale copy of the base");
+}
+
+console.log("\nThe CRM's request tags arrive fast, never vanish, and the heading fits the prospect (10/19/2026)\n");
+{
+  const t = (cond: boolean, msg: string) => (cond ? ok(msg) : bad(msg));
+  const { mergeDetails, crmDetails } = await import("../src/data/customCrm.ts");
+  const m = mergeDetails(["Mosquitoes", "Ants"], ["Ants", "2,500 sq ft", "Mosquito"]);
+  t(m.join("|") === "Mosquitoes|Ants|2,500 sq ft", "a tag already shown keeps its place, a new one joins after it, a reworded repeat is not added");
+  t(mergeDetails(["Two story"], ["Two-Story House"]).length === 1 && mergeDetails(["New Homeowner"], ["New Customer"]).length === 1
+    && mergeDetails(["Two dogs"], ["Dogs Present"]).length === 1,
+    "hyphenation and a second customer-type label do not create duplicates");
+  t(!crmDetails("hi", ["Conversation Status: In Progress"], []).length, "a conversation's state is not shown as a customer fact");
+  const cap = code("src/data/SmsCaptureContext.tsx");
+  t(/!conv\.signals\?\.length && arr\[idx\]\.conv\.signals\?\.length/.test(cap),
+    "re-capturing a conversation on a new turn keeps the signals already found (the tags no longer blank out)");
+  const pp = code("src/screens/PhonePreview.tsx");
+  t(/customerJustSpoke \? 250 : 1200/.test(pp), "a new customer message is analysed at once, not after the agent's reply");
+  t(/seq > appliedSeq\.current/.test(pp), "a slow older analysis cannot overwrite a newer one");
+  const crm = code("src/screens/CustomCrm.tsx");
+  t(/mergeDetails\(shownTags\.current\.tags, freshTags\)/.test(crm), "the panel merges tags rather than replacing them");
+  t(!/<h4>Project<\/h4>/.test(crm) && /requestHeading\(intentKindOf\(profile\)\)/.test(crm),
+    "the request heading is derived from the prospect, not a fixed \"Project\"");
+  t(/return \{ \.\.\.pc, journey: "", visits \}/.test(crm) && /channel === "RCS" \? "Tapped Message on the Google ad"/.test(crm)
+    && /preEff\.journey && !noPages && kv\("Pages viewed"/.test(crm),
+    "RCS and LSA leads show no \"Pages viewed\" and no site-visit Activity (they came from the ad, not the site)");
+  const { requestHeading } = await import("../src/data/prospectIntent.ts");
+  t(requestHeading("care") === "Care needs" && requestHeading("hospitality") === "Stay details" && requestHeading("autoSales") === "Vehicle interest",
+    "a hospital, a hotel and a dealership each get their own heading");
+}
+
+console.log("\nThe RCS sender avatar is the prospect's own logo (10/19/2026)\n");
+{
+  const t = (cond: boolean, msg: string) => (cond ? ok(msg) : bad(msg));
+  const { rankIcons, imageSize } = await import("../engine/brandLogo.ts");
+  const png = (w: number, h: number) => { const b = new Uint8Array(32); b.set([0x89, 0x50, 0x4e, 0x47], 0);
+    const v = new DataView(b.buffer); v.setUint32(16, w); v.setUint32(20, h); return b; };
+  t(imageSize(png(180, 180)) === 180 && imageSize(png(16, 16)) === 16, "a PNG's real size is read from its own bytes");
+  t(imageSize(new TextEncoder().encode("<!doctype html><html><body>404</body></html>")) === 0,
+    "an HTML error page served under an icon URL is not an image");
+  t(imageSize(new TextEncoder().encode('<?xml version="1.0"?><svg xmlns="http://www.w3.org/2000/svg"/>')) === Infinity,
+    "an SVG counts as sharp at any size");
+  const html = '<link rel="icon" href="/fav.ico" sizes="16x16"><link rel="icon" href="/big.png" sizes="192x192"><link rel="apple-touch-icon" href="/touch.png"><link rel="mask-icon" href="/m.svg">';
+  const ranked = rankIcons(html, "https://acme.com/");
+  t(ranked[0] === "https://acme.com/touch.png" && !ranked.some((u) => /m\.svg/.test(u)),
+    "the apple-touch-icon (a square app tile) outranks even a larger declared icon, and a mask-icon is never a candidate");
+  const srv = code("server.ts"), vite = code("vite.config.ts");
+  t(/app\.get\("\/api\/brand-logo"/.test(srv) && /startsWith\('\/api\/brand-logo'\)/.test(vite) && /brandLogoApi\(\),/.test(vite),
+    "both servers serve /api/brand-logo");
+  t(srv.indexOf('app.get("/api/brand-logo"') > srv.indexOf("installAuth(app)"),
+    "the logo lookup sits behind the sign-in gate (it makes the server fetch a public site)");
+  const pp = code("src/screens/PhonePreview.tsx");
+  t(/<RcsAvatar name=\{profile\.customerName\}/.test(pp) && /naturalWidth < 48\) setFailed\(true\)/.test(pp)
+    && /onError=\{\(\) => setFailed\(true\)\}/.test(pp) && /brandInitials\(name\)/.test(pp),
+    "the RCS header shows the logo and falls back to initials on a failed or tiny image");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);

@@ -259,8 +259,11 @@ export function buildSmsBrain(
   opts: { workflowLeads?: boolean; greeting?: string; extraBranches?: unknown; rcs?: boolean } = {},
 ): SmsBrain {
   const brain: SmsBrain = {
-    /* ⚠️ The built-in agent and its copies only: an extra workflow states its own flow. */
-    ...(!wf && crmConnected(profile.id) ? { crmCalendar: crmPromptCalendar(profile) } : {}),
+    /* ⚠️ EVERY SMS AGENT BOOKS INTO THE CRM WHILE IT IS CONNECTED (10/19/2026): the built-in agent,
+       its copies, RCS and the LSA quote-request workflows alike, asked for directly ("apply the
+       custom crm preview for all SMS"). An extra workflow still states its own flow; the calendar
+       only decides WHICH openings exist, so it does not compete with that flow. */
+    ...(crmConnected(profile.id) ? { crmCalendar: crmPromptCalendar(profile) } : {}),
     ...(wf && opts.extraBranches ? { extraFlow: extraWorkflowFlowText(opts.extraBranches) } : {}),
     ...(workflow && !wf ? { workflow } : {}),
     ...(workflow && !wf && opts.workflowLeads ? { workflowLeads: true } : {}),

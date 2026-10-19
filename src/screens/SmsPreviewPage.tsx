@@ -5,7 +5,8 @@ import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 import { AiAssistantDrawer } from "../components/AiAssistantDrawer";
 import { PhonePreview } from "./PhonePreview";
-import { useExtraWorkflows } from "../data/quoteWorkflow";
+import { useExtraWorkflows, isQuoteWorkflow, quoteForWorkflow, lsaLeadMessage } from "../data/quoteWorkflow";
+import { useQuoteCaptures } from "../data/QuoteCaptureContext";
 import { builtInCopiesFor, isRcsSlug } from "../data/builtInCopies";
 import { CustomCrm } from "./CustomCrm";
 import { crmConnection, setCrmConnected } from "../data/customCrm";
@@ -59,7 +60,17 @@ export function SmsPreviewPage() {
      render that adds a message — no cross-tab sync involved.
      ⚠️ Only for the built-in agent and its copies: an extra workflow is never handed the CRM's
      calendar, so the CRM would have nothing true to show. */
-  const crmAble = !wf || !!copy;
+  /* ⚠️ EVERY SMS PREVIEW NOW (10/19/2026): the built-in agent, its copies, RCS and the LSA
+     quote-request workflows, asked for directly. The agent is handed the CRM's openings in all of
+     them (`buildSmsBrain`), so the calendar beside the phone always shows what it offers. */
+  const crmAble = true;
+  const crmChannel: "SMS" | "RCS" | "LSA" = isRcsSlug(wf) ? "RCS"
+    : wf && isQuoteWorkflow(wf) ? "LSA" : "SMS";
+  /* The quote request IS the pre-call intelligence for an LSA preview, before the first reply is
+     even captured, so it is handed to the CRM directly. */
+  const quotes = useQuoteCaptures().capturedFor(profile.id);
+  const quote = wf ? quoteForWorkflow(wf, quotes) : undefined;
+  const crmLeadIn = quote ? lsaLeadMessage(quote) : undefined;
   const splitKey = `invoca-demo:pp-split::${profileId}`;
   const [convId, setConvId] = useState<string | null>(null);
   const [split, setSplit] = useState(() => { try { return crmAble && sessionStorage.getItem(splitKey) === "1"; } catch { return false; } });
@@ -146,7 +157,7 @@ export function SmsPreviewPage() {
           /* Opened in this tab from the Google ad's Message button: close goes back to the
              results. Opened from Agent Studio it is its own tab, which close shuts as before. */
           onClose={params.get("from") === "google" ? () => navigate(-1) : undefined} />
-        {split && <div className="pp-crm"><CustomCrm embedded convId={convId} /></div>}
+        {split && <div className="pp-crm"><CustomCrm embedded convId={convId} channel={crmChannel} leadIn={crmLeadIn} leadContact={quote?.contact} /></div>}
       </div>
       {!isShareMode() && <AiAssistantDrawer />}
     </>

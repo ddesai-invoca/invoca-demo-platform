@@ -3,6 +3,7 @@ import { Fragment, useEffect, useRef, useState, useMemo } from "react";
    route is behind the Google gate, and only the share path applies the daily caps. */
 import { apiPath } from "../data/shareMode";
 import { useProfile } from "../data/ProfileContext";
+import { isShareMode } from "../data/shareMode";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { usePageData } from "../components/GeneratedTiles";
 import { PREVIEW_PATH } from "../data/agentWorkflowSync";
@@ -334,6 +335,46 @@ function useClock(): Date {
   return now;
 }
 
+/* ⚠️ THE RCS SENDER AVATAR IS THE PROSPECT'S OWN LOGO (10/19/2026), asked for directly: "get the
+   prospect's actual logo and use that". Resolved once per domain by `/api/brand-logo`
+   (engine/brandLogo.ts: the site's own apple-touch-icon or largest declared icon, checked to be a
+   sharp real image) and remembered in this browser, so the tile does not flash on every open.
+   The initials stay as the honest fallback: no sharp logo (a site that only ships a 16px
+   favicon), a fictional prospect with no site, or an image that fails to load. A shared demo has
+   no sign-in for that endpoint, so it asks Google's icon service directly and keeps the initials
+   if what comes back is too small to look sharp. Only a found logo is remembered. */
+function RcsAvatar({ name, domain: raw }: { name: string; domain?: string }) {
+  const domain = (raw ?? "").replace(/^https?:\/\//, "").replace(/\/.*$/, "").trim().toLowerCase();
+  const key = `invoca-demo:brand-logo::${domain}`;
+  const [url, setUrl] = useState<string | null | undefined>(() => {
+    try { return localStorage.getItem(key) || undefined; } catch { return undefined; }
+  });
+  const [failed, setFailed] = useState(false);
+  useEffect(() => {
+    if (!domain || url !== undefined) return;
+    if (isShareMode()) { setUrl(`https://www.google.com/s2/favicons?sz=256&domain=${encodeURIComponent(domain)}`); return; }
+    let live = true;
+    fetch(`/api/brand-logo?domain=${encodeURIComponent(domain)}`)
+      .then((r) => r.json())
+      .then((j: { url?: string | null }) => {
+        if (!live) return;
+        setUrl(j.url ?? null);
+        if (j.url) { try { localStorage.setItem(key, j.url); } catch { /* full or private */ } }
+      })
+      .catch(() => { if (live) setUrl(null); });
+    return () => { live = false; };
+  }, [domain, url, key]);
+  if (url && !failed) {
+    return (
+      <div className="rcs-avatar rcs-avatar--logo">
+        <img src={url} alt="" onError={() => setFailed(true)}
+          onLoad={(e) => { if (e.currentTarget.naturalWidth < 48) setFailed(true); }} />
+      </div>
+    );
+  }
+  return <div className="rcs-avatar">{brandInitials(name)}</div>;
+}
+
 export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone, onConversation }: {
   onClose?: () => void; mode?: "modal" | "page"; wf?: string | null;
   /** The id of the conversation this phone is capturing, or null before the first message and
@@ -377,6 +418,8 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
   const baseRef = useRef<ConvBase | null>(null);
   const analyzeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const analyzedForCount = useRef(0);
+  const analyzeSeq = useRef(0);
+  const appliedSeq = useRef(0);
   /* Shown briefly after an AI change restarts the thread, so the chat vanishing
      reads as "it picked up your edit" rather than "it lost my conversation".
      Deliberately OUTSIDE the phone frame: the screen itself has to stay a
@@ -591,10 +634,20 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
     upsertCaptured(profile.id, conv);
     onConversation?.(conv.id);
 
+    /* ⚠️ The customer's words are what the signals (and the Custom CRM's tags) are read from,
+       so a new CUSTOMER message is analysed almost at once rather than after the agent has
+       replied and a further 1.2s has passed: that wait was most of "it takes a long time for
+       the tags to appear" (10/19/2026). An agent reply still triggers a later pass. */
+    const customerJustSpoke = messages[messages.length - 1]?.role === "user";
     if (analyzeTimer.current) clearTimeout(analyzeTimer.current);
     analyzeTimer.current = setTimeout(() => {
       if (analyzedForCount.current === messages.length) return; // no new turns since last analyze
       analyzedForCount.current = messages.length;
+      /* Two passes can be in flight at once now. Each writes when it lands UNLESS a newer pass
+         has already written, or a slow older answer would put back what the newer one replaced.
+         (Not "only the newest may write": the customer's pass would then be thrown away the
+         moment the agent's reply started one, and the tags would wait for that instead.) */
+      const seq = ++analyzeSeq.current;
       fetch(apiPath("/api/analyze"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -606,9 +659,9 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
         }),
       })
         .then((r) => r.json())
-        .then((d) => { if (Array.isArray(d?.signals) && d.signals.length) patchCaptured(profile.id, conv.id, { signals: d.signals }); })
+        .then((d) => { if (seq > appliedSeq.current && Array.isArray(d?.signals) && d.signals.length) { appliedSeq.current = seq; patchCaptured(profile.id, conv.id, { signals: d.signals }); } })
         .catch(() => { /* leave signals; report shows an analyzing note */ });
-    }, 1200);
+    }, customerJustSpoke ? 250 : 1200);
     return () => { if (analyzeTimer.current) clearTimeout(analyzeTimer.current); };
   }, [messages]); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -639,7 +692,7 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
                    logo and badge where SMS shows a bare number. No logo is stored on a profile, so
                    the mark is the brand's initials in the platform green. */
                 <div className="sms-contact">
-                  <div className="rcs-avatar">{brandInitials(profile.customerName)}</div>
+                  <RcsAvatar name={profile.customerName} domain={profile.brandDomain || profile.websiteUrl} />
                   <div className="sms-namepill rcs-namepill">{profile.customerName}<span className="material-icons">chevron_right</span></div>
                 </div>
               ) : (

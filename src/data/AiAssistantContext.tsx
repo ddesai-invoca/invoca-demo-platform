@@ -196,6 +196,8 @@ interface AiAssistantCtx {
      would silently repoint this page's sparkle. Never overwrites an existing base. */
   registerBase: (key: string, data: unknown, live?: boolean) => void;
   effectiveData: (key: string) => unknown;
+  /** The raw stored override for a key (undefined when the page was never edited). */
+  overrideFor: (key: string) => unknown;
   tilesFor: (key: string) => GeneratedTile[];
   applyEdits: (key: string, edits: AssistantEdit[]) => number;
   addTile: (key: string, tile: GeneratedTile) => void;
@@ -353,6 +355,7 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   /* A live page's override carries the base it was made from, and is merged over today's
      base so new captures still appear after an edit (see liveMerge.ts). */
   const effectiveData = useCallback((key: string) => (key in store.overrides ? liveValue(store.overrides[key], baseRef.current[key]) : baseRef.current[key]), [store.overrides]);
+  const overrideFor = useCallback((key: string) => store.overrides[key], [store.overrides]);
   const tilesFor = useCallback((key: string) => store.tiles[key] ?? [], [store.tiles]);
   const canUndo = useCallback((key: string) => (store.undo[key]?.length ?? 0) > 0, [store.undo]);
   const undoDepth = useCallback((key: string) => store.undo[key]?.length ?? 0, [store.undo]);
@@ -513,7 +516,7 @@ export function AiAssistantProvider({ children }: { children: ReactNode }) {
   }, [readOnly]);
 
   return (
-    <Ctx.Provider value={{ open, focus, openDrawer, closeDrawer, active, registerScope, registerBase, effectiveData, tilesFor, applyEdits, addTile, replaceTile, removeTile, hideTile, showTile, hiddenFor, undo, canUndo, undoDepth, activeDemo, hydrateDemo, readOnly }}>
+    <Ctx.Provider value={{ open, focus, openDrawer, closeDrawer, active, registerScope, registerBase, effectiveData, overrideFor, tilesFor, applyEdits, addTile, replaceTile, removeTile, hideTile, showTile, hiddenFor, undo, canUndo, undoDepth, activeDemo, hydrateDemo, readOnly }}>
       {children}
     </Ctx.Provider>
   );

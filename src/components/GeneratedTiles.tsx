@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { liveValue } from "../data/liveMerge";
 import { useLocation } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant, type GeneratedTile } from "../data/AiAssistantContext";
@@ -51,7 +52,7 @@ export interface PageDataOptions {
 export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
   const { pathname } = useLocation();
   const { profileId, profile } = useProfile();
-  const { registerScope, registerBase, effectiveData } = useAiAssistant();
+  const { registerScope, registerBase, overrideFor } = useAiAssistant();
   const key = `${profileId}::${opts?.scopePath ?? pathname}`;
   const passive = !!opts?.passive;
   const questionPath = opts?.questionPath;
@@ -65,13 +66,14 @@ export function useDashboardData<T>(base: T, opts?: PageDataOptions): T {
     if (passive) { registerBase(key, base, live); return; }
     registerScope({ key, customerName: profile.customerName, baseTitle: (base as any)?.title ?? "", baseData: base, questionPath, greetingFallback, greetingWins, linkKey, linkAs, live });
   }, [key, base, passive, live, profile.customerName, registerScope, registerBase, questionPath, greetingFallback, greetingWins, linkKey, linkAs]);
-  const eff = effectiveData(key);
-  /* ⚠️ FILL FROM THIS PAGE'S OWN BASE. Another writer can register a smaller base under the same
-     key first (the Book online link registers `{ bookingUrl, thankYouUrl }` under the Google
-     Search key), and until this page's own registration lands the store holds only that, so the
-     page drew `undefined` lists and crashed. A field the effective value lacks comes from here. */
-  const isObj = (v: unknown): v is Record<string, unknown> => !!v && typeof v === "object" && !Array.isArray(v);
-  return (isObj(eff) && isObj(base) ? { ...base, ...eff } : eff ?? base) as T;
+  /* ⚠️⚠️ THE PAGE'S OWN, CURRENT BASE, WITH ITS STORED EDIT OVER IT (10/19/2026). This used to read
+     the store's copy of the base, which is written in an EFFECT and is a ref, so on the render
+     where a derived base changed the page drew the PREVIOUS base: the CRM beside an LSA preview
+     kept the old customer after the quote arrived, and another writer registering a smaller base
+     under the same key (the Book online link on Google Search) made the page draw `undefined`.
+     `liveValue` merges a live edit over this base and fills any field an older edit lacks. */
+  const ov = overrideFor(key);
+  return (base == null ? ov : ov === undefined ? base : liveValue(ov, base)) as T;
 }
 
 /* usePageData is the SAME hook under an honest name. Nothing in it is

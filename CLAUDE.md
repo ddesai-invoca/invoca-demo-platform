@@ -1227,6 +1227,52 @@ beside the Preview Agent and on Integrations > Custom CRM. `crmPreCall` / `preca
   read answers to the question just asked); a name needs an explicit introduction in Capitalised
   words, so "I'm looking for…" is not one.
 
+### The CRM's request tags: fast, sticky, and the heading fits the prospect (10/19/2026)
+Reported: tags took a long time, all vanished on every new message, and the heading said
+"Project" for everyone.
+- ⚠️⚠️ **THE VANISHING WAS `upsertCaptured`.** The Preview Agent rebuilds the conversation with
+  `signals: []` on every turn and the upsert REPLACED it, wiping the signals (and the CRM's tags,
+  and the SMS report's Analysis rail) until the next `/api/analyze` returned. A re-capture now
+  keeps the stored signals when the incoming list is empty.
+- **The slowness was the debounce.** Analysis waited for the agent's reply plus 1.2s. A new
+  CUSTOMER message is analysed after 250ms now; an agent reply still triggers a later pass.
+  Passes can overlap, so each writes unless a NEWER one already wrote (`appliedSeq`); "only the
+  newest may write" would discard the customer's fast pass the moment the reply started one.
+- **Tags only join** (`mergeDetails`): shown ones keep their place, new ones append, reworded
+  repeats ("Mosquito", "Two-Story House", "Dogs Present") and a second customer-type label are
+  dropped, and a conversation status ("In Progress") is never a tag. Reset per conversation.
+- **The heading is `requestHeading(intentKindOf(profile))`** (Care needs, Stay details, Vehicle
+  interest, Service needs…), in the CRM's registered base as `requestHeading` so Ask AI can
+  rename it.
+- **No "Pages viewed" for RCS or an LSA lead**: those customers reach the agent from the ad (the
+  Message button, the quote form) and never browse the site, so the journey is blanked in the
+  pre-call VALUE (so Ask AI's base agrees) and the render also refuses it (a stored edit could
+  still carry one). Regular SMS keeps it.
+  Activity likewise says how they arrived ("Tapped Message on the Google ad" for RCS, "Quote
+  request sent from the Google Local Services ad" for LSA) instead of "N site visits".
+- Measured live on Aptive: first tags at ~2.9s, the second message's stated facts at ~0.1s, and
+  no tag ever disappeared. `audit:app` has 9 checks; the keep-signals one fires on sabotage.
+
+### The Custom CRM preview runs beside EVERY SMS preview: regular, LSA and RCS (10/19/2026)
+Asked for: *"apply the custom crm preview for all SMS: for regular SMS, for LSA's, and for RCS as well."*
+- The split-view button is offered on every Preview Agent (`crmAble = true`); it used to be the
+  built-in agent and its copies only.
+- ⚠️ **THE AGENT HAS TO OFFER THE CRM'S OPENINGS IN ALL OF THEM, or the calendar beside the phone
+  shows times nobody offered.** `buildSmsBrain` hands `crmCalendar` to any SMS brain while the CRM
+  is connected (it was `!wf` only), and `engine/chat.ts`'s custom-playbook branch (an LSA quote
+  workflow) now appends `crmBlock`. Verified: RCS and an LSA quote request both offered exactly the
+  calendar's openings, and the LSA booking landed on the grid.
+- ⚠️ **AN LSA CONVERSATION'S PRE-CALL INTELLIGENCE IS THE QUOTE REQUEST**, which is what Google sends
+  before the first text: `parseLeadIn` reads `lsaLeadMessage` (round-trip checked in `audit:app`) and
+  `crmPreCallFromLeadIn` builds the section from it (name, location, service, the form's phone).
+  The Preview Agent hands the quote to the CRM directly, so it shows before the first reply is
+  even captured, and the customer's request is the form's own message, not the payload around it.
+- The Appointment's Source names the channel: SMS, RCS, or "SMS · Google LSA".
+- ⚠️⚠️ **A REAL BUG THIS FOUND, IN `usePageData`:** a page drew the store's copy of its base, which is
+  written in an effect into a ref, so on the render where a derived base changed it showed the
+  PREVIOUS one (the CRM kept the old customer after the quote arrived). A page now draws its own
+  current base with its stored edit merged over it (`overrideFor` + `liveValue`).
+
 ### ⚠️⚠️ STANDING RULE: ASK AI MAY CHANGE ANY DATA ON ANY PAGE (10/16/2026)
 Asked for after Ask AI refused to add or remove a signal on the CI Silver page: *"I want users to
 be able to make changes and edits to any of the data on any of the pages … the transcript, the
@@ -11742,6 +11788,24 @@ Verified on the live model, end to end: chips at every choice (pest type, home s
 ZIP/name/phone/address/email, the two openings as cards, a tapped card booking the slot, a
 clean capture, the drawer showing the same chips, and the SMS / SMS Test previews unchanged.
 `audit:ai` has 5 RCS checks (two verified to fire).
+
+**The RCS sender avatar is the prospect's own logo** (10/19/2026, *"get the prospect's actual
+logo and use that"*). `engine/brandLogo.ts` + `GET /api/brand-logo` (both twins, behind the gate)
++ `RcsAvatar` in `PhonePreview.tsx`.
+- ⚠️ **The site's own declared icon, not Google's favicon service first.** That service often
+  returns a 16px favicon scaled up. Ranked: `apple-touch-icon` (a square app tile, which is what
+  an RCS avatar is), then the largest declared `<link rel=icon>`, then `/apple-touch-icon.png`,
+  then Google s2 at 256px.
+- ⚠️⚠️ **Every candidate is fetched and its REAL size read from its bytes** (`imageSize`: PNG,
+  ICO, JPEG, WebP, SVG). The first version trusted headers and accepted an HTML 404 page served
+  as `.png`, plus 16px and 57px icons that blur at the avatar's size. Accepts 120px+ (or SVG),
+  else the largest 48px+, else nothing.
+- **Initials stay as the fallback**: no sharp icon (Orlando Health ships only a 16px one), a
+  fictional prospect with no site (Shady Blinds), a broken image, or one under 48px.
+- Found URLs are cached per domain in localStorage (`invoca-demo:brand-logo::<domain>`) and in
+  server memory (misses too). A shared demo has no session for the endpoint, so it asks Google's
+  s2 service directly.
+- `audit:app` has 7 checks; the ranking check was strengthened after a sabotage did not fire.
 
 **The Google Search ad's "Chat with <prospect> · On Messages" row** (10/15/2026, from a real
 Google result) sits under the call line of the prospect's TOP ad only and its Message button opens

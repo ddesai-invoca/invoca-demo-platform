@@ -25,10 +25,11 @@ import { useProfile } from "../data/ProfileContext";
 import { usePageData } from "../components/GeneratedTiles";
 import { StandaloneAi } from "../components/StandaloneAi";
 import { useSmsCapture } from "../data/SmsCaptureContext";
+import { intentKindOf, requestHeading } from "../data/prospectIntent";
 import { derive } from "../data/prospectPlace";
 import { smsInfoAttribution } from "../data/salesforceLeadDetail";
 import {
-  crmCalendar, crmStateFrom, crmConnection, setCrmConnected, crmDetails, hourLabel, ymd, crmPreCall, precallMatch,
+  crmCalendar, crmStateFrom, crmConnection, setCrmConnected, crmDetails, mergeDetails, hourLabel, ymd, crmPreCall, precallMatch, parseLeadIn, crmPreCallFromLeadIn,
   CRM_START_HOUR, CRM_END_HOUR, type CrmDay,
 } from "../data/customCrm";
 
@@ -41,8 +42,14 @@ const minutesOf = (t: string) => {
   return m ? ((Number(m[1]) % 12) + (m[3] === "PM" ? 12 : 0)) * 60 + Number(m[2]) : null;
 };
 
-export function CustomCrm({ embedded = false, convId }: {
+export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInText, leadContact }: {
   embedded?: boolean;
+  /** Which SMS preview this sits beside (10/19/2026): it labels the booking's source. */
+  channel?: "SMS" | "RCS" | "LSA";
+  /** Beside an LSA preview: the quote request's lead message, known before the first reply. */
+  leadIn?: string;
+  /** That quote's contact line (a phone or an email), which the lead message omits. */
+  leadContact?: string;
   /** Beside the phone: show exactly the conversation that phone is having (null = not started). */
   convId?: string | null;
 } = {}) {
@@ -79,11 +86,19 @@ export function CustomCrm({ embedded = false, convId }: {
   /* The key facts the customer gave: what they stated, plus the AI-extracted signals that
      `/api/analyze` adds to this conversation a beat after each turn. See `crmDetails`. */
   const signalNames = (conv?.signals ?? []).map((x) => x.name).join("\n");
-  const tags = useMemo(() => {
+  const freshTags = useMemo(() => {
     const bd = profile.reports?.marketingDashboard?.breakdowns?.find((b) => /product category/i.test(b.title));
-    return crmDetails(customerText, signalNames ? signalNames.split("\n") : [], (bd?.rows ?? []).map((r) => r.name));
+    return crmDetails(customerText, signalNames ? signalNames.split("\n") : [], (bd?.rows ?? []).map((r) => r.name), 12);
   }, [profile, customerText, signalNames]);
-  const request = st.conversation.find((m) => m.who === "customer")?.text ?? "";
+  /* Tags only ever join: one shown stays put while later messages are read (see mergeDetails).
+     Keyed on the conversation, so Clear or a New Chat starts the row afresh. */
+  const shownTags = useRef<{ conv: string | null; tags: string[] }>({ conv: null, tags: [] });
+  if (shownTags.current.conv !== (conv?.id ?? null)) shownTags.current = { conv: conv?.id ?? null, tags: [] };
+  shownTags.current.tags = mergeDetails(shownTags.current.tags, freshTags);
+  const tags = shownTags.current.tags;
+  /* An LSA / web-form conversation opens with the lead payload; its own Message is the request. */
+  const leadIn = useMemo(() => parseLeadIn(st.conversation.find((m) => m.who === "customer")?.text) ?? parseLeadIn(leadInText), [st.conversation, leadInText]);
+  const request = leadIn?.message || (st.conversation.find((m) => m.who === "customer")?.text ?? "");
 
   const focusDate = st.booking?.date ?? st.selected?.date ?? st.offers[0]?.date ?? null;
   const focusDay = days.find((d) => d.date === focusDate);
@@ -134,8 +149,19 @@ export function CustomCrm({ embedded = false, convId }: {
     const vs = profile.reports.voiceScreenpop ?? profile.reports.smsScreenpop;
     let attr;
     try { attr = vs?.callerName ? smsInfoAttribution(profile, vs.callerName) : undefined; } catch { attr = undefined; }
-    return crmPreCall(profile, attr, place || undefined);
-  }, [profile, place]);
+    const known = crmPreCall(profile, attr, place || undefined);
+    const pc = leadIn ? crmPreCallFromLeadIn(leadIn, known, leadContact) : known;
+    /* ⚠️ NO "Pages viewed" FOR RCS OR AN LSA LEAD (10/19/2026): asked for directly, because
+       those customers reach the agent from the ad itself (the Message button, the quote form)
+       and never browse the site first, so a page journey would be invented. Blanked in the
+       value rather than only hidden, so the registered base (what Ask AI edits) agrees. */
+    if (!pc || !(channel === "RCS" || channel === "LSA" || leadIn)) return pc;
+    /* Activity says how they actually arrived, not "N site visits", for the same reason. */
+    const visits = leadIn ? pc.visits
+      : channel === "RCS" ? "Tapped Message on the Google ad"
+      : "Quote request sent from the Google Local Services ad";
+    return { ...pc, journey: "", visits };
+  }, [profile, place, leadIn, leadContact, channel]);
   const known = (field: "name" | "phone" | "email" | "address" | "zip", label: string, chat: string | null | undefined, precall: string | undefined) => {
     if (chat) {
       const m = precall ? precallMatch(field, precall, chat) : null;
@@ -175,16 +201,18 @@ export function CustomCrm({ embedded = false, convId }: {
      conversation as it happens (see liveMerge.ts). ONE key for both placements; beside the phone
      it registers PASSIVELY, so the Preview Agent's own Ask AI keeps editing the agent. */
   const crmJson = JSON.stringify({
-    title: `${cap(booking)} Scheduling`, serviceArea: place, preCall: pre, lead: st.lead, followUp,
+    title: `${cap(booking)} Scheduling`, requestHeading: requestHeading(intentKindOf(profile)), serviceArea: place, preCall: pre, lead: st.lead, followUp,
     days: days.map((d) => ({ date: d.date, busy: d.busy, closed: d.closed })),
   });
   const crmBase = useMemo(() => JSON.parse(crmJson) as {
-    title: string; serviceArea: string; preCall: typeof pre; lead: typeof st.lead; followUp: string[];
+    title: string; requestHeading: string; serviceArea: string; preCall: typeof pre; lead: typeof st.lead; followUp: string[];
     days: { date: string; busy: string[]; closed: boolean }[];
   }, [crmJson]);
   const crm = usePageData(crmBase, { live: true, passive: embedded, scopePath: "/integrations/custom-crm" });
   const lead = crm.lead ?? st.lead;
   const preEff = crm.preCall ?? pre;
+  /* A stored edit made before this rule could still carry a journey, so the render checks too. */
+  const noPages = channel === "RCS" || channel === "LSA" || !!leadIn;
   const area = crm.serviceArea ?? place;
   const daysEff = days.map((d) => {
     const e = crm.days?.find((x) => x.date === d.date);
@@ -263,17 +291,17 @@ export function CustomCrm({ embedded = false, convId }: {
             <div className="ccr-sec ccr-pre">
               <h4>Pre-Call Intelligence <span className="ccr-pre-badge">Invoca</span></h4>
               <p className="ccr-pre-sub">
-                Known before the first text{st.conversation.length > 0 ? ` · ${confirmedCount} of 5 details confirmed in chat` : " · enriched live as the customer texts"}
+                {leadIn ? `From the ${/local services/i.test(leadIn.via) ? "Google LSA quote request" : "website lead form"}` : "Known before the first text"}{st.conversation.length > 0 ? ` · ${confirmedCount} of 5 details confirmed in chat` : " · enriched live as the customer texts"}
               </p>
               <div className="ccr-kv">
                 {kv("Customer", preEff.name)}
-                {kv("Mobile", preEff.line)}
-                {kv("Location", preEff.location)}
+                {preEff.line && kv("Mobile", preEff.line)}
+                {preEff.location && kv("Location", preEff.location)}
                 {preEff.search && kv("Searched", `“${preEff.search}”`)}
                 {preEff.source && kv("Came from", preEff.campaign ? `${preEff.source} (${preEff.campaign})` : preEff.source)}
-                {preEff.journey && kv("Pages viewed", preEff.journey)}
+                {preEff.journey && !noPages && kv("Pages viewed", preEff.journey)}
                 {preEff.interest && kv("Interested in", preEff.interest)}
-                {kv("Activity", preEff.visits)}
+                {preEff.visits && kv("Activity", preEff.visits)}
                 {preEff.value && kv("Est. value", preEff.value)}
                 {preEff.intent && kv("Intent", preEff.intent)}
               </div>
@@ -290,7 +318,7 @@ export function CustomCrm({ embedded = false, convId }: {
             </div>
           </div>
           <div className="ccr-sec">
-            <h4>Project</h4>
+            <h4>{crm.requestHeading || requestHeading(intentKindOf(profile))}</h4>
             {request ? (
               <>
                 {tags.length > 0 && <div className="ccr-tags">{tags.map((t) => <span key={t} className="ccr-tag">{t}</span>)}</div>}
@@ -306,7 +334,9 @@ export function CustomCrm({ embedded = false, convId }: {
               {st.offers.length > 0 && kv("Type", cap(booking))}
               {kv("Status", st.booking ? "Submitted" : st.selected ? "Slot picked" : st.offers.length ? "Offering times" : null)}
               {kv("Booking ID", st.booking ? `#${st.booking.id}` : null)}
-              {st.conversation.length > 0 && kv("Source", "AI Messaging Agent (SMS)")}
+              {st.conversation.length > 0 && kv("Source", channel === "RCS" ? "AI Messaging Agent (RCS)"
+                : channel === "LSA" || leadIn ? `AI Messaging Agent (SMS · ${/local services/i.test(leadIn?.via ?? "Google Local Services") ? "Google LSA" : "web lead form"})`
+                : "AI Messaging Agent (SMS)")}
             </div>
           </div>
           <div className="ccr-sec">

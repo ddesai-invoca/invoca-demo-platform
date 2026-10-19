@@ -590,7 +590,10 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     const flowBlock = brain.extraFlow
       ? `THE WORKFLOW'S USE CASES (this is the diagram the business configured; for a matching case, follow its action, collect its fields and use its instruction):\n${brain.extraFlow}`
       : "";
-    return [brain.customSystem, stepsBlock(brain), flowBlock, overrideBlock(brain), SMS_FORMAT_RULES]
+    /* The CRM's live openings reach a custom playbook too (an LSA quote request, say), or the CRM
+       beside the phone would show times the agent never offered. */
+    return [brain.customSystem, stepsBlock(brain), flowBlock, overrideBlock(brain),
+      brain.crmCalendar ? crmBlock(brain.crmCalendar) : "", SMS_FORMAT_RULES]
       .filter(Boolean).join("\n\n");
   }
   const rules = (brain.rules ?? []).map((r) => `- ${r}`).join("\n");
