@@ -72,7 +72,7 @@ export function resetRenderBreaker(): void {
   trippedAt = 0;
 }
 
-function noteFailure(): void {
+function noteFailureShared(): void {
   consecutiveFailures += 1;
   if (consecutiveFailures >= TRIP_AFTER) trippedAt = Date.now();
 }
@@ -81,7 +81,11 @@ function noteFailure(): void {
  * Ask the render service for the page as a browser sees it.
  * Throws `RenderUnavailable` for anything the caller should fall back from.
  */
-export async function renderViaService(url: string): Promise<{ html: string; ms: number }> {
+/* `quiet` (10/19/2026): the RCS logo lookup renders a homepage that blocks a server. Its failures
+   must not count toward the breaker, or a burst of logo lookups (the free tier allows few
+   concurrent sessions) would switch the accurate render path off for Replicate for five minutes. */
+export async function renderViaService(url: string, opts: { quiet?: boolean } = {}): Promise<{ html: string; ms: number }> {
+  const noteFailure = opts.quiet ? () => {} : noteFailureShared;
   const token = process.env.BROWSERLESS_TOKEN;
   if (!token) throw new RenderUnavailable("No render service configured.");
   if (renderBreakerOpen()) throw new RenderUnavailable("Render service is in cooldown after repeated failures.");
@@ -289,14 +293,14 @@ export async function renderViaUnblock(
     /* A missed selector says nothing about the service's health, so it must not count toward the
        breaker — otherwise replicating three formless pages would disable the accurate path for
        five minutes. */
-    if (!selectorMissed) noteFailure();
+    if (!selectorMissed) noteFailureShared();
     if (!(selectorMissed && opts.allowFixedWaitRetry)) throw e;
     try {
       const html = await postUnblock(url, { waitForTimeout: UNBLOCK_SETTLE_MS });
       consecutiveFailures = 0;
       return { html, ms: Date.now() - started };
     } catch (e2: unknown) {
-      noteFailure();                      // this one IS the service failing
+      noteFailureShared();                      // this one IS the service failing
       throw e2;
     }
   }

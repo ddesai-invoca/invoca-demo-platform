@@ -11844,6 +11844,42 @@ logo and use that"*). `engine/brandLogo.ts` + `GET /api/brand-logo` (both twins,
   s2 service directly.
 - `audit:app` has 7 checks; the ranking check was strengthened after a sabotage did not fire.
 
+⚠️⚠️ **THE 97-PROSPECT LOGO AUDIT (10/19/2026)** — asked for: *"audit at least 10 different prospects
+in the RCS agent, make sure they all have their logo, and fix it for them and all others"*. Ran
+`fetchBrandLogo` for every unique site on disk (bundled + roster seeds + library = 97) and then
+LOOKED at a contact sheet, because a found URL is not a good logo. Before: 17 initials, 19 Google
+s2. After: **0 initials, 10 s2**. What each fix was, all in `engine/brandLogo.ts`:
+- **AVIF**: Kia's CDN negotiates its 256px apple-touch-icon to AVIF; `imageDims` reads AVIF's
+  `ispe` box now and AVIF is no longer in the Accept header.
+- **Header logos** (`rankLogos`) for the many sites that ship only a 16–32px favicon, plus
+  `og:image` named logo/icon, **inline SVG header logos** (`inlineSvgLogos`, as a data URI;
+  Children's Health links a logo file that 404s) and **manifest icons**.
+- **Blocked homepages** (403/429: Orlando Health, Mitel, Crescent, SCI, Blackhawk) are rendered
+  through Browserless with `renderViaService(url, { quiet: true })` — quiet so logo failures never
+  trip the breaker Replicate depends on. Next.js `/_next/image?url=` proxies are unwrapped to the
+  original asset host.
+- ⚠️ The contact sheet caught the header-logo rule picking WRONG images, each now excluded with a
+  named reason: hero photos and a product shot (alt merely named the brand → "logo" must be said,
+  in the file's own name/class/alt, not just its folder), the FDIC and Equal Housing marks, award
+  and analyst badges, integration logos ("works with Google"), customers' logos (alt names
+  another company), white/reversed versions (`_WHT`, `logo-white`, all-white SVG fills,
+  dark-mode-adaptive SVGs), and a long photo caption mentioning "logo".
+- ⚠️ **The brand name is matched in the file PATH, never the host** (every image on
+  valetliving.com contains "valet"), and needs the FULL name for full credit ("orlando" alone
+  matched the Orlando City soccer badge). **Only the top-ranked logo is used**, except a squarer
+  file carrying the full brand name beats a long wordmark (Orlando Health's vertical logo).
+- **Parallel probing**: conventional files + s2 start at once with the homepage, so there is
+  always an answer; lookups went from up to 35s (two timed out with nothing) to under ~16s, once
+  per domain then cached.
+- **Client (`RcsAvatar`)**: drawn by shape — `fill` (sharp square), `wide` (margin), `wordmark`
+  (≥3:1, minimal margin), `small` (a favicon drawn 22–44px so it stays crisp); SVGs count as
+  vectors whatever size they declare; `referrerPolicy="no-referrer"` (Aire Serv refuses a
+  referrer); and **keyed on the site** — without the key a prospect switch (or a library demo
+  loading after the seed rendered) kept the previous prospect's logo, which the audit showed as
+  Shady Blinds' logo on four other prospects.
+- Two bugs found by the new `audit:app` checks rather than by eye: an `alt=""` read as the text
+  `""`, and a local variable shadowing the page URL so every header logo silently failed.
+
 **The Google Search ad's "Chat with <prospect> · On Messages" row** (10/15/2026, from a real
 Google result) sits under the call line of the prospect's TOP ad only and its Message button opens
 `/agent-studio/agent/preview?wf=rcs` in a new tab. ⚠️ **SO `?wf=rcs` WORKS FOR EVERY PROSPECT**

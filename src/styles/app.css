@@ -1496,7 +1496,16 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 /* The prospect's own logo (10/19/2026): on white, like an app icon, so a transparent logo still
    reads; `contain` so a wordmark is never cropped. */
 .rcs-avatar--logo { background: #fff; overflow: hidden; }
-.rcs-avatar--logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.rcs-avatar--logo img { display: block; }
+/* Drawn by what the image is (RcsAvatar): a sharp square icon fills, a wordmark gets a margin and
+   is never cropped, a small favicon stays small and crisp. Hidden until measured, so the tile
+   never flashes a stretched version first. */
+.rcs-avatar--loading img { width: 100%; height: 100%; object-fit: contain; opacity: 0; }
+.rcs-avatar--fill img { width: 100%; height: 100%; object-fit: contain; }
+.rcs-avatar--wide img { width: 100%; height: 100%; object-fit: contain; padding: 7px; box-sizing: border-box; }
+/* A long wordmark (Orlando Health's is 4.3:1) uses the full width, or it is too small to read. */
+.rcs-avatar--wordmark img { width: 100%; height: 100%; object-fit: contain; padding: 0 3px; box-sizing: border-box; }
+.rcs-avatar--small img { object-fit: contain; }
 .rcs-namepill { font-weight: 600; }
 .rcs-stamp { line-height: 1.35; }
 .rcs-turn { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 3px; }

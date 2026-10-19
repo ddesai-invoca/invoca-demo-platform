@@ -476,11 +476,12 @@ function brandLogoApi(): Plugin {
       server.middlewares.use(async (req, res, next) => {
         if (!(req.url || '').startsWith('/api/brand-logo')) return next()
         try {
-          const domain = new URL(req.url!, 'http://x').searchParams.get('domain') || ''
+          const q = new URL(req.url!, 'http://x').searchParams
+          const domain = q.get('domain') || ''
           const { fetchBrandLogo } = await import(
             pathToFileURL(path.resolve(process.cwd(), 'engine/brandLogo.ts')).href)
           res.setHeader('content-type', 'application/json')
-          res.end(JSON.stringify({ url: await fetchBrandLogo(domain) }))
+          res.end(JSON.stringify({ url: await fetchBrandLogo(domain, (q.get('name') || '').slice(0, 80)) }))
         } catch {
           res.setHeader('content-type', 'application/json')
           res.end(JSON.stringify({ url: null }))

@@ -985,15 +985,47 @@ console.log("\nThe RCS sender avatar is the prospect's own logo (10/19/2026)\n")
   const ranked = rankIcons(html, "https://acme.com/");
   t(ranked[0] === "https://acme.com/touch.png" && !ranked.some((u) => /m\.svg/.test(u)),
     "the apple-touch-icon (a square app tile) outranks even a larger declared icon, and a mask-icon is never a candidate");
+  /* The 97-prospect audit (10/19/2026): each failure it found is pinned here. */
+  const { imageDims, rankLogos, inlineSvgLogos } = await import("../engine/brandLogo.ts");
+  const avif = new Uint8Array(64); avif.set([0, 0, 0, 0x1c, 0x66, 0x74, 0x79, 0x70, 0x61, 0x76, 0x69, 0x66], 0);
+  avif.set([0x69, 0x73, 0x70, 0x65, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0], 30);
+  t(imageDims(avif)?.w === 256 && imageDims(avif)?.h === 256, "an AVIF image's size is read (Kia's 256px icon came back as AVIF)");
+  const white = imageDims(new TextEncoder().encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 90"><style>.a{fill:#fff}</style><path class="a" d="M0 0"/></svg>'));
+  const adaptive = imageDims(new TextEncoder().encode('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><style>@media (prefers-color-scheme:dark){path{fill:#fff}}</style><path d="M0 0"/></svg>'));
+  t(!!white?.light && !!adaptive?.adaptive, "an all-white SVG logo and a dark-mode-adaptive one are flagged, so neither vanishes on the white tile");
+  const page = `<header><img class="logo-blue" alt="" src="https://us.acme.com/img/acme-logo-blue.png"><img src="/img/acme-logo-white.svg" alt="Acme"></header>
+    <main><img src="https://cdn.acme.com/photos/hero.jpg" alt="two people holding a lizard with the wild kingdom logo above them">
+    <img src="/badges/fdic-logo.svg" alt="FDIC"><img src="/img/integrations/logo-integration-google.svg" alt="">
+    <img src="https://acme.com/clients/logo-1.svg" alt="HYATT"></main>`;
+  const r = rankLogos(page, "https://acme.com/", "Acme");
+  t(r.length === 1 && /acme-logo-blue\.png$/.test(r[0]),
+    "the header logo is taken; a white version, a photo caption, the FDIC mark, an integration logo and a customer's logo are not");
+  t(rankLogos('<header></header><main><img src="https://valetliving.com/uploads/Abbey-A-Logo.png" alt=""></main>', "https://valetliving.com/", "Valet Living").length === 0,
+    "the brand name is matched in the file PATH, never the host (every image on valetliving.com has \"valet\" in its URL)");
+  t(rankLogos('<header><img src="/_next/image?url=https%3A%2F%2Fcdn.x.com%2Forlando-health-logo.png&w=256" alt="Orlando Health Logo"></header>', "https://orlandohealth.com/", "Orlando Health")[0] === "https://cdn.x.com/orlando-health-logo.png",
+    "a Next.js image proxy link is unwrapped to the original file (Orlando Health's proxy is on its blocked domain)");
+  t(/^data:image\/svg\+xml;base64,/.test(inlineSvgLogos('<header><svg class="logo-svg" viewBox="0 0 257 64"><path fill="#0a5" d="M0 0"/></svg></header>', "Children's Health")[0] ?? ""),
+    "an inline SVG header logo is used (Children's Health links a logo file that 404s)");
+  const bl = code("engine/brandLogo.ts");
+  t(/const top = squarer \? \[squarer\] : logos\.slice\(0, 1\)/.test(bl) && /first\(top, \(p\) => aspect\(p\) <= 3\.2\)/.test(bl)
+    && /fullyNamed\(p\.url\) && aspect\(p\) <= 3\.2/.test(bl),
+    "only the best-ranked logo is used (a squarer sponsor badge cannot win on shape), unless a squarer file carries the brand's full name");
+  t(/const early = probeAll\(fallbacks/.test(bl) && bl.indexOf("const early = probeAll") < bl.indexOf("const page = await homepage"),
+    "the standard icon files and Google's service are probed in parallel with the homepage, so there is always an answer");
+  t(!/image\/avif/.test(bl.match(/const IMG_ACCEPT = [^;]+;/)?.[0] ?? ""), "AVIF is not requested (a negotiating CDN would answer in it)");
   const srv = code("server.ts"), vite = code("vite.config.ts");
-  t(/app\.get\("\/api\/brand-logo"/.test(srv) && /startsWith\('\/api\/brand-logo'\)/.test(vite) && /brandLogoApi\(\),/.test(vite),
-    "both servers serve /api/brand-logo");
+  t(/app\.get\("\/api\/brand-logo"/.test(srv) && /startsWith\('\/api\/brand-logo'\)/.test(vite) && /brandLogoApi\(\),/.test(vite)
+    && /req\.query\.name/.test(srv) && /q\.get\('name'\)/.test(vite),
+    "both servers serve /api/brand-logo and pass the brand name through");
   t(srv.indexOf('app.get("/api/brand-logo"') > srv.indexOf("installAuth(app)"),
     "the logo lookup sits behind the sign-in gate (it makes the server fetch a public site)");
   const pp = code("src/screens/PhonePreview.tsx");
-  t(/<RcsAvatar name=\{profile\.customerName\}/.test(pp) && /naturalWidth < 48\) setFailed\(true\)/.test(pp)
-    && /onError=\{\(\) => setFailed\(true\)\}/.test(pp) && /brandInitials\(name\)/.test(pp),
-    "the RCS header shows the logo and falls back to initials on a failed or tiny image");
+  t(/<RcsAvatar key=\{profile\.brandDomain \|\| profile\.websiteUrl \|\| profile\.id\}/.test(pp),
+    "the avatar is keyed on the site, so a prospect switch never keeps the previous prospect's logo");
+  t(/referrerPolicy="no-referrer"/.test(pp) && /kind: "small", px:/.test(pp) && /\{ kind: "wide" \}/.test(pp) && /\{ kind: "wordmark" \}/.test(pp) && /\{ kind: "fill" \}/.test(pp) && /const vector = /.test(pp),
+    "the logo loads without a referrer (Aire Serv refuses one) and is drawn by its shape: fill, wide with a margin, or small and crisp");
+  t(/onError=\{\(\) => setFailed\(true\)\}/.test(pp) && /brandInitials\(name\)/.test(pp) && /&name=\$\{encodeURIComponent\(name\)\}/.test(pp),
+    "the brand name is sent for logo matching, and initials remain only for an image that will not load");
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");

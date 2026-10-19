@@ -874,7 +874,7 @@ app.get("/api/replicas/dyn/:file", async (req, res) => {
 app.get("/api/brand-logo", async (req, res) => {
   try {
     const { fetchBrandLogo } = await import("./engine/brandLogo.ts");
-    res.json({ url: await fetchBrandLogo(String(req.query.domain ?? "")) });
+    res.json({ url: await fetchBrandLogo(String(req.query.domain ?? ""), String(req.query.name ?? "").slice(0, 80)) });
   } catch {
     res.json({ url: null });
   }

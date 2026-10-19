@@ -336,13 +336,20 @@ function useClock(): Date {
 }
 
 /* ⚠️ THE RCS SENDER AVATAR IS THE PROSPECT'S OWN LOGO (10/19/2026), asked for directly: "get the
-   prospect's actual logo and use that". Resolved once per domain by `/api/brand-logo`
-   (engine/brandLogo.ts: the site's own apple-touch-icon or largest declared icon, checked to be a
-   sharp real image) and remembered in this browser, so the tile does not flash on every open.
-   The initials stay as the honest fallback: no sharp logo (a site that only ships a 16px
-   favicon), a fictional prospect with no site, or an image that fails to load. A shared demo has
-   no sign-in for that endpoint, so it asks Google's icon service directly and keeps the initials
-   if what comes back is too small to look sharp. Only a found logo is remembered. */
+   prospect's actual logo and use that", then "make sure they all have their logo". Resolved once
+   per domain by `/api/brand-logo` (engine/brandLogo.ts: the site's own app icon, manifest icon,
+   header logo or favicon, each checked to be a real image) and remembered in this browser, so the
+   tile does not flash on every open. A shared demo has no sign-in for that endpoint, so it asks
+   Google's icon service directly.
+   ⚠️ HOW IT IS DRAWN DEPENDS ON THE IMAGE, which is what lets every prospect have one:
+     - a sharp square icon fills the tile;
+     - a wide logo (a wordmark) sits inside the tile with a margin, never cropped;
+     - a SMALL icon (a 16–64px favicon is all some brands ship) is drawn small and centred, so it
+       stays crisp instead of being blown up into a blur.
+   ⚠️ `referrerPolicy="no-referrer"`: some sites refuse to serve an image to another site's page
+   (Aire Serv's icon loads with no referrer and fails with one). Initials stay only for a
+   prospect with no site, or an image that genuinely will not load. Only a found logo is kept. */
+type LogoFit = "fill" | "wide" | "wordmark" | "small";
 function RcsAvatar({ name, domain: raw }: { name: string; domain?: string }) {
   const domain = (raw ?? "").replace(/^https?:\/\//, "").replace(/\/.*$/, "").trim().toLowerCase();
   const key = `invoca-demo:brand-logo::${domain}`;
@@ -350,11 +357,12 @@ function RcsAvatar({ name, domain: raw }: { name: string; domain?: string }) {
     try { return localStorage.getItem(key) || undefined; } catch { return undefined; }
   });
   const [failed, setFailed] = useState(false);
+  const [fit, setFit] = useState<{ kind: LogoFit; px?: number } | null>(null);
   useEffect(() => {
     if (!domain || url !== undefined) return;
     if (isShareMode()) { setUrl(`https://www.google.com/s2/favicons?sz=256&domain=${encodeURIComponent(domain)}`); return; }
     let live = true;
-    fetch(`/api/brand-logo?domain=${encodeURIComponent(domain)}`)
+    fetch(`/api/brand-logo?domain=${encodeURIComponent(domain)}&name=${encodeURIComponent(name)}`)
       .then((r) => r.json())
       .then((j: { url?: string | null }) => {
         if (!live) return;
@@ -363,12 +371,24 @@ function RcsAvatar({ name, domain: raw }: { name: string; domain?: string }) {
       })
       .catch(() => { if (live) setUrl(null); });
     return () => { live = false; };
-  }, [domain, url, key]);
+  }, [domain, url, key, name]);
   if (url && !failed) {
+    const style = fit?.kind === "small" ? { width: fit.px, height: fit.px } : undefined;
     return (
-      <div className="rcs-avatar rcs-avatar--logo">
-        <img src={url} alt="" onError={() => setFailed(true)}
-          onLoad={(e) => { if (e.currentTarget.naturalWidth < 48) setFailed(true); }} />
+      <div className={"rcs-avatar rcs-avatar--logo" + (fit ? ` rcs-avatar--${fit.kind}` : " rcs-avatar--loading")}>
+        <img src={url} alt="" referrerPolicy="no-referrer" style={style} onError={() => setFailed(true)}
+          onLoad={(e) => {
+            const w = e.currentTarget.naturalWidth, h = e.currentTarget.naturalHeight;
+            const short = Math.min(w, h), ratio = Math.max(w, h) / Math.max(1, short);
+            if (!w || !h || Math.max(w, h) < 12) { setFailed(true); return; }
+            /* An SVG is sharp at any size, whatever pixel size it declares (Mitel's inline logo
+               says 20x20), so only its shape decides. */
+            const vector = /^data:image\/svg|\.svg(\?|#|$)/i.test(url);
+            setFit((short >= 96 || vector) && ratio <= 1.3 ? { kind: "fill" }
+              : ratio > 3 ? { kind: "wordmark" }
+              : ratio > 1.3 ? { kind: "wide" }
+              : { kind: "small", px: Math.round(Math.max(22, Math.min(44, short * 1.25))) });
+          }} />
       </div>
     );
   }
@@ -692,7 +712,9 @@ export function PhonePreview({ onClose, mode = "modal", wf, autoSend, onAutoDone
                    logo and badge where SMS shows a bare number. No logo is stored on a profile, so
                    the mark is the brand's initials in the platform green. */
                 <div className="sms-contact">
-                  <RcsAvatar name={profile.customerName} domain={profile.brandDomain || profile.websiteUrl} />
+                  {/* Keyed on the site, so switching prospect (or a library demo finishing loading after the seed
+                    rendered first) starts the avatar afresh instead of keeping the last one's logo. */}
+                <RcsAvatar key={profile.brandDomain || profile.websiteUrl || profile.id} name={profile.customerName} domain={profile.brandDomain || profile.websiteUrl} />
                   <div className="sms-namepill rcs-namepill">{profile.customerName}<span className="material-icons">chevron_right</span></div>
                 </div>
               ) : (
