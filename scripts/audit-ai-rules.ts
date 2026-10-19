@@ -2285,7 +2285,9 @@ console.log("\nThe built-in SMS workflow template");
       : bad("the model cannot see the workflow it is being asked to change");
     /* ⚠️ THE CONTEXT CAP ATE IT ONCE — 12,012 characters, the workflow sliced off the end and
        the JSON left unterminated. */
-    /const CAP = 40000;/.test(drawer) && /\{ \[active\.linkAs\]: _dropped, \.\.\.own \}/.test(drawer)
+    /* Re-aimed 10/19/2026 when the cap rose to 120k for the Details Report grid: the invariant
+       is a cap of AT LEAST 40k, not that exact number. */
+    Number(drawer.match(/const CAP = (\d+);/)?.[1] ?? 0) >= 40000 && /\{ \[active\.linkAs\]: _dropped, \.\.\.own \}/.test(drawer)
       ? ok("the context cap fits the workflow, and degrades by dropping it rather than slicing")
       : bad("the context can be truncated into malformed JSON again");
     phone.includes("linkAs: \"workflow\"") && !/linkAs: "workflow"[\s\S]{0,80}branches/.test(phone)
@@ -3492,6 +3494,34 @@ console.log("\nA live page keeps its edits AND its new captures (liveMerge, 10/1
   const live = ["SalesforceLeads.tsx", "SalesforceLeadDetail.tsx", "SalesforceCalendar.tsx", "GoogleSearch.tsx"]
     .filter((f) => !/live: true/.test(fs.readFileSync(`src/screens/${f}`, "utf8")));
   live.length === 0 ? ok("every capture-fed screen registers as live") : bad(`capture-fed screens not registered live: ${live.join(", ")}`);
+}
+
+console.log("\nEvery routed screen gives Ask AI its data (10/19/2026)\n");
+{
+  /* The standing rule is "any data on any page", including screens built later, so this fails on
+     a routed screen that registers nothing, unless it is named here WITH ITS REASON. */
+  const EXEMPT: Record<string, string> = {
+    Launch: "our own tool, not a prospect's demo", FeedbackBoard: "our own tool", ReleaseNotes: "our own tool",
+    FollowUps: "our own tool", StaticRedirect: "hands off to a saved static page", AppShell: "layout, not a screen",
+    Navigate: "router redirect", NotInThisDemo: "share-mode refusal", Placeholder: "unbuilt nav item",
+    ReplicaPageScreen: "the prospect's own website, replicated verbatim", SmsPreviewPage: "registers through PhonePreview",
+    InsightsReport: "dispatches to Insights screens that each register", InsightsAddTile: "a builder; its state is the user's own clicks",
+    InsightsColumnPicker: "a builder", EditRuleSignal: "a builder", SemanticSignalActivate: "a form the user fills in by hand",
+    TsGallery: "internal component bench, never linked",
+  };
+  const app = fs.readFileSync("src/App.tsx", "utf8") + fs.readFileSync("src/screens/ShareApp.tsx", "utf8");
+  const names = [...new Set([...app.matchAll(/element=\{<([A-Z][A-Za-z]+)/g), ...app.matchAll(/"\/[^"]*":\s*<([A-Z][A-Za-z]+)/g)].map((m) => m[1]))];
+  const files = fs.readdirSync("src/screens").filter((f) => f.endsWith(".tsx")).map((f) => [f, fs.readFileSync(`src/screens/${f}`, "utf8")] as const);
+  const REG = /\b(usePageData|useDashboardData|usePageDataWithLabels)\(/;
+  const missing = names.filter((n) => !EXEMPT[n]).filter((n) => {
+    const hit = files.find(([, src]) => new RegExp(`export (default )?function ${n}\\b`).test(src));
+    return !hit || !REG.test(hit[1]);
+  });
+  names.length > 40 && missing.length === 0
+    ? ok(`all ${names.length} routed screens register their data with Ask AI, or are named exceptions`)
+    : bad(`routed screens Ask AI cannot change (register via usePageData, or add to EXEMPT with a reason): ${missing.join(", ")}`);
+  const pp = fs.readFileSync("src/screens/PhonePreview.tsx", "utf8");
+  REG.test(pp) ? ok("the Preview Agent registers through PhonePreview, as its exemption claims") : bad("PhonePreview no longer registers — the SmsPreviewPage exemption is false");
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");

@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
 import { useDemoLibrary } from "../data/DemoLibraryContext";
 import { Link, useNavigate } from "react-router-dom";
 import { NewDashboardModal } from "../components/NewDashboardModal";
@@ -82,6 +83,15 @@ export function InsightsAnalytics() {
     })),
   ];
 
+  /* ⚠️ THE LIST IS REGISTERED DATA (10/19/2026), the standing rule that Ask AI may change any data
+     on any page: every row's cells. Each row's LINK stays the app's own, matched back by id, so an
+     edit can rename a row but never point it somewhere else. */
+  const listJson = JSON.stringify(rows.map((r) => ({ id: r.name, ...r })));
+  /* `live`: a dashboard created after an edit still lists (see liveMerge.ts). */
+  const listBase = useMemo(() => ({ title: "Insights & Analytics", dashboards: JSON.parse(listJson) as ((typeof rows)[number] & { id: string })[] }), [listJson]);
+  const list = usePageData(listBase, { live: true });
+  const shown = list.dashboards ?? [];
+
   return (
     <div className="md-page ia-page">
       <div className="md-head">
@@ -106,12 +116,12 @@ export function InsightsAnalytics() {
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
-            <tr key={r.name}>
+          {shown.map((r) => (
+            <tr key={r.id}>
               {/* Opens the Insights-style saved dashboard, which is what the real
                   list does, rather than jumping to the platform dashboard. */}
               <td className="md-col-name">
-                <Link to={`/insights/dashboard/${encodeURIComponent(r.name)}`}>{r.name}</Link>
+                <Link to={`/insights/dashboard/${encodeURIComponent(r.id)}`}>{r.name}</Link>
               </td>
               <td>{r.views}</td>
               <td>{r.author}</td>

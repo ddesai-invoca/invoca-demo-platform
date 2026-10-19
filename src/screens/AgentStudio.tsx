@@ -1,8 +1,10 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useAgentWorkflows, createdWorkflowPath, type CreatedWorkflow } from "../data/agentWorkflows";
 import { WorkflowRowMenu } from "../components/WorkflowRowMenu";
 import { useExtraWorkflows } from "../data/quoteWorkflow";
+import { usePageData } from "../components/GeneratedTiles";
 import { builtInCopiesFor, workflowPath } from "../data/builtInCopies";
 import { isShareMode } from "../data/shareMode";
 import { TourCallout } from "../components/GuidedTour";
@@ -76,6 +78,20 @@ export function AgentStudio() {
     })),
   ] as WfRow[];
 
+  /* ⚠️ THE LIST IS REGISTERED DATA (10/19/2026), the standing rule that Ask AI may change any data
+     on any page: the agent row and every workflow row's cells. `live`, because a workflow created
+     or a quote request arriving after an edit still has to list (see liveMerge.ts). A row's link
+     and delete control stay the app's own, matched back by its `to`. */
+  const listJson = JSON.stringify({
+    title: "Agent Studio",
+    agent: { label: `Agent: ${name}`, type: "Network", updated },
+    workflows: workflows.map(({ created: _c, ...w }) => ({ id: w.to, ...w })),
+  });
+  const listBase = useMemo(() => JSON.parse(listJson) as { title: string; agent: { label: string; type: string; updated: string }; workflows: (Omit<WfRow, "created"> & { id: string })[] }, [listJson]);
+  const list = usePageData(listBase, { live: true });
+  const createdBy = new Map(workflows.filter((w) => w.created).map((w) => [w.to, w.created]));
+  const rows: WfRow[] = (list.workflows ?? []).map((w) => ({ ...w, created: createdBy.get(w.to) }));
+
   return (
     <div className="as-page">
       <div className="as-head">
@@ -100,17 +116,17 @@ export function AgentStudio() {
           <tr className="as-agent-row">
             <td className="as-name">
               <span className="material-icons as-chevron">expand_more</span>
-              <Link to="/agent-studio/agent" className="as-link">Agent: {name}</Link>
+              <Link to="/agent-studio/agent" className="as-link">{list.agent?.label ?? `Agent: ${name}`}</Link>
             </td>
             <td></td>
             <td></td>
-            <td>Network</td>
+            <td>{list.agent?.type ?? "Network"}</td>
             <td></td>
-            <td>{updated}</td>
+            <td>{list.agent?.updated ?? updated}</td>
             <td className="as-dash">-</td>
             <td className="as-menu"><span className="material-icons">more_vert</span></td>
           </tr>
-          {workflows.map((w) => (
+          {rows.map((w) => (
             <tr className="as-wf-row" key={w.to}>
               <td className="as-name as-indent"><Link to={w.to} className="as-link">{w.label}</Link></td>
               {/* A created workflow is not live, so it must not wear the live pill's green. */}

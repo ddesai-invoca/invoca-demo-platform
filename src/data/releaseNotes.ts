@@ -70,7 +70,7 @@ export const RELEASES: Release[] = [
     title: "Pre-call intelligence in the Custom CRM, and Ask AI that edits anything",
     changes: [
       n("The Custom CRM's New Lead panel opens with Pre-Call Intelligence: who the customer is, where they are, what they searched, the pages they viewed and the campaign they came from, all before the first text. As they text, each detail is marked Confirmed or Updated."),
-      i("Ask AI can now add and remove items anywhere it edits, such as signals, transcript lines, leads and recommendations, and asks one short question when a request could mean two things. It now also works on the Salesforce screens and Google Search, and a lead or conversation captured after an edit still appears."),
+      i("Ask AI can now change any data on any screen, including adding and removing items such as signals, transcript lines, leads and recommendations, and it asks one short question when a request could mean two things. That now covers Salesforce, Google Search, ChatGPT, the Custom CRM, the Insights reports, captured SMS and voice conversations, My Reports, Agent Studio and the Signal pages, and a lead or conversation captured after an edit still appears."),
     ],
   },
   {

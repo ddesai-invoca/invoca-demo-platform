@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { isShareMode, shareAllows } from "../data/shareMode";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
 import type { GumloopArtifact } from "../data/schema";
 import { openArtifact, VOICE_AI_ROUTING_ID, VOICE_AI_SCREENPOP_ID, type ArtifactOverrides } from "../artifacts";
 import { hasTierReports } from "../data/signalTiers";
@@ -137,7 +138,20 @@ export function MyReports() {
   /* ⚠️ GATED ON THE RENDERED SLICES, not merely on the call. A prospect with no seeded
      `voiceRoutingDemo` cannot produce one, and a row that opens nothing is worse than no row. */
   const hasVoiceAi = !!overrides.voiceRoutingDemo && !!overrides.voiceScreenpop;
-  const all = reportsFor(!!profile.reports.conversationIntelligence, !!profile.reports.smsConversationIntelligence, !!profile.reports.voiceConversationIntelligence, profile.reports.gumloopArtifacts ?? [], hasTierReports(profile), hasVoiceAi, hasLsa);
+  const derived = reportsFor(!!profile.reports.conversationIntelligence, !!profile.reports.smsConversationIntelligence, !!profile.reports.voiceConversationIntelligence, profile.reports.gumloopArtifacts ?? [], hasTierReports(profile), hasVoiceAi, hasLsa);
+  /* ⚠️ THE LIST IS REGISTERED DATA (10/19/2026), the standing rule that Ask AI may change any data on
+     any page: each row's name, type and date. `live`, because a captured call or quote adds rows
+     after an edit (see liveMerge.ts). The link and the artifact stay the app's own, matched back
+     by the row's id, so an edit can relabel a report but never send it somewhere else. */
+  const idOf = (x: ReportRow) => x.to ?? x.artifact?.id ?? x.name;
+  const listJson = JSON.stringify(derived.map((x) => ({ id: idOf(x), name: x.name, type: x.type, createdAt: x.createdAt })));
+  const listBase = useMemo(() => ({ title: "My Reports", reports: JSON.parse(listJson) as { id: string; name: string; type: string; createdAt: string }[] }), [listJson]);
+  const list = usePageData(listBase, { live: true });
+  const byId = new Map(derived.map((x) => [idOf(x), x]));
+  const all: ReportRow[] = (list.reports ?? []).map((x) => {
+    const orig = byId.get(x.id);
+    return { name: x.name, type: x.type, createdAt: x.createdAt, to: orig?.to, artifact: orig?.artifact };
+  });
   const rows = search.trim()
     ? all.filter((r) => r.name.toLowerCase().includes(search.trim().toLowerCase()))
     : all;

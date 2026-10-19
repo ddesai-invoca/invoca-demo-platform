@@ -1249,10 +1249,33 @@ questions for confirmation."* This SUPERSEDES the length allow-list described in
   renders from `profile` directly is a screen Ask AI cannot change.
 - Fixed in the same pass: AI Recommendations snapshotted its list in `useState` (edits showed only
   after a reload), and three Agent Studio lists refilled with defaults when emptied.
-- ⚠️ **NOT YET COVERED** (helper sweep, 10/16): the six Salesforce screens, Google Search, ChatGPT,
-  Custom CRM, the Insights Details Report and Connect AI grids, captured SMS/voice conversations,
-  the SMS report's Marketing Data card, Insights call detail's derived fields, Verify Labels'
-  calls, My Reports and the Agent Studio list register nothing or render derived data.
+- ✅ **EVERY ROUTED SCREEN IS COVERED NOW (10/19/2026)**, and `audit:ai` fails on a routed screen
+  that registers nothing unless it is in its `EXEMPT` map WITH A REASON (our own tool pages, the
+  replicated prospect website, builders whose state is the user's clicks, wrappers that delegate).
+  Converted in this pass: the six Salesforce screens, Google Search, ChatGPT, Custom CRM, the
+  Insights Details Report / Connect AI / call page, the SMS and Voice CI reports (captured
+  conversations included, plus the Marketing Data card), My Reports, Agent Studio, Manage
+  Dashboards, Insights & Analytics, Verify Labels, Integrations, the Semantic Signal library, New
+  Signal and the screen-pop artifact view.
+- **The pattern for a derived screen:** build the derived object, `JSON.stringify` it and memo on the
+  string (a base rebuilt every render must not re-register every render), pass it to `usePageData`,
+  render from the result. Where a row links somewhere, keep the LINK the app's own (match back by
+  id) so an edit can relabel a row but never re-point it.
+- ⚠️⚠️ **LIVE PAGES (`usePageData(base, { live: true })`)** are fed by captures (a lead from a call,
+  a captured conversation, a created workflow). Their override stores the base it was made from
+  (`__liveBase`) and is three-way merged over today's base (`src/data/liveMerge.ts`): untouched
+  values follow the base, edits stick, a new identified item appears, a removed one stays removed.
+  Without it, the first edit froze the page and every later capture vanished.
+- ⚠️ **A stored override never hides a field it lacks** (`liveValue` fills missing keys, and
+  `usePageData` fills from the page's own base): the Google Search key held only the Book online
+  link until the results page was registered under the same key, and the page crashed on it.
+- **Standalone screens** (Salesforce, Google, ChatGPT, Custom CRM) get `StandaloneAi`: a hover-revealed
+  sparkle + undo, bottom right, invisible at rest. Beside the phone the CRM registers PASSIVELY so
+  the Preview Agent's own Ask AI keeps editing the agent.
+- **List operations** (`applyListOp` in editGuard): an edit value `{ "$op": "remove", "index": 0 }`
+  (or insert / append / move) is turned into the whole new list before the guard. Removing one row
+  of the 200-row Details Report went from minutes of re-sent JSON to ~10s. The drawer's context cap
+  is 120k for that grid.
 
 ### Ask AI + Undo on EVERY page (top bar, hover-revealed)
 `TopBar.tsx` carries a sparkle (`auto_awesome`) and an undo, immediately left of

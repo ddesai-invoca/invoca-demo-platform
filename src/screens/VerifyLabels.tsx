@@ -76,17 +76,20 @@ export function VerifyLabels() {
     if (forProfile && forProfile !== profile.id) navigate("/signal/ai-studio", { replace: true });
   }, [forProfile, profile.id, navigate]);
 
-  const calls = useMemo(() => buildVerifyCalls(profile), [profile]);
+  const derivedCalls = useMemo(() => buildVerifyCalls(profile), [profile]);
 
+  /* ⚠️ THE FIVE CALLS ARE REGISTERED DATA NOW (10/19/2026), the standing rule that Ask AI may change
+     any data on any page. They were deliberately out of scope (an edited transcript could
+     contradict the AI prediction beside it); the prompt now tells the model to keep linked data
+     consistent, which is that same concern handled where the edit is made. */
   const base = useMemo(() => ({
     title: "Verify Labels",
     label,
     description: labelDescription(label, profile.bookingTerm),
-  }), [label, profile.bookingTerm]);
-  /* Only the label and its description are exposed to Ask AI. The transcripts are
-     deliberately out of scope: they are the evidence on screen, and an edit that
-     rewrote them could contradict the AI prediction shown beside them. */
+    calls: derivedCalls,
+  }), [label, profile.bookingTerm, derivedCalls]);
   const data = usePageData(base);
+  const calls = Array.isArray(data.calls) && data.calls.length ? data.calls : derivedCalls;
 
   const [idx, setIdx] = useState(0);
   const [verdict, setVerdict] = useState<Verdict | null>(null);

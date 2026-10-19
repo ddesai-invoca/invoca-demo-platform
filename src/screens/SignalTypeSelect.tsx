@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* Signal -> New: pick the source that will track the Signal.
    `/signal/new` (the real one is /manage_signals/type-select), matched to the capture
@@ -58,8 +59,14 @@ const TYPES: SignalType[] = [
   },
 ];
 
+const PAGE_BASE = { title: "New Signal", lede: "Select which source you\u2019ll be using to track your Signal.", types: TYPES };
+
 export function SignalTypeSelect() {
   const navigate = useNavigate();
+  /* Registered as page data (10/19/2026), the standing rule that Ask AI may change any data on any
+     page. Where a card navigates, the destination stays the app's own, matched back by name. */
+  const view = usePageData(PAGE_BASE);
+  const types = (view.types ?? TYPES).map((t) => ({ ...t, to: TYPES.find((o) => o.key === t.key)?.to ?? "/signal" }));
 
   return (
     <div className="sts-page">
@@ -69,10 +76,10 @@ export function SignalTypeSelect() {
 
       <div className="sts-body">
         <section className="sts-card">
-          <h2 className="sts-lede">Select which source you&rsquo;ll be using to track your Signal.</h2>
+          <h2 className="sts-lede">{view.lede}</h2>
 
           <div className="sts-grid">
-            {TYPES.map((t) => (
+            {types.map((t) => (
               <article className="sts-type" key={t.key} data-testid={t.key}>
                 {t.ribbon && (
                   <div className="sts-ribbon"><span>{t.ribbon}</span></div>

@@ -346,7 +346,10 @@ export function AiAssistantDrawer() {
        * everything rather than one field.
        */
       let dataContext = "";
-      const CAP = 40000;
+      /* ⚠️ RAISED AGAIN TO 120k (10/19/2026), with the standing rule that Ask AI may change ANY
+         data on any page: the Insights Details Report's grid alone is ~82KB, and a model shown
+         the first 40k of it can only edit the rows it happened to receive. ~30k tokens on Opus. */
+      const CAP = 120000;
       try {
         let j = JSON.stringify(eff);
         if (j.length > CAP && active.linkAs && eff && typeof eff === "object") {

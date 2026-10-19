@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { usePageDataWithLabels } from "../components/GeneratedTiles";
@@ -31,9 +32,13 @@ export function InsightsDetailsReport() {
   /* Registers this page as the AI scope and returns its labels with any edits made ON THIS
      PAGE overlaid, so the assistant can rename this report's headings without touching the
      other two Insights reports. */
-  const view = usePageDataWithLabels(profile.reports.marketingDashboard, LABELS);
+  /* ⚠️ THE GRID IS REGISTERED DATA (10/19/2026). It is derived per prospect (`detailsReportFacts`)
+     and used to be drawn straight from that, so Ask AI could rename the headings and nothing else.
+     Folded into the base as `report`, and drawn from the edited value. */
+  const base = useMemo(() => ({ ...profile.reports.marketingDashboard, title: "Details Report", report: detailsReportFacts(profile) }), [profile]);
+  const view = usePageDataWithLabels(base, LABELS);
   const L = view.labels;
-  const f = detailsReportFacts(profile);
+  const f = view.report ?? base.report;
 
   return (
     <div className="ind-page idt-page">

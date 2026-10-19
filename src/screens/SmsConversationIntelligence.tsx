@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
@@ -40,14 +40,16 @@ function InfoField({ label, value }: { label: string; value?: string }) {
    own caller IS the SMS screen-pop's caller (the seeded example usually is), it is
    literally that person's own Lead attribution, not a second independently-derived
    copy of it. See that file's header for why. */
-function SmsInfoPanel({ info, profile }: { info: SmsInfo; profile: CustomerProfile }) {
+function SmsInfoPanel({ info, profile, marketing }: { info: SmsInfo; profile: CustomerProfile; marketing?: ReturnType<typeof smsInfoAttribution> }) {
   /* ⚠️ THE FULL NAME, NOT `displayName` — the model writes those independently
      ("J Harper" vs. firstName "Jessica" + lastName "Harper"), so matching on
      displayName against `smsScreenpop.callerName` ("Jessica Harper") never hit,
      and the identity-match branch below silently never fired. Caught by reading
      the rendered page against the caller's own Lead record, not by a type. */
   const callerFullName = `${info.firstName ?? ""} ${info.lastName ?? ""}`.trim();
-  const attribution = smsInfoAttribution(profile, callerFullName);
+  /* Registered per conversation as `marketingData` (10/19/2026) so Ask AI can change it; this is
+     the same derivation, for a conversation saved before that field existed. */
+  const attribution = marketing ?? smsInfoAttribution(profile, callerFullName);
   return (
     <div className="sci-info-grid">
       <section className="sci-info-card">
@@ -133,19 +135,31 @@ export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
   const { capturedFor } = useSmsCapture();
   /* Registers this page as the AI scope and returns the slice with any
      edits made ON THIS PAGE overlaid (see usePageData). */
-  const view = usePageData(profile.reports.smsConversationIntelligence);
-
+  const report = profile.reports.smsConversationIntelligence;
   const all = capturedFor(profile.id);
   /* ⚠️ THE SEED IS DROPPED ON THE (LSA) REPORT, and it has to be: those examples are generated
      general SMS threads, so listing them under a report whose whole claim is "these came from a
      quote request" would put three threads there that no form ever produced. */
   const captured = only === "lsa" ? all.filter((c) => c.lsa) : all.filter((c) => !c.lsa);
-  const seed = only === "lsa" ? [] : (view?.conversations ?? []);
+  const seedBase = only === "lsa" ? [] : (report?.conversations ?? []);
+  /* ⚠️⚠️ THE CAPTURED CONVERSATIONS ARE REGISTERED DATA TOO (10/19/2026), the standing rule that Ask
+     AI may change any data on any page. They used to be spliced in AFTER the registered value, so
+     the conversation an SE just had could not be edited. Captured first (newest on top), then the
+     seed, each carrying its Marketing Data card (`marketingData`). `live`, so a conversation
+     captured after an edit still appears (see liveMerge.ts).
+     ⚠️ `withoutAgentQaSignals` runs on the BASE only: "(QA) …" signals do not apply to an AI
+     conversation, but one somebody adds on purpose through Ask AI is theirs to keep. */
+  const baseJson = JSON.stringify(withoutAgentQaSignals([...captured, ...seedBase]).map((c) => {
+    const name = `${c.smsInfo?.firstName ?? ""} ${c.smsInfo?.lastName ?? ""}`.trim();
+    let marketingData;
+    try { marketingData = smsInfoAttribution(profile, name); } catch { marketingData = undefined; }
+    return { ...c, marketingData };
+  }));
+  const base = useMemo(() => ({ ...(report ?? {}), title: only === "lsa" ? "AI SMS Conversation Intelligence (LSA)" : "AI SMS Conversation Intelligence", conversations: JSON.parse(baseJson) as (SmsConversation & { marketingData?: ReturnType<typeof smsInfoAttribution> })[] }), [report, baseJson, only]);
+  const view = usePageData(base, { live: true });
   // Captured conversations accumulate at the top (newest first); seed examples
   // fill in below. The list scrolls, so no hard cap.
-  /* ⚠️ `withoutAgentQaSignals` strips "(QA) …" signals: no human agent answered these,
-     so agent-quality scoring does not apply. See src/data/aiSignals.ts. */
-  const conversations: SmsConversation[] = withoutAgentQaSignals([...captured, ...seed]);
+  const conversations = view.conversations ?? [];
 
   const firstActive = conversations.find((c) => c.active) ?? conversations[0];
   const [selectedId, setSelectedId] = useState<string | undefined>(firstActive?.id);
@@ -153,7 +167,7 @@ export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
 
   const selected = conversations.find((c) => c.id === selectedId) ?? firstActive;
 
-  if ((only === "lsa" || !view) && captured.length === 0) {
+  if ((only === "lsa" || !report) && captured.length === 0) {
     return (
       <div className="report-surface">
         <div className="placeholder">
@@ -298,7 +312,7 @@ export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
                 )}
               </>
             )}
-            {tab === "info" && (selected?.smsInfo ? <SmsInfoPanel info={selected.smsInfo} profile={profile} /> : <div className="sci-empty">No SMS info available.</div>)}
+            {tab === "info" && (selected?.smsInfo ? <SmsInfoPanel info={selected.smsInfo} profile={profile} marketing={(selected as { marketingData?: ReturnType<typeof smsInfoAttribution> }).marketingData} /> : <div className="sci-empty">No SMS info available.</div>)}
             {tab === "comments" && <div className="sci-empty">No comments on this conversation.</div>}
           </div>
         </aside>

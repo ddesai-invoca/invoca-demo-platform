@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
@@ -89,15 +89,17 @@ export function VoiceConversationIntelligence() {
   const { capturedFor } = useVoiceCapture();
   /* Registers this page as the AI scope and returns the slice with any
      edits made ON THIS PAGE overlaid (see usePageData). */
-  const view = usePageData(profile.reports.voiceConversationIntelligence);
-
+  const report = profile.reports.voiceConversationIntelligence;
   const captured = capturedFor(profile.id);
-  const seed = view?.conversations ?? [];
+  /* ⚠️ CAPTURED CALLS ARE REGISTERED DATA TOO (10/19/2026), the standing rule that Ask AI may change
+     any data on any page; `live`, so a call captured after an edit still appears (liveMerge.ts).
+     `withoutAgentQaSignals` runs on the BASE only, so a "(QA)" signal added on purpose is kept. */
+  const baseJson = JSON.stringify(withoutAgentQaSignals([...captured, ...(report?.conversations ?? [])]));
+  const base = useMemo(() => ({ ...(report ?? {}), title: "AI Voice Conversation Intelligence", conversations: JSON.parse(baseJson) as VoiceConversation[] }), [report, baseJson]);
+  const view = usePageData(base, { live: true });
   // Captured calls accumulate at the top (newest first); seed examples fill in
   // below. The list scrolls, so no hard cap.
-  /* ⚠️ `withoutAgentQaSignals` strips "(QA) …" signals: no human agent answered these,
-     so agent-quality scoring does not apply. See src/data/aiSignals.ts. */
-  const conversations: VoiceConversation[] = withoutAgentQaSignals([...captured, ...seed]);
+  const conversations: VoiceConversation[] = view.conversations ?? [];
 
   const firstActive = conversations.find((c) => c.active) ?? conversations[0];
   const [selectedId, setSelectedId] = useState<string | undefined>(firstActive?.id);
@@ -105,7 +107,7 @@ export function VoiceConversationIntelligence() {
 
   const selected = conversations.find((c) => c.id === selectedId) ?? firstActive;
 
-  if (!view && captured.length === 0) {
+  if (!report && captured.length === 0) {
     return (
       <div className="report-surface">
         <div className="placeholder"><h2>No voice conversations</h2>

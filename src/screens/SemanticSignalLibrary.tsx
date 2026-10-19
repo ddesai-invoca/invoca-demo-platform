@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePageData } from "../components/GeneratedTiles";
 import { SEMANTIC_TEMPLATES, type SemanticTemplate } from "../data/semanticSignals";
 
 /* Signal → New → Semantic Signal → the template library, and the detail drawer a tile opens.
@@ -90,6 +91,8 @@ function TemplateDrawer({ t, onClose, onActivate }: {
   );
 }
 
+const LIB_BASE = { title: "Semantic Signal Library", templates: SEMANTIC_TEMPLATES };
+
 export function SemanticSignalLibrary() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
@@ -98,12 +101,16 @@ export function SemanticSignalLibrary() {
   /* The search box is real: it filters on name AND description, which is what a template
      search is for — "resistance" should find Objection Handling. A title-only filter
      would be a prop. */
+  /* Registered as page data (10/19/2026), the standing rule that Ask AI may change any data on any
+     page. Where a card navigates, the destination stays the app's own, matched back by name. */
+  const view = usePageData(LIB_BASE);
+  const templates = view.templates ?? SEMANTIC_TEMPLATES;
   const shown = useMemo(() => {
     const t = q.trim().toLowerCase();
-    if (!t) return SEMANTIC_TEMPLATES;
-    return SEMANTIC_TEMPLATES.filter((x) =>
+    if (!t) return templates;
+    return templates.filter((x) =>
       x.name.toLowerCase().includes(t) || x.body.toLowerCase().includes(t));
-  }, [q]);
+  }, [q, templates]);
 
   return (
     <div className="ssl-page">

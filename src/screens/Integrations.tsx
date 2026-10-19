@@ -1,5 +1,6 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { usePageData } from "../components/GeneratedTiles";
 
 /* =============================================================================
    Integrations — the IN-PLATFORM page, replacing the old marketing-site copy.
@@ -139,13 +140,20 @@ const LIBRARY: Card[] = [
   { name: "VWO", state: "learn", icon: "vwo.jpg" },
 ];
 
+const PAGE_BASE = { title: "Integrations", integrated: INTEGRATED, library: LIBRARY };
+const ALL_CARDS = [...INTEGRATED, ...LIBRARY];
+
 export function Integrations() {
   const navigate = useNavigate();
   const [q, setQ] = useState("");
 
+  /* Registered as page data (10/19/2026), the standing rule that Ask AI may change any data on any
+     page. Where a card navigates, the destination stays the app's own, matched back by name. */
+  const view = usePageData(PAGE_BASE);
+  const keepTo = (c: Card): Card => ({ ...c, to: ALL_CARDS.find((o) => o.name === c.name)?.to });
   const match = (c: Card) => c.name.toLowerCase().includes(q.trim().toLowerCase());
-  const integrated = useMemo(() => INTEGRATED.filter(match), [q]);
-  const library = useMemo(() => LIBRARY.filter(match), [q]);
+  const integrated = useMemo(() => (view.integrated ?? INTEGRATED).map(keepTo).filter(match), [q, view.integrated]); // eslint-disable-line react-hooks/exhaustive-deps
+  const library = useMemo(() => (view.library ?? LIBRARY).map(keepTo).filter(match), [q, view.library]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const Tile = ({ c }: { c: Card }) => {
     const go = c.to ? () => navigate(c.to!) : undefined;

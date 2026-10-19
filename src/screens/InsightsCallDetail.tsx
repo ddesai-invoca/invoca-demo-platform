@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { usePageData } from "../components/GeneratedTiles";
+import type { CustomerProfile } from "../data/schema";
 import type { CallDetailTurn } from "../data/schema";
 
 /* Insights & Analytics -> a single call, reached by clicking the top card in the
@@ -238,12 +239,70 @@ const TAB_ICONS: Record<string, string> = {
   Info: "info", Coaching: "school", Comments: "chat_bubble", Deliveries: "work",
 };
 
+/** The Info tab's field values, worked out from the call. Registered as page data (see the
+    component), so it is computed once from the profile's own call and an edit overlays it. */
+function deriveInfo(profile: CustomerProfile, d: NonNullable<CustomerProfile["reports"]["callDetail"]>): Record<string, string> {
+  const secs = toSeconds(d.duration);
+  const sent = sentiment(d.transcript);
+  const row = profile.reports.digitalInsights?.rows?.[0];
+  const pop = profile.reports.voiceScreenpop;
+  const h = hash(d.callId);
+  /* Contact Center Metrics are SPLITS OF THE REAL DURATION, so they add up against the call:
+     agent talks a little over half, the caller about a third, a few seconds of silence. */
+  const agentTalk = Math.round(secs * 0.6);
+  const callerTalk = Math.round(secs * 0.31);
+  const silence = Math.max(1, secs - agentTalk - callerTalk);
+
+  return {
+    "CALL RECORD ID": String(d.callId),
+    "CALL START TIME": String(d.date),
+    "TOTAL IVR DURATION": String("00:00:00"),
+    "TOTAL CONNECTED DURATION": String(hms(secs)),
+    "TOTAL DURATION": String(hms(secs)),
+    "DESTINATION PHONE NUMBER": String(`909-390-${String(1000 + (h % 8999)).slice(0, 4)}`),
+    "CALL SEGMENT PATH": String("Inbound Calls"),
+    "TRANSACTIONS": String("2"),
+    "SOURCE": String("External"),
+    "ESTIMATED CONVERSATION START": String(`00:${d.convStart}`),
+    "CALLER ID": String(pop?.callerPhone ?? `(${300 + (h % 600)}) 555-${String(1000 + (h % 8999)).slice(0, 4)}`),
+    "REPEAT CALLER": String("No"),
+    "PHONE TYPE": String(h % 3 === 0 ? "Landline" : "Mobile"),
+    "AGENT": String(d.agent),
+    "CALLING PAGE": String(pop?.callingWebpage ?? row?.websiteJourney ?? "—"),
+    "MARKETING SOURCE": String(row?.marketingSource ?? "Organic"),
+    "MARKETING MEDIUM": String(row?.marketingMedium ?? "Organic"),
+    "MARKETING CAMPAIGN": String(row?.marketingCampaign ?? "—"),
+    "SENTIMENT": String(sent.label),
+    "WEBSITE JOURNEY": String(pop?.digitalJourney ?? row?.websiteJourney ?? "—"),
+    "FULL LANDING PAGE URL": String(row?.landingPageUrl ?? profile.websiteUrl),
+    "GOOGLE ANALYTICS CLIENT ID": String(`${1000000000 + (h % 899999999)}.${2000000000 + (h % 999999)}`),
+    "ADOBE ADVERTISING ID": String(`${5000000000 + (h % 999999999)}.${1000000000 + (h % 899999999)}`),
+    "FINAL CAMPAIGN": String("Default: Inbound Calls"),
+    "FINAL CAMPAIGN ID": String(String(9000000 + (h % 999999))),
+    "REVENUE (SALE AMOUNT)": String(`$${(40 + (h % 60)).toFixed(2)}`),
+    "CALL RESULT": String("Not Paid"),
+    "EARNED": String("$0.00"),
+    "PAID": String("$0.00"),
+    "MARGIN": String("$0.00"),
+    "FEES": String("$0.00"),
+    "ADVERTISER FEES": String("$0.00"),
+    "AGENT HANDLE TIME": String(minSec(secs)),
+    "SILENCE TIME": String(minSec(silence)),
+    "AGENT TALK TIME": String(minSec(agentTalk)),
+    "OVERTALK TIME": String("0 min 0 sec"),
+    "CALLER TALK TIME": String(minSec(callerTalk)),
+    "AGENT LONGEST MONOLOG TIME": String(minSec(Math.round(secs * 0.13))),
+  };
+}
+
 export function InsightsCallDetail() {
   const { profile } = useProfile();
   const [params] = useSearchParams();
   /* Registers this page as the AI scope and returns the slice with any edits made ON
      THIS PAGE overlaid (see usePageData). */
-  const d = usePageData(profile.reports.callDetail);
+  const raw = profile.reports.callDetail;
+  const base = useMemo(() => (raw ? { ...raw, info: deriveInfo(profile, raw) } : raw), [profile, raw]);
+  const d = usePageData(base);
   const [tab, setTab] = useState<(typeof TABS)[number]>("Info");
   const [openCard, setOpenCard] = useState<string | null>(null);
 
@@ -263,22 +322,16 @@ export function InsightsCallDetail() {
 
   const secs = toSeconds(d.duration);
   const sent = sentiment(d.transcript);
-  const row = profile.reports.digitalInsights?.rows?.[0];
-  const pop = profile.reports.voiceScreenpop;
-  const h = hash(d.callId);
-
-  /* Contact Center Metrics are SPLITS OF THE REAL DURATION, so they add up against the
-     call rather than floating free: agent talks a little over half, the caller about a
-     third, a few seconds of silence, no overtalk (a clean call). */
-  const agentTalk = Math.round(secs * 0.6);
-  const callerTalk = Math.round(secs * 0.31);
-  const silence = Math.max(1, secs - agentTalk - callerTalk);
+  /* The Info fields (attribution, hashed ids, the duration splits) are worked out in `deriveInfo`. */
 
   const scorecardRows = d.scorecardRows.map((r) => ({ name: r.name, points: r.points }));
   /* The capture shows ONE scored scorecard and the rest N/A — a call only gets scored by
      the scorecards whose criteria applied to it. Those extra names are Invoca's own
      product vocabulary, so they stay verbatim rather than being re-skinned. */
   const extraCards = ["Outbound Sales", "Retention", "Compliance"];
+  /* ⚠️ EVERY INFO-TAB FIELD IS REGISTERED DATA (10/19/2026), the standing rule that Ask AI may change
+     any data on any page: `info` is folded into the base below, keyed by each field's own label. */
+  const I: Record<string, string> = (d as unknown as { info?: Record<string, string> }).info ?? deriveInfo(profile, d);
 
   return (
     <div className="icd-page">
@@ -449,26 +502,26 @@ export function InsightsCallDetail() {
               <div className="icd-pair">
                 <Panel title="About This Call">
                   <div className="icd-fields">
-                    <Field label="CALL RECORD ID" value={d.callId} />
-                    <Field label="CALL START TIME" value={d.date} />
-                    <Field label="TOTAL IVR DURATION" value="00:00:00" />
-                    <Field label="TOTAL CONNECTED DURATION" value={hms(secs)} />
-                    <Field label="TOTAL DURATION" value={hms(secs)} />
-                    <Field label="DESTINATION PHONE NUMBER" value={`909-390-${String(1000 + (h % 8999)).slice(0, 4)}`} />
-                    <Field label="CALL SEGMENT PATH" value="Inbound Calls" />
-                    <Field label="TRANSACTIONS" value="2" />
-                    <Field label="SOURCE" value="External" />
+                    <Field label="CALL RECORD ID" value={I["CALL RECORD ID"] ?? ""} />
+                    <Field label="CALL START TIME" value={I["CALL START TIME"] ?? ""} />
+                    <Field label="TOTAL IVR DURATION" value={I["TOTAL IVR DURATION"] ?? ""} />
+                    <Field label="TOTAL CONNECTED DURATION" value={I["TOTAL CONNECTED DURATION"] ?? ""} />
+                    <Field label="TOTAL DURATION" value={I["TOTAL DURATION"] ?? ""} />
+                    <Field label="DESTINATION PHONE NUMBER" value={I["DESTINATION PHONE NUMBER"] ?? ""} />
+                    <Field label="CALL SEGMENT PATH" value={I["CALL SEGMENT PATH"] ?? ""} />
+                    <Field label="TRANSACTIONS" value={I["TRANSACTIONS"] ?? ""} />
+                    <Field label="SOURCE" value={I["SOURCE"] ?? ""} />
                     {/* convStart is mm:ss ("00:16"); this field is h:mm:ss in the capture
                         ("00:00:00"), so it gets an hours segment rather than a reformat. */}
-                    <Field label="ESTIMATED CONVERSATION START" value={`00:${d.convStart}`} />
+                    <Field label="ESTIMATED CONVERSATION START" value={I["ESTIMATED CONVERSATION START"] ?? ""} />
                   </div>
                 </Panel>
 
                 <Panel title="Caller Data">
                   <div className="icd-fields">
-                    <Field label="CALLER ID" value={pop?.callerPhone ?? `(${300 + (h % 600)}) 555-${String(1000 + (h % 8999)).slice(0, 4)}`} />
-                    <Field label="REPEAT CALLER" value="No" />
-                    <Field label="PHONE TYPE" value={h % 3 === 0 ? "Landline" : "Mobile"} />
+                    <Field label="CALLER ID" value={I["CALLER ID"] ?? ""} />
+                    <Field label="REPEAT CALLER" value={I["REPEAT CALLER"] ?? ""} />
+                    <Field label="PHONE TYPE" value={I["PHONE TYPE"] ?? ""} />
                   </div>
                 </Panel>
               </div>
@@ -476,23 +529,23 @@ export function InsightsCallDetail() {
               <div className="icd-pair">
                 <Panel title="Marketing Data">
                   <div className="icd-fields">
-                    <Field label="AGENT" value={d.agent} />
-                    <Field label="CALLING PAGE" value={pop?.callingWebpage ?? row?.websiteJourney ?? "—"} />
-                    <Field label="MARKETING SOURCE" value={row?.marketingSource ?? "Organic"} />
-                    <Field label="MARKETING MEDIUM" value={row?.marketingMedium ?? "Organic"} />
-                    <Field label="MARKETING CAMPAIGN" value={row?.marketingCampaign ?? "—"} />
-                    <Field label="SENTIMENT" value={sent.label} />
-                    <Field label="WEBSITE JOURNEY" value={pop?.digitalJourney ?? row?.websiteJourney ?? "—"} />
-                    <Field label="FULL LANDING PAGE URL" value={row?.landingPageUrl ?? profile.websiteUrl} />
-                    <Field label="GOOGLE ANALYTICS CLIENT ID" value={`${1000000000 + (h % 899999999)}.${2000000000 + (h % 999999)}`} />
-                    <Field label="ADOBE ADVERTISING ID" value={`${5000000000 + (h % 999999999)}.${1000000000 + (h % 899999999)}`} />
+                    <Field label="AGENT" value={I["AGENT"] ?? ""} />
+                    <Field label="CALLING PAGE" value={I["CALLING PAGE"] ?? ""} />
+                    <Field label="MARKETING SOURCE" value={I["MARKETING SOURCE"] ?? ""} />
+                    <Field label="MARKETING MEDIUM" value={I["MARKETING MEDIUM"] ?? ""} />
+                    <Field label="MARKETING CAMPAIGN" value={I["MARKETING CAMPAIGN"] ?? ""} />
+                    <Field label="SENTIMENT" value={I["SENTIMENT"] ?? ""} />
+                    <Field label="WEBSITE JOURNEY" value={I["WEBSITE JOURNEY"] ?? ""} />
+                    <Field label="FULL LANDING PAGE URL" value={I["FULL LANDING PAGE URL"] ?? ""} />
+                    <Field label="GOOGLE ANALYTICS CLIENT ID" value={I["GOOGLE ANALYTICS CLIENT ID"] ?? ""} />
+                    <Field label="ADOBE ADVERTISING ID" value={I["ADOBE ADVERTISING ID"] ?? ""} />
                   </div>
                 </Panel>
 
                 <Panel title="Campaign Data">
                   <div className="icd-fields">
-                    <Field label="FINAL CAMPAIGN" value="Default: Inbound Calls" />
-                    <Field label="FINAL CAMPAIGN ID" value={String(9000000 + (h % 999999))} />
+                    <Field label="FINAL CAMPAIGN" value={I["FINAL CAMPAIGN"] ?? ""} />
+                    <Field label="FINAL CAMPAIGN ID" value={I["FINAL CAMPAIGN ID"] ?? ""} />
                   </div>
                 </Panel>
               </div>
@@ -500,27 +553,27 @@ export function InsightsCallDetail() {
               <div className="icd-pair">
                 <Panel title="Conversion Data">
                   <div className="icd-fields">
-                    <Field label="REVENUE (SALE AMOUNT)" value={`$${(40 + (h % 60)).toFixed(2)}`} />
+                    <Field label="REVENUE (SALE AMOUNT)" value={I["REVENUE (SALE AMOUNT)"] ?? ""} />
                   </div>
                   <div className="icd-sub">Publisher Payout</div>
                   <div className="icd-fields">
-                    <Field label="CALL RESULT" value="Not Paid" />
-                    <Field label="EARNED" value="$0.00" />
-                    <Field label="PAID" value="$0.00" />
-                    <Field label="MARGIN" value="$0.00" />
-                    <Field label="FEES" value="$0.00" />
-                    <Field label="ADVERTISER FEES" value="$0.00" />
+                    <Field label="CALL RESULT" value={I["CALL RESULT"] ?? ""} />
+                    <Field label="EARNED" value={I["EARNED"] ?? ""} />
+                    <Field label="PAID" value={I["PAID"] ?? ""} />
+                    <Field label="MARGIN" value={I["MARGIN"] ?? ""} />
+                    <Field label="FEES" value={I["FEES"] ?? ""} />
+                    <Field label="ADVERTISER FEES" value={I["ADVERTISER FEES"] ?? ""} />
                   </div>
                 </Panel>
 
                 <Panel title="Contact Center Metrics">
                   <div className="icd-fields">
-                    <Field label="AGENT HANDLE TIME" value={minSec(secs)} />
-                    <Field label="SILENCE TIME" value={minSec(silence)} />
-                    <Field label="AGENT TALK TIME" value={minSec(agentTalk)} />
-                    <Field label="OVERTALK TIME" value="0 min 0 sec" />
-                    <Field label="CALLER TALK TIME" value={minSec(callerTalk)} />
-                    <Field label="AGENT LONGEST MONOLOG TIME" value={minSec(Math.round(secs * 0.13))} />
+                    <Field label="AGENT HANDLE TIME" value={I["AGENT HANDLE TIME"] ?? ""} />
+                    <Field label="SILENCE TIME" value={I["SILENCE TIME"] ?? ""} />
+                    <Field label="AGENT TALK TIME" value={I["AGENT TALK TIME"] ?? ""} />
+                    <Field label="OVERTALK TIME" value={I["OVERTALK TIME"] ?? ""} />
+                    <Field label="CALLER TALK TIME" value={I["CALLER TALK TIME"] ?? ""} />
+                    <Field label="AGENT LONGEST MONOLOG TIME" value={I["AGENT LONGEST MONOLOG TIME"] ?? ""} />
                   </div>
                 </Panel>
               </div>

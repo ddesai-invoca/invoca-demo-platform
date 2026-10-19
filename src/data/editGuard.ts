@@ -385,3 +385,46 @@ export function constrainToFocus(
   }
   return { edits: out, remapped, dropped };
 }
+
+/* =============================================================================
+   LIST OPERATIONS (10/19/2026)
+   -----------------------------------------------------------------------------
+   With every list editable, "delete the first row" of the Insights Details Report meant the model
+   re-sending all 200 rows (~80KB) to drop one: minutes of output, and a real risk of running out
+   of room mid-list. An edit whose value is `{ "$op": … }` names the change instead, and is turned
+   into the whole new list here, so the guard and the store still see an ordinary list edit.
+     { "$op": "remove", "index": 0 }            { "$op": "remove", "indexes": [0, 4] }
+     { "$op": "insert", "index": 2, "item": {…} } { "$op": "append", "item": {…} }
+     { "$op": "move", "from": 5, "to": 0 }
+   An op that does not fit the list (not a list, an index out of range) returns null and the edit
+   is dropped, like any other edit that cannot apply.
+   ============================================================================= */
+export function applyListOp(list: unknown, op: unknown): unknown[] | null {
+  if (!Array.isArray(list) || !op || typeof op !== "object" || !("$op" in op)) return null;
+  const o = op as { $op: string; index?: number; indexes?: number[]; item?: unknown; items?: unknown[]; from?: number; to?: number };
+  const n = list.length;
+  const ok = (i: unknown, max = n - 1): i is number => Number.isInteger(i) && (i as number) >= 0 && (i as number) <= max;
+  switch (o.$op) {
+    case "remove": {
+      const drop = new Set(o.indexes ?? (o.index !== undefined ? [o.index] : []));
+      if (!drop.size || ![...drop].every((i) => ok(i))) return null;
+      return list.filter((_, i) => !drop.has(i));
+    }
+    case "insert": {
+      if (!ok(o.index, n) || (o.item === undefined && !o.items)) return null;
+      const add = o.items ?? [o.item];
+      return [...list.slice(0, o.index), ...add, ...list.slice(o.index)];
+    }
+    case "append":
+      if (o.item === undefined && !o.items) return null;
+      return [...list, ...(o.items ?? [o.item])];
+    case "move": {
+      if (!ok(o.from) || !ok(o.to)) return null;
+      const out = [...list];
+      const [x] = out.splice(o.from, 1);
+      out.splice(o.to, 0, x);
+      return out;
+    }
+    default: return null;
+  }
+}

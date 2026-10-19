@@ -1,5 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 /* Location, rivals and the tracked click URL are SHARED with the Google
    search screen so the two agree on the same prospect. See prospectPlace.ts. */
 import { useLocationOverride } from "../data/locationOverride";
@@ -188,7 +190,12 @@ export function ChatGptAd() {
      the same city against the same competitors on both" — so an SE who re-points one and not
      the other would reintroduce exactly the drift that module was written to prevent. */
   const loc = useLocationOverride(profile.id);
-  const d = derive(profile, loc.place ?? undefined);
+  /* Registered as page data (10/19/2026), the standing rule that Ask AI may change any data on
+     any page: the answer text, the places list, the ad and its offer all come from this object.
+     `live`, because re-pointing the ZIP rebuilds it after an edit (see liveMerge.ts). */
+  const derivedJson = JSON.stringify(derive(profile, loc.place ?? undefined));
+  const dBase = useMemo(() => ({ title: "ChatGPT", ...JSON.parse(derivedJson) }) as ReturnType<typeof derive> & { title: string }, [derivedJson]);
+  const d = usePageData(dBase, { live: true });
 
   const [text, setText] = useState("");
   const [asked, setAsked] = useState<string | null>(null);
@@ -252,6 +259,7 @@ export function ChatGptAd() {
 
   return (
     <div className={"cg-root" + (drawer ? " cg-root-flyout" : "")}>
+      <StandaloneAi />
       {drawer && (
         <BizDrawer d={d} hero={hero} place={place} back={expanded}
           onClose={() => (expanded ? closeAll() : setDrawer(false))} />

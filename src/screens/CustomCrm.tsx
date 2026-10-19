@@ -22,6 +22,8 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
+import { StandaloneAi } from "../components/StandaloneAi";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { derive } from "../data/prospectPlace";
 import { smsInfoAttribution } from "../data/salesforceLeadDetail";
@@ -167,13 +169,36 @@ export function CustomCrm({ embedded = false, convId }: {
   ];
   const nowMin = now.getHours() * 60 + now.getMinutes();
 
+  /* ⚠️ REGISTERED AS PAGE DATA (10/19/2026), the standing rule that Ask AI may change any data on
+     any page: the header, service area, pre-call fields, the lead, the follow-up list and each
+     day's booked slots. `live`, because the lead and the follow-up list come from the
+     conversation as it happens (see liveMerge.ts). ONE key for both placements; beside the phone
+     it registers PASSIVELY, so the Preview Agent's own Ask AI keeps editing the agent. */
+  const crmJson = JSON.stringify({
+    title: `${cap(booking)} Scheduling`, serviceArea: place, preCall: pre, lead: st.lead, followUp,
+    days: days.map((d) => ({ date: d.date, busy: d.busy, closed: d.closed })),
+  });
+  const crmBase = useMemo(() => JSON.parse(crmJson) as {
+    title: string; serviceArea: string; preCall: typeof pre; lead: typeof st.lead; followUp: string[];
+    days: { date: string; busy: string[]; closed: boolean }[];
+  }, [crmJson]);
+  const crm = usePageData(crmBase, { live: true, passive: embedded, scopePath: "/integrations/custom-crm" });
+  const lead = crm.lead ?? st.lead;
+  const preEff = crm.preCall ?? pre;
+  const area = crm.serviceArea ?? place;
+  const daysEff = days.map((d) => {
+    const e = crm.days?.find((x) => x.date === d.date);
+    return e ? { ...d, busy: Array.isArray(e.busy) ? e.busy : d.busy, closed: !!e.closed } : d;
+  });
+
   return (
     <div className="ccr">
+      {!embedded && <StandaloneAi />}
       <header className="ccr-top">
         <div className="ccr-brand">
           <div className="ccr-wordmark">{profile.customerName}</div>
           <div className="ccr-divider" />
-          <div className="ccr-app">{cap(booking)} Scheduling</div>
+          <div className="ccr-app">{crm.title}</div>
         </div>
         <div className="ccr-spacer" />
         {!embedded && (
@@ -193,12 +218,12 @@ export function CustomCrm({ embedded = false, convId }: {
         <section className="ccr-cal">
           <div className={"ccr-toast" + (toast ? " on" : "")} role="status">
             <b>New appointment booked</b>
-            {st.booking && <small>#{st.booking.id} · {st.lead.name || "New customer"} · {shortDay(st.booking.date)} at {st.booking.time}</small>}
+            {st.booking && <small>#{st.booking.id} · {lead.name || "New customer"} · {shortDay(st.booking.date)} at {st.booking.time}</small>}
           </div>
           <div className="ccr-tool">
             <h2>{cap(booking)}s</h2>
             <span className="ccr-range">{shortDay(days[0].date)} – {shortDay(days[6].date)}</span>
-            {(place || st.zip) && <span className="ccr-area">Service area: <b>{[place, st.zip].filter(Boolean).join(" · ")}</b></span>}
+            {(area || st.zip) && <span className="ccr-area">Service area: <b>{[area, st.zip].filter(Boolean).join(" · ")}</b></span>}
           </div>
           <div className="ccr-legend">
             <span><i className="ccr-sw offer" />Offered by AI Agent</span>
@@ -226,42 +251,42 @@ export function CustomCrm({ embedded = false, convId }: {
                   <div key={i}>{i === 0 ? "" : hourLabel(CRM_START_HOUR + i).replace(":00", "")}</div>
                 ))}
               </div>
-              {days.map((d) => <Column key={d.date} d={d} st={st} today={todayIso} full={full.has(d.date) || d.closed}
-                focus={d.date === focusDate} arriving={arriving} nowMin={nowMin} name={st.lead.name} />)}
+              {daysEff.map((d) => <Column key={d.date} d={d} st={st} today={todayIso} full={full.has(d.date) || d.closed}
+                focus={d.date === focusDate} arriving={arriving} nowMin={nowMin} name={lead.name} />)}
             </div>
           </div>
         </section>
 
         <aside className="ccr-side">
           <div className="ccr-sh"><h3>New Lead</h3><span className={"ccr-chip " + status}>{STATUS[status]}</span></div>
-          {pre && (
+          {preEff && (
             <div className="ccr-sec ccr-pre">
               <h4>Pre-Call Intelligence <span className="ccr-pre-badge">Invoca</span></h4>
               <p className="ccr-pre-sub">
                 Known before the first text{st.conversation.length > 0 ? ` · ${confirmedCount} of 5 details confirmed in chat` : " · enriched live as the customer texts"}
               </p>
               <div className="ccr-kv">
-                {kv("Customer", pre.name)}
-                {kv("Mobile", pre.line)}
-                {kv("Location", pre.location)}
-                {pre.search && kv("Searched", `“${pre.search}”`)}
-                {pre.source && kv("Came from", pre.campaign ? `${pre.source} (${pre.campaign})` : pre.source)}
-                {pre.journey && kv("Pages viewed", pre.journey)}
-                {pre.interest && kv("Interested in", pre.interest)}
-                {kv("Activity", pre.visits)}
-                {pre.value && kv("Est. value", pre.value)}
-                {pre.intent && kv("Intent", pre.intent)}
+                {kv("Customer", preEff.name)}
+                {kv("Mobile", preEff.line)}
+                {kv("Location", preEff.location)}
+                {preEff.search && kv("Searched", `“${preEff.search}”`)}
+                {preEff.source && kv("Came from", preEff.campaign ? `${preEff.source} (${preEff.campaign})` : preEff.source)}
+                {preEff.journey && kv("Pages viewed", preEff.journey)}
+                {preEff.interest && kv("Interested in", preEff.interest)}
+                {kv("Activity", preEff.visits)}
+                {preEff.value && kv("Est. value", preEff.value)}
+                {preEff.intent && kv("Intent", preEff.intent)}
               </div>
             </div>
           )}
           <div className="ccr-sec">
             <h4>Customer</h4>
             <div className="ccr-kv">
-              {known("name", "Name", st.lead.name, pre?.name)}
-              {known("phone", "Phone", st.lead.phone, pre?.phone)}
-              {known("address", "Address", st.lead.address, pre?.street)}
-              {known("zip", "ZIP", st.zip ? `${st.zip} · in service area` : null, pre?.zip)}
-              {known("email", "Email", st.lead.email, pre?.email)}
+              {known("name", "Name", lead.name, preEff?.name)}
+              {known("phone", "Phone", lead.phone, preEff?.phone)}
+              {known("address", "Address", lead.address, preEff?.street)}
+              {known("zip", "ZIP", st.zip ? `${st.zip} · in service area` : null, preEff?.zip)}
+              {known("email", "Email", lead.email, preEff?.email)}
             </div>
           </div>
           <div className="ccr-sec">
@@ -287,18 +312,18 @@ export function CustomCrm({ embedded = false, convId }: {
           <div className="ccr-sec">
             <h4>What the AI Agent did</h4>
             <ul className="ccr-steps">
-              {pre && step(true, "Matched the texter to pre-call intelligence", `${pre.name} · ${pre.visits.replace(/ in the last.*/, "")}`)}
+              {preEff && step(true, "Matched the texter to pre-call intelligence", `${preEff.name} · ${preEff.visits.replace(/ in the last.*/, "")}`)}
               {step(!!request, "Understood the request", tags.slice(0, 2).join(" · "))}
-              {step(!!st.zip, "Confirmed service area", `ZIP ${st.zip ?? ""}${place ? " · " + place.toUpperCase() : ""}`)}
+              {step(!!st.zip, "Confirmed service area", `ZIP ${st.zip ?? ""}${area ? " · " + area.toUpperCase() : ""}`)}
               {step(st.offers.length > 0 || !!st.booking, "Checked live availability",
                 `${st.checked.length ? "Checked " + st.checked.map((c) => days.find((d) => d.date === c.date)?.weekday.slice(0, 3)).join(", ") + " · " : ""}${st.offers.length} openings found`)}
-              {step(contactDone, "Collected contact details", ["name", "phone", st.lead.address ? "address" : "", st.lead.email ? "email" : ""].filter(Boolean).join(", "))}
+              {step(contactDone, "Collected contact details", ["name", "phone", lead.address ? "address" : "", lead.email ? "email" : ""].filter(Boolean).join(", "))}
               {step(!!st.booking, "Booked the appointment", st.booking ? `#${st.booking.id} · submitted` : "")}
             </ul>
           </div>
           <div className="ccr-sec">
             <h4>Confirm on the follow-up call</h4>
-            <ul className="ccr-list">{followUp.map((f) => <li key={f}>{f}</li>)}</ul>
+            <ul className="ccr-list">{(crm.followUp ?? followUp).map((f) => <li key={f}>{f}</li>)}</ul>
           </div>
         </aside>
       </div>

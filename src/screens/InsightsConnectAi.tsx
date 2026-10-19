@@ -489,10 +489,14 @@ export function InsightsConnectAi() {
   /* Registers this page as the AI scope and returns its labels with any edits made ON THIS
      PAGE overlaid, so the assistant can rename any heading here without touching the
      Summary Dashboard. */
-  const view = usePageDataWithLabels(
-    profile.reports.marketingDashboard, buildLabels(profile.bookingTerm || "Appointment"));
+  /* ⚠️ THE CHARTS AND KPIs ARE REGISTERED DATA (10/19/2026): derived per prospect
+     (`connectAiFacts`) and folded into the base as `report`, so Ask AI can change any figure here,
+     not only the headings. Memoised, or the scope would re-register every render. */
+  const base = useMemo(() => ({ ...profile.reports.marketingDashboard, title: "Connect AI", report: connectAiFacts(profile) }), [profile]);
+  const labels = useMemo(() => buildLabels(profile.bookingTerm || "Appointment"), [profile.bookingTerm]);
+  const view = usePageDataWithLabels(base, labels);
   const L = view.labels;
-  const f = connectAiFacts(profile);
+  const f = view.report ?? base.report;
 
   const filterRange = (() => {
     const [a, b] = String(f.dateRange ?? "").split("-");

@@ -1,5 +1,7 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
+import { usePageData } from "../components/GeneratedTiles";
 import { vocabFor } from "../data/insightsCatalog";
 import { isProspect, COMFORT_KEEPERS } from "../data/prospect";
 
@@ -95,6 +97,14 @@ export function ManageDashboards() {
       : []),
   ];
 
+  /* ⚠️ THE LIST IS REGISTERED DATA (10/19/2026), the standing rule that Ask AI may change any data
+     on any page: every row's cells. Each row's LINK stays the app's own, matched back by id, so an
+     edit can rename a row but never point it somewhere else. */
+  const listJson = JSON.stringify(dashboards.map((d) => ({ id: d.path, ...d })));
+  const listBase = useMemo(() => ({ title: "Manage Dashboards", dashboards: JSON.parse(listJson) as ((typeof dashboards)[number] & { id: string })[] }), [listJson]);
+  const list = usePageData(listBase);
+  const rows = (list.dashboards ?? []).map((d) => ({ ...d, path: dashboards.find((o) => o.path === d.id)?.path ?? d.path }));
+
   return (
     <div className="md-page">
       <div className="md-head">
@@ -117,7 +127,7 @@ export function ManageDashboards() {
           </tr>
         </thead>
         <tbody>
-          {dashboards.map((d) => (
+          {rows.map((d) => (
             <tr key={d.path}>
               <td><Link to={d.path} className="md-link">{d.name}</Link></td>
               <td>{d.shared.map((s) => <span key={s} className="md-pill">{s}</span>)}</td>
