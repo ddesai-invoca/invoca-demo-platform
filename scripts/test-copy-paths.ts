@@ -1,7 +1,7 @@
 /* =============================================================================
    test-copy-paths.ts — walk every path of Aptive's "SMS Test" and "Voice Test"
    -----------------------------------------------------------------------------
-   `npx tsx scripts/test-copy-paths.ts sms|voice [--dump] [--only=N]`
+   `npx tsx scripts/test-copy-paths.ts sms|voice [--original] [--dump] [--only=N]`
 
    Asked for 10/13/2026: make Preview Agent / Preview Workflow do what the workflow diagram
    says for the two test copies, and *"test all 7 of the paths to confirm its working"*.
@@ -35,7 +35,9 @@ const ac = { ...(p.reports.agentConfig ?? {}), ...(ov["/agent-studio/agent/previ
 
 const copyPath = `/agent-studio/agent/workflow/${channel}-test`;
 const origPath = `/agent-studio/agent/workflow/${channel}`;
-const raw = (ov[copyPath] ?? ov[origPath] ?? builtInWorkflowBase(p, channel === "sms")) as any;
+/* `--original` walks the REGULAR workflow (10/20/2026: the test flow now applies to it too). */
+const original = process.argv.includes("--original");
+const raw = ((original ? undefined : ov[copyPath]) ?? ov[origPath] ?? builtInWorkflowBase(p, channel === "sms")) as any;
 const branches = repairSupportUseCases(
   channel === "sms" ? repairSalesShape(repairSmsSegments(raw.branches ?? []), p) : (raw.branches ?? []),
   p, { builtIn: true, withRoute: channel === "voice" },

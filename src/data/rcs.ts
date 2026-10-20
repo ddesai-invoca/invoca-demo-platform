@@ -21,7 +21,7 @@
    ============================================================================= */
 
 import type { CustomerProfile } from "./schema";
-import { twoPathGreeting, legacyTwoPathGreeting, withArticle } from "./smsTemplate";
+import { twoPathGreeting, legacyTwoPathGreetings, withArticle } from "./smsTemplate";
 
 export interface RcsCard {
   /** e.g. "Thursday, Oct 16" */
@@ -77,7 +77,7 @@ export function withRcsOpener<B extends { openingMessage?: string }>(brain: B, p
   const open = brain.openingMessage;
   if (!open || MARKER.test(open)) { MARKER.lastIndex = 0; return brain; }
   MARKER.lastIndex = 0;
-  if (open.trim() !== twoPathGreeting(profile).trim() && open.trim() !== legacyTwoPathGreeting(profile).trim()) return brain;
+  if (![twoPathGreeting(profile), ...legacyTwoPathGreetings(profile)].some((g) => g.trim() === open.trim())) return brain;
   const term = (profile.bookingTerm || "appointment").toLowerCase();
   return { ...brain, openingMessage: `${open}\n[chips: Book ${withArticle(term)} | Help with an existing one]` };
 }

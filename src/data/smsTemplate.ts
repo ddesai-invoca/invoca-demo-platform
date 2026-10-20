@@ -252,16 +252,24 @@ const RETIRED_ROOT = /^Are you a new or existing .+\?$/;
  * touches the original's (shared) Preview Agent greeting.
  */
 export const twoPathGreeting = (p: CustomerProfile): string =>
-  `Hi, this is ${p.customerName}'s AI assistant. Are you looking to book ${withArticle(p.bookingTerm.toLowerCase())}, or do you need help with one you already have?`;
+  `Hi, this is ${possessiveName(p.customerName)} AI assistant. Are you looking to book ${withArticle(p.bookingTerm.toLowerCase())}, or do you need help with one you already have?`;
+
+/** "Aptive's", "Shady Blinds'" (10/20/2026). A blunt `'s` read "Shady Blinds's" once the
+ *  two-path greeting reached every prospect's regular agent, not just Aptive's copies. */
+export const possessiveName = (name: string): string => /s$/i.test(name.trim()) ? `${name.trim()}'` : `${name.trim()}'s`;
 
 /** "an appointment", "a service appointment". The greeting read "book a appointment" for every
  *  prospect whose booking term starts with a vowel (found 10/15/2026 on Orlando Health). */
 export const withArticle = (term: string): string => `${/^[aeiou]/i.test(term.trim()) ? "an" : "a"} ${term}`;
 
-/** The greeting as it was written before the article fix, so a copy that STORED it is still
- *  recognised as the default (see `withRcsOpener`). */
-export const legacyTwoPathGreeting = (p: CustomerProfile): string =>
-  `Hi, this is ${p.customerName}'s AI assistant. Are you looking to book a ${p.bookingTerm.toLowerCase()}, or do you need help with one you already have?`;
+/** The greeting as it was written before the article and possessive fixes, so a copy that
+ *  STORED an older form is still recognised as the default (see `withRcsOpener`). */
+export const legacyTwoPathGreetings = (p: CustomerProfile): string[] => {
+  const term = p.bookingTerm.toLowerCase();
+  return [`a ${term}`, withArticle(term)].map((t) =>
+    `Hi, this is ${p.customerName}'s AI assistant. Are you looking to book ${t}, or do you need help with one you already have?`);
+};
+export const legacyTwoPathGreeting = (p: CustomerProfile): string => legacyTwoPathGreetings(p)[0];
 
 /** The booking box's title, one definition for the tree and the repair. */
 export const bookTitle = (p: CustomerProfile): string => `Schedule ${p.bookingTerm}`;
@@ -441,6 +449,11 @@ export interface SmsConfig {
     supportIssue: string; supportBilling: string; supportChange: string; supportOther: string;
   };
   escalate: string;
+  /* The workflow's OWN opener (10/20/2026). Was the copies' alone (`copyPageBase`); every built-in
+     SMS workflow now opens with the two-path greeting, so it belongs to the template. Top-level,
+     where every stored override already has its parent (`sms`), and filled for old overrides by
+     `effectiveSmsConfig`'s spread. */
+  greeting?: string;
   intents: {
     sales: { looksLike: string; rules: string[] };
     support: { looksLike: string; rules: string[] };
@@ -486,6 +499,7 @@ export function smsConfigFor(p: CustomerProfile): SmsConfig {
       support: ask("support") },
     inform: informCopy(p),
     escalate: escalateCopy(p),
+    greeting: twoPathGreeting(p),
     intents: { sales: { looksLike: i.sales.looksLike, rules: [...i.sales.rules] },
       support: { looksLike: i.support.looksLike, rules: [...i.support.rules] } },
   };

@@ -179,10 +179,12 @@ function useBrain(wfSlug?: string | null, inPage = false) {
     ? extraWfs.find((w) => w.slug === wfSlug)
     : undefined;
   const builtInPath = copyPath ?? SMS_WORKFLOW_SCOPE_PATH;
-  /* A copy's own opener (its `sms.greeting`), else the two-path default. Read before the scope
-     registration below so the drawer's OPENING MESSAGE row shows what the phone sends. */
-  const copyGreeting = copyPath
-    ? (String(((effectiveData(`${profileId}::${copyPath}`) as { sms?: { greeting?: string } } | undefined)?.sms?.greeting) ?? "").trim()
+  /* ⚠️ EVERY BUILT-IN SMS WORKFLOW opens with its own opener (its `sms.greeting`), else the
+     two-path default (10/20/2026: "apply the test flow to the regular flow, for all prospects").
+     It was the copies' alone. Read before the scope registration below so the drawer's OPENING
+     MESSAGE row shows what the phone sends. An EXTRA workflow keeps its own scripted opener. */
+  const copyGreeting = !wf
+    ? (String(((effectiveData(`${profileId}::${builtInPath}`) as { sms?: { greeting?: string } } | undefined)?.sms?.greeting) ?? "").trim()
         || twoPathGreeting(profile))
     : undefined;
   /* ⚠️⚠️ **THE WORKFLOW PAGE'S OWN `agent` HALF, READ BACK ACROSS A TAB BOUNDARY (9/8/2026).**
@@ -305,13 +307,14 @@ function useBrain(wfSlug?: string | null, inPage = false) {
     }
   }, [profile, wfTree]);
 
-  /* A built-in COPY ("SMS Test") follows its diagram as the conversation (10/13/2026). */
+  /* Every BUILT-IN SMS workflow (the original, its copies, RCS) follows its diagram as the
+     conversation; copies only from 10/13/2026, everyone from 10/20/2026. */
   /* An extra workflow's diagram, from its page when edited, else as authored. */
   const extraBranches = wf
     ? ((effectiveData(`${profileId}::${smsWorkflowScopePath(wf.slug)}`) as { branches?: unknown } | undefined)?.branches
         ?? extraTree(wf).branches)
     : undefined;
-  return buildSmsBrain(profile, ac, wf, wfAgent, flow, { workflowLeads: !!copyPath, greeting: copyGreeting, extraBranches, rcs: isRcsSlug(wfSlug) });
+  return buildSmsBrain(profile, ac, wf, wfAgent, flow, { workflowLeads: !wf, greeting: copyGreeting, extraBranches, rcs: isRcsSlug(wfSlug) });
 }
 
 /* mode "modal" = the in-app overlay (legacy); mode "page" = a standalone browser

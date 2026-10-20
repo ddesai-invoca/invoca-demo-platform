@@ -188,7 +188,8 @@ export function defaultGreeting(customerName: string, playbook: AgentConfigView[
      stored text rather than a baked-in name so the greeting stays portable: the
      same demo re-opened against a different caller still addresses the right
      person, and an SE editing it can move the name around. */
-  return `Hi {name}, I'm ${customerName}'s AI assistant. I can help you book ${aOrAn(booking)} ${booking}.${offerSentence} Would you like to get started?`;
+  const owner = /s$/i.test(customerName.trim()) ? `${customerName.trim()}'` : `${customerName.trim()}'s`;
+  return `Hi {name}, I'm ${owner} AI assistant. I can help you book ${aOrAn(booking)} ${booking}.${offerSentence} Would you like to get started?`;
 }
 
 /* THE ONE PLACE {name} IS RESOLVED.

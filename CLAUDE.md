@@ -11027,6 +11027,27 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### The test-copy flow is the regular flow now, for every prospect (10/20/2026)
+Asked for: *"I like the voice test and SMS test flow… Apply that to the regular flow as well. For
+Aptive and all other prospects as well, now and moving forward."* This SUPERSEDES the
+"copies only" gating in the sections below; they are kept for the reasoning.
+- **SMS:** both previews pass `workflowLeads: !wf` (every BUILT-IN workflow: the original, its
+  copies, RCS; never an authored extra), so `OPTIONS_RULE`/`OPTIONS_CHECK` and "the diagram IS
+  the conversation" reach the regular agent.
+- **The two-path opener is the template's own `sms.greeting`** (`smsConfigFor`), so the
+  original, the copies and `demoSurfaces` all build one base, and `effectiveSmsConfig`'s spread
+  fills it for overrides saved before it existed. ⚠️ It outranks a stored
+  `smsPlaybook.greeting` on a built-in workflow, exactly as it did on the copies; Ask AI is
+  told to edit `workflow.sms.greeting` when it exists (`engine/assistant.ts`).
+- **Voice:** `voiceWorkflowLeads` whenever `builtInVoice` and not minimal/booking.
+- ⚠️ **"Shady Blinds's"**: the opener reaching every prospect exposed a blunt `'s`.
+  `possessiveName` fixes it; `legacyTwoPathGreetings` keeps every older stored form recognised
+  as the default (RCS chips).
+- Verified: `scripts/test-copy-paths.ts sms|voice --original --sim` walked all 14 regular Aptive
+  paths to completion; in the browser, Shady Blinds' regular Preview Agent sent
+  `workflowLeads: true` with the two-path opener and its voice Start Call sent
+  `voiceWorkflowLeads: true`. `audit:ai` pins both gates (sabotage fires).
+
 ### Every follow-up question offers its choices, in the test copies (10/13/2026)
 Asked for: *"in the follow up messages always give them the options dont leave it open ended"*.
 `OPTIONS_RULE` + `OPTIONS_CHECK` in `engine/chat.ts`, emitted only behind `workflowLeads` (SMS

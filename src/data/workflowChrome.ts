@@ -119,7 +119,8 @@ export function emptyWorkflowTree(channelLabel: string): WorkflowTreeModel {
  * giving it a first name: the configured specs only have names where an SE typed one.
  */
 export function emptyWorkflowGreeting(customerName: string): string {
-  return `Hi, thanks for calling ${customerName}. I'm ${customerName}'s AI assistant. `
+  const owner = /s$/i.test(customerName.trim()) ? `${customerName.trim()}'` : `${customerName.trim()}'s`;
+  return `Hi, thanks for calling ${customerName}. I'm ${owner} AI assistant. `
     + `How can I help you today?`;
 }
 

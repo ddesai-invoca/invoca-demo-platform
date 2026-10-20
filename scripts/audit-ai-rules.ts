@@ -3089,6 +3089,22 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
     /isCopySlug\(wfSlug\)/.test(phone) && /\$\{builtInPath\}/.test(phone) && /isCopySlug\(wfSlug\)/.test(chat)
       ? ok("both SMS previews read SMS Test's own tree when opened from it")
       : bad("an SMS preview opened from SMS Test reads the original workflow");
+    /* ✅ 10/20/2026: "apply the test flow to the regular flow, for all prospects". The flag and
+       the two-path opener now reach EVERY built-in workflow (`!wf`), never an extra one. */
+    (phone.match(/workflowLeads: !wf\b/g) ?? []).length === 1 && (chat.match(/workflowLeads: !wf\b/g) ?? []).length === 1
+      && !/workflowLeads: !!copyPath/.test(phone + chat)
+      ? ok("both SMS previews run the regular built-in workflow the way the test copy runs")
+      : bad("the regular SMS flow no longer gets the test flow (or an extra workflow does)");
+    {
+      const vs = readCode("src/data/voiceSession.ts");
+      /builtInVoice && !minimal && !booking \? \{ voiceWorkflowLeads: true \}/.test(vs) && !/isCopySlug/.test(vs)
+        ? ok("every built-in voice workflow (the original too) asks for every box's fields in order")
+        : bad("voiceWorkflowLeads is back to copies only, or reaches a minimal/booking flow");
+      const ap = aptive!;
+      smsConfigFor(ap).greeting === twoPathGreeting(ap) && effectiveSmsConfig(ap, { qualify: {} }).greeting === twoPathGreeting(ap)
+        ? ok("the original SMS workflow's own opener defaults to the two-path greeting, old overrides included")
+        : bad("the original SMS workflow has no two-path opener of its own");
+    }
   }
 
   if (gated) {

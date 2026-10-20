@@ -140,7 +140,8 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
      agent got no workflow at all. */
   const wfTree = !wf
     ? ((effectiveData(`${profileId}::${(copyPath ?? SMS_WORKFLOW_SCOPE_PATH)}`)
-        ?? (copyPath ? (effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) ?? builtInWorkflowBase(profile, true)) : undefined)) as
+        ?? (copyPath ? effectiveData(`${profileId}::${SMS_WORKFLOW_SCOPE_PATH}`) : undefined)
+        ?? builtInWorkflowBase(profile, true)) as
         { branches?: unknown[]; sms?: unknown } | undefined)
     : undefined;
   const flow = useMemo(() => {
@@ -161,9 +162,10 @@ export function WorkflowChatPreview({ workflowName, wfSlug, wfAgent, minimal, on
       ? { ...buildSmsBrain(profile, agentConfig, wf, wfAgent), voiceMinimal: true, openingMessage: undefined,
           customSystem: undefined, playbook: undefined, steps: undefined, workflow: undefined }
       : buildSmsBrain(profile, agentConfig, wf, wfAgent, flow, {
-          workflowLeads: !!copyPath,
+          /* Every built-in SMS workflow, not only the copies (10/20/2026); see PhonePreview. */
+          workflowLeads: !wf,
           rcs: isRcsSlug(wfSlug),
-          greeting: copyPath ? (String((wfTree?.sms as { greeting?: string } | undefined)?.greeting ?? "").trim() || twoPathGreeting(profile)) : undefined,
+          greeting: !wf ? (String((wfTree?.sms as { greeting?: string } | undefined)?.greeting ?? "").trim() || twoPathGreeting(profile)) : undefined,
           /* An extra workflow's diagram reaches its agent, the same expression Preview Agent uses. */
           extraBranches: wf
             ? ((effectiveData(`${profileId}::${smsWorkflowScopePath(wf.slug)}`) as { branches?: unknown } | undefined)?.branches

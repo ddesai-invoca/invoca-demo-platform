@@ -66,6 +66,16 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-10-20",
+    title: "Every prospect's agents follow their workflow, step by step",
+    changes: [
+      i("The regular SMS and voice agents now follow their workflow diagram as the conversation, the way the test versions did: they take an answer the moment the customer gives it, ask each box's questions in order, and book or resolve from the box the customer lands in. This applies to every prospect, including new ones."),
+      i("Follow-up questions offer the customer specific choices instead of leaving them open ended."),
+      i("The regular SMS agent opens by asking whether the customer wants to book or needs help with something they already have, so both paths of the workflow are reachable from the first message. The opener is editable on the workflow and through Ask AI."),
+      f("Greetings for businesses whose name ends in s now use the right possessive, with no extra \"s\" after the apostrophe."),
+    ],
+  },
+  {
     date: "2026-10-19",
     title: "Pre-call intelligence in the Custom CRM, and Ask AI that edits anything",
     changes: [

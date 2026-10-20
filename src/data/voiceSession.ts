@@ -5,7 +5,6 @@ import { apiPath } from "./shareMode";
 import { useProfile } from "./ProfileContext";
 import { useAiAssistant } from "./AiAssistantContext";
 import { SMS_AGENT_SCOPE_PATH, previewAgentBase } from "./smsBrain";
-import { isCopySlug } from "./builtInCopies";
 import { treeToVoicePaths, VOICE_WORKFLOW_SCOPE_PATH } from "./voicePaths";
 import { emptyWorkflowGreeting } from "./workflowChrome";
 import { voiceSpecFor, specWithConfig, type VoiceAgentConfig , DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT, DEFAULT_SUPPORT_QUALIFY_QUESTION } from "./voiceAgentSpec";
@@ -161,8 +160,6 @@ export function useBrain(opts?: BrainOpts) {
     () => specWithConfig(baseSpec, effTree?.agent),
     [baseSpec, effTree?.agent],
   );
-  /* A built-in COPY ("Voice Test") follows its diagram fully, box text included (10/13/2026). */
-  const isCopy = isCopySlug(opts?.scopePath?.split("/").pop());
   /* ⚠️ Every BUILT-IN voice workflow's support boxes give the agent the text their drawers
      show (10/14/2026); this was copies-only, so the original's drawers described instructions
      its agent never got. Authored extras keep their own node text. */
@@ -189,7 +186,9 @@ export function useBrain(opts?: BrainOpts) {
     playbook: ac?.smsPlaybook,
     serviceArea: ac?.serviceArea,
     voicePaths,
-    ...(isCopy ? { voiceWorkflowLeads: true } : {}),
+    /* Every BUILT-IN voice workflow follows its diagram fully (copies from 10/13/2026, the
+       original too from 10/20/2026); an authored extra keeps its own flow. */
+    ...(builtInVoice && !minimal && !booking ? { voiceWorkflowLeads: true } : {}),
     /* ⚠️ THE SPEC REACHES THE LIVE CALL, which is the whole point of it. Without these three
        the diagram and the drawers would show this prospect's configuration while the agent on
        the phone used the generic derived flow — the two-surfaces-disagreeing failure this
