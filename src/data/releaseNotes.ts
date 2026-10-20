@@ -71,6 +71,7 @@ export const RELEASES: Release[] = [
     changes: [
       i("The regular SMS and voice agents now follow their workflow diagram as the conversation, the way the test versions did: they take an answer the moment the customer gives it, ask each box's questions in order, and book or resolve from the box the customer lands in. This applies to every prospect, including new ones."),
       i("Follow-up questions offer the customer specific choices instead of leaving them open ended."),
+      n("Preview Workflow on an SMS workflow is now Preview Chat, the new Invoca preview chat: a floating card you can drag and resize, a Live chip, New Chat, and the new message and composer styling. Every agent reply has Show Reasoning, which opens the same five sections as Invoca's: the workflow path and action the agent is on, the knowledge source it used, the data fields collected so far, the signals that fired and the tool calls it made, with what changed on that turn in green."),
       i("The regular SMS agent opens by asking whether the customer wants to book or needs help with something they already have, so both paths of the workflow are reachable from the first message. The opener is editable on the workflow and through Ask AI."),
       f("Greetings for businesses whose name ends in s now use the right possessive, with no extra \"s\" after the apostrophe."),
     ],

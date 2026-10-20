@@ -261,7 +261,7 @@
    desktop widths are measured off the real product (500/800px drawers), and on a 375px
    screen they would hang off the edge or leave a sliver of page that looks clickable. */
 @media (max-width: 1024px) {
-  .aiad-panel, .vp-drawer, .wcp-drawer, .iad, .idr-panel, .itc, .sdr-panel, .dcd-paper, .wnd-paper, .icta, .cg-fly {
+  .aiad-panel, .vp-drawer, .iad, .idr-panel, .itc, .sdr-panel, .dcd-paper, .wnd-paper, .icta, .cg-fly {
     width: 100% !important; max-width: 100vw !important;
   }
   /* The Ask AI drawer that opens on the LEFT beside a preview also goes full width on a
@@ -542,4 +542,15 @@
   .ied-panel { width: 100%; box-sizing: border-box; }
   .ied-cards { grid-template-columns: minmax(0, 1fr); gap: 14px; padding: 0 14px 14px; }
   .ied-card { width: auto; box-sizing: border-box; }
+}
+
+/* ---- Preview Workflow chat (10/20/2026) -------------------------------------------------
+   On desktop and tablet it is the widget's floating, draggable 380px card (it clamps itself to
+   the window). On a phone there is no room to float a card, so it becomes a full-screen sheet
+   and the move/resize grips go. */
+@media (max-width: 768px) {
+  .wcp-drawer { transform: none !important; inset: 0 !important; width: 100% !important;
+    height: 100% !important; border-radius: 0; }
+  .wcp-head { cursor: default; }
+  .wcp-grip { display: none; }
 }

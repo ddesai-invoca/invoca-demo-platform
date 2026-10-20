@@ -434,7 +434,9 @@ export function AgentWorkflow() {
               preloadVoiceEngine();
               setVoicePreview(true);
             }}>
-            Preview Workflow
+            {/* "Preview Chat" on an SMS workflow (10/20/2026, asked for directly): it opens the
+                new preview chat widget. Voice keeps "Preview Workflow", which opens a call. */}
+            {isSms ? "Preview Chat" : "Preview Workflow"}
           </button>
         </div>
       </div>

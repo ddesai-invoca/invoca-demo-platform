@@ -95,6 +95,8 @@ export interface SmsBrain {
   workflowLeads?: boolean;
   /** RCS Business Messaging presentation (the "RCS" copy only); see engine/chat.ts `rcsRules`. */
   rcs?: boolean;
+  /** One "Show Reasoning" turn in the Preview Workflow chat; see engine/chat.ts `DIAGNOSE`. */
+  diagnose?: boolean;
   /**
    * The extra workflow's ORDERED FLOW, appended to its own playbook.
    *

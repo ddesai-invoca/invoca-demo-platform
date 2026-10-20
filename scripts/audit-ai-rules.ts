@@ -38,6 +38,7 @@ import { tollFreeNumber } from "../src/data/smsContactNumber.ts";
 import { interactionLabels } from "../src/data/aiAgentLabels.ts";
 import { withoutReminderPromise, withoutReminderPromises } from "../src/data/agentDefaults.ts";
 import { effectiveSmsConfig } from "../src/data/smsTemplate.ts";
+import { diagCatalog, validateDiag, parseRawDiag, fieldRows, diagRequest } from "../src/data/turnDiagnostics.ts";
 import { demoWorkflowsFor, buildDemoWorkflows } from "../src/data/demoWorkflows.ts";
 import { builtInCopiesFor, isTextCopy } from "../src/data/builtInCopies.ts";
 import { parseRcs, withRcsOpener } from "../src/data/rcs.ts";
@@ -796,6 +797,59 @@ console.log("\nAsk AI configures an SMS extra workflow, not just its diagram");
   !/usePageData/.test(chat)
     ? ok("the chat drawer still registers no scope, so the page's sparkle stays on the tree")
     : bad("WorkflowChatPreview calls usePageData — it would repoint the page's sparkle");
+
+  /* ✅ 10/20/2026: the NEW Invoca preview chat widget (reference/agent-workflow/preview-chat-v2.html). */
+  {
+    const css = readAny("src/styles/app.css");
+    const rule = (sel: string) => (css.match(new RegExp(sel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\s*\\{([^}]*)\\}")) ?? [])[1] ?? "";
+    /Send a test message/.test(chat) && /New chat/.test(chat) && /Show reasoning/.test(chat) && !/Last Updated/.test(chat)
+      ? ok("the Preview Workflow chat carries the new widget's own words, and the old footer is gone")
+      : bad("the Preview Workflow chat is missing the new widget's copy, or still has the old footer");
+    /border-radius: 12px/.test(rule(".wcp-drawer")) && /position: fixed/.test(rule(".wcp-drawer"))
+      && /16px 16px 16px 4px/.test(rule(".wcp-msg-bot")) && /#f5f6fa/.test(rule(".wcp-msg-bot"))
+      && /16px 16px 4px 16px/.test(rule(".wcp-msg-user")) && /#d4e0fe/.test(rule(".wcp-msg-user"))
+      && /#abe5bc/.test(rule(".wcp-chip")) && /border-radius: 20px/.test(rule(".wcp-field"))
+      ? ok("the widget's measured card, bubbles, chip and composer are in place")
+      : bad("a measured value of the new preview widget drifted");
+    /!m\.scripted && \(/.test(chat) && /scripted: true/.test(chat)
+      ? ok("a scripted opener shows no Show Reasoning (it never went through the model)")
+      : bad("Show Reasoning is offered on a line the model never wrote");
+    /next\.map\(\(\{ role, content \}\) => \(\{ role, content \}\)\)/.test(chat)
+      ? ok("only role + content reach the model; the widget's own message flags never do")
+      : bad("the chat sends its own message flags to the model API, which refuses unknown fields");
+    const eng = readAny("engine/chat.ts");
+    /!voice && brain\.diagnose \? `\$\{buildSystem\(brain, voice\)\}\\n\\n\$\{DIAGNOSE\}`/.test(eng)
+      && /diagnose: true/.test(chat) && !/diagnose/.test(readAny("src/screens/PhonePreview.tsx"))
+      ? ok("Show Reasoning asks the same agent for its reasoning, only from the preview chat, never on a real conversation")
+      : bad("the reasoning mode is missing, or reaches a real conversation");
+
+    /* ✅ 10/20/2026: the five reasoning sections (src/data/turnDiagnostics.ts), CALLED, not grepped. */
+    const ap = CustomerProfile.parse(JSON.parse(fs.readFileSync("src/data/generated/aptive.json", "utf8")));
+    const tree = builtInWorkflowBase(ap, true) as { branches?: never[] };
+    const cat = diagCatalog(tree.branches as never, ["Lead Captured (Conversion)", "Price Asked"], ["Homepage"]);
+    const leaf = cat.segments.find((x) => x.segment === "All Sales Inquiry Users");
+    const kid = cat.segments.find((x) => x.segment.startsWith("All Sales Inquiry Users:"));
+    leaf?.action === "Qualify" && !!kid && kid.action !== "Qualify" && cat.segments.some((x) => /^All Support Users:/.test(x.segment))
+      ? ok("reasoning segments are the diagram's own node paths, each with its node's action")
+      : bad("reasoning segments do not match the workflow diagram");
+    const v = validateDiag(parseRawDiag('noise {"segment":"' + kid!.segment + '","action":"Qualify","knowledge":"Nope","fields":{"Customer Type":"New","Made Up Field":"x"},"signals":["Price Asked","Invented Signal"],"tools":["Check Service Area","Hack The Mainframe"]} trailing'), cat);
+    v.action === kid!.action && v.knowledge === "" && v.fields["Customer Type"] === "New" && !("Made Up Field" in v.fields)
+      && v.signals.join() === "Price Asked" && v.tools.join() === "Check Service Area"
+      ? ok("anything the model invents (a segment action, field, signal, tool or source) is dropped; the action comes from the node")
+      : bad("the reasoning panel would render something outside its catalogs");
+    validateDiag(parseRawDiag('{"segment":"Somewhere Else"}'), cat).segment === "Undetermined" && parseRawDiag("no json here") === null
+      ? ok("an unknown segment reads Undetermined, and a reply with no JSON is refused")
+      : bad("an unknown segment or a non-JSON reply slips through");
+    const rows = fieldRows({ ...v, chips: ["Consumer First Name", "Customer Type"] }, { "Customer Type": "New", "Serviceable Zip": "85018" }, { "Customer Type": "New" });
+    rows[0]?.status === "missing" && rows.find((r) => r.name === "Customer Type")?.status === "collected"
+      && rows.find((r) => r.name === "Serviceable Zip")?.status === "new"
+      ? ok("data fields: not-yet-collected first, unchanged values plain, a value new this turn green")
+      : bad("data field statuses are wrong");
+    /KNOWN SO FAR/.test(diagRequest(cat, { a: "b" })) && /ALREADY FIRED/.test(diagRequest(cat))
+      && /fired\.has\(x\)/.test(chat) && /\{ \.\.\.raw, signals: \[\.\.\.raw\.signals\] \}/.test(chat)
+      ? ok("values stay put across turns, a signal fires once, and folding never mutates the stored turn")
+      : bad("reasoning values can flip-flop, a signal can re-fire, or the fold mutates state");
+  }
 
   /* ⚠️ AND THE DRAWER MUST OFFER THE RIGHT CHANNEL. Registering an `agent` half made the
      empty state fall into the VOICE branch: "Build Orlando Health's voice agent", suggesting

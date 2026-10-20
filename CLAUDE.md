@@ -11027,6 +11027,59 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### Preview Workflow (SMS) is the NEW Invoca preview chat widget (10/20/2026)
+Asked for with a screenshot and a capture of the live widget (kept at
+`reference/agent-workflow/preview-chat-v2.html`). `WorkflowChatPreview.tsx` + `.wcp-*`; every
+value is the capture's own Titan/MUI CSS, listed at the `.wcp-drawer` rule.
+- **A floating card, not a slide-in panel**: `position: fixed`, 380 x 782 (clamped to the
+  window), radius 12, Titan elevation 4, opening 16px off the right edge at y=96. Drag by the
+  header (buttons excluded via `.wcp-no-drag`), resize from four 16px corner grips, both clamped
+  to the window, matching the capture's react-draggable + resize grips. On a phone it is a
+  full-screen sheet (`mobile.css`); `.wcp-drawer` left the 1024px width-100% list, which would
+  have stretched a translated card off the screen on a tablet.
+- Header: inert session-history menu (⚠️ the rail is not in the capture, every one was closed),
+  "Preview", a Live chip (Draft on a created workflow), our hover-revealed Ask AI + undo, a pill
+  "New Chat", close. Bubbles: bot `#f5f6fa` 16/16/16/4, user `#d4e0fe` 16/16/4/16, no avatar.
+  Composer: "Send a test message" in a radius-20 outlined field that grows, 40px round send.
+  The old grey header, avatar, "(Draft)" title and "Last Updated" footer are gone.
+- ⚠️⚠️ **"Show Reasoning" OPENS THE WIDGET'S FIVE SECTIONS** (a second capture, with them open:
+  `reference/agent-workflow/preview-chat-reasoning.html`, Greenix): CLASSIFICATION (segment +
+  action chips), KNOWLEDGE SOURCE, DATA FIELDS, SIGNALS, TOOL CALLS. Classification opens by
+  default and the rest start closed, as the capture's markup has them; the empty-state wording
+  is the capture's. Green = changed on that turn. `src/data/turnDiagnostics.ts` is pure and
+  audited by calling it. User's choices when asked: produced with EVERY reply in the
+  background (opening is instant), plain tool names, no prose, Preview Chat only.
+  - **What is real:** the segment is a node path of THIS diagram ("Leaf:Path:Sub"), and the
+    action is read off that node, never off the model; field names are the node's own chips
+    (plus Customer Type, Lead Score, Disposition), values are what the customer said; signals
+    are the prospect's Signal Manager names; the knowledge source is one of its own, linked to
+    the page `engine/siteLinks.ts` resolves (else the homepage). **Invented:** the tool calls
+    (`DIAG_TOOLS`), since no prospect has these APIs.
+  - One extra `/api/chat` turn per reply with `brain.diagnose` (engine `DIAGNOSE`, JSON, 800
+    max tokens), validated against the catalogs, so an invented field/signal/tool never renders.
+  - ⚠️ **First run: values flip-flopped between turns** ("Common Household Pests", then "Ants")
+    and lit rows green that had not changed, and a signal re-fired every turn. Each request now
+    carries KNOWN SO FAR and ALREADY FIRED, and the fold drops a signal already fired. The fold
+    works on a COPY of each turn, or re-running the memo would filter stored state in place.
+  - ⚠️ `section()` / `diagnostics()` are plain functions, not components: a component declared
+    inside render is a new type each render, so React remounts it and focus drops on each click.
+  - Verified with real typing on Aptive across three turns: segment went All Sales Inquiry Users
+    -> :Common Household Pests (green on that turn) with the action switching to Inform, values
+    stayed put, only the ZIP turned green when given, Check Service Area appeared then, signals
+    fired once, and the knowledge link was a real aptivepestcontrol.com page.
+  - ⚠️ Messages carry a `scripted` flag and the model API refuses unknown message fields, so
+    `send` maps history to `{ role, content }` (pinned in `audit:ai`).
+- ⚠️ **THE CAPTURED HEADER HAS NO ROOM FOR OUR ASK AI + UNDO** (~357 of 380px). Found in the
+  browser: hovering at a narrow width put the sparkle over the Live chip. The pair (`.wcp-tools`)
+  now takes no space at rest and tucks in on hover, and the card's minimum width is 370, where
+  the hovered icons still clear the chip by 10px (20px at the default 380).
+- Verified with real clicks: a reply arrived with Show Reasoning (none under the scripted
+  opener), opening it explained the workflow step and added nothing to the conversation, the
+  header drag moved the card by the pointer distance, a corner resize shrank it with the composer
+  inside, New Chat reset without moving it, and a 375px phone gets a full-screen sheet.
+- `audit:ai` has 5 checks for the widget; two sabotages fire. CSS rule counts per prefix:
+  only `.wcp-` moved (43 -> 67).
+
 ### The test-copy flow is the regular flow now, for every prospect (10/20/2026)
 Asked for: *"I like the voice test and SMS test flow… Apply that to the regular flow as well. For
 Aptive and all other prospects as well, now and moving forward."* This SUPERSEDES the

@@ -166,6 +166,13 @@ export interface ChatBrain {
    */
   rcs?: boolean;
   /**
+   * "Show Reasoning" in the Preview Chat (10/20/2026, matched to the new Invoca preview widget).
+   * After each reply the chat asks the same agent to describe that reply as JSON (segment,
+   * knowledge source, fields, signals, tool calls) for the five reasoning sections. Never set on
+   * a real conversation.
+   */
+  diagnose?: boolean;
+  /**
    * The Custom CRM's live calendar (10/15/2026), set only while that prospect's CRM is
    * connected. The CRM screen draws the SAME table, so every time the agent offers is a block
    * it can show. See src/data/customCrm.ts.
@@ -447,6 +454,10 @@ function stepsBlock(brain: ChatBrain): string {
 /** The last thing in the prompt, because a rule read last is the one the model applies. Measured:
  *  with only the rule above, the agent still repeated the workflow's open wording ("How soon
  *  would you like your first visit?") and closed with "Is there anything else I can help with?". */
+/* Last in the prompt, so it outranks the channel's format and RCS marker rules for this one turn.
+   The request itself carries the catalogs (src/data/turnDiagnostics.ts `diagRequest`). */
+const DIAGNOSE = `PREVIEW DIAGNOSTICS MODE: the last message is from the preview tool, not the customer. Your whole reply is one JSON object describing your previous reply, exactly as that message asks, with no other text, no markdown fences and no message to the customer.`;
+
 const OPTIONS_CHECK = `FINAL CHECK before you send ANY message that asks something: does every question in it name 2 to 4 choices? If not, rewrite it so it does. This includes the workflow's own questions (turn "How soon would you like your first visit?" into "Would you like your first visit this week, next week, or later this month?", and a size question into ranges) and your closing question (not "anything else?" but, for example, "Would you like to book another visit, update your account, or are you all set?"). Personal details (name, address, ZIP code, email, phone number, a code) are the only exception.`;
 
 const OPTIONS_RULE = [
@@ -1320,8 +1331,9 @@ export async function chatReply(
 
   const resp = await client.messages.create({
     model: CHAT_MODEL,
-    max_tokens: 300,
-    system: buildSystem(brain, voice),
+    /* A diagnostics turn returns a JSON object that can list a dozen fields. */
+    max_tokens: brain.diagnose ? 800 : 300,
+    system: !voice && brain.diagnose ? `${buildSystem(brain, voice)}\n\n${DIAGNOSE}` : buildSystem(brain, voice),
     messages: convo,
   });
   const text = resp.content

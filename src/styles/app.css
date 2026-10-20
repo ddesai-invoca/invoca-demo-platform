@@ -2281,51 +2281,137 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .ind-axline { stroke: #c8cdd4; stroke-width: 1; }
 .ind-legend { font-size: 16px; fill: #1d2b4a; dominant-baseline: middle; }
 
-/* ---- Preview Workflow chat drawer (SMS workflow page) ---------------------
-   Values MEASURED from the real page's embedded chat widget (SingleFile capture
-   of network 1847 /ai_agents/edit/25/workflow/114), not eyeballed from the
-   screenshot: the widget ships its own stylesheet and it is the source of truth.
-     .cloud { width: 400px }                        -> panel width
-     header  h-[50px], rgb(231,233,235) on rgb(21,36,62), 6px top radius
-     bubbles radius 6px, 16px text, px-4 py-2; host white, guest rgb(231,233,235)
-     rows    host margin-right 50px / guest margin-left 50px (so a long line never
-             spans the full width and the two sides stay visually distinct)
-     input   textarea min-height 56px, max 128px, 16px, resize:none
-     footer  13px, rgb(48,50,53), centred
-   Positioned like .vp-drawer (its sibling on the Voice page) so the two previews
-   behave identically; only the width differs, per the widget's own CSS. */
+/* ---- Preview Workflow (SMS): the NEW Invoca preview chat widget (10/20/2026) --------------
+   Rebuilt off a SingleFile capture of the live widget (reference/agent-workflow/
+   preview-chat-v2.html, network "Invoca for Home Services"). It is Invoca's own MUI/Titan
+   markup, so every value below is the capture's own CSS, not a screenshot reading:
+     paper   380 x 782, radius 12, Titan elevation 4, white, fixed and react-draggable
+     header  padding 8px 12px, 1px #e7e9eb under it; "Preview" 700 16/20 #15243e;
+             Live chip 18px tall, radius 100px, 12/16, #0d5400 on #abe5bc
+     New chat  outlined pill, 32 tall, padding 8px 12px, 500 12px, #2666f9 on white,
+             border rgba(38,102,249,.5), 18px start icon; text-transform capitalize
+     messages  padding 16, gap 8; bot 97% max, user 80% max; bubble padding 8px 12px,
+             16/20 Lato #15243e; bot #f5f6fa radius 16 16 16 4, user #d4e0fe radius 16 16 4 16
+     Show reasoning  text button, 700 12/16 #2666f9, 32 tall, chevron 18px rotated -90deg
+     composer  padding 16, 1px #e7e9eb above; outlined field radius 20, 16px text,
+             placeholder #5b6577; send 40px circle, disabled #d0d3d8 on #a1a7b2
+   The old widget (400px slide-in panel with a grey header and "Last Updated") is gone. */
 .wcp-drawer {
-  position: absolute; top: 20%; right: 0; bottom: 0; width: 400px; max-width: 92vw;
-  background: #fff; box-shadow: -8px 0 30px rgba(12, 0, 51, .18);
-  display: flex; flex-direction: column; box-sizing: border-box; overflow: hidden;
-  border-top-left-radius: 6px; z-index: 5;
-  animation: vp-slide-in 225ms cubic-bezier(0, 0, .2, 1);
+  position: fixed; top: 0; left: 0; z-index: 1301;
+  background: #fff; color: #15243e; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+  display: flex; flex-direction: column; box-sizing: border-box;
+  font-family: Lato, Avenir, "Avenir-Book", "Museo Sans", sans-serif;
 }
+body.wcp-dragging, body.wcp-dragging * { user-select: none !important; cursor: grabbing !important; }
 .wcp-head {
-  display: flex; align-items: center; gap: 2px; height: 50px; flex: 0 0 50px;
-  padding: 0 6px 0 12px; background: rgb(231, 233, 235); color: rgb(21, 36, 62);
-  border-top-left-radius: 6px; border-top-right-radius: 6px;
+  flex: none; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 8px 12px; border-bottom: 1px solid #e7e9eb; cursor: move;
 }
-.wcp-title { flex: 1; font-size: 14px; font-weight: 600; line-height: 1.25; }
+.wcp-head-l, .wcp-head-r { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.wcp-head-l { flex: none; }
+/* Our Ask AI + undo. The capture's header has no room for two more icons (it measures ~357 of
+   its 380px), so the pair takes NO space at rest, which is the captured header exactly, and
+   tucks in tightly while the header is hovered or focused. The card's minimum width (370) is
+   what keeps the hovered header from running into the Live chip. */
+.wcp-tools { display: flex; align-items: center; max-width: 0; overflow: hidden; margin-right: -8px;
+  transition: max-width .16s ease, margin .16s ease; }
+.wcp-head:hover .wcp-tools, .wcp-head:focus-within .wcp-tools { max-width: 60px; margin-right: -4px; }
+.wcp-tools .wcp-icon { padding: 3px; }
+.wcp-head-r { cursor: default; }
+.wcp-title { font-weight: 700; font-size: 16px; line-height: 20px; color: #15243e; }
+.wcp-chip {
+  display: inline-flex; align-items: center; height: 18px; padding: 0 8px; border-radius: 100px;
+  font-size: 12px; line-height: 16px; font-weight: 400; color: #0d5400; background: #abe5bc; white-space: nowrap;
+}
+.wcp-chip-draft { color: #5b6577; background: #e7e9eb; }
+.wcp-glyph { width: 20px; height: 20px; fill: currentColor; flex: none;
+  transition: transform .18s cubic-bezier(.4,0,.2,1); }
+.wcp-ib {
+  display: inline-flex; align-items: center; justify-content: center; padding: 5px; border: 0;
+  border-radius: 50%; background: transparent; color: rgba(0,0,0,.54); cursor: pointer;
+}
+.wcp-ib-inert { cursor: default; }
+.wcp-newchat {
+  display: inline-flex; align-items: center; height: 32px; padding: 8px 12px; box-sizing: border-box;
+  border: 1px solid rgba(38,102,249,.5); border-radius: 100px; background: #fff; color: #2666f9;
+  font: 500 12px/1.75 Lato, Avenir, sans-serif; white-space: nowrap; text-transform: capitalize; cursor: pointer;
+  transition: background-color 250ms cubic-bezier(.4,0,.2,1), border-color 250ms cubic-bezier(.4,0,.2,1);
+}
+.wcp-newchat .wcp-glyph { width: 18px; height: 18px; margin: 0 8px 0 -2px; }
+.wcp-newchat:hover { background: #e9f0fe; border-color: #e9f0fe; }
 .wcp-icon {
-  background: none; border: none; cursor: pointer; padding: 6px; display: flex;
-  align-items: center; border-radius: 4px;
+  background: none; border: none; cursor: pointer; padding: 5px; display: flex;
+  align-items: center; border-radius: 50%;
 }
 .wcp-icon:hover { background: rgba(21, 36, 62, .08); }
 
-.wcp-view { flex: 1; overflow-y: auto; padding: 16px 12px 8px; display: flex; flex-direction: column; }
-.wcp-row { display: flex; margin-bottom: 8px; }
-.wcp-row-host { flex-direction: row; justify-content: flex-start; align-items: flex-start; margin-right: 50px; }
-.wcp-row-guest { justify-content: flex-end; align-items: flex-end; margin-left: 50px; }
-.wcp-avatar { flex: 0 0 40px; width: 40px; height: 40px; border-radius: 50%; background: #e7e9eb;
-  display: flex; align-items: center; justify-content: center; }
-.wcp-bubble { border-radius: 6px; font-size: 16px; line-height: 1.5; padding: 8px 16px;
-  color: rgb(21, 36, 62); max-width: 100%; white-space: pre-wrap; word-break: break-word; }
-.wcp-host { background: #fff; margin-left: 8px; }
-.wcp-guest { background: rgb(231, 233, 235); margin-right: 8px; }
+.wcp-view { flex: 1 1 0%; min-height: 0; overflow-y: auto; display: flex; flex-direction: column;
+  gap: 8px; padding: 16px; }
+.wcp-turn { display: flex; flex-direction: column; min-width: 0; }
+.wcp-turn-bot { align-self: flex-start; align-items: flex-start; max-width: 97%; width: 100%; }
+.wcp-turn-user { align-self: flex-end; align-items: flex-end; max-width: 80%; }
+.wcp-msg { max-width: 100%; box-sizing: border-box; padding: 8px 12px; color: #15243e;
+  font-size: 16px; line-height: 20px; white-space: pre-wrap; word-break: break-word; }
+.wcp-msg-bot { background: #f5f6fa; border-radius: 16px 16px 16px 4px; }
+.wcp-msg-user { background: #d4e0fe; border-radius: 16px 16px 4px 16px; }
+.wcp-why { width: 100%; min-width: 0; }
+.wcp-why-btn {
+  display: inline-flex; align-items: center; height: 32px; padding: 0 2px 0 0; border: 2px solid transparent;
+  border-radius: 3px; background: transparent; color: #2666f9; cursor: pointer;
+  font: 700 12px/16px Lato, Avenir, sans-serif; text-transform: capitalize;
+}
+.wcp-why-btn .wcp-glyph { width: 18px; height: 18px; margin-right: -2px; }
+.wcp-why-btn:hover { background: #e9f0fe; border-color: #e9f0fe; }
+/* ---- Show Reasoning: the five sections (10/20/2026) ---------------------------------------
+   Measured off reference/agent-workflow/preview-chat-reasoning.html (a live Greenix capture):
+     box      1px #e7e9eb, radius 4, 2px above; each section its own 1px-bordered accordion
+     header   padding 8px 12px, 700 12/16 #15243e uppercase, count pill 12/16 #5b6577 on
+              #e7e9eb (min-width 16, padding 0 4px), chevron rotating 180deg; hover #f5f6fa
+     body     padding 0 12px 8px, 8px between rows
+     chip     pill, padding 4px 16px, label 12/16 #5b6577 + value 700 12/16 #15243e on #f5f6fa;
+              CHANGED this turn: #d5f2de with the value in #0d5400
+     field    padding 2px 4px, radius 4, 20px icon (#a1a7b2) + name 12/16 #5b6577 + value right;
+              missing = open circle, italic "Not yet collected"; collected = outlined check;
+              new = filled check #2cbf58 on #d5f2de, value 700 #0d5400 */
+.wcp-diag { display: flex; flex-direction: column; margin-top: 2px; border: 1px solid #e7e9eb;
+  border-radius: 4px; overflow: hidden; }
+.wcp-diag-wait { padding: 8px 12px; font-size: 12px; line-height: 16px; color: #5b6577; }
+.wcp-sec { border: 1px solid #e7e9eb; margin: -1px -1px 0; }
+.wcp-sec:first-child { margin-top: -1px; }
+.wcp-sec:last-child { margin-bottom: -1px; }
+.wcp-sec-head { display: flex; align-items: center; gap: 8px; width: 100%; padding: 8px 12px; border: 0;
+  background: transparent; cursor: pointer; text-align: left; color: #15243e; font-family: inherit; }
+.wcp-sec-head:hover { background: #f5f6fa; }
+.wcp-sec-head .wcp-glyph { color: rgba(0,0,0,.54); transition: transform 150ms cubic-bezier(.4,0,.2,1); }
+.wcp-sec-title { font-weight: 700; font-size: 12px; line-height: 16px; text-transform: uppercase; color: #15243e; }
+.wcp-sec-count { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+  min-width: 16px; padding: 0 4px; border-radius: 100px; background: #e7e9eb; color: #5b6577;
+  font-size: 12px; line-height: 16px; }
+.wcp-sec-body { display: flex; flex-direction: column; gap: 8px; padding: 0 12px 8px; color: #15243e; }
+.wcp-sec-empty { font-size: 12px; line-height: 16px; color: #5b6577; }
+.wcp-chips { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; min-width: 0; }
+.wcp-dchip { display: inline-flex; align-items: center; gap: 4px; max-width: 100%; min-width: 0; padding: 4px 16px;
+  border-radius: 100px; background: #f5f6fa; white-space: nowrap; overflow: hidden; font-size: 12px; line-height: 16px; }
+.wcp-dchip > span { color: #5b6577; }
+.wcp-dchip > b { color: #15243e; font-weight: 700; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.wcp-dchip-new { background: #d5f2de; }
+.wcp-dchip-new > b { color: #0d5400; }
+.wcp-drow { display: flex; align-items: center; gap: 8px; min-width: 0; padding: 2px 4px; border-radius: 4px; }
+.wcp-drow .wcp-glyph { color: #a1a7b2; }
+.wcp-drow-name { flex: 1 1 0%; min-width: 0; font-size: 12px; line-height: 16px; color: #5b6577; }
+.wcp-drow-val { min-width: 0; text-align: right; font-size: 12px; line-height: 16px; color: #5b6577; word-break: break-word; }
+.wcp-drow-missing .wcp-drow-val { font-style: italic; }
+.wcp-drow-new { background: #d5f2de; }
+.wcp-drow-new .wcp-glyph { color: #2cbf58; }
+.wcp-drow-new .wcp-drow-val { font-weight: 700; color: #0d5400; }
+.wcp-row-src { display: flex; align-items: center; gap: 8px; min-width: 0; padding: 2px 4px; font-size: 12px; line-height: 16px; }
+.wcp-row-src .wcp-glyph { color: #5b6577; }
+.wcp-row-src a { color: #2666f9; text-decoration: none; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wcp-row-src a:hover { text-decoration: underline; }
 /* RCS (the "Aptive - RCS" workflow, 10/15/2026): suggested replies and appointment cards,
    indented to sit under the host bubble rather than under its avatar. */
-.wcp-rcs-chips, .wcp-rcs-cards { display: flex; gap: 6px; margin: -2px 0 10px 48px; }
+.wcp-rcs-chips, .wcp-rcs-cards { display: flex; gap: 6px; margin: 6px 0 2px; max-width: 100%; }
 .wcp-rcs-chips { flex-wrap: wrap; }
 .wcp-rcs-cards { overflow-x: auto; padding-bottom: 2px; }
 .wcp-rcs-chips button {
@@ -2346,27 +2432,36 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 
 /* Three-dot typing indicator, in the host bubble's own slot so the reply lands
    exactly where the dots were rather than shifting the column. */
-.wcp-typing { display: inline-flex; align-items: center; gap: 4px; }
+.wcp-typing { display: inline-flex; align-items: center; gap: 4px; height: 20px; box-sizing: content-box; }
 .wcp-typing i { width: 6px; height: 6px; border-radius: 50%; background: #98a2b3;
   animation: wcp-dot 1.2s infinite ease-in-out; }
 .wcp-typing i:nth-child(2) { animation-delay: .18s; }
 .wcp-typing i:nth-child(3) { animation-delay: .36s; }
 @keyframes wcp-dot { 0%, 60%, 100% { opacity: .3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-3px); } }
 
-.wcp-error { margin: 4px 0 8px; font-size: 13px; color: #b42318; }
+.wcp-error { font-size: 13px; color: #b42318; }
 
-.wcp-input { display: flex; align-items: flex-end; border-top: 1px solid #e7e9eb; background: #fff; }
-.wcp-input textarea {
-  flex: 1; min-height: 56px; max-height: 128px; border: none; outline: none; resize: none;
-  padding: 18px 8px 18px 16px; font: inherit; font-size: 16px; color: rgb(21, 36, 62);
-  background: transparent; font-family: inherit;
+.wcp-input { flex: none; display: flex; align-items: center; gap: 8px; padding: 16px;
+  border-top: 1px solid #e7e9eb; background: #fff; }
+.wcp-field { flex: 1; min-width: 0; display: flex; border: 1px solid rgba(0,0,0,.23); border-radius: 20px;
+  padding: 7.5px 13px; background: #fff; }
+.wcp-field:hover { border-color: #15243e; }
+.wcp-field:focus-within { border: 2px solid #2666f9; padding: 6.5px 12px; }
+.wcp-field textarea {
+  flex: 1; min-width: 0; height: 23px; max-height: 120px; border: 0; outline: 0; resize: none; padding: 0;
+  font: 400 16px/1.4375em Lato, Avenir, sans-serif; color: #15243e; background: transparent;
 }
-.wcp-send { background: none; border: none; cursor: pointer; color: #2666f9; padding: 16px;
-  display: flex; align-items: center; }
-.wcp-send:disabled { opacity: .38; cursor: default; }
-
-.wcp-foot { flex: 0 0 auto; text-align: center; font-size: 13px; color: rgb(48, 50, 53);
-  background: #fff; padding: 6px 10px 10px; }
+.wcp-field textarea::placeholder { color: #5b6577; opacity: 1; }
+.wcp-send { flex: none; display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+  background: #2666f9; color: #fff; transition: background-color 150ms cubic-bezier(.4,0,.2,1); }
+.wcp-send:hover { background: #11228c; }
+.wcp-send:disabled { background: #d0d3d8; color: #a1a7b2; cursor: default; }
+.wcp-grip { position: absolute; width: 16px; height: 16px; background: transparent; z-index: 1; }
+.wcp-grip-nw { top: 0; left: 0; cursor: nwse-resize; }
+.wcp-grip-ne { top: 0; right: 0; cursor: nesw-resize; }
+.wcp-grip-sw { bottom: 0; left: 0; cursor: nesw-resize; }
+.wcp-grip-se { bottom: 0; right: 0; cursor: nwse-resize; }
 
 /* ---- Insights & Analytics: the platform accent -----------------------------
    The "New" button and the report-name links were #00acf1, which comes from the
@@ -3282,8 +3377,8 @@ button.nav-item {
    platform's). Above the composer, inside the drawer. */
 .wcp-restart {
   display: flex; align-items: center; justify-content: center; gap: 7px;
-  margin: 0 12px 8px; padding: 6px 12px; border-radius: 6px;
-  background: rgb(231,233,235); color: rgb(21,36,62);
+  margin: 0 16px 8px; padding: 6px 12px; border-radius: 16px;
+  background: #f5f6fa; color: #15243e;
   font-size: 13px; line-height: 1.3;
 }
 .wcp-restart svg { width: 15px; height: 15px; flex: none; }
