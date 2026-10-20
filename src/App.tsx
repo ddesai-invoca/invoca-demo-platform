@@ -58,6 +58,7 @@ import { ReplicaPageScreen } from "./screens/ReplicaPage";
 import { GoogleSearch } from "./screens/GoogleSearch";
 import { Placeholder } from "./screens/Placeholder";
 import { EnvBadge } from "./components/EnvBadge";
+import { RecordingSaver } from "./components/ScreenRecord";
 import { PageTitle } from "./components/PageTitle";
 import { AdminNoticeModal } from "./components/AdminNoticeModal";
 import { LaunchMenu } from "./components/LaunchMenu";
@@ -121,6 +122,8 @@ export default function App() {
             phone preview, Google Search and the Salesforce pages all render outside the
             shell, so a TopBar chip would miss them as well. */}
         <EnvBadge />
+        {/* A finished screen recording waiting for its save click, on any screen. */}
+        <RecordingSaver />
         {/* The browser tab's title, per screen. Same placement rule as the badge: inside
             the router so it can read the path, outside `<Routes>` so no screen has to. */}
         <PageTitle />

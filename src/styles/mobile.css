@@ -554,3 +554,13 @@
   .wcp-head { cursor: default; }
   .wcp-grip { display: none; }
 }
+
+/* ---- Integrations (10/20/2026) ----------------------------------------------------------
+   The capture's grid is 2 columns from 0px, which leaves ~155px cards on a phone: one column
+   there. The list view keeps its columns and scrolls sideways inside its own box. */
+@media (max-width: 600px) {
+  .itg-grid { grid-template-columns: 1fr !important; }
+  .itg-head, .itg-body { padding-left: 16px; padding-right: 16px; }
+  .itg-table { overflow-x: auto; }
+  .itg-tr { min-width: 560px; }
+}

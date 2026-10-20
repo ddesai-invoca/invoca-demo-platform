@@ -11027,6 +11027,47 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### Integrations rebuilt to Invoca's NEW page, with tag filtering (10/20/2026)
+Asked for with a capture (`reference/integrations-v2.html`) and a screen recording of the
+filtering. `src/screens/Integrations.tsx` (header lists every measured value) + `.itg-*`.
+**The 8/24 Integrated/Library page and its notes below are SUPERSEDED.**
+- Three sections: Connected Integrations (green 4px stripe), Tools (green), Available
+  (grey stripe); 59 cards with their category tags, logos extracted from the capture to
+  `public/icons/integrations-v2/` (four were CSS background-images, two declared JPEG were
+  WebP/AVIF), resized to 144px.
+- **Filtering, from the video:** tags filter Connected + Available, Tools and any empty
+  section disappear, "Clear All" appears (laid out but hidden when nothing is picked). The
+  selected look (#E7E9EB fill, #445065 border, #15243E text) was sampled off the video; the
+  capture has nothing selected. ⚠️ **Several tags at once, OR** (the user's choice; the video
+  only ever showed one).
+- ⚠️ **The list view is NOT captured** (built on the user's say-so): one table per section,
+  Integration / Categories / Status, same filtering.
+- **Connected carries our four built journeys** (user's choice): Google Ads, Sales Cloud,
+  ChatGPT Ads (moved up from Available) and Custom CRM, still the only cards that navigate.
+  "TEST - Do not turn live" and the old "Favorite Actions" are not shown.
+- Verified with real clicks: CRM alone gives exactly the video's result plus Custom CRM;
+  CRM + Agentic unions; Clear All restores 13/2/44; the list view renders; Sales Cloud opens
+  /salesforce and an inert card goes nowhere. Phones get one column (`mobile.css`).
+
+### A hidden screen recorder beside Ask AI (10/20/2026)
+Asked for: *"a hidden record button next to the Ask AI icon that records the entire screen…
+click it again to stop, and then it just downloads it to my laptop. It asks me where to download
+it, so you're not saving it."* `src/data/screenRecorder.ts` + `src/components/ScreenRecord.tsx`.
+- `getDisplayMedia` (whole screen offered first) + the microphone mixed in, so a voice-agent
+  call records both sides; MP4 where Chrome can, else WebM. **Nothing leaves the browser**: the
+  video is written to the file the user picks with `showSaveFilePicker`, else a plain download.
+- ⚠️ **A MODULE SINGLETON, NOT COMPONENT STATE**: the top bar unmounts on the standalone screens
+  (Preview Agent, Google Search, Salesforce), and a recording held there would stop exactly when
+  the demo moved to one. Verified: recording survived a move to Google Search.
+- ⚠️ **THE SAVE DIALOG OPENS INSIDE THE STOP CLICK**, before any await, or it is refused for
+  lack of a gesture. Ended from the browser's own Stop sharing bar there is no gesture, so
+  `RecordingSaver` (app root, every screen) asks for one click; a cancelled dialog keeps the
+  video. Both verified with a canvas stream standing in for the screen.
+- Hidden at rest even while recording, so it never appears in the video; the browser's sharing
+  indicator says it is running. Signed-in app only (it sits in `TopBarAi`, absent on a share).
+- ⚠️ The browser pane blocks screen capture, so the real picker was not exercised here; the
+  button falls back to idle when capture is refused (a cancelled picker is not an error).
+
 ### Preview Workflow (SMS) is the NEW Invoca preview chat widget (10/20/2026)
 Asked for with a screenshot and a capture of the live widget (kept at
 `reference/agent-workflow/preview-chat-v2.html`). `WorkflowChatPreview.tsx` + `.wcp-*`; every

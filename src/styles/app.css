@@ -57,6 +57,17 @@
 /* Nothing to undo on this page: still revealed on hover (so its absence is never
    mistaken for the feature missing) but visibly inert. */
 .tb-ai-btn-off { cursor: default; }
+/* The hidden screen recorder beside Ask AI (10/20/2026). Grey at hover, a red stop while a
+   recording runs; hidden at rest either way so it never appears in the video. */
+.tb-rec .material-icons { color: #5b6577; }
+.tb-rec-on .material-icons { color: #e4131b; }
+.rec-save { position: fixed; right: 20px; bottom: 20px; z-index: 4500; display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px 10px 14px; border-radius: 8px; background: #15243e; color: #fff; font-size: 14px;
+  box-shadow: 0 6px 24px rgba(12,0,51,.28); }
+.rec-save .material-icons { font-size: 20px; color: #8ab4f8; }
+.rec-save button { border: 0; border-radius: 6px; padding: 6px 12px; font: 600 13px/1 inherit; cursor: pointer; }
+.rec-save-go { background: #2666f9; color: #fff; }
+.rec-save-x { background: transparent; color: #c7cfdb; }
 .tb-ai:hover .tb-ai-btn-off { opacity: .38; }
 
 /* The Preview Agent tab has no top bar (it renders outside the app shell), so its
@@ -4892,87 +4903,86 @@ body:has(.vp-root) .aiad--left .aiad-panel {
 .ied-card--on:hover { background: #f3f7ff; }
 
 /* =============================================================================
-   Integrations (the in-platform page). Measured off the LIVE page 8/24/2026.
-   Own prefix `.itg-`; the old exact-copy marketing page is untouched static HTML.
+   Integrations — Invoca's NEW in-platform page (10/20/2026). Every value is the
+   capture's own CSS (reference/integrations-v2.html); see the header of
+   src/screens/Integrations.tsx for the full list. Own prefix `.itg-`.
    ============================================================================= */
-/* ⚠️ WHITE, and inset 21px — measured off the live page's `.site-content.card`, the app
-   shell's own content surface (white, 1px rgba(0,0,0,.125), 5px top-left radius). Our page
-   painted nothing, so the body's #f6f7f9 showed through behind the cards. */
+/* The app shell's white content surface (`.site-content.card`), edge to edge as captured. */
 .itg-page {
-  background: #fff; border: 1px solid rgba(0, 0, 0, .125); border-radius: 5px 0 0 0;
-  padding: 0 21px 24px; min-height: 100%; box-sizing: border-box;
+  background: #fff; min-height: 100%; box-sizing: border-box; color: #15243e;
+  font-family: Lato, Avenir, "Avenir-Book", "Museo Sans", sans-serif;
 }
-/* ⚠️ THE THIN RULE UNDER THE HEADER IS MEASURED: the header band is `padding: 20px 0` with
-   `border-bottom: 1px solid #E7E9EB` and 39px of margin under it, which is exactly the 60px
-   the h1 sits above the search box. */
-.itg-head { padding: 20px 0; border-bottom: 1px solid #e7e9eb; margin-bottom: 39px; }
-.itg-h1 { font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; margin: 0; }
-
-/* 274 x 36, and the icon sits inside the field rather than beside it. */
-.itg-search {
-  display: flex; align-items: center; gap: 4px; width: 274px; height: 36px;
-  box-sizing: border-box; margin: 0 0 30px; padding: 0 8px;
-  background: #fff; border: 1px solid #e7e9eb; border-radius: 3px;
-}
-.itg-search-icon { font-size: 24px; color: #66708e; }
-.itg-search input {
-  flex: 1; min-width: 0; border: 0; outline: 0; background: none;
-  font: inherit; font-size: 16px; line-height: 23px; color: #15243e; padding: 0 4px;
-}
-.itg-section + .itg-section { margin-top: 30px; }
-/* ⚠️ UPPERCASED IN CSS — the DOM text is "Integrated" / "Library". */
-.itg-h2 {
-  font-size: 16.5px; line-height: 19.8px; font-weight: 400; color: #868e96;
-  text-transform: uppercase; margin: 0 0 19.5px;
-}
-
-/* Bootstrap's own grid, reproduced with the measured breakpoints: 30px gutter carried as
-   15px of column padding either side, with the row bleeding -15 so the cards line up with
-   the page's own 24px inset. */
-.itg-row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
-.itg-col { width: 100%; padding: 0 15px; margin-bottom: 30px; box-sizing: border-box; }
-@media (min-width: 576px) { .itg-col { width: 50%; } }
-@media (min-width: 1200px) { .itg-col { width: 33.333333%; } }
-/* ⚠️ 1400 IS BOOTSTRAP'S xxl, AND THE LAYOUT VIEWPORT IS WHAT COUNTS: at innerWidth 1406
-   the real page still rendered 3 columns because the scrollbar put the layout viewport
-   under 1400. Measuring at one width would have recorded the wrong rule. */
-@media (min-width: 1400px) { .itg-col { width: 25%; } }
-
-.itg-tile {
-  display: flex; align-items: stretch; background: #fff; border-radius: 8px;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, .2); overflow: hidden; height: 100%;
-}
-/* Only a card that goes somewhere gets the pointer. */
-.itg-tile--on { cursor: pointer; }
-.itg-tile--on:hover { background: #f8f9fb; }
-.itg-tile--on:focus-visible { outline: 2px solid #2666f9; outline-offset: 2px; }
-
-/* ⚠️ AN 8px DIV, NOT A BORDER — a border would sit outside the 8px radius and clip square. */
-.itg-stripe { width: 8px; flex: 0 0 8px; border-radius: 8px 0 0 8px; }
-.itg-stripe--integrated { background: #abe5bc; }
-.itg-stripe--ready { background: #b0cdff; }
-.itg-stripe--learn { background: #e7e0f9; }
-
-.itg-body { display: flex; align-items: center; padding: 13px; min-width: 0; }
-/* Measured: the logo column is the 50px image plus 13.6px of right padding (Bootstrap's
-   `pr-3` at their font scale), so 63.6 to the label. */
-.itg-logo {
-  flex: 0 0 auto; padding-right: 13.6px; display: flex; align-items: center;
-  justify-content: center;
-}
-.itg-logo img { width: 50px; height: 50px; object-fit: contain; display: block; }
-.itg-material { font-size: 44px; color: #15243e; }
-/* ⚠️ 6.5px BETWEEN THE BADGE AND THE NAME, not 4 — that 2.5px is the whole difference
-   between a 77px tile and the measured 79.5 (23 badge + 6.5 + 24 name + 26 padding). */
-.itg-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 6.5px; min-width: 0; }
-.itg-badge {
-  display: inline-block; font-size: 10px; line-height: 10px; padding: 6.5px;
-  border-radius: 100px; text-transform: capitalize;
-}
-.itg-badge--integrated { background: #abe5bc; color: #0d5400; }
-.itg-badge--ready { background: #b0cdff; color: #003399; }
-.itg-badge--learn { background: #e7e0f9; color: #440066; }
-.itg-name { font-size: 16.5px; line-height: 24px; color: #343a40; }
+.itg-head { padding: 16px 24px 8px; }
+.itg-h1 { margin: 4px 0; font-size: 24px; line-height: 36px; font-weight: 400; color: #15243e; }
+.itg-rule { margin: 8px 0; border: 0; border-bottom: 1px solid #e7e9eb; }
+.itg-body { display: flex; flex-direction: column; gap: 24px; padding: 0 24px 24px; }
+.itg-controls { display: flex; flex-direction: column; gap: 12px; }
+.itg-search { position: relative; display: flex; align-items: center; max-width: 360px; width: 100%; box-sizing: border-box;
+  border: 1px solid #e7e9eb; border-radius: 4px; padding-left: 14px; background: #fff; }
+.itg-search:hover { border-color: rgba(0,0,0,.23); }
+.itg-search:focus-within { border-color: #2666f9; box-shadow: inset 0 0 0 1px #2666f9; }
+.itg-search-icon { width: 20px; height: 20px; fill: rgba(0,0,0,.54); margin-right: 8px; flex: none; }
+.itg-search input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; padding: 6px 12px 6px 0;
+  font: 400 16px/1.4375em inherit; color: #15243e; font-family: inherit; }
+.itg-search input::placeholder { color: #5b6577; opacity: 1; }
+.itg-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.itg-views { display: inline-flex; flex-shrink: 0; gap: 4px; padding: 3px; background: #e7e9eb; border-radius: 6px; }
+.itg-view { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; min-height: 28px;
+  padding: 3px 5px; border: 0; border-radius: 4px; background: transparent; color: #5b6577; opacity: .45; cursor: pointer; box-sizing: border-box; }
+.itg-view-on { background: #fff; color: #15243e; opacity: 1; border: 1px solid #e7e9eb;
+  box-shadow: rgba(0,0,0,.2) 0 3px 1px -2px, rgba(0,0,0,.14) 0 2px 2px 0, rgba(0,0,0,.12) 0 1px 5px 0; }
+.itg-ico-grid { display: grid; grid-template-columns: repeat(3, 4px); gap: 2px; }
+.itg-ico-grid i { width: 4px; height: 4px; border-radius: 1px; background: currentColor; }
+.itg-ico-list { display: flex; flex-direction: column; gap: 2px; }
+.itg-ico-list > span { display: flex; align-items: center; gap: 2px; }
+.itg-ico-list i { width: 3px; height: 3px; border-radius: 50%; background: currentColor; }
+.itg-ico-list b { width: 10px; height: 1.5px; border-radius: 1px; background: currentColor; }
+.itg-filter { display: inline-flex; align-items: center; height: 32px; padding: 0 16px; box-sizing: border-box;
+  border: 2px solid #d0d3d8; border-radius: 100px; background: #fff; color: #5b6577; white-space: nowrap;
+  font: 700 14px/1 Lato, Avenir, sans-serif; text-transform: capitalize; cursor: pointer;
+  transition: background-color 250ms cubic-bezier(.4,0,.2,1), border-color 250ms cubic-bezier(.4,0,.2,1); }
+.itg-filter:hover { background: #fff; border-color: #445065; }
+/* Selected: read off the screen recording (the capture has nothing selected). */
+.itg-filter-on, .itg-filter-on:hover { background: #e7e9eb; border-color: #445065; color: #15243e; }
+.itg-filter .itg-spark { width: 18px; height: 18px; margin: 0 8px 0 -2px; fill: currentColor; }
+.itg-clear { height: 32px; padding: 8px 12px; border: 0; border-radius: 3px; background: transparent; color: #2666f9;
+  font: 500 12px/1.75 Lato, Avenir, sans-serif; cursor: pointer; flex-shrink: 0; }
+.itg-clear:hover { background: #e9f0fe; }
+.itg-clear-off { visibility: hidden; }
+.itg-section { display: flex; flex-direction: column; gap: 12px; }
+.itg-h2 { margin: 0; font-size: 16px; line-height: 20px; font-weight: 600; color: #15243e; }
+.itg-grid { display: grid; gap: 16px; align-items: stretch; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 900px) { .itg-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .itg-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.itg-card { display: flex; align-items: stretch; height: 100%; box-sizing: border-box; overflow: hidden;
+  border: 2px solid #e7e9eb; border-radius: 3px; background: #fff; }
+.itg-card-on { cursor: pointer; }
+.itg-card-on:hover { background: #f5f6fa; }
+.itg-card-on:focus-visible { outline: 2px solid #2666f9; outline-offset: 2px; }
+.itg-stripe { width: 4px; flex-shrink: 0; background: #e7e9eb; }
+.itg-stripe-on { background: #2cbf58; }
+.itg-card-body { display: flex; flex-direction: column; gap: 8px; flex: 1 1 0%; min-width: 0; padding: 12px 16px; }
+.itg-card-top { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.itg-logo { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; }
+.itg-material { width: 36px; height: 36px; font-size: 30px; line-height: 36px; text-align: center; color: #2666f9; flex-shrink: 0; }
+.itg-name { flex: 1 1 0%; min-width: 0; font-size: 16px; line-height: 20px; color: #15243e; }
+.itg-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.itg-tag { display: inline-flex; align-items: center; height: 22px; padding: 0 7px; box-sizing: border-box; max-width: 100%;
+  border: 1px solid #e7e9eb; border-radius: 100px; font-size: 12px; line-height: 16px; color: #5b6577; white-space: nowrap;
+  overflow: hidden; text-overflow: ellipsis; }
+.itg-tag-agentic { border-color: #b0cdff; color: #11228c; padding-left: 2px; }
+.itg-tag-agentic .itg-spark { width: 18px; height: 18px; margin-right: 3px; fill: #2666f9; flex: none; }
+/* The table view: not in the capture; built from the same data on the user's say-so. */
+.itg-table { border: 2px solid #e7e9eb; border-radius: 3px; overflow: hidden; }
+.itg-tr { display: grid; grid-template-columns: minmax(220px, 1.3fr) 2fr 140px; align-items: center; gap: 16px;
+  padding: 10px 16px; border-top: 1px solid #e7e9eb; background: #fff; }
+.itg-th { border-top: 0; background: #f5f6fa; padding: 8px 16px; font-size: 12px; line-height: 16px; font-weight: 700;
+  text-transform: uppercase; color: #15243e; }
+.itg-td-name { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.itg-none { font-size: 12px; color: #a1a7b2; }
+.itg-status { display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 100px;
+  font-size: 12px; line-height: 16px; background: #e7e9eb; color: #5b6577; }
+.itg-status-on { background: #d5f2de; color: #0d5400; }
 .itg-empty { font-size: 16px; color: #5b6577; margin: 0; }
 
 /* =============================================================================

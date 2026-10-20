@@ -73,6 +73,8 @@ export const RELEASES: Release[] = [
       i("Follow-up questions offer the customer specific choices instead of leaving them open ended."),
       n("Preview Workflow on an SMS workflow is now Preview Chat, the new Invoca preview chat: a floating card you can drag and resize, a Live chip, New Chat, and the new message and composer styling. Every agent reply has Show Reasoning, which opens the same five sections as Invoca's: the workflow path and action the agent is on, the knowledge source it used, the data fields collected so far, the signals that fired and the tool calls it made, with what changed on that turn in green."),
       i("The regular SMS agent opens by asking whether the customer wants to book or needs help with something they already have, so both paths of the workflow are reachable from the first message. The opener is editable on the workflow and through Ask AI."),
+      n("Integrations is rebuilt to match Invoca's new page: Connected Integrations, Tools and Available Integrations sections, each card tagged by category, a row of category tags to filter by (pick as many as you like; Clear All resets), and a list view. Google Ads, Sales Cloud, ChatGPT Ads and Custom CRM sit in Connected and still open their screens."),
+      n("A hidden record button sits beside Ask AI in the top bar (hover to see it). Click it to record the screen with its sound and your microphone, and click again to stop: it asks where to save the video on your computer. Nothing is uploaded, and the recording keeps going as you move between screens."),
       f("Greetings for businesses whose name ends in s now use the right possessive, with no extra \"s\" after the apostrophe."),
     ],
   },

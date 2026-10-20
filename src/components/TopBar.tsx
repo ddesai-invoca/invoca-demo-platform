@@ -1,4 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { RecordButton } from "./ScreenRecord";
 import { isShareMode } from "../data/shareMode";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
@@ -113,6 +114,8 @@ function TopBarAi() {
   const undoable = canUndo(scopeKey) && !readOnly;
   return (
         <span className="tb-ai">
+      {/* The hidden screen recorder (10/20/2026); see src/data/screenRecorder.ts. */}
+      <RecordButton />
       <button
         className="tb-ai-btn tb-ai-spark"
         onClick={() => openDrawer()}
