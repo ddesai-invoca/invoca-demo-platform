@@ -302,12 +302,12 @@ export async function handleDemoApi(
 
   /* GET /api/demos/:id/shared-conversations?kind=sms|voice (10/21/2026): the conversations
      prospects had on this demo's shared links, kept forever, for the AI SMS / Voice reports and
-     the event sheet's links. Admins and the demo's owner, like the share links themselves. */
+     the event sheet's links. Admins, named sharers and the demo's owner, like the share links. */
   const convRoute = p.match(/^\/api\/demos\/([^/]+)\/shared-conversations$/);
   if (convRoute && method === "GET") {
     const rec = getDemo(convRoute[1]);
     if (!rec) return err(404, "Demo not found.");
-    if (!isAdmin(user) && !owns(rec, user)) return ok({ conversations: [] });
+    if (!canShare(user) && !owns(rec, user)) return ok({ conversations: [] });
     const kind = /[?&]kind=voice\b/.test(urlPath) ? "voice" : /[?&]kind=sms\b/.test(urlPath) ? "sms" : undefined;
     return ok({ conversations: listSharedConversations(rec.id, kind) });
   }

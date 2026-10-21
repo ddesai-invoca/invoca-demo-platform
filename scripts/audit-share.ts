@@ -418,29 +418,36 @@ const yes = () => true;
 
 /* ⚠️ Both twins must PASS the flag. A twin that omits it type-errors today, but the
    argument is a boolean and a future refactor could default it to true. */
-/handleShareAdminApi\([\s\S]{0,400}?isAdmin\(user\)\)/.test(code("server.ts"))
-  ? ok("server.ts passes isAdmin into the share admin routes")
-  : bad("server.ts does not pass the admin flag");
+/* Re-aimed 10/21/2026: sharing is admins PLUS named sharers (engine/admins.ts `canShareEmail`). */
+/handleShareAdminApi\([\s\S]{0,500}?canShare\(user\)\)/.test(code("server.ts"))
+  ? ok("server.ts passes canShare (admins + named sharers) into the share admin routes")
+  : bad("server.ts does not pass the share permission");
 
-/demoApi\.isAdmin\(user\)/.test(code("vite.config.ts"))
-  ? ok("the dev twin passes isAdmin into the share admin routes")
-  : bad("the dev twin does not pass the admin flag");
+/\}, demoApi\.canShare\(user\)\)/.test(code("vite.config.ts"))
+  ? ok("the dev twin passes canShare into the share admin routes")
+  : bad("the dev twin does not pass the share permission");
 
 /* The client half — hidden rather than disabled, so a non-admin is never offered a
    control whose request the server would then refuse. */
 const L = code("src/screens/Launch.tsx");
 
-/\{e\.inLibrary && admin && <ShareDemoButton/.test(L)
-  ? ok("the share button renders for admins only")
-  : bad("a non-admin is shown the share button");
+/\{e\.inLibrary && canShare && <ShareDemoButton/.test(L)
+  ? ok("the share button renders only for people who may share")
+  : bad("the share button is not gated on canShare");
 
-/\{admin && <label className="launch-share">/.test(L)
-  ? ok("the launch form's shareable checkbox is admin-only")
-  : bad("a non-admin is shown the shareable checkbox");
+/\{canShare && <label className="launch-share">/.test(L)
+  ? ok("the launch form's shareable checkbox is gated on canShare")
+  : bad("the shareable checkbox is not gated on canShare");
 
-/if \(shareOnLaunch && admin && demo\)/.test(L)
-  ? ok("the launch-time share request is admin-gated")
-  : bad("the launch-time share request is not admin-gated");
+/if \(shareOnLaunch && canShare && demo\)/.test(L)
+  ? ok("the launch-time share request is gated on canShare")
+  : bad("the launch-time share request is not gated on canShare");
+{
+  const { canShareEmail } = await import("../engine/admins.ts");
+  canShareEmail("cvera@invoca.com") && canShareEmail("GHowell@invoca.com ") && canShareEmail("ddesai@invoca.com") && !canShareEmail("someone@invoca.com")
+    ? ok("Camilo Vera, Grace Howell and the admins may share; anyone else may not")
+    : bad("the named-sharer list admits the wrong people");
+}
 
 
 /* =============================================================================

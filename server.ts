@@ -37,7 +37,7 @@ import { askAssistant } from "./engine/assistant.ts";
 import { planDemo } from "./engine/demoPlan.ts";
 import { installAuth, authEnabled, currentUser, parseCookies } from "./googleAuth.ts";
 import { handleShareApi, handleShareAdminApi, shareSession, takeBudget } from "./engine/shareApi.ts";
-import { handleDemoApi, isAdmin, canWrite as canWriteDemo } from "./engine/demoApi.ts";
+import { handleDemoApi, isAdmin, canShare, canWrite as canWriteDemo } from "./engine/demoApi.ts";
 import { handleFeedbackApi } from "./engine/feedbackApi.ts";
 import { mailConfigured } from "./engine/mailer.ts";
 import { DATA_DIR, isPersistent, getDemo } from "./engine/demoStore.ts";
@@ -593,8 +593,9 @@ app.all(["/api/demos/:id/shares", "/api/shares/:token"], async (req, res, next) 
   const user = currentUser(req);
   const r = await handleShareAdminApi(req.method, req.path, req.body || {}, user, (demoId) => {
     const demo = getDemo(demoId);
-    return !!demo && canWriteDemo(demo, user);
-  }, isAdmin(user));
+    /* A named sharer may share any demo, not just ones they can edit (10/21/2026). */
+    return !!demo && (canWriteDemo(demo, user) || canShare(user));
+  }, canShare(user));
   if (!r) return next();
   res.status(r.status).json(r.body ?? {});
 });

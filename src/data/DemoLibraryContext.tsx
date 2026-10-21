@@ -131,6 +131,8 @@ interface Ctx {
    *  has been seen, the same "server decides, client just renders" split as `admin`
    *  itself. */
   adminNotice: boolean;
+  /** May share demos with prospects: admins and named sharers (engine/admins.ts), 10/21/2026. */
+  canShare: boolean;
   dismissAdminNotice: () => Promise<void>;
   demos: DemoSummary[];
   loading: boolean;
@@ -222,17 +224,19 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   const [me, setMe] = useState<DemoCreator | null>(null);
   const [admin, setAdmin] = useState(false);
   const [adminNotice, setAdminNotice] = useState(false);
+  const [canShare, setCanShare] = useState(false);
   const [demos, setDemos] = useState<DemoSummary[]>([]);
   const [loading, setLoading] = useState(true);
   const [available, setAvailable] = useState(true);
 
   const refresh = useCallback(async () => {
-    const data = await api<{ demos: DemoSummary[]; user: DemoCreator; admin?: boolean; adminNotice?: boolean }>("/api/demos");
+    const data = await api<{ demos: DemoSummary[]; user: DemoCreator; admin?: boolean; canShare?: boolean; adminNotice?: boolean }>("/api/demos");
     if (!data) { setAvailable(false); setLoading(false); return; }
     setAvailable(true);
     setDemos(data.demos ?? []);
     if (data.user) setMe(data.user);
     setAdmin(!!data.admin);
+    setCanShare(!!data.canShare);
     setAdminNotice(!!data.adminNotice);
     setLoading(false);
   }, []);
@@ -430,7 +434,7 @@ export function DemoLibraryProvider({ children }: { children: ReactNode }) {
   }, [demos, profiles, openDemo, addProfile]);
 
   return (
-    <Ctx.Provider value={{ me, admin, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations, marks, markFor, setMark, eventOf, lookupRep, gmailStatus }}>
+    <Ctx.Provider value={{ me, admin, canShare, adminNotice, dismissAdminNotice, demos, loading, available, refresh, isMine, canManage, openDemo, createDemo, duplicateDemo, deleteDemo, saveCustomizations, marks, markFor, setMark, eventOf, lookupRep, gmailStatus }}>
       {children}
     </Ctx.Provider>
   );

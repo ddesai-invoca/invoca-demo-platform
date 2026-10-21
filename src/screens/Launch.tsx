@@ -183,7 +183,7 @@ interface Entry {
 
 export function Launch() {
   const { profiles, addProfile, removeProfile, setProfileId } = useProfile();
-  const { demos, me, admin, isMine, openDemo, createDemo, duplicateDemo, deleteDemo } = useDemoLibrary();
+  const { demos, me, admin, canShare, isMine, openDemo, createDemo, duplicateDemo, deleteDemo } = useDemoLibrary();
 
   /* ⚠️ WHICH EVENTS HAVE A SHEET, FETCHED ONCE. The URL half comes back only for an
      admin — the SERVER decides that, so a client that lied would just collect 403s
@@ -345,7 +345,7 @@ export function Launch() {
               ⚠️ This is the cosmetic half: `admin` comes from the SERVER, and the server
               refuses share creation from anyone else regardless of what the browser shows.
               Hidden rather than disabled, because a greyed control invites "why not me?" */}
-          {e.inLibrary && admin && <ShareDemoButton demoId={e.id} name={e.name} />}
+          {e.inLibrary && canShare && <ShareDemoButton demoId={e.id} name={e.name} />}
           {!e.inLibrary && !SEED_IDS.has(e.id) && (
             <Tooltip label="Publish to the team library so colleagues can open it">
             <button
@@ -542,7 +542,7 @@ export function Launch() {
         } catch { /* reported per item; a whole-pass throw must not lose the demo */ }
       }
 
-      if (shareOnLaunch && admin && demo) {
+      if (shareOnLaunch && canShare && demo) {
         try {
           await fetch(`/api/demos/${encodeURIComponent(demo.id)}/shares`, {
             method: "POST", headers: { "Content-Type": "application/json" },
@@ -669,7 +669,7 @@ export function Launch() {
                 own name, so it is guessable by anyone holding the URL.
                 ⚠️ ADMINS ONLY while the feature is piloted — and a non-admin never sees it,
                 so they cannot tick a box whose request the server would then refuse. */}
-            {admin && <label className="launch-share">
+            {canShare && <label className="launch-share">
               <input
                 type="checkbox"
                 checked={shareOnLaunch}

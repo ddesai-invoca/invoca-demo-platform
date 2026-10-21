@@ -351,7 +351,7 @@ export async function handleShareAdminApi(
   const list0 = /^\/api\/demos\/([^/]+)\/shares$/.test(urlPath);
   const one0 = /^\/api\/shares\/([A-Za-z0-9_-]{20,64})$/.test(urlPath);
   if ((list0 || one0) && !isAdmin) {
-    return { status: 403, body: { error: "Sharing a demo is limited to project admins." } };
+    return { status: 403, body: { error: "Sharing a demo is limited to project admins and named sharers." } };
   }
   const list = /^\/api\/demos\/([^/]+)\/shares$/.exec(urlPath);
   const one = /^\/api\/shares\/([A-Za-z0-9_-]{20,64})$/.exec(urlPath);

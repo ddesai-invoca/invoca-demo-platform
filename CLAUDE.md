@@ -11059,14 +11059,16 @@ still be able to access the shared demo even if it expires").
   Aptive and selected that conversation; a voice conversation the same way. `audit:share` has
   12 checks; the cross-prospect leak sabotage fires.
 
-### Named sharers: Camilo Vera and Grace Howell (10/21/2026), NOT YET WIRED
-Asked for: let them share demos (and flag and take notes, which every signed-in user already
-can). `engine/admins.ts` has a `SHARERS` list (cvera@invoca.com, assumed from the naming
-pattern; ghowell@invoca.com) and `canShareEmail`, and `/api/me` + `/api/demos` return
-`canShare`. ⚠️ **The share gate itself still checks `isAdmin`** in both servers and the Launch
-screen still hides the share button for non-admins: switching those to `canShare` (and letting a
-sharer share a demo they do not own) was blocked by the session's permission settings and is
-waiting on the user's approval.
+### Named sharers: Camilo Vera and Grace Howell (10/21/2026)
+Asked for: let them share demos (flagging and notes were already open to every signed-in user).
+`engine/admins.ts` holds `SHARERS` (cvera@invoca.com, assumed from the naming pattern;
+ghowell@invoca.com, seen on this machine; plus the additive `DEMO_SHARER_EMAILS` env var) and
+`canShareEmail` = admin or sharer. Both servers pass `canShare(user)` to the share-admin routes
+and let a sharer manage the link on ANY demo, not only ones they can edit (the Dallas roster is
+owned by one account). `/api/demos` returns `canShare`, which the Launch screen uses for the share
+button, the "shareable" checkbox and the launch-time share request. Sharers can also read a
+demo's shared-link conversations. Admin-only things (editing others' demos, the feedback inbox)
+are unchanged. `audit:share`'s five gate checks were re-aimed from `admin` to `canShare`.
 
 ### The ZIP code's real location, and a real serviceable answer (10/21/2026)
 Reported with a CRM screenshot: ZIP 80126 (Littleton / Highlands Ranch, CO) read "Serviceable:

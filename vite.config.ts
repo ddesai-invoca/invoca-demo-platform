@@ -729,8 +729,9 @@ function shareApi(): Plugin {
             const user = auth.currentUser(req)
             const r = await share.handleShareAdminApi(req.method || 'GET', url, body, user, (demoId: string) => {
               const demo = store.getDemo(demoId)
-              return !!demo && demoApi.canWrite(demo, user)
-            }, demoApi.isAdmin(user))
+              /* A named sharer may share any demo, not just ones they can edit (10/21/2026). */
+              return !!demo && (demoApi.canWrite(demo, user) || demoApi.canShare(user))
+            }, demoApi.canShare(user))
             if (!r) return next()
             return json(r.status, r.body ?? {})
           }
