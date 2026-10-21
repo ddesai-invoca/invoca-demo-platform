@@ -7569,3 +7569,6 @@ body:has(.tour-root) .tour-cta { visibility: hidden; }
 .ccr-quote { font-size: 12px; color: var(--ccr-muted); margin-top: 8px; font-style: italic; }
 .ccr-empty { color: var(--ccr-faint); font-style: italic; font-size: 12px; }
 @media (prefers-reduced-motion: reduce) { .ccr *, .ccr *::after { animation: none !important; transition: none !important; } }
+
+/* A conversation a prospect had on a shared demo link (10/21/2026). */
+.sci-shared-by { font-size: 11px; color: #5b6577; margin-top: 2px; overflow-wrap: anywhere; }

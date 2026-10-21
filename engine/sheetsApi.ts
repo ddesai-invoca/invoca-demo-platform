@@ -127,8 +127,12 @@ export const ACTIVITY_TAB = "Activity";
 export const INDENT = "    \u21b3  ";
 
 export const ACTIVITY_COLUMNS = [
-  "Prospect / Person", "Opened", "SMS demos", "Voice demos", "First seen", "Last seen",
+  "Prospect / Person", "Opened", "SMS demos", "Voice demos", "First seen", "Last seen", "Conversation",
 ] as const;
+
+/** A conversation's own row, under the person who had it (10/21/2026). Like `INDENT`, the
+ *  marker is the data: the styling pass recovers "is this a conversation?" from it. */
+export const CONV_INDENT = "          \u2022  ";
 
 export interface SheetTarget {
   /** Whose grant writes the rows. */
@@ -538,6 +542,9 @@ export async function restyleSheets(t: SheetTarget): Promise<{ tabs: string[] }>
 export interface ActivityLine {
   /** A prospect's own row, or one of its people. */
   main: boolean;
+  /** A single SMS or voice conversation under a person, with its link into the app. */
+  conv?: boolean;
+  link?: string;
   label: string;
   opened: number;
   sms: number;
@@ -560,9 +567,13 @@ export async function writeActivity(t: SheetTarget, lines: ActivityLine[]): Prom
   const values = [
     [...ACTIVITY_COLUMNS],
     ...lines.map((l) => [
-      l.main ? l.label : `${INDENT}${l.label}`,
+      l.main ? l.label : l.conv ? `${CONV_INDENT}${l.label}` : `${INDENT}${l.label}`,
       l.opened || "", l.sms || "", l.voice || "",
       l.firstAt, l.lastAt,
+      /* The words go in as plain text and the link is applied as rich text below, never as a
+         HYPERLINK formula: the values are written RAW so a prospect's typed name can never be
+         read as a formula. */
+      l.link ? "Open conversation" : "",
     ]),
   ];
 
@@ -577,6 +588,23 @@ export async function writeActivity(t: SheetTarget, lines: ActivityLine[]): Prom
   });
 
   await themeActivity(t, values.length);
+  await linkConversations(t, lines);
+}
+
+/** Turn each conversation row's "Open conversation" cell into a real link. */
+async function linkConversations(t: SheetTarget, lines: ActivityLine[]): Promise<void> {
+  const sheetId = await sheetIdFor(t, ACTIVITY_TAB);
+  if (sheetId === null) return;
+  const requests = lines.flatMap((l, i) => l.link ? [{ updateCells: {
+    range: { sheetId, startRowIndex: i + 1, endRowIndex: i + 2, startColumnIndex: 6, endColumnIndex: 7 },
+    rows: [{ values: [{
+      userEnteredValue: { stringValue: "Open conversation" },
+      userEnteredFormat: { textFormat: { link: { uri: l.link }, foregroundColor: GREEN_INK, underline: true, fontFamily: FONT, fontSize: 10 } },
+    }] }],
+    fields: "userEnteredValue,userEnteredFormat.textFormat",
+  } }] : []);
+  if (!requests.length) return;
+  await api(t.email, `/${t.spreadsheetId}:batchUpdate`, { method: "POST", body: JSON.stringify({ requests }) });
 }
 
 /**
@@ -591,7 +619,7 @@ export async function writeActivity(t: SheetTarget, lines: ActivityLine[]): Prom
  * use. Verified by `audit:share` against the real strings rather than by eye.
  */
 async function themeActivity(t: SheetTarget, rows: number): Promise<void> {
-  await applyTheme(t, ACTIVITY_TAB, [320, 95, 115, 125, 185, 185], {
+  await applyTheme(t, ACTIVITY_TAB, [320, 95, 115, 125, 185, 185, 170], {
     rows, numberCols: [1, 4],
   });
   const sheetId = await sheetIdFor(t, ACTIVITY_TAB);
@@ -606,7 +634,7 @@ async function themeActivity(t: SheetTarget, rows: number): Promise<void> {
     /* ⚠️ Compared against the ARROW, not the whole indent: Sheets is free to hand back a
        value with its leading spaces trimmed, and a test on the padded string would then
        call every person a prospect and paint the whole tab as headings. */
-    const main = !label.trimStart().startsWith(INDENT.trim());
+    const main = !label.trimStart().startsWith(INDENT.trim()) && !label.trimStart().startsWith(CONV_INDENT.trim());
     const r = i + 1;
     requests.push({ repeatCell: {
       range: { sheetId, startRowIndex: r, endRowIndex: r + 1 },

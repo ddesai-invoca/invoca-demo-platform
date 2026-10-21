@@ -52,3 +52,23 @@ export const adminEmails = (): string[] => [...ADMIN_EMAILS];
  *  actually in. */
 export const isAdminEmail = (email: string | undefined | null): boolean =>
   ADMIN_EMAILS.has((email ?? "").trim().toLowerCase());
+
+/* SHARERS (10/21/2026) — may share any demo with a prospect, without being admins. Asked for:
+   "add the following to Invoca employees: the ability to share the demo and also be able to
+   take notes on the demo… share and flag", for Camilo Vera and Grace Howell. Flagging and
+   notes are already open to every signed-in user; sharing was admin-only. Additive env var
+   DEMO_SHARER_EMAILS, same rule as the admin list.
+   ⚠️ cvera@invoca.com is ASSUMED from the first-initial + last-name pattern every other
+   address here follows; ghowell@invoca.com was seen on this machine. */
+const SHARERS = [
+  "cvera@invoca.com",
+  "ghowell@invoca.com",
+];
+const SHARER_EMAILS = new Set(
+  [...SHARERS, ...(process.env.DEMO_SHARER_EMAILS ?? "").split(",")]
+    .map((e) => e.trim().toLowerCase()).filter(Boolean),
+);
+
+/** May this person share a demo with a prospect (and read what prospects did in it)? */
+export const canShareEmail = (email: string | undefined | null): boolean =>
+  isAdminEmail(email) || SHARER_EMAILS.has((email ?? "").trim().toLowerCase());

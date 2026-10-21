@@ -11027,6 +11027,47 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### Shared-demo conversations are kept, and the event sheet links to each one (10/21/2026)
+Asked for: link each SMS / voice conversation a prospect has on a shared demo, from the event
+sheet's Activity tab, to that exact conversation in the AI SMS / AI Voice report. Choices: a row
+per conversation under each person; **keep conversations forever** ("we, as admins, should
+still be able to access the shared demo even if it expires").
+- ⚠️⚠️ **BEFORE THIS THE CONVERSATION EXISTED ONLY IN THE PROSPECT'S BROWSER** (localStorage). The
+  server knew one happened (`activityStore`) but never what was in it, so a link had nothing to open.
+- **`engine/sharedConversations.ts`**: one file per conversation under
+  `DATA_DIR/shared-conversations/<demoId>/<kind>-<id>.json`, never deleted (separate from the
+  share records, so revoking or expiry keeps them). Written by the PUBLIC
+  `POST /api/share/:token/conversation` (unlock cookie required, demo id from the share record,
+  id shape-checked, 400KB cap), read by the signed-in
+  `GET /api/demos/:id/shared-conversations?kind=` (admins and the demo's owner).
+- **The shared page sends them** (`sendSharedConversation`, both capture stores): a second after
+  any change, only conversations that changed since last sent. ⚠️ **Only the shared demo's own**
+  (`store[profileId]`): the store is per browser, and the first version sent every prospect's
+  captures, filing a Roto-Rooter test chat under Aptive. A prospect who revisits also re-sends
+  older conversations still in their browser, so those are recovered.
+- **The reports** list them after this browser's own captures, labelled "Shared demo · <email>",
+  and follow `?demo=<demoId>&conv=<id>`: `DemoFromLink` opens that library demo (signed-in app
+  only; a shared demo mounts neither the library nor Ask AI) and the report selects the
+  conversation. ⚠️ The selection re-runs on the list's IDS, not its length: two prospects'
+  lists of equal length left the old prospect's selection in place.
+- **The Activity tab** gains a "Conversation" column and a row per conversation ("SMS
+  conversation" / "Voice call", started / last updated) under the person, with "Open
+  conversation" as a rich-text LINK (values stay RAW, so nothing a prospect typed is ever a
+  formula). Links use BASE_URL (env-invoca.net in production).
+- Verified locally end to end: a real share link, unlocked as a prospect, an SMS sent on its
+  phone, the record on disk, then the link opened from a different active prospect switched to
+  Aptive and selected that conversation; a voice conversation the same way. `audit:share` has
+  12 checks; the cross-prospect leak sabotage fires.
+
+### Named sharers: Camilo Vera and Grace Howell (10/21/2026), NOT YET WIRED
+Asked for: let them share demos (and flag and take notes, which every signed-in user already
+can). `engine/admins.ts` has a `SHARERS` list (cvera@invoca.com, assumed from the naming
+pattern; ghowell@invoca.com) and `canShareEmail`, and `/api/me` + `/api/demos` return
+`canShare`. ⚠️ **The share gate itself still checks `isAdmin`** in both servers and the Launch
+screen still hides the share button for non-admins: switching those to `canShare` (and letting a
+sharer share a demo they do not own) was blocked by the session's permission settings and is
+waiting on the user's approval.
+
 ### The ZIP code's real location, and a real serviceable answer (10/21/2026)
 Reported with a CRM screenshot: ZIP 80126 (Littleton / Highlands Ranch, CO) read "Serviceable:
 Yes · Chicago service area". Asked for, for every prospect, SMS and voice: the right location

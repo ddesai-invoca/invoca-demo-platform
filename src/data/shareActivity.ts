@@ -31,3 +31,20 @@ export function reportShareActivity(kind: "sms" | "voice", id?: string): void {
     }).catch(() => {});
   } catch { /* a blocked fetch must not take the demo down */ }
 }
+
+/**
+ * Send the whole conversation to the server, so the event sheet can link to it in the app
+ * (10/21/2026). Share mode only. Called with every captured conversation whenever it changes;
+ * `useShareConversationSync` skips the ones already sent unchanged.
+ */
+export function sendSharedConversation(kind: "sms" | "voice", conversation: { id: string }): void {
+  if (!isShareMode() || !SHARE_TOKEN) return;
+  try {
+    void fetch(`/api/share/${SHARE_TOKEN}/conversation`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ kind, conversation }),
+      keepalive: JSON.stringify(conversation).length < 60_000,
+    }).catch(() => {});
+  } catch { /* a blocked fetch must not take the demo down */ }
+}

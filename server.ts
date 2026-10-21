@@ -253,6 +253,12 @@ app.post("/api/share/:token/activity", async (req, res) => {
   if (!r) return res.status(404).json({ error: "Not found." });
   res.status(r.status).json(r.body ?? {});
 });
+/* Public like /activity: the prospect's conversation itself, so the event sheet can link to it. */
+app.post("/api/share/:token/conversation", async (req, res) => {
+  const r = await handleShareApi("POST", req.path, req.body || {}, parseCookies(req.headers.cookie), shareBase(req));
+  if (!r) return res.status(404).json({ error: "Not found." });
+  res.status(r.status).json(r.body ?? {});
+});
 app.post("/api/share/:token/request-password", async (req, res) => {
   const r = await handleShareApi("POST", req.path, req.body || {}, parseCookies(req.headers.cookie), shareBase(req));
   if (!r) return res.status(404).json({ error: "Not found." });

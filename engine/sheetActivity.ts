@@ -17,7 +17,8 @@
 
 import { getDemo } from "./demoStore.ts";
 import { eventSettings } from "./eventSettings.ts";
-import { listActivity, totals, type ActivityRecord } from "./activityStore.ts";
+import { listActivity, totals, ANONYMOUS, type ActivityRecord } from "./activityStore.ts";
+import { listSharedConversations, conversationLink, type SharedConversation } from "./sharedConversations.ts";
 import { writeActivity, reportStyleFailure, ACTIVITY_TAB, type ActivityLine } from "./sheetsApi.ts";
 import { centralTime } from "./sheetHook.ts";
 
@@ -28,7 +29,12 @@ import { centralTime } from "./sheetHook.ts";
  * sheet is read to answer "who has been in this lately", so the useful row is at the top
  * rather than wherever the demo happens to sort alphabetically.
  */
-export function activityLines(records: ActivityRecord[]): ActivityLine[] {
+export function activityLines(
+  records: ActivityRecord[],
+  /** Each demo's saved conversations, listed under the person who had them (10/21/2026). */
+  conversationsFor: (demoId: string) => SharedConversation[] = () => [],
+  base = "",
+): ActivityLine[] {
   const withTotals = records
     .filter((r) => r.users.length > 0)
     .map((r) => ({ r, t: totals(r) }))
@@ -40,14 +46,32 @@ export function activityLines(records: ActivityRecord[]): ActivityLine[] {
       main: true, label: r.prospect, opened: t.opened, sms: t.sms, voice: t.voice,
       firstAt: centralTime(t.firstAt), lastAt: centralTime(t.lastAt),
     });
+    const convs = conversationsFor(r.demoId);
     for (const u of [...r.users].sort((a, b) => b.lastAt.localeCompare(a.lastAt))) {
       out.push({
         main: false, label: u.email, opened: u.opened, sms: u.sms, voice: u.voice,
         firstAt: centralTime(u.firstAt), lastAt: centralTime(u.lastAt),
       });
+      /* The same key the activity store uses for a person, so a conversation lands under them. */
+      const who = (c: SharedConversation) => {
+        const raw = (c.email || "").trim();
+        return raw === "Invoca employee" ? raw : raw.toLowerCase() || ANONYMOUS;
+      };
+      for (const c of convs.filter((c) => who(c) === u.email)) {
+        out.push({
+          main: false, conv: true, label: c.kind === "voice" ? "Voice call" : "SMS conversation",
+          opened: 0, sms: 0, voice: 0, firstAt: centralTime(c.createdAt), lastAt: centralTime(c.updatedAt),
+          link: conversationLink(base, c.demoId, c.kind, c.id),
+        });
+      }
     }
   }
   return out;
+}
+
+/** The app's own address, for links in the sheet. Signed-in pages, so BASE_URL in production. */
+function appBase(): string {
+  return (process.env.BASE_URL || "https://invoca-demo-platform.onrender.com").replace(/\/$/, "");
 }
 
 /** Which sheet a demo's activity belongs in, or null. */
@@ -121,7 +145,7 @@ export async function syncActivitySheet(demoId: string): Promise<{ written: bool
     /* Scope to the event, so two events sharing one spreadsheet do not overwrite each
        other's Activity tab with their own prospects. */
     const mine = listActivity().filter((r) => getDemo(r.demoId)?.event === demo?.event);
-    await writeActivity(target, activityLines(mine));
+    await writeActivity(target, activityLines(mine, (id) => listSharedConversations(id), appBase()));
     return { written: true };
   } catch (e: unknown) {
     /* ⚠️ Swallowed BY DESIGN — see the header. The activity itself is already on disk.

@@ -70,6 +70,7 @@ export const RELEASES: Release[] = [
     title: "SMS appointments say how they happen, and ZIP codes are checked",
     changes: [
       i("When the SMS or RCS agent books an appointment, the confirmation now says how it happens: a specialist coming to the customer's home (with the address confirmed), the nearest location with its real street address from Google, a phone call at the booked time from the business's number, or a video link. Follow-up questions about where to go get the same answer. The workflow's booking box describes the same step."),
+      n("Conversations a prospect has on a shared demo are now saved, and the event sheet's Activity tab lists each one under the person who had it with an Open conversation link. The link opens that exact conversation in the AI SMS or AI Voice Conversation Intelligence report, marked with the prospect's email, and conversations are kept after the share link expires."),
       f("The SMS and voice agents now check a customer's ZIP code for real: they say the correct city and whether the business serves it, based on the prospect's own locations or stated service area, and politely decline (naming where the business does serve) instead of booking someone outside it. The Custom CRM shows the same city and serviceable answer."),
       i("On a shared demo, the Invoca logo returns to Agent Studio, and the Details tab's Edit button and its links to campaigns and promo numbers are disabled."),
     ],

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useSmsCapture } from "../data/SmsCaptureContext";
@@ -8,6 +8,8 @@ import type { CustomerProfile, SmsConversation, SmsInfo } from "../data/schema";
 import { withoutAgentQaSignals } from "../data/aiSignals";
 import { usePageData, DashAssistant } from "../components/GeneratedTiles";
 import { smsInfoAttribution } from "../data/salesforceLeadDetail";
+import { useSharedConversations, useConvParam, DemoFromLink } from "../data/sharedConversationsClient";
+import { isShareMode } from "../data/shareMode";
 
 /* The AI Agent glyph in the transcript/legend = the Invoca AI icon (same SVG as
    the sidebar Agent Studio icon), tinted Invoca purple (#855ede) — matches live. */
@@ -142,6 +144,11 @@ export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
      quote request" would put three threads there that no form ever produced. */
   const captured = only === "lsa" ? all.filter((c) => c.lsa) : all.filter((c) => !c.lsa);
   const seedBase = only === "lsa" ? [] : (report?.conversations ?? []);
+  /* What prospects texted on this demo's shared links, kept on the server (10/21/2026). */
+  const sharedRows = useSharedConversations<SmsConversation>(profile.id, "sms");
+  const shared = sharedRows
+    .map((r) => ({ ...r.conversation, sharedBy: r.email || "no email given" }))
+    .filter((c) => (only === "lsa" ? c.lsa : !c.lsa) && !captured.some((x) => x.id === c.id));
   /* ⚠️⚠️ THE CAPTURED CONVERSATIONS ARE REGISTERED DATA TOO (10/19/2026), the standing rule that Ask
      AI may change any data on any page. They used to be spliced in AFTER the registered value, so
      the conversation an SE just had could not be edited. Captured first (newest on top), then the
@@ -149,7 +156,7 @@ export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
      captured after an edit still appears (see liveMerge.ts).
      ⚠️ `withoutAgentQaSignals` runs on the BASE only: "(QA) …" signals do not apply to an AI
      conversation, but one somebody adds on purpose through Ask AI is theirs to keep. */
-  const baseJson = JSON.stringify(withoutAgentQaSignals([...captured, ...seedBase]).map((c) => {
+  const baseJson = JSON.stringify(withoutAgentQaSignals([...captured, ...shared, ...seedBase]).map((c) => {
     const name = `${c.smsInfo?.firstName ?? ""} ${c.smsInfo?.lastName ?? ""}`.trim();
     let marketingData;
     try { marketingData = smsInfoAttribution(profile, name); } catch { marketingData = undefined; }
@@ -166,10 +173,16 @@ export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
   const [tab, setTab] = useState<TabKey>("analysis");
 
   const selected = conversations.find((c) => c.id === selectedId) ?? firstActive;
+  /* A link from the event sheet's Activity tab names the conversation to open (10/21/2026). */
+  const convParam = useConvParam();
+  useEffect(() => {
+    if (convParam && conversations.some((c) => c.id === convParam)) setSelectedId(convParam);
+  }, [convParam, conversations.map((c) => c.id).join("|")]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if ((only === "lsa" || !report) && captured.length === 0) {
+  if ((only === "lsa" || !report) && captured.length === 0 && shared.length === 0) {
     return (
       <div className="report-surface">
+        {!isShareMode() && <DemoFromLink />}
         <div className="placeholder">
           <h2>{only === "lsa" ? "No quote-request conversations" : "No SMS conversations"}</h2>
           {/* ⚠️ The (LSA) row only lists once a thread exists, so this is the typed-the-URL
@@ -187,6 +200,7 @@ export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
 
   return (
     <div className="ci-page sci-page">
+      {!isShareMode() && <DemoFromLink />}
       <div className="breadcrumb">
         <Link to="/reports">My Reports</Link>
         <span className="sep">&rsaquo;</span>
@@ -230,6 +244,7 @@ export function SmsConversationIntelligence({ only }: { only?: "lsa" } = {}) {
               >
                 <div className="ci-call-time">{c.time}</div>
                 <div className="ci-call-id">{c.id}</div>
+                {(c as { sharedBy?: string }).sharedBy && <div className="sci-shared-by">Shared demo · {(c as { sharedBy?: string }).sharedBy}</div>}
               </button>
             ))}
           </div>

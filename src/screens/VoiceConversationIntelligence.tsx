@@ -1,7 +1,9 @@
-import { useState, useMemo } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { useProfile } from "../data/ProfileContext";
 import { useVoiceCapture } from "../data/VoiceCaptureContext";
+import { useSharedConversations, useConvParam, DemoFromLink } from "../data/sharedConversationsClient";
+import { isShareMode } from "../data/shareMode";
 import { Pill } from "../components/Pill";
 import { AgentStudioIcon } from "../components/nav";
 import type { VoiceConversation, VoiceInfo } from "../data/schema";
@@ -91,10 +93,15 @@ export function VoiceConversationIntelligence() {
      edits made ON THIS PAGE overlaid (see usePageData). */
   const report = profile.reports.voiceConversationIntelligence;
   const captured = capturedFor(profile.id);
+  /* What prospects said on this demo's shared links, kept on the server (10/21/2026). */
+  const sharedRows = useSharedConversations<VoiceConversation>(profile.id, "voice");
+  const shared = sharedRows
+    .map((r) => ({ ...r.conversation, sharedBy: r.email || "no email given" }))
+    .filter((c) => !captured.some((x) => x.id === c.id));
   /* ⚠️ CAPTURED CALLS ARE REGISTERED DATA TOO (10/19/2026), the standing rule that Ask AI may change
      any data on any page; `live`, so a call captured after an edit still appears (liveMerge.ts).
      `withoutAgentQaSignals` runs on the BASE only, so a "(QA)" signal added on purpose is kept. */
-  const baseJson = JSON.stringify(withoutAgentQaSignals([...captured, ...(report?.conversations ?? [])]));
+  const baseJson = JSON.stringify(withoutAgentQaSignals([...captured, ...shared, ...(report?.conversations ?? [])]));
   const base = useMemo(() => ({ ...(report ?? {}), title: "AI Voice Conversation Intelligence", conversations: JSON.parse(baseJson) as VoiceConversation[] }), [report, baseJson]);
   const view = usePageData(base, { live: true });
   // Captured calls accumulate at the top (newest first); seed examples fill in
@@ -106,10 +113,16 @@ export function VoiceConversationIntelligence() {
   const [tab, setTab] = useState<TabKey>("analysis");
 
   const selected = conversations.find((c) => c.id === selectedId) ?? firstActive;
+  /* A link from the event sheet's Activity tab names the conversation to open (10/21/2026). */
+  const convParam = useConvParam();
+  useEffect(() => {
+    if (convParam && conversations.some((c) => c.id === convParam)) setSelectedId(convParam);
+  }, [convParam, conversations.map((c) => c.id).join("|")]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (!report && captured.length === 0) {
+  if (!report && captured.length === 0 && shared.length === 0) {
     return (
       <div className="report-surface">
+        {!isShareMode() && <DemoFromLink />}
         <div className="placeholder"><h2>No voice conversations</h2>
           <p className="muted">This report isn't set up for {profile.customerName} yet.</p></div>
       </div>
@@ -118,6 +131,7 @@ export function VoiceConversationIntelligence() {
 
   return (
     <div className="ci-page sci-page vci-page">
+      {!isShareMode() && <DemoFromLink />}
       <div className="breadcrumb">
         <Link to="/reports">My Reports</Link>
         <span className="sep">&rsaquo;</span>
@@ -161,6 +175,7 @@ export function VoiceConversationIntelligence() {
               >
                 <div className="ci-call-time">{c.time}</div>
                 <div className="ci-call-id">{c.id}</div>
+                {(c as { sharedBy?: string }).sharedBy && <div className="sci-shared-by">Shared demo · {(c as { sharedBy?: string }).sharedBy}</div>}
               </button>
             ))}
           </div>

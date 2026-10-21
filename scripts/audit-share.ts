@@ -1531,6 +1531,67 @@ console.log("\nActivity tracking\n");
     : bad("the company-address check runs after the budget or the record");
 }
 
+console.log("\nShared-demo conversations are kept and linked from the sheet (10/21/2026)\n");
+{
+  const C = await import("../engine/sharedConversations.ts");
+  const DA = await import("../engine/demoApi.ts");
+  const SA = await import("../engine/sheetActivity.ts");
+  D.saveDemo({ id: "conv-demo", prospect: "Conv Co", industry: "x", createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(), creator: { name: "SE", email: "se@invoca.com" },
+    profile: { id: "conv-demo", customerName: "Conv Co" } } as never);
+  const sh = S.createShare({ demoId: "conv-demo", prospect: "Conv Co", createdBy: "se@invoca.com", days: 7, password: "ConvCo1" });
+  const u = (await A.handleShareApi("POST", `/api/share/${sh.token}/unlock`, { password: "ConvCo1", email: "buyer@convco.com" }, {}))!;
+  const c2 = { [A.cookieNameFor(sh.token)]: u.setCookie!.value };
+  const conv = { id: "C1-TEST", time: "now", active: true, transcript: [{ speaker: "consumer", time: "1", text: "hi" }], signals: [] };
+  const post = (body: unknown, cookies = c2) => A.handleShareApi("POST", `/api/share/${sh.token}/conversation`, body as never, cookies);
+
+  (await post({ kind: "sms", conversation: conv }, {}))!.status === 401
+    ? ok("a conversation is refused without the unlock cookie") : bad("a locked link accepted a conversation");
+  (await post({ kind: "sms", conversation: conv }))!.status === 200
+    ? ok("an unlocked prospect's conversation is saved") : bad("an unlocked prospect's conversation was refused");
+  const saved = C.listSharedConversations("conv-demo", "sms");
+  saved.length === 1 && saved[0].email === "buyer@convco.com" && saved[0].demoId === "conv-demo"
+    ? ok("it is filed under the share's own demo, attributed to the address that unlocked it")
+    : bad(`saved as ${JSON.stringify(saved.map((x) => [x.demoId, x.email]))}`);
+  await post({ kind: "sms", conversation: { ...conv, demoId: "rival-corp" } });
+  C.listSharedConversations("rival-corp").length === 0
+    ? ok("a body naming another demo cannot file a conversation there") : bad("a conversation landed under another demo");
+  (await post({ kind: "sms", conversation: { ...conv, id: "../../etc/passwd" } }))!.status === 400
+    ? ok("an unsafe conversation id is refused") : bad("an unsafe id was accepted");
+  await post({ kind: "sms", conversation: { ...conv, transcript: [...conv.transcript, { speaker: "agent", time: "2", text: "hello" }] } });
+  C.listSharedConversations("conv-demo", "sms")[0].conversation.transcript.length === 2 && C.listSharedConversations("conv-demo", "sms").length === 1
+    ? ok("a later turn updates the same record rather than adding one") : bad("an update duplicated or lost the conversation");
+
+  S.revokeShare?.(sh.token);
+  C.listSharedConversations("conv-demo", "sms").length === 1
+    ? ok("conversations are kept after the link is revoked or expires") : bad("revoking the link lost its conversations");
+
+  const admin = { email: "ddesai@invoca.com", name: "D" }, owner = { email: "se@invoca.com", name: "SE" }, other = { email: "x@invoca.com", name: "X" };
+  const read = async (user: { email: string; name: string }) =>
+    ((await DA.handleDemoApi("GET", "/api/demos/conv-demo/shared-conversations?kind=sms", undefined, user))!.body as { conversations: unknown[] }).conversations.length;
+  (await read(admin)) === 1 && (await read(owner)) === 1 && (await read(other)) === 0
+    ? ok("admins and the demo's owner can read them; nobody else") : bad("the read route exposes conversations to the wrong people");
+
+  const rec2 = { demoId: "conv-demo", prospect: "Conv Co", users: [{ email: "buyer@convco.com", opened: 1, sms: 1, voice: 0, firstAt: "2026-10-21T10:00:00Z", lastAt: "2026-10-21T10:05:00Z" }] };
+  const lines = SA.activityLines([rec2 as never], (id: string) => C.listSharedConversations(id), "https://env-invoca.net");
+  const row = lines.find((l: { conv?: boolean }) => l.conv);
+  row?.link === "https://env-invoca.net/reports/sms-conversation-intelligence?demo=conv-demo&conv=C1-TEST" && lines.indexOf(row) === 2
+    ? ok("the Activity tab lists the conversation under its person with a link to that exact conversation")
+    : bad(`activity lines: ${JSON.stringify(lines)}`);
+  const sheets = fs.readFileSync("engine/sheetsApi.ts", "utf8");
+  /link: \{ uri: l\.link \}/.test(sheets) && !/HYPERLINK/.test(sheets.replace(/\/\*[\s\S]*?\*\//g, ""))
+    ? ok("the link is rich text, never a formula (values stay RAW)") : bad("the sheet link is written as a formula");
+
+  const client = ["src/data/SmsCaptureContext.tsx", "src/data/VoiceCaptureContext.tsx"].map((f) => fs.readFileSync(f, "utf8"));
+  client.every((src) => /for \(const e of store\[profileId\] \?\? \[\]\)/.test(src) && /if \(!isShareMode\(\)\) return;/.test(src))
+    ? ok("the shared page sends only the shared demo's own conversations, and only on a shared link")
+    : bad("the capture sync can send another prospect's conversations, or runs in the signed-in app");
+  const reports = ["src/screens/SmsConversationIntelligence.tsx", "src/screens/VoiceConversationIntelligence.tsx"].map((f) => fs.readFileSync(f, "utf8"));
+  reports.every((src) => /useSharedConversations/.test(src) && /useConvParam\(\)/.test(src) && /\{!isShareMode\(\) && <DemoFromLink \/>\}/.test(src))
+    ? ok("both reports show the saved conversations, open ?conv=, and switch demos only in the signed-in app")
+    : bad("a report is missing the saved conversations, the deep link, or the share-mode guard");
+}
+
 fs.rmSync(process.env.DATA_DIR!, { recursive: true, force: true });
 /* ⚠️⚠️ A shared demo keeps EVERY conversation in its AI SMS and AI Voice reports (10/14/2026):
    no 7-day expiry and no 25 cap on a share, while the signed-in limits stay as they were. */

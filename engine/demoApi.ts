@@ -31,7 +31,8 @@
    ============================================================================= */
 
 import { type DemoRecord, deleteDemo, getDemo, listDemos, saveDemo, uniqueId } from "./demoStore.ts";
-import { isAdminEmail } from "./admins.ts";
+import { isAdminEmail, canShareEmail } from "./admins.ts";
+import { listSharedConversations } from "./sharedConversations.ts";
 import { pendingAdminNotice, ackAdminNotice } from "./adminNotices.ts";
 import { MARK_STATUSES, MARK_LABEL, isMarkStatus, listMarks, markDemo, marksFor, unmarkDemo } from "./demoMarks.ts";
 import { listEventSettings, setEventSheet, setEventSpreadsheet, isEventKey, eventSettings } from "./eventSettings.ts";
@@ -67,6 +68,8 @@ const owns = (rec: DemoRecord, user: DemoUser) =>
 export { adminEmails } from "./admins.ts";
 
 export const isAdmin = (user: DemoUser) => isAdminEmail(user.email);
+/** Admins and the named sharers may share any demo (engine/admins.ts). */
+export const canShare = (user: DemoUser) => canShareEmail(user.email);
 
 /* The single write rule. Both PATCH and DELETE go through this so they can never
    drift apart. */
@@ -132,7 +135,7 @@ export async function handleDemoApi(
   const p = urlPath.split("?")[0].replace(/\/+$/, "");
 
   if (p === "/api/me" && method === "GET")
-    return ok({ user, admin: isAdmin(user), adminNotice: pendingAdminNotice(user.email) });
+    return ok({ user, admin: isAdmin(user), canShare: canShare(user), adminNotice: pendingAdminNotice(user.email) });
 
   /* ⚠️ ONE-TIME "you're now an admin" popup — see adminNotices.ts. Its own route
      rather than folding the ack into a PATCH somewhere, because dismissing it is
@@ -144,7 +147,7 @@ export async function handleDemoApi(
 
   if (p === "/api/demos") {
     if (method === "GET")
-      return ok({ demos: listDemos(), user, admin: isAdmin(user), adminNotice: pendingAdminNotice(user.email) });
+      return ok({ demos: listDemos(), user, admin: isAdmin(user), canShare: canShare(user), adminNotice: pendingAdminNotice(user.email) });
     if (method === "POST") {
       const profile = body?.profile;
       if (!profile?.customerName) return err(400, "A generated profile is required.");
@@ -295,6 +298,18 @@ export async function handleDemoApi(
       return d ? [{ ...m, prospect: d.prospect, industry: d.industry, event: d.event }] : [];
     });
     return ok({ marks, admin: isAdmin(user), scope: wantsAll ? "all" : "mine" });
+  }
+
+  /* GET /api/demos/:id/shared-conversations?kind=sms|voice (10/21/2026): the conversations
+     prospects had on this demo's shared links, kept forever, for the AI SMS / Voice reports and
+     the event sheet's links. Admins and the demo's owner, like the share links themselves. */
+  const convRoute = p.match(/^\/api\/demos\/([^/]+)\/shared-conversations$/);
+  if (convRoute && method === "GET") {
+    const rec = getDemo(convRoute[1]);
+    if (!rec) return err(404, "Demo not found.");
+    if (!isAdmin(user) && !owns(rec, user)) return ok({ conversations: [] });
+    const kind = /[?&]kind=voice\b/.test(urlPath) ? "voice" : /[?&]kind=sms\b/.test(urlPath) ? "sms" : undefined;
+    return ok({ conversations: listSharedConversations(rec.id, kind) });
   }
 
   const match = /^\/api\/demos\/([^/]+)(\/duplicate|\/mark|\/rep)?$/.exec(p);

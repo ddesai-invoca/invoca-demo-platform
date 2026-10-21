@@ -1,6 +1,7 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
-import { reportShareActivity } from "./shareActivity";
+import { createContext, useContext, useEffect, useState, type ReactNode, useRef } from "react";
+import { reportShareActivity, sendSharedConversation } from "./shareActivity";
 import { isShareMode } from "./shareMode";
+import { useProfile } from "./ProfileContext";
 import type { SmsConversation } from "./schema";
 
 /* Holds SMS conversations captured live from the Preview Agent, keyed by prospect
@@ -72,6 +73,27 @@ export function SmsCaptureProvider({ children }: { children: ReactNode }) {
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
+
+  /* On a shared demo, every conversation is also sent to the server (10/21/2026), so the event
+     sheet can link to it. Only ones that changed since they were last sent, a second after the
+     latest change, so a burst of turns and the signals that follow go as one. */
+  /* ⚠️ ONLY THE SHARED DEMO'S OWN CONVERSATIONS. The store is per browser and keyed by
+     prospect, so an Invoca employee testing a link in their own browser also holds captures
+     from other demos; sending every key filed one prospect's conversation under another. */
+  const { profileId } = useProfile();
+  const sent = useRef(new Map<string, string>());
+  useEffect(() => {
+    if (!isShareMode()) return;
+    const t = setTimeout(() => {
+      for (const e of store[profileId] ?? []) {
+        const json = JSON.stringify(e.conv);
+        if (sent.current.get(e.conv.id) === json) continue;
+        sent.current.set(e.conv.id, json);
+        sendSharedConversation("sms", e.conv);
+      }
+    }, 1000);
+    return () => clearTimeout(t);
+  }, [store, profileId]);
 
   const capturedFor = (profileId: string) => (store[profileId] ?? []).map((e) => e.conv);
 

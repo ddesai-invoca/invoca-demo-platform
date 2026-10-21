@@ -26,6 +26,7 @@ import { DEFAULT_SHARE_DAYS } from "../src/data/shareDefaults.ts";
 import { getShare, passwordMatches, shareActive, noteOpen, noteRequest, expiresAt, type ShareRecord } from "./shareStore.ts";
 import { sendMail, sharePasswordEmail } from "./mailer.ts";
 import { recordActivity } from "./activityStore.ts";
+import { saveSharedConversation } from "./sharedConversations.ts";
 import { queueActivitySync } from "./sheetActivity.ts";
 import { codeForEmail, emailForCode, isMasterPassword, MASTER_WHO } from "./shareCodes.ts";
 import { sharePassword } from "../src/data/sharePassword.ts";
@@ -277,6 +278,20 @@ export async function handleShareApi(
     queueActivitySync(rec.demoId);
     /* ⚠️ 204-shaped: the page is mid-demo and has nothing to do with the answer. */
     return { status: 200, body: { ok: true } };
+  }
+
+  /* The conversation itself, so the event sheet can link to it in the app (10/21/2026). The
+     page posts it as it changes; the demo id comes from the RECORD, never the body. */
+  if (method === "POST" && leaf === "/conversation") {
+    if (!unlocked(cookies, token)) return { status: 401, body: { error: "This demo is locked." } };
+    if (!shareActive(rec)) return gone(rec);
+    const kind = body?.kind === "voice" ? "voice" : body?.kind === "sms" ? "sms" : null;
+    if (!kind) return { status: 400, body: { error: "kind must be sms or voice." } };
+    const saved = saveSharedConversation({
+      demoId: rec.demoId, prospect: rec.prospect, email: unlockedAs(cookies, token), kind, conversation: body?.conversation,
+    });
+    if (saved) queueActivitySync(rec.demoId);
+    return { status: saved ? 200 : 400, body: saved ? { ok: true } : { error: "That conversation could not be saved." } };
   }
 
   /* Everything past here needs the password to have been accepted. */
