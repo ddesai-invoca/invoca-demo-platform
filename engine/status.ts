@@ -71,6 +71,9 @@ export interface StatusInput {
    * prospect or a URL, and this route is PUBLIC. `audit:alerts` asserts that.
    */
   alerts: unknown;
+  /* SMS agent activity (engine/chatActivity.ts), passed in like every other field. COUNTS
+     ONLY: this endpoint is public. Answers "is anybody mid-chat?" before a push. */
+  activity: unknown;
 }
 
 export function deployStatus(input: StatusInput) {
@@ -108,6 +111,7 @@ export function deployStatus(input: StatusInput) {
      * failing right now", without a session and without naming anybody.
      */
     alerts: input.alerts,
+    activity: input.activity,
     integrations: {
       anthropicKey: input.anthropicKey,
       /* Whether feedback completion emails can send. A BOOLEAN, never the address:

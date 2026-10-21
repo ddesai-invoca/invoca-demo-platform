@@ -578,6 +578,7 @@ function statusApi(): Plugin {
           )
           const { authEnabled } = await import(pathToFileURL(path.resolve(process.cwd(), 'googleAuth.ts')).href)
           const { alertSummary } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/alerts.ts')).href)
+          const { chatActivity } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/chatActivity.ts')).href)
           const env = loadEnv('development', process.cwd(), '')
           res.statusCode = 200
           res.setHeader('Content-Type', 'application/json')
@@ -595,6 +596,7 @@ function statusApi(): Plugin {
             salesforceConfigured: salesforceConfigured(),
             authGate: authEnabled,
             alerts: alertSummary(),
+            activity: chatActivity(),
           })))
         } catch (e: any) {
           console.error('[status] failed:', e)

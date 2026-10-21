@@ -42,6 +42,7 @@ import { mailConfigured } from "./engine/mailer.ts";
 import { DATA_DIR, isPersistent, getDemo } from "./engine/demoStore.ts";
 import { readGeneratedProfiles } from "./engine/generatedProfiles.ts";
 import { alert, alertSummary, type AlertLevel } from "./engine/alerts.ts";
+import { chatActivity } from "./engine/chatActivity.ts";
 import { runWithUser } from "./engine/requestUser.ts";
 import { describeUser } from "./engine/reporter.ts";
 import { canonicalRedirect } from "./engine/canonicalHost.ts";
@@ -156,6 +157,7 @@ app.get("/api/status", (_req, res) => res.json(deployStatus({
      `alertSummary()` is built for this endpoint and carries no message text — see the
      note on StatusInput.alerts. */
   alerts: alertSummary(),
+  activity: chatActivity(),
 })));
 
 /* ---- A BROKEN SCREEN REPORTS ITSELF (9/16/2026) -----------------------------

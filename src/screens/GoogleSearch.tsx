@@ -7,6 +7,7 @@ import { StandaloneAi } from "../components/StandaloneAi";
 import { useLocationOverride } from "../data/locationOverride";
 import { useQuoteCaptures } from "../data/QuoteCaptureContext";
 import { bookingPath } from "../data/bookingPath";
+import { rcsDeepLink } from "../data/rcsDeepLinks";
 import { useBookingOverride, type BookingOverride } from "../data/bookingOverride";
 import {
   derive, trackedSiteUrl, tileXY, MAPBOX_TOKEN, Z, TS,
@@ -284,6 +285,7 @@ function Favicon({ ad }: { ad: Ad }) {
 }
 
 function AdBlock({ ad }: { ad: Ad }) {
+  const { profile } = useProfile();
   /* The headline is a real link ONLY for the prospect. The rivals keep the
      styling so the block reads right, but they go nowhere. */
   return (
@@ -335,13 +337,21 @@ function AdBlock({ ad }: { ad: Ad }) {
             <span className="gs-rcs-chat-sub">On Messages</span>
           </span>
           {/* Same tab, straight into the conversation (asked 10/15/2026); `from=google` is what
-              lets the preview's close button come back here instead of closing a tab. */}
-          <Link className="gs-rcs-msg" to={ad.chat.href}>
-            <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="#8ab4f8" d="M12 3C6.48 3 2 6.92 2 11.75c0 2.47 1.18 4.7 3.08 6.29L4.4 21.3a.5.5 0 0 0 .72.55l3.9-2.02c.95.24 1.95.37 2.98.37 5.52 0 10-3.92 10-8.75S17.52 3 12 3z" />
-            </svg>
-            Message
-          </Link>
+              lets the preview's close button come back here instead of closing a tab.
+              ⚠️ A prospect with its OWN RCS agent (iTelecom, 10/20/2026) gets a real `sms:`
+              deep link instead — see src/data/rcsDeepLinks.ts. Decided here at render, not in
+              the ad data, so a saved Ask AI edit of the ad cannot carry the old link. */}
+          {(() => {
+            const icon = (
+              <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="#8ab4f8" d="M12 3C6.48 3 2 6.92 2 11.75c0 2.47 1.18 4.7 3.08 6.29L4.4 21.3a.5.5 0 0 0 .72.55l3.9-2.02c.95.24 1.95.37 2.98.37 5.52 0 10-3.92 10-8.75S17.52 3 12 3z" />
+              </svg>
+            );
+            const deep = rcsDeepLink(profile);
+            return deep
+              ? <a className="gs-rcs-msg" href={deep}>{icon}Message</a>
+              : <Link className="gs-rcs-msg" to={ad.chat.href}>{icon}Message</Link>;
+          })()}
         </div>
       )}
 

@@ -19,6 +19,7 @@ import { slotTable } from "../src/data/voiceBooking.ts";
 import { servesPatients } from "./careVocab.ts";
 import { intentCopyFor } from "../src/data/prospectIntent.ts";
 import { INTENT_SUPPORT } from "../src/data/workflowIntents.ts";
+import { noteSmsReply } from "./chatActivity.ts";
 
 const CHAT_MODEL = "claude-haiku-4-5-20251001";
 
@@ -1341,6 +1342,9 @@ export async function chatReply(
     .map((b: any) => b.text)
     .join("")
     .trim();
+  /* For the pre-push check: is anybody mid-chat with an SMS agent? Counts only; see
+     engine/chatActivity.ts. Voice and Show Reasoning turns are not SMS conversations. */
+  if (!voice && !brain.diagnose) noteSmsReply(brain.customerName, messages);
   return stripDashes(text) || "…";
 }
 

@@ -11027,6 +11027,17 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### SMS agent activity on /api/status, for the pre-push check (10/20/2026)
+The user's standing rule: before any production push, confirm no SMS or voice agent is in use.
+Voice is `lk room list`; SMS was invisible, so `engine/chatActivity.ts` now notes each SMS reply
+(inside `chatReply`, so all three chat routes count; voice and Show Reasoning turns do not) and
+`/api/status` reports `activity: { smsRepliesLast10Min, smsConversationsLast10Min,
+lastSmsReplySecondsAgo }`. ⚠️ Counts only, on a PUBLIC endpoint: a conversation is a 12-char
+hash of prospect + the customer's first message, never the text. ⚠️ Keyed on the FIRST
+CUSTOMER message, not the first two messages: with a generated opener the first two change as
+the chat grows and one chat counted as two (caught on the real endpoint; `audit:app` has 5
+checks and that sabotage fires). In memory, so a deploy empties it.
+
 ### Integrations rebuilt to Invoca's NEW page, with tag filtering (10/20/2026)
 Asked for with a capture (`reference/integrations-v2.html`) and a screen recording of the
 filtering. `src/screens/Integrations.tsx` (header lists every measured value) + `.itg-*`.
@@ -12001,6 +12012,11 @@ Google result) sits under the call line of the prospect's TOP ad only and its Me
 while the "<name> - RCS" workflow row is still listed for Aptive only: the Preview Agent derives
 its RCS title and base from the slug (`isRcsSlug`), not from the copy existing. Widening the
 listing is one entry in `SHOW_FOR`.
+⚠️ **A PROSPECT WITH ITS OWN REAL RCS AGENT GETS A REAL DEEP LINK (10/20/2026):** iTelecom's
+Message button is an `sms:+18447096720?service_id=itelecom_…@rbm.goog&body=…` link
+(`src/data/rcsDeepLinks.ts`, matched by NAME via `isProspect`), which opens its actual Google
+Messages agent on a phone instead of our preview. Decided at render in `AdBlock`, not in the ad
+data, so a saved Ask AI edit cannot keep the old link. Every other prospect is unchanged.
 ⚠️ It found a pre-existing grammar bug: `twoPathGreeting` and the ad body said "book a
 appointment" for every vowel-initial booking term. `withArticle` fixes both; `legacyTwoPathGreeting`
 keeps a copy that STORED the old wording recognised as the default.

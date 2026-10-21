@@ -1028,5 +1028,34 @@ console.log("\nThe RCS sender avatar is the prospect's own logo (10/19/2026)\n")
     "the brand name is sent for logo matching, and initials remain only for an image that will not load");
 }
 
+/* ---- SMS agent activity for the pre-push check (10/20/2026) ---- */
+console.log("\nSMS agent activity (engine/chatActivity.ts)");
+{
+  const { noteSmsReply, chatActivity, resetChatActivity } = await import("../engine/chatActivity.ts");
+  resetChatActivity();
+  const t0 = 1_000_000;
+  noteSmsReply("Test Co", [{ role: "user", content: "hi there" }], t0);
+  noteSmsReply("Test Co", [{ role: "assistant", content: "Hi, I'm the agent" }, { role: "user", content: "hi there" },
+    { role: "assistant", content: "hello" }, { role: "user", content: "ants" }], t0 + 1000);
+  noteSmsReply("Other Co", [{ role: "user", content: "a different chat" }], t0 + 2000);
+  const a = chatActivity(t0 + 5000);
+  a.smsRepliesLast10Min === 3 && a.smsConversationsLast10Min === 2 && a.lastSmsReplySecondsAgo === 3
+    ? ok("counts replies and CONVERSATIONS (one chat's later turns stay one conversation), and how long since the last")
+    : bad(`activity counts are wrong: ${JSON.stringify(a)}`);
+  const later = chatActivity(t0 + 11 * 60_000);
+  later.smsRepliesLast10Min === 0 && later.lastSmsReplySecondsAgo === null
+    ? ok("activity older than ten minutes drops out") : bad("old activity never expires");
+  !/Test Co|hi there|ants/.test(JSON.stringify(a)) ? ok("the public counts carry no prospect name or message text")
+    : bad("the activity summary leaks a name or message (it is on the PUBLIC /api/status)");
+  resetChatActivity();
+  const chat = readFileSync("engine/chat.ts", "utf8");
+  /if \(!voice && !brain\.diagnose\) noteSmsReply\(brain\.customerName, messages\);/.test(chat)
+    ? ok("recorded inside chatReply, for SMS replies only (not voice, not Show Reasoning)")
+    : bad("chatReply no longer records SMS activity, or records voice/reasoning turns");
+  /activity: chatActivity\(\)/.test(readFileSync("server.ts", "utf8")) && /activity: chatActivity\(\)/.test(readFileSync("vite.config.ts", "utf8"))
+    ? ok("both servers put the activity counts on /api/status")
+    : bad("a server does not report SMS activity on /api/status");
+}
+
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll app-chrome checks passed\n");
 process.exit(fail ? 1 : 0);
