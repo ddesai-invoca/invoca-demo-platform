@@ -233,7 +233,7 @@ export function VoiceConversationIntelligence() {
                     <div className="ci-signal" key={s.name}>
                       <span className="material-icons ci-sig-check">check_circle</span>
                       <span className="ci-sig-name">{s.name}</span>
-                      {s.badges.map((b) => <span className="ci-badge" key={b}>{b}</span>)}
+                      {/* No method tags (Rule, Keyword Spotting, Keypress) on the AI reports: asked for 10/21/2026. */}
                       {s.count > 0 && <span className="ci-sig-count">{s.count}</span>}
                       {s.count > 0 && <span className="material-icons ci-sig-caret">expand_more</span>}
                     </div>
