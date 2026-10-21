@@ -11027,6 +11027,41 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### SMS appointments end by saying HOW they happen (10/21/2026)
+Reported against Sylvan Learning: the agent confirmed a time and nothing else, then told the
+customer to meet at their own home address, then said somebody would call with the real one.
+Asked for: say how the appointment happens (a call at the time, a location and its address, or
+the customer's home), with better details. User's choices: **real address from Google**,
+**SMS and RCS only** (voice untouched). `src/data/appointmentMode.ts` is the spine.
+- **The mode comes from the prospect's own `smsPlaybook.bookingType`** ("in-home …", "in-office
+  …", "virtual consultation", "in-person or virtual …"), read from the EFFECTIVE config so an
+  edited booking type moves it: `home | location | phone | video | either`. A business that
+  works at the customer's address (home care, plumbing, pest, movers…) defaults to `home` when
+  the booking type names no place (Comfort Keepers' "Care Assessment"). Measured on all 19
+  bundled profiles: 6 home, 7 location, 2 phone, 4 either.
+- **The browser sends** the mode, the prospect's location names (`companyLocations`) and, for
+  phone/either, the SMS thread's own toll-free number (`tollFreeNumber`). **The server fills the
+  real address** (`withAppointmentPlace` in `engine/chat.ts`): Google Places by the customer's
+  latest ZIP, else by the first location row, through `fetchPlace`, whose name match refuses a
+  stranger's listing. Cached per query, so a conversation costs at most two lookups; the Places
+  key never reaches the browser. No match leaves the agent with the location names (name and
+  city, no invented street), which is the fictional prospects' case.
+- **`appointmentBlock`** ("HOW THE <TERM> HAPPENS") renders in every SMS flow and in the
+  custom-playbook branch (an LSA quote workflow), plus a step-5 pointer telling the agent to put
+  it in the confirming message. Step 5 no longer forbids "a callback number", which contradicted
+  a phone appointment. Voice is untouched (audited).
+- **The workflow matches**: the booking box's text (`inform.book`) carries the same sentence
+  (`howItHappensLine`). A box saved before this gains the line after its confirm line, keeping
+  an SE's other lines; a box an SE rewrote is left alone.
+- Verified with simulated customers on `/api/chat` (`scripts/test-appointment-endings.ts <id>
+  "<persona>"`): Denver Health gave "777 Bannock St, Denver, CO 80204" (real, from Places),
+  Cleveland Clinic its Main Campus at 9500 Euclid Ave, Aptive the customer's own address with an
+  arrival window, Goosehead and a virtual Cleveland Clinic visit a call from the thread's number,
+  and every "where do I go?" follow-up got the same answer. `audit:ai` has 12 checks; two
+  sabotages fire.
+- ⚠️ Pre-existing and left alone: the booking box's closing line says the customer "will get a
+  confirmation", which step 5 forbids promising.
+
 ### SMS agent activity on /api/status, for the pre-push check (10/20/2026)
 The user's standing rule: before any production push, confirm no SMS or voice agent is in use.
 Voice is `lk room list`; SMS was invisible, so `engine/chatActivity.ts` now notes each SMS reply

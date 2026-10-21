@@ -66,6 +66,14 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 
 export const RELEASES: Release[] = [
   {
+    date: "2026-10-21",
+    title: "SMS appointments say how they happen",
+    changes: [
+      i("When the SMS or RCS agent books an appointment, the confirmation now says how it happens: a specialist coming to the customer's home (with the address confirmed), the nearest location with its real street address from Google, a phone call at the booked time from the business's number, or a video link. Follow-up questions about where to go get the same answer. The workflow's booking box describes the same step."),
+      i("On a shared demo, the Invoca logo returns to Agent Studio, and the Details tab's Edit button and its links to campaigns and promo numbers are disabled."),
+    ],
+  },
+  {
     date: "2026-10-20",
     title: "Every prospect's agents follow their workflow, step by step",
     changes: [

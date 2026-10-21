@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RecordButton } from "./ScreenRecord";
-import { isShareMode } from "../data/shareMode";
+import { isShareMode, SHARE_LANDING } from "../data/shareMode";
 import { useProfile } from "../data/ProfileContext";
 import { useAiAssistant } from "../data/AiAssistantContext";
 
@@ -35,7 +35,9 @@ export function TopBar() {
       <button className="tb-burger" aria-label="Open menu" onClick={() => document.body.classList.toggle("nav-open")}>
         <span className="material-icons">menu</span>
       </button>
-      <Link to="/launch" aria-label="Launch a prospect">
+      {/* On a shared demo the logo goes home to Agent Studio (the share's landing page, asked
+          for 10/21/2026); the launch screen is not part of a prospect's demo. */}
+      <Link to={isShareMode() ? SHARE_LANDING : "/launch"} aria-label={isShareMode() ? "Go to Agent Studio" : "Launch a prospect"}>
         <img className="logo" src="/logo.png" alt="Invoca" />
       </Link>
       <span className="demo-badge">Demo<br />Network</span>

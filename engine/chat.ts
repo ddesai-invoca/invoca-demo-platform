@@ -20,6 +20,8 @@ import { servesPatients } from "./careVocab.ts";
 import { intentCopyFor } from "../src/data/prospectIntent.ts";
 import { INTENT_SUPPORT } from "../src/data/workflowIntents.ts";
 import { noteSmsReply } from "./chatActivity.ts";
+import type { AppointmentInfo } from "../src/data/appointmentMode.ts";
+import { fetchPlace } from "./places.ts";
 
 const CHAT_MODEL = "claude-haiku-4-5-20251001";
 
@@ -179,6 +181,15 @@ export interface ChatBrain {
    * it can show. See src/data/customCrm.ts.
    */
   crmCalendar?: { today: string; booking: string; days: { label: string; open: string[]; closed: boolean }[] };
+  /**
+   * HOW the booked appointment happens (10/21/2026): at the customer's home, at the location
+   * nearest them, by phone or by video. Reported against Sylvan Learning: the agent confirmed a
+   * time and nothing else, then told the customer to meet at their own address, then said
+   * somebody would call with the real one. SMS and RCS only. The browser sends the mode, the
+   * prospect's location names and the callback number; `place` is filled in by `chatReply`
+   * from Google Places, so the address is a real one. See src/data/appointmentMode.ts.
+   */
+  appointment?: AppointmentInfo;
   /** The voice counterpart for the "Voice Test" copy: every field a sales box collects is
    *  asked, in order (measured: a box's Consumer Email was skipped). 10/13/2026. */
   voiceWorkflowLeads?: boolean;
@@ -572,6 +583,66 @@ function dedupeQuestions(brain: ChatBrain, questions: string[]): string[] {
  * screen reads this conversation against the same table, so a time that is not listed is a time
  * the calendar cannot draw.
  */
+/**
+ * What the agent says about HOW the appointment happens (10/21/2026). Rendered in every SMS
+ * flow, beside the booking step, so the confirmation carries it. The workflow's booking box
+ * says the same thing (`howItHappensLine`), so the diagram and the agent agree.
+ */
+function appointmentBlock(brain: ChatBrain): string {
+  const a = brain.appointment;
+  if (!a) return "";
+  const term = brain.playbook?.bookingType?.trim() || "appointment";
+  const noun = (brain.customerNoun ?? "customer").toLowerCase();
+  const name = brain.customerName;
+  const locs = (a.locations ?? []).filter((l) => l && l.trim()).slice(0, 6);
+  const inPerson = a.place
+    ? `- In person at ${a.place.name}, ${a.place.address}${a.place.phone ? ` (phone ${a.place.phone})` : ""}. That is the location nearest them. Give the name and the full street address exactly as written here, and ask them to arrive about 10 minutes early.`
+    : locs.length
+      ? `- In person at the ${name} location nearest them. The locations are: ${locs.join("; ")}. If you have their ZIP code, name the nearest one; otherwise ask for their ZIP code first. Give its name and city, and ask them to arrive about 10 minutes early.`
+      : `- In person at the ${name} location nearest them. Ask for their ZIP code if you have not got it, give the location's name and city, and ask them to arrive about 10 minutes early.`;
+  const byPhone = `- By phone: a ${name} specialist calls them at the booked time${a.callbackNumber ? ` from ${a.callbackNumber}` : ""}. They only need to be free to pick up.`;
+  const lines: Record<AppointmentInfo["mode"], string[]> = {
+    home: [`- At their home: a ${name} specialist comes to them. Confirm the full street address it is at (ask for it before you confirm, if you have not got it), and give a two-hour arrival window that starts at the booked time.`],
+    location: [inPerson],
+    phone: [byPhone],
+    video: [`- By video: a join link is texted to this number at the start time, they tap it to join, and there is nothing to install.`],
+    either: [`- It can be in person or by phone. Ask which they prefer before you confirm, then use the matching line:`, inPerson, byPhone],
+  };
+  return [
+    `HOW THE ${term.toUpperCase()} HAPPENS (put this in the same message that confirms the day and time, so the ${noun} knows exactly where to be or what to expect):`,
+    ...lines[a.mode],
+    `- Give these details yourself and keep them the same for the rest of the conversation. If they ask where to go or how it works, answer with the same details again.`,
+  ].join("\n");
+}
+
+/** The customer's ZIP code, from what they have texted so far (the latest one wins). */
+function zipFrom(messages: ChatMessage[]): string | undefined {
+  let zip: string | undefined;
+  for (const m of messages) {
+    if (m.role !== "user" || typeof m.content !== "string") continue;
+    const all = m.content.match(/\b\d{5}\b/g);
+    if (all?.length) zip = all[all.length - 1];
+  }
+  return zip;
+}
+
+/**
+ * Fills `appointment.place` with the REAL location nearest the customer, from Google Places:
+ * by their ZIP code when they have given one, else by the prospect's first location. Places
+ * only accepts a listing whose name matches the prospect (`nameMatches`), so a stranger's
+ * address can never be handed out; no match leaves the agent with the location names.
+ * Cached per query in engine/places.ts, so a conversation costs at most two lookups.
+ */
+async function withAppointmentPlace(brain: ChatBrain, messages: ChatMessage[]): Promise<ChatBrain> {
+  const a = brain.appointment;
+  if (!a || (a.mode !== "location" && a.mode !== "either") || a.place) return brain;
+  const zip = zipFrom(messages);
+  const found = (zip ? await fetchPlace(brain.customerName, zip) : null)
+    ?? (a.locations?.[0] ? await fetchPlace(brain.customerName, a.locations[0]) : null);
+  if (!found?.address) return brain;
+  return { ...brain, appointment: { ...a, place: { name: found.name || brain.customerName, address: found.address, phone: found.phone } } };
+}
+
 function crmBlock(cal: NonNullable<ChatBrain["crmCalendar"]>): string {
   const rows = cal.days.map((d, i) =>
     `   ${d.label}: ${d.closed ? "closed" : i === 0 ? "no openings left today" : d.open.length ? d.open.join(", ") : "fully booked"}`);
@@ -605,7 +676,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     /* The CRM's live openings reach a custom playbook too (an LSA quote request, say), or the CRM
        beside the phone would show times the agent never offered. */
     return [brain.customSystem, stepsBlock(brain), flowBlock, overrideBlock(brain),
-      brain.crmCalendar ? crmBlock(brain.crmCalendar) : "", SMS_FORMAT_RULES]
+      brain.crmCalendar ? crmBlock(brain.crmCalendar) : "", appointmentBlock(brain), SMS_FORMAT_RULES]
       .filter(Boolean).join("\n\n");
   }
   const rules = (brain.rules ?? []).map((r) => `- ${r}`).join("\n");
@@ -725,7 +796,9 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
        ⚠️ Absent/false is the default because nothing in this platform sends one. */
     promisesReminder
       ? `5. Confirm: once they agree, restate the confirmed ${bookingType} day and time, tell them they'll get a reminder text shortly before with a number to call, and thank them for choosing ${brain.customerName}.`
-      : `5. Confirm: once they agree, restate the confirmed ${bookingType} day and time and thank them for choosing ${brain.customerName}. Do NOT promise a reminder text, a confirmation text, or a callback number — nothing sends one.`,
+      : `5. Confirm: once they agree, restate the confirmed ${bookingType} day and time and thank them for choosing ${brain.customerName}. Do NOT promise a reminder text or a confirmation text — nothing sends one.`,
+    /* HOW it happens goes in that same confirmation (10/21/2026); the block is below. */
+    ...(brain.appointment ? [`   In that same message, say how the ${bookingType} happens, as HOW THE ${bookingType.toUpperCase()} HAPPENS below describes.`] : []),
     ``,
     `STYLE:`,
     `- NEVER use emojis.`,
@@ -751,6 +824,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     qa ? `\nAPPROVED Q&A (use these as ground truth for common questions):\n${qa}` : ``,
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,
     brain.crmCalendar ? `\n${crmBlock(brain.crmCalendar)}` : ``,
+    brain.appointment ? `\n${appointmentBlock(brain)}` : ``,
     brain.workflowLeads && brain.workflow ? `\n${OPTIONS_CHECK}` : ``,
     brain.rcs ? `\n${rcsRules(brain.customerName)}` : ``,
   ].join("\n");
@@ -1329,6 +1403,9 @@ export async function chatReply(
     : [{ role: "user", content: voice
         ? "(A caller just picked up the phone. Speak step 1 (OPEN) out loud: greet them as the AI assistant and ask whether they need help with a new order or an existing order / support. Keep it to 1–2 spoken sentences. Do NOT ask a qualifying question yet.)"
         : "(A new customer just texted in. Send step 1 of the conversation flow: introduce yourself, mention any current offer, and ask if they'd like to get started. Do NOT ask a qualifying question yet.)" }];
+
+  /* The real address of the location nearest the customer, for an in-person appointment. */
+  if (!voice && brain.appointment) brain = await withAppointmentPlace(brain, messages);
 
   const resp = await client.messages.create({
     model: CHAT_MODEL,

@@ -5,6 +5,8 @@ import { withoutReminderPromise } from "./agentDefaults";
 import type { CustomerProfile } from "./schema";
 import { INTENT_SALES, INTENT_SUPPORT, SUPPORT_LEAF, LEAF_QUALIFY, LEAF_ESCALATE } from "./workflowChrome";
 import { deriveUseCases, voiceVocab } from "./voiceUseCases";
+import { appointmentMode, howItHappensLine } from "./appointmentMode";
+import { tollFreeNumber } from "./smsContactNumber";
 
 /* =============================================================================
    smsTemplate.ts — the built-in SMS workflow, for every prospect
@@ -340,6 +342,7 @@ export function informCopy(p: CustomerProfile): SmsConfig["inform"] {
       `Once the qualifying answers are in, offer two specific days and times for the ${p.bookingTerm.toLowerCase()} and let them pick.`,
       `Ask for their full name once if you do not already have it, and split it into first and last yourself.`,
       `Confirm the day, time and what the ${p.bookingTerm.toLowerCase()} is for back to them in one message.`,
+      bookHowLine(p),
       `Close warmly, thank them for choosing ${p.customerName}, and let them know they will get a confirmation.`,
     ].join("\n"),
     serviceableYes: [
@@ -682,6 +685,17 @@ export function smsBranches(p: CustomerProfile): TreeBranch[] {
    `WorkflowChatPreview`, `AgentWorkflow`); they now share one definition, so a
    fourth cannot quietly skip the repair.
    ============================================================================= */
+/** The booking box's "how it happens" line (10/21/2026), from the playbook's booking type. The
+ *  agent is told the same thing by engine/chat.ts `appointmentBlock`, so the box and the agent agree. */
+function bookHowLine(p: CustomerProfile): string {
+  const mode = appointmentMode(p.reports.agentConfig?.smsPlaybook?.bookingType || p.bookingTerm, p.industry);
+  return howItHappensLine(mode, p.bookingTerm, tollFreeNumber(p.id));
+}
+
+/* A booking box saved before 10/21/2026 has no "how it happens" line. Its confirm line is the
+   template's own, so the how line goes in right after it; an SE's other lines are kept. */
+const CONFIRM_LINE = /^Confirm the day, time and what the .+ is for back to them in one message\.$/;
+
 export function effectiveSmsConfig(p: CustomerProfile, sms: object | undefined): SmsConfig {
   const base = smsConfigFor(p);
   const cfg = { ...base, ...(sms ?? {}) } as SmsConfig;
@@ -691,6 +705,12 @@ export function effectiveSmsConfig(p: CustomerProfile, sms: object | undefined):
      nothing, on exactly the demos most likely to be set up already. Same reasoning as spreading
      the base under the stored config in the first place, one level further down. */
   cfg.inform = { ...base.inform, ...(cfg.inform ?? {}) };
+  const book = cfg.inform.book ?? "";
+  if (book && !/ happens:/.test(book)) {
+    const lines = book.split("\n");
+    const at = lines.findIndex((l) => CONFIRM_LINE.test(l.trim()));
+    if (at >= 0) cfg.inform = { ...cfg.inform, book: [...lines.slice(0, at + 1), bookHowLine(p), ...lines.slice(at + 1)].join("\n") };
+  }
   /* ⚠⚠ **AND `qualify` TOO, FOR THE IDENTICAL REASON — measured on a real stored demo.**
      Aptive's override holds `qualify: { root, newSide, existingSide }`, written before the
      support Qualify existed, and the top-level spread replaces the whole object: so

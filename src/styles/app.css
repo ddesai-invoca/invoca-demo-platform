@@ -1418,6 +1418,8 @@ th.ks-status-col, td.ks-status-col { width: 70px; text-align: center; }
 .wfd-links { display: flex; align-items: center; gap: 8px; font-size: 15px; }
 .wfd-links a { color: #2666f9; text-decoration: none; }
 .wfd-links a:hover { text-decoration: underline; }
+/* Disabled on a shared demo: the platform's disabled grey, no pointer, no hover. */
+.wfd-off, .wfd-edit.wfd-off { color: #a1a7b2; opacity: 1; cursor: default; }
 .wfd-sep { color: #a1a7b2; }
 
 .wfd-check { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; color: #343a40; }

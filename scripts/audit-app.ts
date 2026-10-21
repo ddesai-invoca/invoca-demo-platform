@@ -905,7 +905,9 @@ console.log("\nThe Custom CRM preview runs beside every SMS preview: regular, LS
   t(/\.\.\.\(crmConnected\(profile\.id\) \? \{ crmCalendar/.test(brain),
     "every SMS agent (copies, RCS, LSA workflows) is handed the CRM's openings while it is connected");
   const chat = code("engine/chat.ts");
-  t(/brain\.crmCalendar \? crmBlock\(brain\.crmCalendar\) : "", SMS_FORMAT_RULES/.test(chat),
+  /* The appointment block (10/21/2026) sits between the two; the invariant is that the CRM
+     block is in the custom-playbook branch at all, not what follows it. */
+  t(/brain\.crmCalendar \? crmBlock\(brain\.crmCalendar\) : "",[^\]]*SMS_FORMAT_RULES\]/.test(chat),
     "a custom playbook (an LSA quote workflow) gets the CRM's openings too");
   const { parseLeadIn, crmPreCallFromLeadIn } = await import("../src/data/customCrm.ts");
   const { lsaLeadMessage } = await import("../src/data/quoteWorkflow.ts");

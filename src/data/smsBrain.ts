@@ -33,6 +33,9 @@ import type { CustomerProfile, AgentConfigView } from "./schema";
    route is behind the Google gate, and only the share path applies the daily caps. */
 import { apiPath } from "./shareMode";
 import { withRcsOpener } from "./rcs";
+import { appointmentMode, type AppointmentInfo } from "./appointmentMode";
+import { companyLocations } from "./prospectPlace";
+import { tollFreeNumber } from "./smsContactNumber";
 
 /** Mirrors `SmsWorkflowFlow` in `workflowDrawers.ts`, declared here so the brain type is local. */
 export interface SmsFlowNodeShape {
@@ -97,6 +100,9 @@ export interface SmsBrain {
   rcs?: boolean;
   /** One "Show Reasoning" turn in the Preview Workflow chat; see engine/chat.ts `DIAGNOSE`. */
   diagnose?: boolean;
+  /** HOW the booked appointment happens (home, location, phone, video), 10/21/2026. The server
+   *  adds the real address; see src/data/appointmentMode.ts and engine/chat.ts. */
+  appointment?: AppointmentInfo;
   /**
    * The extra workflow's ORDERED FLOW, appended to its own playbook.
    *
@@ -323,6 +329,10 @@ export function buildSmsBrain(
     qaPairs: ac?.aiRecommendations?.find((r) => r.qaPairs?.length)?.qaPairs ?? [],
     knowledge: ac?.knowledgeSources?.map((k) => k.name) ?? [],
     playbook: ac?.smsPlaybook,
+    /* How the appointment happens, from the booking type the playbook already names
+       ("in-home consultation", "virtual consultation", "in-office exam"), read from the
+       EFFECTIVE config so an edited booking type changes it too (10/21/2026). */
+    appointment: appointmentFor(profile, ac),
     /* Only when a custom flow would otherwise swallow them — everywhere else these already
        reach the prompt through `rules` and `playbook`, and sending them twice would have the
        agent read one list as an override of itself. */
@@ -335,6 +345,18 @@ export function buildSmsBrain(
     })(),
   };
   return opts.rcs ? withRcsOpener(brain, profile) : brain;
+}
+
+/** What the agent needs to say how an appointment happens. The address itself is looked up
+ *  by the server, so the Places key never reaches the browser. */
+export function appointmentFor(profile: Profile, ac: AgentConfig): AppointmentInfo {
+  const mode = appointmentMode(ac?.smsPlaybook?.bookingType || profile.bookingTerm, profile.industry);
+  const locations = companyLocations(profile).slice(0, 6);
+  return {
+    mode,
+    ...(locations.length ? { locations } : {}),
+    ...(mode === "phone" || mode === "either" ? { callbackNumber: tollFreeNumber(profile.id) } : {}),
+  };
 }
 
 /** The scope key whose AI edits define the SMS agent's questions. Both previews

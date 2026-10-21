@@ -117,7 +117,7 @@ export function AgentWorkflowDetails({ scopeKey, isSms, agent, triggeredBy }: Pr
           Default Business Hours
           {/* Inert: the hours editor is not captured, and a link that opens something
               invented is worse than one that does nothing. */}
-          <span className="wfd-edit" aria-disabled="true" title="Not part of this demo">Edit</span>
+          <span className={"wfd-edit" + (isShareMode() ? " wfd-off" : "")} aria-disabled="true" title="Not part of this demo">Edit</span>
         </h3>
         <div className="wfd-val">Open 24/7</div>
       </section>
@@ -221,10 +221,16 @@ export function AgentWorkflowDetails({ scopeKey, isSms, agent, triggeredBy }: Pr
 
       <section className="wfd-sec">
         <h3 className="wfd-h">Triggered by {triggeredBy || ZERO_TRIGGER}</h3>
+        {/* ⚠️ DISABLED ON A SHARED DEMO (10/21/2026): Campaigns and Promo Numbers are not part
+            of what a prospect is shown, so the links would land on "Not part of this demo". */}
         <div className="wfd-links">
-          <Link to="/campaigns">Go to campaigns</Link>
-          <span className="wfd-sep">|</span>
-          <Link to="/promo-numbers">Go to promo numbers</Link>
+          {isShareMode()
+            ? <><span className="wfd-off" aria-disabled="true">Go to campaigns</span>
+                <span className="wfd-sep">|</span>
+                <span className="wfd-off" aria-disabled="true">Go to promo numbers</span></>
+            : <><Link to="/campaigns">Go to campaigns</Link>
+                <span className="wfd-sep">|</span>
+                <Link to="/promo-numbers">Go to promo numbers</Link></>}
         </div>
       </section>
 

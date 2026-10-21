@@ -43,6 +43,8 @@ import { demoWorkflowsFor, buildDemoWorkflows } from "../src/data/demoWorkflows.
 import { builtInCopiesFor, isTextCopy } from "../src/data/builtInCopies.ts";
 import { parseRcs, withRcsOpener } from "../src/data/rcs.ts";
 import { extraDrawerFor, signalOptions } from "../src/data/workflowDrawers.ts";
+import { appointmentMode, howItHappensLine } from "../src/data/appointmentMode.ts";
+import { appointmentFor } from "../src/data/smsBrain.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -3592,6 +3594,68 @@ console.log("\nEvery routed screen gives Ask AI its data (10/19/2026)\n");
     : bad(`routed screens Ask AI cannot change (register via usePageData, or add to EXEMPT with a reason): ${missing.join(", ")}`);
   const pp = fs.readFileSync("src/screens/PhonePreview.tsx", "utf8");
   REG.test(pp) ? ok("the Preview Agent registers through PhonePreview, as its exemption claims") : bad("PhonePreview no longer registers — the SmsPreviewPage exemption is false");
+}
+
+console.log("\nSMS appointments end by saying HOW they happen (10/21/2026)\n");
+{
+  /* Reported against Sylvan Learning: the agent confirmed a time and nothing else, then sent the
+     customer to their own home address, then said somebody would call with the real one. */
+  const cases: [string, string | undefined, string][] = [
+    ["in-home service appointment", undefined, "home"],
+    ["in-office consultation", undefined, "location"],
+    ["in-store test drive", undefined, "location"],
+    ["virtual consultation with a licensed agent", undefined, "phone"],
+    ["video demo", undefined, "video"],
+    ["in-person or virtual appointment", undefined, "either"],
+    ["private in-boutique appointment (or virtual consultation)", undefined, "either"],
+    ["Care Assessment", "In-home senior care", "home"],
+    ["Care Assessment", "Hospital system", "location"],
+  ];
+  const wrong = cases.filter(([t, ind, want]) => appointmentMode(t, ind) !== want).map(([t, ind, want]) => `${t}${ind ? ` (${ind})` : ""} -> ${appointmentMode(t, ind)}, want ${want}`);
+  wrong.length === 0 ? ok(`the booking type decides home / location / phone / video / either (${cases.length} cases)`) : bad(`appointment mode misread: ${wrong.join("; ")}`);
+
+  const load = (f: string) => withoutReminderPromises(CustomerProfile.parse(JSON.parse(fs.readFileSync(`src/data/generated/${f}.json`, "utf8"))));
+  const aptive = load("aptive"), denver = load("denver-health"), goose = load("goosehead-insurance");
+  const aA = appointmentFor(aptive, aptive.reports.agentConfig), aD = appointmentFor(denver, denver.reports.agentConfig), aG = appointmentFor(goose, goose.reports.agentConfig);
+  aA.mode === "home" && aD.mode === "location" && aG.mode === "phone"
+    ? ok("the brain carries the mode the prospect's own booking type names")
+    : bad(`brain modes: aptive ${aA.mode}, denver ${aD.mode}, goosehead ${aG.mode}`);
+  aG.callbackNumber === tollFreeNumber(goose.id) && !aA.callbackNumber
+    ? ok("a phone appointment comes from the same toll-free number the SMS thread shows")
+    : bad("the phone appointment's callback number is not the thread's own number");
+  (aD.locations?.length ?? 0) > 0 && !("place" in aD)
+    ? ok("the browser sends the location names; the street address is left to the server (Places key stays server-side)")
+    : bad("location names missing, or the browser is supplying an address");
+
+  const b = buildSmsBrain(denver, denver.reports.agentConfig, undefined, null, null, {}) as never as Record<string, unknown>;
+  const withPlace = { ...b, appointment: { ...(b as any).appointment, place: { name: "Denver Health Main Campus", address: "777 Bannock St, Denver, CO 80204" } } };
+  const sys = smsSystemPromptForAudit(withPlace as never);
+  /HOW THE .+ HAPPENS/.test(sys) && sys.includes("777 Bannock St, Denver, CO 80204") && /In that same message, say how the/.test(sys)
+    ? ok("the SMS prompt tells the agent how it happens, with the real address, in the confirming message")
+    : bad("the SMS prompt is missing the HOW block, the address, or the step-5 pointer to it");
+  const custom = smsSystemPromptForAudit({ ...withPlace, customSystem: "You are a quote-request agent." } as never);
+  /HOW THE .+ HAPPENS/.test(custom) ? ok("a workflow with its own playbook (an LSA quote request) gets the block too") : bad("the customSystem branch drops the HOW block");
+  /callback number/.test(sys) ? bad("step 5 still forbids a callback number, which contradicts a phone appointment") : ok("step 5 no longer contradicts a phone appointment");
+  const voice = __buildVoiceSystemForTest({ ...withPlace } as never);
+  !/HOW THE .+ HAPPENS/.test(voice) ? ok("the voice prompt is untouched (SMS and RCS only)") : bad("the HOW block leaked into the voice prompt");
+
+  const book = smsConfigFor(aptive).inform.book;
+  book.includes(howItHappensLine("home", aptive.bookingTerm, tollFreeNumber(aptive.id)))
+    ? ok("the workflow's booking box says the same thing the agent is told")
+    : bad("the booking box has no how-it-happens line");
+  const old = book.split("\n").filter((l) => !/ happens:/.test(l));
+  const stored = [...old.slice(0, 1), "My own extra line.", ...old.slice(1)].join("\n");
+  const repaired = effectiveSmsConfig(aptive, { inform: { book: stored } }).inform.book;
+  repaired.includes("My own extra line.") && / happens:/.test(repaired)
+    ? ok("a booking box saved before this gains the line and keeps an SE's own lines")
+    : bad("a stored booking box was not repaired, or lost an SE's line");
+  const mine = effectiveSmsConfig(aptive, { inform: { book: "Book them however you like." } }).inform.book;
+  mine === "Book them however you like." ? ok("a booking box an SE rewrote is left exactly as written") : bad("an SE's own booking text was changed");
+
+  const chat = fs.readFileSync("engine/chat.ts", "utf8");
+  /if \(!voice && brain\.appointment\) brain = await withAppointmentPlace/.test(chat) && chat.indexOf("withAppointmentPlace(brain, messages)") < chat.indexOf("client.messages.create(")
+    ? ok("the server looks the address up before the reply is written")
+    : bad("chatReply no longer fills the real address before replying");
 }
 
 console.log(fail ? `\n${fail} check(s) failed\n` : "\nAll AI-rule checks passed\n");
