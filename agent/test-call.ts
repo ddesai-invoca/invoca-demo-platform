@@ -28,6 +28,7 @@ import { Room, RoomEvent, AudioSource, LocalAudioTrack, TrackPublishOptions, Tra
 import { inference, initializeLogger } from "@livekit/agents";
 import { voiceSpecFor, specWithConfig, DEFAULT_SUPPORT_QUALIFY_QUESTION } from "../src/data/voiceAgentSpec.ts";
 import { treeToVoicePaths } from "../src/data/voicePaths.ts";
+import { serviceAreaFor } from "../src/data/serviceArea.ts";
 
 initializeLogger({ pretty: false, level: "error" });
 
@@ -70,6 +71,8 @@ const brain = {
   serviceArea: ac?.serviceArea,
   voicePaths: treeToVoicePaths(tree, p),
   serviceZips: spec?.serviceZips, outOfAreaScript: spec?.outOfAreaScript,
+  /* The real service area, as Preview Workflow sends it (voiceSession.ts). */
+  coverage: serviceAreaFor(p, { zips: spec?.serviceZips }),
   voiceGreeting: spec?.greeting, voiceQualify: spec?.qualifyQuestion,
   voiceSupportQualify: spec?.supportQualifyQuestion ?? DEFAULT_SUPPORT_QUALIFY_QUESTION,
   voiceRules: spec?.rules, voiceSteps: spec?.informSteps,

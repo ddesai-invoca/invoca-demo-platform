@@ -11027,6 +11027,53 @@ production — the trap that guard's own comment documents.
 done) and an in-demo top-bar control. The Salesforce notification, which was also on this list,
 is built — see below.
 
+### The ZIP code's real location, and a real serviceable answer (10/21/2026)
+Reported with a CRM screenshot: ZIP 80126 (Littleton / Highlands Ranch, CO) read "Serviceable:
+Yes · Chicago service area". Asked for, for every prospect, SMS and voice: the right location
+for the ZIP, and whether the prospect really serves it.
+- ⚠️⚠️ **MEASURED FIRST: NOTHING CHECKED ANYTHING.** The CRM printed Yes for any ZIP, the SMS agent
+  was told "confirm you serve their area" with nothing to check against, and the voice prompt's
+  only rule was a demo placeholder treating "12345" as the one out-of-area ZIP (retired from the
+  absolutes ledger).
+- **`src/data/serviceArea.ts` is the one definition** (DOM-free): an exact ZIP list (a configured
+  voice spec), ZIP prefixes the prospect's own `serviceArea` text names (plus anything within
+  75 miles of its locations, because "greater Denver, ZIPs starting 802" plainly includes
+  Littleton's 801xx), nationwide (the text says so, or insurance / finance / hotels / movers /
+  B2B), else its own locations within `RADIUS_MILES` (75). Contact centres, reservation centres,
+  HQs and online stores are not service points. No data at all is `null` ("Not verified"), never
+  a guess. Measured on 100 profiles: 37 nationwide, 27 prefix, 34 by location, 2 unknown.
+- **`src/data/cityTable.ts`** holds the city table and `companyLocations`, extracted from
+  `prospectPlace.ts` (re-exported there) because that file reads `import.meta.env` and the engine
+  cannot import it.
+- **`engine/serviceCheck.ts`** does what only Google can: where the ZIP is (`geocodeZip`) and where
+  each location the table misses is (Places text search, cached). ⚠️ The table alone missed
+  Comfort Keepers' Memphis office, Kia's dealerships, Shriners' hospitals and more, which would
+  have refused real customers. ⚠️ With `regionCode: "US"` Places drops the trailing ", USA", which
+  the first address pattern required; that silently resolved nothing.
+- **SMS:** `chatReply` takes the latest ZIP from the customer's messages, runs the check and
+  injects `coverageBlock` (the real city, inside/outside, nearest location). Outside the area the
+  agent says so, names where the business is, and closes instead of booking (or offers phone /
+  video when the appointment can happen that way). Before a ZIP it may only confirm coverage from
+  the live check.
+- **Custom CRM:** the ZIP row reads "80126 · Littleton, CO" and Serviceable shows the server's
+  check (`POST /api/service-check`, both servers, and a share-scoped action so shared demos work;
+  it spends none of the share budget). The header lists the real served cities.
+- **Voice: a live lookup tool, `check_service_area`, in `agent/voiceAgent.js`.** ⚠️ Without it the
+  model guessed the place: measured on a real call, it called 80126 "Salt Lake City, Utah". The
+  token mint (`engine/livekitToken.ts`) resolves the area and puts a signed, 3-hour lookup token
+  in the call metadata; the worker calls the PUBLIC `POST /api/voice/service-check` (registered
+  before the sign-in gate, because the worker cannot sign in), which answers only for tokens
+  signed with the LiveKit secret. The URL is `VOICE_LOOKUP_URL`, else `BASE_URL`, else the
+  production service (a laptop's dev server is unreachable from LiveKit Cloud). Without the tool
+  (an older worker) the prompt falls back to the real area and the model's own ZIP knowledge.
+- ⚠️⚠️ **THE WORKER CHANGE NEEDS `lk agent deploy`, AND IT GOES FIRST.** A deployed worker with
+  the tool and an old server is harmless (no token, no tool); a new server with an old worker
+  tells the agent to call a tool it does not have.
+- Verified: SMS and real voice calls (a local worker under a private agent name, so production
+  calls were never routed to the laptop) for Roto-Rooter with 80126 (declined, "Littleton is
+  outside our service area… Chicago, Fort Worth, Atlanta and Phoenix") and 60614 (accepted,
+  "you're in Chicago"). The tool answered in ~0.7s. `audit:ai` has 18 checks; sabotages fire.
+
 ### SMS appointments end by saying HOW they happen (10/21/2026)
 Reported against Sylvan Learning: the agent confirmed a time and nothing else, then told the
 customer to meet at their own home address, then said somebody would call with the real one.

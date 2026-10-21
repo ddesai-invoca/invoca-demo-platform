@@ -10,6 +10,7 @@ import { emptyWorkflowGreeting } from "./workflowChrome";
 import { voiceSpecFor, specWithConfig, type VoiceAgentConfig , DEFAULT_ESCALATE_HANDLING, DEFAULT_SUPPORT_INTENT, DEFAULT_SUPPORT_QUALIFY_QUESTION } from "./voiceAgentSpec";
 import type { WorkflowTreeModel } from "../components/WorkflowTree";
 import type { VoiceConversation, VoiceTurn } from "./schema";
+import { serviceAreaFor } from "./serviceArea";
 
 /* =============================================================================
    voiceSession.ts — the brain, the spec and the capture, shared by the voice call
@@ -209,6 +210,8 @@ export function useBrain(opts?: BrainOpts) {
       : undefined,
     voiceBookingSlots: booking?.slots,
     serviceZips: minimal || booking ? undefined : spec?.serviceZips,
+    /* The real service area, so the agent turns away a caller it does not serve (10/21/2026). */
+    coverage: minimal || booking ? undefined : serviceAreaFor(profile, { zips: spec?.serviceZips }),
     outOfAreaScript: minimal || booking ? undefined : spec?.outOfAreaScript,
     voiceGreeting: minimal ? emptyWorkflowGreeting(profile.customerName)
       /* The workflow's own opener, then whatever the SE edited on it, then the prospect's. */

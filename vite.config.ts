@@ -699,12 +699,13 @@ function shareApi(): Plugin {
           const cookies = auth.parseCookies(req.headers.cookie)
 
           /* The prospect's live agent, mirroring the production twin's single handler. */
-          const live = /^\/api\/share\/([A-Za-z0-9_-]{20,64})\/(chat|analyze|livekit-token)$/.exec(url)
+          const live = /^\/api\/share\/([A-Za-z0-9_-]{20,64})\/(chat|analyze|livekit-token|service-check)$/.exec(url)
           if (live) {
             const rec = share.shareSession(cookies, live[1])
             if (!rec) return json(401, { error: 'This demo is locked or the link has expired.' })
             const kind = live[2] === 'livekit-token' ? 'voice' : 'chat'
-            if (!share.takeBudget(live[1], kind)) return json(429, { error: 'This demo has reached its limit for today.' })
+            /* The CRM's service-area check spends none of the budget, as in server.ts. */
+            if (live[2] !== 'service-check' && !share.takeBudget(live[1], kind)) return json(429, { error: 'This demo has reached its limit for today.' })
             /* ⚠️⚠️ **REWRITE THE URL, DO NOT JUST `next()`.** The existing dev plugins match
                `/api/chat` exactly, so handing them `/api/share/<token>/chat` fell straight
                through to the SPA and the prospect's agent answered 404 — caught by sending a
@@ -882,6 +883,38 @@ function assistantApi(apiKey: string | undefined): Plugin {
           send(overloaded ? 503 : 500, { error: overloaded ? 'The AI is briefly overloaded — one moment, please resend.' : (e?.message || 'Assistant failed.') })
         }
       })
+    },
+  }
+}
+
+/* Dev twin of POST /api/service-check — see server.ts (10/21/2026). */
+function serviceCheckApi(): Plugin {
+  return {
+    name: 'invoca-service-check-api',
+    configureServer(server) {
+      const handle = async (req: any, res: any, next: () => void) => {
+        if (req.method !== 'POST') return next()
+        let raw = ''
+        for await (const chunk of req) raw += chunk
+        const { serviceCheckFromBody, voiceServiceCheckFromBody } = await import(pathToFileURL(path.resolve(process.cwd(), 'engine/serviceCheck.ts')).href)
+        /* The voice worker's lookup (POST /api/voice/service-check), mounted under the same plugin. */
+        if ((req.originalUrl ?? '').startsWith('/api/voice/service-check')) {
+          let out: { status: number; body: unknown }
+          try { out = await voiceServiceCheckFromBody(raw ? JSON.parse(raw) : {}, process.env.LIVEKIT_API_SECRET) }
+          catch (e: any) { console.error('[voice-service-check] failed:', e); out = { status: 500, body: { error: 'Lookup failed.' } } }
+          res.statusCode = out.status
+          res.setHeader('Content-Type', 'application/json')
+          return res.end(JSON.stringify(out.body))
+        }
+        let out: { status: number; body: unknown }
+        try { out = await serviceCheckFromBody(raw ? JSON.parse(raw) : {}) }
+        catch (e: any) { console.error('[service-check] failed:', e); out = { status: 500, body: { error: 'Service area check failed.' } } }
+        res.statusCode = out.status
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify(out.body))
+      }
+      server.middlewares.use('/api/service-check', handle)
+      server.middlewares.use('/api/voice/service-check', handle)
     },
   }
 }
@@ -1073,6 +1106,7 @@ export default defineConfig(({ mode }) => {
       assistantApi(apiKey),
       analyzeApi(apiKey),
       zipApi(env.GOOGLE_PLACES_API_KEY || process.env.GOOGLE_PLACES_API_KEY),
+      serviceCheckApi(),
       voicePreviewApi({ url: env.LIVEKIT_URL, apiKey: env.LIVEKIT_API_KEY, apiSecret: env.LIVEKIT_API_SECRET }),
       livekitApi(env),
     ],

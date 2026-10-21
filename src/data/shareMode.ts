@@ -80,6 +80,6 @@ export function shareAllows(pathname: string): boolean {
  */
 export function apiPath(path: string): string {
   if (!SHARE_TOKEN) return path;
-  const m = /^\/api\/(chat|analyze|livekit-token)$/.exec(path);
+  const m = /^\/api\/(chat|analyze|livekit-token|service-check)$/.exec(path);
   return m ? `/api/share/${SHARE_TOKEN}/${m[1]}` : path;
 }

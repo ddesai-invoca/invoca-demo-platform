@@ -45,6 +45,8 @@ import { parseRcs, withRcsOpener } from "../src/data/rcs.ts";
 import { extraDrawerFor, signalOptions } from "../src/data/workflowDrawers.ts";
 import { appointmentMode, howItHappensLine } from "../src/data/appointmentMode.ts";
 import { appointmentFor } from "../src/data/smsBrain.ts";
+import { serviceAreaFor, checkService } from "../src/data/serviceArea.ts";
+import { signServiceLookup, readServiceLookup, voiceServiceCheckFromBody } from "../engine/serviceCheck.ts";
 
 const SCREENS = "src/screens";
 let fail = 0;
@@ -2833,7 +2835,6 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
        Why the routing half went: see "the support agent resolves" below. */
     "${}Follow these instructions for this route, in order, and do not skip",
     "- Do not invent specific prices; pricing/details are handled at the ${",
-    "- FIRST ask for their ZIP code. SERVICE-AREA CHECK: treat \"12345\" as t",
     "- NEVER ask for anything you already have. If the caller already gave ",
     "- NEVER quote prices, availability, or promotions.",
     "- NEVER read out a user-group label such as \"All Sales Inquiry Users\" ",
@@ -2853,7 +2854,9 @@ console.log("\nAgent prompts: no new hardcoded product defaults\n");
     "NEVER quote prices, availability or promotions, and never try to resol",
     "PLACEHOLDERS: the lines above contain ${}. These are fill-ins, NOT wor",
     "Then follow that intent's flow, ONE step at a time, and never skip ahe",
-    "\\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ",
+    /* ❌ RETIRED 10/21/2026, with the "FIRST ask for their ZIP code … treat 12345" line: both
+       treated "12345" as the only out-of-area ZIP, so every caller was in area. Replaced by the
+       real service area (src/data/serviceArea.ts) and, on voice, a live lookup tool. */
     "\\n2. THEN FOLLOW THESE STEPS EXACTLY, in order, and do not skip one:",
     "a. Ask for whatever reference they have so the team can find them: the",
     /* ✅ RETIRED 10/9/2026 with the routing half above: the hardcoded flow's step c used to
@@ -3566,6 +3569,76 @@ console.log("\nA live page keeps its edits AND its new captures (liveMerge, 10/1
   const live = ["SalesforceLeads.tsx", "SalesforceLeadDetail.tsx", "SalesforceCalendar.tsx", "GoogleSearch.tsx"]
     .filter((f) => !/live: true/.test(fs.readFileSync(`src/screens/${f}`, "utf8")));
   live.length === 0 ? ok("every capture-fed screen registers as live") : bad(`capture-fed screens not registered live: ${live.join(", ")}`);
+}
+
+console.log("\nThe ZIP code's real location, and a real serviceable answer (10/21/2026)\n");
+{
+  /* Reported: a Colorado ZIP read "Serviceable: Yes · Chicago service area". */
+  const load = (f: string) => CustomerProfile.parse(JSON.parse(fs.readFileSync(`src/data/generated/${f}.json`, "utf8")));
+  const rr = load("roto-rooter-plumbing-and-water-cleanup"), dh = load("denver-health"), gh = load("goosehead-insurance"), sf = load("surfside-healthcare");
+  const LITTLETON = { zip: "80126", label: "Littleton, CO", ll: [39.548, -104.974] as [number, number] };
+  const CHICAGO = { zip: "60614", label: "Chicago, IL", ll: [41.922, -87.652] as [number, number] };
+  const MIAMI = { zip: "33139", label: "Miami Beach, FL", ll: [25.79, -80.13] as [number, number] };
+  const out = checkService(serviceAreaFor(rr), "80126", LITTLETON);
+  out.serviceable === false && out.label === "Littleton, CO" && out.nearest?.label === "Phoenix, AZ"
+    ? ok("the reported case: Roto-Rooter + 80126 is Littleton, CO and NOT served (nearest branch Phoenix)")
+    : bad(`Roto-Rooter + 80126 came back ${JSON.stringify(out)}`);
+  checkService(serviceAreaFor(rr), "60614", CHICAGO).serviceable === true ? ok("a ZIP near one of its own branches is served") : bad("a Chicago ZIP was refused by a Chicago branch");
+  const dIn = checkService(serviceAreaFor(dh), "80126", LITTLETON), dOut = checkService(serviceAreaFor(dh), "33139", MIAMI);
+  dIn.serviceable === true && dOut.serviceable === false
+    ? ok("a stated ZIP prefix still admits a nearby suburb, and refuses a far one")
+    : bad(`Denver Health: Littleton ${dIn.serviceable}, Miami ${dOut.serviceable}`);
+  checkService(serviceAreaFor(gh), "33139", MIAMI).serviceable === true ? ok("a nationwide business serves everywhere") : bad("a nationwide business refused a ZIP");
+  checkService(serviceAreaFor(sf), "33139", MIAMI).serviceable === null ? ok("with no service-area data at all, the answer is 'not verified', never a guess") : bad("an unknown service area produced a yes/no");
+  const noCentres = serviceAreaFor(load("marriott")).locations.every((n) => !/reservation|contact cent/i.test(n));
+  noCentres ? ok("contact and reservation centres are not treated as places a customer is served") : bad("a contact centre counts as a service location");
+
+  const b = buildSmsBrain(rr, rr.reports.agentConfig, undefined, null, null, {}) as never as Record<string, unknown>;
+  (b as any).coverage?.hubs?.length ? ok("the SMS brain carries the prospect's service area") : bad("the SMS brain has no service area");
+  const outside = smsSystemPromptForAudit({ ...b, serviceCheck: out } as never);
+  /ZIP 80126 is in Littleton, CO\. That is OUTSIDE/.test(outside) && /close warmly instead of booking/.test(outside)
+    ? ok("an out-of-area ZIP reaches the SMS agent with its real city, and it declines instead of booking")
+    : bad("the SMS prompt is missing the out-of-area result");
+  /confirm their area only from that check/.test(smsSystemPromptForAudit(b as never))
+    ? ok("before a ZIP is given, the SMS agent is told to confirm the area only from the live check")
+    : bad("the SMS agent can claim coverage before any check");
+  const chat = fs.readFileSync("engine/chat.ts", "utf8");
+  !/12345/.test(chat.replace(/\/\*[\s\S]*?\*\//g, "").replace(/^\s*\/\/.*$/gm, ""))
+    ? ok("the voice prompt no longer treats \"12345\" as the only out-of-area ZIP")
+    : bad("the 12345 placeholder rule is back in the voice prompt");
+  const v = __buildVoiceSystemForTest({ ...b, serviceLookupTool: true, voicePaths: [] } as never);
+  /check_service_area tool/.test(v) && /Chicago, IL/.test(v)
+    ? ok("the voice agent is told to call the lookup tool, with the real served cities")
+    : bad("the voice gate does not use the lookup tool or name the served cities");
+  /what you know about US ZIP codes/.test(__buildVoiceSystemForTest({ ...b, voicePaths: [] } as never))
+    ? ok("without the tool (an older worker) the voice gate still has the real area to judge against")
+    : bad("the voice fallback gate is missing");
+
+  const area = serviceAreaFor(rr);
+  const t = signServiceLookup(area, "s");
+  !!readServiceLookup(t, "s") && !readServiceLookup(t, "x") && !readServiceLookup(t.slice(0, -2) + "zz", "s") && !readServiceLookup(signServiceLookup(area, "s", Date.now() - 5 * 3600e3), "s")
+    ? ok("the voice lookup token verifies, and refuses a wrong secret, tampering and expiry")
+    : bad("the voice lookup token can be forged or outlives its call");
+  const r401 = await voiceServiceCheckFromBody({ token: "nope", zip: "80126" }, "s");
+  r401.status === 401 ? ok("the public voice lookup refuses a call this server did not start") : bad(`a forged lookup returned ${r401.status}`);
+
+  const worker = fs.readFileSync("agent/voiceAgent.js", "utf8");
+  /check_service_area:\s*llm\.tool\(/.test(worker) && /tools: serviceAreaTools\(brief\)/.test(worker)
+    ? ok("the voice worker has the check_service_area tool")
+    : bad("the voice worker lost its lookup tool");
+  const server = fs.readFileSync("server.ts", "utf8");
+  server.indexOf('app.post("/api/voice/service-check"') > 0 && server.indexOf('app.post("/api/voice/service-check"') < server.indexOf("\ninstallAuth(app);")
+    ? ok("the voice lookup route is registered before the sign-in gate (the worker cannot sign in)")
+    : bad("the voice lookup route is missing or behind the sign-in gate");
+  const vite = fs.readFileSync("vite.config.ts", "utf8");
+  /app\.post\("\/api\/service-check"/.test(server) && /use\('\/api\/service-check'/.test(vite) && /use\('\/api\/voice\/service-check'/.test(vite)
+    && /livekit-token\|service-check/.test(server) && /livekit-token\|service-check/.test(vite) && /livekit-token\|service-check/.test(fs.readFileSync("src/data/shareMode.ts", "utf8"))
+    ? ok("both servers and the shared-demo route serve the service check")
+    : bad("a server twin or the share route is missing the service check");
+  const crm = fs.readFileSync("src/screens/CustomCrm.tsx", "utf8");
+  !/`Yes · \$\{area\} service area`/.test(crm) && /\/api\/service-check/.test(crm)
+    ? ok("the CRM no longer prints Yes for any ZIP; it shows the server's check")
+    : bad("the CRM still prints a serviceable answer it never checked");
 }
 
 console.log("\nEvery routed screen gives Ask AI its data (10/19/2026)\n");

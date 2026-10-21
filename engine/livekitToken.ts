@@ -3,6 +3,7 @@ import { voiceAgentName } from "./appEnv.ts";
 import { RoomConfiguration, RoomAgentDispatch } from "@livekit/protocol";
 import { liveKitVoiceModel } from "../src/data/voiceOptions.ts";
 import { voiceSystemPrompt } from "./chat.ts";
+import { resolveServiceArea, signServiceLookup } from "./serviceCheck.ts";
 import type { ChatBrain } from "./chat.ts";
 
 /* =============================================================================
@@ -102,6 +103,16 @@ export function livekitEnv(env: Record<string, string | undefined> = process.env
   return { url, apiKey, apiSecret };
 }
 
+/** Where the worker's lookup tool calls. The worker runs on LiveKit Cloud, so a laptop's dev
+ *  server is unreachable from it: without BASE_URL the production service answers (it verifies
+ *  the same LiveKit secret). VOICE_LOOKUP_URL overrides. */
+function serviceLookupUrl(): string {
+  const set = process.env.VOICE_LOOKUP_URL?.trim();
+  if (set) return set;
+  const base = process.env.BASE_URL?.trim().replace(/\/$/, "");
+  return `${base && !/localhost|127\.0\.0\.1/.test(base) ? base : "https://invoca-demo-platform.onrender.com"}/api/voice/service-check`;
+}
+
 /** Mint a caller token that also dispatches the voice agent into a brand-new room. */
 export async function mintVoiceToken(
   req: VoiceTokenRequest,
@@ -109,8 +120,15 @@ export async function mintVoiceToken(
 ): Promise<VoiceTokenResult> {
   const room = roomName(req.profileId);
 
-  /* The finished prompt, from the one function /api/chat also uses. */
-  const instructions = voiceSystemPrompt(req.brain);
+  /* The finished prompt, from the one function /api/chat also uses. The service area's
+     locations are looked up first, so the agent is told every real location (10/21/2026). */
+  const coverage = req.brain.coverage ? await resolveServiceArea(req.brain.coverage) : undefined;
+  /* The worker's `check_service_area` tool (agent/voiceAgent.js) calls back here with this
+     signed token, so a gated area gets a real lookup of the caller's ZIP mid-call. */
+  const gated = !!coverage && !coverage.national && (coverage.zips.length + coverage.prefixes.length + coverage.hubs.length) > 0;
+  const serviceLookup = gated ? { url: serviceLookupUrl(), token: signServiceLookup(coverage!, env.apiSecret) } : undefined;
+  const brain = coverage ? { ...req.brain, coverage, serviceLookupTool: !!serviceLookup } : req.brain;
+  const instructions = voiceSystemPrompt(brain);
 
   const at = new AccessToken(env.apiKey, env.apiSecret, {
     identity: `caller-${Math.random().toString(36).slice(2, 10)}`,
@@ -141,6 +159,7 @@ export async function mintVoiceToken(
           voice: liveKitVoiceModel(req.voice),
           customerName: req.brain.customerName ?? "",
           profileId: req.profileId,
+          ...(serviceLookup ? { serviceLookup } : {}),
         }),
       }),
     ],

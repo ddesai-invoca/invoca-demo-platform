@@ -21,6 +21,8 @@ import { intentCopyFor } from "../src/data/prospectIntent.ts";
 import { INTENT_SUPPORT } from "../src/data/workflowIntents.ts";
 import { noteSmsReply } from "./chatActivity.ts";
 import type { AppointmentInfo } from "../src/data/appointmentMode.ts";
+import { serviceAreaSummary, type ServiceArea, type ServiceCheck } from "../src/data/serviceArea.ts";
+import { runServiceCheck, resolveServiceArea } from "./serviceCheck.ts";
 import { fetchPlace } from "./places.ts";
 
 const CHAT_MODEL = "claude-haiku-4-5-20251001";
@@ -190,6 +192,16 @@ export interface ChatBrain {
    * from Google Places, so the address is a real one. See src/data/appointmentMode.ts.
    */
   appointment?: AppointmentInfo;
+  /**
+   * The prospect's service area (10/21/2026), from src/data/serviceArea.ts. Reported with a CRM
+   * screenshot: a Colorado ZIP read "Serviceable: Yes · Chicago service area", because nothing
+   * checked anything. `serviceCheck` is filled in by `chatReply` from Google: where the ZIP
+   * really is and whether the prospect serves it.
+   */
+  coverage?: ServiceArea;
+  serviceCheck?: ServiceCheck;
+  /** The voice worker has the `check_service_area` tool for this call (set at token mint). */
+  serviceLookupTool?: boolean;
   /** The voice counterpart for the "Voice Test" copy: every field a sales box collects is
    *  asked, in order (measured: a box's Consumer Email was skipped). 10/13/2026. */
   voiceWorkflowLeads?: boolean;
@@ -584,6 +596,52 @@ function dedupeQuestions(brain: ChatBrain, questions: string[]): string[] {
  * the calendar cannot draw.
  */
 /**
+ * The SMS agent's service-area facts (10/21/2026): the live result for the ZIP they gave, or
+ * the area itself until they give one. The Custom CRM shows the same check.
+ */
+function coverageBlock(brain: ChatBrain): string {
+  const a = brain.coverage;
+  if (!a) return "";
+  const name = brain.customerName;
+  const summary = serviceAreaSummary(a);
+  const c = brain.serviceCheck;
+  if (!c) return summary && !a.national
+    ? `SERVICE AREA: ${summary} Once they give a ZIP code, a live check of it appears here; confirm their area only from that check.`
+    : "";
+  const term = brain.playbook?.bookingType?.trim() || "appointment";
+  const near = c.nearest ? ` (nearest location: ${c.nearest.name}, about ${c.nearest.miles} miles away)` : "";
+  if (!c.label) return `SERVICE AREA CHECK: ZIP ${c.zip} could not be looked up. ${summary} Work out which city and state it is in from what you know about US ZIP codes, say that city back to them, and judge it against the area.`;
+  const lead = `SERVICE AREA CHECK (looked up live for the ZIP code they gave): ZIP ${c.zip} is in ${c.label}.`;
+  if (c.serviceable === true) return `${lead} That is inside ${name}'s service area${a.national ? "" : near}. When you confirm their area, name ${c.label} correctly.`;
+  if (c.serviceable === false) {
+    const remote = brain.appointment && brain.appointment.mode !== "home" && brain.appointment.mode !== "location";
+    return [
+      `${lead} That is OUTSIDE ${name}'s service area${near}. ${summary}`,
+      `Tell them kindly and plainly that ${name} does not serve ${c.label} yet, and say where it does.`,
+      remote
+        ? `The ${term} can happen by phone or video, so offer that instead if they would like it.`
+        : `Booking is only for customers inside the service area, so close warmly instead of booking, and leave the door open if they move or are booking for someone in the area.`,
+    ].join(" ");
+  }
+  return `${lead} ${summary || `${name} has not published its service area here.`} Leave out any claim about whether they are inside the service area.`;
+}
+
+/**
+ * The voice agent's service-area check (10/21/2026). It cannot look a ZIP up mid-call, so it is
+ * given the real served area as facts and asked to place the ZIP itself and say the city back.
+ * Replaces a demo placeholder that treated "12345" as the only out-of-area ZIP.
+ */
+function voiceAreaGate(brain: ChatBrain, newWord = "NEW service"): string {
+  const a = brain.coverage;
+  const name = brain.customerName;
+  const facts = a && !a.national ? serviceAreaSummary(a) : "";
+  const area = brain.serviceArea?.trim();
+  if (!facts && !area) return "";
+  if (brain.serviceLookupTool) return `SERVICE-AREA CHECK, before routing or booking anyone who wants ${newWord}: ask for their ZIP code, then call the check_service_area tool with it. It returns the real city and state and whether ${name} serves it; say that city back to them and follow its answer exactly. ${facts || `${name} serves ${area}.`} If it is outside the area, apologise, say ${name} does not serve their area yet and where it does, and close the call politely without routing.`;
+  return `SERVICE-AREA CHECK, before routing or booking anyone who wants ${newWord}: ask for their ZIP code, work out which city and state it is in from what you know about US ZIP codes, and say that city back to them. ${facts || `${name} serves ${area}.`} If their ZIP is inside that area, confirm it by naming their city and continue. If it is outside, apologise, say ${name} does not serve their area yet and where it does, and close the call politely without routing.`;
+}
+
+/**
  * What the agent says about HOW the appointment happens (10/21/2026). Rendered in every SMS
  * flow, beside the booking step, so the confirmation carries it. The workflow's booking box
  * says the same thing (`howItHappensLine`), so the diagram and the agent agree.
@@ -676,7 +734,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     /* The CRM's live openings reach a custom playbook too (an LSA quote request, say), or the CRM
        beside the phone would show times the agent never offered. */
     return [brain.customSystem, stepsBlock(brain), flowBlock, overrideBlock(brain),
-      brain.crmCalendar ? crmBlock(brain.crmCalendar) : "", appointmentBlock(brain), SMS_FORMAT_RULES]
+      brain.crmCalendar ? crmBlock(brain.crmCalendar) : "", appointmentBlock(brain), coverageBlock(brain), SMS_FORMAT_RULES]
       .filter(Boolean).join("\n\n");
   }
   const rules = (brain.rules ?? []).map((r) => `- ${r}`).join("\n");
@@ -825,6 +883,7 @@ function buildSystem(brain: ChatBrain, voice: boolean): string {
     knowledge ? `\nKNOWLEDGE SOURCES (what you learned the business from):\n${knowledge}` : ``,
     brain.crmCalendar ? `\n${crmBlock(brain.crmCalendar)}` : ``,
     brain.appointment ? `\n${appointmentBlock(brain)}` : ``,
+    brain.coverage && coverageBlock(brain) ? `\n${coverageBlock(brain)}` : ``,
     brain.workflowLeads && brain.workflow ? `\n${OPTIONS_CHECK}` : ``,
     brain.rcs ? `\n${rcsRules(brain.customerName)}` : ``,
   ].join("\n");
@@ -953,7 +1012,6 @@ function namingRule(r: NonNullable<ChatBrain["voiceRouting"]>): string {
 }
 
 function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): string {
-  const serviceArea = brain.serviceArea?.trim();
   /* Fall back to neutral wording rather than retail wording when a profile has
      no routing data, so an old profile degrades to "book an appointment /
      existing customer" instead of asking a patient for an order number. */
@@ -1001,7 +1059,7 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
        true of `stepsForZips`'s own wording and of a custom step that mentions it too. A
        custom step that never asks for a name leaves "Consumer Name" alone, so the field is
        still gathered exactly once, just later in the path. */
-  const zipAlreadyAsked = steps.length > 0 || zips.length > 0 || !!serviceArea;
+  const zipAlreadyAsked = steps.length > 0 || zips.length > 0 || !!voiceAreaGate(brain);
   const nameAlreadyAsked = steps.some((st) => /\bfull name\b/i.test(st));
   const dedupeCollect = (fields: string[]): string[] => fields.filter((f) => {
     const norm = f.trim().toLowerCase();
@@ -1107,6 +1165,8 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
       ? `\n2. THEN FOLLOW THESE STEPS EXACTLY, in order, and do not skip one:`
         + (zips.length && !zips.every((z) => steps.some((st) => st.includes(z)))
           ? `\n   Service-area ZIP codes: ${zips.join(", ")}.`
+          : brain.coverage && !brain.coverage.national && serviceAreaSummary(brain.coverage)
+          ? `\n   Service area: ${serviceAreaSummary(brain.coverage)} Work out the city and state of the caller's ZIP code and say it back to them.`
           : ``)
         + `\n${steps.join("\n")}`
       /* ⚠️⚠️ **THE SCRIPT STATES THE OUT-OF-AREA POLICY; THIS MUST NOT ALSO HARDCODE A
@@ -1120,8 +1180,8 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
          what the script says. */
       : zips.length
       ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. ${brain.customerName}'s service area is these ZIP codes: ${zips.join(", ")}. If the caller's ZIP is one of them, briefly confirm you serve their area and continue. If it is ANYTHING else, say exactly this: "${brain.outOfAreaScript ?? `Thank you for calling ${brain.customerName}. Unfortunately we do not currently serve your area.`}" Then follow the caller's answer. Never route or book a caller to a location they have not agreed to, and if there is nothing you can offer them, close the call politely without routing.`
-      : serviceArea
-      ? `\n2. SERVICE-AREA CHECK, before routing anyone who wants NEW service: ask for their ZIP code. Treat "12345" as the ONLY out-of-area ZIP — if they say it, politely apologise, explain ${brain.customerName} serves ${serviceArea}, say you cannot book them, then STOP: ask nothing else and do not route. For ANY other ZIP, briefly confirm you serve their area and continue.`
+      : voiceAreaGate(brain)
+      ? `\n2. ${voiceAreaGate(brain)}`
       : ``,
     ``,
     ...paths.flatMap((p) => {
@@ -1256,8 +1316,8 @@ function buildVoiceSystem(brain: ChatBrain, rules: string, knowledge: string): s
     `1. OPEN: greet them as ${poss(brain.customerName)} AI assistant and ask whether they are calling to book ${aOrAn(book)} ${book}, or need help as an existing ${who}. Phrase it naturally for this business. Wait for their answer.`,
     ``,
     `PATH A: BOOKING ${book.toUpperCase()} (new ${who})`,
-    serviceArea
-      ? `   - FIRST ask for their ZIP code. SERVICE-AREA CHECK: treat "12345" as the ONLY out-of-area ZIP. If they say 12345, politely apologise, explain ${brain.customerName} serves ${serviceArea}, say you cannot book them, then STOP: do not ask anything else or route them. For ANY other ZIP, briefly confirm you serve their area and continue.`
+    voiceAreaGate(brain)
+      ? `   - FIRST, ${voiceAreaGate(brain, "a booking")}`
       : ``,
     products.length
       ? `   - Ask which of these they need: ${products.slice(0, 4).join(", ")}. Offer them as spoken examples, not a list.`
@@ -1406,6 +1466,16 @@ export async function chatReply(
 
   /* The real address of the location nearest the customer, for an in-person appointment. */
   if (!voice && brain.appointment) brain = await withAppointmentPlace(brain, messages);
+  /* Where the customer's ZIP really is, and whether the prospect serves it (10/21/2026). */
+  if (brain.coverage) {
+    const zip = voice ? undefined : zipFrom(messages);
+    if (zip) {
+      const { area, check } = await runServiceCheck(brain.coverage, zip);
+      brain = { ...brain, coverage: area, serviceCheck: check };
+    } else {
+      brain = { ...brain, coverage: await resolveServiceArea(brain.coverage) };
+    }
+  }
 
   const resp = await client.messages.create({
     model: CHAT_MODEL,

@@ -82,16 +82,18 @@ fellBack <= MAY_FALL_BACK.size
     ? ok("the resolver never consults the screenpop caller")
     : bad("the caller's city is back in the location resolver");
 
-  /* The two the geocoder gets wrong for this app, pinned. */
-  /"washington":\s*\{[^}]*st:\s*"DC"/.test(src)
+  /* The two the geocoder gets wrong for this app, pinned. The table moved to cityTable.ts on
+     10/21/2026 so engine/ can import it; prospectPlace re-exports it. */
+  const table = read("src/data/cityTable.ts");
+  /"washington":\s*\{[^}]*st:\s*"DC"/.test(table)
     ? ok('"washington" is DC, not the state')
     : bad('"washington" is no longer DC — a geocoder probably overwrote it');
-  /"duluth":\s*\{[^}]*st:\s*"GA"/.test(src)
+  /"duluth":\s*\{[^}]*st:\s*"GA"/.test(table)
     ? ok('"duluth" is GA (metro Atlanta), not Minnesota')
     : bad('"duluth" is no longer GA');
 
   /* Every entry carries both halves, so a label can never borrow someone else's state. */
-  const entries = [...src.matchAll(/"([a-z .]+)":\s*\{\s*ll:\s*\[[^\]]+\],\s*st:\s*"([A-Z?]{2})"/g)];
+  const entries = [...table.matchAll(/"([a-z .]+)":\s*\{\s*ll:\s*\[[^\]]+\],\s*st:\s*"([A-Z?]{2})"/g)];
   entries.length >= 42 && entries.every(([, , st]) => /^[A-Z]{2}$/.test(st))
     ? ok(`all ${entries.length} cities carry coordinates AND a state`)
     : bad(`only ${entries.length} well-formed city entries — some are missing a state`);
@@ -229,7 +231,7 @@ fellBack <= MAY_FALL_BACK.size
      Python heredoc, `isKeywordish`'s word boundaries were saved as literal BACKSPACE bytes
      (0x08). tsc accepts it — a backspace between two slashes is a valid regex — and grep
      renders it invisibly, so the classifier silently matched nothing. Checked as bytes. */
-  const raw = readFileSync("src/data/prospectPlace.ts");
+  const raw = Buffer.concat([readFileSync("src/data/prospectPlace.ts"), readFileSync("src/data/cityTable.ts"), readFileSync("src/data/serviceArea.ts")]);
   const ctrl = [...raw].filter((b) => b < 9 || (b >= 11 && b <= 12) || (b >= 14 && b <= 31)).length;
   ctrl === 0 ? ok("no corrupted escape bytes in prospectPlace")
     : bad(`${ctrl} control byte(s) in prospectPlace — a \\b was probably saved as a backspace`);

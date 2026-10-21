@@ -1,4 +1,4 @@
-import { cli, defineAgent, inference, voice, WorkerOptions } from "@livekit/agents";
+import { cli, defineAgent, inference, llm, voice, WorkerOptions } from "@livekit/agents";
 import * as anthropic from "@livekit/agents-plugin-anthropic";
 import * as silero from "@livekit/agents-plugin-silero";
 import { endWhenRoomEmpties } from "./roomLifecycle.js";
@@ -120,6 +120,47 @@ function ttsFor(brief) {
   return inference.TTS.fromModelString(TTS_MODEL);
 }
 
+/**
+ * `check_service_area` (10/21/2026): where the caller's ZIP really is and whether this business
+ * serves it, looked up on the web server (Google Places + the prospect's own locations), the
+ * same check the SMS agent is given. The model's own idea of a ZIP was measured wrong: it called
+ * 80126 (Littleton, CO) Salt Lake City. The token in the job metadata is signed by the server
+ * and expires, so the endpoint answers only for calls it started. No token, no tool.
+ */
+function serviceAreaTools(brief) {
+  const lookup = brief?.serviceLookup;
+  if (!lookup?.url || !lookup?.token) return undefined;
+  return {
+    check_service_area: llm.tool({
+      description: "Look up a US ZIP code: which city and state it is in, and whether this business serves it. Call it as soon as the caller gives their ZIP code, before saying anything about their area.",
+      parameters: {
+        type: "object",
+        properties: { zip: { type: "string", description: "The caller's 5-digit US ZIP code, digits only." } },
+        required: ["zip"],
+        additionalProperties: false,
+      },
+      execute: async ({ zip }) => {
+        const z = String(zip ?? "").replace(/\D/g, "").slice(0, 5);
+        try {
+          const ctl = new AbortController();
+          const timer = setTimeout(() => ctl.abort(), 6000);
+          const res = await fetch(lookup.url, {
+            method: "POST", signal: ctl.signal,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ token: lookup.token, zip: z }),
+          });
+          clearTimeout(timer);
+          const j = await res.json().catch(() => ({}));
+          if (res.ok && typeof j.say === "string") return j.say;
+          return `The lookup could not answer for ZIP ${z}. Ask them to confirm the ZIP code, or which city and state they are in.`;
+        } catch {
+          return `The lookup is unavailable right now. Ask which city and state they are in, and judge it against the service area described in your instructions.`;
+        }
+      },
+    }),
+  };
+}
+
 export default defineAgent({
   /* Silero VAD is loaded ONCE per worker process and shared by every job — it is a
      model file, and loading it per call would add startup latency to the very thing
@@ -136,7 +177,7 @@ export default defineAgent({
     }
     console.log(`[voice-agent] ${brief.customerName || "unknown"} (${brief.profileId || "-"}) room=${ctx.job?.room?.name ?? "?"}`);
 
-    const agent = new voice.Agent({ instructions: brief.instructions });
+    const agent = new voice.Agent({ instructions: brief.instructions, tools: serviceAreaTools(brief) });
 
     const session = new voice.AgentSession({
       stt: new inference.STT({ model: STT_MODEL }),

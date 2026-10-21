@@ -27,6 +27,8 @@ import { StandaloneAi } from "../components/StandaloneAi";
 import { useSmsCapture } from "../data/SmsCaptureContext";
 import { intentKindOf, requestHeading } from "../data/prospectIntent";
 import { derive } from "../data/prospectPlace";
+import { serviceAreaFor, servedPlaces, type ServiceCheck } from "../data/serviceArea";
+import { apiPath } from "../data/shareMode";
 import { smsInfoAttribution } from "../data/salesforceLeadDetail";
 import {
   crmCalendar, crmStateFrom, crmConnection, setCrmConnected, crmDetails, mergeDetails, hourLabel, ymd, crmPreCall, precallMatch, parseLeadIn, crmPreCallFromLeadIn,
@@ -78,6 +80,11 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
 
   const booking = (profile.bookingTerm || "Appointment");
   const place = useMemo(() => { try { return derive(profile).shortCity; } catch { return ""; } }, [profile]);
+  /* The prospect's real service area (10/21/2026). Reported: a Colorado ZIP read "Serviceable:
+     Yes · Chicago service area" because the row printed Yes for any ZIP. The ZIP is now looked up
+     and checked on the server, the same check the SMS agent is given (src/data/serviceArea.ts). */
+  const coverage = useMemo(() => serviceAreaFor(profile), [profile]);
+  const coverageLabel = coverage.national ? "Nationwide" : coverage.hubs.length > 1 ? servedPlaces(coverage) : place;
   const status = st.booking ? "booked" : st.selected ? "selected" : st.offers.length ? "offering" : st.conversation.length ? "in_progress" : "idle";
   const STATUS: Record<string, string> = { idle: "Waiting", in_progress: "In conversation", offering: "Offering times", selected: "Slot picked", booked: "Appointment submitted" };
 
@@ -189,7 +196,7 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
      conversation as it happens (see liveMerge.ts). ONE key for both placements; beside the phone
      it registers PASSIVELY, so the Preview Agent's own Ask AI keeps editing the agent. */
   const crmJson = JSON.stringify({
-    title: `${cap(booking)} Scheduling`, requestHeading: requestHeading(intentKindOf(profile)), serviceArea: place, preCall: pre, lead: st.lead,
+    title: `${cap(booking)} Scheduling`, requestHeading: requestHeading(intentKindOf(profile)), serviceArea: coverageLabel, preCall: pre, lead: st.lead,
     days: days.map((d) => ({ date: d.date, busy: d.busy, closed: d.closed })),
   });
   const crmBase = useMemo(() => JSON.parse(crmJson) as {
@@ -201,7 +208,18 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
   const preEff = crm.preCall ?? pre;
   /* A stored edit made before this rule could still carry a journey, so the render checks too. */
   const noPages = channel === "RCS" || channel === "LSA" || !!leadIn;
-  const area = crm.serviceArea ?? place;
+  const area = crm.serviceArea ?? coverageLabel;
+  const [svc, setSvc] = useState<ServiceCheck | null>(null);
+  useEffect(() => {
+    setSvc(null);
+    if (!st.zip) return;
+    let live = true;
+    fetch(apiPath("/api/service-check"), {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ coverage, zip: st.zip }),
+    }).then((r) => (r.ok ? r.json() : null)).then((j) => { if (live && j?.check) setSvc(j.check); }).catch(() => {});
+    return () => { live = false; };
+  }, [st.zip, coverage]);
   const daysEff = days.map((d) => {
     const e = crm.days?.find((x) => x.date === d.date);
     return e ? { ...d, busy: Array.isArray(e.busy) ? e.busy : d.busy, closed: !!e.closed } : d;
@@ -239,7 +257,7 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
           <div className="ccr-tool">
             <h2>{cap(booking)}s</h2>
             <span className="ccr-range">{shortDay(days[0].date)} – {shortDay(days[6].date)}</span>
-            {(area || st.zip) && <span className="ccr-area">Service area: <b>{[area, st.zip].filter(Boolean).join(" · ")}</b></span>}
+            {area && <span className="ccr-area">Service area: <b>{area}</b></span>}
           </div>
           <div className="ccr-legend">
             <span><i className="ccr-sw offer" />Offered by AI Agent</span>
@@ -300,10 +318,13 @@ export function CustomCrm({ embedded = false, convId, channel, leadIn: leadInTex
               {known("name", "Name", lead.name, preEff?.name)}
               {known("phone", "Phone", lead.phone, preEff?.phone)}
               {known("address", "Address", lead.address, preEff?.street)}
-              {known("zip", "ZIP", st.zip, preEff?.zip)}
+              {known("zip", "ZIP", st.zip && svc?.label ? `${st.zip} · ${svc.label}` : st.zip, preEff?.zip)}
               {/* What the agent established lands in the record itself (10/19/2026 feedback: the
                   "What the AI Agent did" checklist was replaced by the data it produced). */}
-              {st.zip && kv("Serviceable", area ? `Yes · ${area} service area` : "Yes")}
+              {st.zip && kv("Serviceable", !svc ? null
+                : svc.serviceable === true ? `Yes · ${svc.label ?? st.zip}`
+                : svc.serviceable === false ? `No · outside the service area${svc.nearest ? ` (nearest: ${svc.nearest.label}, ${svc.nearest.miles} mi)` : ""}`
+                : "Not verified", "Checking…")}
               {known("email", "Email", lead.email, preEff?.email)}
             </div>
           </div>

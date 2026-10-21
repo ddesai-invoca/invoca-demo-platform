@@ -36,6 +36,7 @@ import { withRcsOpener } from "./rcs";
 import { appointmentMode, type AppointmentInfo } from "./appointmentMode";
 import { companyLocations } from "./prospectPlace";
 import { tollFreeNumber } from "./smsContactNumber";
+import { serviceAreaFor, type ServiceArea } from "./serviceArea";
 
 /** Mirrors `SmsWorkflowFlow` in `workflowDrawers.ts`, declared here so the brain type is local. */
 export interface SmsFlowNodeShape {
@@ -103,6 +104,8 @@ export interface SmsBrain {
   /** HOW the booked appointment happens (home, location, phone, video), 10/21/2026. The server
    *  adds the real address; see src/data/appointmentMode.ts and engine/chat.ts. */
   appointment?: AppointmentInfo;
+  /** The prospect's service area; the server checks the customer's ZIP against it. */
+  coverage?: ServiceArea;
   /**
    * The extra workflow's ORDERED FLOW, appended to its own playbook.
    *
@@ -333,6 +336,7 @@ export function buildSmsBrain(
        ("in-home consultation", "virtual consultation", "in-office exam"), read from the
        EFFECTIVE config so an edited booking type changes it too (10/21/2026). */
     appointment: appointmentFor(profile, ac),
+    coverage: serviceAreaFor(profile),
     /* Only when a custom flow would otherwise swallow them — everywhere else these already
        reach the prompt through `rules` and `playbook`, and sending them twice would have the
        agent read one list as an override of itself. */

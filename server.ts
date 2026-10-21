@@ -29,6 +29,7 @@ import { generateProfile, slugify } from "./engine/core.ts";
 import { chatReply } from "./engine/chat.ts";
 import { analyzeSms } from "./engine/analyze.ts";
 import { geocodeZip } from "./engine/places.ts";
+import { serviceCheckFromBody, voiceServiceCheckFromBody } from "./engine/serviceCheck.ts";
 import { appEnv, isProduction } from "./engine/appEnv.ts";
 import { synthesizePreview } from "./engine/voicePreview.ts";
 import { livekitEnv, mintVoiceToken } from "./engine/livekitToken.ts";
@@ -273,11 +274,16 @@ app.post("/api/share/:token/unlock", async (req, res) => {
 /* The prospect's live agent. One handler for the three calls it needs, so the
    budget and the session check cannot be applied to two of them and forgotten on
    the third. */
-app.post("/api/share/:token/:action(chat|analyze|livekit-token)", async (req, res) => {
+app.post("/api/share/:token/:action(chat|analyze|livekit-token|service-check)", async (req, res) => {
   const token = req.params.token;
-  const action = req.params.action as "chat" | "analyze" | "livekit-token";
+  const action = req.params.action as "chat" | "analyze" | "livekit-token" | "service-check";
   const rec = shareSession(parseCookies(req.headers.cookie), token);
   if (!rec) return res.status(401).json({ error: "This demo is locked or the link has expired." });
+  /* The CRM's service-area check is a lookup, not a message, so it spends none of the budget. */
+  if (action === "service-check") {
+    try { const r = await serviceCheckFromBody(req.body); return res.status(r.status).json(r.body); }
+    catch (e: any) { routeFailed("share:service-check", e, { level: "record" }); return res.status(500).json({ error: "That did not work. Please try again." }); }
+  }
   const kind = action === "livekit-token" ? "voice" : "chat";
   if (!takeBudget(token, kind)) {
     return res.status(429).json({ error: kind === "voice"
@@ -333,6 +339,21 @@ app.post("/api/share/:token/:action(chat|analyze|livekit-token)", async (req, re
    beneath it; the handler reads no params. */
 app.get(/^\/share\/[^/]+(?:\/.*)?$/, (_req, res) =>
   res.sendFile(path.join(DIST, "index.html")));
+
+/* POST /api/voice/service-check { token, zip } → { check, say } (10/21/2026). PUBLIC, because
+   it is called by the voice worker on LiveKit Cloud, which cannot sign in. It answers only for
+   a call this server started: the token is minted into that call's dispatch metadata, signed
+   with the LiveKit secret, and expires (engine/serviceCheck.ts). Returns no prospect data
+   beyond the city of the ZIP the caller gave and the business's own locations. */
+app.post("/api/voice/service-check", async (req, res) => {
+  try {
+    const r = await voiceServiceCheckFromBody(req.body, livekitEnv()?.apiSecret);
+    res.status(r.status).json(r.body);
+  } catch (e: any) {
+    routeFailed("voice-service-check", e, { level: "record" });
+    res.status(500).json({ error: "Lookup failed.", say: "The lookup is unavailable right now. Ask which city and state they are in." });
+  }
+});
 
 installAuth(app);
 
@@ -679,6 +700,18 @@ app.get("/api/zip", async (req, res) => {
     /* One location pill degrades. Counted. */
     routeFailed("zip", e, { level: "record" });
     res.status(500).json({ error: e?.message || "Location lookup failed." });
+  }
+});
+
+/* POST /api/service-check { coverage, zip } → { check }: where a ZIP is and whether the
+   prospect serves it, for the Custom CRM (10/21/2026). The same check the SMS agent is given. */
+app.post("/api/service-check", async (req, res) => {
+  try {
+    const r = await serviceCheckFromBody(req.body);
+    res.status(r.status).json(r.body);
+  } catch (e: any) {
+    routeFailed("service-check", e, { level: "record" });
+    res.status(500).json({ error: "Service area check failed." });
   }
 });
 

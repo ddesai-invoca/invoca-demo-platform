@@ -67,9 +67,10 @@ const f = (text: string): Change => ({ kind: "fixed", text });
 export const RELEASES: Release[] = [
   {
     date: "2026-10-21",
-    title: "SMS appointments say how they happen",
+    title: "SMS appointments say how they happen, and ZIP codes are checked",
     changes: [
       i("When the SMS or RCS agent books an appointment, the confirmation now says how it happens: a specialist coming to the customer's home (with the address confirmed), the nearest location with its real street address from Google, a phone call at the booked time from the business's number, or a video link. Follow-up questions about where to go get the same answer. The workflow's booking box describes the same step."),
+      f("The SMS and voice agents now check a customer's ZIP code for real: they say the correct city and whether the business serves it, based on the prospect's own locations or stated service area, and politely decline (naming where the business does serve) instead of booking someone outside it. The Custom CRM shows the same city and serviceable answer."),
       i("On a shared demo, the Invoca logo returns to Agent Studio, and the Details tab's Edit button and its links to campaigns and promo numbers are disabled."),
     ],
   },
